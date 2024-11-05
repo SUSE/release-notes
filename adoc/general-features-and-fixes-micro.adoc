@@ -1,0 +1,103 @@
+== General features and fixes
+
+=== Full-disk encryption
+
+{productnameshort} is focused on distributed infrastructures/Edge deployments, which means systems running {productnameshort} are not necessarily within DCs or secure locations.
+We therefore have improved our security story and added support for full disk encryption (FDE) to SLE
+Micro.
+
+=== Confidential compute
+
+We are offering capabilities for confidential compute on {productnameshort} via the included virtualization stack.
+
+=== 1:1 web-based system management
+
+Since {productname} is positioned to be used within decentralized infrastructures including Edge use cases and Industrial Edge, a system management based on current {yast2} is not within scope.
+Specifically, for Industrial Edge, a basic web-based system management was required. We have chosen the cockpit project as a base for that.
+Therefore, the cockpit packages are added to the common code base and adjusted for the Immutable OS setup of  {productname}.
+
+=== Real-time kernel
+
+For the Intel/AMD 64bit architecture (x86_64) the real-time (rt) kernel is provided in addition to the default kernel.
+Support for RT includes support for Kernel Live Patching on the RT kernel.
+Note: When using the RT kernel, KVM is not supported, and workloads need to be run within containers
+Containers need special treatment with RT.
+
+=== Security/security framework
+
+With {sle} we fully support {apparmor} and in addition provide the framework for {selinux} – without providing and supporting a policy for {selinux}.
+On {productname} we do not support {apparmor}.
+{productname} only supports {selinux} and in addition we ship a supported policy.
+On top of that, we will look into providing dedicated {selinux} policies for the containers we already provide or support on top of {productname} (PCP and Nvidia).
+{productname} {this-version} will have {selinux} in enforced mode as a default.
+
+=== {podman} upgrade from 4.3.X. to 4.7.1
+
+{podman} 4.7 is a major release with tons of new features and extensive bug fixes compared to {Podman} 4.3. Individual changes are to be found upstream https://github.com/containers/podman/blob/main/RELEASE_NOTES.md
+
+{podman} 4.x brings a new container network stack based on Netavark, the new container network stack and Aardvark DNS server in addition to the existing container network interface (CNI) stack used by {podman} 3.x.
+The new stack brings 3 important improvements:
+
+* Better support for containers in multiple networks
+* Better IPv6 support
+* Better performance
+
+To ensure that nothing breaks with this major change, the old CNI stack will remain the default on existing installations. Bear in mind that Netavark will be released as part of a maintenance update.
+
+[WARNING]
+====
+Before testing {podman} 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
+You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
+
+If you have run {podman} 3.x before upgrading to {podman} 4, {podman} will continue to use CNI plugins as it had before.
+To begin using {podman} 4 with Netavark, you need to run the command podman system reset.
+The command will destroy all images, networks and all containers.
+====
+
+For a complete overview of the changes, please check out the upstream 4.0.0 but also 4.1.1, 4.2.0 and 4.3.0 to be informed about all the new features and changes.
+
+=== Legacy BIOS boot support is deprecated
+
+With {productname} {this-version} legacy BIOS boot support on Intel/AMD 64bit systems (x86_64) is deprecated and will be removed with a later release.
+
+=== LTTng is deprecated
+
+{productname} {this-version} provides support for LTTng (Linux Trace Toolkit: next generation). Support for LTTng will however be removed in a later {productname} version in favor of alternative solutions for tracing like bpftrace.
+
+=== {cockpit} web-based node management system
+
+For web-based management of a single node, {cockpit} is included. For details, refer to https://documentation.suse.com/sle-micro/6.0/html/SLE-Micro-all/article-administration-slemicro.html#sec-admin-{cockpit}.
+
+There have been new {cockpit} modules added to the product. Due to the amount of dependencies, not all of the {cockpit} modules are part of the raw images and some have to be installed additionally.
+
+When enabling a firewall via the {cockpit} user interface, be aware that your connection to the host may be interrupted unless the {cockpit} port is configured to be open in advance.
+
+The {selinux} module for {cockpit} provides basic functionality for users to troubleshoot their configuration.
+With this release the functionality has been extended with the introduction of the `setroubleshoot-server` package.
+
+=== Managing {productname} with {suma}
+
+SUSE Manager can be used to manage {productname} hosts. There are certain limitations:
+
+* {productname} host cannot be monitored with SUSE Manager
+* {suma} does not provide integrated container management yet.
+As a workaround, you can use Salt via cmd.run podman.
+* {suma} can manage the {productname} hosts only with the Salt stack; the traditional stack is not supported
+* Ansible control node cannot be installed on {productname}
+
+We intend to resolve these issues in the future maintenance updates of {productname} on {suma}.
+
+=== Public Cloud Images
+
+The Public Cloud instance initialization code has been changed from using Ignition and Afterburn to cloud-init in AWS EC2, cloud-init and the Azure agent in Azure, and the Google guest environment for GCE. This means configuration of instances through user data now behaves the same as SUSE Linux Enterprise Server, any version, instances. This also addresses the issue in Azure with the state detection of the VM. The web console will now properly show a VM in "Running" state instead of appearing to be stuck in "Provisioning". This also allows user configuration through the web console in Azure and user configuration using the customary ways in AWS EC2 and GCE.
+
+[#jsc-SMO-379]
+=== Default container registries
+
+The container registry entries for Docker Hub and openSUSE Registry, which were previously included by default, have now been removed.
+If you want to pull container images from either of them, add them to the `/etc/containers/registries.conf` file.
+
+
+
+
+

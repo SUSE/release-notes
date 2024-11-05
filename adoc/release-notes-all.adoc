@@ -1,0 +1,24 @@
+= ALP Release Notes
+
+:productname: ALP
+:this-version:
+:doc-url: https://documentation.suse.com
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+:rn-url: https://www.suse.com/releasenotes
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-documentation.adoc[]
+
+// INCLUDE ALP MICRO
+
+:leveloffset: +1
+:release-notes-all: true
+include::release-notes-micro.adoc[]
+:leveloffset: -1
+
+include::source-code.adoc[]
+
+include::legal.adoc[]

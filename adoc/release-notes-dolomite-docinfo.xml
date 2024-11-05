@@ -1,0 +1,12 @@
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+    <dm:component>Release Notes</dm:component>
+    <dm:product>Dolomite</dm:product>
+    <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
+   </dm:bugtracker>
+  </dm:docmanager>
+  <releaseinfo>@VERSION@</releaseinfo>
+  <productname>{productname}</productname>
+  <productnumber>{this-version}</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>

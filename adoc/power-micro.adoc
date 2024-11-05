@@ -1,0 +1,13 @@
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-productname} {this-version}.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

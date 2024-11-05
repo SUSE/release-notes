@@ -1,0 +1,51 @@
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+
+// [NOTE]
+// .Package and module changes in {this-version}
+// For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+// [#removed]
+// === Removed features and packages
+
+// The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+[#jsc-PED-6808]
+=== `ceph` client packages deprecation
+
+The following `ceph` client packages have been deprecated and will be removed in {next-version}:
+
+* `ceph-common`
+* `libcephfs-devel`
+* `python3-ceph-common`

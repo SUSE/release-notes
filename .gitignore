@@ -1,0 +1,11 @@
+*~
+\#*#
+.#*
+*.bak
+*.orig
+*.swp
+.directory
+build/
+.vscode/
+.idea/
+*.code-workspace

@@ -1,0 +1,38 @@
+[#miscellaneous]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries that do not fit elsewhere.
+// Where possible, find a matching category.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-7247]
+==== IMA EVM signing plugin
+
+A RPM plugin for IMA (Integrity Measurement Architecture)/EVM (Linux Extended Verification Module) signing has been added.
+The plugin is installed as part of the following package:
+
+* `rpm-imaevmsign`
+
+=== Toolbox container
+
+When you run the toolbox script to pull and start the toolbox container, a previous version of the container image is pulled.
+This does not influence toolbox funcionality and you can use the toolbox container as needed.
+
+=== Password access as root via SSH disabled
+
+Previously, it was possible to SSH as root using password-based authentication.
+In {productnameshort} 6.0 only key-based authentication is allowed by default.
+Systems upgraded to 6.0 from 5.x carry over the old behavior. New installations will enforce the new behavior.
+
+Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
