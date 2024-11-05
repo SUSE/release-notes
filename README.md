@@ -1,6 +1,10 @@
-# SUSE Linux Enterprise Micro Release Notes
+# SUSE Release Notes
 
-This repository contains release notes for SUSE Linux Enterprise Micro written in [AsciiDoc](https://docs.asciidoctor.org/asciidoc/latest/).
+This repository contains release notes for SUSE products.
+They are written in [AsciiDoc](https://docs.asciidoctor.org/asciidoc/latest/).
+
+Currently the repository contains release notes for these products:
+* SL Micro
 
 
 ## How to contribute
@@ -9,4 +13,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Where to add note
 
-1. Add the note to the relevant document with `-micro` suffix and include it in `release-notes-micro.adoc`
+The repository structure is like this:
+
+```
+adoc/
+├── micro/
+│   ├── version60.adoc
+│   └── version61.adoc
+└── another-product/
+    ├── versionX.adoc
+    └── versionY.adoc
+```
+
+If the file for the version doesn't exist, feel free to submit an issue/PR.
