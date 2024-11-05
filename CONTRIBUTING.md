@@ -1,10 +1,10 @@
 # Summary
 
 1. Fork the repository.
-2. Make your changes either to the "main" branch or create a new branch.
+2. Make your changes to the "main" branch (there are no other branches)
     1. Write one sentence per line.
     2. If there is a related issue, use its Jira or Bugzilla identifier as the section ID (`[#jsc-SLE-1234]`), or if that is not possible, add it as a comment (`// jsc#SLE-1234`).
-2. Submit the changes as a pull request.
+3. Submit the changes as a pull request.
 
 
 # Examples
@@ -86,13 +86,9 @@ The release notes are written using AsciiDoc. See the [AsciiDoc documentation](h
 
 * Run `make validate` to check for errors
 * Run `make html` to see your changes
-    * Replace `html` with a different format (`pdf`, `single-html`, `text`) or `all` to generate all formats
-
-## Repository structure
-
-This repository contains all versions of SUSE Linux Micro.
+    * Replace `html` with a different format (`pdf`, `single-html`, `text`) or `all` to generate other formats
 
 # Creating a bug report
 
-Use the Issue Tracker: [Create new issue](https://github.com/SUSE/release-notes-alp/issues/new/choose)
+Use the Issue Tracker: [Create new issue](https://github.com/SUSE/release-notes/issues/new/choose)
 
