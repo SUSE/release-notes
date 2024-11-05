@@ -146,7 +146,7 @@ With {productname} {this-version} legacy BIOS boot support on Intel/AMD 64bit sy
 
 === {cockpit} web-based node management system
 
-For web-based management of a single node, {cockpit} is included. For details, refer to https://documentation.suse.com/sle-micro/{this-version}/html/SLE-Micro-all/article-administration-slemicro.html#sec-admin-{cockpit}.
+For web-based management of a single node, {cockpit} is included. For details, refer to https://documentation.suse.com/en-us/sle-micro/6.0/html/Micro-6.0-cockpit/.
 
 There have been new {cockpit} modules added to the product. Due to the amount of dependencies, not all of the {cockpit} modules are part of the raw images and some have to be installed additionally.
 
