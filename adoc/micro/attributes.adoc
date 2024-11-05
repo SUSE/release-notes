@@ -1,15 +1,10 @@
-:productname: {sle} Micro
-:productnameshort: {slea} Micro
-:idprefix: micro_
+:productname: SL Micro
+:productnameshort: SLM
 :previous-version: 5.5
-:this-version: 6.0
 :rel-date: TBD
 
 :power-product: {productname} for POWER
 
-:abstract: {productname} is a modern operating system primarily targeted for edge computing. This document provides a high-level overview of features, capabilities, and limitations of {productname} {this-version}.
-
-:doc-url: https://documentation.suse.com/sle-micro/6.0
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
 :doc-url-source: https://www.suse.com/download/sle-micro/
 

@@ -2,11 +2,11 @@
    <dm:bugtracker>
     <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
     <dm:component>Release Notes</dm:component>
-    <dm:product>ProductName</dm:product>
-    <dm:assignee>maintainer@example.com</dm:assignee>
+    <dm:product>SUSE Linux Enterprise Micro 6.0</dm:product>
+    <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
    </dm:bugtracker>
   </dm:docmanager>
   <releaseinfo>@VERSION@</releaseinfo>
-  <productname>{productname}</productname>
-  <productnumber>{this-version}</productnumber>
+  <!-- <productname>SL Micro Release Notes</productname> -->
+  <!-- <productnumber></productnumber> -->
   <date><?dbtimestamp format="Y-m-d"?></date>

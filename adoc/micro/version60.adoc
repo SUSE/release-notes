@@ -1,0 +1,363 @@
+:this-version: 6.0
+:idprefix: v60_
+:doc-url: https://documentation.suse.com/sle-micro/{this-version}
+
+= {this-version}
+
+// ===================================================================
+
+== Installation
+
+=== Installation media
+* Image based deployment images
+** Base OS Image (Base OS + podman only)
+*** Plus QCOW version of this image (x86_64, aarch64. S390x)
+*** Plus VMware (VMDK) version of this image (x86_64)
+** OS image (Base OS, salt-minion, KVM + libvirt packages)
+*** Plus QCOW version of this image (x86_64, aarch64. S390x)
+*** Plus VMware (VMDK) version of this image (x86_64)
+** OS image with RT kernel (x86_64 only), no KVM support on this image
+** Base OEM image – self-installation image (Base OS + podman only) for x86_64
+** OEM image – self-installation image (Base OS, salt-minion, KVM + libvirt packages) for x86_64
+** OEM image with RT kernel – self-installation image, no KVM support on this image for x86_64
+
+Images other than QCOW or VMDK target bare metal deployments.
+
+=== Additional container images
+* SUSE Toolbox container for debugging, based on current {slea} 15 SP, provided via registry.suse.com
+* PCP container image (unmodified)
+
+=== High-level requirements
+Use of {productname} without a container runtime is only supported when {productname} is used as a KVM host and workloads are installed into KVM virtual machines.
+Running workloads directly on the OS is not supported, with the exception of system management software.
+
+=== Installation modes
+
+{productname} {this-version} only supports deployment via images.
+An installer based installation method is not offered.
+
+Customization of the installation process with the provided images can be done with Ignition and Combustion (pre-configured images and self-installing images).
+
+We will offer select images with support for cloud-init with a later milestone.
+
+=== Supported architectures
+
+* Intel/{amd} 64bit (`x86_64`)
+* {arm} 64bit (`aarch64`)
+* {ibmz} (`s390x`)
+
+=== Upgrade path
+
+An online migration of existing {productname} 5.5 installations to {productname} {this-version} is possible and is fully supported.
+Upgrading from {productname} 5.5 is only possible via the `transactional-update` tool.
+For the upgrade procedure, refer to {doc-url}/html/Micro-upgrade/index.html
+
+=== Change in installation methods
+
+With previous releases we supported manual installation via a {yast} based image.
+With {productnameshort} we have dropped support for this installation method and only focus on RAW image based deployments.
+The SelfInstall image variant has been extended to allow setting of various parameters to direct it and also enable an unattended installation using the SelfInstall image.
+
+=== Installing SUSE Linux Enterprise Micro
+==== Unattended installation with Yomi (technology preview)
+
+To learn how to install a system with Yomi, see the {suma} documentation, section Install using Yomi.
+Installation with Yomi is a technology preview.
+
+==== Deploying pre-built images
+
+{productnameshort} is provided as raw images which can be deployed directly to a storage device, for example, a memory card, a USB stick, or a hard drive.
+{productnameshort} is also provided as images for specific hardware device with a customized software selection.
+
+For a procedure of deploying an image refer to {doc-url}/html/Micro-deployment-raw-images/index.html
+
+In addition to media provided by {productnameshort} 5.4, this release includes qcow2 images for  aarch64 and x86_64.
+
+// START ARCH-INDEPENDENT
+[#all-architecture]
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {productnameshort} {this-version}.
+
+
+=== Full-disk encryption
+
+{productnameshort} is focused on distributed infrastructures/Edge deployments, which means systems running {productnameshort} are not necessarily within DCs or secure locations.
+We therefore have improved our security story and added support for full disk encryption (FDE) to SLE
+Micro.
+
+=== Confidential compute
+
+We are offering capabilities for confidential compute on {productnameshort} via the included virtualization stack.
+
+=== 1:1 web-based system management
+
+Since {productname} is positioned to be used within decentralized infrastructures including Edge use cases and Industrial Edge, a system management based on current {yast2} is not within scope.
+Specifically, for Industrial Edge, a basic web-based system management was required. We have chosen the cockpit project as a base for that.
+Therefore, the cockpit packages are added to the common code base and adjusted for the Immutable OS setup of  {productname}.
+
+=== Real-time kernel
+
+For the Intel/AMD 64bit architecture (x86_64) the real-time (rt) kernel is provided in addition to the default kernel.
+Support for RT includes support for Kernel Live Patching on the RT kernel.
+Note: When using the RT kernel, KVM is not supported, and workloads need to be run within containers
+Containers need special treatment with RT.
+
+=== Security/security framework
+
+With {sle} we fully support {apparmor} and in addition provide the framework for {selinux} – without providing and supporting a policy for {selinux}.
+On {productname} we do not support {apparmor}.
+{productname} only supports {selinux} and in addition we ship a supported policy.
+On top of that, we will look into providing dedicated {selinux} policies for the containers we already provide or support on top of {productname} (PCP and Nvidia).
+{productname} {this-version} will have {selinux} in enforced mode as a default.
+
+=== {podman} upgrade from 4.3.X. to 4.7.1
+
+{podman} 4.7 is a major release with tons of new features and extensive bug fixes compared to {Podman} 4.3. Individual changes are to be found upstream https://github.com/containers/podman/blob/main/RELEASE_NOTES.md
+
+{podman} 4.x brings a new container network stack based on Netavark, the new container network stack and Aardvark DNS server in addition to the existing container network interface (CNI) stack used by {podman} 3.x.
+The new stack brings 3 important improvements:
+
+* Better support for containers in multiple networks
+* Better IPv6 support
+* Better performance
+
+To ensure that nothing breaks with this major change, the old CNI stack will remain the default on existing installations. Bear in mind that Netavark will be released as part of a maintenance update.
+
+[WARNING]
+====
+Before testing {podman} 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
+You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
+
+If you have run {podman} 3.x before upgrading to {podman} 4, {podman} will continue to use CNI plugins as it had before.
+To begin using {podman} 4 with Netavark, you need to run the command podman system reset.
+The command will destroy all images, networks and all containers.
+====
+
+For a complete overview of the changes, please check out the upstream 4.0.0 but also 4.1.1, 4.2.0 and 4.3.0 to be informed about all the new features and changes.
+
+=== Legacy BIOS boot support is deprecated
+
+With {productname} {this-version} legacy BIOS boot support on Intel/AMD 64bit systems (x86_64) is deprecated and will be removed with a later release.
+
+=== LTTng is deprecated
+
+{productname} {this-version} provides support for LTTng (Linux Trace Toolkit: next generation). Support for LTTng will however be removed in a later {productname} version in favor of alternative solutions for tracing like bpftrace.
+
+=== {cockpit} web-based node management system
+
+For web-based management of a single node, {cockpit} is included. For details, refer to https://documentation.suse.com/sle-micro/{this-version}/html/SLE-Micro-all/article-administration-slemicro.html#sec-admin-{cockpit}.
+
+There have been new {cockpit} modules added to the product. Due to the amount of dependencies, not all of the {cockpit} modules are part of the raw images and some have to be installed additionally.
+
+When enabling a firewall via the {cockpit} user interface, be aware that your connection to the host may be interrupted unless the {cockpit} port is configured to be open in advance.
+
+The {selinux} module for {cockpit} provides basic functionality for users to troubleshoot their configuration.
+With this release the functionality has been extended with the introduction of the `setroubleshoot-server` package.
+
+=== Managing {productname} with {suma}
+
+SUSE Manager can be used to manage {productname} hosts. There are certain limitations:
+
+* {productname} host cannot be monitored with SUSE Manager
+* {suma} does not provide integrated container management yet.
+As a workaround, you can use Salt via cmd.run podman.
+* {suma} can manage the {productname} hosts only with the Salt stack; the traditional stack is not supported
+* Ansible control node cannot be installed on {productname}
+
+We intend to resolve these issues in the future maintenance updates of {productname} on {suma}.
+
+=== Public Cloud Images
+
+The Public Cloud instance initialization code has been changed from using Ignition and Afterburn to cloud-init in AWS EC2, cloud-init and the Azure agent in Azure, and the Google guest environment for GCE. This means configuration of instances through user data now behaves the same as SUSE Linux Enterprise Server, any version, instances. This also addresses the issue in Azure with the state detection of the VM. The web console will now properly show a VM in "Running" state instead of appearing to be stuck in "Provisioning". This also allows user configuration through the web console in Azure and user configuration using the customary ways in AWS EC2 and GCE.
+
+[#jsc-SMO-379]
+=== Default container registries
+
+The container registry entries for Docker Hub and openSUSE Registry, which were previously included by default, have now been removed.
+If you want to pull container images from either of them, add them to the `/etc/containers/registries.conf` file.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-7247]
+==== IMA EVM signing plugin
+
+A RPM plugin for IMA (Integrity Measurement Architecture)/EVM (Linux Extended Verification Module) signing has been added.
+The plugin is installed as part of the following package:
+
+* `rpm-imaevmsign`
+
+=== Toolbox container
+
+When you run the toolbox script to pull and start the toolbox container, a previous version of the container image is pulled.
+This does not influence toolbox funcionality and you can use the toolbox container as needed.
+
+=== Password access as root via SSH disabled
+
+Previously, it was possible to SSH as root using password-based authentication.
+In {productnameshort} {this-version} only key-based authentication is allowed by default.
+Systems upgraded to {this-version} from 5.x carry over the old behavior. New installations will enforce the new behavior.
+
+Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
+
+// END ARCH-INDEPENDENT
+
+// x86-64-specific
+
+// Arm-specific
+// :leveloffset: -1
+[#aarch64]
+== {arm} 64-bit-specific features and fixes (AArch64)
+
+Information in this section applies to {productnameshort} {this-version}.
+
+
+[#arm64-soc]
+=== System-on-Chip driver enablement
+
+{productnameshort} {this-version} includes driver enablement for the following
+System-on-Chip (SoC) chipsets:
+
+// * {amdreg} {opteronreg} A1100
+* {amperereg} {xgenereg}, {emagreg}, {altrareg}, _{altramax}_, {ampereonereg}
+* {awsreg} Graviton, Graviton2, Graviton3
+* {brcmreg} BCM2837/BCM2710, BCM2711
+* {fujitsureg} A64FX
+* {huaweireg} {kunpengreg} 916, {kunpeng} 920
+* {marvellreg} {thunderxreg}, {thunderx2reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
+// jsc#PED-8032 (BF3)
+* {nvidiareg} {grace}; {tegrareg}{nbsp}X1, Tegra{nbsp}X2, {xavierreg}, {orin}; {bluefieldreg}, _{bluefield2}_, _{bluefield3}_
+// jsc#SLE-12251 (LS1012A), jsc#SLE-11914 (i.MX 8MM)
+* {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
+// * {qcomreg} {centriqreg} 2400
+* Rockchip RK3399
+* {socionextreg} {synquacerreg} SC2A11
+* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
+
+NOTE: Driver enablement is done as far as available and requested.
+Refer to the following sections for any known limitations.
+
+Some systems might need additional drivers for external chips, such as a
+Power Management Integrated Chip (PMIC), which may differ between systems
+with the same SoC chipset.
+
+For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
+or the Embedded Base Boot Requirements (EBBR),
+that is, the Unified Extensible Firmware Interface (UEFI) either
+implementing the Advanced Configuration and Power Interface (ACPI) or
+providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
+will default to the Device Tree; the kernel command line argument `acpi=force` can
+override this default behavior.
+
+Check for {suse} _YES!_ certified systems,
+which have undergone compatibility testing.
+
+
+// bsc#1212541
+[#jsc-PED-7865]
+=== {nvidiaorin} minimum firmware requirements
+
+// SLES 15 SP5 -> SLEM 5.5
+{slesa} 15{nbsp}SP5 and {slea} Micro {previous-version} added initial enablement for the
+{nvidiaorinreg} SoC (T234), which is found on {jetsonreg} AGX{nbsp}{orin},
+{jetson} {orin}{nbsp}NX and {jetson} {orin}{nbsp}Nano System-on-Modules (SoM)
+as well as {nvidia} IGX{nbsp}Orin based systems.
+
+{nvidia} {jetpackreg} {this-version} boot firmware and Linux kernel 6.5
+changed the Application Binary Interface (ABI)
+for numbering General Purpose Input/Output (GPIO) pins --
+specifically the main GPIO ports X, Y, Z, AC, AD, AE, AF and AG --
+referenced in the machine-specific vendor Device Tree (DT) binary
+for {nvidiaorin} based systems.
+// https://github.com/SUSE/kernel-source/commit/d4ea3ee04f6c78a840bca4e8a8c5d5946581aa91
+// https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=12382ad05110b569d95d29c637e16bbeb115acca
+
+{productnameshort} {this-version} adopts the behavior of the latest kernels
+and requires {nvidia} {jetpack} {this-version} or later boot firmware to be flashed
+on any {nvidiaorin} based platforms.
+
+Refer to your system vendor's documentation for how to enter Recovery Mode and
+to flash the boot firmware.
+For example: `sudo ./flash.sh _device-identifier-and-boot-medium_ external`
+
+// :leveloffset: +1
+
+
+// Power-specific
+////
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-productname} {this-version}.
+
+
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+
+// [NOTE]
+// .Package and module changes in {this-version}
+// For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+// [#removed]
+// === Removed features and packages
+
+// The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+[#jsc-PED-6808]
+=== `ceph` client packages deprecation
+
+The following `ceph` client packages have been deprecated and will be removed in 6.1:
+
+* `ceph-common`
+* `libcephfs-devel`
+* `python3-ceph-common`
+
+
+// ===================================================================
+

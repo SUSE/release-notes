@@ -13,8 +13,8 @@
 rpm --changelog -qp FILENAME.rpm
 ----
 * Check the `ChangeLog` file in the top level of the installation medium for a chronological log of all changes made to the updated packages.
-* Find more information in the `docu` directory of the installation medium of {productname}{nbsp}{this-version}.
-  This directory includes PDF versions of the {productname}{nbsp}{this-version} Installation Quick Start Guide.
+* Find more information in the `docu` directory of the installation medium of {productname}.
+  This directory includes PDF versions of the {productname} Installation Quick Start Guide.
 // bsc#1188302
 * Get list of manual pages with usage information about a particular package from the RPM (where `_FILENAME_.rpm` is the name of the RPM):
 +
@@ -25,7 +25,7 @@ rpm --docfiles -qp FILENAME.rpm | grep man
 [#intro-documentation-external]
 ==== Online documentation
 
-For the most up-to-date version of the documentation for {productname}{nbsp}{this-version}, see:
+For the most up-to-date version of the documentation for {productname}, see:
 
 // disclaimer beta
 ifeval::["{lifecycle}" == "beta"]

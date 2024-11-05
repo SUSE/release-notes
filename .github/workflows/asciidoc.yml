@@ -1,0 +1,56 @@
+on:
+  push:
+    paths:
+      - "DC-*"
+      - "adoc/*"
+      - ".github/workflows/*"
+  pull_request:
+    paths:
+      - "DC-*"
+      - "adoc/*"
+  workflow_dispatch:
+
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: openSUSE/doc-ci@gha-validate
+        with:
+          dc-files: "DC-release-notes-all DC-release-notes-micro"
+          validate-ids: true
+          validate-images: true
+          validate-tables: true
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+      - uses: openSUSE/doc-ci@gha-build
+        id: build-dc
+        with:
+          dc-files: "DC-release-notes-all DC-release-notes-micro"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.build-dc.outputs.artifact-name }}
+          path: ${{ steps.build-dc.outputs.artifact-dir }}/*
+          retention-days: 3
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ success() }} && github.ref == 'refs/heads/main'
+    needs: build
+    continue-on-error: true
+    steps:
+      - name: Downloading all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifact-dir
+      - name: Publishing builds on susedoc.github.io
+        uses: openSUSE/doc-ci@gha-publish
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        with:
+          artifact-path: artifact-dir
+          publish-repo: gh:SUSEdoc/release-notes.git

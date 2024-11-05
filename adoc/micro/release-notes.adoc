@@ -1,0 +1,25 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= SL Micro Release Notes
+
+:productname: SL Micro
+:doc-url: https://documentation.suse.com
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+:rn-url: https://www.suse.com/releasenotes
+
+{productname} is a modern operating system primarily targeted for edge computing. This document provides a high-level overview of its features, capabilities, and limitations.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+// INCLUDE ALL SL MICRO VERSION
+
+:leveloffset: +1
+include::version60.adoc[]
+:leveloffset: -1
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]
