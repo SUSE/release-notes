@@ -35,6 +35,10 @@ Use Replacement Feature instead.
 For more information, see <<jsc-SLE-0000>>.
 ////
 
+// jsc#DOCTEAM-1622
+* `busybox`
+* `salt-master`
+* `k3s`
 
 // [#deprecated]
 // === Deprecated features and packages
