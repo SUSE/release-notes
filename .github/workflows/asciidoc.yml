@@ -2,12 +2,12 @@ on:
   push:
     paths:
       - "DC-*"
-      - "adoc/*"
+      - "adoc/**"
       - ".github/workflows/*"
   pull_request:
     paths:
       - "DC-*"
-      - "adoc/*"
+      - "adoc/**"
   workflow_dispatch:
 
 
