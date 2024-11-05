@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: openSUSE/doc-ci@gha-validate
         with:
-          dc-files: "DC-release-notes-all DC-release-notes-micro"
+          dc-files: "DC-release-notes-micro"
           validate-ids: true
           validate-images: true
           validate-tables: true
@@ -31,7 +31,7 @@ jobs:
       - uses: openSUSE/doc-ci@gha-build
         id: build-dc
         with:
-          dc-files: "DC-release-notes-all DC-release-notes-micro"
+          dc-files: "DC-release-notes-micro"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-dc.outputs.artifact-name }}
