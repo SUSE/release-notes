@@ -19,6 +19,7 @@ include::../common/about-documentation.adoc[]
 :leveloffset: +1
 include::version60.adoc[]
 :leveloffset: -1
+include::version61.adoc[]
 
 include::../common/source-code.adoc[]
 

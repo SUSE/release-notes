@@ -4,7 +4,7 @@
 
 = {this-version}
 
-// ===================================================================
+These release notes apply to {productname} {this-version}.
 
 == Installation
 

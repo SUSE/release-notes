@@ -4,7 +4,9 @@
 
 == {this-version}
 
-== Removed and deprecated features and packages
+These release notes apply to {productname} {this-version}.
+
+=== Removed and deprecated features and packages
 
 // This section is intended as a quick-to-consume list of deprecations/removals
 // Do not add longer notes to this section. Instead:
@@ -21,7 +23,7 @@ This section lists features and packages that were removed from {productname} or
 
 
 [#removed]
-=== Removed features and packages
+==== Removed features and packages
 
 // The following features and packages have been removed in this release.
 
