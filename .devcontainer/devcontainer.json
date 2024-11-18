@@ -1,0 +1,8 @@
+{
+    "image": "registry.opensuse.org/documentation/containers/15.6/opensuse-daps-toolchain:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": ["asciidoctor.asciidoctor-vscode"]
+        }
+    }
+}
