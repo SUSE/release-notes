@@ -8,6 +8,15 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1230402]
+==== Release numbering change
+
+In {productname} 6.1, the release numbers start with `slfo.1.1`, while there was no such prefix in {productname} 6.0.
+Due to this, the release numbers of {productname} 6.1 are lower than the ones on {productname} 6.0 (as the above translates to `0.1.1`).
+This is a known issue and will not happen in future releases.
+The standard migration tooling will handle this correctly.
+
+
 ==== Password-based remote root login not allowed
 
 For enhanced security, new installations of {productname} {this-version} do not allow password-based remote root login anymore, which also affects Cockpit.
