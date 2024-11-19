@@ -104,6 +104,11 @@ $(yast_html_result): $(profile_result)
 $(profile_result): $(dc_file) $(src_files)
 	$(daps_command) -vv -d $< $(profile_params) profile
 
+serve:
+# needs Python 3.7 for the --directory argument
+	python3 -m http.server --directory $$(find . -iname index.html -exec dirname {} \;)
+	
+
 
 
 
