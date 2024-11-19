@@ -8,6 +8,20 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+==== Installation media
+
+// jsc#PED-8578
+On top of the images described above with {productname} {this-version} we are adding PXE boot images (network boot .tar) for all architectures except ppc64le.
+
+==== Supported Architectures
+
+// jsc#PED-8466
+{productname} {this-version}  adds general support for the IBM Power platform (ppc64le) to the product. It requires at least IBM Power9. IBM Power8 is not supported.
+
+==== Upgrade Path
+
+An online migration of existing {productname} 5.5 or {productname}  {previous-version} installations to {productname} {this-version} is possible and is fully supported.
+
 [#bsc-1230402]
 ==== Release numbering change
 
@@ -16,12 +30,28 @@ Due to this, the release numbers of {productname} 6.1 are lower than the ones on
 This is a known issue and will not happen in future releases.
 The standard migration tooling will handle this correctly.
 
-
 ==== Password-based remote root login not allowed
 
+// jsc#SMO-405 
 For enhanced security, new installations of {productname} {this-version} do not allow password-based remote root login anymore, which also affects Cockpit.
 The login to Cockpit now requires to create and use an unprivileged user and to optionally set up 2-factor authentication with one-time passwords.
 The `firstboot-installer` as well as `ignition` and the online tool `fuel-ignition` support this setup.
+
+==== Soft-Reboot support
+
+// jsc#PED-8686
+Ability to activate SW changes without the need to reboot. Support for soft-reboot is fully integrated in transactional-update and rebootmgr. It only reboots the userland, not the hardware or kernel. This reduces the downtime of {productname} dramatically, if the changes don't contain an updated kernel or bootloader, as you don't have to go through the full boot cycle to enable the new root subvolume. The behavior of reboot depends on the configuration and changes performed to the system. If soft-reboot is enabled, only the user  space may be restarted without rebooting the hardware and kernel. To enable and configure soft-reboot functionality please refer to the documentation.
+
+==== RAM Compressor (Z-RAM)
+
+// jsc#SMO-422
+ZRAM allows users to both compress main memory and therefore gain more compute resources on smaller systems, but also allows users to use a compressed area of main memory as a swap device, with the added option to back that by a block device. That allows the system to support more complex setups with limited resources available. Key benefits of zram are fast I/O operations and memory savings.
+
+==== Active Directory
+
+// jsc#SMO-291
+{productname} now supports integration in Active Directory environments.
+
 
 ifeval::[{lifecycle} == "beta"]
 For more information about the procedure and other options see https://susedoc.github.io/doc-modular/main/html/Micro-cockpit/index.html#cockpit-authentication-basics.
