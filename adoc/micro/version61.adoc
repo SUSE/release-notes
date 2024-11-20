@@ -2,7 +2,7 @@
 :idprefix: v61_
 :doc-url: https://documentation.suse.com/sle-micro/{this-version}
 
-== {this-version}
+== {productname} Version {this-version}
 
 These release notes apply to {productname} {this-version}.
 
