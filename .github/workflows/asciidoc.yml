@@ -24,7 +24,7 @@ jobs:
           validate-tables: true
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: validate
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
           retention-days: 3
   publish:
     runs-on: ubuntu-latest
-    if: ${{ success() }} && github.ref == 'refs/heads/main'
+    if: ${{ success() }} && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     continue-on-error: true
     steps:
