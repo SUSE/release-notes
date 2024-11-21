@@ -20,12 +20,12 @@ On top of the images described above with {productname} {this-version} we are ad
 
 ==== Upgrade Path
 
-An online migration of existing {productname} 5.5 or {productname}  {previous-version} installations to {productname} {this-version} is possible and is fully supported.
+An online migration of existing {productname} 5.5 or {productname} 6.0 installations to {productname} {this-version} is possible and is fully supported.
 
 [#bsc-1230402]
 ==== Release numbering change
 
-In {productname} 6.1, the release numbers start with `slfo.1.1`, while there was no such prefix in {productname} 6.0.
+In {productname} 6.1, the package release numbers start with `slfo.1.1`, while there was no such prefix in {productname} 6.0.
 Due to this, the release numbers of {productname} 6.1 are lower than the ones on {productname} 6.0 (as the above translates to `0.1.1`).
 This is a known issue and will not happen in future releases.
 The standard migration tooling will handle this correctly.
@@ -57,7 +57,7 @@ ZRAM allows users to both compress main memory and therefore gain more compute r
 [#jsc-SMO-291]
 ==== Active Directory
 
-{productname} now supports integration in Active Directory environments.
+{productname} supports integration into Active Directories based on sssd since {productname} {previous-version}.
 
 // https://github.com/SUSE/release-notes/issues/1
 ==== Build Host and Build Date Metadata
