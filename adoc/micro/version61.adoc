@@ -20,7 +20,7 @@ On top of the images described above with {productname} {this-version} we are ad
 
 ==== Upgrade Path
 
-An online migration of existing {productname} 5.5 or {productname} 6.0 installations to {productname} {this-version} is possible and is fully supported.
+An online migration of existing SUSE Linux Enterprise Micro 5.5 or {productname} 6.0 installations to {productname} {this-version} is possible and is fully supported.
 
 [#bsc-1230402]
 ==== Release numbering change
