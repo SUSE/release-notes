@@ -57,7 +57,7 @@ ZRAM allows users to both compress main memory and therefore gain more compute r
 [#jsc-SMO-291]
 ==== Active Directory
 
-{productname} supports integration into Active Directories based on sssd since {productname} {previous-version}.
+{productname} supports integration with Active Directory environments based on `sssd` since {productname} {previous-version}.
 
 // https://github.com/SUSE/release-notes/issues/1
 ==== Build Host and Build Date Metadata
