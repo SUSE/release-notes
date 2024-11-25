@@ -1,10 +1,10 @@
 :productname: SL Micro
 :productnameshort: SLM
-:previous-version: 5.5
 :rel-date: TBD
 
 :power-product: {productname} for POWER
 
+:doc-url: https://documentation.suse.com
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
 :doc-url-source: https://www.suse.com/download/sle-micro/
 
@@ -13,7 +13,7 @@
 
 // conditionals-begin
 // lifecycle: beta|maintained|unmaintained
-:lifecycle: beta
+// :lifecycle: beta
 // conditionals-end
 
 :copyright-begin: 2024

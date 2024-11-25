@@ -1,4 +1,4 @@
-MAIN=adoc/micro/release-notes-micro.adoc
+MAIN=adoc/micro/release-notes-micro-61.adoc
 ADOC_POST=yes
 ADOC_TYPE=article
 ADOC_POST_STYLE=adoc_postprocess.xsl
