@@ -50,6 +50,7 @@ jobs:
       - name: Create folder hierarchy for susedoc.github.io
         run: |
           mkdir -p release-notes-micro{60-all,-60,-61}/html
+          ls -R
           mv main/html/release-notes-micro micro-60-all/html
           mv main/html/release-notes-micro-60 micro-60/html
           mv main/html/release-notes-micro-61 micro-61/html
