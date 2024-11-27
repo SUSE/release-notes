@@ -50,16 +50,17 @@ jobs:
           path: artifact-dir
       - name: Create folder hierarchy for susedoc.github.io
         run: |
-          mkdir -p release-notes-micro{-60-all,-60,-61}/html
+          mkdir -p publish/release-notes-micro{-60-all,-60,-61}/html
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
-          mv "$OUTPUT_DIR/html/release-notes-micro" release-notes-micro-60-all/html
-          mv "$OUTPUT_DIR/html/release-notes-micro-60" release-notes-micro-60/html
-          mv "$OUTPUT_DIR/html/release-notes-micro-61" release-notes-micro-61/html
+          mv "$OUTPUT_DIR/html/release-notes-micro" publish/release-notes-micro-60-all/html
+          mv "$OUTPUT_DIR/html/release-notes-micro-60" publish/release-notes-micro-60/html
+          mv "$OUTPUT_DIR/html/release-notes-micro-61" publish/release-notes-micro-61/html
+          rm -rf artifact-dir
       - name: Publishing builds on susedoc.github.io
         uses: openSUSE/doc-ci@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
-          artifact-path: artifact-dir
+          artifact-path: publish
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 35
