@@ -31,7 +31,7 @@ jobs:
       - uses: openSUSE/doc-ci@gha-build
         id: build-dc
         with:
-          dc-files: "DC-release-notes-micro"
+          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-dc.outputs.artifact-name }}
