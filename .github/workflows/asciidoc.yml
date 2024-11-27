@@ -47,6 +47,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifact-dir
+      - name: Create folder hierarchy for susedoc.github.io
+        run: |
+          mkdir release-notes-micro{60-all,-60,-61}/html
+          mv main/html/release-notes-micro micro-60-all/html
+          mv main/html/release-notes-micro-60 micro-60/html
+          mv main/html/release-notes-micro-61 micro-61/html
+          rm -rf main
       - name: Publishing builds on susedoc.github.io
         uses: openSUSE/doc-ci@gha-publish
         env:
@@ -54,3 +61,4 @@ jobs:
         with:
           artifact-path: artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
+          repo-reset-after: 35
