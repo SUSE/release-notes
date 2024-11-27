@@ -2,7 +2,7 @@
    <dm:bugtracker>
     <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
     <dm:component>Release Notes</dm:component>
-    <dm:product>SUSE Linux Enterprise Micro 6.1</dm:product>
+    <dm:product>SUSE Linux Micro 6.1</dm:product>
     <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
    </dm:bugtracker>
   </dm:docmanager>
