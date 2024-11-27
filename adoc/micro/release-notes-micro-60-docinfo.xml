@@ -8,5 +8,5 @@
   </dm:docmanager>
   <releaseinfo>@VERSION@</releaseinfo>
   <productname>SL Micro Release Notes</productname>
-  <productnumber>{this-version}</productnumber>
+  <productnumber>6.0</productnumber>
   <date><?dbtimestamp format="Y-m-d"?></date>
