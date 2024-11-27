@@ -1,10 +1,6 @@
 include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
-:previous-version: 6.0
-:this-version: 6.1
-:next-version: 6.2
-
 = SL Micro Release Notes
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.

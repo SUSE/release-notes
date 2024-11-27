@@ -1,6 +1,9 @@
 :this-version: 6.0
 :idprefix: v60_
 :doc-url: https://documentation.suse.com/sle-micro/{this-version}
+:previous-version: 5.5
+:this-version: 6.0
+:next-version: 6.1
 
 = {productname} Version {this-version}
 
