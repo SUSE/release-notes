@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: openSUSE/doc-ci@gha-validate
         with:
-          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61"
+          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-sles-160"
           validate-ids: true
           validate-images: true
           validate-tables: true
@@ -31,7 +31,7 @@ jobs:
       - uses: openSUSE/doc-ci@gha-build
         id: build-dc
         with:
-          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61"
+          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-sles-160"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-dc.outputs.artifact-name }}
@@ -51,10 +51,12 @@ jobs:
       - name: Create folder hierarchy for susedoc.github.io
         run: |
           mkdir -p publish/release-notes-micro{-60-all,-60,-61}/html
+          mkdir -p publish/release-notes-sles-160/html
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
           mv "$OUTPUT_DIR/html/release-notes-micro" publish/release-notes-micro-60-all/html
           mv "$OUTPUT_DIR/html/release-notes-micro-60" publish/release-notes-micro-60/html
           mv "$OUTPUT_DIR/html/release-notes-micro-61" publish/release-notes-micro-61/html
+          mv "$OUTPUT_DIR/html/release-notes-sles-160" publish/release-notes-sles-160/html
           rm -rf artifact-dir
       - name: Publishing builds on susedoc.github.io
         uses: openSUSE/doc-ci@gha-publish
