@@ -5,6 +5,10 @@ They are written in [AsciiDoc](https://docs.asciidoctor.org/asciidoc/latest/).
 
 Currently the repository contains release notes for these products:
 * SL Micro
+  * 6.0
+  * 6.1
+* SLE Server
+  * 16
 
 
 ## How to contribute
