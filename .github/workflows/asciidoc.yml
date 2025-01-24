@@ -58,11 +58,12 @@ jobs:
           mv "$OUTPUT_DIR/html/release-notes-micro-61" publish/release-notes-micro-61/html
           mv "$OUTPUT_DIR/html/release-notes-sles-160" publish/release-notes-sles-160/html
           rm -rf artifact-dir
+          mv publish artifact-dir
       - name: Publishing builds on susedoc.github.io
-        uses: openSUSE/doc-ci@gha-publish
+        uses: openSUSE/release-notes@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
-          artifact-path: publish
+          artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 35
