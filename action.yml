@@ -1,0 +1,46 @@
+---
+name: "DocBook/AsciiDoc building"
+description: "Build DocBook/AsciiDoc documents with DAPS"
+author: "@sknorr"
+inputs:
+
+  artifact-path:
+    description: "Local path to the artifacts that were previously downloaded"
+    required: true
+
+  publish-repo:
+    description: "SSH path to target repository. `git@github.com` can be shortened to `gh`. By default, this is generated based on the name of the source directory that this action is running in."
+    required: false
+    default: default
+
+  publish-branch:
+    description: "Branch of target directory to push to."
+    required: false
+    default: gh-pages
+
+  relevant-dirs:
+    description: "Top-level directories in the target repository that must not be deleted, space-separated (e.g. `relevant-dir-1 relevant-dir-2`). If the parameter is empty, will not perform any deletions."
+    required: false
+    default: ""
+
+  repo-reset-after:
+    description: "Number of commits after which to clean up the target repository with a force push."
+    required: false
+    default: "35"
+
+outputs:
+  exit-build:
+    description: "0 = build successful, <0 = build failed"
+  artifact-name:
+    description: "Naming suggestion for artifact upload (SHA-1 sum of DC files generated)."
+  artifact-dir:
+    description: "Path to generated output documents."
+
+runs:
+  using: docker
+  image: "Dockerfile"
+  args:
+    - publish-repo=${{ inputs.publish-repo }}
+    - publish-branch=${{ inputs.publish-branch }}
+    - relevant-dirs=${{ inputs.relevant-dirs }}
+    - artifact-path=${{ inputs.artifact-path }}
