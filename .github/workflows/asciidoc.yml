@@ -60,7 +60,7 @@ jobs:
           rm -rf artifact-dir
           mv publish artifact-dir
       - name: Publishing builds on susedoc.github.io
-        uses: openSUSE/release-notes@gha-publish
+        uses: SUSE/release-notes@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
