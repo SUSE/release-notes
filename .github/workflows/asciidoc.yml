@@ -53,10 +53,10 @@ jobs:
           mkdir -p publish/sl-micro{_60-all,_60,_61}/html
           mkdir -p publish/sles-16_SP0/html
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
-          mv "$OUTPUT_DIR/html/release-notes-micro" publish/sl-micro_60-all/html
-          mv "$OUTPUT_DIR/html/release-notes-micro-60" publish/sl-micro_60/html
-          mv "$OUTPUT_DIR/html/release-notes-micro-61" publish/sl-micro_61/html
-          mv "$OUTPUT_DIR/html/release-notes-sles-160" publish/sles-16_SP0/html
+          mv "$OUTPUT_DIR/html/release-notes-micro/*" publish/sl-micro_60-all/html/release-notes
+          mv "$OUTPUT_DIR/html/release-notes-micro-60/*" publish/sl-micro_60/html/release-notes
+          mv "$OUTPUT_DIR/html/release-notes-micro-61/*" publish/sl-micro_61/html/release-notes
+          mv "$OUTPUT_DIR/html/release-notes-sles-160/*" publish/sles-16_SP0/html/release-notes
           rm -rf artifact-dir
           mv publish artifact-dir
       - name: Publishing builds on susedoc.github.io
