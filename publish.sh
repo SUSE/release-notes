@@ -72,7 +72,11 @@ gha_fold --
 
 commit="$GITHUB_SHA"
 repo=$(echo "$GITHUB_REPOSITORY" | grep -oP '[^/]+$')
-publish_branch_dir=$(echo "$GITHUB_REF" | sed -r -e 's#^refs/heads/##' -e 's#^main(t(enance)?)?/##')
+if [[ "$branchless" == "true" ]]; then
+  publish_branch_dir=""
+else
+  publish_branch_dir=$(echo "$GITHUB_REF" | sed -r -e 's#^refs/heads/##' -e 's#^main(t(enance)?)?/##')
+fi
 relevantbranches=''
 # Repo to publish in
 publish_repo="gh:SUSEdoc/$repo.git"
@@ -111,6 +115,10 @@ while [[ $1 ]]; do
       ;;
     repo-reset-after=*)
       [[ $(echo "$1" | cut -f2- -d'=' | grep -oP '^[0-9]+$') ]] && maxcommits=$(echo "$1" | cut -f2- -d'=')
+      shift
+      ;;
+    branchless=*)
+      [[ $(echo "$1" | cut -f2- -d'=') = 'false' ]] || branchless=$(echo "$1" | cut -f2- -d'=')
       shift
       ;;
     --)
@@ -226,9 +234,27 @@ gha_fold "Cloning target repository and performing maintenance"
   fi
 
   # Out with the old content from the branch we want to build...
-  mypubdir=$(echo "$publish_branch_dir" | tr '/' ',')
-  log "Removing repository content for \"$mypubdir\", will replace the content in the next step."
-  rm -r "${pubrepo:?}/$mypubdir"
+  if [[ "$branchless" == "true" ]]; then
+    # log "Removing all repository content, as branchless mode is enabled."
+    # log "Not removing any content, as branchless mode is enabled."
+    # rm -r "${pubrepo:?}"/*
+    log "Branchless mode enabled. Removing only directories from artifact-path in target repository."
+    # Gather the list of directories from the artifact path
+    publish_dirs=$(find "$artifact_dir" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+    # Remove only the directories being published
+    for pub_dir in $publish_dirs; do
+      if [[ -d "${pubrepo:?}/$pub_dir" ]]; then
+        log "Removing repository content for \"$pub_dir\"."
+        rm -r "${pubrepo:?}/$pub_dir"
+      else
+        log "Directory \"$pub_dir\" not found in the target repository. Skipping."
+      fi
+    done
+  else
+    mypubdir=$(echo "$publish_branch_dir" | tr '/' ',')
+    log "Removing repository content for \"$mypubdir\", will replace the content in the next step."
+    rm -r "${pubrepo:?}/$mypubdir"
+  fi
 
 gha_fold --
 
@@ -237,11 +263,16 @@ gha_fold --
 # Copy the HTML and single HTML files for each DC file
 gha_fold "Copying built files to target repository"
 
-  mkdir -p "${pubrepo:?}/$mypubdir"
-  for dir in "$artifact_dir"/*; do
-    log "Copying contents of $dir to $mypubdir"
-    cp -r "$dir"/* "${pubrepo:?}/$mypubdir/"
-  done
+  if [[ "$branchless" == "true" ]]; then
+    log "Copying contents of $artifact_dir directly to repository, as branchless mode is enabled."
+    cp -r "$artifact_dir"/* "${pubrepo:?}/"
+  else
+    mkdir -p "${pubrepo:?}/$mypubdir"
+    for dir in "$artifact_dir"/*; do
+      log "Copying contents of $dir to $mypubdir"
+      cp -r "$dir"/* "${pubrepo:?}/$mypubdir/"
+    done
+  fi
 
   # Publish file names with an underscore:
   # https://help.github.com/en/enterprise/2.14/user/articles/files-that-start-with-an-underscore-are-missing
@@ -251,11 +282,15 @@ gha_fold --
 
 gha_fold "Adding index.html pages for top-level dirs."
 
-  create_basic_index "$pubrepo" 1
-  for dir in "$pubrepo"/*; do
-    log "Adding index.html for $dir"
-    [[ -d "$dir" ]] && create_basic_index "$dir" 2
-  done
+  if [[ "$branchless" == "true" ]]; then
+    create_basic_index "$pubrepo" 1
+  else
+    create_basic_index "$pubrepo" 1
+    for dir in "$pubrepo"/*; do
+      log "Adding index.html for $dir"
+      [[ -d "$dir" ]] && create_basic_index "$dir" 2
+    done
+  fi
 
 gha_fold --
 

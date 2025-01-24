@@ -28,6 +28,11 @@ inputs:
     required: false
     default: "35"
 
+  branchless:
+    description: "Skip creating a branch directory in the target repository."
+    required: false
+    default: "false"
+
 outputs:
   exit-build:
     description: "0 = build successful, <0 = build failed"
@@ -44,3 +49,4 @@ runs:
     - publish-branch=${{ inputs.publish-branch }}
     - relevant-dirs=${{ inputs.relevant-dirs }}
     - artifact-path=${{ inputs.artifact-path }}
+    - branchless=${{ inputs.branchless }}
