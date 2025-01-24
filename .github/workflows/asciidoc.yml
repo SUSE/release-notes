@@ -67,3 +67,4 @@ jobs:
           artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 35
+          branchless: "true"
