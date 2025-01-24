@@ -200,15 +200,16 @@ The plugin is installed as part of the following package:
 === Toolbox container
 
 When you run the toolbox script to pull and start the toolbox container, a previous version of the container image needs to be pulled.
+To do that, edit the `~/.toolboxrc` file, for example like this:
 
-[,bash]
+[source,console]
 ----
 cat << EOF > ~/.toolboxrc
 IMAGE=suse/sle-micro/5.5/toolbox:latest
 EOF
 ----
 
-NOTE: This will be fixed in future releases.
+NOTE: This will be fixed in a future release.
 
 This does not influence toolbox funcionality and you can use the toolbox container as needed.
 
