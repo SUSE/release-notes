@@ -1,0 +1,18 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= SL Micro Release Notes
+
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+
+{productname} is a modern operating system primarily targeted for edge computing. This document provides a high-level overview of its features, capabilities, and limitations.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::version62.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]

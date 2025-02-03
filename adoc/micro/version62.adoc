@@ -1,0 +1,23 @@
+:this-version: 6.2
+:idprefix: v62_
+:doc-url: https://documentation.suse.com/sle-micro/{this-version}
+:previous-version: 6.1
+:next-version: 6.3
+
+== {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+=== Changes affecting all architectures
+
+// ==== Installation media
+
+
+
+// === Removed and deprecated features and packages
+
+// [#removed]
+// ==== Removed features and packages
+
+// [#deprecated]
+// ==== Deprecated features and packages
