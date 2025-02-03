@@ -1,0 +1,10 @@
+tag::60[]
+tag::61[]
+tag::62[]
+[#jsc-SMO-485]
+==== Helm has been added
+
+Helm has been added to {productname} {this-version}.
+end::62[]
+end::61[]
+end::60[]
