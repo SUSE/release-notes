@@ -12,7 +12,7 @@ These release notes apply to {productname} {this-version}.
 
 // ==== Installation media
 
-
+include::shared.adoc[tags=62]
 
 // === Removed and deprecated features and packages
 

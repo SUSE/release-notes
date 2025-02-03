@@ -221,6 +221,8 @@ Systems upgraded to {this-version} from 5.x carry over the old behavior. New ins
 
 Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
 
+include::shared.adoc[tags=60]
+
 // END ARCH-INDEPENDENT
 
 // x86-64-specific
