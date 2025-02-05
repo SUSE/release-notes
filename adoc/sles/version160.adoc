@@ -15,9 +15,9 @@ There is currently a known issue that adds a non-functioning `zypper` repository
 
 To fix this issue, remove the repository in question and add the installation medium repository manually:
 
-1. Remove repository with `zypper rr`, for example to remove the first repository: `zypper rr 1`
-2. Add the installation medium as repository. For a DVD, do `zypper ar dvd:/`, for USB stick do `zypper ar hd:/`, for example: `zypper ar dvd:/?dvd=/dev/disk/by-label/agama-installer dvd` (the `dvd` at the end is a name you want to give the repository)
-3. Do `zypper refresh` to refresh the added repository.
+1. Remove repository with `zypper rr`. To remove the first repository, for example, run: `zypper rr 1`.
+2. Add the installation medium as repository by running `zypper ar hd:/install?device=/dev/disk/by-label/agama-installer  medium` (the `medium` at the end is a name you want to give the repository).
+3. Run `zypper refresh` to refresh the added repository.
 
 
 [#jsc-PED-6311]
