@@ -8,6 +8,18 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1236813]
+==== Non-functioning `zypper` after installation
+
+There is currently a known issue that adds a non-functioning `zypper` repository which prevents `zypper` from working correctly.
+
+To fix this issue, remove the repository in question and add the installation medium repository manually:
+
+1. Remove repository with `zypper rr`, for example to remove the first repository: `zypper rr 1`
+2. Add the installation medium as repository. For a DVD, do `zypper ar dvd:/`, for USB stick do `zypper ar hd:/`, for example: `zypper ar dvd:/?dvd=/dev/disk/by-label/agama-installer dvd` (the `dvd` at the end is a name you want to give the repository)
+3. Do `zypper refresh` to refresh the added repository.
+
+
 [#jsc-PED-6311]
 ==== systemd uses cgroup v2 by default
 
