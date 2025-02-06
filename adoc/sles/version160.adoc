@@ -33,6 +33,19 @@ To fix this issue, remove the repository in question and add the installation me
 {productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
 If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
 
+[#ibm-z]
+=== IBM Z-specific changes (s390x)
+
+==== Installation failure on zVM
+
+The documentation footnote:[https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-zseries.html] claims that a system on zVM can be installed via downloading `linux`, `initrd`, `parmfile` and `suse.ins` files from ftp.
+However, due to a change from `linuxrc` to `dracut` this no longer currently works.
+
+As a workaround, the empty `parmfile` should be filled with a dracut-like option, for example:
+
+[source]
+root=live:ftp://10.144.55.15/install/agama-online.iso
+
 
 [#removed-deprecated]
 === Removed and deprecated features and packages
