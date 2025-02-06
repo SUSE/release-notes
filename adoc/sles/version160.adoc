@@ -8,6 +8,13 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1235855]
+==== Disk configuration UI during installation
+
+Currently, choosing disk configurations other than "An existing disk" (installation to a single disk) suffer from poor usability.
+This is expected to change in a future update.
+
+
 [#bsc-1236813]
 ==== Non-functioning `zypper` after installation
 
