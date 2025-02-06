@@ -44,7 +44,7 @@ However, due to a change from `linuxrc` to `dracut` this no longer currently wor
 As a workaround, the empty `parmfile` should be filled with a dracut-like option, for example:
 
 [source]
-root=live:ftp://10.144.55.15/install/agama-online.iso
+root=live:ftp://$IP_ADDRESS/install/agama-online.iso
 
 
 [#removed-deprecated]
