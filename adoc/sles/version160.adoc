@@ -49,6 +49,22 @@ root=live:ftp://$SERVER_URL/install/agama-online.iso
 agama.install_url=ftp://$SERVER_URL/install/agama
 
 
+[#bsc-1235857]
+==== Disk selection UI problems during installation
+
+If you want to enable a disk, click on _Storage_ in the left panel, then _Install new system on_ and choose "storage techs".
+Then you can choose a type of disk.
+This can be avoided if you have defined your `parmfile` as described in <<bsc-1236857>>.
+
+If you choose DASD, you should see disks based on your `parmfile` and `cio_ignore` configuration.
+Then choose a disk and activate it by clicking _Perform an action_ and then _Activate_.
+This can take a moment.
+If it is not visible, then you need to click on Storage or refresh the page.
+
+In the _zFCP_ section, after activating a disk a gray line will appear.
+This is just a visual bug, the disk will activate correctly.
+
+
 ==== Installation failure on zVM
 
 Due to a change from `linuxrc` to `dracut`, the `parmfile` is empty, which can result in an installation failure.
