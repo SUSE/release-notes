@@ -36,6 +36,19 @@ If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode usin
 [#ibm-z]
 === IBM Z-specific changes (s390x)
 
+[#bsc-1236857]
+==== `parmfile` now points to ISO
+
+Previously, `parmfile` would point to a directory of unpacked files.
+
+Now it need to point to a loop-mounted ISO via FTP.
+For example:
+
+[source]
+root=live:ftp://$SERVER_URL/install/agama-online.iso
+agama.install_url=ftp://$SERVER_URL/install/agama
+
+
 ==== Installation failure on zVM
 
 Due to a change from `linuxrc` to `dracut`, the `parmfile` is empty, which can result in an installation failure.
