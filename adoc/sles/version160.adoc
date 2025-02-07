@@ -114,6 +114,8 @@ For example:
 root=live:ftp://$SERVER_URL/install/agama-online.iso
 agama.install_url=ftp://$SERVER_URL/install/agama
 
+For more information see https://agama-project.github.io/docs/user/boot_options.
+
 
 [#bsc-1235857]
 ==== Disk selection UI problems during installation
