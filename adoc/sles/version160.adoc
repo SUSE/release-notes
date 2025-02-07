@@ -36,7 +36,7 @@ If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode usin
 [#ibm-z]
 === IBM Z-specific changes (s390x)
 
-[#bsc-1236857]
+[#bsc-1235858]
 ==== `parmfile` now points to ISO
 
 Previously, `parmfile` would point to a directory of unpacked files.
@@ -54,7 +54,7 @@ agama.install_url=ftp://$SERVER_URL/install/agama
 
 If you want to enable a disk, click on _Storage_ in the left panel, then _Install new system on_ and choose "storage techs".
 Then you can choose a type of disk.
-This can be avoided if you have defined your `parmfile` as described in <<bsc-1236857>>.
+This can be avoided if you have defined your `parmfile` as described in <<bsc-1235858>>.
 
 If you choose DASD, you should see disks based on your `parmfile` and `cio_ignore` configuration.
 Then choose a disk and activate it by clicking _Perform an action_ and then _Activate_.
