@@ -40,12 +40,7 @@ For enhanced security, new installations of {productname} {this-version} do not 
 The login to Cockpit now requires to create and use an unprivileged user and to optionally set up 2-factor authentication with one-time passwords.
 The `firstboot-installer` as well as `ignition` and the online tool `fuel-ignition` support this setup.
 
-ifeval::["{lifecycle}" == "beta"]
-For more information about the procedure and other options see https://susedoc.github.io/doc-modular/main/html/Micro-cockpit/index.html#cockpit-authentication-basics.
-endif::[]
-ifeval::["{lifecycle}" == "maintained"]
-For more information about the procedure and other options see https://documentation.suse.com/en-us/sle-micro/6.1/html/Micro-6.1-cockpit/index.html#cockpit-authentication-basics.
-endif::[]
+For more information about the procedure and other options see https://documentation.suse.com/sle-micro/6.1/html/Micro-cockpit/index.html#cockpit-authentication-basics.
 
 [#jsc-PED-8686]
 ==== Soft-Reboot support
