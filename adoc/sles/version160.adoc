@@ -6,7 +6,20 @@
 
 These release notes apply to {productname} {this-version}.
 
-=== Changes affecting all architectures
+=== Changes affecting all architectures (Beta2)
+
+[#jsc-DOCTEAM-1714]
+==== `dovecot` 2.4 configuration upgrade
+
+In {productname} {this-version} `dovecot` has been upgraded to version 2.4.
+The configuration of this version is incompatible with the previous versions.
+
+Configuration has to be updated manually.
+For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-to-2.4.html.
+
+
+=== Changes affecting all architectures (Beta1)
+
 
 [#jsc-DOCTEAM-1700]
 ==== What images are part of Beta1
