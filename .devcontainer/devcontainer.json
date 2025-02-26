@@ -1,5 +1,5 @@
 {
-    "image": "registry.opensuse.org/documentation/containers/15.6/opensuse-daps-toolchain:latest",
+    "build": {"dockerfile":"Dockerfile"},
     "customizations": {
         "vscode": {
             "extensions": [
