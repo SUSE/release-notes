@@ -155,6 +155,22 @@ As a workaround, `parmfile` can be filled with a dracut-like option, for example
 [source]
 root=live:ftp://$IP_ADDRESS/install/agama-online.iso
 
+[#power]
+=== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-productname} {this-version}.
+
+[#jsc-PED-12179]
+==== KVM guests in LPAR
+
+The ability to run KVM Guests in an LPAR is a new feature in PowerVM Firmware 1060.10 release and supported in {productname} {this-version}.
+This enables users to run KVM guests in a PowerVM LPAR bringing industry standard Linux KVM virtualization stack to IBM PowerVM, which easily integrates with existing Linux virtualization ecosystem.
+This enables a lot of interesting usecases which were earlier difficult to realize in a PowerVM LPAR.
+
+KVM in a PowerVM LPAR is a new type of LPAR (logical partition) that allows the {productname} {this-version} kernel to host KVM guests inside an LPAR on PowerVM.
+A KVM enabled LPAR allows standard Linux KVM tools (for example, `virsh`) to create and manage lightweight Linux Virtual Machines (VM).
+A KVM Linux LPAR uses dedicated cores which enables Linux to have full control of when Linux VMs are scheduled to run, just like KVM on other platforms.
+
 
 [#removed-deprecated]
 === Removed and deprecated features and packages

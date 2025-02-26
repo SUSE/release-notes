@@ -2,7 +2,7 @@
 :productnameshort: SLES
 :rel-date: TBD
 
-:power-product: {productname} for POWER
+:power-productname: {productname} for POWER
 
 :doc-url: https://documentation.suse.com
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
