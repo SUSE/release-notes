@@ -74,8 +74,6 @@ Installation with Yomi is a technology preview.
 
 For a procedure of deploying an image refer to {doc-url}/html/Micro-deployment-raw-images/index.html
 
-In addition to media provided by {productnameshort} 5.4, this release includes qcow2 images for  aarch64 and x86_64.
-
 // START ARCH-INDEPENDENT
 [#all-architecture]
 == Changes affecting all architectures
