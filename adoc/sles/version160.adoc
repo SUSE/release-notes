@@ -13,7 +13,7 @@ These release notes apply to {productname} {this-version}.
 
 {productname} {this-version} has switched from {yast} to Cockpit for manual system administration.
 We have enhanced Cockpit with new modules with the intention to upstream them later.
-Despite being functional, bugs might appear and feature parity with YaST has not been achieved yet.
+Despite being functional, bugs might appear and features might be missing.
 
 *New modules*
 
