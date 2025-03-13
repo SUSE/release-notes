@@ -8,3 +8,13 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta2)
 
+[#bsc-1238590]
+==== Not possible to SSH after installation
+
+After installation of {productname}, SSH is not enabled by default.
+
+To enable SSH during installation, provide a SSH public key for the `root` user.
+
+[NOTE]
+This behavior differs between {sles} and {slessap}.
+In {sles}, SSH is enabled by default during installation even if public key for `root` is not provided.
