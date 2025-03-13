@@ -14,7 +14,8 @@ These release notes apply to {productname} {this-version}.
 Attempting to add a `drbd_passive` resource into a pacemaker cluster results in several error messages.
 This is due to a missing SELinux policy module.
 
-As a workaround, set SELinux to permissive mode via `setenforce 0`.
+As a workaround, set SELinux for the `drbd_t` domain to permissive mode via `semanage permissive -a drbd_t`.
+After this bug has been fixed, switch it back enforcing mode via `semanage permissive -d drbd_t`.
 
 
 [#bsc-1239084]
