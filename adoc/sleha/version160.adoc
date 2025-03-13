@@ -8,6 +8,15 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta2)
 
+[#bsc-1239436]
+==== Unable to add `drbd_passive` 
+
+Attempting to add a `drbd_passive` resource into a pacemaker cluster results in several error messages.
+This is due to a missing SELinux policy module.
+
+As a workaround, set SELinux to permissive mode via `setenforce 0`.
+
+
 [#bsc-1239084]
 ==== Cluster cannot be initialized
 
