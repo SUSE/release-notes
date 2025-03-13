@@ -7,3 +7,13 @@
 These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta2)
+
+[#bsc-1239084]
+==== Cluster cannot be initialized
+
+Running the `crm cluster init` command results in a Python error.
+
+To resolve this, create home directory for the `hacluster` user:
+
+[source,shell]
+usermod -d /var/lib/pacemaker hacluster
