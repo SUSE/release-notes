@@ -1,0 +1,20 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= {productname} Release Notes
+
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+{productname} is the leading Linux platform for {hana}, {nw}, and {s4hana} applications that provides optimized performance, reduced downtime, and faster SAP landscape deployments.
+It includes features to secure {hana} systems and ease the transition to {s4hana} for systems administrators.
+{productname} combines {sles} and {sleha} with additional software specifically meant to simplify running and managing SAP applications.
+This document provides an overview of high-level general features, capabilities and limitations of {productname} and important product updates.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::version160.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]

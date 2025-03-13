@@ -1,0 +1,10 @@
+:this-version: 16.0
+:idprefix: v160_
+:doc-url: https://documentation.suse.com/sles-sap/16.0
+
+== {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+=== Changes affecting all architectures (Beta2)
+
