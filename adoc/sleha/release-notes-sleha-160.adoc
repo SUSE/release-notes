@@ -1,0 +1,19 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= {productname} Release Notes
+
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+
+{productname} is an enterprise-level clustering solution to implement highly available Linux clusters and eliminate single points of failure.
+This document provides a high-level overview of features, capabilities, and limitations of {productname}, and highlights important product updates.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::version160.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]
