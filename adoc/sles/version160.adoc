@@ -6,7 +6,7 @@
 
 These release notes apply to {productname} {this-version}.
 
-=== Changes affecting all architectures (Beta2)
+=== Changes affecting all architectures (Beta3)
 
 [#jsc-DOCTEAM-1767]
 ==== `firewalld` not usable with many interfaces
