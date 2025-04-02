@@ -8,6 +8,21 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta2)
 
+[#jsc-DOCTEAM-1767]
+==== `firewalld` not usable with many interfaces
+
+Due to an upstream bug, `firewalld` might take a long time or time out when adding many interfaces.
+The error occurs when `firewalld` is restarted after applying such a configuration.
+The following message appears in the system logs:
+[source]
+ERROR:dbus.proxies:Introspect error on :1.18:/org/fedoraproject/FirewallD1: dbus.exceptions.DBusException: org.freedesktop.DBus.Error.NoReply: Did not receive a reply.
+Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+
+See https://github.com/firewalld/firewalld/issues/1399 for more information.
+
+
+=== Changes affecting all architectures (Beta2)
+
 [#bsc-1237605]
 ==== Switch from YaST to Cockpit
 
