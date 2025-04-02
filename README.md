@@ -7,8 +7,9 @@ Currently the repository contains release notes for these products:
 * SL Micro
   * 6.0
   * 6.1
-* SLE Server
-  * 16
+  * 6.2
+* SLE Server/High Availability/for SAP applications
+  * 16.0
 
 
 ## How to contribute
