@@ -6,6 +6,15 @@
 
 These release notes apply to {productname} {this-version}.
 
+=== Changes affecting all architectures (RC1)
+
+[#jsc-PED-12189]
+==== `/etc/services` removal
+
+The `/etc/services` file is just a dummy file that will be removed in the future.
+Software that appends to it without creating it should have its behavior changed.
+
+
 === Changes affecting all architectures (Beta3)
 
 [#jsc-DOCTEAM-1767]
