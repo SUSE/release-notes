@@ -257,8 +257,8 @@ The following features and packages have been removed in this release.
 * <<jsc-PED-12156>>
 
 
-// [#deprecated]
-// === Deprecated features and packages
+[#deprecated]
+=== Deprecated features and packages
 
 ////
 1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
@@ -266,6 +266,8 @@ The following features and packages have been removed in this release.
 3. Deprecations that will be removed later or where removal timing is unclear:
 ////
 
-// The following features and packages are deprecated and will be removed in a future version of {product}.
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+* <<jsc-PED-12189>>
 
 // ===================================================================
