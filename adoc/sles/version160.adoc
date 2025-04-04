@@ -6,6 +6,16 @@
 
 These release notes apply to {productname} {this-version}.
 
+=== Changes affecting all architectures
+
+[#jsc-PED-12156]
+==== SysV init.d scripts support
+
+SysV init.d scripts have been https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15-SP2/index.html#jsc-SLE-7690[deprecated since {productnameshort} 15 SP2].
+
+In {productnameshort} {this-version}, support of SysV init.d scripts has been removed.
+
+
 === Changes affecting all architectures (RC1)
 
 [#jsc-PED-12189]
@@ -244,6 +254,7 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages have been removed in this release.
 
 * `netiucv` and `lcs` drivers
+* <<jsc-PED-12156>>
 
 
 // [#deprecated]
