@@ -39,7 +39,7 @@ jobs:
           retention-days: 3
   publish:
     runs-on: ubuntu-latest
-    if: ${{ success() }} && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     continue-on-error: true
     steps:
