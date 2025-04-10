@@ -1,0 +1,60 @@
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, libvirt, ...
+
+[#virtualization-qemu]
+//jsc-PED-8908
+==== QEMU
+QEMU has been updated to version 9.2.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/9.2
+
+Highlights include:
+* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+[#virtualization-libvirt]
+// jsc-PED-8909
+==== libvirt
+`libvirt` has been updated to version 11.2.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-2-0-2025-04-01
+
+`libvirt` provides now a modular daemons.
+
+[#virtualization-vmware]
+==== VMware
+
+===== open-vm-tools
+`open-vm-tools` has been updated to version 12.5.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/ReleaseNotes.md
+
+[#virtualization-other]
+//jsc-PED-8910
+==== Others
+
+===== libguestfs
+
+`libguestfs` has been updated to version 1.55.6.
+
+===== virt-v2v
+
+Update to version 2.7.7. ee main changes at: https://libguestfs.org/virt-v2v-release-notes-2.7.7.html
+
+- Implement --parallel=N for parallel disk copies
+- Update Translations
+- Various fixes
+
+===== `sevctl`
+
+The `sevctl` package has been updated to version 0.6.0.
+
+===== `snpguest`
+
+The `snpguest` package has been updated to version 7.1.
+
+===== `virtiofsd`
+
+The `virtiofsd` has been updated to 1.12.0.
+
+===== `virt-manager`
+
+`virt-manager` is now shipped in version 5.0.0. Spice and XML editing are not available in this version. You should setup VNC for remote viewing and do all the XML editing using the `virsh` command.
+Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.0.0
