@@ -8,6 +8,17 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1240889]
+==== No remote `root` login with password
+
+[WARNING]
+If you install the system using only a `root` password and do not provide an SSH key for the root user, `sshd` will not be enabled automatically after installation.
+You will not be able to log in remotely as root using the password.
+
+By default, remote password-based `root` login is disabled.
+The installer enables the `sshd` service only when an SSH key for root is configured during setup.
+To allow remote `root` login, configure an SSH key for root during installation.
+
 include::../shared.adoc[tags=bsc1240989,leveloffset=+3]
 
 [#jsc-PED-12156]
