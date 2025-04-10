@@ -8,6 +8,8 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+include::../shared.adoc[tags=bsc1240989,leveloffset=+3]
+
 [#jsc-PED-12156]
 ==== SysV init.d scripts support
 
