@@ -13,6 +13,8 @@ include::../common/about-documentation.adoc[]
 
 include::version160.adoc[]
 
+include::virtualization.adoc[]
+
 include::../common/source-code.adoc[]
 
 include::../common/legal.adoc[]
