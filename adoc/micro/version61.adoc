@@ -65,7 +65,7 @@ This is also reflected in the package metadata.
 For example, Build Host is now unified, and the package's Build Date corresponds to the latest change in the package sources.
 In contrast, regular packages's Build Date refers to the date when the package was built instead.
 
-include::shared.adoc[tags=61]
+include::shared.adoc[tags=61,leveloffset=+3]
 
 === Removed and deprecated features and packages
 

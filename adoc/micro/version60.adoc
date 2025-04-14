@@ -141,10 +141,6 @@ For a complete overview of the changes, please check out the upstream 4.0.0 but 
 
 With {productname} {this-version} legacy BIOS boot support on Intel/AMD 64bit systems (x86_64) is deprecated and will be removed with a later release.
 
-=== LTTng is deprecated
-
-{productname} {this-version} provides support for LTTng (Linux Trace Toolkit: next generation). Support for LTTng will however be removed in a later {productname} version in favor of alternative solutions for tracing like bpftrace.
-
 === {cockpit} web-based node management system
 
 For web-based management of a single node, {cockpit} is included. For details, refer to https://documentation.suse.com/en-us/sle-micro/6.0/html/Micro-6.0-cockpit/.
@@ -219,7 +215,7 @@ Systems upgraded to {this-version} from 5.x carry over the old behavior. New ins
 
 Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
 
-include::shared.adoc[tags=60]
+include::shared.adoc[tags=60,leveloffset=+2]
 
 // END ARCH-INDEPENDENT
 
