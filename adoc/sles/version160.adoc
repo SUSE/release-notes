@@ -8,6 +8,48 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-12297]
+==== Optimized libraries for newer hardware architectures
+
+We have added support for the glibc-HWCAPS feature which loads optimized versions of libraries for specific newer CPUs automatically.
+
+The build infrastructure for this feature is enabled for the following libraries:
+
+* `blosc2`
+* `boost`
+* `brotli`
+* `bzip2`
+* `flac`
+* `jsoncpp`
+* `lame`
+* `leveldb`
+* `libdb-4_8`
+* `libgcrypt`
+* `libiscsi`
+* `libjpeg-turbo`
+* `libjxl`
+* `libmng`
+* `libnettle`
+* `libpng16`
+* `libvorbis`
+* `libxmlb`
+* `lz4`
+* `lzo`
+* `openjpeg2`
+* `openssl-3`
+* `python311`
+* `python313`
+* `sqlite3`
+* `talloc`
+* `tree-sitter`
+* `wavpack`
+* `xxhash`
+* `xz`
+* `zlib`
+* `zopfli`
+* `zstd`
+
+
 [#bsc-1240889]
 ==== No remote `root` login with password
 
