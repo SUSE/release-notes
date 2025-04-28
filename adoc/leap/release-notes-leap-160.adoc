@@ -1,0 +1,19 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= openSUSE Leap Release Notes
+
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+
+{productname} is a modern, modular operating system for both multimodal and traditional IT. This document provides a high-level overview of features, capabilities and limitations, and highlights important product updates.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::../sles/version160.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]
+
