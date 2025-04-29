@@ -15,5 +15,5 @@ include::../sles/version160.adoc[]
 
 include::../common/source-code.adoc[]
 
-include::../common/legal.adoc[]
+include::legal.adoc[]
 
