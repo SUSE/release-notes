@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: openSUSE/doc-ci@gha-validate
         with:
-          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-micro-62 DC-release-notes-sles-160 DC-release-notes-sleha-160 DC-release-notes-slesap-160"
+          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-micro-62 DC-release-notes-sles-160 DC-release-notes-sleha-160 DC-release-notes-slesap-160 DC-release-notes-leap-160"
           validate-ids: true
           validate-images: true
           validate-tables: true
