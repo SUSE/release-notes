@@ -31,7 +31,7 @@ jobs:
       - uses: openSUSE/doc-ci@gha-build
         id: build-dc
         with:
-          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-micro-62 DC-release-notes-sles-160 DC-release-notes-sleha-160 DC-release-notes-slesap-160"
+          dc-files: "DC-release-notes-micro DC-release-notes-micro-60 DC-release-notes-micro-61 DC-release-notes-micro-62 DC-release-notes-sles-160 DC-release-notes-sleha-160 DC-release-notes-slesap-160 DC-release-notes-leap-160"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-dc.outputs.artifact-name }}
@@ -55,6 +55,7 @@ jobs:
           mkdir -p publish/sleha-16.0/html/release-notes
           mkdir -p publish/slesap-16.0/html/release-notes
           mkdir -p publish/sles-16_SP0/html/release-notes
+          mkdir -p publish/leap-16.0/html/release-notes
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
           mv "$OUTPUT_DIR/html/release-notes-micro"/* publish/sl-micro_60-all/html/release-notes
           mv "$OUTPUT_DIR/html/release-notes-micro-60"/* publish/sl-micro_60/html/release-notes
@@ -63,6 +64,7 @@ jobs:
           mv "$OUTPUT_DIR/html/release-notes-sles-160"/* publish/sles-16.0/html/release-notes
           mv "$OUTPUT_DIR/html/release-notes-sleha-160"/* publish/sleha-16.0/html/release-notes
           mv "$OUTPUT_DIR/html/release-notes-slesap-160"/* publish/slesap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/release-notes-leap-160"/* publish/leap-16.0/html/release-notes
           echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/sles-16.0/html/release-notes/">' > publish/sles-16_SP0/html/release-notes/index.html
           rm -rf artifact-dir
           mv publish artifact-dir
