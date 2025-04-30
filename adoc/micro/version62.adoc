@@ -18,7 +18,7 @@ These release notes apply to {productname} {this-version}.
 The identification variables in `/etc/os-release` have been changed.
 The before and after state is as follows:
 
-[cols="1m,1l,1l",options="header"]
+[cols="1m,1m,1m",options="header"]
 |===
 | Variable | Before | Now
 | NAME | SL-Micro | SUSE Linux
