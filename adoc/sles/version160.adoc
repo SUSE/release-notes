@@ -1,4 +1,5 @@
 :this-version: 16.0
+:next-version: 16.1
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
