@@ -384,6 +384,8 @@ The following features and packages have been removed in this release.
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc-PED-12744
+* The 2MB OVMF image will be deprecated and removed in {productname} 16.1.
 // * <<jsc-PED-12189>>
 
 // ===================================================================
