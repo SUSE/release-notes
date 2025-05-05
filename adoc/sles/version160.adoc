@@ -80,6 +80,20 @@ In {productnameshort} {this-version}, support of SysV init.d scripts has been re
 // The `/etc/services` file is just a dummy file that will be removed in the future.
 // Software that appends to it without creating it should have its behavior changed.
 
+=== Changes affecting all architectures (Beta4)
+
+[#jsc-DOCTEAM-1829]
+==== {sap} workloads on {productnameshort} {this-version}
+
+For running {sap} workloads on {productname} {this-version}, do the following:
+
+1. Run these commands:
+[source,bash]
+semanage boolean -m --on selinuxuser_execmod
+semanage boolean -m --on unconfined_service_transition_to_confined_user
+semanage permissive -a snapper_grub_plugin_t
+2. Reboot the machine.
+3. Run `restorecon -Rv /`.
 
 === Changes affecting all architectures (Beta3)
 
