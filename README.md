@@ -10,11 +10,14 @@ Currently the repository contains release notes for these products:
   * 6.2
 * SLE Server/High Availability/for SAP applications
   * 16.0
+* openSUSE Leap
+  * 16.0
 
 
 ## How to contribute
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+The latest pre-production build of release-notes can be viewed [here](https://susedoc.github.io/release-notes/).
 
 ## Where to add note
 
