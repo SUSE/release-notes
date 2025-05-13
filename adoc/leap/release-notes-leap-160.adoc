@@ -11,6 +11,7 @@ include::../common/about-rn.adoc[]
 
 include::../common/about-documentation.adoc[]
 
+:omit_sles_specific: true
 include::../sles/version160.adoc[]
 
 // Community part

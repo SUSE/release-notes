@@ -180,7 +180,7 @@ For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-
 
 === Changes affecting all architectures (Beta1)
 
-
+ifeval::[{omit_sles_specific} == "true"]
 [#jsc-DOCTEAM-1700]
 ==== What images are part of Beta1
 
@@ -246,6 +246,7 @@ For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-
 - `SLES-SAP-Packages-16.0-x86_64-Beta1-Debug.iso`
 - `SLES-SAP-Packages-16.0-x86_64-Beta1.iso`
 - `SLES-SAP-Packages-16.0-x86_64-Beta1-Source.iso`
+endif::[]
 
 [#bsc-1235855]
 ==== Disk configuration UI during installation
