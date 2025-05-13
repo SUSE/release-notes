@@ -15,6 +15,18 @@ After installation of {productname}, SSH is not enabled by default.
 
 To enable SSH during installation, provide a SSH public key for the `root` user.
 
+[#jsc-DOCTEAM-1848]
+==== Configuring network interfaces during installation
+
+Currently, the installer does not allow for setting up network interfaces using the UI.
+However, in the meantime you can use dracut-like command-line options, for example:
+
+[source]
+ifname=<interface>:<MAC>
+ip=<interface>:dhcp
+
+Additionally, the `inst.copy_network` is not available in Beta4.
+
 // include all SLES release notes as well
 // include SLES attributes to properly resolve product names
 include::../sles/attributes.adoc[]
