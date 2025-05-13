@@ -95,6 +95,10 @@ semanage permissive -a snapper_grub_plugin_t
 2. Reboot the machine.
 3. Run `restorecon -Rv /`.
 
+==== FIPS 140-3 not working properly
+
+FIPS 140-3 installation has not been fully validated and may cause unexpected software failure or crashes. Therefore, we discourage you from using it on Beta4.
+
 === Changes affecting all architectures (Beta3)
 
 [#jsc-DOCTEAM-1767]
