@@ -6,6 +6,18 @@
 
 These release notes apply to {productname} {this-version}.
 
+=== Changes affecting all architectures
+
+[#jsc-DOCTEAM-1853]
+==== `hostname` command behavior difference
+
+On {slesa} 15 SP6, the `hostname` command returns the short hostname by default.
+However, on {productname} {this-version}, the `hostname` command returns the fully qualified domain name by default.
+
+This difference in default behavior might cause issues in installation scripts that rely on a specific output format of the hostname command without using options like `-s` or `-A`.
+Scripts should be reviewed to explicitly request the desired hostname format using hostname `-s` for the short hostname or hostname `-A` for the fully qualified domain name to ensure consistent behavior across different {productname} versions.
+
+
 === Changes affecting all architectures (Beta 4)
 
 [#jsc-DOCTEAM-1852]
