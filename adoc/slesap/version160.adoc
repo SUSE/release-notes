@@ -8,6 +8,37 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta 4)
 
+[#jsc-DOCTEAM-1851]
+==== SELinux enforcing mode causes error during {hana} installation
+
+When installing {hana}, the following error is shown:
+
+[source]
+ Installing SAP Host Agent version 7.22.62...
+  Starting SAP HANA Database system...
+Installation of SAP HANA Database System failed.
+  Installation of SAP HANA Database failed
+    Installation failed
+      error installing
+        Cannot create Instance
+          Cannot start system
+            Start instance 00 on host 'susetest' (worker) failed.
+              Cannot establish http connection to unix domain socket '/tmp/.sapstream50013' (No such file or directory)
+            Check the log file for SAP HANA Database error messages
+
+As a workaround, run these commands:
+
+[source,bash]
+semanage boolean -m --on selinuxuser_execmod
+semanage boolean -m --on unconfined_service_transition_to_unconfined_user
+semanage permissive -a snapper_grub_plugin_t
+restorecon -R /
+
+If you are on a transactional system, run this instead of the last command: `touch /etc/selinux/.autorelabel`.
+
+Finally, reboot the system.
+
+
 [#jsc-DOCTEAM-1850]
 ==== Missing `/etc/services` file causes NetWeaver installation failure
 
