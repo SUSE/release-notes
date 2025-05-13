@@ -6,6 +6,21 @@
 
 These release notes apply to {productname} {this-version}.
 
+=== Changes affecting all architectures (Beta 4)
+
+[#jsc-DOCTEAM-1850]
+==== Missing `/etc/services` file causes NetWeaver installation failure
+
+Installing NetWeaver can result in the following error:
+
+[source]
+>ERROR     2025-01-22 16:07:29.467 (root/sapinst) (startInstallation) [CSiStepExecute.cpp:1104] id=controller.stepExecuted errno=FCO-00011 >CSiStepExecute::execute()
+>The step createPorts with step key >|NW_ABAP_ASCS|ind|ind|ind|ind|0|0|NW_System|ind|ind|ind|ind|system|0|NW_SAPHostAgent|ind|ind|ind|ind|hostagent|0|createPorts was executed with status ERROR (Last error reported by the step: Node /etc/services does not exist).
+
+Accessing `/etc/services` is considered a software bug and should be fixed in the affected software.
+As a temporary workaround, an empty `/etc/services` file will be added later.
+If you need to work around this problem earlier, create the file manually: `touch /etc/services`.
+
 === Changes affecting all architectures (Beta2)
 
 [#bsc-1238590]
