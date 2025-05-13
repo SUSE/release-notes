@@ -8,6 +8,24 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures (Beta 4)
 
+[#jsc-DOCTEAM-1852]
+==== `/etc/init.d` not found
+
+When installing {hana} or {nw}, the following error is shown:
+
+[source]
+Installation of SAP HANA Database System failed.
+  Installation of SAP HANA Database failed
+    Installation failed
+      error installing
+        Cannot create system
+          Cannot copy file /hana/shared/PBO/global/hdb/saphostagent_setup/sapinit' => '/etc/init.d/sapinit'
+            Destination directory /etc/init.d not found: No such file or directory
+
+
+This is due to the removal of SysV init script support.
+As a workaround, create the `/etc/init.d` directory.
+
 [#jsc-DOCTEAM-1851]
 ==== SELinux enforcing mode causes error during {hana} installation
 
