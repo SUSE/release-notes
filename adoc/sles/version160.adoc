@@ -114,6 +114,14 @@ FIPS 140-3 installation has not been fully validated and may cause unexpected so
 
 === Changes affecting all architectures (Beta3)
 
+[#jsc-DOCTEAM-1849]
+==== Missing `libnsl.so.1` library
+
+The `libnsl.so.1` library has been deprecated in {slesa} 15 and finally removed in {productname} {this-version}.
+
+As a workaround for applications that cannot be installed without it (but presumaly do not use it for anything), we provide the `libnsl-stub1` package that includes ABI-compatible but otherwise function-less stub of the library file.
+
+
 [#jsc-DOCTEAM-1767]
 ==== `firewalld` not usable with many interfaces
 
