@@ -13,6 +13,9 @@ include::../common/about-documentation.adoc[]
 
 include::../sles/version160.adoc[]
 
+// Community part
+include::version160.adoc[]
+
 include::../common/source-code.adoc[]
 
 include::legal.adoc[]
