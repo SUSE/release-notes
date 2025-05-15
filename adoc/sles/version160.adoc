@@ -9,7 +9,7 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
-[#jsc-12734]
+[#jsc-PED-12734]
 ==== Compiling kernel uses non-default compiler
 
 Customers who need to build kernel modules or rebuild the kernel must use the same compiler version the kernel was built with.
