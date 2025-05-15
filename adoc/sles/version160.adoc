@@ -9,6 +9,15 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-12734]
+==== Compiling kernel uses non-default compiler
+
+Customers who need to build kernel modules or rebuild the kernel must use the same compiler version the kernel was built with.
+The kernel is built with `gcc` version 13, which is not the default compiler.
+Install the gcc version 13 compiler using the `gcc13` package and invoke it with the command `gcc-13`.
+This specific compiler version is only supported for building kernel modules and the kernel.
+
+
 [#jsc-PED-12297]
 ==== Optimized libraries for newer hardware architectures
 
@@ -100,13 +109,14 @@ Additionally, the `inst.copy_network` is not available in Beta4.
 
 For running {sap} workloads on {productname} {this-version}, do the following:
 
-1. Run these commands:
+1. Run these commands after system installation:
 [source,bash]
 semanage boolean -m --on selinuxuser_execmod
-semanage boolean -m --on unconfined_service_transition_to_confined_user
+semanage boolean -m --on unconfined_service_transition_to_unconfined_user
 semanage permissive -a snapper_grub_plugin_t
-2. Reboot the machine.
-3. Run `restorecon -Rv /`.
+restorecon -R /
+2. Install {sap} workload or {hana}
+3. Run `restorecon -R /`.
 
 ==== FIPS 140-3 not working properly
 
