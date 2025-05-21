@@ -58,15 +58,16 @@ Installation of SAP HANA Database System failed.
 
 As a workaround, run these commands:
 
+1. Run these commands after system installation:
 [source,bash]
-semanage boolean -m --on selinuxuser_execmod
-semanage boolean -m --on unconfined_service_transition_to_unconfined_user
-semanage permissive -a snapper_grub_plugin_t
-restorecon -R /
+    semanage boolean -m --on selinuxuser_execmod
+    semanage boolean -m --on unconfined_service_transition_to_unconfined_user
+    semanage permissive -a snapper_grub_plugin_t
+    restorecon -R /
+2. Install SAP Workload or SAP HANA
+3. Run `restorecon -R /`.
 
-If you are on a transactional system, run this instead of the last command: `touch /etc/selinux/.autorelabel`.
-
-Finally, reboot the system.
+If you are on a transactional system, run this instead of `restorecon -R /`: `touch /etc/selinux/.autorelabel`.
 
 
 [#jsc-DOCTEAM-1850]
