@@ -9,6 +9,15 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-12715]
+==== Removal of 32-bit support
+
+{productname} {this-version} only supports 64-bit binaries.
+Support for 31-/32-bit binaries has been removed.
+
+This means that statically-linked 31-/32-bit binaries and container images cannot be run anymore.
+
+
 [#jsc-PED-12734]
 ==== Compiling kernel uses non-default compiler
 
