@@ -328,12 +328,16 @@ This is just a visual bug, the disk will activate correctly.
 
 ==== Installation failure on zVM
 
-Due to a change from `linuxrc` to `dracut`, the `parmfile` is empty, which can result in an installation failure.
+Due to a change from `linuxrc` to `dracut`, the `parmfile` needs to define not only installation source but also a network and disks.
 
-As a workaround, `parmfile` can be filled with a dracut-like option, for example:
+The `parmfile` needs to be filled with a `dracut`-like options, for example:
 
 [source]
-root=live:ftp://$IP_ADDRESS/install/agama-online.iso
+root=live:ftp://$SERVER_URL/install/online.iso
+ip=$IP_address::$IP_gateway:24:SLE16-Beta4:$NETWORK_DEVICE:none
+rd.zdev=qeth,0.0.0800:0.0.0801:0.0.0802,layer2=1,portno=0
+cio_ignore=all,!condev,!0.0.0160 nameserver=$NAMEserverIP
+live.password=linux rd.zdev=dasd,0.0.0160
 
 [#power]
 === POWER-specific changes (ppc64le)
