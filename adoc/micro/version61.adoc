@@ -67,6 +67,11 @@ In contrast, regular packages's Build Date refers to the date when the package w
 
 include::shared.adoc[tags=61,leveloffset=+3]
 
+[#aarch64]
+=== {arm} 64-bit-specific features and fixes ({aarch64})
+
+include::kernel-micro-60-aarch64.adoc[leveloffset=+1]
+
 === Removed and deprecated features and packages
 
 // This section is intended as a quick-to-consume list of deprecations/removals

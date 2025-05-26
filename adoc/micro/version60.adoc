@@ -229,73 +229,7 @@ include::shared.adoc[tags=60,leveloffset=+2]
 Information in this section applies to {productnameshort} {this-version}.
 
 
-[#arm64-soc]
-=== System-on-Chip driver enablement
-
-{productnameshort} {this-version} includes driver enablement for the following
-System-on-Chip (SoC) chipsets:
-
-// * {amdreg} {opteronreg} A1100
-* {amperereg} {xgenereg}, {emagreg}, {altrareg}, _{altramax}_, {ampereonereg}
-* {awsreg} Graviton, Graviton2, Graviton3
-* {brcmreg} BCM2837/BCM2710, BCM2711
-* {fujitsureg} A64FX
-* {huaweireg} {kunpengreg} 916, {kunpeng} 920
-* {marvellreg} {thunderxreg}, {thunderx2reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
-// jsc#PED-8032 (BF3)
-* {nvidiareg} {grace}; {tegrareg}{nbsp}X1, Tegra{nbsp}X2, {xavierreg}, {orin}; {bluefieldreg}, _{bluefield2}_, _{bluefield3}_
-// jsc#SLE-12251 (LS1012A), jsc#SLE-11914 (i.MX 8MM)
-* {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
-// * {qcomreg} {centriqreg} 2400
-* Rockchip RK3399
-* {socionextreg} {synquacerreg} SC2A11
-* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
-
-NOTE: Driver enablement is done as far as available and requested.
-Refer to the following sections for any known limitations.
-
-Some systems might need additional drivers for external chips, such as a
-Power Management Integrated Chip (PMIC), which may differ between systems
-with the same SoC chipset.
-
-For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
-or the Embedded Base Boot Requirements (EBBR),
-that is, the Unified Extensible Firmware Interface (UEFI) either
-implementing the Advanced Configuration and Power Interface (ACPI) or
-providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
-will default to the Device Tree; the kernel command line argument `acpi=force` can
-override this default behavior.
-
-Check for {suse} _YES!_ certified systems,
-which have undergone compatibility testing.
-
-
-// bsc#1212541
-[#jsc-PED-7865]
-=== {nvidiaorin} minimum firmware requirements
-
-// SLES 15 SP5 -> SLEM 5.5
-{slesa} 15{nbsp}SP5 and {slea} Micro {previous-version} added initial enablement for the
-{nvidiaorinreg} SoC (T234), which is found on {jetsonreg} AGX{nbsp}{orin},
-{jetson} {orin}{nbsp}NX and {jetson} {orin}{nbsp}Nano System-on-Modules (SoM)
-as well as {nvidia} IGX{nbsp}Orin based systems.
-
-{nvidia} {jetpackreg} {this-version} boot firmware and Linux kernel 6.5
-changed the Application Binary Interface (ABI)
-for numbering General Purpose Input/Output (GPIO) pins --
-specifically the main GPIO ports X, Y, Z, AC, AD, AE, AF and AG --
-referenced in the machine-specific vendor Device Tree (DT) binary
-for {nvidiaorin} based systems.
-// https://github.com/SUSE/kernel-source/commit/d4ea3ee04f6c78a840bca4e8a8c5d5946581aa91
-// https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=12382ad05110b569d95d29c637e16bbeb115acca
-
-{productnameshort} {this-version} adopts the behavior of the latest kernels
-and requires {nvidia} {jetpack} {this-version} or later boot firmware to be flashed
-on any {nvidiaorin} based platforms.
-
-Refer to your system vendor's documentation for how to enter Recovery Mode and
-to flash the boot firmware.
-For example: `sudo ./flash.sh _device-identifier-and-boot-medium_ external`
+include::kernel-micro-60-aarch64.adoc[]
 
 // :leveloffset: +1
 
