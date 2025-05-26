@@ -224,7 +224,7 @@ include::shared.adoc[tags=60,leveloffset=+2]
 // Arm-specific
 // :leveloffset: -1
 [#aarch64]
-== {arm} 64-bit-specific features and fixes (AArch64)
+== {arm} 64-bit-specific features and fixes ({aarch64})
 
 Information in this section applies to {productnameshort} {this-version}.
 
