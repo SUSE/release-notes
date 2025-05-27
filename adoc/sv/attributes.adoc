@@ -1,0 +1,24 @@
+:productname: openSUSE Leap
+:productnameshort: Leap
+:rel-date: TBD
+
+:power-productname: {productname} för POWER
+
+:doc-url: https://doc.opensuse.org
+:doc-url-beta: https://susedoc.github.io/doc-sle/main
+:doc-url-source: https://get.opensuse.org
+
+:support-url: https://forums.opensuse.org
+:rn-url: https://doc.opensuse.org
+
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+// :lifecycle: beta
+// conditionals-end
+
+:copyright-begin: 2025
+:copyright-end: {docyear}
+:company: openSUSE bidragsgivare
+:additional-rightsholders:
+
+:sdo: Intel säker enhet inbyggd
