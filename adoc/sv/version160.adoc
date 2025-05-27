@@ -1,0 +1,5 @@
+=== Gemenskapsändringar som påverkar alla arkitekturer
+
+==== AppArmor är inte tillgängligt som standard
+
+Eftersom AppArmor inte längre är tillgängligt i SUSE Linux Enterprise 16.0+ kan användare inte längre välja AppArmor som Linux säkerhetsmodul (LSM) under installationen. Begränsad AppArmor-funktionalitet kan aktiveras efter installationen. Alla nödvändiga steg beskrivs på https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed [AppArmors wikisida].

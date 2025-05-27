@@ -1,0 +1,23 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= Versionsinformation för openSUSE Leap
+
+:abstract: Detta dokument ger en översikt över allmänna funktioner, möjligheter och begränsningar för {productname} samt viktiga produktuppdateringar.
+
+{productname} är ett modernt, modulärt operativsystem för såväl multimodal som traditionell IT. Det här dokumentet ger en översikt över funktioner, möjligheter och begränsningar på hög nivå, och lyfter fram viktiga produktuppdateringar.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+:omit_sles_specific: true
+include::../sles/version160.adoc[]
+
+// Community part
+include::version160.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::legal.adoc[]
+
