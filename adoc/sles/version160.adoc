@@ -355,6 +355,11 @@ KVM in a PowerVM LPAR is a new type of LPAR (logical partition) that allows the 
 A KVM enabled LPAR allows standard Linux KVM tools (for example, `virsh`) to create and manage lightweight Linux Virtual Machines (VM).
 A KVM Linux LPAR uses dedicated cores which enables Linux to have full control of when Linux VMs are scheduled to run, just like KVM on other platforms.
 
+[#aarch64]
+=== {arm}-specific changes ({aarch64})
+
+include::../kernel-160-aarch64.adoc[leveloffset=+3]
+
 [#virtualization]
 === Virtualization
 
