@@ -258,7 +258,7 @@ A KVM Linux LPAR uses dedicated cores which enables Linux to have full control o
 [#virtualization-qemu]
 //jsc-PED-8908
 ==== QEMU
-QEMU has been updated to version 9.2.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/9.2
+QEMU has been updated to version 10.0.0, full list of changes are available at https://wiki.qemu.org/ChangeLog/10.0
 
 Highlights include:
 * Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
@@ -267,7 +267,7 @@ Highlights include:
 [#virtualization-libvirt]
 // jsc-PED-8909
 ==== libvirt
-`libvirt` has been updated to version 11.2.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-2-0-2025-04-01
+`libvirt` has been updated to version 11.3.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-3-0-2025-05-02
 
 `libvirt` provides now a modular daemons.
 
@@ -283,11 +283,11 @@ Highlights include:
 
 ===== libguestfs
 
-`libguestfs` has been updated to version 1.55.6.
+`libguestfs` has been updated to version 1.55.13.
 
 ===== virt-v2v
 
-Update to version 2.7.7. ee main changes at: https://libguestfs.org/virt-v2v-release-notes-2.7.7.html
+Update to version 2.7.16. As there is no release notes for check the code changes at: https://github.com/libguestfs/virt-v2v/tree/v2.7.16
 
 - Implement --parallel=N for parallel disk copies
 - Update Translations
