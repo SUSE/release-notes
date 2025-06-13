@@ -6,6 +6,83 @@
 
 These release notes apply to {productname} {this-version}.
 
+=== Changes affecting all architectures
+
+[#jsc-DOCTEAM-1853]
+==== `hostname` command behavior difference
+
+On {slesa} 15 SP6, the `hostname` command returns the short hostname by default.
+However, on {productname} {this-version}, the `hostname` command returns the fully qualified domain name by default.
+
+This difference in default behavior might cause issues in installation scripts that rely on a specific output format of the hostname command without using options like `-s` or `-A`.
+Scripts should be reviewed to explicitly request the desired hostname format using hostname `-s` for the short hostname or hostname `-A` for the fully qualified domain name to ensure consistent behavior across different {productname} versions.
+
+
+=== Changes affecting all architectures (Beta 4)
+
+[#jsc-DOCTEAM-1852]
+==== `/etc/init.d` not found
+
+When installing {hana} or {nw}, the following error is shown:
+
+[source]
+Installation of SAP HANA Database System failed.
+  Installation of SAP HANA Database failed
+    Installation failed
+      error installing
+        Cannot create system
+          Cannot copy file /hana/shared/PBO/global/hdb/saphostagent_setup/sapinit' => '/etc/init.d/sapinit'
+            Destination directory /etc/init.d not found: No such file or directory
+
+
+This is due to the removal of SysV init script support.
+As a workaround, create the `/etc/init.d` directory.
+
+[#jsc-DOCTEAM-1851]
+==== SELinux enforcing mode causes error during {hana} installation
+
+When installing {hana}, the following error is shown:
+
+[source]
+ Installing SAP Host Agent version 7.22.62...
+  Starting SAP HANA Database system...
+Installation of SAP HANA Database System failed.
+  Installation of SAP HANA Database failed
+    Installation failed
+      error installing
+        Cannot create Instance
+          Cannot start system
+            Start instance 00 on host 'susetest' (worker) failed.
+              Cannot establish http connection to unix domain socket '/tmp/.sapstream50013' (No such file or directory)
+            Check the log file for SAP HANA Database error messages
+
+As a workaround, run these commands:
+
+1. Run these commands after system installation:
+[source,bash]
+    semanage boolean -m --on selinuxuser_execmod
+    semanage boolean -m --on unconfined_service_transition_to_unconfined_user
+    semanage permissive -a snapper_grub_plugin_t
+    restorecon -R /
+2. Install SAP Workload or SAP HANA
+3. Run `restorecon -R /`.
+
+If you are on a transactional system, run this instead of `restorecon -R /`: `touch /etc/selinux/.autorelabel`.
+
+
+[#jsc-DOCTEAM-1850]
+==== Missing `/etc/services` file causes NetWeaver installation failure
+
+Installing NetWeaver can result in the following error:
+
+[source]
+>ERROR     2025-01-22 16:07:29.467 (root/sapinst) (startInstallation) [CSiStepExecute.cpp:1104] id=controller.stepExecuted errno=FCO-00011 >CSiStepExecute::execute()
+>The step createPorts with step key >|NW_ABAP_ASCS|ind|ind|ind|ind|0|0|NW_System|ind|ind|ind|ind|system|0|NW_SAPHostAgent|ind|ind|ind|ind|hostagent|0|createPorts was executed with status ERROR (Last error reported by the step: Node /etc/services does not exist).
+
+Accessing `/etc/services` is considered a software bug and should be fixed in the affected software.
+As a temporary workaround, an empty `/etc/services` file will be added later.
+If you need to work around this problem earlier, create the file manually: `touch /etc/services`.
+
 === Changes affecting all architectures (Beta2)
 
 [#bsc-1238590]
@@ -15,6 +92,8 @@ After installation of {productname}, SSH is not enabled by default.
 
 To enable SSH during installation, provide a SSH public key for the `root` user.
 
+// include all SLES release notes as well
+// include SLES attributes to properly resolve product names
 include::../sles/attributes.adoc[]
 include::../sles/version160.adoc[]
 

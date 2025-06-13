@@ -1,0 +1,26 @@
+== Legal notices
+
+Copyright © {copyright-begin}-{copyright-end} openSUSE contributors and SUSE LLC. All rights reserved.
+
+Permission is granted to copy, distribute, and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+(at your option) Version 1.3; with the Invariant Section being this
+copyright notice and license. A copy of the license version 1.2 is
+included in the section entitled “GNU Free Documentation License”.
+
+This document includes content adapted from the SUSE Linux Enterprise
+release notes, contributed by the SUSE Documentation Team. Portions of
+the content are maintained by the openSUSE community.
+
+For SUSE trademarks, see https://www.suse.com/company/legal/.
+For openSUSE trademarks, see
+https://en.opensuse.org/openSUSE:Trademark_guidelines.
+All other third-party trademarks are the property of their respective
+owners. Trademark symbols (®, ™, etc.) denote trademarks of SUSE,
+openSUSE, and their affiliates. Asterisks (*) denote third-party
+trademarks.
+
+While every effort has been made to ensure accuracy, the openSUSE
+contributors, SUSE Documentation Team, and authors assume no
+responsibility for errors or omissions, or for damages resulting from
+the use of the information contained herein.

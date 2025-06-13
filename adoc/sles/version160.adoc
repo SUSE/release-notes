@@ -1,4 +1,5 @@
 :this-version: 16.0
+:next-version: 16.1
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
@@ -7,6 +8,66 @@
 These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
+
+[#jsc-PED-12715]
+==== Removal of 32-bit support
+
+{productname} {this-version} only supports 64-bit binaries.
+Support for 31-/32-bit binaries has been removed.
+
+This means that statically-linked 31-/32-bit binaries and container images cannot be run anymore.
+
+
+[#jsc-PED-12734]
+==== Compiling kernel uses non-default compiler
+
+Customers who need to build kernel modules or rebuild the kernel must use the same compiler version the kernel was built with.
+The kernel is built with `gcc` version 13, which is not the default compiler.
+Install the gcc version 13 compiler using the `gcc13` package and invoke it with the command `gcc-13`.
+This specific compiler version is only supported for building kernel modules and the kernel.
+
+
+[#jsc-PED-12297]
+==== Optimized libraries for newer hardware architectures
+
+We have added support for the glibc-HWCAPS feature which loads optimized versions of libraries for specific newer CPUs automatically.
+
+The build infrastructure for this feature is enabled for the following libraries:
+
+* `blosc2`
+* `boost`
+* `brotli`
+* `bzip2`
+* `flac`
+* `jsoncpp`
+* `lame`
+* `leveldb`
+* `libdb-4_8`
+* `libgcrypt`
+* `libiscsi`
+* `libjpeg-turbo`
+* `libjxl`
+* `libmng`
+* `libnettle`
+* `libpng16`
+* `libvorbis`
+* `libxmlb`
+* `lz4`
+* `lzo`
+* `openjpeg2`
+* `openssl-3`
+* `python311`
+* `python313`
+* `sqlite3`
+* `talloc`
+* `tree-sitter`
+* `wavpack`
+* `xxhash`
+* `xz`
+* `zlib`
+* `zopfli`
+* `zstd`
+
 
 [#bsc-1240889]
 ==== No remote `root` login with password
@@ -29,16 +90,56 @@ SysV init.d scripts have been https://www.suse.com/releasenotes/x86_64/SUSE-SLES
 In {productnameshort} {this-version}, support of SysV init.d scripts has been removed.
 
 
-=== Changes affecting all architectures (RC1)
+// === Changes affecting all architectures (RC1)
 
-[#jsc-PED-12189]
-==== `/etc/services` removal
+// [#jsc-PED-12189]
+// ==== `/etc/services` removal
 
-The `/etc/services` file is just a dummy file that will be removed in the future.
-Software that appends to it without creating it should have its behavior changed.
+// The `/etc/services` file is just a dummy file that will be removed in the future.
+// Software that appends to it without creating it should have its behavior changed.
 
+=== Changes affecting all architectures (Beta4)
+
+[#jsc-DOCTEAM-1848]
+==== Configuring network interfaces during installation
+
+Currently, the installer does not allow for setting up network interfaces using the UI.
+However, in the meantime you can use dracut-like command-line options, for example:
+
+[source]
+ifname=<interface>:<MAC>
+ip=<interface>:dhcp
+
+Additionally, the `inst.copy_network` is not available in Beta4.
+
+
+[#jsc-DOCTEAM-1829]
+==== {sap} workloads on {productnameshort} {this-version}
+
+For running {sap} workloads on {productname} {this-version}, do the following:
+
+1. Run these commands after system installation:
+[source,bash]
+semanage boolean -m --on selinuxuser_execmod
+semanage boolean -m --on unconfined_service_transition_to_unconfined_user
+semanage permissive -a snapper_grub_plugin_t
+restorecon -R /
+2. Install {sap} workload or {hana}
+3. Run `restorecon -R /`.
+
+==== FIPS 140-3 not working properly
+
+FIPS 140-3 installation has not been fully validated and may cause unexpected software failure or crashes. Therefore, we discourage you from using it on Beta4.
 
 === Changes affecting all architectures (Beta3)
+
+[#jsc-DOCTEAM-1849]
+==== Missing `libnsl.so.1` library
+
+The `libnsl.so.1` library has been deprecated in {slesa} 15 and finally removed in {productname} {this-version}.
+
+As a workaround for applications that cannot be installed without it (but presumaly do not use it for anything), we provide the `libnsl-stub1` package that includes ABI-compatible but otherwise function-less stub of the library file.
+
 
 [#jsc-DOCTEAM-1767]
 ==== `firewalld` not usable with many interfaces
@@ -98,7 +199,7 @@ For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-
 
 === Changes affecting all architectures (Beta1)
 
-
+ifeval::[{omit_sles_specific} == "true"]
 [#jsc-DOCTEAM-1700]
 ==== What images are part of Beta1
 
@@ -164,6 +265,7 @@ For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-
 - `SLES-SAP-Packages-16.0-x86_64-Beta1-Debug.iso`
 - `SLES-SAP-Packages-16.0-x86_64-Beta1.iso`
 - `SLES-SAP-Packages-16.0-x86_64-Beta1-Source.iso`
+endif::[]
 
 [#bsc-1235855]
 ==== Disk configuration UI during installation
@@ -226,12 +328,16 @@ This is just a visual bug, the disk will activate correctly.
 
 ==== Installation failure on zVM
 
-Due to a change from `linuxrc` to `dracut`, the `parmfile` is empty, which can result in an installation failure.
+Due to a change from `linuxrc` to `dracut`, the `parmfile` needs to define not only installation source but also a network and disks.
 
-As a workaround, `parmfile` can be filled with a dracut-like option, for example:
+The `parmfile` needs to be filled with a `dracut`-like options, for example:
 
 [source]
-root=live:ftp://$IP_ADDRESS/install/agama-online.iso
+root=live:ftp://$SERVER_URL/install/online.iso
+ip=$IP_address::$IP_gateway:24:SLE16-Beta4:$NETWORK_DEVICE:none
+rd.zdev=qeth,0.0.0800:0.0.0801:0.0.0802,layer2=1,portno=0
+cio_ignore=all,!condev,!0.0.0160 nameserver=$NAMEserverIP
+live.password=linux rd.zdev=dasd,0.0.0160
 
 [#power]
 === POWER-specific changes (ppc64le)
@@ -248,6 +354,11 @@ This enables a lot of interesting usecases which were earlier difficult to reali
 KVM in a PowerVM LPAR is a new type of LPAR (logical partition) that allows the {productname} {this-version} kernel to host KVM guests inside an LPAR on PowerVM.
 A KVM enabled LPAR allows standard Linux KVM tools (for example, `virsh`) to create and manage lightweight Linux Virtual Machines (VM).
 A KVM Linux LPAR uses dedicated cores which enables Linux to have full control of when Linux VMs are scheduled to run, just like KVM on other platforms.
+
+[#aarch64]
+=== {arm}-specific changes ({aarch64})
+
+include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
 [#virtualization]
 === Virtualization
@@ -341,6 +452,8 @@ The following features and packages have been removed in this release.
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
-* <<jsc-PED-12189>>
+// jsc-PED-12744
+* The 2MB OVMF image will be deprecated and removed in {productname} 16.1.
+// * <<jsc-PED-12189>>
 
 // ===================================================================

@@ -2,9 +2,18 @@ tag::60[]
 tag::61[]
 tag::62[]
 // jsc#SMO-485
-==== Helm has been added
+= Helm has been added
 
 Helm has been added to {productname} {this-version}.
 end::62[]
+end::61[]
+end::60[]
+
+tag::60[]
+tag::61[]
+
+= LTTng is deprecated
+
+{productname} {this-version} provides support for LTTng (Linux Trace Toolkit: next generation). Support for LTTng will however be removed in a later {productname} version in favor of alternative solutions for tracing like bpftrace.
 end::61[]
 end::60[]
