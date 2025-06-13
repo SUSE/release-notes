@@ -421,6 +421,15 @@ The `virtiofsd` has been updated to 1.12.0.
 `virt-manager` is now shipped in version 5.0.0. Spice and XML editing are not available in this version. You should setup VNC for remote viewing and do all the XML editing using the `virsh` command.
 Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.0.0
 
+//jsc#PED-5824
+===== Intel TDX Confidential Computing
+
+We are pleased to announce that Kernel shipped in this release now incorporates the latest upstream Intel Trust Domain Extensions (TDX) patches. This significant update prepares the virtualization toolstack for Intel TDX confidential computing capabilities.
+
+With these patches, the kernel is now ready to support the foundational requirements for creating and managing trust domains, a crucial step towards enabling confidential computing environments on Intel TDX-enabled hardware.
+
+Important Note: While the kernel is now ready, the full Intel TDX confidential computing experience is not yet complete. Integration work is still in progress for the QEMU and Libvirt components. These elements are necessary to fully leverage and orchestrate Intel TDX features within your virtualized environments. We anticipate further updates in upcoming releases as these integrations are finalized.
+
 [#removed-deprecated]
 === Removed and deprecated features and packages
 
