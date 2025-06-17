@@ -1,0 +1,14 @@
+[NOTE]
+.System default console settings
+====
+System firmware can use two methods for specifying a default console device:
+
+* ACPI Serial Port Console Redirection (SPCR) table.
+This ACPI table may be configurable via system firmware setup menus.
+* FDT `/chosen/stdout-path` property.
+This FDT property may be adjustable, for example, by applying FDT Overlays.
+
+These defaults get overridden by using any `console=` kernel command line options.
+Adding a secondary output device therefore requires manually specifying the
+default console device.
+====
