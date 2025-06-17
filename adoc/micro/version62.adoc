@@ -41,6 +41,14 @@ include::shared.adoc[tags=62,leveloffset=+3]
 
 include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
+[#jsc-PED-8758]
+==== New 64{nbsp}KiB page size images
+
+{productname} {this-version} introduces `64kb` images.
+These provide the `64kb` kernel flavor with 64{nbsp}KiB page size preinstalled.
+They are primarily intended for {nvidiareg} {grace} platform or other
+systems with large RAM and big data workloads.
+
 === Removed and deprecated features and packages
 
 // [#removed]
