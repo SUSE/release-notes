@@ -57,6 +57,19 @@ systems with large RAM and big data workloads.
 Only these contain the firmware, partition table and default console
 kernel command line settings for booting on {rpi} devices.
 
+[#bsc-1229336]
+==== Default console settings
+
+{productnameshort} {this-version} uses default kernel command line
+settings optimized for standards-compliant devices:
+
+* For console output on a graphical display you may need to add
+`console=tty0`.
+* You may need to configure your system firmware to default output to your
+preferred location.
+
+include::../common/aarch64-console.adoc[]
+
 === Removed and deprecated features and packages
 
 // [#removed]
