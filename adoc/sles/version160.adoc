@@ -92,13 +92,14 @@ SysV init.d scripts have been https://www.suse.com/releasenotes/x86_64/SUSE-SLES
 In {productnameshort} {this-version}, support of SysV init.d scripts has been removed.
 
 
-// === Changes affecting all architectures (RC1)
+=== Changes affecting all architectures (RC1)
 
-// [#jsc-PED-12189]
-// ==== `/etc/services` removal
+[#jsc-PED-12189]
+==== `/etc/services` removal
 
-// The `/etc/services` file is just a dummy file that will be removed in the future.
-// Software that appends to it without creating it should have its behavior changed.
+The `/etc/services` file is just a dummy file that will be removed in the future.
+Software that appends to it without creating it should have its behavior changed.
+
 
 === Changes affecting all architectures (Beta4)
 
