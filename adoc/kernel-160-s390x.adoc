@@ -85,6 +85,7 @@ Add support for IBM specific attributes and mechanisms to the PKCS11 client-serv
 [#jsc-PED-10150] [#jsc-SLE-10148]
 The kernel pkey module can now generate keys AES-XTS keys (MSA 10) and HMAC key (MSA 11) from clear keys.
 The module can also generate keys represented by identifiers of secure execution retrievable keys.
+
 [#jsc-PED-6541]
 The pkey also supports EP11 API ordinal 6 for secure guests.
 
