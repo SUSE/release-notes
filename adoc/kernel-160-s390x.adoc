@@ -11,139 +11,138 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 * support has been added for IBM z17 in `kernel` providing machine name, kconfig options, new instructions etc.
 * support has been added for IBM z17 in `gdb`, `valgrind`, `binutils`
 * Support has been added for IBM z16 - reset DAT-Protection facility support
-[#<jsc-SLE-10135>]
+[#jsc-PED-10135]
 * identify ConnectX devices through port rather than PCHID
-[#<jsc-PED-10161>]
+[#jsc-PED-10161]
 * Processor Activity Instrumentation / Neural Network Processing Assist counters for new IBM Z hardware was added into kernel
-[#<jsc-PED-10157>]
+[#jsc-PED-10157]
 * kprobes are now supported without `stop machine`
-[#<jsc-PED-11861>]
+[#jsc-PED-11861]
 * Promiscuous Mode Exploitation for NETH Virtual Functions for IBM z17 and LinuxONE 5
-[#<jsc-PED-10163>]
+[#jsc-PED-10163]
 * Vertical CPU Polarization support for IBM z17 and LinuxONE 5
-[#<jsc-PED-3284>]
+[#jsc-PED-3284]
 * qclib has been updated to support IBM z17
-[#<jsc-SLE-10169>]
+[#jsc-PED-10169]
 * The Integrated Accelerator for AI has new operations, which are now supported by libzdnn low-level driver library
-[#<jsc-SLE-10137>]
+[#jsc-PED-10137]
 * Enhanced RAS and Call Home for zPCI 
-[#<jsc-SLE-10009>]
+[#jsc-PED-10009]
 * the kernel image can move into vmalloc space, where random physical pages are used to map virtual pages (V!=R)
-[#<jsc-SLE-3322>]
+[#jsc-PED-3322]
 * Add new CPU-MF Counters for new IBM Z Hardware (libpfm)
-[#<jsc-SLE-3316>]
+[#jsc-PED-3316]
 * Deactivate CONFIG_QETH_OSX kernel config option
-[#<jsc-SLE-3310>]
+[#jsc-PED-3310]
 * Upgrade Mellanox (mlx5) driver to latest version
 
 [#ibm-z-performance]
 === Performance
-[#<jsc-PED-12041>]
+[#jsc-PED-12041]
 LPAR level power consumption reporting is now available in kernel and s390-tools.
 
 [#ibm-z-security]
 === Security
 ==== In-kernel crypto support
 With this service pack are additionaly supported:
-[#<jsc-SLE-10154>]
+[#jsc-PED-10154]
  * MSA 10 XTS instructions for in-kernel crypto
-[#<jsc-SLE10152>]
+[#jsc-PED-10152]
  * MSA 11 HMAC instructions for in-kernel crypto
-[#<jsc-SLE-10153>]
+[#jsc-PED-10153]
  * MSA 12 (SHA3) has been added and introduces new options to call CPACF SHA 3 functions
-[#<jsc-SLE-10143>]
+[#jsc-PED-10143]
  * MSA 11 HMAC instructions for in-kernel crypto
-[#<jsc-SLE-10155>]
+[#jsc-PED-10155]
  * MSA 10 XTS crypto PAES support for in-kernel crypto
 
 ==== OpenSSL features
 This release brings these features and improvements:
-[#<jsc-SLE-10148>]
+[#jsc-PED-10148]
  * XTS instructions support in libcrypto/openSSL
-[#<jsc-SLE-10149>]
+[#jsc-PED-10149]
  * new MSA 11 HMAC instruction support in libcrypto/openSSL
-[#<jsc-SLE-10168>]
+[#jsc-PED-10168]
  * added support for MSA 12 (SHA3), which also introduces new options to call CPACF SHA3 and SHKE functions
-[#<jsc-SLE-10147>]
+[#jsc-PED-10147]
  * extended support of the openssl-pkcs11 provider such that it can be used by programs that issue forks
-[#<jsc-PED-3326>]
+[#jsc-PED-3326]
 * replace openssl-ibmpkcs11 with openssl-pkcs11
-[#<jsc-PED-3224>]
+[#jsc-PED-3224]
 * upgrade openssl-ibmca to the latest version
 
 ==== openCryptoki
-[#<jsc-PED-3276>]
+[#jsc-PED-3276]
 The new version of `libica` and `libzpc` is included.
-[#<jsc-PED-9986>]
+[#jsc-PED-9986]
 The openCryptoki CCA Token is now available on x86_64 and ppc64le architectures.
 
 ==== p11-kit
-[#<jsc-PEDD-9986>]
+[#jsc-PED-9986]
 Add support for IBM specific attributes and mechanisms to the PKCS11 client-server implementation of p11-kit.
 
 ==== pkey
-[#<jsc-SLE-10150>] [#<jsc-SLE-10148>]
+[#jsc-PED-10150] [#jsc-SLE-10148]
 The kernel pkey module can now generate keys AES-XTS keys (MSA 10) and HMAC key (MSA 11) from clear keys.
 The module can also generate keys represented by identifiers of secure execution retrievable keys.
-[#<jsc-SLE-6541>]
+[#jsc-PED-6541]
 The pkey also supports EP11 API ordinal 6 for secure guests.
 
 ==== zcrypt
-[#<jsc-PED-11101>]
+[#jsc-PED-11101]
 The zcrypt extends error recovery to deal with device scans of unavailable devices.
 
 [#ibmz-virtualization]
 === Virtualization
 * KVM guests can exploit z17 & LinuxONE 5 CPU features
-[#<jsc-PED-10156>]
+[#jsc-PED-10156]
 * KVM can display available host key hashes for Secure Execution (Query Host-key hash UVC) 
-[#<jsc-PED-11959>]
+[#jsc-PED-11959]
 * KVM can benefit from genprotimg rewritten in Rust to re-use existing rust libraries (s390-tools feature)
 * KVM benefits from genprotimg validation of SE image running on particular host(s) (s390-tools feature)
 * KVM benefits from using pvimg info command to display encrypted & unencrypted SE image information (s390-tools)
-[#<jsc-PED-11>]
 * KVM can use unencrypted SE images for creating generic images (s390-tools feature)
-[#<jsc-SLE-10010>]
+[#jsc-PED-10010]
 * KVM passthrough is available for guests i.e. retrievable secrets in Secure Execution guests
-[#<jsc-SLE-11863>]
+[#jsc-PED-11863]
 * KVM can use unencrypted SE images for creating generic images (s390-tools feature)
-[#<jsc-SLE-6557>]
+[#jsc-PED-6557]
 * KVM implements counters for nested guest shadow events
-[#<jsc-SLE-6556>]
+[#jsc-PED-6556]
 * KVM implements virsh hypervisor-cpu-models (libvirt)
-[#<jsc-SLE-6554>]
+[#jsc-PED-6554]
 * KVM provides enhanced and dynamic CPU topology for KVM guests (qemu)
-[#<jsc-SLE-6543>] [#<jsc-SLE->]
+[#jsc-PED-6543] [#jsc-SLE-]
  * KVM and libvirt full boot order enables users to attempt booting from multiple targets
-[#<jsc-SLE-4404>]
+[#jsc-PED-4404]
 * KVM provides Atomic Memop for Key-Checked Compare-and-swap
-[#<jsc-SLE-4176>]
+[#jsc-PED-4176]
 * KVM enhances CCW address translation architectural compliance 
-[#<jsc-SLE-3724>]
+[#jsc-PED-3724]
 * KVM improves memory reclaiming for z15 Secure Execution guests and above (libvirt)
 
 [#ibm-z-misc]
 === Miscellaneous
-[#<jsc-SLE-12456>]
+[#jsc-PED-12456]
 Plymouth was replaced by blog on s390x, as plymouth couldn't work without graphical display.
 
-[#<jsc-SLE-7068>]
+[#jsc-PED-7068]
 The snIPL package is deprecated as HMC is providing most capabilities. There is also available a command line client to interact with the HMC Web Services API: the zhmccli https://github.com/zhmcclient. 
 
-[#<jsc-SLE-10141>]
+[#jsc-PED-10141]
 Drivers netiucv and lcs are deprecated in SLES 16.0.
 
-[#<jsc-SLE-3221>]
+[#jsc-PED-3221]
 The `Eigen` library is the backend used by `Tensorflow` for computations executed on the CPU. Several GCC adjustments have been implemented to speed up Eigen with IBM z14 support and above.
 
-[#<jsc-PED-7849>]
+[#jsc-PED-7849]
 Allow `httpd` customers to protect their web server identity using HSMs (via CryptoExpress adapters).
 
 ==== Enhancements in s390-tools
 Latest s390-tool update brings these noticable changes:
-[#<jsc-PED-10136>]
+[#jsc-PED-10136]
  * additional channel measurements - kernel & s390-tools
-[#<jsc-PED-10936>]
+[#jsc-PED-10936]
  * a new tool cpacinfo shall provide information on CPACF including the supported MSA levels, instructions, subfunctions per instruction. https://www.ibm.com/docs/en/linux-on-systems?topic=hw-cpacf
 
 Check for {suse} _YES!_ certified systems,
