@@ -124,7 +124,7 @@ The zcrypt extends error recovery to deal with device scans of unavailable devic
 
 [#ibm-z-misc]
 === Miscellaneous
-#<jsc-SLE-12456>]
+[#<jsc-SLE-12456>]
 Plymouth was replaced by blog on s390x, as plymouth couldn't work without graphical display.
 
 [#<jsc-SLE-7068>]
