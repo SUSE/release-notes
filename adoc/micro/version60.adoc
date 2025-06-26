@@ -267,10 +267,10 @@ This section lists features and packages that were removed from {productname} or
 // For more information about all package and module changes since the last version, see <<intro-package-changes>>.
 
 
-// [#removed]
-// === Removed features and packages
+[#removed]
+=== Removed features and packages
 
-// The following features and packages have been removed in this release.
+The following features and packages have been removed in this release.
 
 ////
 // jsc#EX-0000
@@ -281,6 +281,8 @@ Use Replacement Feature instead.
 * Example Removed Feature 2 has been removed.
 For more information, see <<jsc-SLE-0000>>.
 ////
+
+* `criu`
 
 [#deprecated]
 === Deprecated features and packages

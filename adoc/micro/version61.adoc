@@ -107,6 +107,7 @@ For more information, see <<jsc-SLE-0000>>.
 * `busybox`
 * `salt-master`
 * `k3s`
+* `criu`
 
 // [#deprecated]
 // === Deprecated features and packages
