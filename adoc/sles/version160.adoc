@@ -450,6 +450,7 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages have been removed in this release.
 
 * `netiucv` and `lcs` drivers
+* `ansible-9` and `ansible-core-2.16`
 * <<jsc-PED-12156>>
 
 
