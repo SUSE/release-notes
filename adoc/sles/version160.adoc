@@ -397,7 +397,7 @@ Highlights include:
 
 ===== numatop
 
-`numatop is available in version 2.5. This version add support for Intel GNR and SRF platforms.
+`numatop` is available in version 2.5. This version add support for Intel GNR and SRF platforms.
 
 ===== numactl
 
