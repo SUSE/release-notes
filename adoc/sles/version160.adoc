@@ -395,6 +395,14 @@ Highlights include:
 //jsc-PED-8910
 ==== Others
 
+===== numatop
+
+`numatop is available in version 2.5. This version add support for Intel GNR and SRF platforms.
+
+===== numactl
+
+`numactl` is shipped in version 2.0.19. Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
+
 ===== libguestfs
 
 `libguestfs` has been updated to version 1.55.13.
@@ -413,8 +421,7 @@ The `sevctl` package has been updated to version 0.6.0.
 
 ===== `snpguest`
 
-The `snpguest` package has been updated to version 0.7.1.
-
+The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
 ===== `snphost`
 
 The `snphost` packages has been added in version 0.6.0.
@@ -427,6 +434,10 @@ The `virtiofsd` has been updated to 1.12.0.
 
 `virt-manager` is now shipped in version 5.0.0. Spice and XML editing are not available in this version. You should setup VNC for remote viewing and do all the XML editing using the `virsh` command.
 Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.0.0
+
+===== virt-bridge-setup
+
+`virt-bridge-setup` allows you to create a network bridge on a specified interface using nmcli. It simplifies the process of creating and managing network bridges for virtualization environments. It was originally created to replace the automatic "yast2 virtualization" bridge creation. It supports IPV4 only. This is a simple script which does not aim to support all network scenarios, for complex task please setup the bridge manually. The script should be run just after post-install, not after any network customisation.
 
 //jsc#PED-5824
 ===== Intel TDX Confidential Computing
