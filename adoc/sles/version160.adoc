@@ -372,7 +372,7 @@ include::../kernel-160-aarch64.adoc[leveloffset=+3]
 [#virtualization-qemu]
 //jsc-PED-8908
 ==== QEMU
-QEMU has been updated to version 10.0.0, full list of changes are available at https://wiki.qemu.org/ChangeLog/10.0
+QEMU has been updated to version 10.0.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/10.0
 
 Highlights include:
 * Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
@@ -381,7 +381,7 @@ Highlights include:
 [#virtualization-libvirt]
 // jsc-PED-8909
 ==== libvirt
-`libvirt` has been updated to version 11.3.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-3-0-2025-05-02
+`libvirt` has been updated to version 11.4.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-4-0-2025-06-02.
 
 `libvirt` provides now a modular daemons.
 
@@ -389,7 +389,7 @@ Highlights include:
 ==== VMware
 
 ===== open-vm-tools
-`open-vm-tools` has been updated to version 12.5.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/ReleaseNotes.md
+`open-vm-tools` has been updated to version 13.0.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-13.0.0/ReleaseNotes.md.
 
 [#virtualization-other]
 //jsc-PED-8910
@@ -413,7 +413,11 @@ The `sevctl` package has been updated to version 0.6.0.
 
 ===== `snpguest`
 
-The `snpguest` package has been updated to version 7.1.
+The `snpguest` package has been updated to version 0.7.1.
+
+===== `snphost`
+
+The `snphost` packages has been added in version 0.6.0.
 
 ===== `virtiofsd`
 
