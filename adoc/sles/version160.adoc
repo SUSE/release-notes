@@ -372,7 +372,8 @@ include::../kernel-160-aarch64.adoc[leveloffset=+3]
 [#virtualization-qemu]
 //jsc-PED-8908
 ==== QEMU
-QEMU has been updated to version 10.0.0, full list of changes are available at https://wiki.qemu.org/ChangeLog/10.0
+
+QEMU has been updated to version 10.0.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/10.0
 
 Highlights include:
 * Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
@@ -381,7 +382,8 @@ Highlights include:
 [#virtualization-libvirt]
 // jsc-PED-8909
 ==== libvirt
-`libvirt` has been updated to version 11.3.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-3-0-2025-05-02
+
+`libvirt` has been updated to version 11.4.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-4-0-2025-06-02.
 
 `libvirt` provides now a modular daemons.
 
@@ -389,11 +391,20 @@ Highlights include:
 ==== VMware
 
 ===== open-vm-tools
-`open-vm-tools` has been updated to version 12.5.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/ReleaseNotes.md
+
+`open-vm-tools` has been updated to version 13.0.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-13.0.0/ReleaseNotes.md.
 
 [#virtualization-other]
 //jsc-PED-8910
 ==== Others
+
+===== numatop
+
+`numatop` is available in version 2.5, adding support for Intel GNR and SRF platforms.
+
+===== numactl
+
+`numactl` is shipped in version 2.0.19. Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
 
 ===== libguestfs
 
@@ -401,7 +412,7 @@ Highlights include:
 
 ===== virt-v2v
 
-Update to version 2.7.16. As there is no release notes for check the code changes at: https://github.com/libguestfs/virt-v2v/tree/v2.7.16
+Update to version 2.7.16. While there are no dedicated release notes, you can review the code changes in Github: https://github.com/libguestfs/virt-v2v/tree/v2.7.16
 
 - Implement --parallel=N for parallel disk copies
 - Update Translations
@@ -413,7 +424,11 @@ The `sevctl` package has been updated to version 0.6.0.
 
 ===== `snpguest`
 
-The `snpguest` package has been updated to version 7.1.
+The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
+
+===== `snphost`
+
+The `snphost` packages has been added in version 0.6.0.
 
 ===== `virtiofsd`
 
@@ -421,8 +436,17 @@ The `virtiofsd` has been updated to 1.12.0.
 
 ===== `virt-manager`
 
-`virt-manager` is now shipped in version 5.0.0. Spice and XML editing are not available in this version. You should setup VNC for remote viewing and do all the XML editing using the `virsh` command.
+`virt-manager` is now shipped in version 5.0.0. Its preferable to setup VNC for remote viewing and do all the XML editing using the `virsh` command.
 Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.0.0
+
+===== virt-bridge-setup
+
+virt-bridge-setup is a script designed to simplify network bridge creation on a specified interface using nmcli. It was developed as a replacement for the automatic "yast2 virtualization" bridge creation and is particularly useful for setting up virtualization environments.
+
+Important considerations:
+* It supports IPv4 only.
+* This is a simple script not intended for complex network scenarios; manual bridge setup is recommended for intricate configurations.
+* The script should be run immediately after post-installation and before any custom network configurations.
 
 //jsc#PED-5824
 ===== Intel TDX Confidential Computing
