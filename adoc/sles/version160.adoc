@@ -425,6 +425,7 @@ The `sevctl` package has been updated to version 0.6.0.
 ===== `snpguest`
 
 The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
+
 ===== `snphost`
 
 The `snphost` packages has been added in version 0.6.0.
