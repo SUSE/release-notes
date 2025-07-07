@@ -9,6 +9,14 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-12752]
+==== Python update strategy
+
+* `/usr/bin/python3` is currently set to use Python 3.13. In a future minor version update this is likely going to be changed to a newer Python version.
+* {productname} {this-version} contains around 700 popular Python packages, which form a basic set of functionality for packages that depends on Python and for developing apps without needing to install Python modules from an external provider.
+* We have been working on removing the dependencies of packages and tools on the `/usr/bin/python3` binary, which means that {productname} could use a newer version of the Python interpreter in the future. This new Python interpreter will coexist with the previous version that will then be maintained as legacy interpreter for a limited time.
+
+
 [#jsc-PED-12715]
 ==== Removal of 32-bit support
 
