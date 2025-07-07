@@ -452,6 +452,7 @@ Full list of changes is available at https://github.com/virt-manager/virt-manage
 virt-bridge-setup is a script designed to simplify network bridge creation on a specified interface using nmcli. It was developed as a replacement for the automatic "yast2 virtualization" bridge creation and is particularly useful for setting up virtualization environments.
 
 Important considerations:
+
 * It supports IPv4 only.
 * This is a simple script not intended for complex network scenarios; manual bridge setup is recommended for intricate configurations.
 * The script should be run locally (not remotely) immediately after installation and before any custom network configurations.
