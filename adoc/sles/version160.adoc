@@ -402,6 +402,35 @@ Highlights include:
 
 `open-vm-tools` has been updated to version 13.0.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-13.0.0/ReleaseNotes.md.
 
+==== Confidential Computing
+
+===== `sevctl`
+
+The `sevctl` package has been updated to version 0.6.0.
+
+===== `snpguest`
+
+The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
+
+===== `snphost`
+
+The `snphost` packages has been added in version 0.6.0.
+
+//jsc#PED-5824
+===== Intel TDX Confidential Computing
+
+We are pleased to announce that Kernel shipped in this release now incorporates the latest upstream Intel Trust Domain Extensions (TDX) patches. This significant update prepares the virtualization toolstack for Intel TDX confidential computing capabilities.
+
+With these patches, the kernel is now ready to support the foundational requirements for creating and managing trust domains, a crucial step towards enabling confidential computing environments on Intel TDX-enabled hardware.
+
+Important Note: While the kernel is now ready, the full Intel TDX confidential computing experience is not yet complete. Integration work is still in progress for the QEMU and Libvirt components. These elements are necessary to fully leverage and orchestrate Intel TDX features within your virtualized environments. We anticipate further updates in upcoming releases as these integrations are finalized.
+
+===== Enhanced VM Security with AMD SEV-SNP
+
+AMD SEV-SNP (Secure Encrypted Virtualization-Secure Nested Paging) is a hardware security feature in AMD EPYC processors that provides a highly secure and confidential environment for virtual machines (VMs). It offers strong memory confidentiality through per-VM encryption keys and AES encryption, and crucially, robust memory integrity protection to prevent tampering from the hypervisor or other threats. It also provides enhanced isolation and remote attestation capabilities, making it ideal for protecting sensitive data and workloads in untrusted environments like cloud computing.
+This release fully integrates AMD SEV-SNP for KVM-based virtual machines. This means integrated Support in our kernel, along with updated QEMU, Libvirt, and OVMF Firmware.
+To use AMD SEV-SNP, you'll need, AMD EPYC™ 3rd Gen Processors (Milan) or newer and SEV-SNP enabled in your system's BIOS/UEFI.
+
 [#virtualization-other]
 //jsc-PED-8910
 ==== Others
@@ -426,18 +455,6 @@ Update to version 2.7.16. While there are no dedicated release notes, you can re
 - Update Translations
 - Various fixes
 
-===== `sevctl`
-
-The `sevctl` package has been updated to version 0.6.0.
-
-===== `snpguest`
-
-The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
-
-===== `snphost`
-
-The `snphost` packages has been added in version 0.6.0.
-
 ===== `virtiofsd`
 
 The `virtiofsd` has been updated to 1.12.0.
@@ -456,21 +473,6 @@ Important considerations:
 * It supports IPv4 only.
 * This is a simple script not intended for complex network scenarios; manual bridge setup is recommended for intricate configurations.
 * The script should be run locally (not remotely) immediately after installation and before any custom network configurations.
-
-//jsc#PED-5824
-===== Intel TDX Confidential Computing
-
-We are pleased to announce that Kernel shipped in this release now incorporates the latest upstream Intel Trust Domain Extensions (TDX) patches. This significant update prepares the virtualization toolstack for Intel TDX confidential computing capabilities.
-
-With these patches, the kernel is now ready to support the foundational requirements for creating and managing trust domains, a crucial step towards enabling confidential computing environments on Intel TDX-enabled hardware.
-
-Important Note: While the kernel is now ready, the full Intel TDX confidential computing experience is not yet complete. Integration work is still in progress for the QEMU and Libvirt components. These elements are necessary to fully leverage and orchestrate Intel TDX features within your virtualized environments. We anticipate further updates in upcoming releases as these integrations are finalized.
-
-===== Enhanced VM Security with AMD SEV-SNP
-
-AMD SEV-SNP (Secure Encrypted Virtualization-Secure Nested Paging) is a hardware security feature in AMD EPYC processors that provides a highly secure and confidential environment for virtual machines (VMs). It offers strong memory confidentiality through per-VM encryption keys and AES encryption, and crucially, robust memory integrity protection to prevent tampering from the hypervisor or other threats. It also provides enhanced isolation and remote attestation capabilities, making it ideal for protecting sensitive data and workloads in untrusted environments like cloud computing.
-This release fully integrates AMD SEV-SNP for KVM-based virtual machines. This means integrated Support in our kernel, along with updated QEMU, Libvirt, and OVMF Firmware.
-To use AMD SEV-SNP, you'll need, AMD EPYC™ 3rd Gen Processors (Milan) or newer and SEV-SNP enabled in your system's BIOS/UEFI.
 
 [#removed-deprecated]
 === Removed and deprecated features and packages
