@@ -123,20 +123,28 @@ ip=<interface>:dhcp
 
 Additionally, the `inst.copy_network` is not available in Beta4.
 
-
+// also bsc#12244703
 [#jsc-DOCTEAM-1829]
 ==== {sap} workloads on {productnameshort} {this-version}
 
 For running {sap} workloads on {productname} {this-version}, do the following:
 
-1. Run these commands after system installation:
+1. Unpack the {sap} installer.
+2. Run the following commands to change policies:
 [source,bash]
 semanage boolean -m --on selinuxuser_execmod
 semanage boolean -m --on unconfined_service_transition_to_unconfined_user
 semanage permissive -a snapper_grub_plugin_t
 restorecon -R /
-2. Install {sap} workload or {hana}
-3. Run `restorecon -R /`.
+3. Run the following commands to lable all files:
+[source,bash]
+test -d ./snapshots && restorecon -R / -e /.snapshots
+test -d ./snapshots || restorecon R /
+4. Install {sap} workload or {hana}
+5. Label all files again:
+[source,bash]
+test -d /.snapshots && restorecon -R / -e /.snapshots
+test -d /.snapshots || restorecon -R /
 
 ==== FIPS 140-3 not working properly
 
