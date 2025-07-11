@@ -7,6 +7,6 @@
    </dm:bugtracker>
   </dm:docmanager>
   <releaseinfo>@VERSION@</releaseinfo>
-  <productname>SUSE Linux Enterprise Server</productname>
+  <productname>SUSE Linux Enterprise High Availability</productname>
   <productnumber>16.0</productnumber>
   <date><?dbtimestamp format="Y-m-d"?></date>
