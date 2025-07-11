@@ -1,5 +1,5 @@
-:productname: SUSE Linux Enterprise Server for SAP Applications
-:productnameshort: SLE-SAP
+:productname: SUSE Linux Enterprise Server for SAP applications
+:productnameshort: SLES for SAP
 :rel-date: TBD
 
 :power-productname: {productname} for POWER
