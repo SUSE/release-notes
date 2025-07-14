@@ -92,11 +92,6 @@ After installation of {productname}, SSH is not enabled by default.
 
 To enable SSH during installation, provide a SSH public key for the `root` user.
 
-// include all SLES release notes as well
-// include SLES attributes to properly resolve product names
-include::../sles/attributes.adoc[]
-include::../sles/version160.adoc[]
-
 [NOTE]
 This behavior differs between {sles} and {slessap}.
 In {sles}, SSH is enabled by default during installation even if public key for `root` is not provided.
