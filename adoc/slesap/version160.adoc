@@ -20,6 +20,11 @@ Scripts should be reviewed to explicitly request the desired hostname format usi
 
 === Changes affecting all architectures (Beta 4)
 
+This section contains information specific to Beta4.
+We are working on fixing the problems mentioned here.
+The content of this section will be removed for the final released product.
+
+
 [#jsc-DOCTEAM-1852]
 ==== `/etc/init.d` not found
 
@@ -84,6 +89,10 @@ As a temporary workaround, an empty `/etc/services` file will be added later.
 If you need to work around this problem earlier, create the file manually: `touch /etc/services`.
 
 === Changes affecting all architectures (Beta2)
+
+This section contains information specific to Beta2.
+We are working on fixing the problems mentioned here.
+The content of this section will be removed for the final released product.
 
 [#bsc-1238590]
 ==== Not possible to SSH after installation
