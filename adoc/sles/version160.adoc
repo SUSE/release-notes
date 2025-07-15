@@ -9,6 +9,11 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+==== `/tmp` not persistent
+
+In {productname} {this-version}, `/tmp` is no longer persistent between reboots but uses `tmpfs` instead.
+
+
 [#jsc-PED-12752]
 ==== Python update strategy
 
