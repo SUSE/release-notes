@@ -443,7 +443,8 @@ The `sevctl` package has been updated to version 0.6.0.
 
 ===== `snpguest`
 
-The `snpguest` package has been updated to version 0.9.1. Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
+The `snpguest` package has been updated to version 0.9.1.
+Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.7.1...v0.9.1
 
 ===== `snphost`
 
@@ -475,7 +476,8 @@ To use AMD SEV-SNP, you'll need, AMD EPYC™ 3rd Gen Processors (Milan) or newer
 
 ===== numactl
 
-`numactl` is shipped in version 2.0.19. Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
+`numactl` is shipped in version 2.0.19.
+Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
 
 ===== libguestfs
 
