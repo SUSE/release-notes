@@ -1,4 +1,4 @@
-=== Community Changes affecting all architectures
+=== Community changes affecting all architectures
 
 ==== AppArmor not available by default
 
