@@ -17,7 +17,7 @@ Currently the repository contains release notes for these products:
 ## How to contribute
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
-The latest pre-production build of release-notes can be viewed [here](https://susedoc.github.io/release-notes/).
+The latest pre-production build of release-notes can be viewed [here](https://susedoc.github.io/#release-notes).
 
 ## Where to add note
 
