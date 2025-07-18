@@ -12,6 +12,7 @@ These release notes apply to {productname} {this-version}.
 ==== `/tmp` not persistent
 
 In {productname} {this-version}, `/tmp` is no longer persistent between reboots but uses `tmpfs` instead.
+See https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html#sle16-tmp for more information.
 
 
 [#jsc-PED-12752]
