@@ -9,6 +9,14 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-12206]
+==== Legacy BIOS support
+
+Legacy BIOS is still supported in {productname} {this-version}.
+However, some features are not available when using it (for example, full-disk encryption with TPM).
+Finally, support for legacy BIOS will be discontinued in the future.
+For that reason we recommend switching to UEFI at the nearest opportunity.
+
 ==== `/tmp` not persistent
 
 In {productname} {this-version}, `/tmp` is no longer persistent between reboots but uses `tmpfs` instead.
