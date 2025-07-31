@@ -549,6 +549,7 @@ The following features and packages have been removed in this release.
 * `ansible-9` and `ansible-core-2.16`
 * `criu`
 * <<jsc-PED-12156>>
+* `compat-libpthread-nonshared`
 
 
 [#deprecated]
