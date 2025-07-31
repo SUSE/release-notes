@@ -9,6 +9,16 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-12925]
+==== Azure Entra ID authentication via `himmelblau`
+
+The `himmelblau` package has been added.
+It provides interoperability with for Microsoft Azure Entra ID and Intune.
+It supports Linux authentication to Microsoft Azure Entra ID via PAM and NSS modules.
+
+For more information see https://github.com/himmelblau-idm/himmelblau.
+
+
 [#jsc-PED-12206]
 ==== Legacy BIOS support
 
