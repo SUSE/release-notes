@@ -1,5 +1,25 @@
 === Community changes affecting all architectures
 
-==== AppArmor not available by default
 
-Since AppArmor is no longer available in SUSE Linux Enterprise 16.0+, users can no longer choose AppArmor as the Linux Security Module (LSM) during the installation. Limited AppArmor functionality can be enabled post-installation. All necessary steps are described in https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[the AppArmor wiki page].
+==== Security
+
+===== AppArmor
+
+AppArmor was updated from 3.1 to 4.1
+
+Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1[4.0] introduced fine grained network rules so that you can limit network rules to IP and/or port.
+Unfortunately the kernel support for fine grained network rules is not upstream yet, so the feature cannot be enabled at the moment.
+
+Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.0[4.1] introduced the priority=<number> rule prefix which allows overriding of rules.
+
+===== AppArmor not available by default on new installations
+
+[WARNING]
+AppArmor is no longer available in SUSE Linux Enterprise 16.0, so Leap users can no 
+longer choose AppArmor as the Linux Security Module (LSM) during the new installation.
+AppArmor functionality can, however, be enabled post-installation.
+All necessary steps are described in https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[the AppArmor wiki page].
+
+Users migrating manually from 15.6 will by default keep using AppArmor. Users migrating using
+https://github.com/openSUSE/opensuse-migration-tool[opensuse-migration-tool] will be asked if they want to switch to SELinux or preserve AppArmor as part of the post migration process.
+
