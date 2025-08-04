@@ -1,5 +1,17 @@
 === Community changes affecting all architectures
 
+==== Steam
+[WARNING]
+`Steam` package was dropped from https://en.opensuse.org/Package_repositories#Non-OSS[Non-OSS repository]
+due to limited set of 32-bit libraries. {productname} users are advised to install it with https://en.opensuse.org/Steam#Flatpak[flatpak].
+Users will have to enable 32-bit execution by installing `grub2-compat-ia32` followed by reboot.
+
+Users using SELinux will have to install additional `selinux-policy-targeted-gaming`. See https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page] for more details.	
+
+==== Wine
+
+{productname} comes with `wine` 10.10 and is available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor. Users needing 32-bit binary execution support should consider using `flatpak` version or similar.
+
 ==== AppArmor not available by default
 
 Since AppArmor is no longer available in SUSE Linux Enterprise 16.0+, users can no longer choose AppArmor as the Linux Security Module (LSM) during the installation. Limited AppArmor functionality can be enabled post-installation. All necessary steps are described in https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[the AppArmor wiki page].
