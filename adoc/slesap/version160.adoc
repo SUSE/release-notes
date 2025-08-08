@@ -8,7 +8,7 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
-[#jsc-PED-13396]
+[#jsc-PED-13396-1]
 ==== `saptune` base tuning
 
 The `saptune` package will enable base tuning upon installation.
