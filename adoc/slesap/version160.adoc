@@ -8,6 +8,12 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-13396]
+==== `saptune` base tuning
+
+The `saptune` package will enable base tuning upon installation.
+
+
 [#jsc-DOCTEAM-1853]
 ==== `hostname` command behavior difference
 

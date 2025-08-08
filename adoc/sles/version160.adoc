@@ -9,6 +9,13 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-13396]
+==== `saptune` replaces `sapconf`
+
+In {productnameshort} {this-version}, `sapconf` is replaced with `saptune`.
+`saptune` will also be enabled with a base tuning, similar to `sapconf`.
+
+
 [#jsc-PED-12925]
 ==== Azure Entra ID authentication via `himmelblau`
 
