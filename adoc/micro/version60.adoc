@@ -283,6 +283,7 @@ For more information, see <<jsc-SLE-0000>>.
 ////
 
 * `criu`
+* `nerdctl`
 
 [#deprecated]
 === Deprecated features and packages
@@ -306,4 +307,3 @@ The following `ceph` client packages have been deprecated and will be removed in
 
 
 // ===================================================================
-

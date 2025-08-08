@@ -48,6 +48,7 @@ include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
 * `criu`
 * `yomi` is not supported anymore
+* `nerdctl`
 
 [#bsc-1242130]
 ===== realtime sysfs entry is removed

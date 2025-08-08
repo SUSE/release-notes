@@ -108,6 +108,7 @@ For more information, see <<jsc-SLE-0000>>.
 * `salt-master`
 * `k3s`
 * `criu`
+* `nerdctl`
 
 // [#deprecated]
 // === Deprecated features and packages
@@ -123,4 +124,3 @@ For more information, see <<jsc-SLE-0000>>.
 
 
 // ===================================================================
-
