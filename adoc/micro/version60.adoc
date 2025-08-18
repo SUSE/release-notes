@@ -231,6 +231,22 @@ Information in this section applies to {productnameshort} {this-version}.
 
 include::kernel-micro-60-aarch64.adoc[]
 
+[#bsc-1229336]
+=== Default console settings optimized for {rpi}
+
+The {productnameshort} {this-version} {aarch64} images use default kernel
+command line settings tuned for easy evaluation on {rpireg} devices.
+
+For usage with {arm} BSA-compliant servers you will have to edit the
+command line in the GRUB menu:
+
+* Drop `console=ttyS0,115200`. Optionally try `console=ttyAMA0,115200` or similar for serial output, including IPMI Serial-over-LAN via a BMC.
+* Drop `console=tty0` if you don't need the console output on a graphical display.
+
+This behavior will change with {productnameshort} {next-version}.
+
+include::../common/aarch64-console.adoc[]
+
 // :leveloffset: +1
 
 
