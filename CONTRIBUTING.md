@@ -84,8 +84,11 @@ The release notes are written using AsciiDoc. See the [AsciiDoc documentation](h
 
 ## Working locally
 
-* Run `make validate` to check for errors
-* Run `make html` to see your changes
+Make sure to pass PRODUCT_VERSION= which needs to match relevant DC-release-notes-$PRODUCT_VERSION in the checkout.
+Following example is for DC-release-notes-leap-160
+
+* Run `make validate PRODUCT_VERSION=leap-160` to check for errors
+* Run `make html PRODUCT_VERSION=leap-160` to see your changes
     * Replace `html` with a different format (`pdf`, `single-html`, `text`) or `all` to generate other formats
 
 # Creating a bug report
