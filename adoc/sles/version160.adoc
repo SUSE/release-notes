@@ -9,6 +9,12 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-13449]
+==== NFS over TLS support
+
+NFS over TLS is now supported for storage traffic.
+
+
 [#jsc-PED-13396]
 ==== `saptune` replaces `sapconf`
 
