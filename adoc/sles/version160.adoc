@@ -586,6 +586,7 @@ The following features and packages have been removed in this release.
 * `criu`
 * <<jsc-PED-12156>>
 * `compat-libpthread-nonshared`
+include::../shared.adoc[tags=jscped12374,leveloffset=+3]
 
 
 [#deprecated]

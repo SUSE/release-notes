@@ -15,3 +15,7 @@ This has several consequences:
 * home directories inherited from a previous system need to standardize the GID of the files by running: `find "$HOME" -group users -exec chgrp myuser {} \;`, or `chgrp -R myuser "$HOME"` if you did not use any GID other than `users`
 end::bsc1240989[]
 
+tag::jscped12374[]
+* `crun` has been removed. Use `runc` instead.
+end::jscped12374[]
+
