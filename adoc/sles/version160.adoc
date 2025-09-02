@@ -9,6 +9,15 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#jsc-PED-11998]
+
+==== Lightweight guard region support
+
+This is a new feature in `madvise()` that installs a lightweight guard region into the a specified address range.
+
+See https://manpages.opensuse.org/Leap-16.0/man-pages/madvise.2.en.html#MADV_GUARD_INSTALL[madvise() man page] for more information.
+
+
 // also jsc#DOCTEAM-1949
 [#bsc-1244716]
 ==== Harmless error messages sometimes displayed when launching some applications
