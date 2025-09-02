@@ -87,6 +87,9 @@
 :sap: SAP
 :slessap: {sles} for {sap} Applications
 :slessapa: {slesa} for {sap}
+:ulpfull: user space live patching
+:ulpshort: ULP
+:ulp: {ulpshort} ({ulpfull})
 
 :marble: {slsa} Micro
 
