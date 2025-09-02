@@ -9,6 +9,26 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// also jsc#DOCTEAM-1949
+[#bsc-1244716]
+==== Harmless error messages sometimes displayed when launching some applications
+
+The following messages are sometimes displayed when launching specific applications:
+
+1. `gnome-desktop` some times failes to create transient scope:
+[source]
+> gnome-session-binary: GnomeDesktop-WARNING: Could not create transient scope for PID 7883: GDBus.Error:org.freedesktop.DBus.Error.UnixProcessIdUnknown: Process with ID 7883 does not exist.
+
+2. `systemd` sometimes failes to assign cgroup:
+[source]
+> systemd: app-gnome-gnome\x2dkeyring\x2dpkcs11-6708.scope: Couldn't move process 6708 to requested cgroup '/user.slice/user-0.slice/user@0.service/app.slice/app-gnome-gnome\x2dkeyring\x2dpkcs11-6708.scope': No such process
+> systemd: app-gnome-gnome\x2dkeyring\x2dpkcs11-6708.scope: Failed to add PIDs to scope's control group: No such process
+> systemd: app-gnome-gnome\x2dkeyring\x2dpkcs11-6708.scope: Failed with result 'resources'.
+> systemd: Failed to start Application launched by gnome-session-binary.
+
+These messages are harmless and can be ignored.
+
+
 [#jsc-PED-13449]
 ==== NFS over TLS support
 
