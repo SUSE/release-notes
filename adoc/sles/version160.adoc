@@ -40,6 +40,7 @@ NFS over TLS is now supported for storage traffic.
 
 In {productnameshort} {this-version}, `sapconf` is replaced with `saptune`.
 `saptune` will also be enabled with a base tuning, similar to `sapconf`.
+Base tuning only will be enabled if `saptune` was not configured before (no SAP Notes or Solutions selected).
 
 
 [#jsc-PED-12925]
