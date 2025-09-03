@@ -9,6 +9,13 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1249039]
+==== `lklfuse` Btrfs support
+
+`lklfuse` is intentionally built without Btrfs support.
+Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` currently only supports a single device per mount.
+
+
 [#jsc-PED-11998]
 
 ==== Lightweight guard region support
