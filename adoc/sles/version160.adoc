@@ -7,14 +7,27 @@
 
 These release notes apply to {productname} {this-version}.
 
-=== Changes affecting all architectures
+=== Technology previews
+
+Technology previews are packages, stacks, or features delivered by SUSE to provide glimpses into upcoming innovations. Technology previews are included for your convenience to give you a chance to test new technologies within your environment. We would appreciate your feedback! If you test a technology preview, contact your SUSE representative and let them know about your experience and use cases. Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development. Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are not supported.
+* Technology previews may only be available for specific hardware architectures. Details and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time. This may be the case, for example, if SUSE discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
 
 [#bsc-1249039]
-==== `lklfuse` Btrfs support
+==== `lklfuse`
+
+As technology preview, `lklfuse` is available in {productname} {this-version}.
 
 `lklfuse` is intentionally built without Btrfs support.
 Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` currently only supports a single device per mount.
 
+
+=== Changes affecting all architectures
 
 [#jsc-PED-11998]
 
