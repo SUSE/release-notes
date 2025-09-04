@@ -8,6 +8,14 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+[#bsc-1243146]
+==== Changing when Home directory is created by default
+
+Previously, creating a Home directory for an user when using the `useradd` command required the `-m` argument.
+
+In {this-version}, this has been changed and the Home directory is created by default without using any additionalk arguments.
+
+
 [#jsc-PED-8258]
 ==== Simplified SBD management
 
