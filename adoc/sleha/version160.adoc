@@ -12,6 +12,14 @@ This section contains information specific to Beta2.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
+[#jsc-PED-10881]
+==== GSF2 available, OCFS2 removed
+
+GFS2 (Global File System 2) is a native, shared-disk cluster filesystem for Linux, allowing multiple servers to concurrently read and write to the same block storage.
+It uses a Distributed Lock Manager (DLM), typically integrated with Corosync and Pacemaker, to coordinate metadata access and prevent data corruption.
+
+At the same time, the the support for OCFS2 has been removed.
+
 [#bsc-1239436]
 ==== Unable to add `drbd_passive`
 
@@ -31,3 +39,11 @@ To resolve this, create home directory for the `hacluster` user:
 
 [source,shell]
 usermod -d /var/lib/pacemaker hacluster
+
+[#removed-deprecated]
+=== Removed and deprecated features and packages
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+* <<jsc-PED-10881>>
+
