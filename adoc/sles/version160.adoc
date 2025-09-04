@@ -507,10 +507,15 @@ To fix this issue, remove the repository in question and add the installation me
 If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
 
 [#ibm-z]
-=== IBM Z-specific changes (s390x)
+=== {ibmz}-specific changes (s390x)
+
+Information in this section applies to {z-productname} {this-version}.
+For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
+
+==== Miscellaneous
 
 [#bsc-1235858]
-==== `parmfile` now points to ISO
+===== `parmfile` now points to ISO
 
 Previously, `parmfile` would point to a directory of unpacked files.
 
@@ -525,7 +530,7 @@ For more information see https://agama-project.github.io/docs/user/boot_options.
 
 
 [#bsc-1235857]
-==== Disk selection UI problems during installation
+===== Disk selection UI problems during installation
 
 If you want to enable a disk, click on _Storage_ in the left panel, then _Install new system on_ and choose "storage techs".
 Then you can choose a type of disk.
@@ -540,7 +545,7 @@ In the _zFCP_ section, after activating a disk a gray line will appear.
 This is just a visual bug, the disk will activate correctly.
 
 
-==== Installation failure on zVM
+===== Installation failure on zVM
 
 Due to a change from `linuxrc` to `dracut`, the `parmfile` needs to define not only installation source but also a network and disks.
 
