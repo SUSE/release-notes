@@ -339,6 +339,15 @@ This section contains information specific to Beta3.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
+[#bsc-1240945]
+==== Kernel crash in QEMU
+
+{productname} {this-version} requires a CPU that supports a so-called "x86-64-v2" microarchitecture.
+Due to this, running a {productnameshort} image using QEMU currently results in a kernel crash.
+
+As a workaround you can run QEMU with the `-cpu host` argument.
+
+
 [#jsc-DOCTEAM-1849]
 ==== Missing `libnsl.so.1` library
 
