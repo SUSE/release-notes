@@ -512,7 +512,139 @@ If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode usin
 Information in this section applies to {z-productname} {this-version}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
+==== Hardware
+
+* support has been added for IBM z17 in `kernel` providing machine name, kconfig options, new instructions etc.
+* support has been added for IBM z17 in `gdb`, `valgrind`, `binutils`
+* Support has been added for IBM z16 - reset DAT-Protection facility support
+// jsc-PED-10135
+* identify ConnectX devices through port rather than PCHID
+// jsc-PED-10161
+* Processor Activity Instrumentation / Neural Network Processing Assist counters for new {ibmz} hardware was added into kernel
+// jsc-PED-10157
+* kprobes are now supported without `stop machine`
+// jsc-PED-11861
+* Promiscuous Mode Exploitation for NETH Virtual Functions for IBM z17 and LinuxONE 5
+// jsc-PED-10163
+* Vertical CPU Polarization support for IBM z17 and LinuxONE 5
+// jsc-PED-3284
+* qclib has been updated to support IBM z17
+// jsc-PED-10169
+* The Integrated Accelerator for AI has new operations, which are now supported by libzdnn low-level driver library
+// jsc-PED-10137
+* Enhanced RAS and Call Home for zPCI
+// jsc-PED-10009
+* the kernel image can move into vmalloc space, where random physical pages are used to map virtual pages (V!=R)
+// jsc-PED-3322
+* Add new CPU-MF Counters for new {ibmz} Hardware (libpfm)
+// jsc-PED-3316
+* Deactivate CONFIG_QETH_OSX kernel config option
+// jsc-PED-3310
+* Upgrade Mellanox (mlx5) driver to latest version
+
+==== Performance
+
+// jsc-PED-12041
+* LPAR level power consumption reporting is now available in kernel and s390-tools.
+
+==== Security
+===== In-kernel crypto support
+
+With this service pack are additionaly supported:
+
+// jsc-PED-10154
+ * MSA 10 XTS instructions for in-kernel crypto
+// jsc-PED-10152
+ * MSA 11 HMAC instructions for in-kernel crypto
+// jsc-PED-10153
+ * MSA 12 (SHA3) has been added and introduces new options to call CPACF SHA 3 functions
+// jsc-PED-10143
+ * MSA 11 HMAC instructions for in-kernel crypto
+// jsc-PED-10155
+ * MSA 10 XTS crypto PAES support for in-kernel crypto
+
+===== OpenSSL features
+
+This release brings these features and improvements:
+
+// jsc-PED-10148
+ * XTS instructions support in libcrypto/openSSL
+// jsc-PED-10149
+ * new MSA 11 HMAC instruction support in libcrypto/openSSL
+// jsc-PED-10168
+ * added support for MSA 12 (SHA3), which also introduces new options to call CPACF SHA3 and SHKE functions
+// jsc-PED-10147
+ * extended support of the openssl-pkcs11 provider such that it can be used by programs that issue forks
+// jsc-PED-3326
+* replace openssl-ibmpkcs11 with openssl-pkcs11
+// jsc-PED-3224
+* upgrade openssl-ibmca to the latest version
+
+===== openCryptoki
+// jsc-PED-3276
+* The new version of `libica` and `libzpc` is included.
+// jsc-PED-9986
+* The openCryptoki CCA Token is now available on x86_64 and ppc64le architectures.
+
+===== p11-kit
+// jsc-PED-9986
+* Add support for IBM specific attributes and mechanisms to the PKCS11 client-server implementation of p11-kit.
+
+===== pkey
+// jsc-PED-10150 jsc-SLE-10148
+* The kernel pkey module can now generate keys AES-XTS keys (MSA 10) and HMAC key (MSA 11) from clear keys.
+* The module can also generate keys represented by identifiers of secure execution retrievable keys.
+// jsc-PED-6541
+* The pkey also supports EP11 API ordinal 6 for secure guests.
+
+===== zcrypt
+// jsc-PED-11101
+* The zcrypt extends error recovery to deal with device scans of unavailable devices.
+
+==== Virtualization
+
+* KVM guests can exploit z17 & LinuxONE 5 CPU features
+// jsc-PED-10156
+* KVM can display available host key hashes for Secure Execution (Query Host-key hash UVC)
+// jsc-PED-11959
+* KVM can benefit from genprotimg rewritten in Rust to re-use existing rust libraries (s390-tools feature)
+* KVM benefits from genprotimg validation of SE image running on particular host(s) (s390-tools feature)
+* KVM benefits from using pvimg info command to display encrypted & unencrypted SE image information (s390-tools)
+* KVM can use unencrypted SE images for creating generic images (s390-tools feature)
+// jsc-PED-10010
+* KVM passthrough is available for guests i.e. retrievable secrets in Secure Execution guests
+// jsc-PED-11863
+* KVM can use unencrypted SE images for creating generic images (s390-tools feature)
+// jsc-PED-6557
+* KVM implements counters for nested guest shadow events
+// jsc-PED-6556
+* KVM implements virsh hypervisor-cpu-models (libvirt)
+// jsc-PED-6554
+* KVM provides enhanced and dynamic CPU topology for KVM guests (qemu)
+// jsc-PED-6543] // jsc-SLE-
+ * KVM and libvirt full boot order enables users to attempt booting from multiple targets
+// jsc-PED-4404
+* KVM provides Atomic Memop for Key-Checked Compare-and-swap
+// jsc-PED-4176
+* KVM enhances CCW address translation architectural compliance
+// jsc-PED-3724
+* KVM improves memory reclaiming for z15 Secure Execution guests and above (libvirt)
+
 ==== Miscellaneous
+
+// jsc-PED-12456
+* `plymouth` was replaced by `blog` on s390x, as `plymouth` couldn't work without graphical display.
+// jsc-PED-3221
+* The `Eigen` library is the backend used by `Tensorflow` for computations executed on the CPU. Several GCC adjustments have been implemented to speed up Eigen with IBM z14 support and above.
+// jsc-PED-7849
+* Allow `httpd` customers to protect their web server identity using HSMs (via CryptoExpress adapters).
+
+===== Enhancements in `s390-tools`
+Latest s390-tool update brings these noticable changes:
+// jsc-PED-10136
+ * additional channel measurements - kernel & `s390-tools`
+// jsc-PED-10936
+ * a new tool cpacinfo shall provide information on CPACF including the supported MSA levels, instructions, subfunctions per instruction. https://www.ibm.com/docs/en/linux-on-systems?topic=hw-cpacf
 
 [#bsc-1235858]
 ===== `parmfile` now points to ISO
@@ -701,6 +833,8 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc-PED-7068
+* The snIPL package is deprecated as HMC is providing most capabilities. There is also available a command line client to interact with the HMC Web Services API: the zhmccli https://github.com/zhmcclient.
 * removed `rc<service>` controls of systemd services
 * removed the `KBD_DISABLE_CAPS_LOCK` feature from `/etc/sysconfig/keyboard`
 * The Xen hypervisor was removed in favor of KVM. You can still run {slea} 16 as Xen guest, but not as Xen host.
