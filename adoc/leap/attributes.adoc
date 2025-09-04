@@ -3,6 +3,7 @@
 :rel-date: TBD
 
 :power-productname: {productname} for POWER
+:z-productname: {productname} for {ibmz}
 
 :doc-url: https://doc.opensuse.org
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
