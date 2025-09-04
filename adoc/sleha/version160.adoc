@@ -6,11 +6,7 @@
 
 These release notes apply to {productname} {this-version}.
 
-=== Changes affecting all architectures (Beta2)
-
-This section contains information specific to Beta2.
-We are working on fixing the problems mentioned here.
-The content of this section will be removed for the final released product.
+=== Changes affecting all architectures
 
 [#jsc-PED-10881]
 ==== GSF2 available, OCFS2 removed
@@ -19,6 +15,13 @@ GFS2 (Global File System 2) is a native, shared-disk cluster filesystem for Linu
 It uses a Distributed Lock Manager (DLM), typically integrated with Corosync and Pacemaker, to coordinate metadata access and prevent data corruption.
 
 At the same time, the the support for OCFS2 has been removed.
+
+
+=== Changes affecting all architectures (Beta2)
+
+This section contains information specific to Beta2.
+We are working on fixing the problems mentioned here.
+The content of this section will be removed for the final released product.
 
 [#bsc-1239436]
 ==== Unable to add `drbd_passive`
