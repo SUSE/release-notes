@@ -19,3 +19,10 @@ tag::jscped12374[]
 * `crun` has been removed. Use `runc` instead.
 end::jscped12374[]
 
+tag::jscped-11998[]
+[#jsc-PED-11970]
+= Added `tuned`
+
+The `tuned` package contains a daemon that tunes system settings dynamically.
+end::jscped-11998[]
+

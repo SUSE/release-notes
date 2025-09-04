@@ -8,6 +8,7 @@ Currently the repository contains release notes for these products:
   * 6.0
   * 6.1
   * 6.2
+  * 6.3
 * SLE Server/High Availability/for SAP applications
   * 16.0
 * openSUSE Leap

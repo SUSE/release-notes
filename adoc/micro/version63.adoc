@@ -1,0 +1,15 @@
+:this-version: 6.3
+:idprefix: v63_
+:doc-url: https://documentation.suse.com/sle-micro/{this-version}
+:previous-version: 6.2
+:next-version: 6.4
+
+== {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+=== Changes affecting all architectures
+
+include::../shared.adoc[tags=jscped-11998,leveloffset=+3]
+
+// include::shared.adoc[tags=63,leveloffset=+3]
