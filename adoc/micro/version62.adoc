@@ -48,6 +48,9 @@ include::shared.adoc[tags=62,leveloffset=+3]
 [#aarch64]
 === {arm} 64-bit-specific features and fixes ({aarch64})
 
+// jsc#PED-13148
+* full-disk encryption is now supported
+
 include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
 === Removed and deprecated features and packages
