@@ -26,3 +26,10 @@ tag::jscped-11998[]
 The `tuned` package contains a daemon that tunes system settings dynamically.
 end::jscped-11998[]
 
+tag::jscped-12210[]
+[#jsc-PED-12210]
+= SHA1 to be disabled or mark unapproved
+
+Due to FIPS 140-3 certification requirements, the SHA1 cryptographic algorithm will be disabled or marked unapproved when running in FIPS mode.
+end::jscped-12210[]
+

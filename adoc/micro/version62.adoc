@@ -10,7 +10,8 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
-// ==== Installation media
+// SHA1 disabled
+include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
 
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates

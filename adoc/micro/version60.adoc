@@ -80,6 +80,9 @@ For a procedure of deploying an image refer to {doc-url}/html/Micro-deployment-r
 
 Information in this section applies to all architectures supported by {productnameshort} {this-version}.
 
+// SHA1 disabled
+include::../shared.adoc[tags=jscped-12210,leveloffset=+2]
+
 
 === Full-disk encryption
 

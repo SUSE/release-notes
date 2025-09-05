@@ -114,6 +114,9 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 === Changes affecting all architectures
 
+// SHA1 disabled
+include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
+
 include::../shared.adoc[tag=jscped-11998,leveloffset=+3]
 
 

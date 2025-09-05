@@ -11,6 +11,9 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// SHA1 disabled
+include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
+
 ==== Installation media
 
 // jsc#PED-8578
