@@ -17,3 +17,18 @@ tag::61[]
 {productname} {this-version} provides support for LTTng (Linux Trace Toolkit: next generation). Support for LTTng will however be removed in a later {productname} version in favor of alternative solutions for tracing like bpftrace.
 end::61[]
 end::60[]
+
+tag::60[]
+tag::61[]
+tag::62[]
+tag::63[]
+[#jsc-PED-7936]
+= Extras channel
+
+A new channel called "SUSE Linux Micro Extras" has been added.
+It includes testing, development and certifications packages and components that are not normally included with the OS itself.
+These packages are not supported.
+end::63[]
+end::62[]
+end::61[]
+end::60[]
