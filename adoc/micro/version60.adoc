@@ -213,13 +213,8 @@ NOTE: This will be fixed in a future release.
 
 This does not influence toolbox funcionality and you can use the toolbox container as needed.
 
-=== Password access as root via SSH disabled
-
-Previously, it was possible to SSH as root using password-based authentication.
-In {productnameshort} {this-version} only key-based authentication is allowed by default.
-Systems upgraded to {this-version} from 5.x carry over the old behavior. New installations will enforce the new behavior.
-
-Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
+// root ssh root login by default
+include::../shared.adoc[tags=jscped-4965,leveloffset=+2]
 
 include::shared.adoc[tags=60,leveloffset=+2]
 

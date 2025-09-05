@@ -56,3 +56,15 @@ Some resource agents have been removed from the `resource-agent` package:
 * `conntrack-tools` dependency from `ha_sles` pattern
 end::jscped-12354[]
 
+tag::jscped-4965[]
+[#jsc-PED-4965]
+= Password access as root via SSH disabled
+
+Previously, it was possible to SSH as root using password-based authentication.
+In {productnameshort} {this-version} only key-based authentication is allowed by default.
+Systems upgraded to {this-version} from a previous version will carry over the old behavior.
+New installations will enforce the new behavior.
+
+Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
+end::jscped-4965[]
+
