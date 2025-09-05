@@ -10,11 +10,13 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
-// SHA1 disabled
-include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
-
+// jsc-SMO-573
+* Image re-encryption during the OS initialisation is now faster
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
+
+// SHA1 disabled
+include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
 
 [#jsc-PED-12483]
 ==== Changes to product identification
