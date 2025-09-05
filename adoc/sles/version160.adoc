@@ -118,6 +118,18 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-4971
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
 
+// copied from 15 SP7, see bsc-1237496
+[#jsc-PED-4963]
+==== systemd default configurations moved to `/usr`
+
+Main configuration files have been moved from `/etc` to `/usr`.
+This ensures that main configuration files have lower precedence, allowing them to be overriden by package-supplied drop-in snippets.
+
+Local configuration should be created by either modifying the default file in `/usr` (or a copy of it placed in `/etc` if the original file is shipped in `/usr`), or by creating drop-in snippets in the appropriate directory in (for example, `/etc/systemd/coredump.conf.d/`) - this is recommended.
+
+Remove configurations in `/etc` to restore defaults.
+
+
 // root ssh root login by default
 include::../shared.adoc[tags=jscped-4965,leveloffset=+2]
 
