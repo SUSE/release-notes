@@ -44,3 +44,15 @@ tag::jscped-12860[]
 * For Arm64* systems: Armv8.0-A or higher.
 * For IBM* Z systems: z14 or higher.
 end::jscped-12860[]
+
+tag::jscped-12354[]
+= Resource agent removal
+
+Some resource agents have been removed from the `resource-agent` package:
+
+* `ldirectord`
+* `sfex_`*
+* HA-related part of IPVS
+* `conntrack-tools` dependency from `ha_sles` pattern
+end::jscped-12354[]
+

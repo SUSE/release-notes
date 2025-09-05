@@ -8,6 +8,9 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// removed resource agents
+include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
+
 [#jsc-PED-13396-1]
 ==== `saptune` base tuning
 
