@@ -1,4 +1,5 @@
 :this-version: 16.0
+:previous-version: 15 SP7
 :next-version: 16.1
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
@@ -113,6 +114,9 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 
 === Changes affecting all architectures
+
+// minimum hardware requirements
+include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
 
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+3]

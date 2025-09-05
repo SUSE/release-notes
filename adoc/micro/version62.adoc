@@ -15,6 +15,9 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
 
+// minimum hardware requirements
+include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
+
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
 

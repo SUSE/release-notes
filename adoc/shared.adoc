@@ -33,3 +33,14 @@ tag::jscped-12210[]
 Due to FIPS 140-3 certification requirements, the SHA1 cryptographic algorithm will be disabled or marked unapproved when running in FIPS mode.
 end::jscped-12210[]
 
+tag::jscped-12860[]
+[#jsc-PED-12860]
+= Minimum hardware requirements
+
+{productname} {this-version} requires hardware to meet requirements on these architectures:
+
+* For AMD64 and Intel* 64 systems: Microarchitecture level x86-64-v2 or higher.
+* For IBM* Power LE systems: POWER9 or higher.
+* For Arm64* systems: Armv8.0-A or higher.
+* For IBM* Z systems: z14 or higher.
+end::jscped-12860[]
