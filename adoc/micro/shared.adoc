@@ -5,6 +5,12 @@ tag::62[]
 = Helm has been added
 
 Helm has been added to {productname} {this-version}.
+
+[#jsc-SMO-564]
+= `podmansh` added
+
+The `podmansh` package has been added.
+It provides a confined login and user shell with access to volumes and capabilities specified in user quadlets.
 end::62[]
 end::61[]
 end::60[]
