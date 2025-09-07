@@ -769,6 +769,12 @@ Highlights include:
 
 `libvirt` provides now a modular daemons.
 
+[#virtualization-ovmf]
+// #bsc-1245454
+==== ovmf
+
+iSCSI boot support is disabled in OVMF images.
+
 [#virtualization-vmware]
 ==== VMware
 
