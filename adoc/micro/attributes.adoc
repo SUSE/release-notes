@@ -1,5 +1,5 @@
-:productname: SL Micro
-:productnameshort: SLM
+:productname: {slm}
+:productnameshort: {slm-short}
 :rel-date: TBD
 
 :power-product: {productname} for POWER
