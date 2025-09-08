@@ -72,3 +72,19 @@ New installations will enforce the new behavior.
 Installing the package `openssh-server-config-rootlogin` restores the old behavior and allows password-based login for the root user.
 end::jscped-4965[]
 
+tag::jscped-12725[]
+[#jsc-PED-12725]
+= Switch to predictable network names
+
+The persistent network naming scheme used in {productnameshort} 15 became legacy with the switch to the systemd predictable network names.
+For complicated setups, we recommend using `systemd.link`.
+
+For more information, see:
+
+* https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/
+* https://www.freedesktop.org/software/systemd/man/latest/systemd.link.html
+
+[NOTE]
+In the future, when upgrading from {slm-short} to {productnameshort} {next-version} (so-called "SLE merge"), some systems will have `net.ifnames=0` set on their kernel command line (this is the case for new installations of {slm-short} 6.0 and 6.1).
+This boot option will prevent the system from switching to the predictable naming scheme and it will need to be removed.
+end::jscped-12725[]

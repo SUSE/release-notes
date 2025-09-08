@@ -15,6 +15,9 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
 
+// switch to predictable network names
+include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
+
 // minimum hardware requirements
 include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
 
