@@ -1,0 +1,14 @@
+= Package lifecycle, support and update strategy
+
+== {sles} 16.0
+
+=== Container components
+
+Most of them follow agile lifecycle.
+These include:
+
+* general container infrastructure, like `runc`
+* `docker`, `podman` and their respective ecosystems
+* `helm`
+
+
