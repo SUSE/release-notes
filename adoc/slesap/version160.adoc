@@ -9,7 +9,7 @@ These release notes apply to {productname} {this-version}.
 === Changes affecting all architectures
 
 // simplified sbd management
-include::../shared.adoc[tags=jscped-8258,leveloffset=+2]
+include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 
 // removed resource agents
 include::../shared.adoc[tags=jscped-12354,leveloffset=+3]

@@ -19,7 +19,7 @@ Previously, creating a Home directory for an user when using the `useradd` comma
 In {this-version}, this has been changed and the Home directory is created by default without using any additionalk arguments.
 
 // simplified sbd management
-include::../shared.adoc[tags=jscped-8258,leveloffset=+2]
+include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 
 [#jsc-PED-10881]
 ==== GSF2 available, OCFS2 removed
