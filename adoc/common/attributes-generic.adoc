@@ -44,6 +44,7 @@
 :x64: x86-64
 :aarch64: AArch64
 :ppc: PowerPC
+:ppc64le: ppc64le
 :vmware: VMware
 
 :opensuse: open{suse}
