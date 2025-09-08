@@ -890,13 +890,17 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// the following 4 items are from jsc#PED-11207
+* `sapconf` has been removed. See <<jsc-PED-13396>> for more info.
+* {yast} has been removed. See <<bsc-1237605>> for more info.
+* WSL1 is not supported anymore
+* The Xen hypervisor was removed in favor of KVM. You can still run {slea} 16 as Xen guest, but not as Xen host.
 // jsc#PED-12905
 * `nscd` has been removed
 // jsc-PED-7068
 * The snIPL package is deprecated as HMC is providing most capabilities. There is also available a command line client to interact with the HMC Web Services API: the zhmccli https://github.com/zhmcclient.
 * removed `rc<service>` controls of systemd services
 * removed the `KBD_DISABLE_CAPS_LOCK` feature from `/etc/sysconfig/keyboard`
-* The Xen hypervisor was removed in favor of KVM. You can still run {slea} 16 as Xen guest, but not as Xen host.
 * `netiucv` and `lcs` drivers
 * `ansible-9` and `ansible-core-2.16`
 * `criu`
