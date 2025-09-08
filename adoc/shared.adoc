@@ -88,3 +88,29 @@ For more information, see:
 In the future, when upgrading from {slm-short} to {productnameshort} {next-version} (so-called "SLE merge"), some systems will have `net.ifnames=0` set on their kernel command line (this is the case for new installations of {slm-short} 6.0 and 6.1).
 This boot option will prevent the system from switching to the predictable naming scheme and it will need to be removed.
 end::jscped-12725[]
+
+tag::jscped-12739[]
+= Switch to `mountfd` API in `util-linux`
+
+The `util-linux` `mount` command has switched from the old string-based method to the new kernel `mountfd` API.
+This change introduces new features but also comes with some minor incompatibilities.
+
+There is a special case that cannot be handled by `mountfd` and needs to be handled by applications:
+
+* `mountfd` discriminates between the physical mount layer and the virtual mount layer
+* once the physical mount layer is read-only, read-write mount on the virtual layer is not possible
+
+If the first mount is read-only, then the physical filesystem is mounted read-only, and later mounting of the same file system as read-write is not possible.
+To solve this problem, the first mount needs to be read-only on the virtual layer only, keeping the physical layer read-write.
+The userspace fix is simple. Instead of:
+
+[source]
+mount -oro
+
+use
+
+[source]
+mount -oro=vfs
+
+This will keep the physical layer read-write, but the virtual file system layer (and the userspace access) read-only.
+end::jscped-12739[]

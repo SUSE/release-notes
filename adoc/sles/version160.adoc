@@ -118,6 +118,9 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-4971
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
 
+// util-linux switch to mountfd API
+include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
+
 // switch to predictable network names
 include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
 

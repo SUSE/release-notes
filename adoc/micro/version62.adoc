@@ -15,6 +15,9 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
 
+// util-linux switch to mountfd API
+include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
+
 // switch to predictable network names
 include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
 
