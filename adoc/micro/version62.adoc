@@ -36,15 +36,19 @@ The before and after state is as follows:
 [cols="1m,1m,1m",options="header"]
 |===
 | Variable | Before | Now
-| NAME | SL-Micro | SUSE Linux
-| PRETTY_NAME | SUSE Linux Micro 6.2 | SUSE Linux 16.0
-| VARIANT | - | Micro 6.2
+| NAME | SL-Micro | SLES
+| PRETTY_NAME | SUSE Linux Micro 6.2 | SUSE Linux Enterprise Server 16.0
+| VARIANT | - | Micro
 | VARIANT_ID | - | transactional
-| CPE_NAME | - | cpe:/o:suse:sles:16:16.0
+| CPE_NAME | cpe:/o:suse:sl-micro:6.2 | cpe:/o:suse:sles:16:16.0
 | VERSION | 6.2 | 16.0
 | VERSION_ID | 16.0 | 16.0
 | ID | sl-micro | sles
 | ID_LIKE | suse sle-micro opensuse-microos microos | suse opensuse
+| SUSE_SUPPORT_PRODUCT | - | SUSE Linux Micro
+| SUSE_SUPPORT_PRODUCT_VERSION | - | 6.2
+| SUSE_PRETTY_NAME | - | SUSE Linux Micro 6.2
+
 |===
 
 include::../shared.adoc[tags=bsc1240989,leveloffset=+3]
