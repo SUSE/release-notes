@@ -2,6 +2,7 @@
 
 == {sles} 16.0
 
+[#jsc-PED-12289]
 === Container components
 
 Most of them follow agile lifecycle.
