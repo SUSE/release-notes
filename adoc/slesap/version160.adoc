@@ -118,12 +118,10 @@ To enable SSH during installation, provide a SSH public key for the `root` user.
 This behavior differs between {sles} and {slessap}.
 In {sles}, SSH is enabled by default during installation even if public key for `root` is not provided.
 
-[#removed-deprecated]
 === Removed and deprecated features and packages
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
-[#removed]
 ==== Removed features and packages
 
 The following features and packages have been removed in this release.
