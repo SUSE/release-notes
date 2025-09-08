@@ -40,9 +40,13 @@ tag::jscped-12860[]
 {productname} {this-version} requires hardware to meet requirements on these architectures:
 
 * For AMD64 and Intel* 64 systems: Microarchitecture level x86-64-v2 or higher.
-* For IBM* Power LE systems: POWER9 or higher.
+* For IBM* Power LE systems: POWER10 or higher (see note below).
 * For Arm64* systems: Armv8.0-A or higher.
 * For IBM* Z systems: z14 or higher.
+
+[NOTE]
+POWER9 systems may work with {productnameshort} {this-version} but are not supported by IBM, the hardware vendor.
+
 end::jscped-12860[]
 
 tag::jscped-12354[]
