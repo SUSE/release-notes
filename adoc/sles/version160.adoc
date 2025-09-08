@@ -890,6 +890,8 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-12905
+* `nscd` has been removed
 // jsc-PED-7068
 * The snIPL package is deprecated as HMC is providing most capabilities. There is also available a command line client to interact with the HMC Web Services API: the zhmccli https://github.com/zhmcclient.
 * removed `rc<service>` controls of systemd services
