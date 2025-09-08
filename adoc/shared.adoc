@@ -114,3 +114,19 @@ mount -oro=vfs
 
 This will keep the physical layer read-write, but the virtual file system layer (and the userspace access) read-only.
 end::jscped-12739[]
+
+tag::jscped-8258[]
+[#jsc-PED-8258]
+= Simplified SBD management
+
+A new `crm sbd` command has been added in order to simplify SBD management.
+
+It can:
+
+* display the real-time SBD status and the static SBD configuration
+* manage the configuration file for both disk-based and diskless SBD scenarios, and the on-disk metadata for the disk-based scenario
+
+// jsc#PED-12514
+There is also a `crm maintenance` command which can help with advanced tasks like kernel crashdump configuration procedure.
+end::jscped-8258[]
+

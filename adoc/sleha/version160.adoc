@@ -18,20 +18,8 @@ Previously, creating a Home directory for an user when using the `useradd` comma
 
 In {this-version}, this has been changed and the Home directory is created by default without using any additionalk arguments.
 
-
-[#jsc-PED-8258]
-==== Simplified SBD management
-
-A new `crm sbd` command has been added in order to simplify SBD management.
-
-It can:
-
-* display the real-time SBD status and the static SBD configuration
-* manage the configuration file for both disk-based and diskless SBD scenarios, and the on-disk metadata for the disk-based scenario
-
-// jsc#PED-12514
-There is also a `crm maintenance` command which can help with advanced tasks like kernel crashdump configuration procedure.
-
+// simplified sbd management
+include::../shared.adoc[tags=jscped-8258,leveloffset=+2]
 
 [#jsc-PED-10881]
 ==== GSF2 available, OCFS2 removed
