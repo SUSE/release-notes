@@ -751,6 +751,10 @@ include::../kernel-160-aarch64.adoc[leveloffset=+3]
 // Release notes for virtualization:
 //    KVM, libvirt, ...
 
+// bsc#1245454
+* iSCSI boot support is disabled in OVMF images.
+
+
 [#virtualization-qemu]
 //jsc-PED-8908
 ==== QEMU
@@ -768,12 +772,6 @@ Highlights include:
 `libvirt` has been updated to version 11.4.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-4-0-2025-06-02.
 
 `libvirt` provides now a modular daemons.
-
-[#virtualization-ovmf]
-// #bsc-1245454
-==== ovmf
-
-iSCSI boot support is disabled in OVMF images.
 
 [#virtualization-vmware]
 ==== VMware
