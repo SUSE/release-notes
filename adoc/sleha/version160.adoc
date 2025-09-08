@@ -29,6 +29,9 @@ It can:
 * display the real-time SBD status and the static SBD configuration
 * manage the configuration file for both disk-based and diskless SBD scenarios, and the on-disk metadata for the disk-based scenario
 
+// jsc#PED-12514
+There is also a `crm maintenance` command which can help with advanced tasks like kernel crashdump configuration procedure.
+
 
 [#jsc-PED-10881]
 ==== GSF2 available, OCFS2 removed
