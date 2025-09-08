@@ -117,3 +117,28 @@ To enable SSH during installation, provide a SSH public key for the `root` user.
 [NOTE]
 This behavior differs between {sles} and {slessap}.
 In {sles}, SSH is enabled by default during installation even if public key for `root` is not provided.
+
+[#removed-deprecated]
+=== Removed and deprecated features and packages
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+[#removed]
+==== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+* `SAPHanaSR` and `SAPHanaSR-scaleout` have been removed. Use `SAPHanaSR-angi` instead.
+
+// [#deprecated]
+// === Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+// The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+
