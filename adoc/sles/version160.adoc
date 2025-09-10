@@ -938,4 +938,7 @@ The following features and packages are deprecated and will be removed in a futu
 * The 2MB OVMF image will be deprecated and removed in {productname} 16.1.
 // * <<jsc-PED-12189>>
 
+
+include::../shared.adoc[tags=jscped-13118,leveloffset=+3]
+
 // ===================================================================

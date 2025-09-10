@@ -130,3 +130,12 @@ It can:
 There is also a `crm maintenance` command which can help with advanced tasks like kernel crashdump configuration procedure.
 end::jscped-8258[]
 
+tag::jscped-13118[]
+= nmap deprecation notice
+
+The nmap project has moved to a new source license that makes future releases of nmap incompatible with our product.
+
+In {productnameshort} {this-version}, we are shipping the latest version of nmap released under the old license.
+In an upcoming release we will switch to an alternative tool.
+end::jscped-13118[]
+

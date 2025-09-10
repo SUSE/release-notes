@@ -79,5 +79,9 @@ realtime sysfs entry (/sys/kernel/realtime) is supposed to accelerate boot times
 
 Undoubtedly, the customer can still use the command 'uname -a' or 'uname -v' to verify if it is running RT kernel or not.
 
-// [#deprecated]
-// ==== Deprecated features and packages
+[#deprecated]
+==== Deprecated features and packages
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+include::../shared.adoc[tags=jscped-13118,leveloffset=+4]
