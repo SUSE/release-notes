@@ -8,6 +8,9 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#PED-11656
+* We now provide a unified image that can be used to install either {slesa} or {slessapa}
+
 // simplified sbd management
 include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 

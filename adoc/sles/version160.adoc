@@ -117,6 +117,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 // jsc#PED-4971
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
+// jsc#PED-11656
+* We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
 // copied from SLES 15 SP7
 // see jsc#PED-12170
