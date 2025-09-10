@@ -561,6 +561,18 @@ To fix this issue, remove the repository in question and add the installation me
 {productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
 If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
 
+=== {x64}-specific changes
+
+Information in this section applies to the {x64} architecture.
+
+[#jsc-PED-11640]
+==== AMD EPYC Turin automonous frequency scaling
+
+In {productnameshort} {this-version}, the default Linux CPU frequency scaling driver for AMD EPYC Turin (and later processors) has shifted to the AMD P-State driver to enable autonomous frequency scaling.
+
+With the AMD P-State driver, it enables the use of the Energy Performance Preference (EPP) for more granular control over performance versus power efficiency to adjust the CPU frequencies based on workload and hardware feedback dynamically.
+
+
 [#ibm-z]
 === {ibmz}-specific changes (s390x)
 
