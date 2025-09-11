@@ -908,7 +908,9 @@ The following features and packages have been removed in this release.
 * `sapconf` has been removed. See <<jsc-PED-13396>> for more info.
 * {yast} has been removed. See <<bsc-1237605>> for more info.
 * WSL1 is not supported anymore
-* The Xen hypervisor was removed in favor of KVM. You can still run {slea} 16 as Xen guest, but not as Xen host.
+// bsc-1248445
+* The Xen hypervisor was removed in favor of KVM. You no longer run {slea} 16 as Xen host or as paravirtualized guest (PV).
+Running {slea} 16 as fully virtualized Xen guest (HVM) or using using hardware virtualization features (PVH) is still possible.
 // jsc#PED-12905
 * `nscd` has been removed
 // jsc-PED-7068
