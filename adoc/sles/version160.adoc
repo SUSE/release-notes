@@ -134,10 +134,10 @@ For more information see https://documentation.suse.com/sles/15-SP7/html/SLES-al
 
 
 // util-linux switch to mountfd API
-include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
+include::../shared.adoc[tags=jscped-12739,leveloffset=+3]
 
 // switch to predictable network names
-include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
+include::../shared.adoc[tags=jscped-12725,leveloffset=+3]
 
 // copied from 15 SP7, see bsc-1237496
 [#jsc-PED-4963]
