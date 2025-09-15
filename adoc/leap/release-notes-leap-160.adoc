@@ -1,23 +1,30 @@
 include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
+:this-version: 16.0
+:previous-version: 15.6
+:major-version: 16
 
 = openSUSE Leap Release Notes
 
-:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+:abstract: This document provides an overview of high-level features, capabilities, limitations, and important updates in {productname}. {productname} {this-version} is built on top of binary RPM packages from SUSE Linux Enterprise, providing a stable enterprise-grade core while adding unique community-driven enhancements.
 
-{productname} is a modern, modular operating system for both multimodal and traditional IT. This document provides a high-level overview of features, capabilities and limitations, and highlights important product updates.
+{productname} is a modern, modular operating system suitable for both traditional IT and multimodal workloads. This document highlights major features, updates, and known limitations.
 
 include::../common/about-rn.adoc[]
 
 include::../common/about-documentation.adoc[]
 
-:omit_sles_specific: true
-include::../sles/version160.adoc[]
+// SUSE Linux Enterprise Core
+This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
 
-// Community part
+include::sles-core.adoc[]
+
+// openSUSE Leap Community Additions
+
+This section describes community-driven enhancements, features, and updates that extend the SUSE Linux Enterprise core. These changes reflect the openSUSE project’s unique contributions, including desktop improvements, additional packages, and new workflows.
+
 include::version160.adoc[]
 
 include::../common/source-code.adoc[]
 
 include::legal.adoc[]
-
