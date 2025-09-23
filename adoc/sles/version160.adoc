@@ -718,7 +718,7 @@ Latest s390-tool update brings these noticable changes:
 
 Previously, `parmfile` would point to a directory of unpacked files.
 
-Now it need to point to a loop-mounted ISO via FTP.
+Now it needs to point to a loop-mounted ISO via FTP.
 For example:
 
 [source]
