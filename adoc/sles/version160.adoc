@@ -773,6 +773,13 @@ KVM in a PowerVM LPAR is a new type of LPAR (logical partition) that allows the 
 A KVM enabled LPAR allows standard Linux KVM tools (for example, `virsh`) to create and manage lightweight Linux Virtual Machines (VM).
 A KVM Linux LPAR uses dedicated cores which enables Linux to have full control of when Linux VMs are scheduled to run, just like KVM on other platforms.
 
+[#bsc-1249569]
+==== Login times out on HMC virtual terminal
+
+If you install {power-productname} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
+
+To work around this issue, disable the Plymouth graphical boot screen by appending the boot parameter `plymouth.enable=0` to the kernel command line.
+
 [#aarch64]
 === {arm}-specific changes ({aarch64})
 
