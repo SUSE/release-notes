@@ -14,16 +14,16 @@ include::../common/about-rn.adoc[]
 
 include::../common/about-documentation.adoc[]
 
-// SUSE Linux Enterprise Core
-This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
-
-include::sles-core.adoc[]
-
 // openSUSE Leap Community Additions
 
 This section describes community-driven enhancements, features, and updates that extend the SUSE Linux Enterprise core. These changes reflect the openSUSE project’s unique contributions, including desktop improvements, additional packages, and new workflows.
 
 include::version160.adoc[]
+
+// SUSE Linux Enterprise Core
+This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
+
+include::sles-core.adoc[]
 
 include::../common/source-code.adoc[]
 
