@@ -31,7 +31,7 @@ For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:S
 
 ==== NVIDIA and Graphics Issues with the Installation Image
 
-Some users with NVIDIA GPUs may experience graphics-related issues during installation, such as https://bugzilla.suse.com/show_bug.cgi?id=1247670[boo#1247670].
+Some users with NVIDIA GPUs may experience graphics-related issues during installation, such as https://bugzilla.suse.com/show_bug.cgi?id=1247670[boo#1247670] where X server fails to start.
 This is due to the fact that {productname} install image contains `kernel-default-optional` and `kernel-default-extra`
 
 * If you encounter problems specific to the `nouveau` driver, try booting with the option:
