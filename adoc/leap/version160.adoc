@@ -85,7 +85,7 @@ The `Steam` package has been removed from the https://en.opensuse.org/Package_re
 Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpak].  
 
 * 32-bit execution requires installing `grub2-compat-ia32` and rebooting.  
-* SELinux users may also need `selinux-policy-targeted-gaming`. See https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page] for details.
+* SELinux users may also need `selinux-policy-targeted-gaming`. For details, refer to https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page].
 
 === Wine
 
