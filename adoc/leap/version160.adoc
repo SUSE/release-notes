@@ -42,7 +42,7 @@ This is due to the fact that {productname} install image contains `kernel-defaul
 
 ==== Experimental Xfce Wayland session
 
-Experimental Xfce Wayland session is available as an installation option. This is one of the first distributions to provide Wayland support for https://en.opensuse.org/Portal:Xfce[Xfce]. We use `gtkgreet` with `greetd` as a Wayland-ready replacement for LightDM (used in the X11 variant).
+Experimental Xfce Wayland session is available as an installation option.  {productname} is one of the first distributions to provide Wayland support for https://en.opensuse.org/Portal:Xfce[Xfce]. We use `gtkgreet` with `greetd` as a Wayland-ready replacement for LightDM (used in the X11 variant).
 
 ==== LXQt Wayland session available post install
 
