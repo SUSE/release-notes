@@ -74,7 +74,7 @@ AppArmor has been updated from version 3.1 to 4.1.
 
 [WARNING]
 AppArmor is no longer available in SUSE Linux Enterprise 16.0. Leap users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.  
-AppArmor can still be enabled post-installation. Instructions are available at https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[AppArmor wiki page].
+AppArmor can still be enabled post-installation. For instructions, refer to https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[AppArmor wiki page].
 
 Users migrating manually from 15.6 will retain AppArmor by default. Users migrating with https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] will be prompted to either switch to SELinux or preserve AppArmor during post-migration.
 
