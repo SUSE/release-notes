@@ -137,7 +137,7 @@ The underlying ERP framework, Tryton, has been updated to LTS version 7.0. Funct
 Users upgrading from previous releases should be automatically migrated from PulseAudio.  
 `opensuse-migration-tool` provides a post-migration script if migration does not occur automatically.
 
-Ensure you are not using the `wireplumber-video-only-profile` if experiencing audio issues. See https://en.opensuse.org/openSUSE:Pipewire#Installation[PipeWire#Installation] for details.
+If experiencing audio issues, ensure you are not using the `wireplumber-video-only-profile`. For details, refer to https://en.opensuse.org/openSUSE:Pipewire#Installation[PipeWire#Installation] for details.
 
 === Hexchat drop
 
