@@ -27,7 +27,7 @@ For additional guidance, see: https://en.opensuse.org/SDB:System_upgrade[SDB:Sys
 
 === Installer and Desktop Environments
 
-* {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can still be installed manually post-installation.  
+* {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.  
 
 ==== NVIDIA and Graphics Issues with the Installation Image
 
