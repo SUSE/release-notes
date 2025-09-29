@@ -11,7 +11,7 @@ include::attributes.adoc[]
 Each {productname} minor release is published once every 12 months.  
 {productname} {major-version} provides maintenance updates over two minor releases, giving each release a full 24 months of community support.
 
-Unless there is a change in release strategy, the final {productname} version&mdash;16.6 will be released in fall 2031 and will continue receiving updates until the release of {productname} 17.1 two years later.
+Unless there is a change in release strategy, the final {productname} version (16.6) will be released in fall 2031 and will continue receiving updates until the release of {productname} 17.1 two years later.
 
 For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 
