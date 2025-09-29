@@ -54,7 +54,7 @@ LXQt Wayland session is included, but will become a full installer option in lat
 This launcher, in combination with `gnome-tour` and `plasma-welcome`, replaces the legacy Qt5-based `opensuse-welcome`, which was previously the default greeter.
 
 The launcher also allows the openSUSE release team to update or refresh the displayed greeter via a package update, for example after a major GNOME update.
-If you are creating a custom appliance without a welcome application, or if you want to deploy a system where the greeter should never appear, make sure to remove `opensuse-welcome-launcher`.
+To create a custom appliance without a welcome application, or to deploy a system where the greeter should never appear,  remove `opensuse-welcome-launcher`.
 
 === Automated NVIDIA Driver and Repository Setup
 
