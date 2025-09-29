@@ -1,37 +1,149 @@
-=== Community changes affecting all architectures
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+:this-version: 16.0
+:previous-version: 15.6
+:major-version: 16
 
+== openSUSE Leap Community Additions
 
-==== Steam
+=== Lifecycle
+
+Each {productname} minor release is published once every 12 months.  
+{productname} {major-version} provides maintenance updates over two minor releases, giving each release a full 24 months of community support.
+
+Unless there is a change in release strategy, the final {productname} version (16.6) will be released in fall 2031 and will continue receiving updates until the release of {productname} 17.1 two years later.
+
+For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
+
+For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.  
+See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
+
+=== Migration from Leap 15.6
+
+The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.  
+Users migrating from older releases can run the tool from https://github.com/openSUSE/opensuse-migration-tool[Git repository].  
+
+For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+
+=== Installer and Desktop Environments
+
+* {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.  
+
+==== NVIDIA and Graphics Issues with the Installation Image
+
+Some users with NVIDIA GPUs may experience graphics-related issues during installation, such as https://bugzilla.suse.com/show_bug.cgi?id=1247670[boo#1247670] where X server fails to start.
+This is due to the fact that {productname} install image contains `kernel-default-optional` and `kernel-default-extra`
+
+* If you encounter problems specific to the `nouveau` driver, try booting with the option:
+  `rd.driver.blacklist=nouveau`
+
+* For general graphics boot problems, use the option:
+  `nomodeset`
+
+==== Experimental Xfce Wayland session
+
+Experimental Xfce Wayland session is available as an installation option.  {productname} is one of the first distributions to provide Wayland support for https://en.opensuse.org/Portal:Xfce[Xfce]. We use `gtkgreet` with `greetd` as a Wayland-ready replacement for LightDM (used in the X11 variant).
+
+==== LXQt Wayland session available post install
+
+LXQt Wayland session is included, but will become a full installer option in later releases once LXQt Miriway efforts are further developed: https://code.opensuse.org/leap/features/issue/192.
+
+=== Changes to the openSUSE Welcome
+
+{productname} {major-version} now uses the `opensuse-welcome-launcher` to start the appropriate greeter application.
+This launcher, in combination with `gnome-tour` and `plasma-welcome`, replaces the legacy Qt5-based `opensuse-welcome`, which was previously the default greeter.
+
+The launcher also allows the openSUSE release team to update or refresh the displayed greeter via a package update, for example after a major GNOME update.
+To create a custom appliance without a welcome application, or to deploy a system where the greeter should never appear,  remove `opensuse-welcome-launcher`.
+
+=== Automated NVIDIA Driver and Repository Setup
+
+On supported GPUs, NVIDIA's open driver is installed by default along with the NVIDIA graphics driver repository.  
+In {productname} {major-version}, user-space drivers are also automatically installed, enabling graphical acceleration out of the box.
+
+=== Security
+
+==== AppArmor
+
+AppArmor has been updated from version 3.1 to 4.1.  
+
+* Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1[4.0] introduced fine-grained network rules (limitable by IP/port), but kernel support is not upstream yet.  
+* Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.0[4.1] introduced the `priority=<number>` rule prefix, which allows overriding rules.
+
+==== AppArmor not available by default on new installations
+
 [WARNING]
-`Steam` package was dropped from https://en.opensuse.org/Package_repositories#Non-OSS[Non-OSS repository]
-due to limited set of 32-bit libraries. {productname} users are advised to install it with https://en.opensuse.org/Steam#Flatpak[flatpak].
-Users will have to enable 32-bit execution by installing `grub2-compat-ia32` followed by reboot.
+AppArmor is no longer available in SUSE Linux Enterprise 16.0. Leap users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.  
+AppArmor can still be enabled post-installation. For instructions, refer to https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[AppArmor wiki page].
 
-Users using SELinux will have to install additional `selinux-policy-targeted-gaming`. See https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page] for more details.	
+Users migrating manually from 15.6 will retain AppArmor by default. Users migrating with https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] will be prompted to either switch to SELinux or preserve AppArmor during post-migration.
 
-==== Wine
-
-{productname} comes with `wine` 10.10 and is available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor. Users needing 32-bit binary execution support should consider using `flatpak` version or similar.
-
-==== Security
-
-===== AppArmor
-
-AppArmor was updated from 3.1 to 4.1
-
-Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1[4.0] introduced fine grained network rules so that you can limit network rules to IP and/or port.
-Unfortunately the kernel support for fine grained network rules is not upstream yet, so the feature cannot be enabled at the moment.
-
-Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.0[4.1] introduced the priority=<number> rule prefix which allows overriding of rules.
-
-===== AppArmor not available by default on new installations
+=== Steam
 
 [WARNING]
-AppArmor is no longer available in SUSE Linux Enterprise 16.0, so Leap users can no 
-longer choose AppArmor as the Linux Security Module (LSM) during the new installation.
-AppArmor functionality can, however, be enabled post-installation.
-All necessary steps are described in https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[the AppArmor wiki page].
+The `Steam` package has been removed from the https://en.opensuse.org/Package_repositories#Non-OSS[Non-OSS repository] due to limited 32-bit library support.  
+Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpak].  
 
-Users migrating manually from 15.6 will by default keep using AppArmor. Users migrating using
-https://github.com/openSUSE/opensuse-migration-tool[opensuse-migration-tool] will be asked if they want to switch to SELinux or preserve AppArmor as part of the post migration process.
+* 32-bit execution requires installing `grub2-compat-ia32` and rebooting.  
+* SELinux users may also need `selinux-policy-targeted-gaming`. For details, refer to https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page].
 
+=== Wine
+
+{productname} includes `wine` 10.10, available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor.  
+Users requiring 32-bit binary execution should consider using the Flatpak version or a similar solution.
+
+=== Networking
+
+==== Broken libvirt networking when using Docker
+
+[WARNING]
+If networking inside libvirt-managed virtual machines fails while Docker is running, it is likely due to Docker not supporting `nftables`.  
+
+To fix the issue:
+
+* Edit `/etc/libvirt/network.conf` and set:
+
+[source,ini]
+----
+firewall_backend = "iptables"
+----
+
+* Add the virtual network interface to the libvirt firewall zone:
+
+[source,bash]
+----
+firewall-cmd --add-interface=virbr0 --zone=libvirt --permanent
+firewall-cmd --reload
+----
+
+* Restart libvirt and related services:
+
+[source,bash]
+----
+systemctl restart libvirtd
+----
+
+This restores networking for libvirt VMs while Docker is active.
+
+=== GNU Health
+
+https://www.gnuhealth.org/[GNU Health] has been updated to major release 5.0.2.  
+The underlying ERP framework, Tryton, has been updated to LTS version 7.0. Functional improvements include enhanced medical image workflows and better integration with Orthanc 1.12.9 (PACS server).
+
+
+=== PipeWire replaces PulseAudio
+
+{productname} {this-version} uses PipeWire by default.  
+Users upgrading from previous releases should be automatically migrated from PulseAudio.  
+`opensuse-migration-tool` provides a post-migration script if migration does not occur automatically.
+
+If experiencing audio issues, ensure you are not using the `wireplumber-video-only-profile`. For details, refer to https://en.opensuse.org/openSUSE:Pipewire#Installation[PipeWire#Installation] for details.
+
+=== Hexchat drop
+
+Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[upstream project] is archived. 
+Alternatives include https://software.opensuse.org/package/polari[Polari] or the Flatpak version: https://flathub.org/en/apps/io.github.Hexchat[Flatpak].
+
+==== Configuring boot entry with serial console
+
+See https://en.opensuse.org/SDB:SerialConsole for guidance.

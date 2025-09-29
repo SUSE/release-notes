@@ -4,10 +4,11 @@
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
+ifeval::[{omit_sles_specific} == "true"]
 == {productname} Version {this-version}
 
 These release notes apply to {productname} {this-version}.
-
+endif::[]
 === Support and lifecycle
 
 {productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
