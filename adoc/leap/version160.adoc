@@ -23,7 +23,7 @@ See https://www.suse.com/support/policy.html[Support Policy] and https://www.sus
 The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.  
 Users migrating from older releases can run the tool from https://github.com/openSUSE/opensuse-migration-tool[Git repository].  
 
-For additional guidance, see: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
 
 === Installer and Desktop Environments
 
