@@ -78,6 +78,26 @@ include::shared.adoc[tags=61,leveloffset=+3]
 
 include::kernel-micro-60-aarch64.adoc[leveloffset=+1]
 
+[#bsc-1229336]
+==== Changed default console settings optimized for servers
+
+{productnameshort} {previous-version} used default kernel command line
+console settings optimized for {rpireg} devices. This allowed for a
+convenient evaluation on those devices but led to problems and the need for
+configuration changes when deploying to other machines.
+
+{productnameshort} {this-version} uses default kernel command line
+settings optimized for standards-compliant devices:
+
+* For console output on the {rpi} GPIO header you may need to specify
+`console=ttyS0,115200n8` in the GRUB menu.
+* For console output on a graphical display you may need to add
+`console=tty0`.
+* You may need to configure your system firmware to default output to your
+preferred location.
+
+include::../common/aarch64-console.adoc[]
+
 === Removed and deprecated features and packages
 
 // This section is intended as a quick-to-consume list of deprecations/removals
