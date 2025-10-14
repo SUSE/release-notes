@@ -1,5 +1,7 @@
 :this-version: 16.0
 :previous-version: 15 SP7
+// used in URLs; will not be needed past 16.0
+:previous-version-no-spaces: 15-SP7
 :next-version: 16.1
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
@@ -9,6 +11,21 @@ ifeval::[{omit_sles_specific} == "true"]
 
 These release notes apply to {productname} {this-version}.
 endif::[]
+
+=== What's new?
+
+==== Package and module changes in {this-version}
+
+The full list of changed packages compared to {previous-version} can be seen at this URL:
+
+https://documentation.suse.com/package-lists/sle/{this-version}/package-changes_SLE-{previous-version-no-spaces}-GA_SLE-{this-version}-GA.txt
+
+The full list of changed modules compared to {previous-version} can be seen at this URL:
+
+https://documentation.suse.com/package-lists/sle/{this-version}/module-changes_SLE-{previous-version-no-spaces}-GA_SLE-{this-version}-GA.txt
+
+
+
 === Support and lifecycle
 
 {productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
