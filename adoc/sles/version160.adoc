@@ -116,6 +116,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 === Changes affecting all architectures
 
+// jsc#PED-12283
+* We now provide Grafana Alloy which can integrate with SUSE Observability as well.
 // jsc#PED-4971
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
 // jsc#PED-11656
