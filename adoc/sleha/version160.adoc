@@ -61,5 +61,6 @@ usermod -d /var/lib/pacemaker hacluster
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
+*  `sctp` support has been deprecated in `kronosnet` and to be removed upstream in 2.x
 * <<jsc-PED-10881>>
 
