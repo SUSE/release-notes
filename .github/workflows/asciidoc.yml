@@ -57,13 +57,13 @@ jobs:
           mkdir -p publish/sles-16_SP0/html/release-notes
           mkdir -p publish/leap-16.0/html/release-notes
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
-          mv "$OUTPUT_DIR/html/release-notes_leap_16.0"/* publish/leap-16.0/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sle-ha_16.0"/* publish/sleha-16.0/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sle-micro_6.0"/* publish/sl-micro_60/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sle-micro_6.1"/* publish/sl-micro_61/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sle-micro_6.2"/* publish/sl-micro_62/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sles_16.0"/* publish/sles-16.0/html/release-notes
-          mv "$OUTPUT_DIR/html/release-notes_sle-sap_16.0"/* publish/slesap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_leap_16.0"/* publish/leap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-ha_16.0"/* publish/sleha-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.0"/* publish/sl-micro_60/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.1"/* publish/sl-micro_61/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.2"/* publish/sl-micro_62/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles_16.0"/* publish/sles-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-sap_16.0"/* publish/slesap-16.0/html/release-notes
           echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/sles-16.0/html/release-notes/">' > publish/sles-16_SP0/html/release-notes/index.html
           rm -rf artifact-dir
           mv publish artifact-dir

@@ -21,7 +21,7 @@ endif
 # micro
 PRODUCT_VERSION ?= micro
 
-dc_file := DC-release-notes-$(PRODUCT_VERSION)
+dc_file := DC-releasenotes_$(PRODUCT_VERSION)
 mainfile  := adoc/release-notes-$(PRODUCT_VERSION).adoc
 
 daps_command := daps
