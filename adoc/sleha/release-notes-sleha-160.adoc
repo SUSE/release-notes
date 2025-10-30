@@ -2,6 +2,8 @@ include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
 = {productname} Release Notes
+:revdate: 2025-10-27
+:page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
 
