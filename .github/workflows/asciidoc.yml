@@ -63,7 +63,7 @@ jobs:
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.1"/* publish/sl-micro_61/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.2"/* publish/sl-micro_62/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sles_16.0"/* publish/sles-16.0/html/release-notes
-          mv "$OUTPUT_DIR/html/releasenotes_sle-sap_16.0"/* publish/slesap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.0"/* publish/slesap-16.0/html/release-notes
           echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/sles-16.0/html/release-notes/">' > publish/sles-16_SP0/html/release-notes/index.html
           rm -rf artifact-dir
           mv publish artifact-dir
