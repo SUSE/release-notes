@@ -6,7 +6,6 @@
     <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
    </dm:bugtracker>
   </dm:docmanager>
-  <releaseinfo>@VERSION@</releaseinfo>
   <productname>SUSE Linux Enterprise Server for SAP applications</productname>
   <productnumber>16.0</productnumber>
   <date><?dbtimestamp format="Y-m-d"?></date>

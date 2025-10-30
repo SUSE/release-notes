@@ -24,7 +24,6 @@
 :uns: ‒
 
 :rnotes: Release Notes
-:rversion: @VERSION@
 
 :yast: YaST
 :yast2: YaST2
