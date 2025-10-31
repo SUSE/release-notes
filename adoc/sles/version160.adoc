@@ -151,6 +151,19 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// also jsc#DOCTEAM-2009
+[#jsc-1249690]
+==== Blank screen after installation
+
+This is most likely due to the Nouveau open-source Nvidia driver being used and not working properly.
+As a workaround, first disable Nouveau before installation by adding this kernel parameter:
+
+[source]
+rd.driver.blacklist=nouveau
+
+Then install the proprietary NVIDIA driver.
+
+
 // copied from SLES 15 SP7
 // see jsc#PED-12170
 [#jsc-PED-12169]
