@@ -139,3 +139,15 @@ In {productnameshort} {this-version}, we are shipping the latest version of nmap
 In an upcoming release we will switch to an alternative tool.
 end::jscped-13118[]
 
+tag::jscped-12715[]
+[#jsc-PED-12715]
+= Removal of 32-bit support
+
+{productname} {this-version} only supports 64-bit binaries.
+Support for 32-bit binaries (or 31-bit binaries on {ibmz}) has been removed.
+
+This means that statically-linked 32-bit binaries (or 31-bit binaries on {ibmz}) and container images cannot be run anymore.
+32-bit syscalls are still enabled by default on arm64, and can be enabled on x86_64 via the kernel parameter `ia32_emulation`.
+On other architectures it's disabled without any option to enable it.
+end::jscped-12715[]
+

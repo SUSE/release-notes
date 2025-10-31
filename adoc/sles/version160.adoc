@@ -282,15 +282,8 @@ See https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html#sl
 * We have been working on removing the dependencies of packages and tools on the `/usr/bin/python3` binary, which means that {productname} could use a newer version of the Python interpreter in the future. This new Python interpreter will coexist with the previous version that will then be maintained as legacy interpreter for a limited time.
 
 
-[#jsc-PED-12715]
-==== Removal of 32-bit support
-
-{productname} {this-version} only supports 64-bit binaries.
-Support for 32-bit binaries (or 31-bit binaries on {ibmz}) has been removed.
-
-This means that statically-linked 32-bit binaries (or 31-bit binaries on {ibmz}) and container images cannot be run anymore.
-32-bit syscalls are still enabled by default on arm64, and can be enabled on x86_64 via the kernel parameter `ia32_emulation`.
-On other architectures it's disabled without any option to enable it.
+// Removal of 32-bit support
+include::../shared.adoc[tags=jscped-12715,leveloffset=+3]
 
 
 [#jsc-PED-12734]
