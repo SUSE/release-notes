@@ -125,7 +125,7 @@ Technology previews come with the following limitations:
 [#bsc-1252540]
 ==== Agentic AI
 
-As technology prevew, an AI agent using Model Context Protocol (MCP) standard called `mcphost` is available in {productname} {this-version}.
+As technology preview, an AI agent using Model Context Protocol (MCP) standard called `mcphost` is available in {productname} {this-version}.
 
 By default, it will be configured with no permissions.
 To start using it, you need to configure permissions according to your needs and connect it to your LLM of choice.
