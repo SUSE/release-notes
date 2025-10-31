@@ -12,9 +12,9 @@ ifeval::[{omit_sles_specific} == "true"]
 These release notes apply to {productname} {this-version}.
 endif::[]
 
-=== What's new?
+== What's new?
 
-==== Package and module changes in {this-version}
+=== Package and module changes in {this-version}
 
 The full list of changed packages compared to {previous-version} can be seen at this URL:
 
@@ -26,7 +26,7 @@ https://documentation.suse.com/package-lists/sle/{this-version}/module-changes_S
 
 
 
-=== Support and lifecycle
+== Support and lifecycle
 
 {productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
 
@@ -63,7 +63,7 @@ For contracted customers and partners, {productname} is delivered with L3 suppor
 
 {suse} will only support the usage of original packages. That is, packages that are unchanged and not recompiled.
 
-==== General support
+=== General support
 
 To learn about supported features and limitations, refer to the following
 sections in this document:
@@ -140,7 +140,7 @@ As technology preview, `lklfuse` is available in {productname} {this-version}.
 Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` currently only supports a single device per mount.
 
 
-=== Changes affecting all architectures
+== Changes affecting all architectures
 
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 8.3.0. This version supports machine checks related to CXL memory.
@@ -153,7 +153,7 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 // also jsc#DOCTEAM-2009
 [#jsc-1249690]
-==== Blank screen after installation
+=== Blank screen after installation
 
 This is most likely due to the Nouveau open-source Nvidia driver being used and not working properly.
 As a workaround, first disable Nouveau before installation by adding this kernel parameter:
@@ -167,7 +167,7 @@ Then install the proprietary NVIDIA driver.
 // copied from SLES 15 SP7
 // see jsc#PED-12170
 [#jsc-PED-12169]
-==== Userspace live patching
+=== Userspace live patching
 
 Currently, `libpulp` supports {ulp} of `glibc` and `openssl` binaries on the following architectures:
 
@@ -178,14 +178,14 @@ For more information see https://documentation.suse.com/sles/15-SP7/html/SLES-al
 
 
 // util-linux switch to mountfd API
-include::../shared.adoc[tags=jscped-12739,leveloffset=+3]
+include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
 
 // switch to predictable network names
-include::../shared.adoc[tags=jscped-12725,leveloffset=+3]
+include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
 
 // copied from 15 SP7, see bsc-1237496
 [#jsc-PED-4963]
-==== systemd default configurations moved to `/usr`
+=== systemd default configurations moved to `/usr`
 
 Main configuration files have been moved from `/etc` to `/usr`.
 This ensures that main configuration files have lower precedence, allowing them to be overriden by package-supplied drop-in snippets.
@@ -199,17 +199,17 @@ Remove configurations in `/etc` to restore defaults.
 include::../shared.adoc[tags=jscped-4965,leveloffset=+2]
 
 // minimum hardware requirements
-include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
+include::../shared.adoc[tags=jscped-12860,leveloffset=+2]
 
 // SHA1 disabled
-include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
+include::../shared.adoc[tags=jscped-12210,leveloffset=+2]
 
-include::../shared.adoc[tag=jscped-11998,leveloffset=+3]
+include::../shared.adoc[tag=jscped-11998,leveloffset=+2]
 
 
 [#jsc-PED-11998]
 
-==== Lightweight guard region support
+=== Lightweight guard region support
 
 This is a new feature in `madvise()` that installs a lightweight guard region into a specified address range.
 
@@ -218,7 +218,7 @@ See https://manpages.opensuse.org/Leap-16.0/man-pages/madvise.2.en.html#MADV_GUA
 
 // also jsc#DOCTEAM-1949
 [#bsc-1244716]
-==== Harmless error messages sometimes displayed when launching some applications
+=== Harmless error messages sometimes displayed when launching some applications
 
 The following messages are sometimes displayed when launching specific applications:
 
@@ -237,13 +237,13 @@ These messages are harmless and can be ignored.
 
 
 [#jsc-PED-13449]
-==== NFS over TLS support
+=== NFS over TLS support
 
 NFS over TLS is now supported for storage traffic.
 
 
 [#jsc-PED-13396]
-==== `saptune` replaces `sapconf`
+=== `saptune` replaces `sapconf`
 
 In {productnameshort} {this-version}, `sapconf` is replaced with `saptune`.
 `saptune` will also be enabled with a base tuning, similar to `sapconf`.
@@ -251,7 +251,7 @@ Base tuning only will be enabled if `saptune` was not configured before (no SAP 
 
 
 [#jsc-PED-12925]
-==== Azure Entra ID authentication via `himmelblau`
+=== Azure Entra ID authentication via `himmelblau`
 
 The `himmelblau` package has been added.
 It provides interoperability with for Microsoft Azure Entra ID and Intune.
@@ -261,21 +261,21 @@ For more information see https://github.com/himmelblau-idm/himmelblau.
 
 
 [#jsc-PED-12206]
-==== Legacy BIOS support
+=== Legacy BIOS support
 
 Legacy BIOS is still supported in {productname} {this-version}.
 However, some features are not available when using it (for example, full-disk encryption with TPM).
 Finally, support for legacy BIOS will be discontinued in the future.
 For that reason we recommend switching to UEFI at the nearest opportunity.
 
-==== `/tmp` not persistent
+=== `/tmp` not persistent
 
 In {productname} {this-version}, `/tmp` is no longer persistent between reboots but uses `tmpfs` instead.
 See https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html#sle16-tmp for more information.
 
 
 [#jsc-PED-12752]
-==== Python update strategy
+=== Python update strategy
 
 * `/usr/bin/python3` is currently set to use Python 3.13. In a future minor version update this is likely going to be changed to a newer Python version.
 * {productname} {this-version} contains around 700 popular Python packages, which form a basic set of functionality for packages that depends on Python and for developing apps without needing to install Python modules from an external provider.
@@ -283,11 +283,11 @@ See https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html#sl
 
 
 // Removal of 32-bit support
-include::../shared.adoc[tags=jscped-12715,leveloffset=+3]
+include::../shared.adoc[tags=jscped-12715,leveloffset=+2]
 
 
 [#jsc-PED-12734]
-==== Compiling kernel uses non-default compiler
+=== Compiling kernel uses non-default compiler
 
 Customers who need to build kernel modules or rebuild the kernel must use the same compiler version the kernel was built with.
 The kernel is built with `gcc` version 13, which is not the default compiler.
@@ -296,7 +296,7 @@ This specific compiler version is only supported for building kernel modules and
 
 
 [#jsc-PED-12297]
-==== Optimized libraries for newer hardware architectures
+=== Optimized libraries for newer hardware architectures
 
 We have added support for the glibc-HWCAPS feature which loads optimized versions of libraries for specific newer CPUs automatically.
 
@@ -338,7 +338,7 @@ The build infrastructure for this feature is enabled for the following libraries
 
 
 [#bsc-1240889]
-==== No remote `root` login with password
+=== No remote `root` login with password
 
 [WARNING]
 If you install the system using only a `root` password and do not provide an SSH key for the root user, `sshd` will not be enabled automatically after installation.
@@ -348,37 +348,37 @@ By default, remote password-based `root` login is disabled.
 The installer enables the `sshd` service only when an SSH key for root is configured during setup.
 To allow remote `root` login, configure an SSH key for root during installation.
 
-include::../shared.adoc[tags=bsc1240989,leveloffset=+3]
+include::../shared.adoc[tags=bsc1240989,leveloffset=+2]
 
 [#jsc-PED-12156]
-==== SysV init.d scripts support
+=== SysV init.d scripts support
 
 SysV init.d scripts have been https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15-SP2/index.html#jsc-SLE-7690[deprecated since {productnameshort} 15 SP2].
 
 In {productnameshort} {this-version}, support of SysV init.d scripts has been removed.
 
 
-=== Changes affecting all architectures (RC1)
+== Changes affecting all architectures (RC1)
 
 This section contains information specific to RC1.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
 [#jsc-PED-12189]
-==== `/etc/services` removal
+=== `/etc/services` removal
 
 The `/etc/services` file is just a dummy file that will be removed in the future.
 Software that appends to it without creating it should have its behavior changed.
 
 
-=== Changes affecting all architectures (Beta4)
+== Changes affecting all architectures (Beta4)
 
 This section contains information specific to Beta4.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
 [#jsc-DOCTEAM-1848]
-==== Configuring network interfaces during installation
+=== Configuring network interfaces during installation
 
 Currently, the installer does not allow for setting up network interfaces using the UI.
 However, in the meantime you can use dracut-like command-line options, for example:
@@ -391,7 +391,7 @@ Additionally, the `inst.copy_network` is not available in Beta4.
 
 // also bsc#12244703
 [#jsc-DOCTEAM-1829]
-==== {sap} workloads on {productnameshort} {this-version}
+=== {sap} workloads on {productnameshort} {this-version}
 
 For running {sap} workloads on {productname} {this-version}, do the following:
 
@@ -412,18 +412,18 @@ test -d ./snapshots || restorecon R /
 test -d /.snapshots && restorecon -R / -e /.snapshots
 test -d /.snapshots || restorecon -R /
 
-==== FIPS 140-3 not working properly
+=== FIPS 140-3 not working properly
 
 FIPS 140-3 installation has not been fully validated and may cause unexpected software failure or crashes. Therefore, we discourage you from using it on Beta4.
 
-=== Changes affecting all architectures (Beta3)
+== Changes affecting all architectures (Beta3)
 
 This section contains information specific to Beta3.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
 [#bsc-1240945]
-==== Kernel crash in QEMU
+=== Kernel crash in QEMU
 
 {productname} {this-version} requires a CPU that supports a so-called "x86-64-v2" microarchitecture.
 Due to this, running a {productnameshort} image using QEMU currently results in a kernel crash.
@@ -432,7 +432,7 @@ As a workaround you can run QEMU with the `-cpu host` argument.
 
 
 [#jsc-DOCTEAM-1849]
-==== Missing `libnsl.so.1` library
+=== Missing `libnsl.so.1` library
 
 The `libnsl.so.1` library has been deprecated in {slesa} 15 and finally removed in {productname} {this-version}.
 
@@ -440,7 +440,7 @@ As a workaround for applications that cannot be installed without it (but presum
 
 
 [#jsc-DOCTEAM-1767]
-==== `firewalld` not usable with many interfaces
+=== `firewalld` not usable with many interfaces
 
 Due to an upstream bug, `firewalld` might take a long time or time out when adding many interfaces.
 The error occurs when `firewalld` is restarted after applying such a configuration.
@@ -452,14 +452,14 @@ Possible causes include: the remote application did not send a reply, the messag
 See https://github.com/firewalld/firewalld/issues/1399 for more information.
 
 
-=== Changes affecting all architectures (Beta2)
+== Changes affecting all architectures (Beta2)
 
 This section contains information specific to Beta2.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
 [#bsc-1237605]
-==== Switch from YaST to Cockpit
+=== Switch from YaST to Cockpit
 
 {productname} {this-version} has switched from {yast} to Cockpit for manual system administration.
 We have enhanced Cockpit with new modules with the intention to upstream them later.
@@ -490,7 +490,7 @@ Installation of the pattern `cockpit` will pull in the following modules: `cockp
 
 
 [#jsc-DOCTEAM-1714]
-==== `dovecot` 2.4 configuration upgrade
+=== `dovecot` 2.4 configuration upgrade
 
 In {productname} {this-version} `dovecot` has been upgraded to version 2.4.
 The configuration of this version is incompatible with the previous versions.
@@ -499,7 +499,7 @@ Configuration has to be updated manually.
 For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-to-2.4.html.
 
 
-=== Changes affecting all architectures (Beta1)
+== Changes affecting all architectures (Beta1)
 
 This section contains information specific to Beta1.
 We are working on fixing the problems mentioned here.
@@ -507,15 +507,15 @@ The content of this section will be removed for the final released product.
 
 ifeval::[{omit_sles_specific} == "true"]
 [#jsc-DOCTEAM-1700]
-==== What images are part of Beta1
+=== What images are part of Beta1
 
-===== Online installer based on Agama (same for SLES & SLES SAP):
+==== Online installer based on Agama (same for SLES & SLES SAP):
 - `agama-installer.aarch64-11.0.0-SLE-Beta1.iso`
 - `agama-installer.ppc64le-11.0.0-SLE-Beta1.iso`
 - `agama-installer.s390x-11.0.0-SLE-Beta1.iso`
 - `agama-installer.x86_64-11.0.0-SLE-Beta1.iso`
 
-===== Offline installer based on Agama
+==== Offline installer based on Agama
 * SLES 16.0
 - `SLES-16.0-ppc64le-Beta1.install.iso`
 - `SLES-16.0-s390x-Beta1.install.iso`
@@ -524,7 +524,7 @@ ifeval::[{omit_sles_specific} == "true"]
 - `SLES-SAP-Packages-16.0-ppc64le-Beta1.install.iso`
 - `SLES-SAP-Packages-16.0-x86_64-Beta1.install.iso`
 
-===== {minvm} and {minimg} images
+==== {minvm} and {minimg} images
 - `SLES16-Minimal-Image.aarch64-RaspberryPi-Beta1.raw.xz`
 - `SLES16-Minimal-Image.s390x-s390x-dasd-Beta1.raw.xz`
 - `SLES16-Minimal-Image.s390x-s390x-dasd-Cloud-Beta1.raw.xz`
@@ -540,7 +540,7 @@ ifeval::[{omit_sles_specific} == "true"]
 - `SLES16-Minimal-VM.x86_64-VMware-Beta1.vmdk`
 - `SLES16-Minimal-VM.x86_64-VMware-Beta1.vmx`
 
-===== Packages images
+==== Packages images
 - `SLES-HA-16.0-aarch64-Beta1-Debug.iso`
 - `SLES-HA-16.0-aarch64-Beta1.iso`
 - `SLES-HA-16.0-aarch64-Beta1-Source.iso`
@@ -574,14 +574,14 @@ ifeval::[{omit_sles_specific} == "true"]
 endif::[]
 
 [#bsc-1235855]
-==== Disk configuration UI during installation
+=== Disk configuration UI during installation
 
 Currently, choosing disk configurations other than "An existing disk" (installation to a single disk) suffer from poor usability.
 This is expected to change in a future update.
 
 
 [#bsc-1236813]
-==== Non-functioning `zypper` after installation
+=== Non-functioning `zypper` after installation
 
 There is currently a known issue that adds a non-functioning `zypper` repository which prevents `zypper` from working correctly.
 
@@ -593,17 +593,17 @@ To fix this issue, remove the repository in question and add the installation me
 
 
 [#jsc-PED-6311]
-==== systemd uses cgroup v2 by default
+=== systemd uses cgroup v2 by default
 
 {productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
 If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
 
-=== {x64}-specific changes
+== {x64}-specific changes
 
 Information in this section applies to the {x64} architecture.
 
 [#jsc-PED-11640]
-==== AMD EPYC Turin automonous frequency scaling
+=== AMD EPYC Turin automonous frequency scaling
 
 In {productnameshort} {this-version}, the default Linux CPU frequency scaling driver for AMD EPYC Turin (and later processors) has shifted to the AMD P-State driver to enable autonomous frequency scaling.
 
@@ -611,12 +611,12 @@ With the AMD P-State driver, it enables the use of the Energy Performance Prefer
 
 
 [#ibm-z]
-=== {ibmz}-specific changes (s390x)
+== {ibmz}-specific changes (s390x)
 
 Information in this section applies to {z-productname} {this-version}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
-==== Hardware
+=== Hardware
 
 * support has been added for IBM z17 in `kernel` providing machine name, kconfig options, new instructions etc.
 * support has been added for IBM z17 in `gdb`, `valgrind`, `binutils`
@@ -646,13 +646,13 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 // jsc-PED-3310
 * Upgrade Mellanox (mlx5) driver to latest version
 
-==== Performance
+=== Performance
 
 // jsc-PED-12041
 * LPAR level power consumption reporting is now available in kernel and s390-tools.
 
-==== Security
-===== In-kernel crypto support
+=== Security
+==== In-kernel crypto support
 
 With this service pack are additionaly supported:
 
@@ -667,7 +667,7 @@ With this service pack are additionaly supported:
 // jsc-PED-10155
  * MSA 10 XTS crypto PAES support for in-kernel crypto
 
-===== OpenSSL features
+==== OpenSSL features
 
 This release brings these features and improvements:
 
@@ -684,28 +684,28 @@ This release brings these features and improvements:
 // jsc-PED-3224
 * upgrade openssl-ibmca to the latest version
 
-===== openCryptoki
+==== openCryptoki
 // jsc-PED-3276
 * The new version of `libica` and `libzpc` is included.
 // jsc-PED-9986
 * The openCryptoki CCA Token is now available on x86_64 and ppc64le architectures.
 
-===== p11-kit
+==== p11-kit
 // jsc-PED-9986
 * Add support for IBM specific attributes and mechanisms to the PKCS11 client-server implementation of p11-kit.
 
-===== pkey
+==== pkey
 // jsc-PED-10150 jsc-SLE-10148
 * The kernel pkey module can now generate keys AES-XTS keys (MSA 10) and HMAC key (MSA 11) from clear keys.
 * The module can also generate keys represented by identifiers of secure execution retrievable keys.
 // jsc-PED-6541
 * The pkey also supports EP11 API ordinal 6 for secure guests.
 
-===== zcrypt
+==== zcrypt
 // jsc-PED-11101
 * The zcrypt extends error recovery to deal with device scans of unavailable devices.
 
-==== Virtualization
+=== Virtualization
 
 * KVM guests can exploit z17 & LinuxONE 5 CPU features
 // jsc-PED-10156
@@ -734,7 +734,7 @@ This release brings these features and improvements:
 // jsc-PED-3724
 * KVM improves memory reclaiming for z15 Secure Execution guests and above (libvirt)
 
-==== Miscellaneous
+=== Miscellaneous
 
 // jsc-PED-12456
 * `plymouth` was replaced by `blog` on s390x, as `plymouth` couldn't work without graphical display.
@@ -743,7 +743,7 @@ This release brings these features and improvements:
 // jsc-PED-7849
 * Allow `httpd` customers to protect their web server identity using HSMs (via CryptoExpress adapters).
 
-===== Enhancements in `s390-tools`
+==== Enhancements in `s390-tools`
 Latest s390-tool update brings these noticable changes:
 // jsc-PED-10136
  * additional channel measurements - kernel & `s390-tools`
@@ -751,7 +751,7 @@ Latest s390-tool update brings these noticable changes:
  * a new tool cpacinfo shall provide information on CPACF including the supported MSA levels, instructions, subfunctions per instruction. https://www.ibm.com/docs/en/linux-on-systems?topic=hw-cpacf
 
 [#bsc-1235858]
-===== `parmfile` now points to ISO
+==== `parmfile` now points to ISO
 
 Previously, `parmfile` would point to a directory of unpacked files.
 
@@ -766,7 +766,7 @@ For more information see https://agama-project.github.io/docs/user/boot_options.
 
 
 [#bsc-1235857]
-===== Disk selection UI problems during installation
+==== Disk selection UI problems during installation
 
 If you want to enable a disk, click on _Storage_ in the left panel, then _Install new system on_ and choose "storage techs".
 Then you can choose a type of disk.
@@ -781,7 +781,7 @@ In the _zFCP_ section, after activating a disk a gray line will appear.
 This is just a visual bug, the disk will activate correctly.
 
 
-===== Installation failure on zVM
+==== Installation failure on zVM
 
 Due to a change from `linuxrc` to `dracut`, the `parmfile` needs to define not only installation source but also a network and disks.
 
@@ -795,12 +795,12 @@ cio_ignore=all,!condev,!0.0.0160 nameserver=$NAMEserverIP
 live.password=linux rd.zdev=dasd,0.0.0160
 
 [#power]
-=== POWER-specific changes (ppc64le)
+== POWER-specific changes (ppc64le)
 
 Information in this section applies to {power-productname} {this-version}.
 
 [#jsc-PED-12179]
-==== KVM guests in LPAR
+=== KVM guests in LPAR
 
 The ability to run KVM Guests in an LPAR is a new feature in PowerVM Firmware 1060.10 release and supported in {productname} {this-version}.
 This enables users to run KVM guests in a PowerVM LPAR bringing industry standard Linux KVM virtualization stack to IBM PowerVM, which easily integrates with existing Linux virtualization ecosystem.
@@ -811,16 +811,16 @@ A KVM enabled LPAR allows standard Linux KVM tools (for example, `virsh`) to cre
 A KVM Linux LPAR uses dedicated cores which enables Linux to have full control of when Linux VMs are scheduled to run, just like KVM on other platforms.
 
 [#bsc-1249569]
-==== Login times out on HMC virtual terminal
+=== Login times out on HMC virtual terminal
 
 If you install {power-productname} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
 
 To work around this issue, disable the Plymouth graphical boot screen by appending the boot parameter `plymouth.enable=0` to the kernel command line.
 
 [#aarch64]
-=== {arm}-specific changes ({aarch64})
+== {arm}-specific changes ({aarch64})
 
-include::../kernel-160-aarch64.adoc[leveloffset=+3]
+include::../kernel-160-aarch64.adoc[leveloffset=+2]
 
 [#virtualization]
 === Virtualization
@@ -933,7 +933,7 @@ Important considerations:
 * The script should be run locally (not remotely) immediately after installation and before any custom network configurations.
 
 [#removed-deprecated]
-=== Removed and deprecated features and packages
+== Removed and deprecated features and packages
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
@@ -944,7 +944,7 @@ This section lists features and packages that were removed from {productname} or
 
 
 [#removed]
-==== Removed features and packages
+=== Removed features and packages
 
 The following features and packages have been removed in this release.
 
