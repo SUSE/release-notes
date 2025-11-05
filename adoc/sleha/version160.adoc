@@ -61,6 +61,8 @@ usermod -d /var/lib/pacemaker hacluster
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
+// jsc#PED-12357
+* `cluster-glue` has been removed.
 // bsc-1252732
 * Geo Clustering is not part of {productname} {this-version}.
 Reach out to your sales contact to discuss your needs with the product team.
