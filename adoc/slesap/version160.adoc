@@ -8,6 +8,8 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#PED-12356
+* `pacemaker` has been updated to version 3.0. For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
