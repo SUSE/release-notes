@@ -144,6 +144,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 == Changes affecting all architectures
 
+// jsc#PED-13138
+* The installer can indicate installation status via IPMI.
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 8.3.0. This version supports machine checks related to CXL memory.
 // jsc#PED-12283
