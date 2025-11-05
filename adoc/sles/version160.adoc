@@ -155,6 +155,13 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-4977]
+=== SELinux enabled by default
+
+SELinux replaces AppArmor, and is now set to enforcing by default.
+For more informationm, see the _What is the status of SELinux?_ chapter of https://documentation.suse.com/sles/16.0//html/SLE-differences-faq/index.html#sle16-differences-faq-security-selinux[Key Technical Differences Between SLE 15 and SLE 16].
+
+
 // also jsc#DOCTEAM-2009
 [#jsc-1249690]
 === Blank screen after installation
