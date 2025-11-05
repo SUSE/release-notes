@@ -3,6 +3,7 @@
 // used in URLs; will not be needed past 16.0
 :previous-version-no-spaces: 15-SP7
 :next-version: 16.1
+:kernel-version: 6.12
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
