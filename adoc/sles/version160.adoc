@@ -36,7 +36,8 @@ If you need additional time to design, validate and test your upgrade plans, Lon
 You can buy an additional 12 to 36 months in twelve month increments.
 This means that you can receive support up to Dec 2037.
 
-For more information, see the pages link:https://www.suse.com/support/policy.html[Support Policy] and link:https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
+For more information, see the pages link:https://www.suse.com/support/policy.html[Support Policy], link:https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support], and link:https://documentation.suse.com/sles/16.0/html/SLE-packages-lifecycle/index.html[Lifecycles of SUSE Linux Enterprise Components
+].
 
 
 === Support statement for {productname}
