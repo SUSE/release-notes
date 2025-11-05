@@ -161,7 +161,7 @@ As a workaround, first disable Nouveau before installation by adding this kernel
 [source]
 rd.driver.blacklist=nouveau
 
-Then install the proprietary NVIDIA driver.
+Then install the proprietary or open NVIDIA module, depending on your hardware.
 
 
 // copied from SLES 15 SP7
