@@ -7,14 +7,14 @@
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
+// ifeval::["{lifecycle}" == "maintained"]
+:url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
+// endif::[]
+
 ifeval::["{lifecycle}" == "beta"]
 :url-sle-comparison: https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html
 :url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
-endif::[]
-
-ifeval::["{lifecycle}" == "maintained"]
-:url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
-:url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
 endif::[]
 
 ifeval::[{omit_sles_specific} == "true"]

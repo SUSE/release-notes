@@ -9,13 +9,13 @@
 
 
 # AsciiDoc conditional text (e.g. for "to be released" information during beta).
-LIFECYCLE_VALID := beta maintained unmaintained
-ifndef LIFECYCLE
-  LIFECYCLE := maintained
-endif
-ifneq "$(LIFECYCLE)" "$(filter $(LIFECYCLE),$(LIFECYCLE_VALID))"
-  override LIFECYCLE := maintained
-endif
+# LIFECYCLE_VALID := beta maintained unmaintained
+# ifndef LIFECYCLE
+#   LIFECYCLE := maintained
+# endif
+# ifneq "$(LIFECYCLE)" "$(filter $(LIFECYCLE),$(LIFECYCLE_VALID))"
+#   override LIFECYCLE := maintained
+# endif
 
 # valid values are:
 # micro

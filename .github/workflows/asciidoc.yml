@@ -10,9 +10,6 @@ on:
       - "adoc/**"
   workflow_dispatch:
 
-env:
-  LIFECYCLE: beta
-
 jobs:
   validate:
     runs-on: ubuntu-latest
