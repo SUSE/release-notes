@@ -988,7 +988,6 @@ Running {slea} 16 as fully virtualized Xen guest (HVM) or using using hardware v
 * removed the `KBD_DISABLE_CAPS_LOCK` feature from `/etc/sysconfig/keyboard`
 * `netiucv` and `lcs` drivers
 * `ansible-9` and `ansible-core-2.16`
-* `criu`
 * <<jsc-PED-12156>>
 * `compat-libpthread-nonshared`
 include::../shared.adoc[tags=jscped12374]
