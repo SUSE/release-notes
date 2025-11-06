@@ -2,7 +2,7 @@ include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
 = SL Micro Release Notes
-:revdate: 2024-11-27
+:revdate: 2025-11-04
 :page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
