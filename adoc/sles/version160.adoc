@@ -7,6 +7,16 @@
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
+ifeval::["{lifecycle}" == "beta"]
+:url-sle-comparison: https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
+endif::[]
+
+ifeval::["{lifecycle}" == "maintained"]
+:url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
+endif::[]
+
 ifeval::[{omit_sles_specific} == "true"]
 == {productname} Version {this-version}
 
@@ -282,7 +292,7 @@ For that reason we recommend switching to UEFI at the nearest opportunity.
 === `/tmp` not persistent
 
 In {productname} {this-version}, `/tmp` is no longer persistent between reboots but uses `tmpfs` instead.
-See https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html#sle16-tmp for more information.
+See {url-sle-comparison}#sle16-tmp for more information.
 
 
 [#jsc-PED-12752]
@@ -960,7 +970,7 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages have been removed in this release.
 
 // jsc#PED-13800
-* Xorg server has been removed. Only Wayland is supported for graphical display. X11 applications compatibility is provided via XWayland. For setting up GNOME Remote Desktop on Wayland see https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/.
+* Xorg server has been removed. Only Wayland is supported for graphical display. X11 applications compatibility is provided via XWayland. For setting up GNOME Remote Desktop on Wayland see {url-gnome-remote-desktop}.
 // the following 4 items are from jsc#PED-11207
 * `sapconf` has been removed. See <<jsc-PED-13396>> for more info.
 * {yast} has been removed. See <<bsc-1237605>> for more info.
