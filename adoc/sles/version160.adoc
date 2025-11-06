@@ -154,6 +154,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 == Changes affecting all architectures
 
+// jsc#PED-12797
+* RMT in {productname} 15 supports {this-version} clients.
 // jsc#PED-13138
 * The installer can indicate installation status via IPMI.
 // jsc#PED-12658
