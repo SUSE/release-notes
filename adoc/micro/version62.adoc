@@ -15,6 +15,16 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
 
+
+[#bsc-1252729]
+==== Cockpit disabled by default
+
+In {productname} {this-version} we have added a systemd preset that enabled Cockpit on all installations (both new and migrations).
+
+As this is potentially an unwanted behavior, we have reversed this change, which means that Cockpit will be disabled on all installations after the update.
+To continue using Cockpit, enable the service after installing the update.
+
+
 // util-linux switch to mountfd API
 include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
 
