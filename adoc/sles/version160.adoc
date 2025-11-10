@@ -25,16 +25,12 @@ endif::[]
 
 == What's new?
 
-=== Package and module changes in {this-version}
+=== Comparison with {productname} {previous-version}
 
-The full list of changed packages compared to {previous-version} can be seen at this URL:
+To read more about the differences and high-level changes between {productname} {this-version} and {productname} {previous-version}, see these documents:
 
-https://documentation.suse.com/package-lists/sle/{this-version}/package-changes_SLE-{previous-version-no-spaces}-GA_SLE-{this-version}-GA.txt
-
-The full list of changed modules compared to {previous-version} can be seen at this URL:
-
-https://documentation.suse.com/package-lists/sle/{this-version}/module-changes_SLE-{previous-version-no-spaces}-GA_SLE-{this-version}-GA.txt
-
+* https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/
+* https://documentation.suse.com/sles/16.0/html/SLE-comparison/
 
 
 == Support and lifecycle
