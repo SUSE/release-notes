@@ -8,6 +8,8 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#PED-9950
+* The `fence-agents` package has been split into separate packages. This has been done to allow installation of only the required agents instead of all of them.
 // jsc#PED-12353
 * `corosync` has been updated to version 3.1.9. For more information see https://github.com/corosync/corosync/releases/tag/v3.1.9[the full changelog].
 // jsc#PED-12356
