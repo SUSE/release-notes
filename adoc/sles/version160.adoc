@@ -671,6 +671,15 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 * LPAR level power consumption reporting is now available in kernel and s390-tools.
 
 === Security
+
+[#bsc-1253242]
+==== Secure Boot
+
+If {productname} {this-version} has been installed on IBM z16 or later on an ECKD DASD as boot disk, the configuration parameter `SECURE_BOOT` in `/etc/sysconfig/bootloader` is automatically set to `no`, although the used hardware supports Secure Boot from ECKD DASD.
+
+To enable Secure Boot support in this case, change the value for `SECURE_BOOT` in `/etc/sysconfig/bootloader` from `no` to `yes` and run `grub2-zipl-setup`.
+
+
 ==== In-kernel crypto support
 
 With this service pack are additionaly supported:
@@ -733,7 +742,6 @@ This release brings these features and improvements:
 * KVM can benefit from genprotimg rewritten in Rust to re-use existing rust libraries (s390-tools feature)
 * KVM benefits from genprotimg validation of SE image running on particular host(s) (s390-tools feature)
 * KVM benefits from using pvimg info command to display encrypted & unencrypted SE image information (s390-tools)
-* KVM can use unencrypted SE images for creating generic images (s390-tools feature)
 // jsc-PED-10010
 * KVM passthrough is available for guests i.e. retrievable secrets in Secure Execution guests
 // jsc-PED-11863
@@ -769,17 +777,19 @@ Latest s390-tool update brings these noticable changes:
 // jsc-PED-10936
  * a new tool cpacinfo shall provide information on CPACF including the supported MSA levels, instructions, subfunctions per instruction. https://www.ibm.com/docs/en/linux-on-systems?topic=hw-cpacf
 
+// reworded according to bsc#1253242
 [#bsc-1235858]
-==== `parmfile` now points to ISO
+==== root statement in `parmfile` now points to an ISO image
 
-Previously, `parmfile` would point to a directory of unpacked files.
+Previously, the root statement in the `parmfile` pointed to a directory of unpacked files.
 
-Now it needs to point to a loop-mounted ISO via FTP.
+Now the root statement needs to point to an ISO image, while the `agama.install_url` is obsolete for an online installation, thus this line has to be removed.
+
 For example:
 
 [source]
-root=live:ftp://$SERVER_URL/install/agama-online.iso
-agama.install_url=ftp://$SERVER_URL/install/agama
+root=live:http://$SERVER_URL/install/agama-online.iso
+
 
 For more information see https://agama-project.github.io/docs/user/reference/boot_options.
 
@@ -807,8 +817,8 @@ Due to a change from `linuxrc` to `dracut`, the `parmfile` needs to define not o
 The `parmfile` needs to be filled with a `dracut`-like options, for example:
 
 [source]
-root=live:ftp://$SERVER_URL/install/online.iso
-ip=$IP_address::$IP_gateway:24:SLE16-Beta4:$NETWORK_DEVICE:none
+root=live:http://$SERVER_URL/install/online.iso
+ip=$IP_address::$IP_gateway:24:SLES16-system:enc800:none
 rd.zdev=qeth,0.0.0800:0.0.0801:0.0.0802,layer2=1,portno=0
 cio_ignore=all,!condev,!0.0.0160 nameserver=$NAMEserverIP
 live.password=linux rd.zdev=dasd,0.0.0160
