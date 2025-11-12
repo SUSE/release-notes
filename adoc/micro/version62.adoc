@@ -26,10 +26,10 @@ To continue using Cockpit, enable the service after installing the update.
 
 
 // util-linux switch to mountfd API
-include::../shared.adoc[tags=jscped-12739,leveloffset=+2]
+include::../shared.adoc[tags=jscped-12739,leveloffset=+3]
 
 // switch to predictable network names
-include::../shared.adoc[tags=jscped-12725,leveloffset=+2]
+include::../shared.adoc[tags=jscped-12725,leveloffset=+3]
 
 // minimum hardware requirements
 include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
