@@ -1,0 +1,168 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#rnotes]
+= {rnotes}
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-product.adoc[]
+
+include::related.adoc[]
+
+include::technology-previews.adoc[]
+
+include::modules.adoc[]
+
+// ===================================================================
+
+// START ARCH-INDEPENDENT
+[#all-architecture]
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {product} {this-version}.
+
+[#jsc-PED-7684]
+=== {producta} no longer a separate product
+
+As of {this-version}, {product} is no longer a separate product. As a result:
+
+* the HPC Module can now be enabled in {sles}
+* when migrating from {product} 15 SP3, SP4, and SP5, only {sles} 15 SP6 will be available as migration target.
+The result of such a migration will be an installation of {sles} with all the previously enabled modules.
+
+
+[#jsc-SLE-24988]
+=== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-prem or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which will update system information automatically.
+
+For more details see the documentation at https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.
+
+
+[#jsc-SLE-22743]
+=== Automatically opened ports
+
+Installing the following packages automatically opens the following ports:
+
+* `dolly` - TCP ports 9997 and 9998
+* `slurm` - TCP ports 6817, 6818, and 6819
+
+
+// updated packages
+include::updated-packages.adoc[]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {product} or will be removed in upcoming versions.
+
+* `dapl`, `rds-tools`, and `imgen` are being deprecated due to lack of upstream activity.
+* `openmpi` 2 and `openmpi` 3 are being deprecated due to being replaced by `openmpi` 4.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+// SLE-23359
+* Python 2 bindings for `genders` has been removed.
+These are now provided for Python 3.
+
+// SLE-17777
+* Ganglia is not supported anymore in {this-version}.
+It has been replaced with Grafana (https://grafana.com/)
+
+// SLE-17776
+* Due to a lack of usage by customers, some library packages have been removed from the  HPC module in {producta} {this-version}. On {sle} you can build your own library using `spack`.
+These libraries will continue to be available through {ph}.
+The following libraries have been removed:
+** `boost`
+** `adios`
+** `gsl`
+** `fftw3`
+** `hypre`
+** `metis`
+** `mumps`
+** `netcdf`
+** `ocr`
+** `petsc`
+** `ptscotch`
+** `scalapack`
+** `superlu`
+** `trilinos`
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+The following features and packages are deprecated and will be removed in a future version of {product}.
+
+
+// 1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature has been deprecated and will be removed in {product} 15{nbsp}SP2.
+
+// jsc#EX-0000
+* Example Deprecated Feature 2 has been deprecated and will be removed in {product} 15{nbsp}SP2.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+
+// jsc#PED-2798
+* `clustduct` is deprecated and will be removed in {product} {next-version}.
+With {producta} {this-version}, `warewulf4` has been introduced as cluster deployment tool, and users are advised to migrate to it.
+
+
+////
+2. Deprecations that will be removed in the next SLE major version:
+////
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated and will be removed in {product} 16.
+////
+
+
+////
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated.
+////
+
+
+// END ARCH INDEPENDENT
+
+// ===================================================================
+include::source-code.adoc[]
+
+include::legal.adoc[]
+
+[appendix]
+include::changelog.adoc[]

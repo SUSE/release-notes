@@ -1,0 +1,63 @@
+[#changes]
+== New Features, Changes & Fixes
+
+Information in this section applies to all architectures supported by
+{product} {this-version} unless noted otherwise.
+
+////
+[#jsc-SLE-1234]
+=== Example entry
+
+Example text
+////
+
+
+// [#new-packages-SAP]
+// === Added Packages
+
+// The following packages have been added to {product} with {this-version}:
+
+// * TBD
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Issue explanation
+
+////
+
+[#jsc-PED-7207]
+=== HA for {sap} Convergent Mediation
+
+The package `sap-convergent-resource-agents` ships resource agent (RA) for making the SAP Convergent Mediation (CM) ControlZone (by Digital Route) highly available.
+The RA uses CM's `mzsh` as interface.
+See man page `ocd_suse_SAPCMControlZone(7)` for details.
+
+This package is supported only in the context of {sap} RISE.
+
+
+[#jsc-PED-407]
+=== Silence `KillMode=None` messages
+
+The log level of the deprecation warnings regarding `killmode=None` have been reduced.
+Instead of `warning`, they are now logged at the `debug` log level.
+
+
+[#jsc-SLE-24988]
+=== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-premises or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which updates system information automatically.
+
+For more details see the documentation at https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.
+
+
+[#bsc-1210005]
+=== `SAPHanaSR-angi`: {hana} SR - Advanced Next Generation Interface
+
+`SAPHanaSR-angi` is "{hana} SR - Advanced Next Generation Interface" for SUSE high availabilty clusters to manage {hana} databases with system replication.
+Goal of `SAPHanaSR-angi` is consolidating and finally replacing the `SAPHanaSR` and `SAPHanaSR-ScaleOut` packages.
+Nevertheless, CIB attributes are not backward compatible between `SAPHanaSR-angi` and `SAPHanaSR` or `SAPHanaSR-ScaleOut`.
+Upgrading from `SAPHanaSR` or `SAPHanaSR-ScaleOut` requires a certain procedure, see man page `SAPHanaSR_upgrade_to_angi(7)` for details.
+New deployments should be done with `SAPHanaSR-angi`, see man page `SAPHanaSR-angi(7)` for further information.

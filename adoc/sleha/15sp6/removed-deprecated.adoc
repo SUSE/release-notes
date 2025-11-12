@@ -1,0 +1,67 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions.
+
+[#removed-deprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages had been deprecated with a previous release and have been removed with {product}{nbsp}{this-version}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////
+
+* `pssh` has been removed. Use `crm cluster run` instead.
+
+[#removed-deprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////
+
+[#jsc-SLE-3877]
+==== Nagios-related plugins have been removed
+
+The full list of removed packages is as follows:
+
+* `monitoring-plugins-metadata`
+* `monitoring-plugins-mysql`
+* `monitoring-plugins-fping`
+* `monitoring-plugins-pgsql`
+* `monitoring-plugins-http`
+* `monitoring-plugins-tcp`
+* `monitoring-plugins-ldap`
+
+
+[#jsc-SLE-23019]
+==== `ha-cluster-* commands have been deprecated
+
+The implementation has been moved to `crmsh`:
+
+* `ha-cluster-init` is now `crm cluster init`
+* `ha-cluster-remove` is now `crm cluster remove`
+* `ha-cluster-join` is now `crm cluster join`
+* `ha-cluster-geo-init` is now `crm cluster geo-init`
+* `ha-cluster-geo-join` is now `crm cluster geo-join`
+* `ha-cluster-geo-init-arbitrator` is now `crm cluster geo-init-arbitrator`
+
+
+[#jsc-SLE-21746]
+==== `hb_report` CLI has been deprecated
+The `hb_report` CLI part of `crmsh` has been deprecated and will be removed in the future.
+
+As a replacement, the next version of `crmsh` will improve its standard logging capabilities.

@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<style>
+/* Authors: Ken Wimer, Stefan Knorr */
+
+body {
+    font-family: 'Open Sans', FreeSans, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: #000;
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 800px;
+    text-align: left;
+}
+
+div.preface,
+div.glossary,
+div.appendix,
+div.bibliography,
+div.index,
+div.chapter,
+div.sect1,
+div.sect2,
+div.sect3,
+div.section {
+    padding: 1.5em 0 0 0;
+}
+
+.book .titlepage h1.title,
+.article .titlepage h2.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.75em;
+    margin-bottom: 0;
+}
+
+.book .titlepage h2.subtitle,
+.article .titlepage h3.subtitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.userfootercontent {
+    font-size: 0.5em;
+}
+
+.title, a {
+    color: #439539;
+}
+
+.part .titlepage h1.title {
+    font-size: 3em;
+    margin-bottom: 0;
+}
+
+.abstract .title {
+    margin-bottom: 0;
+}
+
+.abstract p {
+    margin-top: 0.25em;
+}
+
+.chapter .titlepage h1.title, .appendix .titlepage h1.title,
+.colophon .titlepage h1.title, .bibliography .titlepage h1.title,
+.index .titlepage h1.title, .reference .titlepage h1.title,
+.preface .titlepage h1.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.25em;
+    margin-bottom: 0;
+}
+
+.titlepage h2.title {
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.titlepage h3.title {
+    font-size: 1.125em;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.titlepage h4.title {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.figure p.title,
+.table p.title {
+    font-weight: 600;
+    border-style: none;
+}
+
+.example {
+    background-color: #EFEFF0;
+    padding: 5px;
+}
+
+.synopfragment {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #5C3566;
+}
+
+.important, .warning, .tip, .caution, .note {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666;
+    border-radius: 0.2em;
+    overflow: auto;
+    padding: 0.5em;
+    font-size: 1em;
+    /* The XSLT adds margin-{left,right}: 0.5in directly to the element,
+       that is not what we want, though. */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.important > h3,
+.note > h3,
+.warning > h3,
+.tip > h3,
+.caution > h3 {
+    font-size: 1em;
+    color: #FFF;
+    background-color: #666;
+    padding: 0.15em 0.5em;
+    margin: 0;
+    position: relative;
+    left: -0.5em;
+    top: -0.5em;
+    width: 100%;
+}
+
+.tip {
+    border-color: #439539;
+}
+
+.tip > h3 {
+    background-color: #439539;
+}
+
+.important {
+    border-color: #BE7E02;
+}
+
+.important > h3 {
+    background-color: #BE7E02;
+}
+
+.warning, .caution {
+    border-color: #8C0000;
+}
+
+.warning > h3, .caution > h3 {
+    background-color: #8C0000;
+}
+
+td img { /* special rule for Mozilla */
+    border: 0;
+}
+
+.docstatus {
+    margin-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-top: 1pt dotted #000;
+    background-color: #F00;
+    color: #FFF;
+}
+
+p.boxtext {
+    margin: 10px;
+}
+
+b.keycap, .keycap {
+    background-color: #EFEFF0;
+    padding: 0.1em 0.3em;
+    border-width: 0.1em 0.15em 0.15em 0.1em;
+    border-style: solid
+    border-color: #999;
+    border-radius: 0.3em;
+    margin: 0;
+    font-size: 0.75;
+}
+
+.guibutton {
+    border: 1px outset #999;
+}
+
+.guilabel {
+    color: #80AA50;
+}
+
+.guimenu, .guisubmenu {
+    font-style: italic;
+}
+
+.remark {
+    color: red;
+}
+
+em .identifier {
+    font-weight: bold;
+    color: #CC3300;
+}
+
+.table th, .informaltable th {
+    background-color: #D1D1D3;
+    text-align: left;
+    font-weight: 600;
+}
+
+th em {
+    font-style: normal;
+}
+
+.table table, .informaltable table, .table th, .informaltable th {
+    border: 0.1em solid #999;
+}
+
+.table th, .informaltable th, .table td, .informaltable td {
+    padding: 0.15em 0.2em;
+}
+
+.table td, .informaltable td {
+    border-width: 0 0.1em;
+    border-style: solid;
+    border-color: #999;
+}
+
+.table td[rowspan], .informaltable td[rowspan] {
+    border-width: 0.1em;
+}
+
+.table tr:nth-child(even), .informaltable tr:nth-child(even) {
+    background-color: #EFEFF0;
+}
+
+.table table, .informaltable table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+span.profarch {
+    font-weight: 600;
+}
+
+.variablelist dt {
+    font-weight: 600;
+}
+
+pre, code, .command, .keycap {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-weight: normal;
+}
+
+pre {
+    padding: 0.7em;
+    border: 0.1em solid #999;
+    background-color: #EFEFF0;
+    overflow: auto;
+    width: auto;
+    border-radius: 0.3em;
+}
+
+p code, p .command {
+    border-bottom: 0.1em solid #999;
+    padding: 0 0.3em 0.1em;
+    display: inline-block;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.command strong {
+    font-weight: bold;
+}
+
+ul {
+    /* The XSLT may add a list-style-type directly to the element,
+       that is not what we want, though. */
+    list-style-type: disc !important;
+}
+
+li {
+    color: #439539;
+    font-weight: 600;
+}
+
+li > * {
+    color: #000;
+    font-weight: normal;
+}
+
+hr, div.toc {
+    border-width: 0 0 0.1em 0;
+    border-style: solid;
+    border-color: #439539;
+}
+
+
+/* A small SUSE logo at the top... (won't print) */
+.book:before,
+.article:before {
+    content: ' ';
+    display: block;
+    height: 38px;
+    width: 81px;
+    margin: 1em -10px;
+    background-image: url(data:image/png;base64,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);
+}
+
+@media print {
+    .book:before,
+    .article:before {
+        display: none;
+    }
+
+    .table td, .informaltable td {
+        border-width: 0.1em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+        font-size: 10pt;
+    }
+}
+</style>

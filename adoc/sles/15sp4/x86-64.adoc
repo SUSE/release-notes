@@ -1,0 +1,73 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#x86-64]
+== AMD64/Intel 64-specific changes (x86-64)
+
+Information in this section applies to {product} {this-version} for the AMD64/Intel 64 architectures.
+
+// x86-64-specific release notes go here (see below for kernel modules)
+
+
+////
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+// Possible categories (optional)
+
+[#x86-64-system]
+=== System-specific and vendor-specific information
+
+[#jsc-SLE-20049]
+==== User Space Live Patching (ULP) infrastructure and live patches for shared libraries
+
+Complementing the Kernel Live Patching (KLP), {suse} now offers an infrastructure for live patching user-space applications.
+{suse} has enabled the shared libraries from the system packages `glibc` and `openssl` for live patching.
+
+The technology targets patching shared libraries at runtime and is part of the {sle} Live Patching extension.
+The respective packages are `libpulp0`, the live patching core that must be pre-loaded into the application on start, and `libpulp-tools` containing the essential tools for building and deployment of patches.
+Next, there are containers for the future live patches for each library, for example `glibc-livepatches` for `glibc`, that will receive the fixes through future maintenance updates.
+
+ULP is currently offered for the {x64} platform.
+
+See the __Administration Guide__ at {doc-url-auto}/html/SLES-all/cha-ulp.html for more detailed information.
+
+
+////
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+////
+[#x86-64-virtualization]
+=== Virtualization
+
+
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+////
+[#x86-64-ras]
+=== Reliability, availability, serviceability (RAS)
+
+
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

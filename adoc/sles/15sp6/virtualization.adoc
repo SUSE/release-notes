@@ -1,0 +1,147 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virtualization.html.
+
+// ALL VIRTUALIZATION SUPPORT TABLES HAVE BEEN MOVED TO VIRTUALIZATION GUIDE
+// IN DOC REPO. RN WILL ONLY CONTAIN CHANGES SINCE PREVIOUS SP.
+
+.Virtualization limits and supported hosts/guests
+[IMPORTANT]
+====
+These release notes only document changes in virtualization support compared to the immediate previous service pack of {productname}.
+Full information regarding virtualization limits for KVM and Xen as well as supported guest and host systems is now available as part of the {productname} documentation.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+See the __Virtualization Guide__ at {doc-url-beta}/html/SLES-virtualization/cha-virt-support.html (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+See the __Virtualization Guide__ at {doc-url}/html/SLES-all/cha-virt-support.html.
+endif::[]
+====
+
+
+// [#virtualization-kvm]
+// ==== KVM
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+//[#jsc-SLE-18741]
+//===== {nvidia} vGPU 12.x and 13.x support
+//
+//The support for {nvidia} virtual GPU 12.x and //13.x has been added.
+
+
+[#virtualization-xen]
+[#jsc-PED-4983]
+==== Xen
+// Xen virtualization-related release notes go here
+Xen has been updated to version 4.18, for more information: https://wiki.xenproject.org/wiki/Xen_Project_4.18_Release_Notes
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-qemu]
+[#jsc-PED-4978]
+==== QEMU
+QEMU has been updated to version 8.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/8.2
+
+Highlights include:
+
+* New virtio-sound device emulation
+* New hv-balloon for dynamic memory protocol device for Hyper-V guests
+* New Universal Flash Storage device emulation
+* Network Block Device (NBD) 64-bit offsets for improved performance
+* dump-guest-memory now supports the standard kdump format
+* VFIO: improved live migration support, no longer an experimental feature
+* x86: CPU model support for GraniteRapids and SapphireRapids
+* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+[#virtualization-libvirt]
+==== libvirt
+`libvirt` has been updated to version 10.0.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v10-0-0-2024-01-15
+
+`libvirt` provides two daemon deployment options: monolithic or modular daemons. Modular daemons are now enabled by default, but a deployment can be switched to the traditional monolithic daemon by disabling the individual daemons and enabling `libvirtd`.
+
+[#virtualization-vmware]
+==== VMware
+
+===== open-vm-tools
+`open-vm-tools` has been updated to version 12.3.5 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-12.3.5/ReleaseNotes.md
+
+
+[#virtualization-other]
+==== Others
+
+// Other virtualization-related release notes go here
+
+===== NVIDIA GRID
+Support for NVIDIA Virtual GPU (vGPU) v16.2 has been added, including migration under some specific scenarios.
+
+[#jsc-PED-7196]
+===== sanlock
+`sanlock` has been updated to version 3.8.5 which contains several bug fixes.
+
+[#jsc-PED-4979]
+===== libguestfs
+
+`libguestfs` has been updated to version 1.52.0:
+
+* Add support for lzma and zstd compression methods in tar APIs (like guestfs_tar_in)
+* The guestfish(1) --key option now recognizes LVM names like /dev/mapper/rhel_bootp--73--75--123-root
+* guestfish --key option also supports a new --key all:... selector to try the same key on all devices.
+* Dropped the virt-dib tool
+* Add --chown option for virt-customize
+* Add new virt-customize --tar-in operation
+* Various bug fixes and language translations
+
+// [#jsc-PED-4979]
+===== virt-v2v
+
+Update to version 2.4.0, see main changes at: https://libguestfs.org/virt-v2v-release-notes-2.4.1.html
+
+[#jsc-PED-7066]
+===== `sevctl`
+
+The `sevctl` package has been updated to version 0.4.3.
+
+[#virtualization-limitations]
+==== limitations
+
+// [#bsc-1241602]
+===== virt-install option '--cdrom' can not work with the SEV environment
+This issue only occurs when installing an .iso file via CD-ROM. It is because the external device is not
+ trusted by default from the Guest's perspective under the SEV environment.
+
+SUSE has reported to upstream via https://github.com/tianocore/edk2/issues/11035
+
+Possible workarounds:
+
+- Using '--location' option instead of '--cdrom'.
+
+- Using a pre-existing disk image (like qcow2) or performing a network installation via PXE.
+
+- Disable SEV for guest installation, then user can enable SEV after guest installed.

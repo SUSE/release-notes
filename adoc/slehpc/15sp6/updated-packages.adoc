@@ -1,0 +1,144 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[IMPORTANT]
+====
+These release notes only document changes in {product} compared to the immediate previous service pack of {product}.
+The full changes and fixes can be found on the respective web site of the packages.
+====
+
+[#jsc-PED-2790]
+=== GNU compiler suite version 12
+
+{producta} {this-version} now supports the GNU compiler suite version 12.
+To install the runtime environments (environment modules) for version 12, run: `zypper install gnu12-compilers-hpc`.
+To install all the packages required for development (C, C++ and Fortran compilers), run `zypper install gnu12-compilers-hpc-devel`.
+To load the environment, run 'module load gnu/12' in your shell.
+When the `-devel` package is installed, the compilers (`gcc-12`, `g++-12`, `gfortran-12`) will become available in this shell under their standard names (`gcc`, `g++`, `gfortran`).
+
+
+[#jsc-PED-2804]
+=== `conman`
+
+`conman` has been updated to version 0.3.1:
+
+* Fixed username/password use in `libipmiconsole.conf`.
+* Added `-T` command-line option to specify terminal emulator.
+* General move of files from `/usr/lib/conman` to `/usr/share/conman`.
+
+=== `dolly`
+
+`dolly` has been updated to version 0.64.2.
+The tool is less verbose by default and the `dolly` service can be activated through a socket.
+
+
+=== `imb`
+
+`imb` is shipped in version 2021.3:
+
+* Change default value for `mem_alloc_type` to device.
+* Added new IMB-MPI1-GPU benchmarks as technical preview.
+* Added `-msg_pause` option.
+* Changed default `window_size` from `64` to `256`.
+* Added `-window_size` option for IMB-MPI1.
+
+=== `memkind`
+
+`memkind` has been updated to version 1.14.0.
+The full list of changes is available at http://memkind.github.io/memkind/.
+
+=== `openblas`
+
+`openblas` has been updated to version 0.3.21.
+It contains performance regression fixes and optimizations.
+For more information see https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.21.
+
+=== `munge`
+
+`munge` has been updated to version 0.5.15:
+
+* Fixed systemd service unit configuration to wait until network is online.
+* Fixed sending repeated SIGTERMs to signal stop.
+
+=== `cpuid`
+
+`cpuid` has been updated to version 20221201.
+
+This update includes:
+
+* Added and updated identification of many CPU models and variants.
+* Updated hypervisor support.
+* Improved synth information and u-architecture decoding.
+
+=== `lmod`
+
+`lmod` has been updated to version 8.7.17.
+
+The user visible changes include:
+
+* Add option `--miniConfig` to report configuration differences from default.
+* Move cache file location from `~/.lmod.d/.cache/\*` to `~/.cache/lmod/*`
+* Transitional support for using `~/.config/lmod` for collections. Currently collect are written to both `~/.lmod.d/` and `~/.config/lmod`.
+* setenv and pushenv change local environment when running spider (and avail).
+* Allow bash users to export `SUPPORT_KSH=no` so that they can avoid bash startup setting FPATH
+* Add `--location` option to show to write to stderr the file location.
+* Only rebuild spider caches if there are any loaded or pending modules. `module avail <name1> <name2> ...` now only prints matching aliases.  Search names are resolved.
+* Print `dataT` table when there is an Exception.
+* New command added: `module overview`.
+* Add `spiderPathFilter` hook so that sites can control what paths are kept or ignored.
+* Added `$LMOD_SITE_MODULEPATH` support to prepend to `MODULEPATH`
+* Add support for `sh_to_modulefile` to support zsh, ksh, bash and tcsh with aliases and shell functions
+* Support for source_sh added. Now support more than one shell script per modulefile.
+
+=== `PAPI`
+
+`PAPI` has been updated to version 7.0.0.
+
+
+The highlights include:
+
+* Added "intel_gpu" component with monitoring capabilities support for Intel GPUs, including GPU hardware events and memory performance metrics.
+* Added "sysdetect" component for detecting a machine's architectural details. Additionally, PAPI offers a new API that enables users to get "sysdetect" details from within their application.
+* A major redesign of the "rocm" component for advanced monitoring features for the latest AMD GPUs. The PAPI "rocm" component is now thread-safe.
+* Support for NVIDIA compute capability 7.0 and greater. This implies support for CUPTI's new Profiling and Perfworks APIs.
+* Significant redesign of the "sde" component into two separate entities:
+1. a standalone library "libsde" with a new API for software developers to define software-based metrics from within their applications
+2. the PAPI "sde" component that enables monitoring of these new software-based events.
+* New +++ C++ +++ interface for "libsde," which enables software developers to define software-defined events from within their +++ C++ +++ applications.
+* New Counter Analysis Toolkit (CAT) benchmarks and refinements of PAPI's CAT data analysis.
+*  Support for FUGAKU's A64FX Arm architecture, including monitoring capabilities for memory bandwidth and other node-wide metrics.
+For futher details check https://bitbucket.org/icl/papi/wiki/PAPI-Releases.md
+
+
+[#jsc-PED-2798]
+=== `warewulf4`
+
+`warewulf4` is a popular {slehpca} deployment tool whose latest version is a full rewrite in the Go programming language.
+It is applying lessons learned from its predecessors.
+It deploys minimal images which it obtains from container images stored in a registry and performs a minimal configuration for the image to be useful as a compute node image in a cluster. `warewulf4` is deprecating the former deployment tool `clustduct`.
+
+include::warewulf.adoc[]
+
+[#jsc-SLE-12352]
+=== Creating containers from current HPC environment
+
+Usually users use environment modules to adjust their environment (that is, environment variables like `PATH`, `LD_LIBRARY_PATH`, `MANPATH` etc.) to pick exactly the tools and libraries they need for their work.
+The same can be achieved with containers by including only those components in a container that are part of this environment.
+This functionality is now provided using the `spack` and `singularity` applications.
+
+[#jsc-PED-2803]
+=== Spack
+
+include::spack0191.asciidoc[]
+
+=== Slurm
+
+[#jsc-PED-6787]
+include::slurm-deprecation.adoc[leveloffset=+2]
+
+[#jsc-PED-2802]
+==== Slurm 23.02
+include::slurm2302.adoc[leveloffset=+1]
+
+
+include::apptainer.adoc[leveloffset=+2]

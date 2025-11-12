@@ -1,0 +1,48 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#misc]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries not fitting elsewhere
+// If possible, avoid putting entries here and try to find a matching
+// category that already exists
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-13584]
+==== `ssh-import-id` GitHub support
+
+The `ssh-import-id` now supports importing public SSH keys from GitHub.
+
+
+[#jsc-SLE-19567]
+==== `rsyslog` has been updated
+
+The `rsyslog` package has been updated to version 8.2106.0.
+See the https://github.com/rsyslog/rsyslog/blob/v8-stable/ChangeLog[full changelog] for more information.
+
+
+[#jsc-SLE-24988]
+==== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-prem or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which will update system information automatically.
+
+For more details see the documentation at https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.
+
+
+[#jsc-SLE-16535]
+==== SHA-1 signatures have been deprecated in `gpg2`
+
+The SHA-1 hash function is not secure.
+For more information, see CVE-2019-14855.

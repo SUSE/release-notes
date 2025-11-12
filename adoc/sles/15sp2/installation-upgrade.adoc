@@ -1,0 +1,160 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#instUpgrade]
+== Installation and Upgrade
+
+{product} can be deployed in several ways:
+
+* Physical machine
+* Virtual host
+* Virtual machine
+* System containers
+* Application containers
+
+[#instUpgrade-installation]
+=== Installation
+
+This section includes information related to the initial installation of {product} {this-version}.
+
+.Installation Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the installation of {product}.
+However, they do not document the installation procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url-beta}/html/SLES-deployment/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url}/html/SLES-all/book-sle-deployment.html.
+endif::[]
+====
+
+// Installation-related release notes go here
+
+[#jsc-SLE-7101]
+==== New Media Layout
+
+The set of media has changed with 15{nbsp}SP2.
+There still are two different installation media, but the way they can be used has changed:
+
+* You can install with registration using either the online-installation medium (as with {product} 15{nbsp}SP1) or the full medium.
+
+* You can install without registration using the full medium.
+The installer has been added to the full medium and the full medium can now be used universally for all types of installations.
+
+* You can install without registration using the online-installation medium.
+Point the installer at the required SLE repositories, combining the `install=` and `instsys=` boot parameters:
+
+** With the `install=` parameter, select a path that contains either just the product repository or the full content of the media.
+** With the `inst-sys=` parameter, point at the installer itself, that is, `/boot/ARCHITECTURE/root` on the medium.
+
++
+For more information about the parameters, see https://en.opensuse.org/SDB:Linuxrc#p_install.
+
+
+[#jsc-SLE-7298]
+==== Proposed Partition Table on {rpi}
+
+With previous versions of {arm-product}, when installing on a {rpireg} machine with an SD card with no ESP/firmware partition, such a partition had to be created manually.
+
+With {this-version}, the installer makes sure to propose an MS-DOS type partition for the SD card.
+This new partitioning proposal can be used out-of-the-box without further changes.
+
+
+[#jsc-SLE-8787]
+==== Disabling UEFI Secure Boot with AutoYaST
+
+By default, AutoYaST enables Secure Boot based on its availability and firmware settings.
+However, in some cases, it may be desirable to force disabling it unconditionally.
+
+In this case, it is now possible to disable UEFI Secure Boot via the AutoYaST profile.
+For more information, see {doc-url}/single-html/SLES-autoyast/.
+
+
+[#jsc-SLE-8472]
+==== AutoYaST Support of Btrfs File Systems Spread over Multiple Devices
+
+AutoYaST now supports Btrfs file systems that are spread over more than a single partition or device.
+This includes support for both cloning a system (to create a profile) and support for applying such a profile during an auto-installation.
+
+
+[#jsc-SLE-12479]
+==== Quickly Switch Boot Menu Language Between English and Chinese
+
+The graphical menu of the installation media now contains a quick switch between English and Chinese.
+You can switch between these two languages using the _F8_ key.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+
+[#instUpgrade-upgrade]
+=== Upgrade-Related Notes
+
+This section includes upgrade-related information for {product} {this-version}.
+
+.Upgrade Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the upgrade of {product}.
+However, they do not document the upgrade procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url-beta}/html/SLES-upgrade/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url}/html/SLES-all/book-sle-upgrade.html.
+endif::[]
+====
+
+// Upgrade-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+==== Make Sure the Current System Is Up-To-Date Before Upgrading
+
+Upgrading the system is only supported from the most recent patch level.
+Make sure the latest system updates are installed by either running `zypper patch` or by starting the {yast} module Online-Update.
+An upgrade on a system that is not fully patched may fail.
+
+
+==== Skipping Service Packs Requires LTSS
+
+Skipping service packs during an upgrade is only supported if you have a Long Term Service Pack Support contract.
+Otherwise you need to first upgrade to {previous-sp} before upgrading to {this-sp}.
+
+[#bsc-1178261]
+==== Differences Between {autoyast} Profiles in {producta} 12 and 15
+
+Significant changes in {producta} 15 required changes in AutoYaST.
+If you want to reuse existing {producta} 12 profiles with {producta} 15, you need to adjust them as documented in https://documentation.suse.com/sles/15-SP2/html/SLES-all/appendix-ay-12vs15.html.
+
+
+// JeOS-specific content is in a separate file
+include::jeos.adoc[]
+
+[#instUpgrade-more]
+=== For More Information
+
+For more information, see <<all-architecture>> and the sections relating to your respective hardware architecture.

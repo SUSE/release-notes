@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&sleha;</productname>
+  <productnumber>12</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para> &sleha; is a suite of clustering technologies that enable enterprises to implement
+    highly available Linux clusters and eliminate single points of failure. This document gives an
+    overview of features of &sleha; and their limitations. Some sections do not apply to a
+    particular architecture or product, this is explicitly marked. </para>
+   <para> Manuals can be found in the <filename>docu</filename> directory of the installation media,
+    or in the directory <filename>/usr/share/doc/</filename> on the installed system (if installed).
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="intro">
+  <title>&sleha;</title>
+  <para> &sleha; is an affordable, integrated suite of robust open source clustering
+   technologies that enable enterprises to implement highly available Linux clusters and eliminate
+   single points of failure. </para>
+  <para> Used with &sles;, it helps firms maintain business continuity, protect data integrity,
+   and reduce unplanned downtime for their mission-critical Linux workloads. </para>
+  <para> &sleha; provides all of the essential monitoring, messaging, and cluster resource
+   management functionality of proprietary third-party solutions, but at a more affordable price,
+   making it accessible to a wider range of enterprises. </para>
+  <para> It is optimized to work with &sles;, and its tight integration ensures customers have
+   the most robust, secure, and up to date high availability solution. Based on an innovative,
+   highly flexible policy engine, it supports a wide range of clustering scenarios. </para>
+  <para> With static or stateless content, the High Availability cluster can be used without a
+   cluster file system. This includes web-services with static content as well as printing systems
+   or communication systems like proxies that do not need to recover data. </para>
+  <para> Finally, its open source license minimizes the risk of vendor lock-in, and it's adherence
+   to open standards encourages interoperability with industry standard tools and technologies. </para>
+ </section>
+
+  <section id="intro.new">
+   <title>What's New?</title>
+
+   <variablelist>
+    <varlistentry>
+     <term>
+    Cluster File System
+     </term>
+     <listitem>
+      <para>
+       GFS2 cluster file system with read/write support, to complement
+       the SUSE recommended OCFS2 cluster file system.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+      Load balancer
+     </term>
+     <listitem>
+      <para>
+       HAProxy as layer 4 load balancer added, to complement the linux
+       virtual server load balancer.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+      History Explorer
+     </term>
+     <listitem>
+      <para>
+     HAWK history explorer now includes off-line analysis capabilities.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+     Resource Agents
+     </term>
+     <listitem>
+      <para>
+       Resource agents got multiple updates, including a resource agent
+       to handle SCSI reservations
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <para>
+    See <ulink
+    url="https://www.suse.com/releasenotes/x86_64/SLE-HA/12-GEO/">https://www.suse.com/releasenotes/x86_64/SLE-HA/12-GEO/</ulink>
+    for what's new in the Geo clustering option for the SUSE Linux
+    Enterprise High Availability Extension 12.
+   </para>
+  </section>
+
+ <section id="Features">
+  <title>Features and Versions</title>
+
+  <!-- <para>This section includes an overview of some of the major features and
+  new functionality provided by &sleha; 12.</para> -->
+
+  <section id="Features.Server">
+   <title>Server</title>
+   <para/>
+  </section>
+  <section id="Features.Network">
+   <title>Network</title>
+   <para/>
+  </section>
+
+  <section id="Features.ResourceManagement">
+   <title>Resource Management</title>
+   <para/>
+  </section>
+  <section id="Features.SystemManagement">
+   <title>Systems Management</title>
+   <para/>
+   <para/>
+  </section>
+
+ </section>
+
+ <section id="rnotes-changes">
+  <title>Changed Functionality in &sleha; 12</title>
+  <para/>
+ </section>
+
+ <section id="Deprecated">
+  <title>Deprecated Functionality in &sleha; 12</title>
+  <para/>
+ </section>
+
+ <section id="InfraPackArch">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <para/>
+  <section id="InfraPackArch.ArchIndependent">
+   <title>Architecture Independent Information</title>
+   <para/>
+   <section id="InfraPackArch.ArchIndependent.Package">
+    <title>Changes in Packaging and Delivery</title>
+    <para/>
+   </section>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement">
+   <title>Systems Management</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Performance">
+   <title>Performance Related Information</title>
+   <para/>
+  </section>
+
+ </section>
+
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <para/>
+  <section id="Packages.New">
+   <title>New Packages</title>
+
+   <!-- *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires -->
+   <para/>
+  </section>
+  <section id="Packages.Update">
+   <title>Updated Packages</title>
+   <!-- *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) -->
+   <para/>
+  </section>
+ </section>
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para/>
+
+ </section>
+
+ <section id="Support">
+  <title>Support Statement for &sleha; 12</title>
+  <para> Support requires an appropriate subscription from SUSE; for more information, see <ulink
+    url="http://www.suse.com/products/server/"/>. </para>
+  <para>A Geo Clustering for &sleha; subscription is needed to receive support and maintenance
+   to run geographical clustering scenarios, including manual and automated setups.</para>
+
+  <para>Support for the DRBD storage replication is independent of the cluster scenario and included
+   as part of the SUSE Linux Enterprise High Availability Extension product and does not require the
+   addition of a Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.</para>
+  <para>General Support Statement </para>
+  <para>The following definitions apply: </para>
+  <itemizedlist>
+   <listitem>
+    <para> L1: Installation and problem determination - technical support designed to provide
+     compatibility information, installation and configuration assistance, usage support, on-going
+     maintenance and basic troubleshooting. Level 1 Support is not intended to correct product
+     defect errors. </para>
+   </listitem>
+   <listitem>
+    <para> L2: Reproduction of problem isolation - technical support designed to duplicate customer
+     problems, isolate problem areas and potential issues, and provide resolution for problems not
+     resolved by Level 1 Support. </para>
+   </listitem>
+   <listitem>
+    <para> L3: Code Debugging and problem resolution - technical support designed to resolve complex
+     problems by engaging engineering in patch provision, resolution of product defects which have
+     been identified by Level 2 Support. </para>
+   </listitem>
+  </itemizedlist>
+  <para> SUSE will only support the usage of original (unchanged or not recompiled) packages.
+  </para>
+ </section>
+
+ <section id="TechInfo">
+  <title>Technical Information</title>
+  <para/>
+  <section id="TechInfo.IPv6">
+   <title>IPv6 Implementation and Compliance</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Miscellaneous">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+  <!-- msvec and legal (ciaran), 2013-05-13 -->
+  <!-- moved from the abstract to this location as the first chapter -->
+  <para> This SUSE product includes materials licensed to SUSE under the GNU General Public License
+   (GPL). The GPL requires SUSE to provide the source code that corresponds to the GPL-licensed
+   material. The source code is available for download at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>. Also, for up to three years after
+   distribution of the SUSE product, upon request, SUSE will mail a copy of the source code.
+   Requests should be sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at <ulink url="http://www.suse.com/download-linux/source-code.html"/>.
+   SUSE may charge a reasonable fee to recover distribution costs. </para>
+ </section>
+
+ <section id="Feedback">
+  <!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+
+  <itemizedlist>
+   <listitem>
+    <para>Read the READMEs on the CDs.</para>
+   </listitem>
+   <listitem>
+    <para> Get detailed changelog information about a particular package from the RPM: </para>
+    <screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+    <para>&lt;FILENAME&gt;. is the name of the RPM.</para>
+   </listitem>
+   <listitem>
+    <para> Check the <filename>ChangeLog</filename> file in the top level of CD1 for a chronological
+     log of all changes made to the updated packages. </para>
+   </listitem>
+   <listitem>
+    <para> Find more information in the <filename>docu</filename> directory of CD1 of the
+     &sleha; CDs. This directory includes a PDF version of the &ha-guide;. </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/"/> contains additional or updated
+     documentation for &sleha; 12. </para>
+   </listitem>
+   <listitem>
+    <para> Visit <ulink url="http://www.suse.com/products/"/> for the latest product news from SUSE
+     and <ulink url="http://www.suse.com/download-linux/source-code.html"/> for additional
+     information on the source code of &sle; products. </para>
+   </listitem>
+  </itemizedlist>
+
+  <para>Copyright © 2015 SUSE LLC.</para>
+
+  <para>Thanks for using &sleha; in your business.</para>
+  <para>The &sleha; Team.</para>
+ </section>
+</article>

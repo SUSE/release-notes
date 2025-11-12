@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section [
+  <!ENTITY % myents SYSTEM "generic-rn.ent">
+  %myents;
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xl="http://www.w3.org/1999/xlink" xml:id="slurm-deprecation">
+  <title>Deprecation of old Versions of Slurm</title>
+  <para>
+    SLE receives a new Slurm version for roughly every second upstream release. To
+    facilitate this, old versions of Slurm will go out of maintenance successively.
+    Users of these versions are encouraged to migrate to a later version
+    before the expiry date. Note that Slurm only allows migration two
+    versions upwards without loss of data. To migrate to the latest version,
+    migrations to intermediate versions may be required.
+  </para>
+  <para>
+    Once Slurm versions are out of maintenance, updates to packages depending
+    on this Slurm version will no longer be provided. In particular, this will
+    be the case for <literal>pdsh-slurm</literal> - the Slurm plugin to Pdsh. Note that
+    <literal>pdsh-slurm</literal> is compatible with the Slurm initially shipped with a
+    product/service pack, while packages <literal>pdsh-slurm_&lt;slurm_version&gt;</literal> are
+    compatible with an upgraded version of Slurm.
+  </para>
+  <table>
+    <title>Sunset Schedule for Slurm</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>Slurm Version</entry>
+          <entry>Released for Service Pack</entry>
+          <entry>Support End Date</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>17.02</entry>
+          <entry>SLE-12-SP2</entry>
+          <entry>May 2024</entry>
+        </row>
+        <row>
+          <entry>18.08</entry>
+          <entry>SLE-15-SP1 and older</entry>
+          <entry>October 2024</entry>
+        </row>
+        <row>
+          <entry>20.02</entry>
+          <entry>SLE-15-SP2 and older</entry>
+          <entry>January 2025</entry>
+        </row>
+        <row>
+          <entry>20.11</entry>
+          <entry>SLE-15-SP3/4 and older</entry>
+          <entry>January 2026</entry>
+        </row>
+        <row>
+          <entry>22.05</entry>
+          <entry>SLE-15-SP4 and older</entry>
+          <entry>December 2026</entry>
+        </row>
+        <row>
+          <entry>23.02</entry>
+          <entry>SLE-15-SP5/6 and older</entry>
+          <entry>January 2028</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

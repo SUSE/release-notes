@@ -1,0 +1,52 @@
+<!-- This file originates from the project
+gitlab.nue.suse.com/documentation/release-notes-boilerplate. -->
+<!-- THIS FILE WAS MADE TO BE EDITED DOWNSTREAM. -->
+
+<!-- PRODUCT NAME AND VERSIONS -->
+<!ENTITY product "&sled;/&slewe;">
+<!ENTITY product-desc "&product; is an enterprise-quality Linux desktop with market-leading usability and interoperability.">
+
+<!ENTITY this-ga "15">
+<!ENTITY this-sp "SP1">
+<!ENTITY this-version "&this-ga; &this-sp;">
+
+<!ENTITY next-sp "SP2">
+<!ENTITY next-version "&this-ga; &next-sp;">
+
+
+<!ENTITY next-ga "16">
+<!ENTITY next-ga-version "&next-ga; GA">
+
+<!ENTITY previous-ga "12">
+<!ENTITY previous-sp "SP3">
+<!ENTITY previous-version "&previous-ga; &previous-sp;">
+<!ENTITY previous-ga-version "&previous-ga; GA">
+
+<!-- FCS MONTH FOR PRODUCT VERSION -->
+<!ENTITY rel-date "June 2019">
+
+<!-- WHEN WAS THE INITIAL VERSION OF THESE RELEASE NOTES SHIPPED? -->
+<!ENTITY copyright-begin "2010">
+
+<!-- ARE THERE ADDITIONAL COPYRIGHT HOLDERS? -->
+<!ENTITY additional-rightsholders "">
+<!-- <!ENTITY additional-rightsholders "Portions of this document are © SomeOtherCompanyOrProject"> -->
+
+<!-- DOES THE PRODUCT HAVE MODULES? -->
+<!ENTITY productis "&product-no-module-is;">
+
+
+<!ENTITY kernel-version "4.12">
+
+
+
+<!ENTITY support-url "https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Desktop">
+<!ENTITY res-library-url "https://www.suse.com/products/desktop/#resources">
+
+<!-- FIXME: Update to correct URL before the release. -->
+<!ENTITY doc-url-beta "https://susedoc.github.io/#sled">
+<!ENTITY doc-url "https://www.suse.com/documentation/sled-15">
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="Beta SUSE Linux Enterprise Desktop 15 SP1" component="Maintenance" assignee="lukas.kucharczyk@suse.com" ?>'>
+<!-- <!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Desktop 15 SP1" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'> -->

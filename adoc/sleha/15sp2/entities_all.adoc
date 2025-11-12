@@ -1,0 +1,41 @@
+:rnotes: Release Notes
+:rversion: @VERSION@
+
+:yast: YaST
+:autoyast: AutoYaST
+
+:suse: SUSE
+
+:opensuse: open{suse}
+:sle: {suse} Linux Enterprise
+:sled: {sle} Desktop
+:sles: {sle} Server
+:sleha: {sle} High Availability Extension
+:slehpc: {sle} for High-Performance Computing
+:slehag: Geo Clustering for {sleha}
+:slert: {sle} Real Time
+:ha-guide: High Availability Guide
+:sdk: Software Development Kit
+:slesdk: {sle} {sdk}
+:we: Workstation Extension
+:slewe: {sle} {we}
+:slea: SLE
+:slda: {slea}D
+:slsa: {slea}S
+:haa: {slea} HA
+:haga: {slea} HA Geo
+:slewea: {sle}-WE
+:sdka: {slea} {sdk}
+:suma: {suse} Manager
+:leap: {opensuse} Leap
+:scc: {suse} Customer Center
+:ph: {suse} Package Hub
+:ibmz: IBM Z
+:mdash: —
+
+:support-url: https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_High_Availability_Extension
+:rn-url: https://www.suse.com/releasenotes
+
+:copyright-begin: 2010
+:company: SUSE LLC
+:additional-rightsholders:

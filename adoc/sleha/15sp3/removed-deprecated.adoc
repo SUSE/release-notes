@@ -1,0 +1,41 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions.
+
+[#removed-deprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages had been deprecated with a previous release and have been removed with {product}{nbsp}{this-version}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////
+
+* `pssh` has been removed. Use `crm cluster run` instead.
+
+
+[#removed-deprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////
+
+// jsc-SLE-22898
+* `python-cluster-preflight-check` has been deprecated.
+It is now part of `crmsh`.
+// jsc-DOCTEAM-62
+* `pingd` resource agent has been deprecated in favor of `ping`.

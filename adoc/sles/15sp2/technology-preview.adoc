@@ -1,0 +1,439 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-techpreview]
+=== Technology Previews
+
+Technology previews are packages, stacks, or features delivered by {suse} to provide glimpses into upcoming innovations.
+Technology previews are included for your convenience to give you a chance to test new technologies within your environment.
+We would appreciate your feedback!
+If you test a technology preview, please contact your {suse} representative and let them know about your experience and use cases.
+Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development.
+Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are *not* supported.
+* Technology previews may only be available for specific hardware architectures.
+Details and functionality of technology previews are subject to change.
+As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time.
+This may be the case, for example, if {suse} discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
+
+
+////
+  ** clear statement of TP (no support)
+  ** Title of the TP ** full description of the TP
+  ** link to official documentation (external)
+  ** link to SUSE's documentation
+////
+
+[#intro-techpreview-all]
+==== Technology Previews for All Architectures
+
+* Maven 3.6.2 has been added to {sles} 15 SP2 as a Technology Preview.
+
+[#bsc-1176440]
+===== `schedutil`
+`schedutil` is a CPU frequency scaling governor that makes decisions based on the utilization data provided by the scheduler, as opposed to other governors that use CPU idle time, such as `ondemand`.
+It was introduced in the Linux kernel version 4.7.
+However, it is only viable for production use together with an optimization called `util_est` (short for "utilization estimation") that makes it much more responsive.
+This optimization is only available in Linux kernel version 4.17 and newer.
+For this reason it is only offered as technology preview in {slea} {this-version}.
+
+
+[#jsc-SLE-11309]
+===== New Kernel Process Scheduling Variant
+
+As a technology preview, {product} 15 SP2 offers the new kernel variant `kernel-preempt` for latency-sensitive workloads.
+The settings of `kernel-preempt` support timely reaction to external events and precise timing at the cost of overall system throughput.
+This kernel variant is available for x86-64 and AArch64 hardware architectures.
+
+
+[#intro-techpreview-aarch64]
+==== Technology Previews for {arm} 64-Bit (AArch64)
+
+[#jsc-SLE-9263-etnaviv]
+===== etnaviv Drivers for {vivante} GPUs Have Been Added
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip (SoC)
+contains a {vivante} GC7000UL Graphics Processor Unit (GPU), and
+the {nxp} {imx}{nbsp}8M SoC contains a {vivante} GC7000L GPU.
+
+As a technology preview, the {arm-product} {this-version} kernel includes `etnaviv`,
+a Display Rendering Infrastructure (DRI) driver for {vivante} GPUs, and the
+`Mesa-dri` package contains a matching `etnaviv_dri` graphics driver library.
+Together they can avoid the need for third-party drivers and libraries.
+
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {vivante} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+
+
+[#jsc-SLE-8203-lima]
+===== lima Driver for {arm} {mali} Utgard GPUs Has Been Added
+
+The {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC contains
+an {armreg} {malireg}-400 Graphics Processor Unit (GPU).
+
+Previously, this GPU needed third-party drivers and libraries from your
+hardware vendor.
+
+As a technology preview, the {arm-product} {this-version} kernel includes
+`lima`, a Display Rendering Infrastructure (DRI) driver for {mali} _Utgard_
+microarchitecture GPUs, such as {mali}-400, and the `Mesa-dri` package
+contains a matching `lima_dri` graphics driver library.
+
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {mali} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+
+Note: The `panfrost` driver for {mali} _Midgard_ microarchitecture GPUs
+is available, too (<<jsc-SLE-8203-panfrost>>).
+
+
+[#jsc-SLE-9263-malidp]
+===== mali-dp Driver for {arm} {mali} Display Processors Has Been Added
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018 System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor.
+
+As a technology preview, the {arm-product} {this-version} kernel includes `mali-dp`,
+a Display Rendering Manager (DRM) driver for {mali} Display Processors.
+It has undergone only limited testing because it requires an accompanying
+physical-layer driver for {displayportreg} output (see <<#jsc-SLE-9263-hdp>>).
+
+[#jsc-SLE-10302]
+===== Btrfs File System Has Been Enabled in U-Boot Bootloader
+
+For {rpireg} devices, {arm-product} 12 SP3 and later include
+__Das U-Boot__ as bootloader, in order to align the boot process with
+other platforms.
+By default, it loads GRUB as UEFI application from a FAT-formatted partition,
+and GRUB then loads Linux kernel and ramdisk from a file system such as Btrfs.
+
+As a technology preview, {arm-product} {this-version} adds a Btrfs driver to
+U-Boot for the {rpi} (package `u-boot-rpiarm64`).
+This allows its commands `ls` and `load` to access files on Btrfs-formatted
+partitions on supported boot media, such as microSD and USB.
+
+The new U-Boot command `btrsubvol` lists Btrfs subvolumes. For example:
+
+[source]
+----
+U-Boot> btrsubvol mmc 0:3
+ID 256 parent 5 name /@
+ID 257 parent 256 name /@/.snapshots
+ID 258 parent 257 name /@/.snapshots/1/snapshot
+ID 272 parent 257 name /@/.snapshots/2/snapshot
+ID 292 parent 257 name /@/.snapshots/21/snapshot
+ID 293 parent 257 name /@/.snapshots/22/snapshot
+ID 294 parent 257 name /@/.snapshots/23/snapshot
+ID 297 parent 257 name /@/.snapshots/24/snapshot
+ID 298 parent 257 name /@/.snapshots/25/snapshot
+ID 300 parent 257 name /@/.snapshots/26/snapshot
+ID 301 parent 257 name /@/.snapshots/27/snapshot
+ID 302 parent 257 name /@/.snapshots/28/snapshot
+ID 305 parent 257 name /@/.snapshots/29/snapshot
+ID 306 parent 257 name /@/.snapshots/30/snapshot
+ID 259 parent 256 name /@/home
+ID 260 parent 256 name /@/opt
+ID 261 parent 256 name /@/root
+ID 262 parent 256 name /@/srv
+ID 263 parent 256 name /@/tmp
+ID 264 parent 256 name /@/var
+ID 265 parent 256 name /@/usr/local
+ID 266 parent 256 name /@/boot/grub2/arm64-efi
+----
+
+====== Recovering From a Deleted or Broken GRUB Executable
+
+If GRUB (`efi/boot/bootaa64.efi`) on the FAT file system is damaged or deleted,
+the system will no longer automatically boot, and you may end up at a U-Boot
+command prompt.
+
+You can now load kernel and ramdisk files from a Btrfs file system directly,
+within U-Boot.
+
+.Only Use for Disaster Recovery
+[WARNING]
+====
+This boot method should only be used temporarily for disaster recovery.
+
+When GRUB is bypassed, any kernel command-line arguments that would normally
+be set as defaults by GRUB will not be set automatically. You need to
+manually specify them via the `bootargs` environment variable within U-Boot.
+
+In particular this means the `root` partition will not be set automatically,
+and any arguments set in `/etc/default/grub` config file will be missing.
+This also affects any kernel command-line arguments you configured via {yast}.
+====
+
+The following example assumes a 32{nbsp}GB microSD card is inserted as boot
+medium.
+If you inserted the card while U-Boot was running, you will need to re-scan
+the devices first.
+You can then list the available MMC devices to obtain the index number of the
+SD card slot as opposed to the on-board SDIO interface:
+
+// bsc#1169816 for mmc list output
+[source]
+----
+U-Boot> mmc rescan
+U-Boot> mmc list
+mmcnr@7e300000: 1
+emmc2@7e340000: 0 (SD)
+----
+
+.Commands for USB Boot Media
+[NOTE]
+====
+If you are normally booting from USB mass storage device rather than SD card,
+you will find equivalent commands to the above,
+such as `usb reset`, `usb tree` and `usb storage`.
+
+Just replace `mmc 0` with `usb` and the index number these commands indicate
+for your USB device in the following examples then.
+====
+
+The partition layout of the {this-rpi-appliance} image is assumed,
+with combined {rpi} bootloader and EFI system-partition first,
+followed by swap partition and root partition:
+
+[source]
+----
+U-Boot> part list mmc 0
+
+Partition Map for MMC device 0  --   Partition Type: DOS
+
+Part    Start Sector    Num Sectors     UUID            Type
+  1     2048            131072          abcdef01-01     0c
+  2     133120          2048000         abcdef01-02     82
+  3     2181120         60151080        abcdef01-03     83  # <1>
+
+----
+
+<1> This is the root partition, with partition number `3`.
+
+Next, obtain a unique identifier for your root partition,
+and set any needed kernel command-line arguments:
+
+[source]
+----
+U-Boot> fsuuid mmc 0:3 myrootfs
+U-Boot> env set bootargs "console=ttyS0,115200 console=tty0 root=UUID=$myrootfs" # <1> <2>
+----
+
+<1> This redirects kernel messages to the default UART serial pins and
+further output to a graphical screen. Change as necessary for your setup.
+
+<2> Specifying a device name, such as `root=/dev/mmcblk0p3`, is unreliable due
+to the probe order of kernel drivers possibly resulting in `mmcblk1p3` instead.
+This will manifest as the ramdisk not finding the root file system and
+waiting indefinitely:
++
+[literal]
+....
+[*     ] A start job is running for dev-mmcblk0p3.device (1min 23s / unlimited)
+....
++
+Normally GRUB would use the file system's Universally Unique Identifier (UUID)
+as `root=UUID=__01234567-89ab-cdef-0123456789ab__`, as shown in this example.
++
+Alternatively, specify the partition's UUID as `root=PARTUUID=__abcdef01-03__`.
+You can either copy it from the partition list output above, or store it in an
+environment variable __myrootpart__ for usage as `root=PARTUUID=$myrootpart`
+like this:
++
+[source]
+----
+U-Boot> part uuid mmc 0:3 myrootpart
+----
++
+Compare the chapter __Using UUIDs to Mount Devices__ in the
+__Storage Administration Guide__ at
+ifeval::["{lifecycle}" == "beta"]
+{doc-url-beta}/html/SLES-storage/cha-uuid.html (draft version).
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+{doc-url}/html/SLES-all/cha-uuid.html.
+endif::[]
+
+Finally, browse for, then load kernel and ramdisk,
+and enter the boot command:
+
+[source]
+----
+U-Boot> ls mmc 0:3 boot/ # <1>
+<DIR>         92  Wed Mar 18 17:47:51 2020  grub2
+<DIR>          0  Mon Mar 09 17:39:36 2020  efi
+<DIR>        654  Tue Feb 11 22:42:27 2020  vc
+<   >         11  Mon Mar 09 17:38:30 2020  mbrid
+<   >       1725  Sun Apr 05 00:31:01 2020  boot.readme
+<   >         65  Tue Apr 07 22:24:54 2020  .Image-5.3.18-12-default.hmac
+<   >   25207280  Tue Apr 07 22:24:53 2020  Image-5.3.18-12-default
+<   >    5007081  Tue Apr 07 20:02:24 2020  System.map-5.3.18-12-default
+<   >     224106  Tue Apr 07 18:38:28 2020  config-5.3.18-12-default
+<   >     394485  Tue Apr 07 20:36:53 2020  symvers-5.3.18-12-default.gz
+<   >        207  Tue Apr 07 20:36:53 2020  sysctl.conf-5.3.18-12-default
+<   >   10367190  Tue Apr 07 21:09:44 2020  vmlinux-5.3.18-12-default.gz
+<SYM>         23  Tue Feb 11 22:44:11 2020  Image -> Image-5.3.18-12-default
+<SYM>         24  Tue Feb 11 22:44:11 2020  initrd -> initrd-5.3.18-12-default
+<   >    8998380  Sun Apr 12 12:40:09 2020  initrd-5.3.18-12-default
+U-Boot> load mmc 0:3 $kernel_addr_r boot/Image # <2>
+25207280 bytes read in 1666 ms (14.4 MiB/s)
+U-Boot> load mmc 0:3 $ramdisk_addr_r boot/initrd
+8998380 bytes read in 657 ms (13.1 MiB/s)
+U-Boot> booti $kernel_addr_r $ramdisk_addr_r:$filesize $fdtcontroladdr # <3>
+----
+
+<1> To load files from a Btrfs snapshot, instead of `boot/` navigate to
+the snapshot directory, for example, `.snapshots/__42__/snapshot/boot/`.
+Use the `btrsubvol` command to obtain information on available snapshots.
+
+<2> Unless you modified them, the symbolic links `Image` and `initrd`
+will point to the files of the `kernel-default` or `kernel-preempt` package
+that you installed last. They can differ from the default GRUB menu entry,
+which instead defaults to the highest kernel version and can be overridden
+via `/etc/default/grub` config file or {yast}.
+Uninstalling a kernel package can result in these symbolic links pointing
+to files no longer present.
++
+Either check the target of the symbolic links via `ls` command before use,
+or better specify the full filename with desired version and flavor.
+
+<3> The use of the (hexadecimally-formatted) `filesize` environment variable
+relies on the ramdisk file having been loaded last.
+
+.Rescue System as Alternative
+[NOTE]
+====
+If neither local GRUB nor any of the installed and snapshotted kernels are
+bootable, you can try to load GRUB from a {arm-product} {this-version}
+installation medium and enter the Rescue System from there.
+
+To temporarily change the boot order, for example, to USB and DHCP before SD:
+
+[source]
+----
+U-Boot> env set boot_targets "usb0 dhcp mmc0"
+U-Boot> boot
+----
+
+To fully-manually boot GRUB from your network, try something like this:
+
+[source]
+----
+U-Boot> env set ipaddr 192.168.0.100
+U-Boot> env set netmask 255.255.255.0
+U-Boot> env set gatewayip 192.168.0.1
+U-Boot> tftpboot $kernel_addr_r 192.168.0.2:path/to/bootaa64.efi
+U-Boot> bootefi $kernel_addr_r $fdtcontroladdr
+----
+====
+
+To restore the default boot method of using GRUB as UEFI application,
+run from the booted system as user `root`:
+
+[source,bash]
+----
+# update-bootloader --reinit
+----
+
+For more information, see section __Boot Problems__
+in the __Administration Guide__ at
+ifeval::["{lifecycle}" == "beta"]
+{doc-url-beta}/html/SLES-admin/cha-trouble.html#sec-trouble-boot (draft version).
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+{doc-url}/html/SLES-all/cha-trouble.html#sec-trouble-boot.
+endif::[]
+
+====== More Flexibility For Boot Scripts
+
+In the default U-Boot environment, U-Boot `boot.scr` boot script files
+take precedence over UEFI `efi/boot/bootaa64.efi` files, such as GRUB,
+on a given partition. Assuming the partition layout of the {this-rpi-appliance}
+image, this means that a `/boot/efi/boot.scr` file (created with `mkimage` from
+`u-boot-tools` package) can run a custom boot script before or instead of GRUB.
+
+You can now author boot scripts that load files also from a Btrfs file system.
+
+Examples might include:
+
+* Chain-loading another boot script (`source`).
+* Importing environment variables from a text file (`env import`).
+* Applying Device Tree Overlays (`fdt apply`) before booting into GRUB.
++
+Note however that `extraconfig.txt` with `dtoverlay=` is recommended instead,
+see <<#aarch64-rpi>>.
+
+
+[#intro-techpreview-x86_64]
+==== Technology Previews for Intel 64/AMD64 (x86-64)
+
+[#jsc-SLE-11089]
+===== KubeVirt Has Been Added
+
+KubeVirt is a technology which enables container-native virtualization.
+This is provided as technology preview.
+
+
+[#jsc-SLE-11312]
+===== haltpoll Driver and Governor for Latency-Sensitive Virtual Guests Have Been Added
+
+On bare-metal, a task waiting for a spinlock can use the `mwait` instruction to detect a change.
+This avoids an expensive Inter Processor Interrupt (IPI) when a waiting task must be woken.
+On virtual guests, `mwait` is difficult to emulate and IPIs are generally required (though this cost can be reduced with `halt_poll_ns`).
+
+The {product} {this-version} kernel for x86_64 includes `haltpoll`, a guest driver that polls a virtual CPU within the guest for an auto-tuned duration.
+It is introduced with the following support status:
+
+* Supported for SAP HANA on KVM use cases.
+* As a technology preview for all other use cases.
+
+
+`haltpoll` improves the performance of some latency-sensitive, virtualized applications.
+`haltpoll` can only be used on physical hosts with a recent x86_64 CPU.
+
+To use it:
+
+* On the physical host, the QEMU commands that starts the virtual machine has to contain the parameter `-cpu host,kvm-hint-dedicated=on`.
+  `virsh` allows specifying this parameter using `<hint-dedicated state='on'/>` and `<cpu mode='host-passthrough' check='none'/>`.
+  For more information, see the link:https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
+* Load the driver in the virtual host: `modprobe cpuidle-haltpoll`.
+  If it cannot be loaded, check `journalctl -k`.
+  If something went wrong, you may see an `-ENODEV` error.
+
+If you are using libvirt/`virsh`, verify that the `kvm-hint-dedicated` parameter is actually passed to QEMU.
+There are two complimentary ways of checking whether the parameter is successfully applied:
+
+* On the host: Check the `qemu` command in the process list.
+* On the guest: Check whether the QEMU KVM parameter above is active with `cpuid` (from the package `cpuid`):
+   If it is active, `cpuid -1 -l 0x40000001` will show that the first bit of `edx` is set: `edx=0x00000001`.
+
+
+[#jsc-SLE-11271]
+===== Nested Virtualization in KVM
+
+As a technology preview, KVM in {product} 15{nbsp}SP2 supports nested virtualization, that is, KVM guests running within other KVM guests.
+Nested virtualization has advantages in scenarios such as the following:
+
+* For managing own virtual machines directly with your hypervisor of choice in cloud environments.
+* For enabling the live migration of hypervisors and their guest virtual machines as a single entity.
+* For software development and testing.
+
+For more information, see https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-vt-installation.html#sec-vt-installation-nested-vms.
+
+
+////
+[#intro-techpreview-S390]
+==== Technology Previews for {ibmz} (s390x)
+////
+
+
+////
+[#intro-techpreview-power]
+==== Technology Previews for POWER (ppc64le)
+////

@@ -1,0 +1,358 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virtualization.html.
+
+// ALL VIRTUALIZATION SUPPORT TABLES HAVE BEEN MOVED TO VIRTUALIZATION GUIDE
+// IN DOC REPO. RN WILL ONLY CONTAIN CHANGES SINCE PREVIOUS SP.
+
+.Virtualization limits and supported hosts/guests
+[IMPORTANT]
+====
+These release notes only document changes in virtualization support compared to the immediate previous service pack of {product}.
+Full information regarding virtualization limits for KVM and Xen as well as supported guest and host systems is now available as part of the {product} documentation.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+See the __Virtualization Guide__ at {doc-url-beta}/html/SLES-virtualization/cha-virt-support.html (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+See the __Virtualization Guide__ at {doc-url}/html/SLES-all/cha-virt-support.html.
+endif::[]
+====
+
+
+[#virtualization-kvm]
+==== KVM
+
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-12687]
+===== vPMU optimization now available
+
+Enabling vPMU optimization is now possible.
+However, currently it is not supported due to the fact that the required `qemu` parameter `cpu -host` is also not supported.
+
+
+[#jsc-SLE-17746]
+===== 6 TiB memory support
+
+KVM now supports 6 TiB of maximum memory per virtual machine.
+
+
+[#jsc-SLE-16993]
+===== `swtpm` has been added
+
+The `swtpm` package has been added.
+It provides a software TPM (Trusted Platform Module) emulator.
+
+QEMU can use `swtpm` as an external provider of a virtual TPM device.
+For more information, see https://qemu-project.gitlab.io/qemu/specs/tpm.html.
+
+
+[#jsc-SLE-13573]
+===== 2nd generation {amd} EPYC processor support has been added
+
+Support for 2nd generation {amd} EPYC processors has been added to QEMU/KVM.
+The model display name is `EPYC-Rome`.
+
+
+[#jsc-SLE-11312]
+===== haltpoll driver and governor for latency-sensitive virtual guests have been added
+
+On bare-metal, a task waiting for a spinlock can use the `mwait` instruction to detect a change.
+This avoids an expensive Inter Processor Interrupt (IPI) when a waiting task must be woken.
+On virtual guests, `mwait` is difficult to emulate and IPIs are generally required (though this cost can be reduced with `halt_poll_ns`).
+
+The {product} {this-version} kernel for x86_64 includes `haltpoll`, a guest driver that polls a virtual CPU within the guest for an auto-tuned duration.
+
+`haltpoll` improves the performance of some latency-sensitive, virtualized applications.
+`haltpoll` can only be used on physical hosts with a recent x86_64 CPU.
+
+To use it:
+
+* On the physical host, the QEMU commands that starts the virtual machine has to contain the parameter `-cpu host,kvm-hint-dedicated=on`.
+  `virsh` allows specifying this parameter using `<hint-dedicated state='on'/>` and `<cpu mode='host-passthrough' check='none'/>`.
+  For more information, see the link:https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
+* Load the driver in the virtual host: `modprobe cpuidle-haltpoll`.
+  If it cannot be loaded, check `journalctl -k`.
+  If something went wrong, you may see an `-ENODEV` error.
+
+If you are using libvirt/`virsh`, verify that the `kvm-hint-dedicated` parameter is actually passed to QEMU.
+There are two complimentary ways of checking whether the parameter is successfully applied:
+
+* On the host: Check the `qemu` command in the process list.
+* On the guest: Check whether the QEMU KVM parameter above is active with `cpuid` (from the package `cpuid`):
+   If it is active, `cpuid -1 -l 0x40000001` will show that the first bit of `edx` is set: `edx=0x00000001`.
+
+
+[#virtualization-qemu-update]
+===== QEMU has been updated to version 5.2
+
+QEMU has been updated to link:https://wiki.qemu.org/ChangeLog/5.2[version 5.2].
+
+In an effort to bridge the gap between {leap} and {slea}, we have removed uses of the `is_opensuse` macro from the RPM spec file.
+This means that the packages built for {slea} can be reused for {leap}.
+Some subpackages which are included for {leap} will not be included with {slea}.
+Such packages will be provided in {ph} for {slea} users as unsupported packages (see also https://packagehub.suse.com/).
+// add explanation how to add them and use them?
+
+Also review upstream link:https://wiki.qemu.org/Features/RemovedFeatures[feature removals].
+
+[#jsc-SLE-11629]
+===== Fixed UIDs and GIDs for the `kvm`, `qemu`, and `libvirt` groups
+
+With previous versions of {producta}, if disks for KVM guests had been stored on NFS and the UID and GID were the same on both hosts, the guest disks became read-only after migration.
+
+Starting with {product} {this-version}, we rely on `system-user-qemu` and `system-group-kvm` to provide these users and groups.
+These packages provide fixed UID and GID are now set for the `kvm`, `qemu`, and `libvirt` groups which avoids the migration problem.
+
+
+[#jsc-SLE-16823]
+===== Virtual machines support more than 256 CPUs
+
+Virtual environments without virtualized IOMMU now support more than 256 CPUs.
+This, for example, helps support large {aws} instances of {hana}.
+
+
+[#virtualization-xen]
+==== Xen
+
+// Xen virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+* Xen: NetWare Support has been removed
+* Update to Xen 4.14.0 FCS release
+  * Linux stub domain improvements
+  * Control-flow Enforcement Technology (CET) Shadow Stack support
+  * Support for running Xen as a Hyper-V Guest
+  * Domain ID randomization, persistence across save/restore
+  * Automatic generation of Go language bindings
+  * The debugging tool for Windows guests, KDD, now supports Windows 7, 8.x, and 10
+
+For more information, see the link:https://wiki.xenproject.org/wiki/Xen_Project_4.14_Feature_List[upstream Xen release notes].
+
+
+[#virtualization-libvirt]
+==== libvirt
+
+// libvirt virtualization-related release notes go here
+libvirt has been updated to version 7.0.0.
+Major new features are:
+
+* QEMU: Tolerate non-existent files such as `/dev/kvm` when populating domain private namespace
+* Add all new APIs and constants in libvirt 7.0.0
+
+For more information, see the link:https://libvirt.org/news.html[upstream libvirt release notes].
+
+[#jsc-SLE-15935]
+===== KubeVirt
+
+KubeVirt is a technology which enables container-native virtualization.
+A specific documentation about KubeVirt can be found at:
+https://documentation.suse.com/en-us/sbp/all/html/SBP-KubeVirt-SLES15SP3/
+
+
+[#bsc-1187693]
+===== `kubevirt-virt-*` packages have been moved
+
+All the `kubevirt-virt-*` packages have been moved to the Containers module.
+As such, these packages are not maintained anymore.
+Everything else is shipped only as containers.
+
+
+[#virtualization-spice]
+==== spice
+
+[#virtualization-spice-gtk]
+===== spice-gtk
+
+The new version 0.38 provides fixes and new features:
+
+* Added CD/DVD redirection, to allow mounting ISO images from client
+* Improved clipboard functionality, related to host/guest races and clipboard managers
+
+
+[#virtualization-spice-protocol]
+===== spice-protocol
+
+The version has been updated to 0.14.3:
+
+* Added support for mouse side-buttons
+* Added a `MonitorsMM` field to `VDAgentMonitorsConfig` to allow passing physical monitor dimensions
+* Updated `VD_AGENT_*` capabilities
+* Deprecated CELT support
+
+For more information, see the link:https://gitlab.freedesktop.org/spice/spice-protocol/-/blob/master/CHANGELOG.md[upstream change log].
+
+
+[#virtualization-libvirt-spicegtk]
+===== spice-gtk PulseAudio back-end has been removed
+
+The PulseAudio back-end of spice-gtk has been removed in {product} {this-version}.
+
+
+[#virtualization-virt-manager]
+==== virt-manager has been updated to version 3.2.0
+
+`virt-manager` has been updated to virt-manager 3.2.0.
+Major changes since the version included with the previous service pack of {product} include:
+
+* Display information about the NVRAM file used instead of only displaying the path
+* Support for `virt-install –cloud-init`.
+* The `virt-convert` tool has been removed. Use `virt-v2v` instead.
+* A handful of UI XML configuration options have been removed.
+The XML editor can be used instead. For a larger discussion, see https://www.redhat.com/archives/virt-tools-list/2019-June/msg00117.html.
+* The __New VM__ UI now has a __Manual Install__ option which creates a VM without any required install media.
+* In the __New VM__ UI, the network/PXE install option has been removed.
+If you need network boot, choose __Manual Install__ and set the boot device after initial VM creation.
+* __Migrate VM__ UI now has an XML editor for the destination VM.
+* Global and per-VM option to disable graphical console autoconnect.
+This makes it easier to use virt-manager alongside another client like `virt-viewer`.
+* `virt-install`: Added `--reinstall=DOMAIN` option
+* `virt-install`: Added `--autoconsole text|graphical|none` option
+* `virt-install`: Added `--os-variant detect=on,require=on` suboptions
+* CLI: Added `–xml XPATH=VAL` option for making direct XML changes
+* CLI: Added `--clock`, `--keywrap`, `--blkiotune`, `--cputune` options
+* CLI: Added `–features kvm.hint-dedicated.state=` feature.
+* CLI: Added `–iommu` option.
+* CLI: Added `--graphics websocket=` support.
+* CLI: Added `--disk type=nvme source.*` suboptions.
+* CLI: Fill in all `--filesystem` suboptions.
+* New VMs are created by default with audio enabled
+
+
+[#virtualization-vagrant-box]
+===== Vagrant boxes for {sles}
+
+We are providing official Vagrant Boxes for {sles} x86-64 and AArch64 using the VirtualBox and `libvirt` providers.
+These boxes come with the bare minimum of packages to reduce their size and are not registered.
+Thus, you need to register the boxes prior to further provisioning.
+
+These boxes are only available for direct download from https://download.suse.com.
+Therefore, downloaded boxes must be registered manually with Vagrant as follows:
+
+[source,bash]
+----
+vagrant box add --name SLES-15-SP3 SLES15-SP3-Vagrant.x86_64-15.3-libvirt-*.vagrant.libvirt.box
+----
+
+The box is then available under the name __SLES-15-SP3__ and can be used like other Vagrant boxes:
+
+[source,bash]
+----
+vagrant init SLES-15-SP3
+vagrant up
+vagrant ssh
+----
+
+[#virtualization-vagrant-aarch64]
+===== AArch64 support
+
+The {sles} box is also available for the AArch64 architecture using the `libvirt` provider.
+It has been pre-configured for usage on {sles} on AArch64 and might not launch on other operating systems without additional settings.
+Running it on architectures other than AArch64 is not supported.
+
+In case the box fails to start with a `libvirt` error message, add the following to your `Vagrantfile` and adjust the variables according to the guest operating system:
+
+[source,ruby]
+----
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+    libvirt.host = 'localhost'
+    libvirt.uri = 'qemu:///system'
+    libvirt.host = "main"
+    libvirt.features = ["apic"]
+    # path to the UEFI loader for aarch64
+    libvirt.loader = "/usr/share/qemu/aavmf-aarch64-code.bin"
+    libvirt.video_type = "vga"
+    libvirt.cpu_mode = "host-passthrough"
+    libvirt.machine_type = "virt-3.1"
+    # path to the qemu aarch64 emulator
+    libvirt.emulator_path = "/usr/bin/qemu-system-aarch64"
+  end
+----
+
+
+[#virtualization-vmware]
+==== VMware
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#bsc-1170059]
+===== High video resolutions in VMware ESXi need more VRAM
+
+Virtual machines with less than 32 MB video memory can fail on resolutions higher than 1024x768.
+
+If you are using VMs with resolutions higher than 1024x768, reserve 32 MB or more video memory.
+
+
+[#virtualization-other]
+==== Others
+
+// Other virtualization-related release notes go here
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// SLE-17881
+* support for {nvidia} Virtual GPU v12 has been added.
+This support uses the SR-IOV framework for the Ampere (A100/A10) architecture and the mediated device (`mdev`) framework for Volta and earlier architectures.
+The support does NOT include {nvidia} vGPU live migration support.
+
+// SLE-17093
+* {azure}: Support for hibernation of Linux VMs on {azure} has been added.
+* The `os-dbinfo` database has been updated to version 20201218.
+* `open-vm-tools` has been updated to version 11.2.5.
+For more information, see the link:https://github.com/vmware/open-vm-tools/blob/stable-11.2.5/open-vm-tools/ChangeLog[upstream change log].
+* `vm-install`: Modified the PV PXE booting feature to only allow a PXE server address to be passed on command line.
+The use of `udhcp` to look up PXE servers has been removed.
+
+
+[#jsc-SLE-16682]
+==== VM installer of {yast} can no longer install LXC containers
+
+The {yast} module for installing VMs (`yast2-vm`) has the following changes:
+
+* As support for libvirt LXC containers will be removed with {product} 15{nbsp}SP4, the option to install the `libvirt-daemon-lxc` package has been removed.
+* As Xen is only supported on x86-64, Xen-related options have been disabled for AArch64.

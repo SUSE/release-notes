@@ -1,0 +1,177 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#rnotes]
+= {rnotes}
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-product.adoc[]
+
+include::related-product.adoc[]
+
+// ===================================================================
+
+// Installation and Upgrade
+
+include::install-upgrade.adoc[]
+
+// START ARCH-INDEPENDENT
+[#all-architecture]
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {productname} {this-version}.
+
+// include::authentication.adoc[]
+
+// include::basic-utility.adoc[]
+
+include::container.adoc[]
+
+include::database.adoc[]
+
+// include::desktop.adoc[]
+
+include::development.adoc[]
+
+include::hardware.adoc[]
+
+include::kernel.adoc[]
+
+include::miscellaneous.adoc[]
+
+include::network.adoc[]
+
+// include::performance.adoc[]
+
+include::security.adoc[]
+
+include::storage.adoc[]
+
+include::package-hub.adoc[]
+
+include::system-management.adoc[]
+
+include::virtualization.adoc[]
+
+// END ARCH-INDEPENDENT
+
+// x86-64-specific
+// include::x86-64.adoc[]
+
+// IBM POWER-specific
+include::power.adoc[]
+
+// IBM Z-specific
+include::ibm-z.adoc[]
+
+// Arm-specific
+include::aarch64.adoc[]
+
+// Removed & deprecated packages & features
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+
+[NOTE]
+.Package and module changes in {this-version}
+For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+// jsc#PED-12575
+* removed the `KBD_DISABLE_CAPS_LOCK` feature from `/etc/sysconfig/keyboard`
+// jsc#PED-10272, jsc#PED-10805
+* `intel-opencl` and `intel-graphics-compiler` packages have been moved to {ph} after being deprecated in 15 SP6.
+// jsc#PED-11976
+* `redis` has been removed in {productnameshort} 15 SP7 and will not be supported in {productnameshort} 15 after June 2031.
+Use `valkey` instead.
+// jsc#PED-11949
+* `ntp` has been moved to the _Legacy Module_ and will be removed in {productnameshort} 16.0. Use `chrony` instead.
+* PHP 7.4 has been removed.
+// jsc#PED-7916
+* `numad` has been removed.
+* IBM Java has been removed. See <<java-version>>.
+
+[#jsc-PED-6808]
+=== `ceph` client packages moved to Legacy Module
+
+The following `ceph` client packages have been moved to Legacy Module:
+
+* `ceph-common`
+* `libcephfs-devel`
+* `python3-ceph-common`
+* `python3-rbd`
+* `python3-rgw`
+
+
+[#jsc-PED-13239]
+==== OpenLDAP server
+
+The release notes for {productname} 15 SP4-SP6 stated that the OpenLDAP server package was deprecated and would be removed in favor of the 389 Directory Server (`389-ds`).
+
+Based on customer feedback, OpenLDAP server was reintroduced in {productnameshort} to provide an extended migration period to the 389 Directory Server.
+While the OpenLDAP server is available in {productnameshort} {this-version}, we continue to strongly recommend that customers migrate to the `389-ds` package.
+The inclusion of OpenLDAP server is designed to facilitate a smoother transition and neither should it be considered for new deployments, nor it is planned to be included in {productnameshort} {next-version}.
+
+
+[#jsc-PED-8087]
+==== `intel-opencl` and `intel-graphics-compiler` packages removal
+
+Since SLE15 SP5, Intel stopped requesting updates for `intel-opencl` and `intel-graphics-compiler` packages, and thus the packages have been deprecated in 15 SP6.
+They have now been removed from {this-version}, and moved to Package Hub.
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// ===================================================================
+
+* `netiucv` and `lcs` drivers have been deprecated and will be removed in {productnameshort} 16.
+
+// jsc-PED-12744
+* The 2MB OVMF image will be deprecated and removed in {productnameshort} 16.1.
+
+
+
+include::source-code.adoc[]
+
+include::legal.adoc[]
+
+[appendix]
+include::changelog.adoc[]
+
+[appendix]
+include::kernel-parameter-changes.adoc[]

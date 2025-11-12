@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section id="Intro">
+ <title>&product;</title>
+
+ <para>
+  &product; is an affordable, integrated suite of robust open source
+  clustering technologies that enable enterprises to implement highly
+  available Linux clusters and eliminate single points of failure.
+  Used in combination with &sles;, it helps organizations maintain business
+  continuity, protect data integrity, and reduce unplanned downtime for their
+  mission-critical Linux workloads.
+ </para>
+ <para>
+  &product; provides all essential monitoring, messaging, and cluster
+  resource management functionality of proprietary third-party solutions, but
+  at a more affordable price, making it accessible to a wider range of
+  enterprises.
+ </para>
+ <para>
+  The tight integration of &product; and &sles; ensure that the most robust,
+  secure, and up-to-date high availability solution. Based on an innovative,
+  highly flexible policy engine, it supports a wide range of clustering
+  scenarios.
+ </para>
+ <para>
+  With static or stateless content, the High Availability cluster can be used
+  without a cluster file system. This includes web services with static
+  content as well as printing systems or communication systems like proxies
+  that do not need to recover data.
+ </para>
+ <para>
+  Finally, its open-source license minimizes the risk of vendor lock-in, and
+  its adherence to open standards encourages interoperability with industry
+  standard tools and technologies.
+ </para>
+
+ <section id="Intro.New">
+  <title>What Is New?</title>
+
+  <para>
+   &product; &this-ga; introduces many innovative changes compared to
+   &product; &previous-ga;.
+   <!-- The most important changes are listed below: -->
+  </para>
+  <!-- FIXME: This is bad. - sknorr, 2018-09-28 -->
+  <!--<itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Feature 1:</title>
+     <para>
+      It exists!
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Feature 2:</title>
+     <para>
+      It is great!
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist> -->
+  <para>
+   In addition to the these release notes, make sure to also review the
+   release notes for the base product, &sles; &this-version;, which are
+   published at <ulink url="&rn-url-sles;"/> (these release notes are identical
+   across all supported hardware architectures).
+  </para>
+ </section>
+
+ <section id="Intro.Important">
+  <title>Important Sections of This Document</title>
+
+  <para>
+   If you are upgrading from a previous &product; release, you should review at
+   least the following sections:
+  </para>
+
+  <itemizedlist>
+   <listitem role="check-xref">
+    <para>
+     <xref linkend="Intro.Support"/>
+    </para>
+   </listitem>
+   <!--<listitem role="check-xref">
+    <para>
+     <xref linkend="InstUpgrade.Upgrade"/>
+    </para>
+   </listitem>-->
+  </itemizedlist>
+ </section>
+
+ <section id="Intro.Lifecycle">
+  <title>Support and Life Cycle</title>
+  <!-- This is highly product-specific, make sure to adapt! -->
+  <para>
+   &product; is backed by award-winning support from &suse;, an established
+   technology leader with a proven history of delivering enterprise-quality
+   support services.
+  </para>
+  <para>
+   &product; &this-ga; has a 13-year life cycle, with 10 years of
+   General Support and 3 years of Extended Support. The current version
+   (&this-sp;) will be fully maintained and supported until 6 months after the
+   release of &product; &this-ga; &next-sp;.
+  </para>
+  <para>
+   If you need additional time to design, validate, and
+   test your upgrade plans, Long Term Service Pack Support (LTSS) can extend
+   the support you get by an additional 12 to 36 months in 12-month
+   increments, providing a total of 3 to 5 years of support on any
+   given Service Pack.
+  </para>
+  <para>
+   For more information, see:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     The support policy at
+     <ulink url="https://www.suse.com/support/policy.html"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Long Term Service Pack Support page at
+     <ulink url="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="support-statement.xml"/>
+
+ <!-- <section id="Intro.Support.General" role="remove-empty">
+  <title>General Support</title>
+  <para/>
+ </section>
+
+ <section id="Intro.Support.External" role="remove-empty">
+  <title>Software Requiring Specific Contracts</title>
+  <para/>
+ </section> -->
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="documentation.xml"/>
+
+</section>

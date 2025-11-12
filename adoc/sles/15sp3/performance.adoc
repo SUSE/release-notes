@@ -1,0 +1,29 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#performance]
+=== Performance-related information
+
+// Release notes for performance tool/library features:
+//    profiling, ... (not performance bugs/fixes in applications)
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#jsc-SLE-12724]
+==== `perf stat` allows configuring whether to run used events in kernel space or user space
+
+The `perf` tool offers a rich set of commands to collect and analyze performance and trace data.
+
+`perf record` supports `--all-kernel`/`--all-user` to configure all used events to run in kernel space or run in user space.
+However, in the version of `perf` shipped with {product} 15{nbsp}SP2, `perf stat` does not support these options.
+
+In {sles} {this-version}, we have updated `perf stat` to support the `--all-kernel` and `--all-user` options to keep the same semantics available in both commands.

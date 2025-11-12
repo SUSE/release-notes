@@ -1,0 +1,318 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#system-management]
+=== System management
+
+// Release notes for system management tools:
+//    YaST, Zypper, AutoYaST, KIWI, SUSEconnect, Salt, ...
+
+// jsc#SLE-23401
+* {autoyast} now honors security-related parameters
+
+[#jsc-PED-7978]
+==== Effective user limits in systemd setup
+
+Before, the lookup of the effective session limit in a systemd setup was not trivial.
+Now these new properties have been added:
+
+* `EffectiveMemoryMax`
+* `EffectiveMemoryHigh`
+* `EffectiveTasksMax`
+
+
+[#jsc-PED-407]
+==== Silence `KillMode=None` messages
+
+The log level of the deprecation warnings regarding `killmode=None` have been reduced.
+Instead of `warning`, they are now logged at the `debug` log level.
+
+
+[#jsc-SLE-22844]
+==== `wsmancli` has been moved
+
+The `wsmancli` package has been moved from _Package Hub_ to the {producta} _Basesystem Module_.
+
+
+// related: bsc#1193843
+[#bsc-1183034]
+==== systemd `KillMode=none` is deprecated
+
+Support for `KillMode=none` is deprecated and will be eventually removed in a future {slea} version.
+However, the obsolete feature will be kept long enough to give customers time to migrate to another `KillMode` value.
+Please see the SUSE TID at https://www.suse.com/support/kb/doc/?id=000020394 for more information.
+
+
+[#jsc-SLE-17233]
+==== Salt has been updated to version 3002
+
+The `salt` package has been updated to version 3002.
+This update also includes patches, backports, and enhancements by SUSE for the SUSE Manager Server, Proxy and Client Tools.
+This applies to client operating systems with Python 3.5+.
+Otherwise Salt 3000 or 2016.11 is used.
+
+We intend to regularly upgrade Salt to more recent versions.
+
+For more details about changes in your manually-created Salt states, see https://docs.saltproject.io/en/latest/topics/releases/3002.html.
+
+
+[#jsc-SLE-16263]
+==== Additional settings now easily available during installation
+
+During installation, there are some settings that were only accessible from certain screens.
+
+With this change, these settings are now available at any point during the installation.
+The dialog provides access to these options: network devices, network proxy, software repositories, and expert console.
+Currently, they are only accessible using these keyboard shortcuts:
+
+* Ctrl+Alt+Shift+C (in graphical mode)
+* Ctrl+D Shift+C (in text mode)
+
+
+[#jsc-SLE-11500]
+==== Disable automatic updating of NVRAM in {yast} and {autoyast}
+
+Before this change, NVRAM was updated every time GRUB was installed or updated.
+This set the running {suse} OS as the new primary boot entry.
+Among other issues, this caused custom boot order to be lost every time that happened.
+
+After this change, you can set the `UPDATE_NVRAM` parameter to `no` in `/etc/sysconfig/bootloader`.
+This will prevent NVRAM from being updated automatically.
+
+For {autoyast}, you can use this configuration snippet:
+
+[source,xml]
+----
+<bootloader>
+  <global>
+    <update_nvram>false</update_nvram>
+  </global>
+</bootloader>
+----
+
+[NOTE]
+.Affected architectures
+====
+This only applies to UEFI on {x64}, {aarch64}, and {ppc}.
+{producta} cannot modify the boot order on other architectures and set the BIOS to directly boot the newly installed OS.
+====
+
+
+[#jsc-SLE-17307]
+==== {selinux} support has been added to {yast}
+
+During installation, {autoyast} now allows you enable Security Enhanced Linux ({selinux}).
+You can choose between `enforcing` and `permissive` mode.
+
+// bsc#1186099
+[WARNING]
+{producta} {this-version} does not include a default {selinux} policy.
+You need your own policy for {selinux} to work.
+Enabling {selinux} without a policy will probably result in an unbootable system.
+
+For more information, see https://github.com/SELinuxProject/selinux.
+
+
+[#jsc-SLE-11521]
+==== `xca` has been added
+
+`xca` (X Certificate and Key Management) has been added as the new Certificate Authority (CA) management tool.
+`xca` replaces the old YaST CA management tool.
+It allows to:
+
+* create CA and keys
+* create, sign, and revoke certificates
+* import and export keys and certificates in PEM, DER, and PKCS8 formats
+* sign and revoke certificates in PEM, DER, and PKCS12 formats with select x509v3 extensions
+
+It also provides a graphical interface and a tree-like view of certificates.
+
+
+[#bsc-1171356]
+==== Shorter and more effective {autoyast} profiles
+
+Previously, when {autoyast} generated a profile from an existing system, it included a lot of information to reproduce the installation.
+As a consequence, profiles were usually long, which made working with them more difficult.
+However, much of that information was not needed as it corresponded to default values or disabled features.
+
+Now {autoyast} tries to skip irrelevant information, producing shorter and more manageable profiles.
+You can ask {autoyast} to additionally reduce the size of the profile by applying simple heuristics with the new `compact` mode.
+Bear in mind that in that case, some relevant information could be missing (for example, manually-created system users).
+
+// bsc#1191408
+The new `compact` mode is disabled by default but it can be enabled by passing the `target` option to the `clone_system` command:
+
+[source]
+----
+yast2 clone_system modules target=compact
+----
+
+Additionally, it is now possible to use `t` instead of `config:type` to add type annotations, reducing the size of the profile
+and making it easier to modify it manually.
+
+[#bsc-1174202]
+==== Export registration information is included in the {autoyast} profile
+
+Previously, although {autoyast} profiles used to contain a lot of information, the registration settings were not included.
+Additionally, the list of registered add-ons was wrongly exported as a regular repository.
+
+{autoyast} now includes the `<suse_register>` section, containing the registration keys and the list of registered add-ons.
+
+
+[#bsc-1145269]
+==== Improved scripting support in {autoyast}
+
+Scripting support provides a powerful way to extend {autoyast} with custom behavior.
+Previously, Shell, Perl, and Python were the only supported scripting languages.
+
+This limitation has been removed and it is now possible to use any interpreter which is available during the installation.
+
+In addition to that, scripting has seen other improvements such as:
+
+* ensuring that all artifacts are copied to the installed system
+* reporting an error when the script returns a non-zero value.
+
+
+[#bsc-1175735]
+==== Dynamic {autoyast} profiles using ERB
+
+{autoyast} offers different ways of modifying a profile at runtime: asking the user for values during installation,
+running pre-installation scripts, or using rules and classes to merge different profiles. However, dealing with
+XML with basic tools might be hard.
+
+In order to make it easier to modify the profile, {autoyast} now has support for ERB, which stands for *Embedded Ruby*. This
+allows to use the Ruby programming language to alter the profile at installation time.
+Additionally, {autoyast} offers a set of helpers to inspect the system (disks, network cards, etc.) and modify
+the profile accordingly.
+
+
+[#bsc-1173091]
+==== {autoyast} profile validation at runtime
+
+The {autoyast} documentation recommends using `xmllint` or `jing` to perform an XML-based validation of the profile.
+Although it is not mandatory, having to perform this step outside of the {autoyast} workflow can be annoying.
+
+To make this easier, {autoyast} now validates the profile at runtime, reporting issues to the user.
+However, you can disable this behavior by setting the `YAST_SKIP_XML_VALIDATION` boot parameter to `1`.
+
+
+[#bsc-1173624]
+==== Reducing the need for the {autoyast} second stage
+
+{autoyast} uses two stages to perform the installation.
+Most of the work is done during the *first stage*: partitioning, system registration, software installation, network configuration, etc.
+After the first reboot, the *second stage* comes into play to configure additional services (for example, the firewall).
+
+To reduce the need for a *second stage*, we have been moving the processing of several {autoyast} sections to the *first stage*.
+At this point, these sections are processed during the first stage:
+
+* `bootloader`
+* `configuration_management`
+* `files`
+* `firewall`
+* `host`
+* `kdump`
+* `keyboard`
+* `language`
+* `networking`
+* `partitioning`
+* `runlevel`
+* `scripts` (except `post-scripts` and `init-scripts` which are processed during the *second stage*)
+* `security`
+* `services-manager`
+* `software`
+* `ssh_import`
+* `suse_register`
+* `timezone` and
+* `users`
+
+If your profile does not contain any section not mentioned above, the *second stage* can be disabled.
+
+
+[#bsc-1136454]
+==== Extended support for customizing the {autoyast} partitioning schema from the UI
+
+Previously, the support for defining the partitioning schema in the {autoyast} user interface was limited.
+The tool only supported a subset of devices (disks, partitions, and LVM volume groups) and properties.
+In addition, the interface was somewhat confusing.
+
+This interface has been greatly improved and extended to support software RAID devices, non-partitioned drives, and Bcache and multi-device Btrfs file systems.
+
+
+[#bsc-1178603]
+==== Disabling the automatic creation of bridges for virtual networks in {autoyast}
+
+When a virtualization package is selected for installation, for example, Xen, QEMU or KVM, {autoyast} sets up a bridge as part of the network configuration.
+
+Now it is possible to disable this behavior by setting the `virt_bridge_proposal` element to `false`. This causes {autoyast} to delegate
+the creation of the bridge to the selected virtualization package.
+
+
+[#jsc-SLE-16678]
+==== `DOCUMENTATION_URL` has been added to `/etc/os-release`
+
+`/etc/os-release` now contains the tag `DOCUMENTATION_URL`, which points to the online documentation of {product}.
+The `DOCUMENTATION_URL` tag is used by certain tools, such as Cockpit.
+
+
+[#jsc-SLE-16809]
+==== `fwupd` has been updated
+
+`fwupd` is simple daemon which allows session software to update firmware.
+In {sles} {this-version}, we have updated `fwupd` from version 1.2 to version 1.5, which includes many new features and bug fixes.
+
+
+[#jsc-SLE-15765]
+==== Snapper cleanup has new algorithms
+
+The Snapper `cleanup` command now has a new cleanup algorithm, `--free-space` that tries to free the requested amount of space.
+To clean up `/`, you can use for example:
+
+[source,bash]
+----
+snapper cleanup --path / --free-space "20 GiB" all
+----
+
+
+[#jsc-SLE-7690]
+==== Support for System V init.d scripts is deprecated
+
+systemd in {product} {this-version} automatically converts System V `init.d` scripts to service files.
+Support for System V init.d scripts is deprecated and will be removed with the next major version of {product}.
+In the next major version of {product}, systemd will also stop converting System V `init.d` scripts to systemd service files.
+
+To prepare for this change, use the automatically generated systemd service files directly instead of using System V `init.d` scripts.
+To do so, copy the generated service files to `/etc/systemd/system`.
+To then control the associated services, use `systemctl`.
+
+The automatic conversion provided by systemd (specifically, `systemd-sysv-generator`) is only meant to ensure backward compatibility with System V init.d scripts.
+To take full advantage of systemd features, it can be beneficial to manually rewrite the service files.
+
+This deprecation also causes the following changes:
+
+// jsc#SLE-7192
+* The `/etc/init.d/halt.local` initscript is deprecated.
+Use systemd service files instead.
+// jsc#SLE-10912
+* `rc__SERVICE__` controls of systemd services are deprecated.
+Use systemd service files instead.
+// jsc#SLE-9004
+* `insserv.conf` is deprecated.
+
+
+[#jsc-SLE-17074]
+==== {suse}-specific RPM macros have been split from `rpm` package
+
+The package `rpm-config-SUSE` is available on {product} {this-version}.
+This package allows adding or updating macros used at build-time without having to touch the core `rpm` package.
+This simplifies backporting packages that rely on newer macros.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

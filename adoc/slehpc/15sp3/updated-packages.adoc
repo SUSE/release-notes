@@ -1,0 +1,462 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[IMPORTANT]
+====
+These release notes only document changes in {product} compared to the immediate previous service pack of {product}.
+The full changes and fixes can be found on the respective web site of the packages.
+====
+
+[#jsc-SLE-18782]
+=== gnu11-compiler-hpc
+
+This package adds an environment module for the GNU toolchain version 11.
+
+It is needed to build and run applications against this version of the GNU toolchain with environment module support.
+
+To build software, install the package `gnu11-compiler-hpc-devel`.
+This will install all required packages (including the GNU C, pass:[C++] and Fortran compilers) and set up the system accordingly.
+To build packages with these compilers, run `module load gnu`.
+This sets the standard binaries for the GNU compiler toolchain: `gcc`, `g++`, and `gfortran` to the appropriate version and sets environment variables `CC` and `CPP` to the desired binaries.
+
+[NOTE]
+====
+The environment module system always takes the latest version of the toolchain installed as the default.
+To load the environment for an older toolchain version, the version number needs to be specified when loading the module.
+For example: `module load gnu/7`.
+
+To only run binaries, it is sufficient to install `gnu11-compiler-hpc` by running `zypper install gnu11-compiler-hpc`.
+However, building in this environment will not be possible.
+====
+
+
+// SLE-17776
+=== Deprecation of packages
+
+Due to a lack of usage by customers, some library packages have been deprecated and will not be included in the HPC module starting with {producta} {next-version}.
+These libraries will continue to be available through {ph}.
+The following libraries will be deprecated and will be dropped from {producta} {next-version}:
+
+* `boost`
+* `gsl`
+* `fftw3`
+* `hypre`
+* `metis`
+* `mumps`
+* `netcdf`
+* `ocr`
+* `petsc`
+* `ptscotch`
+* `scalapack`
+* `trilinos`
+
+In {producta} {this-version}, Spack is now available which allows the user to easily download and install the entire HPC solution stack. For more information, see <<#jsc-SLE-15347>>.
+
+
+[#jsc-SLE-14959]
+=== boost
+
+`boost` has been updated to version 1.75.0.
+For the full change log, see https://www.boost.org/users/history/version_1_75_0.html.
+
+
+[#jsc-SLE-16454]
+=== clustduct
+
+Support for `dolly` has been added to `clustduct`.
+`dolly` is used to clone the installation of one machine to other machines.
+It can distribute image files, partitions or whole hard disk drives.
+For more information, see http://www.cs.inf.ethz.ch/stricker/CoPs/patagonia/dolly.html and https://github.com/mslacken/clustduct.
+
+=== conman
+
+`conman` has been updated to version 0.3.0.
+
+The main changes include:
+
+* fixed slow connection to Unix socket consoles triggered from inotif
+* IPMI defaults can now be overridden via `libipmiconsole.conf`
+
+For more information, see http://dun.github.io/conman/.
+
+//SLE-14959
+=== cpuid
+
+`cpuid` has been updated to version 20201006.
+Suport was added for:
+
+* 14nm Zen
+* Alder Lake
+* Cato
+* Comet Lake
+* Cyrix MediaGX
+* Elkhart Lake B0
+* Golden Cove
+* Hygon
+* Jasper Lake A0 stepping (from Coreboot*)
+* Matisse B0 stepping
+* Picasso A1
+* Renoir A1
+* Rocket Lake
+* Sapphire Rapids
+* Tiger Lake-U B0
+* Zhaoxin KaiXian KX-6000
+
+Other changes include:
+
+* Update 4/eax CPU & core count terminology in the same way
+* Zhaoxin decoding
+* Added SEV cpuid bit
+
+For more information, see http://etallen.com/cpuid.html.
+
+//SLE-14959
+=== fftw3
+
+`fftw3` has been updated to version 3.3.9.
+The changes include:
+
+* New API fftw_planner_nthreads() returns the number of threads currently being used by the planner.
+* New fftw_threads_set_callback function to change the threading backend at runtime.
+* Tweak usage of FMA instructions in a way that favors newer processors (Skylake and Ryzen) over older processors (Haswell)
+
+For more information, see http://www.fftw.org/.
+
+=== ganglia
+
+`ganglia` has been updated to version 3.7.5.
+The changes include:
+
+* added support for a global user config under `/etc/ganglia/conf.d/`
+* added `download_js.sh` which can download the external JavaScript libararies
+* added the available memory to the graph
+
+For more information, see http://ganglia.info/.
+
+[IMPORTANT]
+`ganglia` relies on Python 2 which will no longer be available in {producta} {next-version}.
+Thus in {producta} {next-version}, `ganglia` will be replaced with `graphana` (https://grafana.com/).
+
+=== genders
+
+`genders` has been updated to version 1.27.3.
+The changes include:
+
+* fixed parsing of a corner case
+* newlines are not required at end of lines
+
+For more information, see https://github.com/chaos/genders.
+
+=== gnu10-compilers-hpc
+
+Support for `gcc` 10 has been added to {slehpca}.
+
+https://github.com/openhpc/ohpc
+
+//SLE-14959
+=== gsl
+
+`gsl` has been updated to version 2.6.
+The changes include:
+
+* added some statistics functions
+* updated algorithms and implementations
+* removed multiple previously deprecated functions
+* removed -u flag to gsl-histogram
+
+For more information, see http://git.savannah.gnu.org/cgit/gsl.git/tree/NEWS and https://www.gnu.org/software/gsl/.
+
+//SLE-14959
+=== hdf5
+
+`hdf5` has been updated to version 1.10.7.
+
+For more information, see https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/hdf5-1.10.7-RELEASE.txt and http://www.hdfgroup.org/HDF5/.
+
+//SLE-14959
+=== hypre
+
+`hypre` has been updated to version 2.20.0.
+The changes include:
+
+* Added matrix-based interpolation routines for AMG (CPU and GPU)
+* Added GPU support for aggressive coarsening in AMG
+* Added AMG-DD solver
+* Added GPU support for AMG setup and several interpolation approaches.
+* Added parallel ILU solvers and smoothers
+* Added MGR features
+* Moved reference manual API to online documentation
+* IJMatrix/Vector assembly on GPUs (with pointers to GPU memory)
+* Separated C and C++ headers
+
+For more information, see https://www.llnl.gov/casc/hypre/.
+
+//SLE-14959
+=== imb
+
+`imb` has been updated to version 2019.6.
+The changes include:
+
+* Added IMB-P2P Stencil2D and Stencil3D benchmarks
+* Added Visual Studio projects for IMB-P2P
+
+For more information, see https://software.intel.com/en-us/articles/intel-mpi-benchmarks.
+
+[#jsc-SLE-13669]
+=== memkind
+
+`memkind` has been updated to version 1.10.0.
+The changes include:
+
+* Provided another way to use Persistent Memory in memkind (MEMKIND_DAX_KMEM_* kinds)
+* Added C++ allocator for static kinds (including MEMKIND_DAX_KMEM_* kinds)
+* Added support for background thread
+* Extended hbw interface with hbw_malloc_usable_size()
+
+For more information, see http://memkind.github.io/memkind.
+
+//SLE-14959
+=== mpiP
+
+`mpiP` has been updated to version 3.5.
+The changes include:
+
+* Update deprecated functions
+* Additional I/O routines
+* Add Multi-Threading (MT) test suite
+* Introduce additional statistics layer
+* Change default stack frame unwinding count
+* Adding additional RMA functions to cover all MPI3.1 RMA functions. Expanded test coverage
+* Added MPI3 One-sided operation support, from changes by Jeff Hammond
+* Include mpiP wrapper scripts for mpirun and Slurm srun
+* Package API
+
+For more information, see http://mpip.sourceforge.net.
+
+=== munge
+
+`munge` has been updated to version 0.5.14.
+The changes include:
+
+* Added mungekey command for key generation via HKDF
+* Added negative caching of user lookups for processing supplementary groups
+* Added munged --origin and --stop cmdline opt
+* Added unmunge --numeric cmdline opt
+* Changed default name of munged seedfile
+
+For more information, see http://dun.github.io/munge.
+
+=== mvapich2
+
+`mvapich2` updated to version 2.3.4.
+For more information, see http://mvapich.cse.ohio-state.edu/overview/#mv2.
+
+//SLE-14959
+=== netcdf
+
+`netcdf` has been updated to version 4.7.4.
+The changes include:
+
+* Increased default size of cache buffer to 16 MB, from 4 MB. Increased number of slots to 4133.
+* Allow zlib compression to be used with parallel I/O writes, if HDF5 version is 1.10.3 or greater.
+* Restore use of szip compression when writing data (including writing in parallel if HDF5 version is 1.10.3 or greater).
+
+
+For more information, see https://github.com/Unidata/netcdf-c/releases/tag/v4.7.4 and http://www.unidata.ucar.edu/software/netcdf/.
+
+
+[#jsc-SLE-9950]
+=== netcdf-cxx4
+
+`netcdf-cxx4` has been updated to version 4.3.1.
+For more information, see https://www.unidata.ucar.edu/blogs/news/entry/netcdf-c-4-3-1 and http://www.unidata.ucar.edu/software/netcdf/.
+
+
+//SLE-14959
+=== netcdf-fortran
+
+`netcdf-fortran` has been updated to version 4.5.3.
+The changes include:
+
+* Add a new libnetcdff.settings file
+* Add build support for gcc10 to HPC build (bsc#1174439).
+* Add build support for openmpi4.
+
+For more information, see https://github.com/Unidata/netcdf-fortran/releases/tag/v4.5.3 and http://www.unidata.ucar.edu/software/netcdf.
+
+[#jsc-SLE-13773]
+=== openblas
+
+`openblas` has been updated to version 0.3.13.
+Since version 0.3.8, the changes include:
+
+* Added an optimized bfloat16 SBGEMV kernel for SkylakeX and Cooperlake
+* Improved the performance in several areas
+* Fixed missing BLAS/LAPACK functions (inadvertently dropped during the build system restructuring to support selective compilation)
+* Update _constraints to use 12GB RAM on x86_64
+* Improved performance of TRMM and TRSM for certain problem sizes
+* Added support for Intel Cooperlake
+* Add build support for gcc10 to HPC build (bsc#1174439).
+* Improved thread locking behaviour in blas_server and parallel getrf
+* Added API (openblas_setaffinity) to set thread affinity programmatically on Linux
+* Improved speed of the AVX512 GEMM3M code, added an AVX512 kernel for
+* STRMM and improved performance of the AVX2 GEMM kernels
+* LAPACK has been updated to 3.9.0 (plus patches up to January 2nd, 2020)
+* The "generic" (plain C) gemm beta kernel used by many targets has been sped up
+* A new AVX512 DGEMM kernel was added and the AVX512 SGEMM kernel was significantly improved
+* Optimized AVX512 kernels for CGEMM and ZGEMM have been added
+* AVX2 kernels for STRMM, SGEMM, and CGEMM have been significantly sped up and optimized CGEMM3M and ZGEMM3M kernels have been added
+* Added support for QEMU virtual cpus
+
+For more information, see http://www.openblas.net.
+
+//SLE-14959
+=== petsc
+
+`petsc` has been updated to version 3.14.5.
+The changes include:
+
+* Add build support for gcc10 to HPC build (bsc#1174439).
+* Add openmpi4 flavors.
+* Binaries have changed path from bin/ to lib/petsc/bin/
+
+For more information, see https://www.mcs.anl.gov/petsc/documentation/changes/314.html and http://www.mcs.anl.gov/petsc.
+
+//SLE-14959
+=== ptscotch
+
+`ptscotch` has been updated to version 6.1.0.
+The change in release number reflects a change in behavior of the software, regarding two features:
+
+* Algorithms for sparse matrix reordering now fully take into account vertex
+  weights. While the previous versions only accounted for them in the nested
+  dissection method to compute and  optimize separator size/weight, they are
+  now also accounted for in the minimum  degree and minimum fill algorithms.
+  Consequently,  vertex  amalgamation  can  be  tuned so  that  the  size of
+  (column-)blocks is tailored according to the real amount of computation to
+  be performed on supervariables.
+  The esmumps  interface  with MUMPS  has been  updated  so as to  take into
+  account this new feature.
+* The routines of the vertex  graph partitioning (with overlap)  module have
+  been redesigned, leading to much smaller  run time and, most often, higher
+  quality
+
+For more information, see http://www.labri.fr/perso/pelegrin/scotch.
+
+=== python-numpy
+
+`python-numpy` has been updated to version 1.17.3.
+This version added a new extensible random module.
+
+For more information, see http://www.numpy.org.
+
+[#jsc-SLE-14997]
+=== Slurm
+
+include::slurm-deprecation.adoc[leveloffset=+2]
+include::slurm22_05.adoc[]
+
+==== Version 20.11.05
+`Slurm` has been updated to version 20.11.05.
+
+The following changes have been made in 20.11:
+
+* `slurmctld` is now set to fatal in case of computing node configured with `CPUs == #Sockets`.
+CPUs has to be either total number of cores or threads
+* fhe FastSchedule option has been removed. The `FastSchedule=2` functionality (used for testing and development) is available as the new `SlurmdParameters=config_overrides` option
+* `slurmdbd` is now set to fatal if the `slurmdbd.conf` file is not owned by `SlurmUser` or its mode is not set to `0600`
+
+===== Highlights of version 20.11
+
+* Log messages enabled by the various DebugFlags have been overhauled, and will all print at the `verbose()` level, and prepend the flag name that is associated with a given log message
+* `accounting_storage/filetxt` has been removed as an option.
+Consider using `accounting_storage/slurmdbd` as an alternative.
+* Setting of number of Sockets per node was standardized for configuration line with and without `Boards=`.
+Specifically in case of `Boards=1` and #CPUs given the default value of Sockets will be set to #CPUs/#Cores/#Threads
+* Dynamic Future Nodes: `slurmds` started with `-F[<feature>]` will be associated with a node name in Slurm that matches the same hardware configuration
+* `SlurmctldParameters=cloud_reg_addrsa`: Cloud nodes automatically get `NodeAddr` and `NodeHostname` set from `slurmd` registration
+* `SlurmctldParameters=power_save[_min]_interval`: Configure how often the power save module looks to do work`
+* By default, a step started with srun will be granted exclusive (or non-overlapping) access to the resources assigned to that step.
+No other parallel step will be allowed to run on the same resources at the same time.
+This replaces one facet of the `--exclusive` option's behavior, but does not imply the `--exact` option described below.
+To get the previous default behavior, which allowed parallel steps to share all resources, use the new srun `--overlap` option.
+* In conjunction to this non-overlapping step allocation behavior being the new default, there is an additional new option for step management `--exact`, which will allow a step access to only those resources requested by the step.
+This is the second half of the `--exclusive` behavior.
+Otherwise, by default all non-gres resources on each node in the allocation will be used by the step, making it so no other parallel step will have access to those resources unless `--overlap` is specified for both steps.
+* The option `--threads-per-core` now influences task layout/binding, not just allocation.
+* `AutoDetect` in `gres.conf` can now be specified for some nodes while not for others via the `NodeName` option.
+* `gres.conf`: Add new `MultipleFiles` configuration entry to allow a single GRES to manage multiple device files simultaneously.
+* The option `SallocDefaultCommand` has been removed.
+* Support for an "Interactive Step" has been added, designed to be used with `salloc` to launch a terminal on an allocated compute node automatically.
+Enable this by setting `use_interactive_step` as part of `LaunchParameters`.
+* IPv6 support has been added. This must be explicitly enabled with `EnableIPv6` in `CommunicationParameters`. IPv4 support can be disabled with `DisableIPv4`.
+* Allow use of a target directory with `srun --bcast`, and change the default file name to include the node name as well.
+* The new option `--mail-type=INVALID_DEPEND` has been added to `salloc`, `sbatch`, and `srun`.
+* Differences between hardware (memory size, number of CPUs) discovered on node vs configured in slurm.conf will now throw an error only when the node state is set to drain. Previously it was done on every node registration, those messages were demoted to debug level.
+* The command `scrontab` has been added. It permits `crontab`-compatible job scripts to be defined. These scripts will recur automatically (at most) on the intervals described.
+* Enable the `-lnodes=#:gpus=#` in `#PBS/qsub -l` nodes syntax.
+* Any user with `AdminLevel` equal or higher than `Operator` can see any hidden partition by default, as `SlurmUser` or root already did.
+* `select/linear` will now allocate up to nodes `RealMemory` as spedified in `slurm.conf` when configured with `SelectTypeParameters=CR_Memory` and `--mem=0` specified. Previous behavior was no memory accouted and no memory limits implied to job.
+* `slurmrestd`, an API to interface with slurmdbd.
+* The option `--ntasks-per-gpu` has been added to `sbatch` and `srun`.
+* The `--gpu-bind=single` option has been added to `sbatch` and `srun`.
+* Fix: `scontrol takeover [backup]` hangs when specifying a backup > 1 have been fixed. All slurmctlds below the "backup" will be shutdown. 
+
+===== Version 20.11 Command Changes
+
+* `sacct`: get the UID from database instead of from the user name and a system call.
+Add `--use-local-uid` option to sacct to use the previous behavior.
+* `sbatch`: the `%s` format in `-e`/`-i`/`-o` options will expand to `batch` rather than `4294967294`.
+* `squeue`: added pendingtime as a option for `--Format`.
+* `sacct`: `AllocGres` and `ReqGres` were removed.
+`Alloc/ReqTres` should be used instead.
+* `scontrol`: added the "Reserved" license count to `scontrol show licenses`.
+* `squeue`: put sorted start times of `N/A` or `0` at the end of the list.
+* `scontrol`: Change `scontrol reboot ASAP` to use `next_state=resume` logic.
+* `scontrol`: added an admin-settable "Comment" field to each Node.
+* `squeue` and `sinfo`: `-O` no longer repeat the last suffix specified.
+* `salloc`: wait for `PrologSlurmctld` to finish before entering the shell.
+* Add time specification: `now-_X_` (that is, subtract `_X_` from the present)
+
+===== Version 20.11 API Changes
+
+* `slurm_ctl_conf_t` has been renamed to `slurm_conf_t`.
+* `slurm_free_kvs_comm_set()` has been renamed to `slurm_pmi_free_kvs_comm_set()`, `slurm_get_kvs_comm_set()` has been renamed to `slurm_pmi_get_kvs_comm_set()`.
+* `slurm_job_step_layout_get()` parameters has changed to use `slurm_step_id_t` see `slurm.h` for new implementation.
+If not running hetsteps just put `NO_VAL` as the value for `step_het_comp`.
+* `slurm_job_step_stat()` parameters has changed to use `slurm_step_id_t` see slurm.h for new implementation.
+If not running hetsteps just put `NO_VAL` as the value for `step_het_comp`.
+* `slurm_job_step_get_pids()` parameters has changed to use `slurm_step_id_t` see slurm.h for new implementation.
+If not running hetsteps just put `NO_VAL` as the value for `step_het_comp`.
+* `slurm_job_step_get_pids()` parameters has changed to use `slurm_step_id_t` see slurm.h for new implementation.
+If you are not running hetsteps, use `NO_VAL` as the value for `step_het_comp`.
+* `slurmdb_selected_step_t` has been renamed `slurm_selected_step_t`.
+* `slurm_sbcast_lookup()` arguments have changed.
+It now takes a populated `slurm_selected_step_t` instead of `job_id`, `het_job_offset`, `step_id`.
+* Due to internal restructuring ahead of the 20.11 release, applications calling libslurm must call `slurm_init(NULL)` before any API calls. Otherwise the API call is likely to fail due to libslurm's internal configuration not being available. 
+
+
+[#jsc-SLE-15347]
+=== Spack
+
+This is a package manager for supercomputers.
+It allows user to build pre-created recipes and deploy the software in a cluster.
+Spack creates environment modules and thus fits well with the rest of {slehpca}.
+
+For more information, see https://spack.io.
+
+// jsc-PED-2803
+
+include::spack0191.asciidoc[]
+
+[#jsc-SLE-14351]
+=== superlu
+
+`superlu` has been updated to version 5.2.2.
+
+For more information, see http://crd.lbl.gov/~xiaoye/SuperLU.
+
+[#jsc-PED-2802]
+=== Slurm 23.02
+
+include::slurm2302.adoc[]

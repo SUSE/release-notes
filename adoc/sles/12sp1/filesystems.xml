@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id="TechInfo.Filesystems">
+ <title>File Systems</title>
+ <para><ulink url="https://www.suse.com/products/server/technical-information/#FileSystem"/>
+ </para>
+
+
+ <section id="TechInfo.Filesystems.Comparison">
+ <title>Comparison of Supported File Systems</title>
+ <para>&sle; was the first enterprise Linux distribution
+to support journaling file systems and logical volume
+managers back in 2000. Later we introduced xfs to Linux,
+which today is seen as the primary work horse for
+large-scale file systems, systems with heavy load and
+multiple parallel read- and write-operations.  With
+&sle; 12 we are going the next step of innovation and
+are using the Copy on Write file system btrfs as the
+default for the operating system, to support system
+snapshots and rollback.
+ </para>
+
+ <para>
+  <!-- bnc#903673: use ascii symbols -->
+  <quote>+</quote>: supported;
+  <quote>-</quote>: unsupported.
+ </para>
+ <informaltable frame='all'>
+  <tgroup cols="6">
+   <colspec colnum="1" colname="c1"/>
+   <colspec colnum="2" colname="c2"/>
+   <colspec colnum="3" colname="c3"/>
+   <colspec colnum="4" colname="c4"/>
+   <colspec colnum="5" colname="c5"/>
+   <colspec colnum="6" colname="c6"/>
+   <thead>
+    <row rowsep='1'>
+     <entry><emphasis>Feature</emphasis></entry>
+     <entry><emphasis>Btrfs</emphasis></entry>
+     <entry><emphasis>XFS</emphasis></entry>
+     <entry><emphasis>Ext4</emphasis></entry>
+     <entry><emphasis>Reiserfs</emphasis></entry>
+     <entry><emphasis>OCFS 2 **</emphasis></entry>
+    </row>
+   </thead>
+       <tbody><row>
+        <entry>
+         <para>Data/Metadata Journaling</para>
+        </entry>
+        <entry>
+         <para>N/A</para>
+        </entry>
+        <entry>
+         <para>- / +</para>
+        </entry>
+        <entry/>
+        <entry>
+         <para>- / +</para>
+        </entry>
+        <entry>
+         <para>- / +</para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>Journal internal/external</para>
+        </entry>
+        <entry>
+         <para>N/A</para>
+        </entry>
+        <entry>
+         <para>+ / +</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Offline extend/shrink</para>
+        </entry>
+        <entry>
+         <para>+ / +</para>
+        </entry>
+        <entry>
+         <para>- / -</para>
+        </entry>
+        <entry>
+         <para>+ / +</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Online extend/shrink</para>
+        </entry>
+        <entry>
+         <para>+ / +</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+        <entry>
+         <para>+ / -</para>
+        </entry>
+
+       </row>
+       <row>
+        <entry>
+         <para>Inode-Allocation-Map</para>
+        </entry>
+        <entry>
+         <para>B-tree</para>
+        </entry>
+        <entry>
+         <para>B+-tree</para>
+        </entry>
+        <entry>
+         <para>table</para>
+        </entry>
+        <entry>
+         <para>u. B*-tree</para>
+        </entry>
+        <entry>
+         <para>table</para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>Sparse Files</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Tail Packing</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry>
+         <para>-</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry>
+         <para>-</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Defrag</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry>
+         <para>-</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>ExtAttr / ACLs</para>
+        </entry>
+        <entry>
+         <para>+ / +</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Quotas</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Dump/Restore</para>
+        </entry>
+        <entry>
+         <para>-</para>
+        </entry>
+        <entry>
+         <para>+</para>
+        </entry>
+        <entry>
+         <para>-</para>
+        </entry>
+        <entry/>
+       </row>
+       <row>
+        <entry>
+         <para>Blocksize default</para>
+        </entry>
+        <entry namest="c2" nameend="c6">
+         <para>4KiB</para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>max. Filesystemsize [1]</para>
+        </entry>
+        <entry>
+         <para>16 EiB</para>
+        </entry>
+        <entry>
+         <para>8 EiB</para>
+        </entry>
+        <entry>
+         <para>1 EiB</para>
+        </entry>
+        <entry>
+         <para>16 TiB</para>
+        </entry>
+        <entry>
+         <para>4 PiB</para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>max. Filesize [1]</para>
+        </entry>
+        <entry>
+         <para>16 EiB</para>
+        </entry>
+        <entry>
+         <para>8 EiB</para>
+        </entry>
+        <entry>
+         <para>1 EiB</para>
+        </entry>
+        <entry>
+         <para>1 EiB</para>
+        </entry>
+        <entry>
+         <para>4 PiB</para>
+        </entry>
+       </row>
+
+       <row>
+        <entry>
+         <para>Support Status</para>
+        </entry>
+        <entry>
+         <para>SLE</para>
+        </entry>
+        <entry>
+         <para>SLE</para>
+        </entry>
+        <entry>
+         <para>SLE</para>
+        </entry>
+        <entry>
+         <para>SLE</para>
+        </entry>
+        <entry>
+         <para>SLE HA </para>
+        </entry>
+       </row>
+
+    <row>
+     <entry>
+      <para>&nbsp;</para>
+     </entry>
+     <entry namest="c2" nameend="c6">
+      <para>
+       * Btrfs is copy-on-write file system. Rather than journaling changes before
+       writing them in-place, it writes them to a new location, then
+       links it in. Until the last write, the new changes are not
+       "committed". Due to the nature of the filesystem, quotas are
+       implemented based on subvolumes ("qgroups").  The
+       blocksize default varies with different host architectures.
+       64KiB is used on ppc64le, 4KiB on most other systems.  The
+       actual size used can be checked with the command "getconf
+       PAGE_SIZE".
+      </para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>&nbsp;</para>
+     </entry>
+     <entry namest="c2" nameend="c6">
+      <para>
+      ** OCFS2 is fully supported as part of the &sleha;.
+      </para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>&nbsp;</para>
+     </entry>
+     <entry namest="c2" nameend="c6">
+      <para>
+      *** Reiserfs is supported for existing filesystems, the creation of new reiserfs file systems is discouraged.
+      </para>
+     </entry>
+    </row>
+   </tbody>
+  </tgroup>
+ </informaltable>
+
+ <para>
+  The maximum file size above can be larger than the file system's actual
+  size due to usage of sparse blocks. Note that unless a file system
+  comes with large file support (LFS), the maximum file size on a 32-bit
+  system is 2 GB (2^31 bytes). Currently all of our standard file systems
+  (including ext3 and ReiserFS) have LFS, which gives a maximum file
+  size of 2^63 bytes in theory. The numbers in the above tables assume
+  that the file systems are using 4 KiB block size. When using different
+  block sizes, the results are different, but 4 KiB reflects the most
+  common standard.
+ </para>
+ <para>
+  In this document: 1024 Bytes = 1 KiB; 1024 KiB = 1 MiB; 1024 MiB = 1
+  GiB; 1024 GiB = 1 TiB; 1024 TiB = 1 PiB; 1024 PiB = 1 EiB. See also
+  <ulink url="http://physics.nist.gov/cuu/Units/binary.html"/>.
+ </para>
+ <para>
+  <!-- bnc#608543 and bnc#574572 -->
+  NFSv4 with IPv6 is only supported for the client side. A NFSv4 server
+  with IPv6 is not supported.
+ </para>
+ <para>
+  <!-- bnc#606288 -->
+  This version of Samba delivers integration with Windows 7 Active
+  Directory Domains. In addition we provide the clustered version of
+  Samba as part of SUSE Linux Enterprise High Availability 11 SP3.
+ </para>
+
+ </section>
+
+ <section>
+  <title>Supported Btrfs Features</title>
+  <para>
+   The following table lists supported and unsupported Btrfs features across
+   multiple SLES versions.
+  </para>
+ <para>
+  <simplelist>
+   <member><emphasis role="bold">+</emphasis> supported</member>
+   <member><emphasis role="bold">–</emphasis> unsupported</member>
+  </simplelist>
+ </para>
+  <!-- Table according to bsc#979501, this attachment:
+  https://bugzilla.suse.com/attachment.cgi?id=687340 -->
+  <informaltable>
+   <tgroup cols="4">
+    <colspec colnum="1" colname="feature" colwidth="32*"/>
+    <colspec colnum="2" colname="11SP4" colwidth="17*"/>
+    <colspec colnum="3" colname="12GA" colwidth="17*"/>
+    <colspec colnum="4" colname="12SP1" colwidth="17*"/>
+    <thead>
+     <row>
+      <!-- Remove unsupported OS's. -->
+      <entry>Feature</entry>
+      <entry>SLES 11 SP4</entry>
+      <entry>SLES 12 GA</entry>
+      <entry>SLES 12 SP1</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>Copy on Write</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Snapshots/Subvolumes</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Metadata Integrity</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Data Integrity</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Online Metadata Scrubbing</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Automatic Defragmentation</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+      </row>
+     <row>
+      <entry>Manual Defragmentation</entry>
+       <entry>+</entry>
+       <entry>+</entry>
+       <entry>+</entry>
+      </row>
+     <row>
+      <entry>In-band Deduplication</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+     </row>
+     <row>
+      <entry>Out-of-band Deduplication</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Quota Groups</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Metadata Duplication</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Multiple Devices</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>RAID 0</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>RAID 1</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>RAID 10</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>RAID 5</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+      </row>
+     <row>
+      <entry>RAID 6</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       </row>
+     <row>
+      <entry>Hot Add/Remove</entry>
+       <entry>–</entry>
+       <entry>+</entry>
+       <entry>+</entry>
+       </row>
+     <row>
+      <entry>Device Replace</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       </row>
+     <row>
+      <entry>Seeding Devices</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+       <entry>–</entry>
+     </row>
+     <row>
+      <entry>Compression</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Big Metadata Blocks</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Skinny Metadata</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Send Without File Data</entry>
+      <entry>–</entry>
+      <entry>+</entry>
+      <entry>+</entry>
+     </row>
+     <row>
+      <entry>Send/Receive</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+     </row>
+     <row>
+      <entry>Inode Cache</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+     </row>
+     <row>
+      <entry>Fallocate with Hole Punch</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+      <entry>–</entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </section>
+</section>

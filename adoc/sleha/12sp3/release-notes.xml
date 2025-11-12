@@ -1,0 +1,523 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+    product="SUSE Linux Enterprise High Availability Extension 12 SP3"
+    component="Release Notes"
+    assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise High Availability Extension</productname>
+  <productnumber>12 SP3</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise High Availability Extension is a suite of
+    clustering technologies that enable enterprises to implement highly
+    available Linux clusters and eliminate single points of failure. This
+    document gives an overview of features of SUSE Linux Enterprise High
+    Availability Extension and their limitations. Some sections do not apply
+    to a particular architecture or product, this is explicitly marked.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media, or in the directory
+    <filename>/usr/share/doc/</filename> on the installed system (if
+    installed).
+   </para>
+
+   <para>
+<!-- FIXME! -->
+    Product to be released: September 2017
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise High Availability Extension</title>
+  <para>
+   SUSE Linux Enterprise High Availability Extension is an affordable,
+   integrated suite of robust open source clustering technologies that
+   enable enterprises to implement highly available Linux clusters and
+   eliminate single points of failure.
+  </para>
+  <para>
+   Used with SUSE Linux Enterprise Server, it helps firms maintain business
+   continuity, protect data integrity, and reduce unplanned downtime for
+   their mission-critical Linux workloads.
+  </para>
+  <para>
+   SUSE Linux Enterprise High Availability Extension provides all of the
+   essential monitoring, messaging, and cluster resource management
+   functionality of proprietary third-party solutions, but at a more
+   affordable price, making it accessible to a wider range of enterprises.
+  </para>
+  <para>
+   It is optimized to work with SUSE Linux Enterprise Server, and its tight
+   integration ensures customers have the most robust, secure, and up to
+   date high availability solution. Based on an innovative, highly flexible
+   policy engine, it supports a wide range of clustering scenarios.
+  </para>
+  <para>
+   With static or stateless content, the High Availability cluster can be
+   used without a cluster file system. This includes web-services with
+   static content as well as printing systems or communication systems like
+   proxies that do not need to recover data.
+  </para>
+  <para>
+   Finally, its open source license minimizes the risk of vendor lock-in,
+   and its adherence to open standards encourages interoperability with
+   industry standard tools and technologies.
+  </para>
+ </section>
+ <section id="Intro.New">
+  <title>What Is New?</title>
+  <variablelist>
+   <varlistentry>
+    <term>
+    Cluster File System
+     </term>
+    <listitem>
+     <para>
+      GFS2 cluster file system with read/write support, to complement the
+      SUSE recommended OCFS2 cluster file system.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      Load balancer
+     </term>
+    <listitem>
+     <para>
+      HAProxy as layer 4 load balancer added, to complement the Linux
+      virtual server load balancer.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      History Explorer
+     </term>
+    <listitem>
+     <para>
+      Hawk history explorer now includes off-line analysis capabilities.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+     Resource Agents
+     </term>
+    <listitem>
+     <para>
+      Resource agents got multiple updates, including a resource agent to
+      handle SCSI reservations
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 12 SP3 which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/"/>.
+  </para>
+  <para>
+   To find out what is new in the Geo clustering option for the SUSE Linux
+   Enterprise High Availability Extension 12 SP3, see
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3-GEO/"/>.
+  </para>
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Cluster" remap="InfraPackArch:ArchIndependent:HA:Cluster">
+  <title>Cluster</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-321017" remap="InfraPackArch:ArchIndependent:HA:Cluster">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321017" -->
+   <title>Support for Watchdog-only Fencing Using SBD</title>
+   <para>
+    For some scenarios that do not involve shared storage, relying on
+    cluster quorum together with a hardware watchdog device for fencing is
+    sufficient as a fencing mechanism.
+   </para>
+   <para>
+    SBD can function in a disk-less mode which relies solely on the hardware
+    watchdog device for detecting and recovering from node failure. This
+    method depends on cluster quorum, and thus needs a minimum of three
+    nodes in the cluster.
+   </para>
+   <para>
+    When using this fencing method, recovery of a fenced node takes at least
+    as long as the watchdog timeout.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Tools" remap="InfraPackArch:ArchIndependent:HA:Tools">
+  <title>High-Availability Tools</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322113" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322113" -->
+   <title>Bug Fixes in Corosync 2.4.x Have Been Backported to 2.3.6</title>
+   <para>
+    There are some issues in Corosync 2.3.5 which were fixed in later
+    versions. The current Corosync release series is 2.4 which, however, has
+    very different ABI.
+   </para>
+   <para>
+    In SLE HA 12 SP3, we wanted to avoid a large Corosync ABI change.
+    Therefore, Corosync has been updated to version 2.3.6 and patches from
+    version 2.4.2 have been backported.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322043" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322043" -->
+   <title>Hawk: Detection of Unexpected DRBD Resource Status</title>
+   <para>
+    In previous versions of SLE HA, if a DRBD resource had lost connection
+    to its peer or was in standalone mode for any other reason, the DRBD
+    resource would still run OK and the status was displayed as green in
+    Hawk.
+   </para>
+   <para>
+    Hawk now detects and displays a warning when DRBD resources are in
+    unexpected states (disconnected, error, or standalone).
+   </para>
+  </section>
+  <section role="notoc" id="fate-321133" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321133" -->
+   <title>Hawk: Editing Fencing Topologies</title>
+   <para>
+    The cluster resource manager has support for configuring multiple
+    fencing devices, to allow backup fencing methods if the original method
+    fails. This can for example be used to combine fencing via shared
+    storage with UPS/PDU fencing.
+   </para>
+   <para>
+    Hawk now has an interface for creating and configuring fencing
+    topologies. This functionality was previously only available via the
+    command line interface.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321118" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321118" -->
+   <title>Creating and Editing Pacemaker Alerts in Hawk</title>
+   <para>
+    Pacemaker can create and edit alerts, user scripts called by the cluster
+    when interesting events occur (nodes joining or leaving, resources
+    starting or stopping, etc.).
+   </para>
+   <para>
+    On the command line, these alerts can be configured using <literal>crm
+    configure alert</literal>.
+   </para>
+   <para>
+    You can now also view and configure alerts in Hawk.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321105" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321105" -->
+   <title>Fencing Agent for Azure</title>
+   <para>
+    Clusters running in the public cloud need special fencing mechanisms to
+    take advantage of the APIs provided by the cloud provider.
+   </para>
+   <para>
+    A new fencing agent has been added which relies on the Azure Resource
+    Management (ARM) API. The necessary Azure Resource Management packages
+    are part of the Public Cloud Module for SLES.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320866" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320866" -->
+   <title>Hawk: Wizard to Verify Cluster Health and Configuration</title>
+   <para>
+    A system adminstrator needs tools to verify that the cluster
+    configuration is valid and working properly, and make sure that the
+    cluster nodes have the correct package versions. Previously, the command
+    <literal>crm cluster health</literal> was available for this purpose.
+   </para>
+   <para>
+    A new wizard has been added to Hawk which performs the cluster health
+    check and reports the cluster status information directly in the web
+    interface.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320848" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320848" -->
+   <title>Hawk: New Wizard Shows Differences in Software Package Versions Between Nodes</title>
+   <para>
+    Mismatching package versions between live and backup systems are a
+    problem which may only noticed at failover.
+   </para>
+   <para>
+    A new Hawk wizard checks the software package versions of all cluster
+    nodes, and reports any differences it discovers.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Resources" remap="InfraPackArch:ArchIndependent:HA:Resources">
+  <title>Resources and Resource Agents</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322781" remap="InfraPackArch:ArchIndependent:HA:Resources">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322781" -->
+   <title>Route53 (DNS)-Based Resource Agent</title>
+   <para>
+    The SLE HA agent for overlay IP addresses does not work in cases in
+    which the overlay IP address is only reachable inside a Virtual Private
+    Cloud (VPC). Using a VPC, you can launch cloud resources into a custom
+    virtual network that closely resembles a data center network but brings
+    the benefits of the scalable infrastructure of the underneath cloud
+    provider.
+   </para>
+   <para>
+    In addition, the overlay IP resource agent is not always flexible
+    enough: You can only protect resources without external connections,
+    such as a database that only needs to be reached from the application
+    servers in the VPC.
+   </para>
+   <para>
+    With the new Route53 (DNS)-based agent, you can also reach and protect
+    services which connect through names. For example, it can be used for
+    SAPgui and central SAP instances.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Storage" remap="InfraPackArch:ArchIndependent:HA:Storage">
+  <title>Storage</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-323128" remap="InfraPackArch:ArchIndependent:HA:Storage">
+<!-- sort_key="None"; non-rn-fate-cats="High Availability"; -->
+<!-- href="https://fate.novell.com/323128" -->
+   <title>DRBD Has Been Updated to Version 9.0.8</title>
+   <para>
+    In SLE HA 12 SP3, DRBD has been updated to version 9.0.8. This version
+    includes a number of bug fixes.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322956" remap="InfraPackArch:ArchIndependent:HA:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322956" -->
+   <title>ocfs2-tools Has Been Updated to 1.8.5</title>
+   <para>
+    The update to <literal>ocfs2-tools</literal> 1.8.5 fixes many bugs and
+    also brings some enhancements. New functionality includes:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>debugfs.ocfs2</literal>: The command
+      <literal>grpextents</literal> has been added
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>fsck.ocfs2</literal>: Fix or rebuild index trees of
+      directories
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>fsck.ocfs2</literal>: Break chain loops in group descriptors
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>fsck.ocfs2</literal>: Recalculate ECC for inode metadata
+      block
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>fsck.ocfs2</literal>: Fix corruption when truncating reflink
+      file
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>mkfs.ocfs2</literal> / <literal>tunefs.ocfs2</literal> /
+      <literal>fsck.ocfs2</literal>: Support append direct IO incompat
+      feature
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-320864" remap="InfraPackArch:ArchIndependent:HA:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320864" -->
+   <title>Support for Online Size Change in cluster-md (Cluster Multi-Device)</title>
+   <para>
+    It is now possible to resize the cluster-md RAID1 without stopping the
+    multi-device.
+   </para>
+   <para>
+    Fail/remove one drive first, increase the size of drive, then add the
+    drive back to the multi-device. After that has been done to all drives
+    of the multi-device, grow the size of the multi-device by running:
+   </para>
+<screen>mdadm --grow /dev/mdx --size=max</screen>
+   <para>
+    For more information, see
+    <ulink url="https://raid.wiki.kernel.org/index.php/Growing">https://raid.wiki.kernel.org/index.php/Growing</ulink>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Support">
+  <title>Support Statement for SUSE Linux Enterprise High Availability Extension 12 SP3</title>
+  <para>
+   Support requires an appropriate subscription from SUSE. For more
+   information, see <ulink url="http://www.suse.com/products/server/"/>.
+  </para>
+  <para>
+   A Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription is needed to receive support and maintenance to run
+   geographical clustering scenarios, including manual and automated setups.
+  </para>
+  <para>
+   Support for the DRBD storage replication is independent of the cluster
+   scenario and included as part of the SUSE Linux Enterprise High
+   Availability Extension product and does not require the addition of a Geo
+   Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.
+  </para>
+  <para>
+   General Support Statement
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     L1: Installation and problem determination - technical support designed
+     to provide compatibility information, installation and configuration
+     assistance, usage support, on-going maintenance and basic
+     troubleshooting. Level 1 Support is not intended to correct product
+     defect errors.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L2: Reproduction of problem isolation - technical support designed to
+     duplicate customer problems, isolate problem areas and potential
+     issues, and provide resolution for problems not resolved by Level 1
+     Support.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L3: Code Debugging and problem resolution - technical support designed
+     to resolve complex problems by engaging engineering in patch provision,
+     resolution of product defects which have been identified by Level 2
+     Support.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   SUSE will only support the usage of original (unchanged or not
+   recompiled) packages.
+  </para>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+<!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the CDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM (where <replaceable>FILENAME</replaceable> is the name of the RPM):
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1
+     for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SUSE Linux Enterprise High Availability Extension
+     media. This directory includes a PDF version of the High Availability
+     Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/"/> contains additional
+     or updated documentation for SUSE Linux Enterprise High Availability
+     Extension 12 SP3.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="http://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+  <para>
+   Thanks for using SUSE Linux Enterprise High Availability Extension in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise High Availability Extension Team.
+  </para>
+ </section>
+</article>

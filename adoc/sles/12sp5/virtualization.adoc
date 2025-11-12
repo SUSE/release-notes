@@ -1,0 +1,290 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-virtualization]
+=== Virtualization
+
+// Release Notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see the virtualization documentation provided at {doc-url}/.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#all-architecture-virtualization-liveMigration]
+==== Supported Live Migration Scenarios
+
+You can migrate a virtual machine from one physical machine to another.
+The following live migration scenarios are supported under both KVM and Xen:
+
+* {slsa} 12 SP4 to {slsa} 12 SP5
+* {slsa} 12 SP5 to {slsa} 12 SP5
+* {slsa} 12 SP5 to {slsa} 15 SP1
+
+In addition, {suse} strives to support live migrations of VM guests from VM hosts running an LTSS-supported service pack of {slsa} to newer service packs of the same {slsa} major version.
+As an example, a migration of a VM guest from a {slsa} 12 SP2 host to a {slsa} 12 SP5 host is supported in this way.
+{suse} only performs minimal testing of these migration scenarios.
+We recommend thorough on-site testing before migrating critical VM guests in such scenarios.
+
+
+==== Supported KVM/Xen Guests and Hosts
+
+For information on supported KVM and Xen guests and hosts, see the {product}
+Virtualization Guide at
+https://documentation.suse.com/sles/12-SP5/html/SLES-all/cha-virt-support.html.
+
+
+[#all-architecture-virtualization-kvm]
+==== KVM
+
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#all-architecture-virtualization-kvm-limits]
+===== KVM Limits
+
+[cols="45,55" options="header"]
+|===
+|Maximum VMs per Host
+|Unlimited (total number of virtual CPUs in all guests being no greater than 8{nbsp}times the number of CPU cores in the host).
+
+|Maximum Virtual CPUs per VM
+|288
+
+|Maximum Memory per VM
+|4{nbsp}TiB
+|===
+
+Virtual Host Server (VHS) limits are identical to those of {sles}.
+
+
+[#all-architecture-virtualization-xen]
+==== Xen
+
+[#bsc-1185196]
+===== Running Xenstore in a separate Stub Domain (`stubdom`)
+
+Since Xen 4.9, it is easy to configure Xenstore to run in a separate `stubdom` instead of `dom0`.
+`stubdom` is a lightweight "service" or "driver" domain.
+Running Xenstore as a `stubdom` increases safety, stability, and improves response times of Xenstore in case `dom0` is under heavy load.
+
+The memory configuration (initial size, maximum size) is done via entries in the `/etc/sysconfig/xencommon` file.
+The Xenstore `stubdom` will automatically increase in size according to memory needs.
+There are no devices for the domain and no extra action or specific maintenance required, apart from the above configuration.
+
+Because Xenstore must be available all the time, saving, restoring, migrating, and stopping of the domain is prohibited.
+
+
+===== Xen 4.12
+
+// Xen virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+////
+* Xen now support change LIBXL_HOTPLUG_TIMEOUT at runtime. Please see the README for more details about the impact of this change (bsc#1120095)
+////
+
+* Includes improved security mitigation support
+* Includes an update for the file `xen-dom0-modules.service map`. xenlinux modules that lack aliases are ignored to avoid error messages from modprobe about unknown modules (fixes bsc#1137251).
+* Starting with this release autoballooning is disable by default in `xl.conf`.
+
+
+[#all-architecture-virtualization-xen-limits]
+===== Xen Limits
+
+Since {sles} 11 SP2, we removed the 32-bit hypervisor as a virtualization host.
+32-bit virtual guests are not affected and are fully supported with the provided 64-bit hypervisor.
+
+[cols="45,55" options="header"]
+|===
+|Feature
+|Limit
+
+|Maximum Physical CPUs per Host
+|1024
+
+|Maximum Physical Memory per Host
+|16{nbsp}TiB
+
+|Maximum Virtual CPUs per Host
+|Unlimited (total number of virtual CPUs in all guests being no greater than 8{nbsp}times the number of CPU cores in the host).
+
+|Maximum Physical Memory for Dom0
+|500 GiB
+
+|Maximum Virtual CPUs per VM^1^
+|FV: 128, PV: 512
+
+|Maximum Memory per VM
+|16{nbsp}GiB x86_32, 2{nbsp}TiB x86_64
+
+|Maximum number of block devices
+|12,000 SCSI logical units
+
+|Suspend and hibernate modes
+|Not supported
+|===
+
+^1^ *PV:* Paravirtualization, *FV:* Full virtualization
+
+==== Containers
+
+// Container virtualization-related release notes go here
+
+[#jsc-SLE-7046]
+===== Windows Subsystem for Linux (WSL) Image
+
+The Windows Subsystem for Linux (WSL) Image for {product} {this-version} can
+be used with both WSL and WSL 2, there is no separate image for WSL 2.
+The Image will receive regular updates.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#all-architecture-virtualization-libvirt]
+==== libvirt
+
+// libvirt virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+===== Important Changes
+
+* Includes a fix to set `max_grant_frames` for domUs via libvirt (fixes bsc#1126325)
+* Xen PVH has been temporarily disabled until the feature is better usable (fixes bsc#1125889)
+* virsh now supports setting the precopy bandwidth for migrations (fixes bsc#1145586)
+* libvirt now supports the Cascadelake-Server CPU model
+* qemu: fix default value of `security_default_confined` (disabled by default)
+* qemu: Add support for overriding the maximum threads per process limit (fixes bsc#1133719)
+* cpu_map: add cpu feature md-clear (fixes CVE-2018-12126)
+
+[#all-architecture-virtualization-vagrant]
+==== Vagrant
+
+// Vagrant-related release notes go here
+
+https://www.vagrantup.com/[Vagrant] is a tool that provides a unified workflow for the creation, deployment and management of virtual development environments.
+It abstracts away the details of various Virtualization providers (like VirtualBox, VMWare or libvirt) and provides a uniform and simple configuration file, that allows developers and operators to quickly spin up a VM of any Linux distribution.
+
+A new VM can be launched with Vagrant via the following set of commands.
+The example uses the Vagrant Box for {opensuse} Tumbleweed:
+
+[source,bash]
+----
+vagrant init opensuse/Tumbleweed.x86_64
+vagrant up
+# your box is now going to be downloaded and started
+vagrant ssh
+# and now you've got ssh access to the new VM
+----
+
+===== Vagrant Boxes for {sles}
+
+Starting with {product} {this-version}, we are providing official Vagrant Boxes for {sles} for x86_64 and aarch64 (only for the libvirt provider).
+These boxes come with the bare minimum of packages to reduce their size and are not registered, thus users need to register the boxes prior to further provisioning.
+
+// bsc#1174599
+// jsc#DOCTEAM-7
+The VirtualBox provider is compatible with VirtualBox versions 4.0.x, 4.1.x, 4.2.x, 4.3.x, 5.0.x, 5.1.x, 5.2.x, 6.0.x, and 6.1.x.
+The boxes are tested with the latest Vagrant version only but as they do not use any specific features, they should work with any of the Vagrant 2.2.x releases.
+
+These boxes are only available for direct download via SCC and must be manually registered with Vagrant as follows:
+
+[source,bash]
+----
+vagrant box add --name SLES-12-SP5 SLES12-SP5-Vagrant.x86_64-12.5-libvirt-*.vagrant.libvirt.box
+----
+
+The box is then available under the name *SLES-12-SP5* and can be used as all other Vagrant boxes:
+
+[source,bash]
+----
+vagrant init SLES-12-SP5
+vagrant up
+vagrant ssh
+----
+
+
+===== aarch64 Support
+
+The Vagrant Box is also available for the aarch64 architecture using the libvirt
+provider.
+It has been pre-configured for the usage on {sles} on aarch64 and might not launch on other operating systems without additional settings.
+Running it on other architectures than aarch64 is not supported.
+
+In case the box fails to start with a libvirt error message, add the following to your +Vagrantfile+ and adjust the variables according to the guest operating system:
+
+[source,ruby]
+----
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+    libvirt.host = 'localhost'
+    libvirt.uri = 'qemu:///system'
+    libvirt.host = "main"
+    libvirt.features = ["apic"]
+    # path to the UEFI loader for aarch64
+    libvirt.loader = "/usr/share/qemu/aavmf-aarch64-code.bin"
+    libvirt.video_type = "vga"
+    libvirt.cpu_mode = "host-passthrough"
+    libvirt.machine_type = "virt-3.1"
+    # path to the qemu aarch64 emulator
+    libvirt.emulator_path = "/usr/bin/qemu-system-aarch64"
+  end
+----
+
+[#all-architecture-virtualization-other]
+==== Others
+
+// Other virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+===== perl-Sys-Virt
+
+* Add all new APIs and constants in libvirt 5.1.0
+
+

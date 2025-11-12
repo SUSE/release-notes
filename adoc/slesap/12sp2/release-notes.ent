@@ -1,0 +1,26 @@
+<!ENTITY rnotes                       'Release Notes'                         >
+<!ENTITY rversion                     '@VERSION@'                             >
+
+<!ENTITY yast                         'YaST'                                  >
+<!ENTITY autoyast                     'AutoYaST'                              >
+
+<!ENTITY suse                         'SUSE'                                  >
+<!ENTITY suse-version                 '12'                                    >
+<!ENTITY spversion                    '2'                                     >
+<!ENTITY full-version                 '&suse-version; SP&spversion;'          >
+<!ENTITY opensuse                     'open&suse;'                            >
+<!ENTITY sle                          '&suse; Linux Enterprise'               >
+<!ENTITY sled                         '&sle; Desktop'                         >
+<!ENTITY sles                         '&sle; Server'                          >
+<!ENTITY hae                          'High Availability Extension'           >
+<!ENTITY sleha                        '&sle; &hae;'                           >
+<!ENTITY slehag                       'Geo Clustering for &sle; High Availability'>
+<!ENTITY ha-guide                     'High Availability Guide'               >
+<!ENTITY s4s                          '&sles; for SAP Applications'           >
+<!ENTITY s4sa                         'SLES for SAP Applications'             >
+<!ENTITY s4s-guide                    '&s4s; Guide'                           >
+<!ENTITY sles4sap                     '&sles; for SAP Applications'           >
+<!ENTITY ses                          '&suse; Enterprise Storage'             >
+<!ENTITY ses-guide                    '&suse; Enterprise Storage Administration Guide'>
+<!ENTITY sdk                          'Software Development Kit'              >
+<!ENTITY slesdk                       '&sle; &sdk;'                           >

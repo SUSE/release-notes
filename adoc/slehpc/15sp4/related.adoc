@@ -1,0 +1,34 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#related]
+== Modules, extensions, and related products
+
+This section comprises information about modules and extensions for {product} {this-version}
+Modules and extensions add functionality to the system.
+
+=== Modules in the {slea} {this-version} product line
+
+The {slea} {this-version} product line is made up of modules that contain software packages. Each module has a clearly defined scope. Modules differ in their life cycles and update timelines.
+
+The modules available within the product line based on {sle} {this-version} at the release of {product} {this-version} are listed in the _Modules and Extensions Quick Start_ at https://documentation.suse.com/sles/15-SP3/html/SLES-all/article-modules.html.
+
+Not all {slea} modules are available with a subscription for {product} {this-version} itself (see the column _Available for_).
+
+For information about the availability of individual packages within modules, see https://scc.suse.com/packages.
+
+=== Available extensions
+
+The following extension is not covered by {suse} support agreements, available at no additional cost and without an extra registration key: {ph}, see https://packagehub.suse.com/.
+
+=== Related products
+
+This sections lists related products. Usually, these products have their own release notes documents that are available from https://www.suse.com/releasenotes.
+
+* {sles}: https://www.suse.com/products/server
+* {sle} {jeos}: https://www.suse.com/products/server/jeos
+* {sled}: https://www.suse.com/products/desktop
+* {slessap}: https://www.suse.com/products/sles-for-sap
+* {slert}: https://www.suse.com/products/realtime
+* {suma}: https://www.suse.com/products/suse-manager 

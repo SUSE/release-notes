@@ -1,0 +1,114 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-product} {this-version}.
+
+Also see the following notes elsewhere:
+
+* <<bsc-1209365>>
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#power-security]
+=== Security
+
+There were also the following changes:
+
+// IBM-953
+// PED-545
+// PED-495
+* POWER10 performance enhancements for cryptography: NSS FreeBL
+
+// IBM-955
+// PED-546
+[#jsc-PED-505]
+==== POWER10 performance enhancements for cryptography: nettle
+
+There were the following improvements:
+
+* Use defined structure constants of P1305 in `asm.m4`
+* Implement Poly1305 single block update based on radix 2^64
+* Workaround for qemu bug affecting the ppc instruction vmsumudm
+
+// IBM-954
+[#jsc-PED-520]
+==== POWER10 performance enhancements for cryptography: libgcrypt
+
+There were the following improvements:
+
+* Chacha20/poly1305 - Optimized chacha20/poly1305 for P10 operation
+* AES-GCM: Bulk implementation of AES-GCM acceleration for ppc64le
+* hwf-ppc: fix missing HWF_PPC_ARCH_3_10 in HW feature
+
+// IBM-958
+[#jsc-PED-512]
+==== POWER10 performance enhancements for cryptography: OpenSSL
+
+There were the following improvements:
+
+* AES-GCM
+** AES-GCM performance optimization with stitched method for p9+ ppc64le
+* Chacha20
+** chacha20 performance optimizations for ppc64le with 8x lanes, Performance increase around 50%
+
+
+[#power-storage]
+=== Storage
+
+[#jsc-DOCTEAM-978]
+==== NVMe-oF on LVM with multiple NVMe disks
+
+The installation of NVMe Over Fabrics (NVMe-oF) does not work with Logical Volume Management when the root Volume Group utilizes a storage pool consisting of multiple NVMe-oF disks, which necessitates discovery beyond the boot disk.
+
+[#power-virtualization]
+=== Virtualization
+
+There were also the following changes:
+
+// IBM-923
+// PED-1256
+// PED-1257
+* Added NVMf-FC kdump support
+
+// IBM-937
+// PED-549
+[#jsc-PED-530]
+==== Support for the new H_WATCHDOG hypercall included with P10 firmware
+
+Added a `pseries-wdt` driver that exposes these hypercall-based watchdog timers to userspace via the Linux watchdog API.
+
+// IBM-1042
+[#jsc-PED-2638]
+==== `ibmveth` driver performance improvement
+
+Changed the `ibmveth` driver to implement a more efficient way of giving packets to the hypervisor for transmit.
+Instead of DMA mapping and unmapping every outgoing data buffer, the buffer is copied into a reusable DMA mapped buffer.
+Also implemented multiple transmit queues for parallel packet processing.
+
+// IBM-1038
+[#jsc-PED-2319]
+==== Adding changes in `ibmvnic` driver to assign IRQ affinity to all
+
+CPUs after hotplug events (CPU or vnic device): irqbalance daemon provides `--banmod` option so that IRQ affinities will be preserved with driver settings.
+But the irqbalance `--banmod` option is not working with vnic IRQs and this feature fixes the bug in the irqbalance daemon code.
+
+=== Miscellaneous
+
+[#jsc-SLE-16056]
+==== Transactional memory is deprecated and disabled
+
+On POWER9, transactional memory is partially emulated by the hypervisor, but this does not give the expected performance.
+
+Therefore, transactional memory is now disabled by default in the kernel.
+For legacy applications on platforms that still support transactional memory, it can be enabled with the `ppc_tm=on` kernel parameter.

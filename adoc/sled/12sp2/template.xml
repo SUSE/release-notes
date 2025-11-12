@@ -1,0 +1,664 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+ <?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Desktop 12 SP2"
+   component="Release Notes"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&sled;</productname>
+  <productnumber>&full-version;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    These release notes are generic for all &sled; &full-version; based
+    products. Some parts may not apply to particular architectures or
+    products. Where this is not the case, the respective architecture is
+    listed explicitly.  General documentation may be found at:
+    <ulink url="http://www.suse.com/documentation/sled-12/"/>
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="Intro">
+  <title>&sled;</title>
+  <remark> SLE definition: general information </remark>
+  <para> &sled; is the market's only enterprise-quality Linux desktop ready for routine business
+   use. Developed and backed by &suse;, &sled; provides market-leading usability, seamless
+   interoperability with existing IT systems, and dozens of essential applications—all at a fraction
+   of the price of proprietary operating systems.
+  </para>
+  <section id="Intro.Interoperability">
+  <title>Interoperability and Hardware Support</title>
+  <!-- Novell Teaming is now Micro Focus Vibe. Not sure we still integrate
+  with it. - sknorr, 2016-10-21 -->
+  <para>
+   It comes bundled with the latest versions of
+   leading applications such as LibreOffice office productivity suite, Mozilla Firefox web browser,
+   and Evolution e-mail and calendar suite. In addition, it integrates with Microsoft SharePoint <!--and
+   Novell Teaming --> for group collaboration and supports a wide range of multimedia file formats,
+   wireless and networking standards, and plug-and-play devices. </para>
+
+  <para> Through the latest enhancements in power management and security, &sled; also provides
+   an environmentally friendly IT experience (Green IT) and an error-proof desktop. Finally,
+   &sled; offers unparalleled flexibility. You can deploy it on a wide range of thick client
+   devices (including desktops, notebooks, netbooks, and workstations), on thin client devices, or
+   as a virtual desktop. By leveraging the power of &sled;, your business can dramatically
+   reduce costs, improve end user security and increase workforce productivity. </para>
+  </section>
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+    <!-- bsc#882262, bsc#999197 -->
+    <para>
+     &sled; &suse-version; has a 7 year life cycle. The
+     current version (&sptext;) will be fully maintained and
+     supported until 6 months after the release of &sle; &nextversion;.
+    </para>
+  </section>
+
+  <section id="intro.new">
+   <title>What Is New?</title>
+
+   <remark> Marketing POV. </remark>
+   <para/>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on </remark>
+
+    <para>
+     &sled; &suse-version; introduces a number of innovative
+     changes. Here are some of the highlights:
+    </para>
+
+    <itemizedlist>
+     <listitem>
+      <para>
+       Robustness on administrative errors and improved management
+       capabilities with full system rollback based on Btrfs as the
+       default file system for the operating system partition and
+       snapper technology from &suse;.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       An overhaul of the installer introduces a new workflow that allows you
+       to register your system and receive all available maintenance updates
+       as part of the installation.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New core technologies like systemd, replacing the time honored
+       System V based init process.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       GNOME 3.20 gives users a modern desktop
+       environment with a choice of several different look and feel
+       options, including a special &sle; Classic mode
+       for easier migration from earlier &sled;
+       environments.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For users wishing to use the full range of productivity
+       applications of a Desktop with &sles;, we
+       are now offering the &sle; Workstation Extension
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Integration with the new SUSE Customer Center, the central web
+       portal from &suse; to manage subscriptions, entitlements, and provide
+       access to support.
+      </para>
+     </listitem>
+    </itemizedlist>
+
+   <!-- Commented for the moment: only intro.support has content and thus this
+   section looks a bit pathetic. - sknorr, 2016-08-04 -->
+   <!-- <remark> This is Read Me First information. </remark> -->
+   <!-- <para> For users upgrading from a previous &sled; release it is recommended to review: </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>-->
+
+  </section>
+
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para> Read the READMEs on the media. </para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed changelog information about a particular package
+       from the RPM (<replaceable>FILENAME</replaceable> is the name of the RPM):
+      </para>
+      <screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>
+       Check the <filename>ChangeLog</filename> file in the top level of
+       the media for a chronological log of all changes made to the
+       updated packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find more information in the <filename>docu</filename> directory
+       of the media of &sled; 12 SP&spversion;. This directory includes
+       PDF versions of the &sled; 12 SP&spversion; Installation Quick
+       Start and Deployment Guides. Documentation (if installed) is
+       available below the <filename>/usr/share/doc/</filename>
+       directory of an installed system.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The up-to-date version of these release notes is available online from
+       <ulink url="http://www.suse.com/releasenotes/"/>.
+      </para>
+      <para>
+       Release notes usually only list changes that happened between two
+       subsequent releases. Therefore, if you are skipping one or more
+       service packs, check the release notes of the skipped service packs as
+       well.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+   <section>
+    <title>Additional or Updated Documentation</title>
+    <para>
+     For &sled; &suse-version; documentation, see <ulink
+     url="http://www.suse.com/documentation/sled-12/"/>, where you can
+     download PDF documents. For installation with YaST software
+     management or with zypper, packages are available on the product
+     media. Some of these packages are installed by default. These are
+     the package names:
+    </para>
+
+    <itemizedlist>
+     <listitem>
+      <para>
+       <systemitem>sled-installquick_en-pdf</systemitem>: SLED 12
+       SP&spversion; Installation Quick Start
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+      <systemitem>sled-gnomeuser_en-pdf</systemitem>: SLED 12 SP&spversion; GNOME User Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-admin_en-pdf</systemitem>: SLED 12 SP&spversion; Administration Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-deployment_en-pdf</systemitem>: SLED 12 SP&spversion; Deployment Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-security_en-pdf</systemitem>: SLED 12 SP&spversion; Security Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-tuning_en-pdf</systemitem>: SLED 12 SP&spversion; Tuning Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-manuals_en</systemitem>: the set of all SLED books in HTML
+       format</para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+  </section>
+
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+   <!-- msvec and legal (ciaran), 2013-05-13 -->
+   <!-- moved from the abstract to this location as the first section -->
+   <para>
+    This &suse; product includes materials licensed to &suse; under the GNU
+    General Public License (GPL). The GPL requires &suse; to provide the
+    source code that corresponds to the GPL-licensed material. The
+    source code is available for download at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+    for up to three years after distribution of the &suse; product, upon
+    request, &suse; will mail a copy of the source code.  Requests should
+    be sent by e-mail to <ulink
+    url="mailto:sle_source_request@suse.com"/> or as otherwise
+    instructed at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>.  &suse;
+    may charge a reasonable fee to recover distribution costs.
+   </para>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for &sled;</title>
+   <para>
+   To learn how to obtain support, see <ulink
+   url="http://www.suse.com/products/desktop/"/>.
+   </para>
+  <section id="Intro.Support.General">
+   <title>General Support Statement</title>
+   <para/>
+  </section>
+   <section id="Intro.Support.Techpreviews" role="remove-empty">
+    <title>Technology Previews</title>
+    <para>
+     Technology Preview features are either not supported or supported
+     in a limited fashion.  These features are mainly included for
+     customer convenience and may be functionally incomplete, unstable
+     or in other ways not suitable for production use.
+    </para>
+
+   </section>
+   <section id="Intro.Support.Software" role="remove-empty">
+    <title>Software Requiring Specific Contracts</title>
+    <para> The following packages require additional support contracts to be obtained by the
+     customer in order to receive full support.</para>
+   </section>
+  </section>
+  <section id="Intro.Derived_Products">
+   <title>Related Products</title>
+   <para>
+    This sections lists related products. In many cases, these
+    products have own release notes documents that are available from
+    <ulink url="https://www.suse.com/releasenotes/"/>.
+   </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>SUSE Enterprise Storage: <ulink url="https://www.suse.com/products/suse-enterprise-storage"/></para>
+    </listitem>
+    <listitem>
+     <para>&sles;: <ulink url="https://www.suse.com/products/server"/></para>
+    </listitem>
+    <listitem>
+     <para>SUSE Linux Enterprise Server for SAP Applications: <ulink url="https://www.suse.com/products/sles-for-sap"/></para>
+    </listitem>
+    <listitem>
+     <para>SUSE Manager: <ulink url="https://www.suse.com/products/suse-manager"/></para>
+    </listitem>
+    <listitem>
+     <para>SUSE OpenStack Cloud: <ulink url="https://www.suse.com/products/suse-openstack-cloud"/></para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Additionally, there are the following extensions which are not covered by
+    SUSE support agreements, available at no additional cost and without an
+    extra registration key:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      &ph;: <ulink url="https://packagehub.suse.com/"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      &slesdk;
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section id="Intro.Certification" role="remove-empty">
+   <title>Security, Standards, and Certification</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="InstUpgrade" role="remove-empty">
+  <title>Installation and Upgrade</title>
+   <para>
+    This section includes information related to the initial installation of
+    &sled; &full-version;.
+    For information about installing, see
+    <citetitle>Deployment Guide</citetitle> at
+    <ulink url="https://www.suse.com/documentation/sled-12/book_sle_deployment/data/book_sle_deployment.html"/>.
+   </para>
+
+  <section id="InstUpgrade.Installation" role="remove-empty">
+   <title>Installation</title>
+   <para/>
+  </section>
+
+  <section id="InstUpgrade.Upgrade" role="remove-empty">
+   <title>Update-Related Notes</title>
+   <para>
+    This section includes update-related information for &sled; &full-version;.
+    For information about general preparations and supported upgrade methods
+    and paths, see the documentation at
+    <ulink url="https://www.suse.com/documentation/sled-12/book_sle_deployment/data/cha_update_sle.html"/>.
+   </para>
+  </section>
+
+ </section>
+
+ <section id="InfraPackArch" role="remove-empty">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <para/>
+  <remark>
+   Nothing should be in here, everything should be in "subordinate" categories.
+   - sknorr, 2016-09-29
+  </remark>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent" role="remove-empty">
+  <title>Architecture Independent Information</title>
+
+  <section id="InfraPackArch.ArchIndependent.Kernel" role="remove-empty">
+   <title>Kernel</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Kernel_Modules" role="remove-empty">
+   <title>Kernel Modules</title>
+   <!-- 2014-03-19, ke: bnc#869159 -->
+   <!-- 2014-04-29, ke: find the same text in the SLES RN -->
+   <para>
+    An important requirement for every Enterprise operating system is the
+    level of support customer receive for their environment.  Kernel
+    modules are the most relevant connector between hardware
+    (<quote>controllers</quote>) and the operating system.
+   </para>
+
+   <para>
+    <!--  bnc#869159 -->
+    For more information about the handling of kernel modules, see the
+    &sle; Administration Guide.
+   </para>
+  </section>
+
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" role="remove-empty">
+   <title>Systems Management</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Storage" role="remove-empty">
+   <title>Storage</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Security" role="remove-empty">
+   <title>Security</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Network" role="remove-empty">
+   <title>Networking</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Performance" role="remove-empty">
+   <title>Performance</title>
+   <para/>
+  </section>
+ <section id="InfraPackArch.ArchIndependent.Virtualization" role="remove-empty">
+  <title>Virtualization</title>
+  <para/>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.KVM" role="remove-empty">
+   <title>KVM</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.XEN" role="remove-empty">
+   <title>XEN</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Containers" role="remove-empty">
+   <title>Containers</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.libvirt" role="remove-empty">
+   <title>libvirt</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Other" role="remove-empty">
+   <title>Others</title>
+   <para/>
+  </section>
+ </section>
+  <section id="InfraPackArch.ArchIndependent.Misc" role="remove-empty">
+   <title>Miscellaneous</title>
+   <para/>
+  </section>
+ </section>
+ <section id="InfraPackArch.x86_64" role="remove-empty">
+  <title>AMD64/Intel 64 (x86_64) Specific Information</title>
+  <para/>
+  <section id="InfraPackArch.x86_64.System" role="remove-empty">
+   <title>System and Vendor Specific Information</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.x86_64.Virtualization" role="remove-empty">
+   <title>Virtualization</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Driver_Updates" role="remove-empty">
+  <title>Driver Updates</title>
+  <remark>** list of update by category ** version comparison table from previous SP/Product </remark>
+  <para/>
+  <section id="Driver_Updates.Storage" role="remove-empty">
+   <title>Storage Drivers</title>
+   <para/>
+  </section>
+  <section id="Driver_Updates.Network" role="remove-empty">
+   <title>Network Drivers</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Packages" role="remove-empty">
+  <title>Packages and Functionality Changes</title>
+
+  <section id="Packages.New" role="remove-empty">
+   <title>New Packages</title>
+
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+  </section>
+  <section id="Packages.Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para> GCC 4.8 </para>
+     </listitem>
+
+     <listitem>
+      <para> glibc 2.22 </para>
+     </listitem>
+
+     <listitem>
+      <para> Linux kernel 4.4 </para>
+     </listitem>
+
+    </itemizedlist>
+   </section>
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para> GNOME 3.20 </para>
+     </listitem>
+
+     <listitem>
+      <para> X.org 7.6 </para>
+     </listitem>
+
+    </itemizedlist>
+
+   </section>
+   <section id="Features.Other">
+    <title>Other Changes and Version Updates</title>
+    <itemizedlist>
+
+     <listitem>
+      <para> Samba 4.4.2 </para>
+     </listitem>
+
+     <listitem>
+      <para> UEFI Enablement on AMD64/Intel 64 </para>
+     </listitem>
+
+     <listitem>
+      <para> SWAP over NFS </para>
+     </listitem>
+
+     <listitem>
+      <para> Python 2.7.9 and Python 3.4.1 </para>
+     </listitem>
+
+     <listitem>
+      <para> Perl 5.18.2 </para>
+     </listitem>
+
+     <listitem>
+      <para> Ruby 2.1 </para>
+     </listitem>
+
+    </itemizedlist>
+   </section>
+  </section>
+
+  <section id="Packages.Deprecated" role="remove-empty">
+   <title>Deprecated Functionality</title>
+
+   <section id="Packages.Deprecated.rm_with_12" role="remove-empty">
+    <title>Packages Removed with &sled; 12</title>
+    <para> The following packages were removed with the major release of &sled; 12.</para>
+
+   </section>
+
+   <section id="Packages.Deprecated.rm_with_12sp1" role="remove-empty">
+    <title>Packages Removed with &sled; 12 SP&spversion;</title>
+    <para>
+     The following packages were removed with the release of &sled; 12
+     SP&spversion;.
+    </para>
+
+   </section>
+
+   <section id="Packages.Deprecated.Future" role="remove-empty">
+    <title>Packages and Features to Be Removed in the Future</title>
+
+    <para> The following packages are deprecated and will be removed with &sled; 13.</para>
+   </section>
+
+  </section>
+  <section id="Packages.Packaging" role="remove-empty">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="TechInfo" role="remove-empty">
+  <title>Technical Information</title>
+  <para> This section contains a number of technical changes and enhancements for the experienced
+   user. </para>
+
+  <section id="TechInfo.Kernel" role="remove-empty">
+   <title>Kernel Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Xen" role="remove-empty">
+   <title>Xen Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Filesystems" role="remove-empty">
+   <title>File Systems</title>
+   <para/>
+  </section>
+
+ </section>
+
+ <section id="Miscellaneous" role="remove-empty">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+
+ <section>
+  <title>Legal Notices</title>
+
+  <para>&suse; makes no representations or warranties with respect to the contents or use of this
+   documentation, and specifically disclaims any express or implied warranties of merchantability or
+   fitness for any particular purpose. Further, &suse; reserves the right to revise this publication
+   and to make changes to its content, at any time, without the obligation to notify any person or
+   entity of such revisions or changes.</para>
+
+  <para>Further, &suse; makes no representations or warranties with respect to any software, and
+   specifically disclaims any express or implied warranties of merchantability or fitness for any
+   particular purpose. Further, &suse; reserves the right to make changes to any and all parts of &suse;
+   software, at any time, without any obligation to notify any person or entity of such
+   changes.</para>
+
+  <para>Any products or technical information provided under this Agreement may be subject to U.S.
+   export controls and the trade laws of other countries. You agree to comply with all export
+   control regulations and to obtain any required licenses or classifications to export, re-export,
+   or import deliverables. You agree not to export or re-export to entities on the current U.S.
+   export exclusion lists or to any embargoed or terrorist countries as specified in U.S. export
+   laws. You agree to not use deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to <ulink url="http://www.suse.com/company/legal/"/> for more
+   information on exporting &suse; software. &suse; assumes no responsibility for your failure to obtain
+   any necessary export approvals.</para>
+
+  <para> Copyright © 2010-<?dbtimestamp format="Y" ?>  SUSE LLC. This release notes document is licensed
+   under a Creative Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US, <ulink
+    url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>. </para>
+
+   <para>
+    &suse; has intellectual property rights relating to technology
+    embodied in the product that is described in this document. In
+    particular, and without limitation, these intellectual property
+    rights may include one or more of the U.S. patents listed at <ulink
+    url="http://www.suse.com/company/legal/"/> and one or more
+    additional patents or pending patent applications in the U.S. and
+    other countries.
+   </para>
+
+   <para>
+    For &suse; trademarks, see &suse; Trademark and Service Mark list
+    (<ulink url="http://www.suse.com/company/legal/"/>). All third-party
+    trademarks are the property of their respective owners.
+   </para>
+
+ </section>
+</article>

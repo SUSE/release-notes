@@ -1,0 +1,66 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-product} {this-version}.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// [#power-security]
+// === Security
+
+[#power-storage]
+=== Storage
+
+// also bsc#1220711
+[#bsc-1222895]
+==== DLPAR remove operation fails with Emulex FC adapters
+
+Broadcom Emulex Fibre Channel (FC) adapters might fail to be properly removed with DLPAR operations in {productname} {this-version}.
+All POWER 9 and Power10 systems with any Emulex FC adapter are affected.
+
+When you perform DLPAR remove operations on Emulex FC adapters, there is a possibility that the adapter is not properly removed from the system.
+This operation can cause future DLPAR operations to fail.
+A future DLPAR add operation on the same FC adapter might cause symptoms including an EEH error followed by a kernel oops and system crash.
+The following messages might be seen on a failing system:
+
+image::LTC-Bug-205755-LinuxAlert-screenshot.png[title=Screenshot of an error on a failing system, scaledwidth=100%]
+
+There is currently no workaround nor fix available for this issue.
+Instead of using the DLPAR operation, you can shutdown the logical partition before you remove or add Emulex FC adapters to the configuration.
+
+
+// [#power-virtualization]
+// === Virtualization
+
+[#power-miscellaneous]
+=== Miscellaneous
+
+[#bsc-1223982]
+==== Out of memory during installation
+
+There is a limit on the memory available to the GRUB bootloader.
+The installer ramdisk is particularly large because it includes kernel drivers for all possible installation scenarios as well as tools for loading the installer from different types of media.
+Enabling secure boot and vTPM on the LPAR further increases memory requirements.
+
+When loading the OS from the installation medium the following message might appear:
+
+[source]
+----
+Loading kernel ...
+Loading initial ramdisk ...
+error: ../../grub-core/kern/mm.c:548:out of memory.
+
+Press any key to continue...
+----
+
+The recommended workaround is to disable vTPM support during installation.

@@ -1,0 +1,30 @@
+// jsc-SLE-11213
+
+[#kernel-parameter-changes]
+== Kernel parameter changes
+
+[WARNING]
+This list of changes may not be exhaustive.
+
+
+[#kernel-parameter-changes-current-sp]
+=== During {this-version}
+
+These Linux kernel parameters have been changed during {producta} {this-version}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Package | More details
+|`net.ipv6.conf.lo.use_tempaddr`|1|-1|wicked-0.6.68-3.16.1| https://bugzilla.suse.com/show_bug.cgi?id=1181163[Bug 1181163], https://bugzilla.suse.com/show_bug.cgi?id=1178357[Bug 1178357]
+|==========
+
+// [#kernel-parameter-changes-last-sp]
+// ===  Since {this-ga}{nbsp}{previous-sp}
+
+// These Linux kernel parameters have been changed since {producta} {this-ga}{nbsp}{previous-sp}.
+
+// [cols="40%,10%,10%,20%,20%", options="header"]
+// |==========
+// |Setting | Previous value | New value | Package | More details
+// |||||
+// |==========

@@ -1,0 +1,46 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-misc]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries not fitting elsewhere
+// If possible, avoid putting entries here and try to find a matching
+// categorie that already exists
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-21223]
+==== `adcli` now supports setting password expiry
+
+The `adcli` command now supports the `--dont-expire-password` parameter.
+
+This parameter sets or unsets the `DONT_EXPIRE_PASSWORD` flag in the `userAccountControl` attribute to indicate if the machine account password should expire or not.
+By default `adcli` will set this flag while joining the domain which corresponds to the default behavior of Windows clients.
+
+
+[#jsc-SLE-5601]
+==== `/var/run` is now volatile
+
+Previously, the `/var/run` directory was not volatile.
+
+In {producta} 12, this has been changed, and `/var/run` is now volatile.
+
+
+[#jsc-SLE-24988]
+==== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-prem or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which will update system information automatically.
+
+For more details see the documentation at https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.

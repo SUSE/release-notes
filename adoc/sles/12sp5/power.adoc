@@ -1,0 +1,42 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-Specific Features & Fixes (ppc64le)
+
+Information in this section applies to the version of {product} {this-version} for the POWER architecture.
+
+
+[#fate-327576]
+=== Support for ibmvnic Networking Driver
+
+The kernel device driver `ibmvnic` provides support for vNIC (virtual Network Interface Controller) which is a PowerVM virtual networking technology that delivers enterprise capabilities and simplifies network management on IBM POWER systems.
+It is an efficient high-performance technology.
+
+When combined with SR-IOV NIC, it provides bandwidth control Quality of Service (QoS) capabilities at the virtual NIC level.
+vNIC significantly reduces virtualization overhead resulting in lower latencies and fewer server resources (CPU, memory) required for network virtualization.
+
+For a detailed support statement of ibmvnic in SLES, see https://www.suse.com/support/kb/doc/?id=7023703.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#bsc-1136157]
+=== Speed of `ibmveth` Interface Not Reported Accurately
+
+The `ibmveth` interface is a paravirtualized interface.
+When communicating between LPARs within the same system, the interface's speed is limited only by the system's CPU and memory bandwidth.
+When the virtual Ethernet is bridged to a physical network, the interface's speed is limited by the speed of that physical network.
+
+Unfortunately, the `ibmveth` driver has no way of determining automatically whether it is bridged to a physical network and what the speed of that link is.
+`ibmveth` therefore reports its speed as a fixed value of 1{nbsp}Gb/s which in many cases will be inaccurate.
+To determine the actual speed of the interface, use a benchmark.
+Using `ethtool`, you can then set a more accurate displayed speed.

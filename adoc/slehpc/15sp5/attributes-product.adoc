@@ -1,0 +1,45 @@
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: maintained
+// conditionals-end
+
+ifeval::["{lifecycle}" == "beta"]
+:label-pre: {nbsp}(prerelease)
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+:label-pre:
+endif::[]
+
+:product: {slehpc}
+:producta: {slea} HPC
+:this-ga: 15
+:this-sp: SP5
+:next-sp: SP6
+:next-ga: 16
+:previous-sp: SP4
+:previous-ga: 12
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:this-version: {this-ga}{nbsp}{this-sp}{label-pre}
+:next-version: {this-ga}{nbsp}{next-sp}
+:rel-date: June 2022
+
+:arm-product: {product} for {arm}
+:rpi-appliance: {arm-product} for the {rpi}
+:this-rpi-appliance: {arm-product} {this-version} for the {rpi}
+:z-product: {product} for IBM Z and LinuxONE
+:power-product: {product} for POWER
+:slurm: Slurm
+
+:abstract: SUSE Linux Enterprise for High-Performance Computing is a highly-scalable, high-performance open-source operating system designed to utilize the power of parallel computing. This document provides an overview of high-level general features, capabilities, and limitations of {product} {this-version} and important product updates.
+
+:doc-url: https://documentation.suse.com/sle-hpc/15-SP4
+:doc-url-beta: https://susedoc.github.io/sle-hpc/main
+:doc-url-source: https://www.suse.com/download/sle-hpc/
+
+:support-url: https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server
+:rn-url: https://www.suse.com/releasenotes
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

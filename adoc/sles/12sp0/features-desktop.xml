@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<!-- 2014-03-20, ke: feedback by fcrozat -->
+<section>
+ <title>Desktop</title>
+ <para />
+ <itemizedlist>
+
+  <listitem>
+   <!-- bnc#804973 -->
+   <para>
+     GNOME 3.10
+   </para>
+  </listitem>
+
+  <listitem>
+   <para>
+     X.org 7.7
+   </para>
+  </listitem>
+
+ </itemizedlist>
+</section>

@@ -1,0 +1,27 @@
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#intro-new]
+=== What Is New?
+
+////
+** Update information: link to severity ratings documentation
+** Installation: change, new kernel, compatibility
+** features: features description (not technical)
+** System update: link to the documentation (not just the tittle)
+** Update related notes : specific change to focus on.
+////
+
+==== General Changes in Codestream 15
+
+{product}{nbsp}{this-ga} introduces many innovative changes compared to {product}{nbsp}{previous-ga}.
+The most important changes are listed below.
+
+==== Changes in  {this-version}
+
+{product}{nbsp}{this-version} introduces changes compared to {product}{nbsp}{previous-sp}.
+The most important changes are listed below.
+
+==== Changes in the Base Product
+In addition to these release notes, make sure to also review the release notes for the base product, {sles}{nbsp}{this-version}.
+They are published at {rn-url}/x86_64/SUSE-SLES/15-SP2 (these release notes are identical across all supported hardware architectures).

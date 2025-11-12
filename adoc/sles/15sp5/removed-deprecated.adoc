@@ -1,0 +1,182 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+
+[NOTE]
+.Package and module changes in {this-version}
+For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+// jsc#PED-143
+* The `samba-ad-dc-libs` package has been removed.
+It was previously available as technical preview.
+* Setting up Kerberos with LDAP backend via {yast} has been removed.
+// jsc#PED-1358
+* The thunderbolt-user-space package has been removed.
+* `zypper-docker` has been removed.
+* `xpram` device driver has been removed.
+
+Also see the following notes elsewhere:
+
+* <<bsc-1211550>>
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// jsc#PED-4018
+* `docker-runc` has been deprecated and will be removed in {productnameshort} 15 SP6. Use `runc` instead.
+// jsc#PED-8166
+* PHP 7.4 will be removed in {productnameshort} 15 SP7.
+* PostgreSQL 13 has been deprecated and moved to the Legacy module.
+* TLS 1.0 and 1.1 are deprecated and will be removed in a future service pack of {productname} 15.
+For more information, see <<jsc-SLE-9294>>.
+// jsc#SLE-23196
+// also bsc#1191738
+* OSN support on IBM Z has been deprecated.
+// jsc-SLE-20348
+* The `mkinitrd` wrapper has been replaced with `dracut` everywhere and will be removed in the next major version of {productname}.
+// jsc#SLE-17861
+* The `lftp_wrapper` package has been deprecated and will be removed in the near future.
+It is still available as an `update-alternative` for `ftp`, but it is no longed used by default.
+The default implementation of `ftp` is now the `lftp` executable.
+// jsc#SLE-7690, jsc#SLE-7192, jsc#SLE-10912, jsc#SLE-9004
+* Support for System V `init.d` scripts is deprecated and will be removed with the next major version of {productname}.
+In consequence, the `/etc/init.d/halt.local` initscript, `rc__SERVICE__` controls, and `insserv.conf` are also deprecated.
+For more information, see <<#jsc-SLE-7690>>.
+// jsc#SLE-17859
+* `lftp_wrapper` is deprecated.
+Use `lftp` directly instead.
+* On the POWER architecture, transactional memory is deprecated.
+For more information, see <<#jsc-SLE-16056>>.
+// jsc#SLE-21060
+* The `opa-fmgui` package is not maintained upstream anymore.
+It has been deprecated, moved to the Legacy module, and will be removed in a future service pack.
+// jsc#SLE-24335
+* NIS is deprecated and will be removed with the next major version of {productname}.
+This includes packages implementing NIS, like `ypserv`.
+NIS code will be removed from SUSE tools and all NIS client code will be dropped with the next major version of {productname}.
+// jsc#PED-8118
+* 389 Directory Server replaces OpenLDAP as the LDAP directory service. OpenLDAP has been re-added to {slea} 15 SP5 and {slea} SP6 to prolong the time window for a migration to 389 Directory Server. Support for OpenLDAP on {slea} 15 will end with the {slea} 15 SP6 lifecycle. Future versions and service packs of SLE will not include OpenLDAP.
+
+[#jsc-PED-3806]
+==== Public Cloud module deprecations
+
+The following packages in the Public Cloud module have been deprecated and will be removed in {productname} {next-version}:
+
+* `azure-cli-acr`
+* `azure-cli-acs`
+* `azure-cli-advisor`
+* `azure-cli-ams`
+* `azure-cli-appservice`
+* `azure-cli-backup`
+* `azure-cli-batch`
+* `azure-cli-batchai`
+* `azure-cli-billing`
+* `azure-cli-cdn`
+* `azure-cli-cloud`
+* `azure-cli-cognitiveservices`
+* `azure-cli-component`
+* `azure-cli-configure`
+* `azure-cli-consumption`
+* `azure-cli-container`
+* `azure-cli-cosmosdb`
+* `azure-cli-dla`
+* `azure-cli-dls`
+* `azure-cli-dms`
+* `azure-cli-eventgrid`
+* `azure-cli-eventhubs`
+* `azure-cli-extension`
+* `azure-cli-feedback`
+* `azure-cli-find`
+* `azure-cli-interactive`
+* `azure-cli-iot`
+* `azure-cli-keyvault`
+* `azure-cli-lab`
+* `azure-cli-monitor`
+* `azure-cli-network`
+* `azure-cli-profile`
+* `azure-cli-rdbms`
+* `azure-cli-redis`
+* `azure-cli-reservations`
+* `azure-cli-resource`
+* `azure-cli-role`
+* `azure-cli-search`
+* `azure-cli-servicebus`
+* `azure-cli-servicefabric`
+* `azure-cli-sql`
+* `azure-cli-storage`
+* `azure-cli-taskhelp`
+* `azure-cli-vm`
+* `blue-horizon-config-deploy-cap-eks`
+* `cfn-lint`
+* `gcimagebundle`
+* `google-cloud-sdk`
+* `google-compute-engine`
+* `google-daemon`
+* `google-startup-scripts`
+* `python-azure-storage`
+* `python-ravello-sdk`
+* `python-vsts-cd-manager`
+* `python-vsts`
+* `regionServiceClientConfigHP`
+* `regionServiceClientConfigSAPAzure`
+* `regionServiceClientConfigSAPEC2`
+* `regionServiceClientConfigSAPGCE`
+* `terraform-provider-aws`
+* `terraform-provider-azurerm`
+* `terraform-provider-external`
+* `terraform-provider-google`
+* `terraform-provider-helm`
+* `terraform-provider-kubernetes`
+* `terraform-provider-local`
+* `terraform-provider-null`
+* `terraform-provider-openstack`
+* `terraform-provider-random`
+* `terraform-provider-susepubliccloud`
+* `terraform-provider-template`
+* `terraform-provider-tls`
+* `WALinuxAgent`
+
+
+==== Miscellaneous
+
+* `sev-tool` has been deprecated. Use `sevctl` instead.
+// jsc#PED-1839
+* `gnote` has been deprecated. Use `bijiben` instead.
+* We have switched from `openmpi2` to `openmpi4` as the default `openmpi` implementation.
+This is because `openmpi2` and `openmpi3` have been EOL for some time now.
+They will be removed in {productnameshort} {next-version}.

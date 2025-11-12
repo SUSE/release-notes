@@ -1,0 +1,95 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-modulesExtensionsRelated]
+== Modules, Extensions, and Related Products
+
+This section comprises information about modules and extensions for {product} {this-version}. Modules and extensions add parts or functionality to the system.
+
+[#intro-modulesExtensionsRelated-modules]
+=== Available Modules
+
+[WARNING]
+As of November 2024, {producta} {this-version} is out of general support which also means that modules are no longer supported.
+
+Modules are fully supported parts of {product} with a different life cycle and
+update timeline.
+They are a set of packages, have a clearly defined scope and are delivered via
+an online channel only.
+Release notes for modules are contained in this document.
+
+The following modules are available for {sle} {this-version}:
+
+[cols="33,33,33" options="header"]
+|===
+|Name
+|Content
+|Life Cycle
+
+|Advanced Systems Management Module
+|CFEngine, Puppet, Salt and the Machinery tool
+|Frequent releases
+
+|Containers Module
+|Docker, tools, prepackaged images
+|Frequent releases
+
+|HPC Module
+|Tools and libraries related to High Performance Computing (HPC)
+|Frequent releases
+
+|Legacy Module^1^
+|`ksh`
+|No updates, supported through March 2022
+
+|Public Cloud Module
+|Public cloud initialization code and tools
+|Frequent releases
+
+|Toolchain Module
+|GNU Compiler Collection (GCC)
+|Yearly delivery
+
+|Web and Scripting Module
+|PHP, Python, Ruby on Rails
+|3 years, ~18 months overlap
+|===
+
+^1^ Module is not available for the AArch64 architecture.
+
+For more information about the life cycle of packages contained in modules, see
+https://scc.suse.com/docs/lifecycle/sle/12/modules.
+
+[#intro-modulesExtensionsRelated-extension]
+=== Available Extensions
+
+Extensions add extra functionality to the system and require their own registration key, usually at additional cost.
+Extensions are delivered via an online channel or physical media.
+In many cases, extensions have their own release notes documents that are available from {rn-url}.
+
+The following extensions are available for {product} {this-version}:
+
+* {sle} Live Patching: https://www.suse.com/products/live-patching
+* {sleha}: https://www.suse.com/products/highavailability
+* {slehag}: https://www.suse.com/products/highavailability/geo-clustering
+Access to Geo Clustering is now included into the subscription for the High Availability Extension.
+* {slert}: https://www.suse.com/products/realtime
+* {slewe}: https://www.suse.com/products/workstation-extension
+
+Additionally, there are the following extension which are not covered by {suse} support agreements, available at no additional cost and without an extra registration key:
+
+* {ph}: https://packagehub.suse.com/
+* {slesdk}
+
+[#intro-modulesExtensionsRelated-related]
+=== Derived and Related Products
+
+// Marketing POV
+
+This sections lists derived and related products.
+Usually, these products have their own release notes documents that are available from {rn-url}.
+
+* {sled}: https://www.suse.com/products/desktop
+* {suse} Linux Enterprise Server for SAP Applications: https://www.suse.com/products/sles-for-sap
+* {suse} Manager: https://www.suse.com/products/suse-manager
+* {suse} OpenStack Cloud: https://www.suse.com/products/suse-openstack-cloud

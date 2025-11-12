@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<!-- see fate#316990 -->
+<section id="Intro.Support.External">
+ <title>Software Requiring Specific Contracts</title>
+ <para/>
+ <para>
+  The following packages require additional support contracts to be
+  obtained by the customer in order to receive full support:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    PostgreSQL Database
+   </para>
+  </listitem>
+ </itemizedlist>
+  <!-- bnc#836418 -->
+  <!-- WebSphere CE Application Server -->
+
+</section>

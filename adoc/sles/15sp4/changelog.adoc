@@ -1,0 +1,374 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#release-2025-10-31]
+=== 2025-10-31
+
+==== New
+
+* Added note about removal of `docker-runc` to <<removed-deprecated>> ({jira-url}PED-4018[Jira])
+* <<jsc-SLE-21469>> ({jira-url}SLE-21469[Jira])
+* Added note about NVMe-oF/TCP nBFT to <<storage>> ({jira-url}SLE-21510[Jira])
+* Added note about `tpm2-pkcs11` to <<security>> ({jira-url}SLE-21517[Jira])
+* <<jsc-SLE-23823>> ({jira-url}SLE-23823[Jira])
+* <<bsc-1247839>> ({bugzilla-url}1247839[Bugzilla])
+
+
+[#release-2025-08-21]
+=== 2025-08-21
+
+==== New
+
+* <<jsc-SLE-25130>> ({jira-url}SLE-25130[Jira])
+* Added deprecation note for PHP 7.4 to <<removed-deprecated>> ({jira-url}PED-8166[Jira])
+* <<jsc-PED-7978>> ({jira-url}PED-7978[Jira])
+* <<jsc-SLE-13591>> ({jira-url}SLE-13591[Jira])
+
+
+[#release-2024-01-19]
+=== 2024-01-19
+
+==== New
+
+* <<bsc-1215156>> ({bugzilla-url}1215156[Bugzilla])
+* <<bsc-1210490>> ({bugzilla-url}1210490[Bugzilla])
+* In <<kernel-parameter-changes>>, a new value has been added to the table:
+
+|====
+|Setting | Previous value | New value | Caused by package | More details
+|`sysctl_net_core_bpf_jit_limit`|264241152|528482304|`kernel`|
+|====
+
+[#release-2023-05-22]
+=== 2023-05-22
+
+==== Updated
+
+* Updated <<intro-certification>> ({jira-url}DOCTEAM-996[Jira]):
+```diff
+-* FIPS 140-2 validation, see https://doi.org/10.6028/NIST.FIPS.140-2
++* NIST FIPS 140-3 validation, see https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-3.pdf
+
++The status of SUSE submitted modules can be reviewed at: https://csrc.nist.gov/Projects/Cryptographic-Module-Validation-Program/Modules-In-Process/Modules-In-Process-List
+```
+
+
+[#release-2023-05-11]
+=== 2023-05-11
+
+==== New
+
+* <<bsc-1211271>> ({bugzilla-url}1211271[Bugzilla])
+
+[#release-2023-05-10]
+=== 2023-05-10
+
+==== New
+
+* <<jsc-PED-1805>> ({jira-url}PED-1805[Jira])
+* <<jsc-PED-3800>> ({jira-url}PED-3800[Jira])
+* Mention removal of `systemd-journal-remote` in <<removed-deprecated>> ([{bugzilla-url}1210589[Bugzilla]])
+
+[#release-2023-03-01]
+=== 2023-03-01
+
+==== New
+
+* <<jsc-PED-407>> ({jira-url}jsc-PED-407[Jira])
+* Add explicit note about Vagrant box removal to <<removed>>
+
+==== Updated
+
+* Changed wording in <<jsc-SLE-20049>> ({bugzilla-url}1206365[Bugzilla]):
+```diff
+-SUSE has enabled the system libraries glibc, libgcrypt, and openssl for live patching.
++SUSE has enabled the shared libraries from the system packages glibc and openssl for live patching.
+```
+
+
+[#release-2022-11-30]
+=== 2022-11-30
+
+==== New
+
+* <<jsc-SLE-7254>> ({jira-url}SLE-7254[Jira])
+* <<jsc-CSD-100>> ({jira-url}CSD-100[Jira])
+* <<jsc-SLE-17951>> ({jira-url}SLE-17951[Jira])
+* <<jsc-SLE-18495>> ({jira-url}SLE-18495[Jira])
+* <<jsc-SLE-20406>> ({jira-url}SLE-20406[Jira])
+* <<jsc-SLE-11611>> ({jira-url}SLE-11611[Jira])
+* <<jsc-SLE-23458>> ({jira-url}SLE-23458[Jira])
+* <<jsc-SLE-20043>> ({jira-url}SLE-20043[Jira])
+* <<jsc-SLE-20518>> ({jira-url}SLE-20518[Jira])
+* <<jsc-SLE-20275>> ({jira-url}SLE-20275[Jira])
+
+[#release-2022-09-30]
+=== 2022-09-30
+
+==== New
+
+* <<bsc-1201266>> ({bugzilla-url}1201266[Bugzilla])
+* <<bsc-1203781>> ({bugzilla-url}1203781[Bugzilla])
+* <<jsc-SLE-24988>> ({jira-url}SLE-24988[Jira])
+
+==== Changed
+
+* Updated Java lifecycle in <<java-version>>
+* Updated <<jsc-SLE-18816>> to add note about PHP 7 ({bugzilla-url}1203461[Bugzilla])
+* Updated wording of <<jsc-SLE-20049>> to also mention `libgcrypt` ({bugzilla-url}1203528[Bugzilla])
+* Fixed spelling of `SUSEConnect` and `suseconnect-ng` in <<jsc-SLE-17603>> ({bugzilla-url}1203259[Bugzilla])
+* Fixed incorrect information about ODBC driver location in <<jsc-SLE-17703>> ({bugzilla-url}1203256[Bugzilla])
+
+[#release-2022-08-31]
+=== 2022-08-31
+
+==== New
+
+* Added <<bsc-1202115>> ({bugzilla-url}1202115[Bugzilla])
+* Added <<jsc-SLE-21491>> ({jira-url}SLE-21491[Jira])
+* Added <<jsc-SLE-21511>> ({jira-url}SLE-21511[Jira])
+* Added <<jsc-SLE-22902>> ({jira-url}SLE-22902[Jira])
+* Added <<jsc-SLE-21233>> ({jira-url}SLE-21233[Jira])
+* Added <<jsc-SLE-21779>> ({jira-url}SLE-21779[Jira])
+* Added <<jsc-SLE-20484>> ({jira-url}SLE-20484[Jira])
+* Announce that Eclipse has been removed in <<removed>>
+
+==== Changed
+
+* Changed <<jsc-SLE-18816>> to refer to version 8.0.10 instead of the much newer 8.1 ({bugzilla-url}1201709[Bugzilla])
+* Mentioned permanent way of enabling the single transaction mode in <<jsc-SLE-21329>>
+
+[#release-2022-07-14]
+=== 2022-07-14
+
+==== New
+
+* Added <<nt-dc-deprecated>> and <<samba-nis-deprecated>> ({jira-url}SLE-24369[Jira])
+* Added <<bsc-1197001>> ({bugzilla-url}1197001[Bugzilla])
+* Added <<jsc-SLE-14424>> ({jira-url}SLE-14424[Jira])
+* Added <<bsc-1200070>> ({bugzilla-url}1200070[Bugzilla])
+* Added <<boo-1200669>> ({bugzilla-url}1200669[Bugzilla])
+* Added note about improved AES-GCM algorithm performance in <<ibm-z-performance>> ({jira-url}SLE-18132[Jira])
+* Added <<bsc-1200422>> ({bugzilla-url}1200422[Bugzilla])
+* Added note on the libmodman removal ({jira-url}SLE-20923[Jira])
+
+
+==== Updated
+
+* Improved wording and added missing product version in <<removed-deprecated>>:
+* Improved wording in <<bsc-1198415>>:
+
+==== Removed
+
+* pam_ldap and nss_ldap are now removed ({jira-url}SLE-11448[Jira])
+
+// ==== Updated
+
+[#release-2022-05-11]
+=== 2022-05-11
+
+==== New
+
+* Added this changelog
+* Added <<kernel-parameter-changes>>
+* Added note about OpenBlas in <<power-performance>>
+* Added note about GZIP engines on PowerVM in <<power-performance>>
+* Added note about Strict RWX support for IBM Power in <<power-security>>
+* Added note about `fadump` robustness in <<power-misc>>
+* Added note about improving the numa locality of workload allocations in <<power-misc>>
+* Added <<bsc-1198415>> ({bugzilla-url}1198415[Bugzilla])
+* Added <<jsc-SLE-18267>> ({jira-url}SLE-18267[Jira])
+* Added <<jsc-SLE-18265>> ({jira-url}SLE-18265[Jira])
+* Added <<jsc-SLE-21421>> ({jira-url}SLE-21421[Jira])
+* Added <<jsc-SLE-23831>> ({jira-url}SLE-23831[Jira])
+* Added <<jsc-DOCTEAM-613>> ({jira-url}DOCTEAM-613[Jira])
+* Added note about NIS being deprecated in <<removed-deprecated>> (https://jira.suse.com/browse/SLE-243555[Jira])
+* Added note about abbreviated options in <<#jsc-SLE-17603>> ({bugzilla-url}1195106[Bugzilla])
+* Added <<jsc-SLE-18651>> ({jira-url}SLE-18651[Jira])
+
+
+==== Updated
+
+* Fixed typo by changing "TMP" to "TPM" in the following notes:
+** <<jsc-SLE-18822>>
+** <<jsc-SLE-22652>>
+* Removed link to SUSE Resource Library as the link was no longer working
+* Removed mention of subscription conditions in <<intro-interoperability>> ({bugzilla-url}1198054[Bugzilla])
+* Updated link to FIPS 140-2 validation in <<intro-certification>>
+* Updated <<jsc-SLE-24334>> to specify all the affected parts
+* Updated warning in <<jsc-SLE-15406>> to provide information how to configure stripe size
+* Updated link to documentation in <<ibm-z>> ({bugzilla-url}1199136[Bugzilla])
+
+[#release-2022-04-20]
+=== 2022-04-20
+
+==== New
+
+* Added <<jsc-SLE-18133>> ({jira-url}SLE-18133[Jira])
+* Added <<jsc-SLE-18135>> ({jira-url}SLE-18135[Jira])
+* Added <<jsc-SLE-18136>> ({jira-url}SLE-18136[Jira])
+* Added note about dump capture support to HNV-based dump target in <<power-virtualization>> ({jira-url}SLE-18131[Jira])
+* Added HNV support in Wicked in <<power-virtualization>> ({jira-url}SLE-18127[Jira])
+* Added support for IBM vNIC in <<power-misc>> ({jira-url}SLE-23097[Jira])
+* Added note about improved management of cached writes in <<power-misc>> ({jira-url}SLE-18196[Jira])
+* Added note about deprecating OSN support on IBM Z ({jira-url}SLE-23196[Jira])
+* Added <<jsc-SLE-18271>> ({jira-url}SLE-18271[Jira], {jira-url}SLE-18145[Jira], {jira-url}SLE-18145[Jira], {jira-url}SLE-18126[Jira])
+* Added <<jsc-SLE-18122>> ({jira-url}SLE-18122[Jira], {jira-url}SLE-18123[Jira])
+* Added <<jsc-SLE-20056>> ({jira-url}SLE-20056[Jira])
+* Added <<jsc-SLE-18430>> ({jira-url}SLE-18430[Jira])
+* Added <<jsc-SLE-18635>> ({jira-url}SLE-18635[Jira])
+* Added <<jsc-SLE-20855>> ({jira-url}SLE-20855[Jira])
+* Added <<jsc-SLE-18513>> ({jira-url}SLE-18513[Jira])
+* Added <<jsc-SLE-18746>> ({jira-url}SLE-18746[Jira])
+* Added <<jsc-SLE-18453>> ({jira-url}SLE-18453[Jira])
+* Added <<jsc-SLE-18454>> ({jira-url}SLE-18454[Jira])
+* Added <<jsc-SLE-18324>> ({jira-url}SLE-18324[Jira])
+* Added <<jsc-SLE-22853>> ({jira-url}SLE-22853[Jira], {jira-url}SLE-18326[Jira])
+* Added <<jsc-SLE-18323>> ({jira-url}SLE-18323[Jira], {jira-url}SLE-18641[Jira])
+* Added <<jsc-SLE-22496>> ({jira-url}SLE-22496[Jira])
+* Added <<jsc-SLE-18515>> ({jira-url}SLE-18515[Jira], {jira-url}SLE-18514[Jira])
+* Added <<jsc-SLE-18516>> ({jira-url}SLE-18516[Jira])
+* Added <<jsc-SLE-18517>> ({jira-url}SLE-18517[Jira])
+* Added <<jsc-SLE-18518>> ({jira-url}SLE-18518[Jira])
+* Added <<jsc-SLE-18520>> ({jira-url}SLE-18520[Jira])
+* Added <<jsc-SLE-18521>> ({jira-url}SLE-18521[Jira])
+* Added <<jsc-SLE-19743>> ({jira-url}SLE-19743[Jira])
+* Added <<jsc-SLE-20184>> ({jira-url}SLE-20184[Jira])
+* Added <<bsc-1197688>> ({bugzilla-url}1197688[Bugzilla])
+* Added <<jsc-SLE-24334>> ({jira-url}SLE-24334[Jira])
+* Added <<jsc-SLE-17762>> ({jira-url}SLE-17762[Jira])
+* Added <<jsc-SLE-21017>> ({jira-url}SLE-21017[Jira])
+* Added <<jsc-SLE-18860>> ({jira-url}SLE-18860[Jira])
+* Added <<jsc-SLE-20535>> ({jira-url}SLE-20535[Jira])
+* Added <<jsc-SLE-17834>> ({jira-url}SLE-17834[Jira])
+
+[#release-2022-03-23]
+=== 2022-03-23
+
+==== New
+
+* Added <<jsc-SLE-20416>> ({jira-url}SLE-20416[Jira])
+* Added <<jsc-SLE-18648>> ({jira-url}SLE-18648[Jira])
+* Added <<jsc-SLE-18820>> ({jira-url}SLE-18820[Jira])
+* Added <<jsc-SLE-22725>> ({jira-url}SLE-22725[Jira])
+* Added <<jsc-SLE-20693>> ({jira-url}SLE-20693[Jira])
+* Added <<jsc-SLE-21914>> ({jira-url}SLE-21914[Jira])
+* Added <<jsc-SLE-20671>> ({jira-url}SLE-20671[Jira])
+* Added <<jsc-SLE-20673>> ({jira-url}SLE-20673[Jira])
+* Added Ruby BCI in <<jsc-SLE-22392>> ({jira-url}SLE-22390[Jira])
+* Added <<jsc-SLE-22392>> ({jira-url}SLE-22392[Jira])
+* Added <<jsc-SLE-22134>> ({jira-url}SLE-22134[Jira])
+* Added <<jsc-SLE-20547>> ({jira-url}SLE-20547[Jira])
+* Added <<jsc-SLE-20563>> ({jira-url}SLE-20563[Jira])
+* Added <<jsc-SLE-20563>> ({jira-url}SLE-20563[Jira])
+* Added <<jsc-SLE-21225>> ({jira-url}SLE-21225[Jira])
+* Added <<jsc-SLE-21256>> ({jira-url}SLE-21256[Jira])
+* Added <<jsc-SLE-20926>> ({jira-url}SLE-20926[Jira])
+* Added <<jsc-SLE-21329>> ({jira-url}SLE-21329[Jira])
+* Added <<jsc-SLE-17026>> ({jira-url}SLE-17026[Jira])
+* Added <<jsc-SLE-22831>> ({jira-url}SLE-22831[Jira])
+* Added <<bsc-1192121>> ({bugzilla-url}1192121[Bugzilla])
+* Added <<jsc-SLE-22427>> ({jira-url}SLE-22427[Jira])
+* Added <<jsc-SLE-17963>> ({jira-url}SLE-17963[Jira])
+* Added <<jsc-SLE-17334>> ({jira-url}SLE-17334[Jira])
+* Added <<jsc-SLE-21111>> ({jira-url}SLE-21111[Jira])
+* Added <<jsc-SLE-17603>> ({jira-url}SLE-17603[Jira])
+* Added <<jsc-SLE-19045>> ({jira-url}SLE-19045[Jira])
+* Added <<jsc-SLE-19742>> ({jira-url}SLE-19742[Jira])
+* Added <<jsc-SLE-20184>> ({jira-url}SLE-20184[Jira])
+* Added <<jsc-SLE-18823>> ({jira-url}SLE-18823[Jira])
+* Added <<jsc-SLE-17942>> ({jira-url}SLE-17942[Jira])
+* Added note about removal of NodeJS 12 in <<removed>> ({jira-url}SLE-21259[Jira])
+* Added <<jsc-SLE-20928>> ({jira-url}SLE-20928[Jira])
+* Added <<jsc-SLE-21308>> ({jira-url}SLE-21308[Jira])
+* Added <<jsc-SLE-21037>> ({jira-url}SLE-21037[Jira])
+* Added <<jsc-SLE-18457>> ({jira-url}SLE-18457[Jira])
+* Added <<jsc-SLE-22290>> ({jira-url}SLE-22290[Jira])
+* Added <<jsc-SLE-18818>> ({jira-url}SLE-18818[Jira])
+* Added <<jsc-SLE-18819>> ({jira-url}SLE-18819[Jira])
+* Added <<jsc-SLE-18822>> ({jira-url}SLE-18822[Jira])
+* Added <<jsc-SLE-18857>> ({jira-url}SLE-18857[Jira])
+* Added <<jsc-SLE-22652>> ({jira-url}SLE-22652[Jira])
+* Added <<jsc-SLE-17243>> ({jira-url}SLE-17243[Jira])
+* Added <<jsc-SLE-19965>> ({jira-url}SLE-19965[Jira])
+* Added <<jsc-SLE-18038>> ({jira-url}SLE-18038[Jira])
+* Added <<jsc-SLE-23450>> ({jira-url}SLE-23450[Jira])
+* Added <<jsc-SLE-21167>> ({jira-url}SLE-21167[Jira])
+* Added <<jsc-SLE-22704>> ({jira-url}SLE-22704[Jira])
+* Added <<jsc-SLE-18534>> ({jira-url}SLE-18534[Jira])
+* Added <<jsc-SLE-20049>> ({jira-url}SLE-20049[Jira])
+* Added <<jsc-SLE-18248>> ({jira-url}SLE-18248[Jira])
+* Added <<jsc-SLE-21196>> ({jira-url}SLE-21196[Jira])
+* Added <<jsc-SLE-18305>> ({jira-url}SLE-18305[Jira])
+* Added <<bsc-1179916>> ({bugzilla-url}1179916[Bugzilla])
+* Added <<jsc-SLE-20017>> ({jira-url}SLE-20017[Jira])
+* Added <<jsc-SLE-17858>> ({jira-url}SLE-17858[Jira])
+* Added <<jsc-SLE-23133>> ({jira-url}SLE-23133[Jira])
+* Added <<jsc-SLE-22289>> ({jira-url}SLE-22289[Jira])
+// temporarily removed
+// - Added <<jsc-SLE-18741>> ({jira-url}SLE-18741[Jira])
+* Added <<jsc-SLE-21463>> ({jira-url}SLE-21463[Jira])
+* Added <<jsc-SLE-18768>> ({jira-url}SLE-18768[Jira])
+
+==== Updated
+
+* Added <<jsc-SLE-16747>> ({jira-url}SLE-16747[Jira])
+* Renamed JeOS to Minimal-VM and Minimal-Image throughout the documentation, but especially in <<install-upgrade-minimal-vm-image>> ({jira-url}SLE-20354[Jira])
+
+==== Removed
+
+* Removed Vagrant information from the release notes ({jira-url}SLE-23632[Jira])
+
+=== 2022-02-16
+
+* Added <<jsc-SLE-23605>> ({jira-url}SLE-23605[Jira])
+* Added <<jsc-SLE-19648>> ({jira-url}SLE-19648[Jira])
+* Added note about `mkinitrd` in <<deprecated>> ({jira-url}SLE-20348[Jira])
+* Added <<jsc-SLE-20308>> ({jira-url}SLE-20308[Jira])
+* Added <<jsc-SLE-20577>> ({jira-url}SLE-20577[Jira])
+* Added <<bsc-1193910>> ({jira-url}SLE-18632[Jira], {bugzilla-url}1193910[Bugzilla])
+* Added Podman update information ({jira-url}SLE-18349[Jira]) (replaced later with <<jsc-PED-1805>>)
+* Added note about `lftp_wrapper` in <<deprecated>> ({jira-url}SLE-17861[Jira])
+* Added <<jsc-SLE-18816>> ({jira-url}SLE-18816[Jira])
+* Added <<jsc-SLE-18732>> ({jira-url}SLE-18732[Jira])
+* Added <<jsc-SLE-22664>> ({jira-url}SLE-22664[Jira])
+* Added note about removal of `udev` in <<removed>> ({jira-url}SLE-20309[Jira])
+* Added <<jsc-SLE-20556>> ({jira-url}SLE-20556[Jira])
+* Added <<jsc-SLE-23476>> ({jira-url}SLE-23476[Jira])
+* Added <<jsc-SLE-22690>> ({jira-url}SLE-22690[Jira])
+* Added <<jsc-SLE-11435>> ({jira-url}SLE-11435[Jira])
+* Added <<jsc-SLE-17674>> ({jira-url}SLE-17674[Jira])
+* Added <<jsc-SLE-20556>> ({jira-url}SLE-20556[Jira])
+* Added <<virtualization-virt-manager>> ({jira-url}SLE-18261[Jira])
+* Added <<jsc-SLE-17153>> ({jira-url}SLE-17153[Jira])
+* Added <<jsc-SLE-17674>> ({jira-url}SLE-17674[Jira])
+
+=== 2022-01-19
+
+* Added <<jsc-SLE-22170>> ({jira-url}SLE-22170[Jira])
+* Added <<jsc-SLE-18497>> ({jira-url}SLE-18497[Jira])
+
+=== 2021-12-08
+
+* Added note about `thunderbolt-user-space` in <<deprecated>> ({jira-url}SLE-19359[Jira])
+* Added <<jsc-SLE-17310>> ({jira-url}SLE-17310[Jira])
+* Added <<jsc-SLE-20403>> ({jira-url}SLE-20403[Jira])
+* Added <<jsc-SLE-19923>> ({jira-url}SLE-19923[Jira])
+* Added <<jsc-SLE-22593>> ({jira-url}SLE-22593[Jira])
+* Added <<jsc-SLE-12280>> ({jira-url}SLE-12280[Jira])
+* Updated note about Vagrant boxes (removed in <<release-2022-03-23>>) ({jira-url}DOCTEAM-413[Jira])
+
+=== 2021-11-17
+
+* Linked items in <<#intro-new>> to their respective topics ({jira-url}DOCTEAM-385[Jira])
+
+=== 2021-11-03
+* Initial SP4 release
+* Added note about `opa-fmgui` deprecation in <<deprecated>> ({jira-url}SLE-21060[Jira])

@@ -1,0 +1,34 @@
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+
+<!ENTITY suse "SUSE">
+<!ENTITY product "&sleha;">
+<!ENTITY suse-version "15">
+<!ENTITY spversion "GA">
+<!-- <!ENTITY spversion "SP3"> -->
+<!ENTITY this-version "&suse-version; &spversion;">
+<!ENTITY rel-date "June 2018">
+
+<!ENTITY previous-ga "12">
+<!ENTITY next-ga "16">
+
+<!ENTITY opensuse "open&suse;">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sles "&sle; Server">
+<!ENTITY sleha "&sle; High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &sle; High Availability">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&sle; &sdk;">
+
+<!-- FIXME: Update to correct SLEHA 15 URL before the release. -->
+<!ENTITY doc-url "https://www.suse.com/documentation">
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+<!ENTITY rn-url-sles "&rn-url;/x86_64/SUSE-SLES/15">
+<!ENTITY rn-url-geo "&rn-url;/x86_64/SLE-HA/15-GEO">
+
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise High Availability Extension 12 SP3" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'>

@@ -1,0 +1,84 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#rnotes]
+= {rnotes}
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-product.adoc[]
+
+include::related-products.adoc[]
+
+// ===================================================================
+
+// Installation and Upgrade
+
+include::installation-upgrade.adoc[]
+
+// START ARCH-INDEPENDENT
+[#all-architecture]
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {product} {this-version}.
+
+include::authentication.adoc[]
+
+include::base-system.adoc[]
+
+include::container.adoc[]
+
+include::database.adoc[]
+
+include::development.adoc[]
+
+include::desktop.adoc[]
+
+include::filesystems.adoc[]
+
+// include::hardware.adoc[]
+
+include::kernel.adoc[]
+
+include::network.adoc[]
+
+include::performance.adoc[]
+
+include::security.adoc[]
+
+include::storage.adoc[]
+
+include::systems-management.adoc[]
+
+include::virtualization.adoc[]
+
+include::miscellaneous.adoc[]
+// END ARCH INDEPENDENT
+
+// x86-specific
+include::x86.adoc[]
+
+// IBM POWER-specific
+include::power.adoc[]
+
+// IBM Z-specific
+include::system-z.adoc[]
+
+// ARM-specific
+include::aarch64.adoc[]
+
+// Known Issues
+include::known-issues.adoc[]
+
+// Removed & deprecated packages & features
+include::removed-deprecated.adoc[]
+
+// ===================================================================
+include::source-code.adoc[]
+
+include::legal.adoc[]
+
+[appendix]
+include::kernel-parameter-changes.adoc[]

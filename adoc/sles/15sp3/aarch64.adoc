@@ -1,0 +1,364 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#aarch64]
+== {arm} 64-bit-specific changes (AArch64)
+
+Information in this section applies to {arm-product} {this-version}.
+
+
+[#arm64-soc]
+=== System-on-Chip driver enablement
+
+{arm-product} {this-version} includes driver enablement for the following
+System-on-Chip (SoC) chipsets:
+
+* {amdreg} {opteronreg} A1100
+// to be tested: {altramaxreg}
+* {amperereg} {xgenereg}, {emagreg}, {altrareg}
+* {awsreg} Graviton, Graviton2
+* {brcmreg} BCM2837/BCM2710, BCM2711
+* {fujitsureg} A64FX
+* {huaweireg} {kunpengreg} 916, {kunpeng} 920
+* {marvellreg} {thunderxreg}, {thunderx2reg}, {thunderx3reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
+// jsc#SLE-15847 (Xavier)
+* {nvidiareg} {tegrareg}{nbsp}X1, Tegra{nbsp}X2, *{xavierreg}*; {bluefieldreg}, *_{bluefield2}_*
+// jsc#SLE-12251 (LS1012A), jsc#SLE-11914 (i.MX 8MM)
+* {nxpreg} {imx} 8M, *8M{nbsp}Mini*; {layerscapereg} *LS1012A*, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
+* {qcomreg} {centriqreg} 2400
+* Rockchip RK3399
+* {socionextreg} {synquacerreg} SC2A11
+* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
+
+NOTE: Driver enablement is done as far as available and requested.
+Refer to the following sections for any known limitations.
+
+Some systems might need additional drivers for external chips, such as a
+Power Management Integrated Chip (PMIC), which may differ between systems
+with the same SoC chipset.
+
+For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
+or the Embedded Base Boot Requirements (EBBR),
+that is, the Unified Extensible Firmware Interface (UEFI) either
+implementing the Advanced Configuration and Power Interface (ACPI) or
+providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
+will default to the Device Tree; the kernel command line argument `acpi=force` can
+override this default behavior.
+
+Check for {suse} _YES!_ certified systems,
+which have undergone compatibility testing.
+
+
+[#aarch64-new]
+=== New features
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#jsc-SLE-14763]
+==== Driver enablement for {arm} GIC v4.1
+
+The {arm-product} {this-version} kernel updates the
+{armreg} Generic Interrupt Controller (GIC) driver `irq-gic-v4`
+to prepare for upcoming chips with GIC version 4.1.
+
+KVM support for GIC v4.1 is still missing, see <<jsc-SLE-14763-kvm>>.
+
+
+[#jsc-SLE-15847]
+==== Driver enablement for {nvidia} {xavier}
+
+{arm-product} 15{nbsp}SP2 added initial enablement for the {nvidiareg}
+{tegrareg}{nbsp}X1 (T210) and {tegra}{nbsp}X2 (T186) System-on-Chip (SoC)
+chipsets.
+
+{arm-product} {this-version} adds enablement for the {nvidia} {xavierreg} SoC
+(T194), which is found on {jetsonagxxavierreg} and {jetson} {xavier}{nbsp}NX
+System-on-Modules (SoM).
+
+Drivers for the integrated, {nvidia} _Volta_ microarchitecture-based
+Graphics Processor Unit (GPU) are not included (<<jsc-SLE-15847-drm>>).
+
+[NOTE]
+.UEFI firmware may need to be flashed for {nvidia} {jetson}
+====
+// https://docs.nvidia.com/jetson/l4t/#page/Tegra%20Linux%20Driver%20Package%20Development%20Guide/bootflow_jetson_xavier.html#wwpID0E0FB0HA
+The {nvidia} {jetsonagxxavier} and {jetson} {xavier}{nbsp}NX SoMs by default
+ship with a _CBoot_ bootloader.
+CBoot does not implement the Unified Extensible Firmware Interface (UEFI)
+and will thereby not boot the {arm-product} {this-version} installation media
+(compare <<#arm64-soc>>).
+
+For more information, see the __{nvidia} {jetson} Linux Developer Guide__,
+section link:https://docs.nvidia.com/jetson/l4t/#page/Tegra%20Linux%20Driver%20Package%20Development%20Guide/bootflow_jetson_xavier.html%23wwpID0E0FB0HA["Jetson Xavier NX and Jetson AGX Xavier Series Boot Flow"].
+
+{nvidia} offers an alternative bootloader firmware for the
+{nvidia} {jetsonagxxavier} and {jetson} {xavier}{nbsp}NX Developer Kits:
+https://developer.nvidia.com/embedded/downloads#?search=uefi
+(at the time of writing: __{nvidia} UEFI/ACPI Experimental Firmware for
+{jetsonagxxavier} and {jetson} {xavier}{nbsp}NX__, version 1.1.0)
+
+For other devices based on {nvidia} {xavier} SoCs, check with the
+respective hardware vendor whether a UEFI firmware is available.
+====
+
+[NOTE]
+.No UEFI support on {nvidiadrive}{nbsp}AGX platforms
+====
+// https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootflow.html#wwpID0ETHA
+// https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootburn.html#wwpID0EVHA
+The {nvidiadrivereg} AGX{nbsp}{xavier} and {nvidiadrive} AGX{nbsp}{pegasusreg}
+Developer Kits use a {nvidiadrive}{nbsp}OS hypervisor.
+Its virtual guest bootloader _OSLoader_, as of {nvidiadrive}{nbsp}OS version
+5.2, does not implement UEFI but a custom guest partition image format.
+
+For more information, see the __{nvidiadrive}{nbsp}OS Linux SDK Developer Guide__
+chapter __Bootloader Programming__, sections
+link:https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootflow.html%23wwpID0ETHA[Understanding the Boot Flow: OSLoader]
+and link:https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootburn.html%23wwpID0EVHA[Flashing with Bootburn: Virtualization Behavior].
+
+Contact {nvidia} to discuss how to use {arm-product} {this-version} on
+{nvidiadrive}{nbsp}AGX platforms.
+====
+
+
+[#jsc-SLE-11914]
+==== Driver enablement for {nxp} {imx}{nbsp}8M{nbsp}Mini
+
+{arm-product} 15{nbsp}SP1 added initial enablement for the
+{nxpreg} {imx}{nbsp}8M System-on-Chip (SoC), also referred to as 8MQ (quad-core).
+
+{arm-product} {this-version} adds enablement for the {imx}{nbsp}8M{nbsp}Mini (8MM)
+and further prepares 8M{nbsp}Nano (8MN) and 8M{nbsp}Plus (8MP).
+
+
+[#jsc-SLE-12251]
+==== Driver enablement for {nxp} {layerscape} LS1012A
+
+{arm-product} {this-version} adds initial enablement for the
+{nxpreg} {layerscapereg} LS1012A System-on-Chip (SoC).
+
+Known limitations for the built-in network interfaces are detailed in <<#jsc-SLE-12251-pfe>>.
+
+
+////
+[#jsc-SLE-16764]
+==== {arm} optimizations for Ruby have been enabled
+
+Ruby already had similar optimizations for POWER and x86-64.
+The optimizations for {arm} were backported from Ruby 2.6.6.
+////
+
+
+[#aarch64-known]
+=== Known limitations
+
+[#jsc-SLE-14763-kvm]
+==== No KVM support for {arm} GIC v4.1
+
+The {arm-product} {this-version} kernel does not support KVM on the
+{armreg} Generic Interrupt Controller (GIC) version 4.1.
+
+Contact your SUSE representative if you have a System-on-Chip with GICv4.1
+and need KVM virtualization support.
+
+
+[#arm64-lx2160a-acpi]
+==== No ACPI support on {nxp} {layerscape} LX2160A
+
+For the {nxpreg} {layerscapereg} LX2160A System-on-Chip {nxp} provides an
+alternative bootloader firmware based on TianoCore EDK{nbsp}II.
+This firmware can be configured to use both Device Tree and ACPI.
+
+The {arm-product} {this-version} kernel drivers for {nxp} LX2160A do not yet
+support ACPI.
+Continue to use the Device Tree booting method for now, or contact
+your {suse} representative if that is not possible.
+
+
+[#jsc-SLE-15847-drm]
+==== No graphics drivers on {nvidia} {jetson}
+
+The {nvidiareg} {tegrareg} System-on-Chip chipsets include an integrated
+Graphics Processor Unit (GPU).
+
+{arm-product} {this-version} does not include graphics drivers for any of the
+{nvidia} {jetsonreg} or {nvidiadrivereg} platforms.
+
+Contact the chip vendor {nvidia} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+
+[#jsc-SLE-9263-hdp]
+==== No {displayport} graphics output on {nxp} LS1028A and LS1018A
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor, whose output is connected to a
+{displayportreg} TX{nbsp}Controller (HDP-TX) based on
+{cadencereg} High Definition (HD) Display Intellectual Property (IP).
+
+A Display Rendering Manager (DRM) driver for the {arm} {mali}-DP500
+Display Processor is available as technology preview (<<#jsc-SLE-9263-malidp>>).
+
+However, there was no HDP-TX physical-layer (PHY) controller driver ready yet.
+Therefore no graphics output will be available, for example, on the
+{displayportreg} connector of the {nxp} LS1028A Reference Design Board (RDB).
+
+Contact the chip vendor {nxp} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+Alternatively, contact your hardware vendor for whether a bootloader update
+is available that implements graphics output, allowing to instead use `efifb`
+framebuffer graphics in {arm-product} {this-version}.
+
+NOTE: The {vivante} GC7000UL GPU driver (`etnaviv`) is available as a
+technology preview (<<jsc-SLE-9263-etnaviv>>).
+
+
+[#jsc-SLE-12251-pfe]
+==== No PFE network drivers on {nxp} {layerscape} LS1012A
+
+The {nxpreg} {layerscapereg} LS1012A System-on-Chip contains a
+Packet Forwarding Engine (PFE) for up to two Ethernet ports.
+
+The {arm-product} {this-version} kernel does not include drivers for PFE.
+
+The bootloader firmware provided by your hardware vendor should allow you to
+load and use the _GRUB_ bootloader from {arm-product} {this-version} over the
+PFE Ethernet ports. Check with your hardware vendor for any firmware updates.
+
+But the Installer and installed system will not be able to access built-in
+PFE-connected Ethernet ports.
+
+Contact the chip vendor {nxp} for whether third-party PFE network drivers are
+available for {arm-product} {this-version}.
+
+Alternatively, your bootloader may be configured to support PCI-based
+Ethernet adapters based on mutually supported chipsets, such as `e1000e`.
+
+NOTE: The use of PCI-based Ethernet adapters on LS1012A may require to run
+`pci enum` from the _U-Boot_ bootloader prompt before continuing to boot.
+
+
+// Adapted from 15_SP2
+[#arm64-rpi-known]
+==== Some drivers not ready for {rpi}
+
+The {arm-product} {this-version} kernel does not include a driver for
+{videocorereg} Host Interface Queue (VCHIQ), which was still in _staging_.
+The tool `vcgencmd` depends on VCHIQ and is therefore not included.
+Any drivers depending on `vchiq` driver are not included either,
+in particular `snd-bcm2835` for 3.5{nbsp}mm TRRS *audio jack* and
+`bcm2835-camera` (kernel module `bcm2835-v4l2`) for {mipicsi2reg}
+*camera connector* are unavailable.
+Also dependent on VCHIQ is the Multi-Media Abstraction Layer (MMAL) driver
+`vchiq-mmal` (kernel module `bcm2835-mmal-vchiq`), whose absence precludes
+you from using {openmaxreg} (OMX) API based tools using MMAL,
+such as `raspivid` and `raspistill`.
+
+A performance monitoring driver for the Advanced eXtensible Interface (AXI)
+bus on the {rpi} (`raspberrypi_axi_monitor`) is not available.
+
+
+[#arm64-rpi3-known]
+===== {rpi}{nbsp}3 missing drivers
+
+On {rpi}{nbsp}3, *video codec* hardware acceleration (`bcm2835_codec`)
+depends on VCHIQ and is unavailable.
+Applications will need to use software decoding for playback.
+
+
+[#arm64-rpi4-known]
+===== {rpi}{nbsp}4 missing drivers
+
+The `vc4` Display Rendering Manager (DRM) driver and
+the `v3d` Display Rendering Infrastructure (DRI) driver for the
+{brcmreg} {vc6} Graphics Processor Unit (GPU) are available in the
+{arm-product} {this-version} kernel,
+but the Mesa graphics library code for it was not stable.
+Software-based rendering should be used instead of 3D hardware acceleration.
+
+The Direct Memory Access (DMA) engine driver `bcm2835-dma` does not implement
+40-bit transfers and is limited to 30 bits, that is, the lower 1{nbsp}GiB of
+RAM.
+Transfers to higher areas of RAM on applicable models (2/4/8{nbsp}GiB) will
+transparently use bounce buffers in low memory, so that functionality is
+not impaired but performance will be impacted.
+
+Video codec hardware acceleration support (H.264, HEVC, VP9) is missing.
+Applications will need to use software decoding for playback.
+
+
+[#jsc-SLE-17152]
+=== Deprecation of {nxp} {layerscape} LX2160A rev.{nbsp}1 silicon support
+
+{nxpreg} {layerscapereg} LX2160A System-on-Chip silicon revision{nbsp}1.0
+differs from revision{nbsp}2.0 in the PCIe controller ({mobiveil} based
+vs. {synopsis} {designwarereg} based respectively).
+
+The {arm-product} {this-version} kernel supports the PCIe controllers in
+both silicon revisions of {nxpreg} {layerscapereg} LX2160A SoC.
+
+[NOTE]
+====
+The bootloader of the system may need to detect the chip revision and
+to patch the Device Tree to pass the right `compatible` string to the kernel:
+
+* `fsl,lx2160a-pcie` for rev.{nbsp}1.0 silicon,
+* `fsl,ls2088a-pcie` for rev.{nbsp}2.0 silicon.
+
+To verify which one has been passed to the kernel, you can check the DT nodes:
+
+[source,bash]
+----
+cat /sys/firmware/devicetree/base/soc/pcie@3400000/compatible
+----
+====
+
+{arm-product} 15{nbsp}{next-sp} will remove the support for rev.{nbsp}1.0
+silicon by dropping patches from the kernel.
+This may then result in failure to boot on rev.{nbsp}1.0 silicon due to a
+kernel panic (`SError` interrupt request).
+
+This affects among others the original {nxp} {layerscape} LX2160A
+Reference Design Board; the RDB revision{nbsp}B uses rev.{nbsp}2.0 silicon.
+
+[NOTE]
+====
+To check whether an LX2160A SoC-based machine will be affected by this,
+read the chip revision from its kernel:
+
+[source,bash]
+----
+cat /sys/bus/soc/devices/soc0/revision
+----
+
+If this prints `1.0`, your system is affected; if it prints `2.0`, it is not.
+====
+
+
+[#jsc-SLE-11529]
+=== Removal of early {marvell} {thunderx2} silicon support
+
+{marvellreg} {thunderx2reg} System-on-Chip silicon revisions A__x__ had
+errata for the SATA controller.
+Silicon revisions B0 and later are not affected.
+
+// bsc#1035000
+{arm-product} 12{nbsp}SP3 up to 15{nbsp}SP2 included kernel patches with a recommended workaround.
+This allowed evaluation of early server systems with the affected silicon revisions.
+
+// jsc#SLE-11528 (15 SP2)
+As announced with {arm-product} 15{nbsp}SP2, the {arm-product} {this-version}
+kernel no longer includes the patches with those workarounds.
+Production servers should not be affected by that change.
+For early systems with pre-production silicon check with the hardware vendor
+whether CPU upgrade kits are available.

@@ -1,0 +1,95 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#ha-tools]
+== High-Availability Tools
+
+This section list information related to the high-availability tools of {product}{nbsp}{this-version}.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// jsc#PED-13089
+* Nutanix AHV fence agent has been added.
+
+
+[#bsc-1241163]
+=== `pacemaker-schemas` added
+
+The `pacemaker-schemas` package has been added.
+
+
+[#haproxy-legacy-http]
+=== HAProxy legacy HTTP mode removal
+
+HAProxy 2.1 has removed support for the legacy HTTP mode.
+It now supports the Native HTTP Representation only, also known as HTX.
+
+Here is the list of proxy keywords which were deprecated in version 2.0 and that have been removed in version 2.4:
+
+* `block`
+* `clitimeout`
+* `contimeout`
+* `option http-tunnel`
+* `option http-use-htx`
+* `redisp`
+* `redispatch`
+* `reqadd`
+* `reqallow`
+* `reqdel`
+* `reqdeny`
+* `reqiallow`
+* `reqidel`
+* `reqideny`
+* `reqipass`
+* `reqirep`
+* `reqitarpit`
+* `reqpass`
+* `reqrep`
+* `reqtarpit`
+* `rspadd`
+* `rspdel`
+* `rspdeny`
+* `rspidel`
+* `rspideny`
+* `rspirep`
+* `rsprep`
+* `srvtimeout`
+* `timeout clitimeout`
+* `timeout contimeout`
+* `timeout srvtimeout`
+* `transparent`
+
+You can run `haproxy -c -f /path/to/haproxy.conf` to see if you have any incompatible or deprecated settings.
+To replace removed keywords:
+
+* `block` - use the new `http-request deny` instead
+* `clitimeout` - use `timeout client` instead
+* `contimeout` - use `timeout connect`, `timeout queue`, or `timeout tarpit` instead
+* `option http-tunnel` - this option has been removed because it cannot work in HTTP/2
+* `option http-use-htx` - this option has been removed because the support for legacy HTTP mode has been removed
+* `redisp`, `redispatch`, `reqadd`, `reqallow`, `reqdel`, `reqdeny`, `reqiallow`, `reqidel`, `reqideny`, `reqipass`, `reqirep`, `reqitarpit`, `eqpass`, `reqrep`, `reqtarpit` - these keywords need to be replaced by the `http-request` statement, see https://cbonte.github.io/haproxy-dconv/2.4/configuration.html#4.2-http-request
+* `rspadd`, `rspdel`, `rspdeny`, `rspidel`, `rspideny`, `rspirep`, `rsprep` - these keywords need to be replaced by the `http-response` statement, see https://cbonte.github.io/haproxy-dconv/2.4/configuration.html#4.2-http-response
+* `srvtimeout` - use `timeout server` instead
+* `timeout clitimeout` - use `timeout client` instead
+* `timeout contimeout` - use `timeout connect` instead
+* `timeout srvtimeout` - use `timeout server` instead
+* `transparent` - use `option transparent` instead
+
+[#jsc-PED-960]
+=== Relax-and-Recover (ReaR) 2.7
+
+The `rear27a` package has been added.
+
+For more information see the full changelog either online at https://github.com/rear/rear/blob/rear-2.7/doc/rear-release-notes.txt or in the `/usr/share/doc/packages/rear27a/rear-release-notes.txt` file.
+
+[WARNING]
+Do not upgrade ReaR or change the software used by ReaR without also checking that your existing disaster recovery procedure still works.
+See also the _SUSE support for Relax-and-Recover_ and _Version upgrades with Relax-and-Recover_ sections in https://en.opensuse.org/SDB:Disaster_Recovery.

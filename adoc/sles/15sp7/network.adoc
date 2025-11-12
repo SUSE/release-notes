@@ -1,0 +1,56 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#network]
+=== Networking
+
+// Release notes for networking features:
+//     Wicked, NetworkManager, Open VSwitch...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-11692]
+==== Kea DHCP has been added
+
+Kea DHCP (as package `kea`) is a DHCP server that is replacing the end-of-life `dhcpd` package (also known as ISC DHCP).
+For more information see https://www.isc.org/kea/
+
+
+[#jsc-PED-7933]
+==== `bind` version 9.18
+
+The `bind` package has been updated from version 9.16 to version 9.18.
+This is a major update that removes several options but also adds, among others, the following features:
+
+* DoT and DoH (DNS over TLS and DNS over HTTPS) support
+* OpenSSL version 3.0.0
+
+See the https://kb.isc.org/docs/changes-to-be-aware-of-when-moving-from-bind-916-to-918[full changelog] for more information.
+
+
+// !STICKY
+[#network-samba]
+==== Samba
+
+// bnc#606288
+The version of Samba shipped with {sles} {this-version} delivers integration with Windows Active Directory domains.
+In addition, we provide the clustered version of Samba as part of {sleha} {this-version}.
+
+[#network-nfs]
+==== NFS
+
+// !STICKY
+[#network-nfs4]
+===== NFSv4
+
+// bnc#608543 and bnc#574572
+NFSv4 with IPv6 is only supported for the client side.
+An NFSv4 server with IPv6 is not supported.

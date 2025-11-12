@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id="TechInfo.KVM">
+ <title>KVM Limits</title>
+ <informaltable frame="all">
+  <tgroup cols='2'>
+   <colspec colnum="1" colname="c1"/>
+   <colspec colnum="2" colname="c2"/>
+   <thead>
+    <row rowsep='1'>
+     <entry><emphasis>SLES 12 GA Virtual Machine (VM)</emphasis></entry>
+     <entry><emphasis>Limits</emphasis></entry>
+    </row>
+   </thead>
+   <tbody>
+    <row>
+     <entry>
+      <para>Max VMs per host</para>
+     </entry>
+     <entry>
+      <para>
+       unlimited (total number of virtual CPUs in all guests being no greater
+       than 8 times the number of CPU cores in the host)
+      </para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>Maximum Virtual CPUs per VM</para>
+     </entry>
+     <!-- bsc#921171 -->
+     <entry>
+      <para>160</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>Maximum Memory per VM</para>
+     </entry>
+     <entry>
+      <para>4 TiB</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>Maximum Virtual Block Devices per VM</para>
+     </entry>
+     <entry>
+      <para>20 virtio-blk, 4 IDE</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>Maximum number of Network Card per VM</para>
+     </entry>
+     <entry>
+      <para>8</para>
+     </entry>
+    </row>
+   </tbody>
+  </tgroup>
+ </informaltable>
+ <para>Virtual Host Server (VHS) limits are identical to &sles;.</para>
+</section>

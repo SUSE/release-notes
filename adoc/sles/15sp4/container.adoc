@@ -1,0 +1,177 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#container]
+=== Containers
+
+// Release notes for containers:
+//    LXC, Docker, Podman, ...
+
+// Also see the following additional note:
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-17834]
+==== Samba size improved for container usage
+
+Previously, installing the Samba package always also installed some large dependencies.
+
+In {productnameshort} {this-version}, we have made some of those components optional so that when installing the package on its own, for example in container environment, these can be omitted, reducing the final footprint of the whole container.
+
+
+[#jsc-SLE-22392]
+==== {slea} BCI language container images
+
+These are container images providing language SDKs and runtimes.
+The language container contains and is updated with the same version of the particular language that is in the respective Service Pack of {slesa}.
+The following containers are now available:
+
+* Rust BCI
+// jsc#SLE-22390
+* Ruby BCI
+// jsc#SLE-22419
+* PHP 8 BCI
+
+See the https://registry.suse.com/[SUSE registry] for more information.
+
+
+[#jsc-SLE-22134]
+==== {slea} BCI minimal container image
+
+The current {slea} container images were not small enough for cloud-native applications.
+Even though they had fewer packages compared to a regular {slea} system, they still included many that were not required.
+These extra packages increased the size of the image and, most importantly, its attack surface.
+
+As a solution, a minimal container image based on the {suse} BCI (Base Container Image) has been made available.
+See the https://registry.suse.com/[SUSE registry] for more information.
+
+[NOTE]
+=====
+The container does not include the `zypper` package but it includes the `rpm` package.
+That means:
+
+* applications can be deployed into the container in the RPM format
+* there is no simple way to install dependencies in the container except for manually copying all the RPM packages and installing them
+=====
+
+
+[#jsc-SLE-22427]
+==== Busybox {slea} BCI (Base Container Image)
+
+Starting with {productnameshort} {this-version}, we will be shipping a new and even smaller variant as part of our BCI portfolio: the Busybox container.
+This container image ships Busybox as a replacement for Bash and the GNU Coreutils, thereby drastically decreasing its footprint.
+Additionally, we have included the standard set of CA certificates and the `rpm` database in the image.
+Note that neither `rpm` nor `zypper` are included in this image as it is only intended for shipping prebuilt applications which include all their dependencies.
+As this image contains neither Bash nor GNU Coreutils, it is completely free of GPLv3 code.
+This eases legal requirements in certain cases.
+
+**Additional changes to {slea}**
+
+We have adjusted {slea} itself to ensure that the Busybox BCI is built from the same baseline as the rest of the distribution so that it can meet our quality standards.
+This resulted in the following changes to {slea}:
+
+. Busybox has been updated to version 1.34.1
+. The new package `busybox-links` has been added to {slea}.
+This is a helper package that provides links in `PATH` to `/bin/busybox` for every function that Busybox provides.
+Thereby it is possible to use the Busybox-provided core utilities instead of the GNU coreutils without having to change the script (assuming it is compatible with Busybox).
+. Bash now no longer provides `/bin/sh` by default; instead this capability has been moved into the `bash-sh` subpackage.
+. `sysuser-tools` has been updated to version 3.1 which includes support for `busybox-adduser` additionally to `adduser` from the GNU coreutils.
+
+
+[#jsc-SLE-21196]
+==== RPM Repository Mirroring Tool (RMT) container has been added
+
+RMT is a tool that allows you to mirror RPM repositories in your own private network.
+
+In a container-native world, running a separate (physical or virtual) host as an RMT server is violating the expectations of a fully containerized experience.
+That is why to make {sle} software updates available in such an environment, we now provide a container with a pre-configured RMT.
+
+The RMT Helm chart provides an easy way to deploy an RMT server on top of a Kubernetes installation.
+It needs customization to fit your needs:
+
+* list of repositories (modules) you want to mirror
+* {scc} secrets
+* a decent volume size depending on the number of repositories you want to mirror
+
+Once deployed, it will take care of updating the repository mirror daily via a `cron` job in Kubernetes.
+
+[NOTE]
+.Technical details
+====
+This is an attempt to deliver a software using a containerized architecture.
+Every component of the stack is defined in its own container, and Helm is used to ease deployment on top of Kubernetes.
+
+RMT server:: A containerized version of the RMT application, with the ability to pass its configuration via Helm values.
+Storage is done on a volume, thus you need to adapt its size depending on the number of repositories you need to mirror.
+MariadDB:: MariaDB is the database backend for RMT.
+RMT does create the database and tables at startup if needed so no specific post-installation task is required for it to be usable.
+Passwords are self-generated unless explicitly specified in the values file.
+Nginx:: The web server with proper configuration for RMT routes.
+Having a properly configured webserver out of the box allows you to target your ingress traffic (for RMT) to it directly.
+You do not have to configure ingress for RMT-specific path handling, as Nginx is configured to do so.
+====
+
+
+[#jsc-SLE-18534]
+==== Supported 389 Directory Server has been added
+
+A container for the 389 Directory Server has been added.
+The pull URL is `registry.suse.com/bci/389-ds:latest`.
+
+
+[#jsc-PED-1805]
+==== Podman upgrade from 3.4.x to 4.3.1
+
+Podman 4.x is a major release with 60 new features and more than 50 bug fixes compared to Podman 3.
+It also includes a complete rewrite of the network stack.
+
+Podman 4.x brings a new container network stack based on https://github.com/containers/netavark[Netavark], the new container network stack and https://github.com/containers/aardvark-dns[Aardvark DNS server] in addition to the existing container network interface (CNI) stack used by Podman 3.x . The new stack brings 3 important improvement:
+
+ * Better support for containers in multiple networks
+ * Better IPv6 support
+ * Better performance
+
+To ensure that nothing break with this major change, the old CNI stack will remain the default on existing installations, while new installs will use Netavark.
+
+New installations can opt to use CNI by explicitly specifying it via the `containers.conf` configuration file, using the `network_backend` field.
+
+If you have run Podman 3.x before upgrading to Podman 4, Podman will continue to use CNI plugins as it had before.
+There is a marker in Podman's local storage that indicates this.
+In order to begin using Podman 4, you need to destroy that marker with `podman system reset`.
+This will destroy the marker, all of the images, all of the networks, and all of the containers.
+
+[WARNING]
+Before testing Podman 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
+You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are  available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
+
+Last but not least CNI will be deprecated from upstream at a future date: https://github.com/containers/podman/tree/main/cni
+
+For a complete overview of the changes, please check out the upstream https://github.com/containers/podman/releases/tag/v4.0.0[4.0.0] but also https://github.com/containers/podman/releases/tag/v4.1.1[4.1.1], https://github.com/containers/podman/releases/tag/v4.2.0[4.2.0] and https://github.com/containers/podman/releases/tag/v4.3.0[4.3.0] to be informed about all the new features and changes.
+
+
+[#jsc-SLE-17280]
+==== LXC containers have been removed
+
+System containers using LXC have been removed in {product} 15 SP4.
+This includes the following packages:
+
+* `libvirt-lxc`
+* `virt-sandbox`
+
+As a replacement, we recommend commonly used alternatives like Docker or Podman.
+
+// !STICKY
+[#jsc-SLE-15587]
+==== `suse/sle15` container uses NDB as the database back-end for RPM
+
+Starting with {sle} 15{nbsp}SP3, the `rpm` package in the `suse/sle15` container image no longer supports the BDB back-end (based on Berkeley DB) and switches to the NDB back-end.
+Tools for scanning, diffing, and building container image using the `rpm` binary of the host for introspection can fail or return incorrect results if the host's version of `rpm` does not recognize the NDB format.
+
+To use such tools, make sure that the host supports reading NDB databases, such as hosts with {sle} 15{nbsp}SP2 and later.

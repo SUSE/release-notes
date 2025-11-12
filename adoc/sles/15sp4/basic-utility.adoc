@@ -1,0 +1,44 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#basic-utility]
+=== Basic utilities
+
+// Release notes for basic utilities
+//   less, sed, Vim, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-21111]
+==== `util-linux` has been updated
+
+The `util-linux` package has been updated to version 2.37.2.
+
+The deprecated `raw` utility has been removed.
+Applications have to be ported to `open(2)` device files, such as `/dev/sda1`, with the `O_DIRECT` flag.
+
+
+[#jsc-SLE-23450]
+==== `fish` has been updated and moved to {ph}
+
+The `fish` package has been updated to version 3.
+At the same time, it is no longer part of {slea} but has been moved to {ph}.
+
+
+[#jsc-SLE-20017]
+==== Some RPM 4.15 macros have been added
+
+The following RPM 4.15 macros have been added:
+
+* `set_build_flags`
+* `smp_build_ncpus`
+* `vpath_srcdir`
+* `vpath_builddir`

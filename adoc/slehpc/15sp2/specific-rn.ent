@@ -1,0 +1,64 @@
+<!-- This file originates from the project
+gitlab.nue.suse.com/documentation/release-notes-boilerplate. -->
+<!-- THIS FILE WAS MADE TO BE EDITED DOWNSTREAM. -->
+
+<!-- PRODUCT NAME AND VERSIONS -->
+<!ENTITY product "&slehpc;">
+<!ENTITY product-desc "&product; is a highly scalable, high-performance open-source operating system designed to utilize the power of parallel computing.">
+
+<!ENTITY this-ga "15">
+<!ENTITY this-sp "SP2">
+<!ENTITY this-version "&this-ga; &this-sp;">
+
+<!ENTITY next-sp "SP3">
+<!ENTITY next-version "&this-ga; &next-sp;">
+
+
+<!ENTITY next-ga "16">
+<!ENTITY next-ga-version "&next-ga; GA">
+
+<!ENTITY previous-ga "12">
+<!ENTITY previous-sp "SP5">
+<!ENTITY previous-version "&previous-ga; &previous-sp;">
+<!ENTITY previous-ga-version "&previous-ga; GA">
+
+<!-- FCS MONTH FOR PRODUCT VERSION -->
+<!ENTITY rel-date "July 2020">
+
+<!-- WHEN WAS THE INITIAL VERSION OF THESE RELEASE NOTES SHIPPED? -->
+<!ENTITY copyright-begin "2010">
+
+<!-- ARE THERE ADDITIONAL COPYRIGHT HOLDERS? -->
+<!ENTITY additional-rightsholders "">
+<!-- <!ENTITY additional-rightsholders "Portions of this document are © SomeOtherCompanyOrProject"> -->
+
+<!-- DOES THE PRODUCT HAVE MODULES? -->
+<!ENTITY productis "&product-no-module-is;">
+
+
+<!ENTITY kernel-version "4.12">
+
+
+<!-- FIXME: There is currently no real support URL. Bah. - sknorr, 2018-09-28 -->
+<!ENTITY support-url "https://www.suse.com/support/programs/subscriptions/">
+<!ENTITY res-library-url "https://www.suse.com/products/server/hpc#resources">
+
+<!-- FIXME: There are no doc-urls yet because there is no documentation.
+Let's improvise. - sknorr, 2018-09-28 -->
+<!ENTITY doc-url-beta "https://susedoc.github.io/">
+<!ENTITY doc-url "https://documentation.suse.com/">
+
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+
+<!ENTITY sles-doc-url-beta "https://susedoc.github.io/doc-sle/master">
+<!ENTITY sles-doc-url "https://documentation.suse.com/sles/15-SP2">
+
+
+<!-- <!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="Beta SUSE Linux Enterprise HPC 15 SP2" component="Maintenance" assignee="lukas.kucharczyk@suse.com" ?>'> -->
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise HPC 15 SP2" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'>
+
+<!-- Prompts used in 15 SP2 RN -->
+<!ENTITY prompt           "<prompt xmlns='http://docbook.org/ns/docbook'># </prompt>">
+<!ENTITY prompt_master    "<prompt xmlns='http://docbook.org/ns/docbook'>master: # </prompt>">
+<!ENTITY prompt_backup    "<prompt xmlns='http://docbook.org/ns/docbook'>backup: # </prompt>">
+<!ENTITY prompt_node1     "<prompt xmlns='http://docbook.org/ns/docbook'>node1: # </prompt>">

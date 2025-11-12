@@ -1,0 +1,20 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#cluster]
+== Cluster
+
+This section lists cluster-related information for {product}{nbsp}{this-version}.
+
+// cluster-relevant release notes go here
+
+
+////
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+

@@ -1,0 +1,20 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#storage]
+== Storage
+
+This section list storage-related information for {product}{nbsp}{this-version}.
+////
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1203444]
+=== `defragfs.ocfs2` has been enabled
+
+In {producta} {this-version}, the online defragmenter for the OCFS2 (Oracle Cluster Filesystem 2) filesystem, called `defragfs.ocfs2`, has been enabled.

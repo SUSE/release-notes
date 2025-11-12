@@ -1,0 +1,99 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#prerelease]
+=== Pre-release
+
+==== New
+
+* Added note about Nutanix AVH in <<ha-tools>> ({jira-url}PED-13089[Jira])
+
+
+[#release-2025-10-31]
+=== 2025-10-31
+
+==== New
+
+* <<jsc-PED-2860>> ({jira-url}PED-2860[Jira])
+* <<jsc-SLE-3877>> ({jira-url}SLE-3877[Jira])
+
+[#release-2023-05-10]
+=== 2023-05-10
+
+==== New
+
+* <<jsc-PED-960>> ({jira-url}PED-960[Jira])
+
+==== Updated
+
+* replace references to Geo Clustering for {sleha} in <<intro>>
+
+[#release-2023-01-04]
+=== 2023-01-04
+
+==== New
+
+* Mention removal of `pssh` in <<removed-deprecated>> ({jira-url}DOCTEAM-862[Jira])
+
+
+[#release-2022-11-30]
+=== 2022-11-30
+
+==== New
+
+* Fix product version
+
+
+[#release-2022-10-18]
+=== 2022-10-18
+
+==== New
+
+* Added <<bsc-1203444>> ({bugzilla-url}1203444[Bugzilla])
+
+
+[#release-2022-05-11]
+=== 2022-05-11
+
+==== New
+
+* Added this changelog
+
+
+[#release-2021-04-21]
+=== 2021-04-21
+
+==== New
+
+* Added <<haproxy-legacy-http>>
+
+[#release-2021-03-23]
+=== 2021-03-23
+
+==== New
+
+* Added <<jsc-SLE-23019>> ({jira-url}SLE-23019[Jira])
+* Added <<jsc-SLE-22493>> ({jira-url}SLE-22493[Jira])
+
+[#release-2021-02-16]
+=== 2021-02-16
+
+==== New
+
+* Added <<jsc-SLE-21746>> ({jira-url}SLE-21746[Jira])
+* Added <<jsc-SLE-22506>> ({jira-url}SLE-22506[Jira])
+
+[#release-2021-11-03]
+=== 2021-11-03
+
+* Initial {this-version} release
+
+
+

@@ -1,0 +1,45 @@
+:product: {sled}/{slewe}
+:producta: {sleda}/{slewea}
+
+:this-ga: 15
+:this-sp: SP3
+:this-version: {this-ga}{nbsp}{this-sp}
+:rel-date: June 2021
+:next-sp: SP4
+:next-ga: 16
+:previous-sp: SP2
+:previous-ga: 12
+:kernel-version: 5.3
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:next-version: {this-ga}{nbsp}{next-sp}
+
+:package-list-url: https://documentation.suse.com/package-lists/sle/{this-ga}-{this-sp}/package-changes_SLE-{this-ga}-{previous-sp}-GA_SLE-{this-ga}-{this-sp}-GA.txt
+:module-list-url: https://documentation.suse.com/package-lists/sle/{this-ga}-{this-sp}/module-changes_SLE-{this-ga}-{previous-sp}-GA_SLE-{this-ga}-{this-sp}-GA.txt
+
+:abstract: {product} is an enterprise-quality Linux desktop with market-leading usability and interoperability. This document provides a high-level overview of features, capabilities, and limitations of {product} {this-version} and highlights important product updates.
+
+:arm-product: {product} for {arm}
+:rpi-appliance: {arm-product} for the {rpi}
+:this-rpi-appliance: {arm-product} {this-version} for the {rpi}
+:z-product: {product} for IBM Z and LinuxONE
+:power-product: {product} for POWER
+
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: maintained
+// conditionals-end
+
+:doc-url: https://documentation.suse.com/sled/15-SP3
+:doc-url-beta: https://susedoc.github.io/doc-sle/main
+
+:doc-url-sles: https://documentation.suse.com/sles/15-SP3
+:doc-url-sles-beta: https://susedoc.github.io/doc-sle/main
+:doc-url-source: https://www.suse.com/download/sled/
+
+:support-url: https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Desktop
+:rn-url: https://www.suse.com/releasenotes
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

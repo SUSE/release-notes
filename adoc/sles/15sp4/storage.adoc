@@ -1,0 +1,553 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#storage]
+=== Storage and file systems
+
+// Release notes for storage tool/library features:
+//   Btrfs, CFS, ext3, Snapper, ntfs-3g, ceph, ... (including kernel file systems)
+
+// Also see the following additional note:
+
+////
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following release notes:
+
+* <<#jsc-SLE-17674>>
+* support in ACPI to parse NVMe-oF/TCP nBFT and expose via `sysfs`
+
+[#jsc-SLE-20275]
+==== `cryptsetup` has been updated
+
+The `cryptsetup` package has been updated to version 2.4.3.
+Among the various improvements, it enables the use of FIDO and TPM tokens for unlocking LUKS filesystems.
+
+See the following changelogs for more information:
+
+* https://gitlab.com/cryptsetup/cryptsetup/-/blob/main/docs/v2.4.0-ReleaseNotes[2.4.0]
+* https://gitlab.com/cryptsetup/cryptsetup/-/blob/main/docs/v2.4.3-ReleaseNotes[2.4.3]
+
+
+[#jsc-SLE-20043]
+==== DFS failover support
+
+Support has been added for DFS target failover not only when the original connection is lost but also when refreshing DFS-cached referrals by either forcing it through `mount -o remount` or cached entries expired:
+
+* DFS target hostname resolved to a different IP address
+* Refreshed DFS referral no longer matches the currently connected DFS share:
+** Try to connect to all new DFS targets and then select the working one as target hint.
+** If the reconnected target is a regular share, then tree connect to it.
+  Otherwise, resolve any nested DFS links at reconnect time and avoid having to umount and mount it again.
+  There is a maximum of 8 nested DFS links per `mount(2)` and failover to avoid looping forever on broken DFS referrals.
+
+
+[#boo-1200669]
+==== `iotop` support
+
+`iotop` does not display values for SWAPIN and IO %.
+
+Since Linux kernel 5.14, either kernel boot parameter `delayacct`
+needs to be specified or `kernel.task_delayacct` sysctl needs to be
+enabled.
+
+
+[#jsc-SLE-20535]
+==== Improved booting from remote disks
+
+Systems with mount points located in network-based disks can fail to boot after installation unless the `_netdev` option is set in `/etc/fstab`.
+However previously, the installer did not consider all the scenarios and thus might not have set the flag correctly.
+
+In {product}{nbsp}{this-version}, {yast} will now:
+
+* only add `_netdev` in the last step of the so-called Guided Proposal
+* will no longer add `_netdev` to the list of default mount options
+* will never remove any `_netdev` previously added by the user
+
+{yast} will add the `_netdev` option in these cases:
+
+* the mount point is not `/` or `/var` and it is also not on the same device as `/` or `/var`
+* the mount point does not have the mount option `x-initrd.mount` and is not on the same device as any other mount point with this option
+
+{yast} will also show a warning in the Expert Partitioner if it thinks `_netdev` should be added but the user omitted it, though it is possible to ignore it.
+
+
+// also SLE-17620
+// also SLE-17621
+// also SLE-23643
+[#jsc-SLE-20184]
+==== NVMe-oF-TCP CDC support
+
+In {productnameshort} {this-version}, in order to support new features of NVMe such as Centralized Discovery Controller (CDC), the package `nvme-cli` has been updated to v2.0, and two new packages have been added: `libnvme` v1.0 and `nvme-stas` v1.0.
+
+NVMe-oF suffers from a well-known discovery problem that fundamentally limits the size of realistic deployments.
+To address this discovery problem, thanks to the newly added and updated packages in {this-version}, it is now possible to manage NVMe-oF via a “network-centric” (Centralized Discovery Controller) provisioning process instead of an “end node-centric” (Direct Discovery Controller) one by using the following approaches:
+
+. Automated Discovery of NVMe-oF Centralized Discovery Controllers in an IP Network and preventing the user from manually configuring the IP Address of Discovery Controllers.
+
+. The Centralized Discovery Controller (CDC) allows users to manage connectivity from a single point of management on an IP Fabric by IP Fabric basis.
+Keep in mind that the user is still able to perform explicit registration with CDCs and DDCs.
+
+
+[#jsc-SLE-17942]
+==== `/etc/fstab` option to disable `fstrim` has been added
+
+Previously, file systems that supported `fstrim` were always trimmed if the device supported the TRIM command.
+
+In {this-version}, the `X-fstrim.notrim` option has been added.
+Adding this option to a device in `/etc/fstab` will opt it out of the `fstrim` functionality without disabling the `fstrim` service.
+
+
+[#jsc-SLE-22664]
+==== XFS V4 format file systems have been deprecated
+
+Customers who have created XFS file system on {slea} 11 or prior will see the following message:
+```
+Deprecated V4 format (crc=0) will not be supported after September 2030
+```
+
+While the file system will work and be supported until the date mentioned, it is best to re-create the file system:
+
+1. Backup all the data to another drive or partition
+2. Create the file system on the device
+3. Restore the data from the backup
+
+
+// !STICKY
+[#file-system-comparison]
+==== Comparison of supported file systems
+
+
+{sle} was the first enterprise Linux distribution to support journaling file systems and logical volume managers in 2000.
+Later, we introduced XFS to Linux, which allows for reliable large-scale file systems, systems with heavy load, and multiple parallel reading and writing operations.
+With {sle} 12, we started using the copy-on-write file system Btrfs as the default for the operating system, to support system snapshots and rollback.
+
+The following table lists the file systems supported by {sle}.
+
+__Support status:__ {sup} supported / {uns} unsupported
+
+[cols="25,^15,^15,^15,^15" options="header"]
+|===
+|Feature
+|Btrfs
+|XFS
+|Ext4
+|OCFS 2^1^
+
+|Supported in product
+|{slea}
+|{slea}
+|{slea}
+|{haa}
+
+|Data/metadata journaling
+|N/A^2^
+|{uns} / {sup}
+|{sup} / {sup}
+|{uns} / {sup}
+
+
+|Journal internal/external
+|N/A^2^
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {uns}
+
+|Journal checksumming
+|N/A^2^
+|{sup}
+|{sup}
+|{sup}
+
+|Subvolumes
+|{sup}
+|{uns}
+|{uns}
+|{uns}
+
+|Offline extend/shrink
+|{sup} / {sup}
+|{uns} / {uns}
+|{sup} / {sup}
+|{sup} / {uns}^3^
+
+|Inode allocation map
+|B-tree
+|B+-tree
+|Table
+|B-tree
+
+|Sparse files
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Tail packing
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Small files stored inline
+|{sup} (in metadata)
+|{uns}
+|{sup} (in inode)
+|{sup} (in inode)
+
+|Defragmentation
+|{sup}
+|{sup}
+|{sup}
+|{uns}
+
+|Extended file attributes/ACLs
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+
+|User/group quotas
+|{uns} / {uns}
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+
+|Project quotas
+|{uns}
+|{sup}
+|{sup}
+|{uns}
+
+|Subvolume quotas
+|{sup}
+|N/A
+|N/A
+|N/A
+
+|Data dump/restore
+|{uns}
+|{sup}
+|{uns}
+|{uns}
+
+|Block size default
+4+|4{nbsp}KiB^4^
+
+|Maximum file system size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+
+|Maximum file size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+|===
+
+
+^1^ OCFS 2 is fully supported as part of the {sleha}.
+
+^2^ Btrfs is a copy-on-write file system.
+Instead of journaling changes before writing them in-place, it writes them to a new location and then links the new location in.
+Until the last write, the changes are not "committed".
+Because of the nature of the file system, quotas are implemented based on subvolumes (`qgroups`).
+
+^3^ To extend an OCFS 2 file system, the cluster must be online but the file system itself must be unmounted.
+
+^4^ The block size default varies with different host architectures.
+64{nbsp}KiB is used on POWER, 4{nbsp}KiB on other systems.
+The actual size used can be checked with the command `getconf _PAGE_SIZE_`.
+
+*Additional notes*
+
+Maximum file size above can be larger than the file system's actual size because of the use of sparse blocks.
+All standard file systems on {sles} have LFS, which gives a maximum file size of 2^63^{nbsp}bytes in theory.
+
+The numbers in the table above assume that the file systems are using a 4{nbsp}KiB block size which is the most common standard.
+When using different block sizes, the results are different.
+
+In this document:
+
+* 1024{nbsp}Bytes = 1{nbsp}KiB
+* 1024{nbsp}KiB = 1{nbsp}MiB;
+* 1024{nbsp}MiB = 1{nbsp}GiB
+* 1024{nbsp}GiB = 1{nbsp}TiB
+* 1024{nbsp}TiB = 1{nbsp}PiB
+* 1024{nbsp}PiB = 1{nbsp}EiB.
+
+See also http://physics.nist.gov/cuu/Units/binary.html.
+
+// bsc#1073261
+Some file system features are available in {sles} {this-version} but are not supported by {suse}.
+By default, the file system drivers in {sles} {this-version} will refuse mounting file systems that use unsupported features (in particular, in read-write mode).
+To enable unsupported features, set the module parameter `allow_unsupported=1` in `/etc/modprobe.d` or write the value `1` to `/sys/module/_MODULE_NAME_/parameters/allow_unsupported`.
+However, note that setting this option will render your kernel and thus your system unsupported.
+
+
+// !STICKY
+[#file-system-btrfs-feature]
+==== Supported Btrfs features
+
+The following table lists supported and unsupported Btrfs features across multiple {slsa} versions.
+
+__Support status:__ {sup} supported / {uns} unsupported
+
+// Table according to bsc-979501, this attachment: https://bugzilla.suse.com/attachment.cgi?id=687340
+[cols="22,^13,^13,^13,^13,^13,^13" options="header"]
+|===
+|Feature
+|{slsa} 11 SP4
+|{slsa} 12 SP5
+|{slsa} 15 GA
+|{slsa} 15 SP1
+|{slsa} 15 SP2
+|{slsa} 15 SP3
+
+|Copy on write
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Free space tree (Free Space Cache v2)
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Snapshots/subvolumes
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Swap files
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Metadata integrity
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Data integrity
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Online metadata scrubbing
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Automatic defragmentation
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Manual defragmentation
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|In-band deduplication
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Out-of-band deduplication
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Quota groups
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Metadata duplication
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Changing metadata UUID
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Multiple devices
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 0
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 1
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 5
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|RAID 6
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|RAID 10
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Hot add/remove
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Device replace
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Seeding devices
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Compression
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Big metadata blocks
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Skinny metadata
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Send without file data
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Send/receive
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Inode cache
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Fallocate with hole punch
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|===

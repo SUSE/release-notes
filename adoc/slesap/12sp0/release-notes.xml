@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % NOVDOC.DEACTIVATE.IDREF "INCLUDE">
+  <!ENTITY % entities SYSTEM "release-notes.ent">
+  %entities;
+]>
+<article lang="en" id="rnotes">
+  <title>Release Notes</title>
+  <articleinfo>
+    <releaseinfo>@VERSION@</releaseinfo>
+    <productname class="trade">SUSE Linux Enterprise Server for SAP Applications</productname>
+    <productnumber>12</productnumber>
+    <date>
+      <?dbtimestamp format="Y-m-d"?>
+    </date>
+    <abstract>
+      <para><!--
+       SUSE Enterprise Storage is an extension to &sle;. It combines the
+       capabilities from the Ceph (<ulink url="http://ceph.com/"/>
+       storage project with the enterprise engineering and support of
+       &suse;. SUSE Enterprise Storage provides IT organizations with
+       the ability to deploy a distributed storage architecture that can
+       support a number of use cases using commodity hardware platforms.
+      -->
+      This is SUSE Linux Enterprise Server for SAP Applications (SLES for SAP Applications).
+   </para>
+      <para>
+    Manuals can be found in the <filename moreinfo="none">docu</filename> directory of the installation media
+    for SLES for SAP Applications<!-- &sp;&spversion;-->. Any
+    documentation (if installed) can be found in the <filename moreinfo="none">/usr/share/doc/</filename> directory of the
+    installed system. </para>
+    </abstract>
+  </articleinfo>
+  <section id="Intro">
+    <title>SLES for SAP Applications</title>
+    <para/>
+    <section id="Intro.New" remap="Intro:New">
+      <title>What's New?</title>
+      <para/>
+      <!--Hello here we have something {new}-->
+      <section role="notoc" id="fate-318134" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats=""; -->
+        <title>SAPHanaSR Tolerates Cluster Foreign HANA System Replication</title>
+        <!-- href="https://fate.novell.com/318134" -->
+        <para>The SAPHanaSR Resource-Agent now fully supports a cluster foreign SAP HANA system replication ("Chain").</para>
+      </section>
+      <section role="notoc" id="fate-318075" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats=""; -->
+        <title>HANA Firewall Package</title>
+        <!-- href="https://fate.novell.com/318075" -->
+        <para>Hardening HANA installations is now easily possible with the Tech Preview of the HANA Firewall package shipped with SLES for SAP Applications 12. It comes with a comprehensive documentation which outlines its usecases and setup instructions.</para>
+      </section>
+      <section role="notoc" id="fate-317966" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats=""; -->
+        <title>Support of New SAP CD Metadata Format</title>
+        <!-- href="https://fate.novell.com/317966" -->
+        <para>The SLES for SAP Applications 12 Installation Wizard now supports the new SAP CD metadata format used on the SAP installation media. Please upgrade your copies of the SAP CD installation media to leverage the new features that the Installation Wizard now provides.</para>
+      </section>
+      <section role="notoc" id="fate-317772" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats=""; -->
+        <title>SLES 12 Compatibility</title>
+        <!-- href="https://fate.novell.com/317772" -->
+        <para>SLES for SAP Applications 12 is based on SLES 12 and provides all related features. Choosing 'Standard Installation' as boot option allows you to install a regular SLES 12 operating system.</para>
+      </section>
+      <section role="notoc" id="fate-317182" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats=""; -->
+        <title>Resource Agents for SAP HANA System Replication Automation</title>
+        <!-- href="https://fate.novell.com/317182" -->
+        <para>The included Resource-Agents SAPHana and SAPHanaTopology provide control over SAP HANA Databases which are configured in a System-Replication Scenario. As of today SCALE-UP (Single-Box) will be supported, which means system replication from one single primary database node to one single secondary database node.</para>
+      </section>
+      <section role="notoc" id="fate-316403" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats="Partner Request"; -->
+        <title>Installation Wizard Automation</title>
+        <!-- href="https://fate.novell.com/316403" -->
+        <para>The Installation Wizard has been enhanced with the functionality to read the required system information from a configuration file that can be pre-filled according to the environment. Also, the Installation Wizard now creates such a configuration file after finishing an interactive installation, to allow for easy replay of an installation in an automatic way and to have a template configuration for the Installation Wizard.  The template configuration can be adapted for installation on other machines.</para>
+      </section>
+      <section role="notoc" id="fate-316402" remap="Intro:New">
+        <!-- sort_key="None"; non-rn-fate-cats="Partner Request"; -->
+        <title>Support for n-Tier SAP Installations Through the Installation Wizard</title>
+        <!-- href="https://fate.novell.com/316402" -->
+        <para>The Installation Wizard now allows installations of multi-tier architectures, e.g. SAP Central Instance and Database Instance on different systems. In addition, the installation of additional SAP Dialog Instances is possible to extend the existing SAP system landscape.</para>
+      </section>
+      <!--End of imported {new}-->
+    </section>
+  </section>
+  <!--
+  <section id="intro.new">
+   <title>What's New?</title>
+   <variablelist>
+    <varlistentry>
+     <term>
+      xxx
+     </term>
+     <listitem>
+      <para>
+      xxx
+      </para>
+     </listitem>
+     </varlistentry>
+   </variablelist>
+  </section>
+ -->
+  <section id="Features">
+    <title>Features and Versions</title>
+    <para>
+   This section includes an overview of some of the major features
+   <!--and new functionality--> provided by SLES for SAP Applications.</para>
+  </section>
+  <section id="Support">
+    <title>Support Statement for SLES for SAP Applications</title>
+    <para> Support requires an appropriate subscription from SUSE; for more information, see: <ulink url="http://www.suse.com/products/server/"/>. </para>
+    <para>General Support Statement </para>
+    <para>The following definitions apply: </para>
+    <itemizedlist>
+      <listitem>
+        <para> L1: Installation and problem determination - technical support designed to provide
+     compatibility information, installation and configuration assistance, usage support, on-going
+     maintenance and basic troubleshooting. Level 1 Support is not intended to correct product
+     defect errors. </para>
+      </listitem>
+      <listitem>
+        <para> L2: Reproduction of problem isolation - technical support designed to duplicate customer
+     problems, isolate problem areas and potential issues, and provide resolution for problems not
+     resolved by Level 1 Support. </para>
+      </listitem>
+      <listitem>
+        <para> L3: Code Debugging and problem resolution - technical support designed to resolve complex
+     problems by engaging engineering in patch provision, resolution of product defects which have
+     been identified by Level 2 Support. </para>
+      </listitem>
+    </itemizedlist>
+    <para> SUSE will only support the usage of original (unchanged or not recompiled) packages.
+  </para>
+  </section>
+  <section id="Sourcecode">
+    <title>How to Obtain Source Code</title>
+    <!-- msvec and legal (ciaran), 2013-05-13 -->
+    <!-- moved from the abstract to this location as the first chapter -->
+    <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the
+   source code that corresponds to the GPL-licensed material. The source
+   code is available for download at <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code.  Requests should
+   be sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as otherwise instructed
+   at <ulink url="http://www.suse.com/download-linux/source-code.html"/>.  SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+  </section>
+  <section id="Feedback">
+    <title>More Information and Feedback</title>
+    <itemizedlist>
+      <listitem>
+        <para>Read the READMEs on the CDs.</para>
+      </listitem>
+      <listitem>
+        <para> Get detailed changelog information about a particular package
+    from the RPM: </para>
+        <screen format="linespecific">rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+        <para>&lt;FILENAME&gt;. is the name of the RPM.</para>
+      </listitem>
+      <listitem>
+        <para> Check the <filename moreinfo="none">ChangeLog</filename> file in the top level of CD1 for a chronological
+     log of all changes made to the updated packages. </para>
+      </listitem>
+      <listitem>
+        <para> Find more information in the <filename moreinfo="none">docu</filename>
+    directory of CD1 of the SLES for SAP Applications CDs. This directory includes a PDF
+    version of the SLES for SAP Applications Guide. </para>
+      </listitem>
+      <listitem>
+        <para><ulink url="http://www.suse.com/documentation/sles_for_sap/"/> contains
+     additional or updated documentation for SLES for SAP Applications. </para>
+      </listitem>
+      <listitem>
+        <para> Visit <ulink url="http://www.suse.com/products/"/> for the
+    latest product news from SUSE and <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+    additional information on the source code of SUSE Linux Enterprise products. </para>
+      </listitem>
+    </itemizedlist>
+    <para>Copyright © 2015 SUSE LLC.</para>
+    <para>Thanks for using SLES for SAP Applications in your business.</para>
+    <para>The SLES for SAP Applications Team.</para>
+  </section>
+</article>

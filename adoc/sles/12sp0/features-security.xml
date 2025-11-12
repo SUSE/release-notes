@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+
+<section id="Features.Security">
+ <title>Security</title>
+
+ <!-- 2013-12-03
+ <section>
+   <title>PAM Configuration</title>
+   <para>
+    The common PAM configuration files
+    (<filename>/etc/pam.d/common-*</filename>) are now created and
+    managed with <command>pam-config</command>.
+   </para>
+ </section>
+ -->
+
+
+</section>

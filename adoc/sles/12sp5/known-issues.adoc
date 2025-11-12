@@ -1,0 +1,69 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#knownIssues]
+== Known Issues & Workarounds
+
+This is a list of known issues for this release.
+
+[#bsc-1187484]
+=== User Login Fails After Upgrade
+
+After upgrading from SLES 12 SP4 or earlier, a regular user cannot login to the system.
+
+This is caused by the deprecation of `pam_unix2` because of its issues with `systemd`.
+For information how to fix the issue, see https://www.suse.com/support/kb/doc/?id=000019703.
+
+[#bsc-1155532]
+=== Installation on RAID10 Array Composed from SSD Drives Hangs on Discard Request
+
+When setting up RAID 10 on four SSD drives during the installation, after choosing the target partition to create RAID, the progress bar will hang at `1% completed` for some time (depending on the RAID size) before proceeding.
+This is a known performance issue on RAID 10 because the system takes time to split the large storage into many small ones.
+This issue only occurs once when setting up the RAID 10 and has no effect afterwards.
+
+Upstream currently has no solution for it.
+
+[#bsc-1150275]
+=== Installation in Text Mode: Switching the Keyboard Layout fails
+
+When doing an installation in text mode, switching the keyboard layout in the Language, Keyboard, and License Agreement dialog does not work. The requested change does not get applied.
+
+To work around this issue, make sure to choose a language on the boot screen.
+A corresponding keyboard layout will automatically be applied.
+On x86 and aarch64 machines with a traditional BIOS, press `F2` on the boot screen to select a language. On x86 and aarch64 machines with EFI, append the language parameter to the kernel command line (e.g. `Language=de_DE`). For IBM Z you may set the language via the parmfile.
+
+[#bsc-1152669]
+=== Installation in Text Mode: Russian, Korean, and Chinese EULA is not Displayed Correctly
+
+When installing on the text console, the console as well as font is configured depending on the selected language.
+Because different languages use different sets of characters, it is not always possible to display the EULA in all languages.
+
+If the EULA is not shown correctly in your preferred the language, either change the language in the Language selection screen of YaST (in order to load the proper font) or in the boot screen (in order to set-up the console properly).
+Translated EULAs are also available for download at https://www.suse.com/licensing/eula/.
+
+[#bsc-1154292]
+=== Installation in Graphic Mode on IBM Z: Installation Fails with 1 GB RAM
+
+When attempting to do an installation in graphic mode on IBM Z, the installation stops without completing on machines equipped with only 1 GB RAM.
+
+To work around this issue, either perform a text mode installation or add more RAM.
+The graphical installation requires at least 1.5 GB of RAM.
+
+[#bsc-1155587]
+=== Media Does Not Contain Translated Manuals in /docu
+
+Former releases of {product} contained translated manuals in the folder `/docu` on DVD1.
+{this-version} only contains English manuals in `/docu` on DVD1.
+
+For {this-version} documentation translations were unfortunately not ready in time for building the product media.
+Rather than shipping outdated translations, we decided to remove translations from the `/docu` folder on the media.
+
+{this-version} continues to ship translated documentation as rpm packages.
+Up-to-date packages will be available as an online-update when {this-version} ships for the first time.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Issue explanation
+////

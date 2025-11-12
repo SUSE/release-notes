@@ -1,0 +1,31 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#performance]
+=== Performance-Related Information
+
+// Release Notes for Performance tool/library features:
+//    profiling, ... (not performance bugs/fixes in applications)
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#jsc-SLE-12168]
+==== `supportconfig` SAP Plugin Has Been Added
+
+A SAP plugin for `supportconfig` has been added. This plugin collects information about SAP applications to enhance support for SAP customers.
+
+
+[#jsc-SLE-7957]
+==== Support for Idaville Uncore Events Has Been Added
+
+The Linux performance analyzing tool `perf` now supports Intel Idaville (ICX-D) CPU uncore events.
+Uncore provides additional performance monitoring information for advanced users.

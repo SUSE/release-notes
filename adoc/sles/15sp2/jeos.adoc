@@ -1,0 +1,66 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#instUpgrade-jeos]
+=== {jeos}: Just Enough Operating System
+
+// Release Notes for JeOS:
+
+{sles} {jeos} is a slimmed-down form factor of {sles} that is ready to run in virtualization environments and the cloud.
+With {sles} JeOS, you can choose the right-sized {sles} option to fit your needs.
+
+We are providing different virtual disk images for {jeos}, using the `.qcow2`, `.vhdx`, and `.vmdk` file formats respectively, for KVM, Xen, OpenStack, Hyper-V, and VMware environments.
+All {jeos} images set up the same disk size (24{nbsp}GB) for the {jeos} system.
+Due to the nature of the different image formats, the size of the {jeos} image files differs.
+
+
+[#jsc-SLE-7327]
+==== {jeos} Disks Are Now Mounted By UUID Instead of By Label
+
+All {sles} {jeos} (and {opensuse} {jeos}) image flavors now use the __Mount by UUID__ setting for disks.
+
+Switching to __Mount by UUID__ for all {jeos} images has the following benefits:
+
+* Matches the default setting of a regular {slea} installation.
+* Uses the same setting for all {sles} {jeos} (and {opensuse} {jeos}) images.
+
+This change only affects the {jeos} images based on {this-version}.
+Previous images, even if upgraded or migrated to {this-version}, are not affected ({jeos} images upgraded or migrated to {this-version} will not change their __mount by__ setting).
+
+
+[#isr-200997]
+==== `kiwi-templates-SLES15-JeOS` Has Been Renamed to `kiwi-templates-JeOS`
+
+We have simplified the name of the package that contains {sles} {jeos} images templates to `kiwi-templates-JeOS`.
+This package is available in the __Development Tools Module__.
+
+
+[#bsc-1166474]
+==== `XEN` {jeos} Image Has Been Removed in Favor of `kvm-and-xen` {jeos} Image
+
+In previous releases, there were two {jeos} images for Xen platforms:
+
+* For Xen full virtualization (HVM), there was the `kvm-and-xen` image.
+* For Xen paravirtualization (PV), there was a separate `XEN` image with different Linux kernel and GRUB2 packages.
+
+Starting with {slsa} {jeos} 15{nbsp}SP2, the `kvm-and-xen` image should be used for both environments.
+
+The `XEN` image does not exist anymore because it has become redundant:
+
+* Linux 4.4 and later include support for operating as a Xen-paravirtualized guest (DomU) as part of the default Linux kernel.
+The separate Xen flavor of the Linux kernel package has become unnecessary.
+
+* The GRUB2 version provided by the host system is responsible for booting the Virtual Machine.
+The GRUB2 packages specific to Xen paravirtualization are not needed anymore.
++
+As before, booting {jeos} with Xen paravirtualization on a non-SUSE host (Dom0) is not supported.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

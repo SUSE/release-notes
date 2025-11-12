@@ -1,0 +1,15 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#network]
+== Network
+
+This section list netword-related information for {product}{nbsp}{this-version}.
+////
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

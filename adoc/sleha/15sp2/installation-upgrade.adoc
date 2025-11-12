@@ -1,0 +1,120 @@
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#instUpgrade]
+== Installation and Upgrade
+
+{product} can be deployed in several ways:
+
+* Physical machine
+* Virtual host
+* Virtual machine
+* System containers
+* Application containers
+
+[#instUpgrade-installation]
+=== Installation
+
+This section includes information related to the initial installation of {product} {this-version}.
+Make sure to also review the respective section of the release notes for the base product, {sles}{nbsp}{this-version} which are published at {rn-url}/x86_64/SUSE-SLES/15-SP2.
+
+.Installation Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the installation of {product}.
+However, they do not document the installation procedure itself.
+
+// disclaimer beta
+ifeval::["{lifecycle}" == "beta"]
+For installation documentation, see the __Installation and Setup Quick Start__ at {doc-url-beta}/SLE-HA-install-quick (draft version) and the __Geo Clustering Quick Start__ at {doc-url-beta}/SLE-HA-geo-quick (draft version).
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+For installation documentation, see the __Installation and Setup Quick Start__ at {doc-url}/html/SLE-HA-all/art-sleha-install-quick.html and the __Geo Clustering Quick Start__ at at {doc-url}/html/SLE-HA-all/art-sleha-geo-quick.html.
+endif::[]
+// disclaimer unmaintained (same as maintained)
+ifeval::["{lifecycle}" == "unmaintained"]
+For installation documentation, see the __Installation and Setup Quick Start__ and the __Geo Clustering Quick Start__ at {doc-url}/.
+endif::[]
+====
+
+// Installation-related release notes specific to SLE HA go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#instUpgrade-upgrade]
+=== Upgrade-Related Notes
+
+This section includes upgrade-related information for {product} {this-version}.
+Make sure to also review the respective section of the release notes for the base product, {sles}{nbsp}{this-version} which are published at {rn-url}/x86_64/SUSE-SLES/15-SP2.
+
+.Upgrade Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the upgrade of {product}.
+However, they do not document the upgrade procedure itself.
+
+// disclaimer beta
+ifeval::["{lifecycle}" == "beta"]
+For upgrade documentation, see the __Admin Guide__ at {doc-url-beta}/SLE-HA-guide/ (draft version).
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+For upgrade documentation, see the __Admin Guide__ at {doc-url}/html/SLE-HA-all/book-sleha-guide.html.
+endif::[]
+// disclaimer unmaintained (same as maintained)
+ifeval::["{lifecycle}" == "unmaintained"]
+For upgrade documentation, see the __Admin Guide__ at {doc-url}/.
+endif::[]
+====
+
+// Upgrade-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+==== Make Sure the Current System Is Up-To-Date Before Upgrading
+
+Upgrading the system is only supported from the most recent patch level.
+Make sure the latest system updates are installed by either running `zypper patch` or by starting the YaST module Online-Update.
+An upgrade on a system not fully patched may fail.
+
+
+==== Skipping Service Packs Requires LTSS
+
+Skipping service packs during an upgrade is only supported if you have a Long Term Service Pack Support contract.
+Otherwise you first need to upgrade to {previous-sp} before upgrading to {this-sp}.
+
+
+[#bsc-1150382]
+==== Terminology Changes in the Upgrade Documentation
+
+To increase consistency and better distinguish types of upgrades, the terminology in the product documentation has been changed:
+
+* __Cluster Rolling Upgrade__ (previously, __Rolling Upgrade__):
+You take the first node offline, upgrade it and bring it back online to join the cluster.
+Then you continue one by one until all cluster nodes are upgraded to a major version.
+
+* __Cluster Offline Upgrade__ (previously, __Offline Migration__):
+You need to take all nodes offline and upgrade the cluster as a whole (incurring cluster downtime), before you can bring all nodes back online.
+
+This change has been applied to the documentation for {product} 15 GA and later.
+
+
+[#instUpgrade-more]
+=== For More Information
+
+For more information, see <<allArch>> and the sections relating to your respective hardware architecture.

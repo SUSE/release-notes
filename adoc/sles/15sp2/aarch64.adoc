@@ -1,0 +1,523 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#aarch64]
+== {arm} 64-Bit-Specific Features & Fixes (AArch64)
+
+Information in this section applies to {arm-product} {this-version}.
+
+
+[#arm64-soc]
+=== System-on-Chip Driver Enablement
+
+{arm-product} {this-version} includes driver enablement for the following
+System-on-Chip (SoC) chipsets:
+
+* {amdreg} {opteronreg} A1100
+// jsc#SLE-9551 (Altra)
+* {amperereg} {xgenereg}, {emagreg}, *{altrareg}*
+// jsc#SLE-10505 (Graviton2)
+* {awsreg} Graviton, *Graviton2*
+// jsc#SLE-7276 (BCM2711)
+* {brcmreg} BCM2837/BCM2710, *BCM2711*
+// jsc#SLE-9032
+* {fujitsureg} *A64FX*
+* {huaweireg} {kunpengreg} 916, {kunpeng} 920
+* {marvellreg} {thunderxreg}, {thunderx2reg}, *{thunderx3reg}*; {octeon-txreg}; {armadareg} 7040, {armada} 8040
+// jsc#SLE-8469
+* {mellanoxreg} {bluefieldreg}
+// jsc#SLE-9387 (X1), jsc#SLE-9335 (X2)
+* {nvidiareg} *{tegrareg}{nbsp}X1*, *Tegra{nbsp}X2*
+// jsc#SLE-9263 (LS1028A, LS1027A); LS2085A == LS2080A (marketing rename)
+* {nxpreg} {imx} 8M; {layerscapereg} *LS1027A/LS1017A*, *LS1028A/LS1018A*, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
+* {qcomreg} {centriqreg} 2400
+* Rockchip RK3399
+* {socionextreg} {synquacerreg} SC2A11
+* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
+
+NOTE: Driver enablement is done as far as available and requested.
+Refer to the following sections for any known limitations.
+
+Some systems might need additional drivers for external chips, such as a
+Power Management Integrated Chip (PMIC), which may differ between systems
+with the same SoC chipset.
+
+For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
+or the Embedded Base Boot Requirements (EBBR),
+that is, the Unified Extensible Firmware Interface (UEFI) either
+implementing the Advanced Configuration and Power Interface (ACPI) or
+providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
+will default to the Device Tree; the kernel command line argument `acpi=force` can
+override this default behavior.
+
+Check for {suse} _YES!_ certified systems,
+which have undergone compatibility testing.
+
+
+[#aarch64-rpi]
+=== Boot and Driver Enablement for {rpi}
+
+Bootloaders, drivers and a supported microSD card image of {arm-product} {this-version}
+for {rpireg} devices are available.
+The template of the {this-rpi-appliance} image is available as profile `RaspberryPi`
+in the package `kiwi-templates-JeOS` to derive custom appliances.
+
+==== New Features
+
+// jsc#SLE-7277
+In addition to the {rpi} Compute Module{nbsp}3,
+the *Compute Module{nbsp}3{nbzwsp}\+* is now also supported.
+It uses the BCM2837 System-on-Chip silicon revision B0,
+same as {rpi}{nbsp}3 Model{nbsp}B{nbzwsp}+.
+
+Also enabled is the *{rpi}{nbsp}3 Model{nbsp}A{nbzwsp}\+*,
+with BCM2837 B0 silicon revision.
+Compared to Model{nbsp}B{nbzwsp}+ it offers a reduced feature set and less RAM.
+
+// jsc#SLE-7276
+Initial enablement is provided for *{rpi}{nbsp}4 Model{nbsp}B*,
+which uses a new BCM2711 System-on-Chip.
+For known limitations, see <<arm64-rpi-known>>.
+
+// jsc#SLE-10302
+In the provided U-Boot bootloader the Btrfs file system is now enabled,
+offering additional flexibility for partitioning, scripting and recovery
+(<<jsc-SLE-10302>>).
+
+// jsc#SLE-7298, TODO jsc#SLE-9419
+Starting with {arm-product} 15 SP1, the `.iso` installation media allow booting directly
+from USB storage devices on supported boards, such as {rpi}{nbsp}3 Model{nbsp}B{nbzwsp}+.
+The Unified Installer in {this-version} now simplifies installation from USB to microSD
+by offering a default partitioning proposal for a bootable installation target,
+avoiding the need for manual partitioning in the most common scenarios.
+For more details on the boot process please refer to the {product} Deployment Guide.
+
+==== Upgrade Considerations
+
+The bootloader package `u-boot-rpi3` has been replaced with
+a new `u-boot-rpiarm64` package that covers both {rpi}{nbsp}3 and 4 generations.
+
+The package containing the Kiwi templates for the image has been renamed
+from `kiwi-templates-SLES15-JeOS` to `kiwi-templates-JeOS` (<<isr-200997>>).
+
+If you upgraded from the {arm-product} 12{nbsp}SP3 image for the {rpi},
+an X11 config file `/etc/X11/xorg.conf.d/20-kms.conf` will be left over,
+which disables acceleration.
+You can safely remove this file in later versions (see <<fate-322398>>).
+
+==== Expansion Boards
+
+{rpi}{nbsp}3 Model{nbsp}A{nbzwsp}+ and B/B{nbzwsp}+ as well as
+{rpi}{nbsp}4 Model{nbsp}B all offer a 40-pin General Purpose I/O connector,
+with multiple software-configurable functions such as UART, I²C and SPI.
+This pin mux configuration along with any external devices attached to the pins
+is defined in the Device Tree which is passed by the bootloader to the kernel.
+
+{suse} does not currently provide support for any particular Hardware Attached on Top (HATs)
+or other expansion boards attached to the 40-pin GPIO connector.
+However, insofar as drivers for pin functions and for attached chipsets are
+included in {sle}, they can be used.
+{suse} does not provide support for making changes to the Device Tree,
+but successful changes will not affect the support status of the operating system itself.
+Be aware that errors in the Device Tree can stop the system from booting successfully
+or can even damage the hardware.
+
+The bootloader and firmware in {arm-product} {this-version} support Device Tree Overlays.
+The recommended way of configuring GPIO pins is to create a file `extraconfig.txt`
+on the FAT volume (`/boot/efi/extraconfig.txt` in the {suse} image)
+with a line `dtoverlay=__filename-without-.dtbo__` per Overlay.
+For more information about the syntax, see the documentation by the {rpi} Foundation:
+https://www.raspberrypi.org/documentation/configuration/device-tree.md
+
+If not already shipped in the `/boot/efi/overlays/` directory (installed by `raspberrypi-firmware-dt` package),
+`.dtbo` files can be obtained from the manufacturer of the HAT
+or compiled from self-authored sources.
+
+==== For More Information
+
+For more information, see the __{rpi} Quick Start__ guide at
+ifeval::["{lifecycle}" == "beta"]
+{doc-url-beta}/html/SLES-rpi-quick/ (draft version).
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+{doc-url}/html/SLES-rpi-quick/.
+endif::[]
+
+
+[#aarch64-new]
+=== New Features
+
+[#jsc-SLE-11052]
+==== Device Tree Compiler Has Been Added
+
+The `dtc` package has been added to the _Development Tools_ module.
+
+
+[#jsc-SLE-9327-NR_CPUS]
+==== Logical CPU Limit Increased
+
+The {arm-product} {this-version} kernel raises the limit of logical CPUs
+(physical cores and threads) from 480 to *768* CPUs.
+
+
+[#jsc-SLE-7698]
+==== KVM Virtual CPU Limit Increased
+
+The number of virtual CPUs (vCPUs) that can be assigned to a guest with the
+Kernel-based Virtual Machine (KVM) is limited by the interrupt controllers
+emulated by QEMU for the guest virtual machine (VM).
+{arm-product} 15{nbsp}SP1 and earlier were therefore unable to assign all
+the logical host CPUs of a {marvellreg} {thunderx2reg} to a single guest VM,
+affecting the _YES!_ System Test Kit.
+
+{arm-product} {this-version} raises the limit from 123 to *512* virtual CPUs
+per KVM guest VM.
+
+NOTE: Please observe any recommendations regarding vCPU over-commit
+in relation to physical cores (compare <<virtualization-kvm-limits>>).
+
+
+[#bsc-1158193]
+==== NUMA Node Limit Increased
+
+// CONFIG_NODES_SHIFT=2 -> =6
+The {arm-product} {this-version} kernel raises the limit of
+Non-Uniform Memory Access (NUMA) nodes from 4 to *64* nodes.
+
+
+[#jsc-SLE-9312]
+==== KVM Enablement for {armv8}.2-SVE Scalable Vector Extensions
+
+The {armv8}.2 Scalable Vector Extensions (SVE) were initially enabled in the
+{arm-product} 15{nbsp}SP1 kernel. The Kernel-based Virtual Machine (KVM) in
+{arm-product} {this-version} is now enabled for SVE, too.
+
+
+[#jsc-SLE-10258]
+==== Driver Enablement for {arm} {neoverse}{nbsp}N1
+
+The {armreg} {neoversereg}{nbsp}N1 CPU core is enabled since
+a {arm-product} 15{nbsp}SP1 kernel maintenance update.
+
+// SDEN-885747
+NOTE: While the {neoverse}{nbsp}N1 CPU core is enabled,
+the {arm} {neoverse}{nbsp}N1 SDP system is not enabled
+(<<jsc-SLE-10258-sdp>>).
+
+
+[#jsc-SLE-9551]
+==== Driver Enablement for {ampere} {altra}
+
+{arm-product} {this-version} adds enablement for servers based on {amperereg}
+{altrareg} System-on-Chip (SoC).
+The {altra} SoC uses {armreg} {neoversereg}{nbsp}N1 CPU cores
+(<<jsc-SLE-10258>>).
+
+
+[#jsc-SLE-7300]
+==== Driver Enablement for {aws} Graviton
+
+{amazon-ec2reg} A1 instances based on the {awsreg} Graviton
+System-on-Chip (SoC) are enabled since a {arm-product} 15 kernel
+maintenance update.
+The {aws} Graviton SoC uses {armreg} {neoversereg} _Cosmos_ ({cortexreg}-A72)
+CPU cores.
+
+*A1.metal* instances are enabled since a {arm-product} 15{nbsp}SP1 kernel
+maintenance update.
+
+
+[#jsc-SLE-10505]
+==== Driver Enablement for {aws} Graviton2
+
+{amazon-ec2reg} instances based on the {awsreg} Graviton2 System-on-Chip (SoC),
+such as *M6g*,
+are enabled since a {arm-product} 15{nbsp}SP1 kernel maintenance update.
+The {aws} Graviton2 SoC uses {armreg} {neoversereg}{nbsp}N1 CPU cores
+(<<jsc-SLE-10258>>).
+
+
+[#jsc-SLE-9327]
+==== Driver Enablement for {marvell} {thunderx3}
+
+{arm-product} {this-version} adds enablement for servers based on
+{marvellreg} {thunderx3reg} System-on-Chip (SoC).
+The {thunderx3} SoC uses custom cores compliant with {armv8}.3{nbzwsp}+ and
+the Server Base System Architecture (SBSA).
+
+
+// jsc#SLE-9387 (t210), jsc#SLE-9335 (t186); jsc#SLE-10607 (t194)
+[#aarch64-jetson]
+==== Driver Enablement for {nvidia} {jetson}
+
+{arm-product} {this-version} adds enablement for the {nvidiareg} {jetsonreg}{nbsp}TX1 and
+{jetson}{nbsp}Nano System-on-Module (SoM) using the {nvidia} {tegrareg}{nbsp}X1 System-on-Chip (SoC),
+as well as for the {jetson}{nbsp}TX2/TX2i SoM using the {tegra}{nbsp}X2 SoC.
+
+The {arm-product} installation media are known not to boot with the
+bootloaders based on U-Boot{nbsp}v2016.07 of {nvidia} L4T{nbsp}R32.3.1 and earlier.
+When loading GRUB from the {suse} installation medium and selecting
+a kernel from the GRUB menu, then after loading kernel and ramdisk,
+you will encounter this error:
+
+[source]
+----
+EFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable, no randomness supplied
+EFI stub: ERROR: Could not determine UEFI Secure Boot status.
+EFI stub: Using DTB from configuration table
+EFI stub: ERROR: Failed to install memreserve config table!
+EFI stub: Exiting boot services and installing virtual address map...
+EFI stub: ERROR: Failed to update FDT and exit boot services
+----
+
+Contact your hardware vendor or {nvidia} as the module vendor for how to obtain
+and flash an EBBR{nbsp}1.0-compliant bootloader for use with {arm-product}.
+
+
+[#jsc-SLE-9263]
+==== Driver Enablement for {nxp} LS1028A
+
+{arm-product} {this-version} adds initial enablement for the
+{nxpreg} {layerscapereg} LS1028A family of System-on-Chip (SoC) chipsets.
+LS1027A is a SoC variant without the 3D Graphics Processor Unit (GPU),
+{displayportreg} PHY and LCD controller found on LS1028A SoC.
+LS1017A and LS1018A are single-core variants of dual-core LS1027A and LS1028A
+SoCs respectively.
+
+Known limitations for LS1028A and LS1018A built-in graphics are detailed in
+<<#jsc-SLE-9263-hdp>>.
+As a consequence, the Display Processor driver (`mali-dp`) and
+the 3D GPU driver (`etnaviv`) are available as technology previews
+(<<jsc-SLE-9263-malidp>> and <<jsc-SLE-9263-etnaviv>>).
+
+The FlexCAN driver (`flexcan`) was not ready yet for the LS1028A SoC family
+(<<jsc-SLE-9263-flexcan>>).
+
+
+[#jsc-SLE-8203-panfrost]
+==== Graphics Driver for {arm} {mali} Midgard Has Been Added
+
+The Rockchip RK3399 System-on-Chip contains an {armreg} {malireg}-T864
+Graphics Processor Unit (GPU).
+
+Previously, this GPU needed third-party drivers and libraries from your
+hardware vendor.
+
+The {arm-product} {this-version} kernel includes `panfrost`,
+a Display Rendering Infrastructure (DRI) driver for {arm} {mali} _Midgard_
+microarchitecture GPUs, such as {mali}-T864, and the `Mesa-dri` package
+contains a matching `panfrost_dri` graphics driver library.
+
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {mali} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+
+NOTE: The `lima` driver for {mali} _Utgard_ microarchitecture GPUs
+is available as a technology preview (<<jsc-SLE-8203-lima>>).
+
+
+[#jsc-SLE-8763]
+==== SPI Driver for {socionext} {synquacer} Has Been Added
+
+The {arm-product} {this-version} kernel adds a Serial Peripheral Interface (SPI)
+driver for the {socionextreg} {synquacerreg} SC2A11 System-on-Chip.
+
+
+[#aarch64-known]
+=== Known Limitations
+
+[#jsc-SLE-10258-sdp]
+==== {arm} {neoverse}{nbsp}N1 SDP Not Supported
+
+The {armreg} {neoversereg}{nbsp}N1 System Development Platform (SDP) contains
+a custom System-on-Chip, whose PCIe controller has multiple known errata.
+
+The {arm-product} {this-version} kernel does not include any quirks to handle
+these errata, leading to bus faults when enumerating the PCIe root complex.
+Installation from {arm-product} {this-version} media is therefore not possible.
+
+For more information, see
+https://git.linaro.org/landing-teams/working/arm/arm-reference-platforms.git/about/docs/n1sdp/pcie-support.rst.
+
+Note that this is _not_ an issue with the {neoverse}{nbsp}N1 CPU core itself
+(<<jsc-SLE-10258>>).
+Other {neoverse}{nbsp}N1 based System-on-Chip chipsets are not affected
+(see <<jsc-SLE-10505>> and <<jsc-SLE-9551>>).
+
+
+[#a64fx-cpufreq]
+==== No CPU Frequency Scaling on {fujitsu} A64FX
+
+Servers based on the {fujitsureg} A64FX System-on-Chip do not support
+Collaborative Processor Performance Control (CPPC).
+This means the CPUs will always run at maximum performance, irrespective of their load.
+
+Contact your hardware vendor for whether third-party drivers are available for {arm-product} {this-version}.
+
+
+[#jsc-SLE-9263-hdp]
+==== No {displayport} Graphics Output on {nxp} LS1028A and LS1018A
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor, whose output is connected to a
+{displayportreg} TX{nbsp}Controller (HDP-TX) based on
+{cadencereg} High Definition (HD) Display Intellectual Property (IP).
+
+A Display Rendering Manager (DRM) driver for the {arm} {mali}-DP500
+Display Processor is available as technology preview (<<#jsc-SLE-9263-malidp>>).
+
+However, there was no HDP-TX physical-layer (PHY) controller driver ready yet.
+Therefore no graphics output will be available, for example, on the
+{displayportreg} connector of the {nxp} LS1028A Reference Design Board (RDB).
+
+Contact the chip vendor {nxp} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+Alternatively, contact your hardware vendor for whether a bootloader update
+is available that implements graphics output, allowing to instead use `efifb`
+framebuffer graphics in {arm-product} {this-version}.
+
+NOTE: The {vivante} GC7000UL GPU driver (`etnaviv`) is available as a
+technology preview (<<jsc-SLE-9263-etnaviv>>).
+
+
+[#jsc-SLE-9263-flexcan]
+==== No CAN Interfaces on {nxp} {layerscape}
+
+The {nxpreg} {layerscapereg} LS1028A and LX2160A System-on-Chip families
+both contain multiple _FlexCAN_ Controller Area Network (CAN) controllers.
+
+The {arm-product} {this-version} kernel does not include the `flexcan` driver.
+
+
+// jsc#SLE-2975 for 15 SP1
+[#fate-322398]
+==== No 3D Graphics Acceleration for {brcm} {vc4}
+
+The `vc4` Display Rendering Manager (DRM) driver for the
+{brcmreg} {vc4reg} Graphics Processor Unit (GPU) has not reached
+enterprise-grade stability expectations for 3D acceleration on
+{rpireg}{nbsp}3 devices under memory pressure.
+
+Since {arm-product} 15 (and 12{nbsp}SP4) the `Mesa-dri` package does not
+include the `vc4_dri` graphics library,
+forcing fallback to 2D-only accelerated graphics.
+
+NOTE: For {vc6}, found on {rpi}{nbsp}4, see <<arm64-rpi-known>>.
+
+
+[#arm64-rpi-known]
+==== Some Drivers Not Ready for {rpi}
+
+The {arm-product} {this-version} kernel does not include a driver for
+{videocorereg} Host Interface Queue (VCHIQ), which was still in _staging_.
+The tool `vcgencmd` depends on VCHIQ and is therefore not included.
+Any drivers depending on `vchiq` driver are not included either,
+in particular `snd-bcm2835` for 3.5{nbsp}mm TRRS *audio jack* and
+`bcm2835-camera` (kernel module `bcm2835-v4l2`) for {mipicsi2reg}
+*camera connector* are unavailable.
+Also dependent on VCHIQ is the Multi-Media Abstraction Layer (MMAL) driver
+`vchiq-mmal` (kernel module `bcm2835-mmal-vchiq`), whose absence precludes
+you from using {openmaxreg} (OMX) API based tools using MMAL,
+such as `raspivid` and `raspistill`.
+
+A performance monitoring driver for the Advanced eXtensible Interface (AXI)
+bus on the {rpi} (`raspberrypi_axi_monitor`) is not available.
+
+
+[#arm64-rpi3-known]
+===== {rpi}{nbsp}3 Missing Drivers
+
+On {rpi}{nbsp}3, *video codec* hardware acceleration (`bcm2835_codec`)
+depends on VCHIQ and is unavailable.
+Applications will need to use software decoding for playback.
+
+
+[#arm64-rpi4-known]
+===== {rpi}{nbsp}4 Missing Drivers
+
+The `vc4` Display Rendering Manager (DRM) driver in the
+{arm-product} {this-version} kernel does not support the
+{brcmreg} {vc6} Graphics Processor Unit (GPU).
+The `v3d` Display Rendering Infrastructure (DRI) driver in
+kernel and Mesa graphics library was not ready either.
+
+The Direct Memory Access (DMA) engine driver `bcm2835-dma` does not implement
+40-bit transfers and is limited to 30 bits, that is, the lower 1{nbsp}GiB of
+RAM.
+Transfers to higher areas of RAM on applicable models (2/4/8{nbsp}GiB) will
+transparently use bounce buffers in low memory, so that functionality is
+not impaired but performance will be impacted.
+
+Video codec hardware acceleration support (H.264, HEVC, VP9) is missing.
+Applications will need to use software decoding for playback.
+
+// Not really a driver issue
+EEPROM updates will need to be performed by copying `recovery.bin` and
+related files to the FAT partition (mounted as `/boot/efi/` by default).
+
+
+[#jsc-SLE-11528]
+=== Deprecation of Early {marvell} {thunderx2} Silicon Support
+
+{marvellreg} {thunderx2reg} System-on-Chip silicon revisions A__x__ had
+errata for the SATA controller.
+Silicon revisions B0 and later are not affected.
+
+// bsc#1035000
+{arm-product} 12 SP3 and later include kernel patches with a recommended workaround.
+This allowed evaluation of early server systems with the affected silicon revisions.
+
+An upcoming version of {arm-product} will drop the patches with those workarounds.
+Production servers should not be affected by that change.
+For early systems with pre-production silicon please check with the hardware vendor
+whether CPU upgrade kits are available.
+
+
+[#bsc-1122591]
+=== Btrfs Subvolume for `/boot/grub2/arm64-efi` Missing After System Upgrade
+
+In case you upgraded an AArch64 system with a Btrfs root file system from
+{arm-product} 12 SP3 or 15 GA, a subvolume for `/boot/grub2/arm64-efi` is missing.
+This will result in boot failures when trying to boot the system from an old snapshot:
+
+[source]
+----
+error: symbol grub_efi_allocate_pages not found
+----
+
+NOTE: {arm-product} 15 GA __for the {rpi}__ is not affected by this.
+
+Manually add the missing subvolume to make sure snapshots work correctly.
+Note that snapshots created before the fix remain unbootable.
+Boot the system from the default (that is, latest) snapshot and follow these steps:
+
+. Create the missing Btrfs subvolume, move the architecture-specific GRUB files
+into it and configure it to be mounted on subsequent boots.
+Run the following command as user `root`:
++
+[source,bash]
+----
+# mksubvolume /boot/grub2/arm64-efi
+----
+
+. Update the GRUB bootloader to ensure the new subvolume configuration goes into effect:
++
+[source,bash]
+----
+# update-bootloader --reinit
+----
++
+Newly created snapshots will now be aware of the new subvolume and thus bootable.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

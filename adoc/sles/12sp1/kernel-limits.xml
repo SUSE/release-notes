@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+
+<section id="TechInfo.Kernel">
+ <title>Kernel Limits</title>
+ <para><ulink url="http://www.suse.com/products/server/technical-information/#Kernel"/>
+ </para>
+ <para>This table summarizes the various limits which exist in our
+ recent kernels and utilities (if related) for &sles; 12.</para>
+
+ <informaltable frame="all">
+  <tgroup cols='4'>
+   <colspec colnum="1" colname="c1"/>
+   <colspec colnum="2" colname="c2"/>
+   <colspec colnum="3" colname="c3"/>
+   <colspec colnum="4" colname="c4"/>
+   <thead>
+    <row rowsep='1'>
+     <entry><emphasis>SLES 12 (3.12)</emphasis></entry>
+     <entry><emphasis>x86_64</emphasis></entry>
+     <entry><emphasis>s390x</emphasis></entry>
+     <entry><emphasis>ppc64le</emphasis></entry>
+    </row>
+   </thead>
+   <tbody>
+    <row>
+     <entry>
+      <para>CPU bits</para>
+     </entry>
+     <entry>
+      <para>64</para>
+     </entry>
+     <entry>
+      <para>64</para>
+     </entry>
+     <entry>
+      <para>64</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. # Logical CPUs</para>
+     </entry>
+     <!-- FATE#316883 -->
+     <entry>
+      <para>8192</para>
+     </entry>
+     <entry>
+      <para>256</para>
+     </entry>
+     <!-- FATE#315438 -->
+     <entry>
+      <para>2048</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. RAM (theoretical / certified)</para>
+     </entry>
+     <entry>
+      <para>&gt; 1 PiB/64 TiB</para>
+     </entry>
+     <entry>
+      <para>10 TiB/256 GiB</para>
+     </entry>
+     <!-- FATE#315439 -->
+     <entry>
+      <para>1 PiB/64 TiB</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. user-/kernelspace</para>
+     </entry>
+     <entry>
+      <para>128 TiB/128 TiB</para>
+     </entry>
+     <entry>
+      <para>φ/φ</para>
+     </entry>
+     <entry>
+      <para>2 TiB/2 EiB</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <!-- bnc#708969 -->
+      <para>max. swap space</para>
+     </entry>
+     <entry namest="c2" nameend="c4">
+      <para>up to 29 * 64 GB (x86_64) or 30 * 64 GB (other architectures)</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. # processes</para>
+     </entry>
+     <entry namest="c2" nameend="c4">
+      <para>1048576</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. # threads per process</para>
+     </entry>
+     <entry namest="c2" nameend="c4">
+      <para>Maximum limit depends on memory and other parameters (Tested with more than 120000).</para>
+     </entry>
+    </row>
+    <row>
+     <entry>
+      <para>max. size per block device</para>
+     </entry>
+     <entry namest="c2" nameend="c4">
+      <para>and up to 8 EiB on all 64-bit architectures</para>
+     </entry>
+
+    </row>
+    <row>
+     <!-- bnc#550958 -->
+     <entry>
+      <para>FD_SETSIZE</para>
+     </entry>
+     <entry namest="c2" nameend="c4">
+      <para>1024</para>
+     </entry>
+    </row>
+   </tbody>
+  </tgroup>
+ </informaltable>
+ <para/>
+</section>

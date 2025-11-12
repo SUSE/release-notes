@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="related"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Modules, Extensions, and Related Products</title>
+
+ <para>
+  This section comprises information about modules and extensions for
+  &product; &this-version;.
+  Modules and extensions add functionality to the system.
+ </para>
+
+ <section xml:id="related-module">
+  <title>Modules in the &slea; &this-version; Product Line</title>
+  <para>
+   The &slea; &this-version; product line is made up of modules that contain
+   software packages.
+   Each module has a clearly defined scope.
+   Modules differ in their life cycles and update timelines.
+  </para>
+
+  <para condition="beta;pre">
+   The modules available within the product line based on &sle; &this-version;
+   at the release of &product; &this-version; are listed in the
+   <citetitle>Modules and Extensions Quick Start</citetitle> at
+   <link xlink:href="&sles-doc-url-beta;/html/SLES-modulesquick/"/> (draft version).
+  </para>
+  <para condition="maintained;unmaintained">
+   The modules available within the product line based on &sle; &this-version;
+   at the release of &product; &this-version; are listed in the
+   <citetitle>Modules and Extensions Quick Start</citetitle> at
+   <link xlink:href="&sles-doc-url;/html/SLES-all/art-modules.html"/>.
+  </para>
+  <para>
+   Not all &slea; modules are available with a subscription for &product;
+   &this-version; itself (see the column <emphasis>Available for</emphasis>).
+  </para>
+  <para>
+   For information about the availability of individual packages within
+   modules, see <link xlink:href="https://scc.suse.com/packages"/>.
+  </para>
+
+  <section xml:id="module-hpc">
+   <title>HPC Module</title>
+   <para>
+    The HPC module contains HPC-specific packages. These include the workload
+    manager Slurm, the node deployment tool
+    <command>clustduct</command>, MUNGE for user
+    authentication, the remote shell <command>mrsh</command>, the parallel
+    shell <command>pdsh</command>, and numerous HPC libraries and
+    frameworks.
+   </para>
+   <para>
+    This module is available with &product; only.
+    It is selected by default during the installation. It can
+    be added or removed using the YaST UI or the <command>SUSEConnect</command>
+    CLI tool. For more information, see the system administration guide.
+   </para>
+  </section>
+
+  <section xml:id="module-nvidia">
+   <title>NVIDIA Compute Module</title>
+   <para>
+    The repositories for NVIDIA CUDA are available as the
+    <emphasis>NVIDIA Compute</emphasis> module for x86-64 and AArch64. These
+    repositories are provided by NVIDIA and the software in them is not
+    supported by &suse;. All software in these repositories is licensed under
+    the third-party <link xmlns:xl="http://www.w3.org/1999/xlink"
+    xl:href="https://docs.nvidia.com/cuda/eula/index.html">NVIDIA CUDA
+    EULA</link>.
+   </para>
+   <para>
+    The <emphasis>NVIDIA Compute</emphasis> module is not enabled by default
+    when installing SUSE Linux Enterprise Server. During installation, the
+    module can be selected manually from the <guimenu>Extension and
+    Modules</guimenu> screen in YaST. Within an installed system, you can
+    add it as follows: Run <command>yast registration</command> from a shell
+    as root, select <guimenu>Select Extensions</guimenu>, search for
+    <guimenu>NVIDIA Compute Module</guimenu> and continue with
+    <guimenu>Next</guimenu>. Verify and accept the NVIDIA repository GPG
+    key.
+   </para>
+   <important>
+    <title>Do Not Use the <command>SUSEConnect</command> Tool to Add this Repository</title>
+    <para>
+     Do not try to add this module with the <command>SUSEConnect</command>
+     CLI tool. <command>SUSEConnect</command> is not yet capable of handling
+     third-party repositories.
+    </para>
+   </important>
+   <important>
+    <title>Combining <emphasis>Workstation Extension</emphasis> and <emphasis>NVIDIA Compute</emphasis> Module Is Unsupported</title>
+    <para>
+     The <emphasis>Workstation Extension</emphasis> module includes some of
+     the same drivers for NVIDIA graphics cards as the
+     <emphasis>NVIDIA Compute</emphasis> module. However, their package
+     versions may differ. As &suse; package management installs the latest
+     package versions by default, enabling both modules at the same time can
+     lead to a system with a mixture of packages from both modules.
+    </para>
+    <para>
+     Such a setup can result in drivers not working as expected and is not
+     supported by &suse;.
+    </para>
+   </important>
+  </section>
+
+ </section>
+
+ <section xml:id="related-extension">
+  <title>Available Extensions</title>
+  <para>
+   The following extension is not covered by &suse; support agreements,
+   available at no additional cost and without an extra registration key:
+   &ph;, see <link xlink:href="https://packagehub.suse.com/"/>.
+  </para>
+ </section>
+
+
+ <section xml:id="related-related">
+  <title>Related Products</title>
+  <para>
+   This sections lists related products.
+   Usually, these products have their own release notes documents that are
+   available from <link xlink:href="&rn-url;"/>.
+  </para>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     &sles;: <link xlink:href="https://www.suse.com/products/server"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &sle; JeOS: <link xlink:href="https://www.suse.com/products/server/jeos"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &sled;: <link xlink:href="https://www.suse.com/products/desktop"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &s4s;: <link xlink:href="https://www.suse.com/products/sles-for-sap"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &slert;: <link xlink:href="https://www.suse.com/products/realtime"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &suse; Manager: <link xlink:href="https://www.suse.com/products/suse-manager"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+</section>

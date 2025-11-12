@@ -1,0 +1,39 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#release-2025-06-16]
+=== 2025-06-16
+
+==== New
+
+* Added `hd5` removal notice in <<removed>> ({jira-url}PED-12383[Jira])
+
+[#release-2024-09-12]
+=== 2024-09-12
+
+==== New
+
+- Initial SP7 release
+
+
+[#release-2024-04-17]
+=== 2024-04-17
+
+==== New
+
+* <<jsc-PED-7684>> ({jira-url}PED-7684[Jira])
+
+[#release-2023-10-19]
+=== 2023-10-19
+
+* Initial {this-sp} release
+
+
+

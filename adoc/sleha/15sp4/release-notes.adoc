@@ -1,0 +1,48 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#rnotes]
+= {rnotes}
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-product.adoc[]
+
+include::related-products.adoc[]
+
+// ===================================================================
+
+// START ARCH-INDEPENDENT
+[#all-architecture]
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {product} {this-version}.
+
+include::installation-upgrade.adoc[]
+
+include::cluster.adoc[]
+
+include::ha-tools.adoc[]
+
+// include::resources.adoc[]
+
+// include::storage.adoc[]
+
+
+// Known Issues
+// include::known-issues.adoc[]
+
+// Removed & deprecated packages & features
+include::removed-deprecated.adoc[]
+
+// END ARCH INDEPENDENT
+
+// ===================================================================
+include::source-code.adoc[]
+
+include::legal.adoc[]
+
+[appendix]
+include::changelog.adoc[]

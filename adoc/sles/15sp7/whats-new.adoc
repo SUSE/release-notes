@@ -1,0 +1,127 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-new]
+=== What is new?
+
+////
+** Installation: change, new kernel, compatibility
+** Features: features description (not technical)
+** System update: link to the documentation (not just the title)
+** Update information: link to severity ratings documentation
+** Update-related notes: specific change to focus on.
+////
+
+[#intro-new-major-version]
+==== General changes in {slea} 15
+
+{productname}{nbsp}{this-ga} introduces many innovative changes compared to {productname}{nbsp}{previous-ga}.
+The most important changes are listed below.
+
+Migration from {leap} to {productname}::
+   {slea} 15{nbsp}SP2 and later support migrating from {leap} {this-ga} to {productname} {this-ga}.
+   Even if you decide to start out with the free community distribution, you can later easily upgrade to a distribution with enterprise-class support.
+   For more information, see the _Upgrade Guide_ at {upgrade-guide-url}#sec-upgrade-online-opensuse-to-sle.
+Extended package search::
+   Use the new Zypper command `zypper search-packages` to search across all {suse} repositories available for your product, even if they are not yet enabled.
+   For more information see <<#zypper-search-packages>>.
+{sdk}::
+   In {slea} {this-ga}, packages formerly shipped as part of the {sdk} are now integrated into the products.
+   Development packages are packaged alongside other packages.
+   In addition, the _Development Tools_ module contains tools for development.
+RMT replaces SMT::
+   SMT (Subscription Management Tool) has been removed.
+   Instead, RMT (Repository Mirroring Tool) now allows mirroring SUSE repositories and custom repositories.
+   You can then register systems directly with RMT.
+   In environments with tightened security, RMT can also proxy other RMT servers.
+   If you are planning to migrate SLE 12 clients to version 15, RMT is the supported product to handle such migrations.
+   If you still need to use SMT for these migrations, beware that the migrated clients will have _all_ installation modules enabled.
+   For more information see <<#rmt-replaces-smt>>.
+Media changes::
+   The __Unified Installer__ and __Packages__ media known from {productname} 15{nbsp}SP1 have been replaced by the following media:
++
+--
+ * *Online Installation Medium:*
+   Allows installing all {sle} {this-ga} products.
+   Packages are fetched from online repositories.
+   This type of installation requires a registration key.
+   Available {slea} modules are listed in <<intro-module>>.
+ * *Full Installation Medium:*
+   Allows installing all {productname} {this-ga} products without a network connection.
+   This medium contains all packages from all {slea} modules.
+   {slea} modules need to be enabled manually during installation.
+   RMT (Repository Mirroring Tool) and {smlm} provide additional options for disconnected or managed installations.
+--
+{slehpca} product removal::
+  Instead of a separate product, HPC is now available as a module in {sles}.
+  For more information see <<jsc-PED-7684>>.
+
+
+.Major updates to the software selection:
+Salt::
+   {slea} {this-version} can be managed via Salt, making it integrate better with modern management solutions such as {smlm}.
+Python 3::
+  As the first enterprise distribution, {slea} {this-ga} offers full support for Python 3 development in addition to Python 2.
+Directory Server::
+  389 Directory Server replaces OpenLDAP as the LDAP directory service.
+
+
+[#intro-new-sp-version]
+==== Changes in {this-version}
+
+{productname}{nbsp}{this-version} introduces changes compared to {productname}{nbsp}{previous-version}.
+The most important changes are listed below:
+
+////
+* new 1
+* new 2
+////
+
+[#intro-package-changes]
+==== Package and module changes in {this-version}
+
+The full list of changed packages compared to {this-ga} {previous-sp} can be seen at this URL:
+
+* {package-list-url}
+
+The full list of changed modules compared to {this-ga} {previous-sp} can be seen at this URL:
+
+* {module-list-url}
+
+[#jsc-PED-7684]
+==== {slehpca} HPC no longer a separate product
+
+As of {this-version}, {slehpc} is no longer a separate product. As a result:
+
+* the HPC Module can now be enabled in {sles}
+* when migrating from {slehpc} 15 SP3, SP4, and SP5, only {sles} 15 SP6 will be available as migration target.
+The result of such a migration will be an installation of {sles} with all the previously enabled modules.
+
+*Modules*
+
+For an HPC installation the user should enable the following modules:
+
+* `Development Tools Module`
+* `HPC Module`
+
+On {sles} system, make sure the following modules are all enabled:
+
+* `Server Application Module`
+* `Web and Scripting Module`
+* `HPC Module`
+* `Desktop Applications Module`
+* `Development Tools Module`
+
+*Roles*
+
+The HPC system roles are no longer available:
+
+* HPC Management Server (Head Node)
+* HPC Compute Node
+* HPC Login and Development Node
+
+It is recommended to start with a `Text Mode` or `Minimal System` istallation.
+The admin should make sure that the system is partitioned to the respective requirements and the firewall is configured appropriately.
+Also, the admin should select the software components required.
+This may include `slurm` for the management server, `slurm-node` for the compute nodes.
+For login and compute nodes the pattern HPC Modularized Libraries (`patterns-hpc-libraries`) is available.

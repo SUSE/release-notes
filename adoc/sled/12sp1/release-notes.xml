@@ -1,0 +1,1572 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<!-- Important: there is a nbsp in between "SP1 (SLED" in the product name! -->
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Desktop 12 SP1 (SLED 12 SP1)"
+   component="Documentation"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Desktop</productname>
+  <productnumber>12 SP1</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+<!-- drop abstract title; looks odd
+        <title>Abstract</title>
+   -->
+   <para>
+    These release notes are generic for all SUSE Linux Enterprise
+    Desktop 12 SP1 based products. Some parts may not apply to particular
+    architectures or products. Where this is not the case, the respective
+    architecture is listed explicitly. General documentation may be found
+    at: <ulink url="http://www.suse.com/documentation/sled-12/"/>
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Desktop</title>
+  <remark> SLE definition: general information </remark>
+  <para>
+   SUSE Linux Enterprise Desktop is the market's only enterprise-quality
+   Linux desktop ready for routine business use. Developed and backed by
+   SUSE, SUSE Linux Enterprise Desktop provides market-leading usability,
+   seamless interoperability with existing IT systems, and dozens of
+   essential applications—all at a fraction of the price of proprietary
+   operating systems. It comes bundled with the latest versions of leading
+   applications such as LibreOffice office productivity suite, Mozilla
+   Firefox web browser, and Evolution e-mail and calendar suite. In
+   addition, it integrates with Microsoft SharePoint and Novell Teaming for
+   group collaboration and supports a wide range of multimedia file formats,
+   wireless and networking standards, and plug-and-play devices.
+  </para>
+  <para>
+   Through the latest enhancements in power management and security, SUSE
+   Linux Enterprise Desktop also provides an environmentally friendly IT
+   experience (Green IT) and an error-proof desktop. Finally, SUSE Linux
+   Enterprise Desktop offers unparalleled flexibility. You can deploy it on
+   a wide range of thick client devices (including desktops, notebooks,
+   netbooks, and workstations), on thin client devices, or as a virtual
+   desktop. By leveraging the power of SUSE Linux Enterprise Desktop, your
+   business can dramatically reduce costs, improve end user security and
+   increase workforce productivity.
+  </para>
+<!-- bnc#882262 -->
+  <para>
+   SUSE Linux Enterprise Desktop 12 has a 7 years life cycle. The current
+   version (SP1) will be fully maintained and supported until 6 months after
+   the release of SUSE Linux Enterprise Desktop 12 SP2.
+  </para>
+  <section id="intro.new">
+   <title>What's New?</title>
+   <remark> Marketing POV. </remark>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on </remark>
+   <para>
+    SUSE Linux Enterprise Desktop 12 introduces a number of innovative
+    changes. Here are some of the highlights:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Robustness on administrative errors and improved management
+      capabilities with full system rollback based on btrfs as the default
+      file system for the operating system partition and SUSE's snapper
+      technology.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      An overhaul of the installer introduces a new workflow that allows you
+      to register your system and receive all available maintenance updates
+      as part of the installation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New core technologies like systemd, replacing the time honored System
+      V based init process.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      GNOME 3.10, giving users a modern desktop environment with a choice of
+      several different look and feel options, including a special SLE
+      Classic mode for easier migration from earlier SUSE Linux Enterprise
+      desktop environments
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      For users wishing to use the full range of productivity applications
+      of a Desktop with SUSE Linux Enterprise Server, we are now offering
+      the SUSE Linux Enterprise Workstation Extension
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Integration with the new SUSE Customer Center, SUSE's central web
+      portal to manage Subscriptions, Entitlements, and provide access to
+      Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <remark> This is Read Me First information. </remark>
+   <para>
+    For users upgrading from a previous SUSE Linux Enterprise Desktop
+    release it is recommended to review:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Read the READMEs on the media.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed changelog information about a particular package
+       from the RPM (&lt;FILENAME&gt;. is the name of the RPM):
+      </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>
+       Check the <filename>ChangeLog</filename> file in the top level of the
+       media for a chronological log of all changes made to the updated
+       packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find more information in the <filename>docu</filename> directory of
+       the media of SUSE Linux Enterprise Desktop 12 SP1. This directory
+       includes PDF versions of the SUSE Linux Enterprise Desktop 12 SP1
+       Installation Quick Start and Deployment Guides. Documentation (if
+       installed) is available below the
+       <filename>/usr/share/doc/</filename> directory of an installed
+       system.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The up-to-date version of these release notes is available online
+       from <ulink url="http://www.suse.com/releasenotes/"/>.
+      </para>
+      <para>
+       Release notes usually only list changes that happened between two
+       subsequent releases. Therefore, if you are skipping one or more
+       service packs, check the release notes of the skipped service packs
+       as well.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section>
+    <title>Additional or Updated Documentation</title>
+    <para>
+     For SUSE Linux Enterprise Desktop 12 documentation, see
+     <ulink url="http://www.suse.com/documentation/sled-12/"/>, where you
+     can download PDF documents. For installation with YaST software
+     management or with zypper, packages are available on the product media.
+     Some of these packages are installed by default. These are the package
+     names:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <systemitem>sled-installquick_en-pdf</systemitem>: SLED 12 SP1
+       Installation Quick Start
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-gnomeuser_en-pdf</systemitem>: SLED 12 SP1 GNOME
+       User Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-admin_en-pdf</systemitem>: SLED 12 SP1
+       Administration Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-deployment_en-pdf</systemitem>: SLED 12 SP1
+       Deployment Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-security_en-pdf</systemitem>: SLED 12 SP1 Security
+       Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-tuning_en-pdf</systemitem>: SLED 12 SP1 Tuning
+       Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-manuals_en</systemitem>: the set of all SLED books
+       in HTML format
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first section -->
+   <para>
+    This SUSE product includes materials licensed to SUSE under the GNU
+    General Public License (GPL). The GPL requires SUSE to provide the
+    source code that corresponds to the GPL-licensed material. The source
+    code is available for download at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>.
+    Also, for up to three years after distribution of the SUSE product, upon
+    request, SUSE will mail a copy of the source code. Requests should be
+    sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or
+    as otherwise instructed at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+    may charge a reasonable fee to recover distribution costs.
+   </para>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Desktop</title>
+   <para>
+    To receive support, see
+    <ulink url="http://www.suse.com/products/desktop/"/>.
+   </para>
+   <section id="Intro.Support.General" remap="Intro:Support:General">
+    <title>General Support Statement</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-318185" remap="Intro:Support:General">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318185" -->
+     <title>Support Notice for Desktop Software Components</title>
+     <para>
+      As part of SUSE Linux Enterprise Desktop, LibreOffice (office suite),
+      Evolution (email client), and OpenJDK are fully maintained and
+      supported up to support level 2 calls.
+     </para>
+    </section>
+    <section role="notoc" id="fate-314339" remap="Intro:Support:General">
+<!-- sort_key="None"; non-rn-fate-cats="Base System"; -->
+<!-- href="https://fate.novell.com/314339" -->
+     <title>L3 support for OpenJDK</title>
+     <para>
+      OpenJDK is now L3-supported.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="Intro.Support.Techpreviews" remap="Intro:Support:Techpreviews">
+    <title>Technology Previews</title>
+    <para>
+     Technology Preview features are either not supported or supported in a
+     limited fashion. These features are mainly included for customer
+     convenience and may be functionally incomplete, unstable or in other
+     ways not suitable for production use.
+    </para>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-314409" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats="Storage Drivers,Storage and Partitioning"; -->
+<!-- href="https://fate.novell.com/314409" -->
+     <title>Support LibStorageMgmt to Manage Storage Hardware</title>
+     <para>
+      <emphasis>LibStorageMgmt was introduced in 2012, and offers an open
+      infrastructure for modules, which even can include (closed source)
+      vendor specific tools.</emphasis>
+     </para>
+     <para>
+      Provide LibStorageMgmt, a library for storage management, to integrate
+      better with storage vendors. It is an infrastructure to facilitate
+      management automation, ease of use and take advantage of storage
+      vendor supported features, which improve storage performance and space
+      utilization.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="Intro.Support.Software">
+    <title>Software Requiring Specific Contracts</title>
+    <para>
+     The following packages require additional support contracts to be
+     obtained by the customer in order to receive full support:
+    </para>
+   </section>
+  </section>
+  <section id="Intro.Derived_Products">
+   <title>Related Products</title>
+   <para>
+    This sections lists related products. In many cases, these products have
+    own release notes documents that are available from
+    <ulink url="https://www.suse.com/releasenotes/"/>.
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Enterprise Storage:
+      <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server:
+      <ulink url="https://www.suse.com/products/server"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server for SAP Applications:
+      <ulink url="https://www.suse.com/products/sles-for-sap"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Manager:
+      <ulink url="https://www.suse.com/products/suse-manager"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE OpenStack Cloud:
+      <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Additionally, there are the following extensions which are not covered
+    by SUSE support agreements, available at no additional cost and without
+    an extra registration key:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Software Development Kit
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+ </section>
+<!-- newcat:  -->
+ <section id="InstUpgrade" remap="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>
+   This section includes installation related information for this release.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-317900" remap="InstUpgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/317900" -->
+   <title>Creation of Snapshots During the Upgrade Process</title>
+   <para>
+    The upgrade process is safer than ever. When upgrading using the DVD, if
+    snapshots are enabled and the root file system is Btrfs, two new
+    snapshots will be created:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      One before any change is made to the system.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Another one just after the upgrade process is finished.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    If something goes wrong, the system can be easily restored to a known
+    state using Snapper.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section id="InstUpgrade.Installation" remap="InstUpgrade:Installation">
+   <title>Installation</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-320205" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320205" -->
+    <title>Using SSH-Based AutoYaST Without Doing Updates Results in a Failing Installation</title>
+    <para>
+     <emphasis>When you are installing via AutoYaST and do not update the
+     system during the installation, the installer will permanently halt at
+     the end of Stage 2 (that is, after the first system reboot) when
+     NetworkManager is restarted.</emphasis>
+    </para>
+    <para>
+     Make sure your AutoYaST control file contains a
+     <literal>registration</literal> section and that the system you are
+     installing on can download updates. If the system is registered and
+     online, you will receive an update that allows the installation to go
+     through.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319930" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319930" -->
+    <title>Creating an AutoYaST XML File</title>
+    <para>
+     <emphasis> In the YaST installer, on the page </emphasis>Installation
+     Settings<emphasis>, the headline </emphasis>Clone System
+     Configuration<emphasis> and the button </emphasis>Export
+     Configuration<emphasis> allow creating an AutoYaST XML file. However,
+     generating files using these options will result in an invalid package
+     selection and network configuration. This means that when the file is
+     used for an installation, that installation could fail. </emphasis>
+    </para>
+    <para>
+     To create valid AutoYaST XML files, use an installed system. Ensure
+     that the latest YaST updates have been installed and run:
+    </para>
+<screen>yast clone_system</screen>
+   </section>
+   <section role="notoc" id="fate-318392" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318392" -->
+    <title>Installing into a Snapper-Controlled Btrfs Subvolume</title>
+    <para>
+     <emphasis>Prior to SUSE Linux Enterprise 12 SP1, after the first
+     rollback of the system the original root volume was no longer reachable
+     and would never be removed automatically. This resulted in a disk space
+     leak.</emphasis>
+    </para>
+    <para>
+     Starting with SP1, YaST installs the system into a subvolume controlled
+     by Snapper.
+    </para>
+   </section>
+   <section role="notoc" id="fate-317085" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/317085" -->
+    <title>CJK Languages Support in Text-mode Installation</title>
+    <para>
+     <emphasis>CJK languages (Chinese, Japanese, and Korean) do not work
+     properly during text-mode installation if the framebuffer is not used
+     (Text Mode selected in boot loader).</emphasis>
+    </para>
+    <para>
+     There are three ways to resolve this issue:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Use English or some other non-CJK language for installation then
+       switch to the CJK language later on a running system using
+       YaST+System+Language.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Use your CJK language during installation, but do not choose Text
+       Mode in the boot loader using F3 Video Mode. Select one of the other
+       VGA modes instead. Select the CJK language of your choice using F2
+       Language, add <literal>textmode=1</literal> to the boot loader
+       command-line and start the installation.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Use graphical installation (or install remotely via SSH or VNC).
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+<!-- newcat:  -->
+  <section id="InstUpgrade.Upgrade" remap="InstUpgrade:Upgrade">
+   <title>Update-Related Notes</title>
+   <para>
+    This section includes update-related information for this release.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319890" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319890" -->
+    <title>If You Are Using Third-Party KMPs Such As Proprietary Graphics Drivers, Perform an Online Upgrade</title>
+    <para>
+     <emphasis>If you are using third-party kernel modules packages (KMP)
+     and perform an offline upgrade to SLED 12 SP1, the repositories
+     containing these modules are disabled automatically. However, the
+     packages already installed are kept, even though they are incompatible.
+     The upgraded system will now try to use the outdated drivers, often
+     leading to issues.</emphasis>
+    </para>
+    <para>
+     <emphasis>Examples for commonly-used third-party KMPs are the
+     proprietary graphics drivers from AMD or NVidia. Booting with an
+     outdated graphics driver can lead to the X Window System failing to
+     start.</emphasis>
+    </para>
+    <para>
+     If you are using third-party KMPs, always perform an online upgrade.
+     This allows for automatically updating the repository URLs needed for
+     the packages.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319118" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319118" -->
+    <title>Updating Registration Status After Rollback</title>
+    <para>
+     <emphasis>When performing a service pack migration, it is necessary to
+     change the configuration on the registration server to provide access
+     to the new repositories. If the migration process is interrupted or
+     reverted (via restoring from a backup or snapshot), the information on
+     the registration server is inconsistent with the status of the system.
+     This may lead to you being prevented from accessing update repositories
+     or to wrong repositories being used on the client.</emphasis>
+    </para>
+    <para>
+     When a rollback is done via Snapper, the system will notify the
+     registration server to ensure access to the correct repositories is set
+     up during the boot process. If the system was restored any other way or
+     the communication with the registration server failed for any reason
+     (for example, because the server was not accessible due to network
+     issues), trigger the rollback on the client manually by calling
+     <literal>snapper rollback</literal>.
+    </para>
+    <para>
+     We suggest always checking that the correct repositories are set up on
+     the system, especially after refreshing the service using
+     <literal>zypper ref -s</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316756" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316756" -->
+    <title>[GMC] Lower Version Numbers in SUSE Linux Enterprise 12 SP1 Than in Version 12</title>
+    <para>
+     <emphasis>When upgrading from SUSE Linux Enterprise Server or Desktop
+     12 to SUSE Linux Enterprise Server or Desktop 12 SP1, you may
+     experience a version downgrade of specific software packages, including
+     the Linux Kernel.</emphasis>
+    </para>
+    <para>
+     This is expected behavior. It is important to remember that the version
+     number is not sufficient to determine which bug fixes are applied to a
+     software package.
+    </para>
+    <para>
+     All SLE 12 SP1 software packages and updates are contained in the SLE
+     12 SP1 repositories. No packages from SLE 12 repositories are needed
+     for installation or upgrade.
+    </para>
+    <para>
+     In case you do add SLE 12 update repositories, be aware of one
+     characteristic of the repository concept: Version numbers in the SLE 12
+     update repository can be higher than those in the SLE 12 SP1
+     repository. Thus, if you update with the SLE 12 repositories enabled,
+     you may receive the SLE 12 version of a package instead of the SLE 12
+     SP1 version.
+    </para>
+    <para>
+     Using package versions from a lower product version or SP can result in
+     unwanted side effects. If you do not need them, switch off all SLE 12
+     repositories.
+    </para>
+    <para>
+     Only keep old repositories if your system depends on a specific older
+     version of a package. If you need a package from a lower product
+     version or SP though, and thus have SLE 12 repositories enabled, make
+     sure that the packages you intended to upgrade have actually been
+     upgraded.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316754" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316754" -->
+    <title>Online Migration with Debuginfo Packages Not Supported</title>
+    <para>
+     Online migration from SLE 12 to SLE 12 SP1 is not supported if
+     <literal>debuginfo</literal> packages are installed.
+    </para>
+   </section>
+   <section role="notoc" id="fate-315161" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315161" -->
+    <title>New Method of Online Migration Between Service Packs</title>
+    <para>
+     <emphasis>In the past, you could use YaST Wagon to migrate between
+     Service Packs. YaST Wagon is now unsupported.</emphasis>
+    </para>
+    <para>
+     You can now use either the <emphasis>YaST Online Migration</emphasis>
+     module or <literal>zypper migration</literal>.
+    </para>
+    <para>
+     To learn more about migrating between Service Packs, see the section
+     <emphasis>Service Pack Migration</emphasis> in the <emphasis>Deployment
+     Guide</emphasis>:
+     <ulink url="https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_update_spmigration.html">https://www.suse.com/documentation/sles-12/book_sle_deployment/data/cha_update_spmigration.html</ulink>.
+    </para>
+    <para>
+     Note that when performing the SP migration, both YaST and Zypper will
+     install all recommended packages. Especially in the case of custom
+     minimal installations, this may increase the installation size of the
+     system significantly.
+    </para>
+    <para>
+     There are two ways to change this behavior:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       To change the default behavior of YaST, adjust
+       <literal>/etc/zypp/zypp.conf</literal> and set the variable
+       <literal>solver.onlyRequires = true</literal>. This changes the
+       behavior of all package operations, such as the installation of
+       patches or new packages. For YaST, this is the only solution.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       To change the default behavior of Zypper, adjust
+       <literal>/etc/zypp/zypp.conf</literal> and set the variable
+       <literal>solver.onlyRequires = true</literal> and make sure
+       <literal>installRecommends</literal> is not set to
+       <literal>true</literal>. This changes the behavior of all package
+       operations, such as the installation of patches or new packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       To change the behavior of Zypper for a single invocation, add the
+       parameter <literal>--no-recommends</literal> to your command line.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InfraPackArch">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <section id="InfraPackArch.ArchIndependent">
+   <title>Architecture Independent Information</title>
+   <section id="InfraPackArch.ArchIndependent.Kernel_Modules">
+    <title>Kernel Modules</title>
+<!-- 2014-03-19, ke: bnc#869159 -->
+<!-- 2014-04-29, ke: find the same text in the SLED RN -->
+    <para>
+     An important requirement for every Enterprise operating system is the
+     level of support a customer receives for his environment. Kernel
+     modules are the most relevant connector between hardware
+     ("controllers") and the operating system.
+    </para>
+    <para>
+<!--  bnc#869159 -->
+     For more information about the handling of kernel modules, see the SUSE
+     Linux Enterprise Administration Guide.
+    </para>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+    <title>Systems Management</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319467" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319467" -->
+     <title>Return Codes of Zypper</title>
+     <para>
+      <emphasis> In some conditions, Zypper returned an exit value of
+      </emphasis><literal>0</literal><emphasis> even if it was aborted. This
+      happened if a user decided to abort because of conflicts or if Zypper
+      ran in a non-interactive mode, but was waiting for user input.
+      </emphasis>
+     </para>
+     <para>
+      In these cases, Zypper will now return a suitable error code.
+     </para>
+    </section>
+    <section role="notoc" id="fate-319108" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319108" -->
+     <title>Rollback of Service Packs</title>
+     <para>
+      <emphasis>After a rollback of a Service Pack to the previous version,
+      SCC and SMT need to be informed about this to reset the access rules
+      for the old product repositories.</emphasis>
+     </para>
+     <para>
+      <emphasis>During a Service Pack migration, SCC and SMT change the
+      access rules for this machine and switch it from the old Service Pack
+      to the new one. If you roll back from a Service Pack, SCC and SMT will
+      not grant access to the old repositories again until they are told to
+      do so.</emphasis>
+     </para>
+     <para>
+      If the rollback is done via Snapper (that is, using Btrfs snapshots),
+      services and repositories are adjusted automatically. If this fails,
+      or the rollback is done in other ways (for example, using
+      VMware/KVM/LVM snapshots, or restoring from a backup), this needs to
+      be done manually using:
+     </para>
+<screen>SUSEConnect --rollback</screen>
+    </section>
+    <section role="notoc" id="fate-319078" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319078" -->
+     <title>SUSEConnect Now Autorefreshes the Services</title>
+     <para>
+      When a new product gets activated with the SUSEConnect command line
+      tool, the added service will be configured to autorefresh
+      periodically. This is now fully compatible with YaST's behavior.
+     </para>
+    </section>
+    <section role="notoc" id="fate-317066" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats="Snapshot/Rollback"; -->
+<!-- href="https://fate.novell.com/317066" -->
+     <title>New Option --sync for snapper Delete Command</title>
+     <para>
+      <emphasis>Btrfs frees disk space asynchronously after deleting
+      snapshots. So if the user deletes Snapper-controlled snapshots, the
+      user must either wait or manually call several Btrfs commands to have
+      the disk space actually freed.</emphasis>
+     </para>
+     <para>
+      The delete command of Snapper has a new option
+      <literal>--sync</literal> that triggers Btrfs to free the disk space
+      and waits until the disk space is actually freed.
+     </para>
+    </section>
+    <section role="notoc" id="fate-316968" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316968" -->
+     <title>Re-Introduce bootcycle Functionality for GRUB 2</title>
+     <para>
+      The <literal>bootcycle</literal> package from SLE 11 was re-introduced
+      in SLE 12 SP1.
+     </para>
+    </section>
+    <section role="notoc" id="fate-316647" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316647" -->
+     <title>YaST Snapper Module Uses Snapper DBus Interface</title>
+     <para>
+      <emphasis>The YaST Snapper module bypassed the snapperd daemon while
+      working on Snapper-controlled snapshots. This could lead to
+      inconsistent data between YaST Snapper and Snapper.</emphasis>
+     </para>
+     <para>
+      The YaST Snapper module now uses the DBus interface when working on
+      Snapper-controlled snapshots.
+     </para>
+    </section>
+    <section role="notoc" id="fate-312298" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats="Systems Management,zypp"; -->
+<!-- href="https://fate.novell.com/312298" -->
+     <title>Zypp History Now Includes Patch Installation</title>
+     <para>
+      The Zypp history file now includes information about patch
+      installation. The lines in the history are tagged
+      <literal>|command|</literal> and show the user, command line and
+      optional user data of the process that triggered the commit.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Storage" remap="InfraPackArch:ArchIndependent:Storage">
+    <title>Storage</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319317" remap="InfraPackArch:ArchIndependent:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319317" -->
+     <title>Safer Btrfs Balance Operation</title>
+     <para>
+      <emphasis>First-time users of Btrfs often run the following command
+      without any options:</emphasis>
+     </para>
+<screen>btrfs balance start</screen>
+     <para>
+      <emphasis>This results in a long I/O-intensive operation that has a
+      noticeable impact on system performance.</emphasis>
+     </para>
+     <para>
+      The <literal>btrfs balance</literal> command requires additional
+      options to perform a full file system re-balance. For more
+      information, see the man page btrfs-balance(8).
+     </para>
+    </section>
+    <section role="notoc" id="fate-318805" remap="InfraPackArch:ArchIndependent:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318805" -->
+     <title>Creating New Subvolumes Underneath the / Hierarchy</title>
+     <para>
+      <emphasis> Creating a new subvolume underneath the
+      </emphasis><literal>/</literal><emphasis> hierarchy after system
+      installation and after the first snapshot to the
+      </emphasis><literal>/</literal><emphasis> filesystem is supported. If
+      the new subvolume is permanently mounted via
+      </emphasis><literal>/etc/fstab</literal><emphasis> (that is, in a way
+      that the new subvolume is also available in future snapshots), the
+      snapshot the subvolume has been created at cannot be deleted anymore,
+      though. </emphasis>
+     </para>
+     <para>
+      <emphasis>Example:</emphasis>
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        <emphasis> The root file system is mounted from
+        </emphasis><literal>/@/.snapshots/212/snapshot</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <emphasis> A new subvolume is created as
+        </emphasis><literal>/mynewsubvol</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <emphasis> This technically translates to
+        </emphasis><literal>/@/.snapshots/212/snapshot/mynewsubvol</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <emphasis> The respective
+        </emphasis><literal>/etc/fstab</literal><emphasis> entry looks like
+        this: </emphasis><literal>/dev/sda /mynewsubvol btrfs
+        subvol=/@/.snapshots/212/snapshot/mynewsubvol 0 0</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <emphasis>Removing Snapshot 212 will fail</emphasis>
+       </para>
+      </listitem>
+     </itemizedlist>
+     <para>
+      <emphasis> Technical Reason: Subvolumes in Btrfs always need an
+      </emphasis><literal>origin</literal><emphasis> in the filesystem tree,
+      and this </emphasis><literal>origin</literal><emphasis> is the
+      original point where the subvolume has been created, that is,
+      literally the path. In our example: </emphasis>
+     </para>
+<screen>/@/.snapshots/212/snapshot/mynewsubvol</screen>
+     <para>
+      A subvolume which should be permanently mounted via
+      <literal>/etc/fstab</literal> should be created from an origin which
+      is not a snapshot itself. This is why the <literal>/@/</literal>
+      subvolume has been created: It serves as an independent root for
+      permanent subvolumes such as <literal>/var</literal>,
+      <literal>/srv</literal>, etc.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Security" remap="InfraPackArch:ArchIndependent:Security">
+    <title>Security</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-318988" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318988" -->
+     <title>Incorrect SSL/TLS Certificate Verification Considered a Defect</title>
+     <para>
+      <emphasis>Bugs and vulnerabilities in software packages could be
+      discovered relating to verification of SSL/TLS certificates,
+      intermediate certificates, certificate chains, or certificate
+      revocation lists. These elements protect the security,
+      confidentiality, and integrity of the user's systems and
+      activities.</emphasis>
+     </para>
+     <para>
+      Any incorrect verification of SSL/TLS certificates, intermediate
+      certificates, certificate chains or certificate revocation lists, will
+      be considered a security issue and will be corrected, at the potential
+      detriment of customer backwards compatibility scenarios.
+     </para>
+    </section>
+    <section role="notoc" id="fate-318574" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318574" -->
+     <title>Password Protection Behavior for Boot Entries</title>
+     <para>
+      <emphasis>With SUSE Linux Enterprise 12, booting other systems was
+      very restricted. A password was needed to even select a different boot
+      entry.</emphasis>
+     </para>
+     <para>
+      With SP1, the old behavior known from SLE 11 is back. Now again, a
+      password is needed only for modifying a boot loader entry. Anyone can
+      boot any entry and the default boot entry is automatically used if the
+      timeout has passed.
+     </para>
+     <para>
+      There is now a new configuration option in the
+      <literal>yast2-bootloader</literal> dialog, where you can enable the
+      restricted boot behavior. Once enabled, a password is also needed to
+      select a different boot entry.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+    <title>Networking</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-320709" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320709" -->
+     <title>No Support for Samba as Active Directory-Style Domain Controller</title>
+     <para>
+      The version of Samba shipped with SLE 12 GA and newer does not
+      include support to operate as an Active Directory-style domain
+      controller. This functionality is currently disabled, as it lacks
+      integration with system-wide MIT Kerberos.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Virtualization">
+    <title>Virtualization</title>
+    <para/>
+    <section id="InfraPackArch.ArchIndependent.Virtualization.Other" remap="InfraPackArch:ArchIndependent:Virtualization:Other">
+     <title>Others</title>
+     <para/>
+<!--v Items below imported from FATE-->
+     <section role="notoc" id="fate-318394" remap="InfraPackArch:ArchIndependent:Virtualization:Other">
+<!-- sort_key="None"; non-rn-fate-cats="Virtualization"; -->
+<!-- href="https://fate.novell.com/318394" -->
+      <title>virt-manager Update</title>
+      <para>
+       virt-manager version 1.2.1 is included in SLE 12 SP1. Check
+       <ulink url="https://git.fedorahosted.org/cgit/virt-manager.git/tree/NEWS?id=v1.2.1">virt-manager
+       1.2.1 NEWS</ulink> for more information.
+      </para>
+     </section>
+<!--^ End of Items imported from FATE-->
+    </section>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Misc">
+    <title>Miscellaneous</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319352" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319352" -->
+     <title>Overriding System Settings for Input Methods</title>
+     <para>
+      Users can override the system wide input method by setting and
+      exporting the environment variable <literal>INPUT_METHOD</literal> in
+      <literal>~/.i18n</literal>. The old way to set this environment
+      variable in <literal>~/.profile</literal> is deprecated. It will
+      continue to work if no <literal>~/.i18n</literal> file exists. When a
+      new user home is created this user will get a template
+      <literal>~/.i18n</literal> file automatically.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+ </section>
+ <section id="Driver_Updates">
+  <title>Driver Updates</title>
+  <remark>** list of update by category ** version comparison table from previous SP/Product </remark>
+  <para/>
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <section id="Packages.New" remap="Packages:New">
+   <title>New Packages</title>
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-318956" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318956" -->
+    <title>OpenJDK 8 was added to SLE12 SP1</title>
+    <para>
+     <emphasis>SLE 12 only supported version 7 of OpenJDK. There was no
+     solution for customers needing a higher version of Java.</emphasis>
+    </para>
+    <para>
+     In SLE 12 SP1, OpenJDK 8 was added as an alternative Java version.
+     OpenJDK 7 remains available additionally. To choose the right version
+     for your use case, use <literal>update-alternatives</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318486" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318486" -->
+    <title>Filtering the systemd Journal with the YaST2 Journal Module</title>
+    <para>
+     Since SLE 12 SP1, YaST includes a new journal module, which enables
+     users and system administrators to take advantage of the advanced
+     filtering capabilities of the systemd journal.
+    </para>
+    <para>
+     The new module displays the log entries in a table with a search box
+     providing grep-like live searching. In addition, it allows to filter
+     the entries in the list by date and time, unit, file, or priority.
+    </para>
+    <para>
+     In short, the module offers all the advantages of the old (and still
+     present) log viewer with some extra systemd powered goodies.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318412" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318412" -->
+    <title>pax Binary Replaced with spax from the star Package</title>
+    <para>
+     <emphasis> The original provider of the
+     </emphasis><literal>pax</literal><emphasis> binary was the package
+     </emphasis><literal>pax</literal><emphasis>. However, this binary was
+     not LSB-compatible and is not maintained upstream. </emphasis>
+    </para>
+    <para>
+     In SLE 12 SP1, <literal>pax</literal> was replaced with
+     <literal>spax</literal> (from the package <literal>star</literal>).
+     For backwards compatibility, this package also provides a symbolic link
+     for <literal>pax</literal>.
+    </para>
+    <para>
+     The new command <literal>spax</literal> provides many of the same
+     options that the former <literal>pax</literal> also offered. However,
+     the following options are not supported: <literal>-0</literal>,
+     <literal>-B</literal>, <literal>-D</literal>, <literal>-E</literal>,
+     <literal>-G</literal>, <literal>-O</literal>, <literal>-P</literal>,
+     <literal>-T</literal>, <literal>-U</literal>, <literal>-Y</literal>,
+     <literal>-Z</literal>. <literal>spax</literal> does not provide
+     options beyond those offered by <literal>pax</literal>.
+    </para>
+    <para>
+     Additionally, the formats supported by the option <literal>-x</literal>
+     have changed:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Formats supported by <literal>pax -x</literal> were:
+       <literal>bcpio</literal>, <literal>cpio</literal>,
+       <literal>sv4cpio</literal>, <literal>sv4crc</literal>,
+       <literal>tar</literal>, <literal>ustar</literal>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Current <literal>spax -x</literal> formats are:
+       <literal>v7tar</literal>, <literal>tar</literal>,
+       <literal>star</literal>, <literal>gnutar</literal>,
+       <literal>ustar</literal>, <literal>xstar</literal>,
+       <literal>xustar</literal>, <literal>exustar</literal>,
+       <literal>pax</literal>, <literal>suntar</literal>,
+       <literal>bin</literal>, <literal>cpio</literal>,
+       <literal>odc</literal>, <literal>asc</literal>,
+       <literal>crc</literal>.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     It is also possible that other options have slightly different behavior
+     than you are used to. For more information, see the
+     <literal>spax</literal> manual pages.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Update" remap="Packages:Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319961" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319961" -->
+    <title>Qt 5 Has Been Updated to 5.5.1</title>
+    <para>
+     The Qt 5 libraries were updated to 5.5.1. Qt 5.5.1 includes new
+     features and security fixes for known vulnerabilities over Qt 5.3.2
+     (the version initially shipped in SP1).
+    </para>
+    <para>
+     Among other security fixes, the new version includes a fix for the Qt
+     WebEngine's Weak Diffie-Hellman vulnerability (CVE-2015-4000).
+    </para>
+    <para>
+     New features include:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Update of Qt WebEngine which updates the includes Chromium snapshot
+       to version 40
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New modules to extend 3D APIs (Qt Canvas 3D and Qt 3D)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improvements in the QML engine which is the basis of Qt Quick
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improvements in the Qt Multimedia module
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Many other features and bugfixes
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section role="notoc" id="fate-319391" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319391" -->
+    <title>Tar: Extended Attributes</title>
+    <para>
+     <emphasis> The </emphasis><literal>tar</literal><emphasis> version in
+     SLES and SLED 12 (SP0) was not handling extended attributes properly.
+     </emphasis>
+    </para>
+    <para>
+     A maintenance update for <literal>tar</literal> fixes this issue. This
+     update introduces new package dependencies:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>libacl1</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>libselinux1</literal>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     Both of these packages are already required by other core packages in a
+     SLE installation.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319388" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319388" -->
+    <title>Wireshark Updated to 1.12.x</title>
+    <para>
+     <emphasis>The Wireshark 1.10.x series of releases was discontinued
+     upstream and does no longer receive security updates or bug
+     fixes.</emphasis>
+    </para>
+    <para>
+     Wireshark was updated to the 1.12.x series of releases, providing for
+     delivery of fixes for security issues as well as new and updated
+     protocol support and dissectors.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319040" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319040" -->
+    <title>ntp 4.2.8</title>
+    <para>
+     <emphasis>ntp was updated to version 4.2.8.</emphasis>
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <emphasis> The ntp server ntpd does not synchronize with its peers
+       anymore and the peers are specified by their host name in
+       </emphasis><literal>/etc/ntp.conf</literal><emphasis>. </emphasis>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <emphasis> The output of </emphasis><literal>ntpq
+       --peers</literal><emphasis> lists IP numbers of the remote servers
+       instead of their host names. </emphasis>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <emphasis>Name resolution for the affected hosts works
+     otherwise.</emphasis>
+    </para>
+    <para>
+     Configure ntpd to not run in chroot mode by setting
+    </para>
+<screen>NTPD_RUN_CHROOTED="no"</screen>
+    <para>
+     in <literal>/etc/sysconfig/ntp</literal>. Then restart the service
+     with:
+    </para>
+<screen>systemctl restart ntpd</screen>
+    <para>
+     Due to the architecture of <literal>ntpd</literal>, it does not start
+     reliably in a chroot environment. Furthermore, the daemon drops all
+     capabilities except for the one needed to open sockets on reserved
+     ports, so chroot is not required. If policy requirements mandate this,
+     AppArmor can be used to further limit the process in what it can do.
+    </para>
+    <para>
+     <emphasis role="bold">Additional Information</emphasis>
+    </para>
+    <para>
+     The meaning of some parameters has changed, for example <literal>sntp
+     -s</literal> is now <literal>sntp -S</literal>.
+    </para>
+    <para>
+     After having been deprecated for several years, ntpdc is now disabled
+     by default for security reasons. It can be re-enabled by adding the
+     line <literal>enable mode7</literal> to
+     <literal>/etc/ntp.conf</literal>, but preferably
+     <literal>ntpq</literal> should be used instead.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319021" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319021" -->
+    <title>Dependency on libHBAAPI Removed from fcoe-utils</title>
+    <para>
+     <emphasis> The package
+     </emphasis><literal>fcoe-utils</literal><emphasis> used to depend on
+     the back-end libraries
+     </emphasis><literal>libHBAAPI</literal><emphasis> and
+     </emphasis><literal>libhbalinux</literal><emphasis>. The sole purpose
+     of these two libraries is reading informational and statistical data
+     from Sysfs. </emphasis>
+    </para>
+    <para>
+     The commands <literal>fcoeadm</literal> and <literal>fcping</literal>
+     from the package <literal>fcoe-utils</literal> have been rewritten to
+     directly read the needed information from Sysfs without a third-party
+     back-end library.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318300" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318300" -->
+    <title>Python Was Updated to Version 2.7.9</title>
+    <para>
+     <emphasis>The Python script interpreter was updated to version 2.7.9. A
+     key feature is the improved SSL module which can better check X.509
+     certificates used in TLS/SSL communication.</emphasis>
+    </para>
+    <para>
+     <emphasis>If certificate validation is enabled, the Python SSL module
+     will no longer work with TLS/SSL installations that rely on self-signed
+     certificates or are set up improperly.</emphasis>
+    </para>
+    <para>
+     For compatibility reasons, TLS/SSL certificate validation remains
+     disabled by default.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GCC 4.8
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       glibc 2.19
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Linux kernel 3.12
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GNOME 3.10
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       X.org 7.7
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Other">
+    <title>Other Changes and Version Updates</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Samba 4.1.3
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       UEFI Enablement on AMD64
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SWAP over NFS
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Python 2.7
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Perl 5.18.2
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Ruby 2.0
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Packages.Deprecated">
+   <title>Deprecated Functionality</title>
+   <section id="Packages.Deprecated.rm_with_12">
+    <title>Packages Removed with SUSE Linux Enterprise Desktop 12</title>
+    <para>
+     The following packages were removed with the major release of SUSE
+     Linux Enterprise Desktop 12:
+    </para>
+   </section>
+   <section id="Packages.Deprecated.rm_with_12sp1" remap="Packages:Deprecated:rm_with_12sp1">
+    <title>Packages Removed with SUSE Linux Enterprise Desktop 12 SP1</title>
+    <para>
+     The following packages were removed with the release of SUSE Linux
+     Enterprise Desktop 12 SP1:
+    </para>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319403" remap="Packages:Deprecated:rm_with_12sp1">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319403" -->
+     <title>isapnp</title>
+     <para>
+      Package isapnp is no longer shipped with SLED 12 SP1 and SLE-WE 12
+      SP1. It was used to configure ISA Plug'n'Play but, which is no longer
+      present on current hardware.
+     </para>
+    </section>
+    <section role="notoc" id="fate-318927" remap="Packages:Deprecated:rm_with_12sp1">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318927" -->
+     <title>testgart</title>
+     <para>
+      Package testgart is no longer shipped with SLED 12 SP1 and SLE-WE 12
+      SP1.
+     </para>
+     <para>
+      It was used to test AGP GART on graphics cards, which is no longer
+      used on graphics cards.
+     </para>
+    </section>
+    <section role="notoc" id="fate-318926" remap="Packages:Deprecated:rm_with_12sp1">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318926" -->
+     <title>sisctrl</title>
+     <para>
+      sisctrl package is no longer shipped with SLED 12 SP1 and SLE-WE 12
+      SP1: the X11 driver for the SIS chipset was not part of SLED 12, thus
+      the sisctrl package is not of any use.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+   <section id="Packages.Deprecated.Future" remap="Packages:Deprecated:Future">
+    <title>Packages and Features to Be Removed in the Future</title>
+    <para>
+     The following packages are deprecated and will be removed with SUSE
+     Linux Enterprise Desktop 13.
+    </para>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319095" remap="Packages:Deprecated:Future">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319095" -->
+     <title>fcitx Is Deprecated and Will Be Replaced with the IBus Input Method</title>
+     <para>
+      With SLE 12 SP1, the fcitx input method is deprecated. Starting with
+      SLE 12 SP2, it will no longer be supported nor shipped. You can switch
+      to the IBus input method.
+     </para>
+    </section>
+    <section role="notoc" id="fate-318930" remap="Packages:Deprecated:Future">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318930" -->
+     <title>Removal of Xemacs</title>
+     <para>
+      Xemacs is deprecated in favor of GNU Emacs. Starting with SLE 12 SP2,
+      it will no longer be provided or supported. We suggest to switch to
+      GNU Emacs which is fully supported.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+  <section id="Packages.Packaging" remap="Packages:Packaging">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319418" remap="Packages:Packaging">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319418" -->
+    <title>Graphviz PDF output Requires X11</title>
+    <para>
+     <emphasis>In order to be able to create PDFs, graphviz needs the
+     package graphviz-gnome. Therefore, graphviz unconditionally required
+     that package. This is unwanted on systems where X11 is not
+     installed.</emphasis>
+    </para>
+    <para>
+     <literal>graphviz</literal> package now only pulls in
+     <literal>graphviz-gnome</literal> if X11 is installed.
+    </para>
+    <para>
+     This means that on systems without X11, the <literal>graphviz</literal>
+     tools cannot create PDFs.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="TechInfo">
+  <title>Technical Information</title>
+  <para>
+   This section contains a number of technical changes and enhancements for
+   the experienced user.
+  </para>
+  <section id="TechInfo.Filesystems" remap="TechInfo:Filesystems">
+   <title>File Systems</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-316463" remap="TechInfo:Filesystems">
+<!-- sort_key="None"; non-rn-fate-cats="Filesystems"; -->
+<!-- href="https://fate.novell.com/316463" -->
+    <title>Btrfs: Compression Support</title>
+    <para>
+     On-the-fly compression is now supported with Btrfs. It can be turned on
+     through mount-time options passed to the filesystem. See the Btrfs
+     section in mount(8) manual page for details.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+<!-- START-FATE-RN -->
+<!-- END-FATE-RN -->
+ <section>
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with respect to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with respect to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="http://www.suse.com/company/legal/"/> for more information on
+   exporting SUSE software. SUSE assumes no responsibility for your failure
+   to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-2015 SUSE LLC. This release notes document is licensed
+   under a Creative Commons Attribution-NoDerivs 3.0 United States License
+   (CC-BY-ND-3.0 US,
+   <ulink url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>.
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="http://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="http://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

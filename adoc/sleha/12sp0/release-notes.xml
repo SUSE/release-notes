@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % myents SYSTEM "release-notes.ent">
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+<!ENTITY suse "SUSE">
+<!ENTITY suse-version "12">
+<!ENTITY spversion "">
+<!ENTITY opensuse "open&suse;">
+<!ENTITY suselinux "&suse; Linux">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sles "&sle; Server">
+<!ENTITY sleha "&suselinux; Enterprise High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &suselinux; Enterprise High Availability">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&suselinux; Enterprise &sdk;">
+]>
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise High Availability Extension</productname>
+  <productnumber>12</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise High Availability Extension is a suite of
+    clustering technologies that enable enterprises to implement highly
+    available Linux clusters and eliminate single points of failure. This
+    document gives an overview of features of SUSE Linux Enterprise High
+    Availability Extension and their limitations. Some sections do not apply
+    to a particular architecture or product, this is explicitly marked.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media, or in the directory
+    <filename>/usr/share/doc/</filename> on the installed system (if
+    installed).
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="intro">
+  <title>SUSE Linux Enterprise High Availability Extension</title>
+  <para>
+   SUSE Linux Enterprise High Availability Extension is an affordable,
+   integrated suite of robust open source clustering technologies that
+   enable enterprises to implement highly available Linux clusters and
+   eliminate single points of failure.
+  </para>
+  <para>
+   Used with SUSE Linux Enterprise Server, it helps firms maintain business
+   continuity, protect data integrity, and reduce unplanned downtime for
+   their mission-critical Linux workloads.
+  </para>
+  <para>
+   SUSE Linux Enterprise High Availability Extension provides all of the
+   essential monitoring, messaging, and cluster resource management
+   functionality of proprietary third-party solutions, but at a more
+   affordable price, making it accessible to a wider range of enterprises.
+  </para>
+  <para>
+   It is optimized to work with SUSE Linux Enterprise Server, and its tight
+   integration ensures customers have the most robust, secure, and up to
+   date high availability solution. Based on an innovative, highly flexible
+   policy engine, it supports a wide range of clustering scenarios.
+  </para>
+  <para>
+   With static or stateless content, the High Availability cluster can be
+   used without a cluster file system. This includes web-services with
+   static content as well as printing systems or communication systems like
+   proxies that do not need to recover data.
+  </para>
+  <para>
+   Finally, its open source license minimizes the risk of vendor lock-in,
+   and it's adherence to open standards encourages interoperability with
+   industry standard tools and technologies.
+  </para>
+ </section>
+ <section id="intro.new">
+  <title>What's New?</title>
+  <variablelist>
+   <varlistentry>
+    <term>
+    Cluster File System
+     </term>
+    <listitem>
+     <para>
+      GFS2 cluster file system with read/write support, to complement the
+      SUSE recommended OCFS2 cluster file system.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      Load balancer
+     </term>
+    <listitem>
+     <para>
+      HAProxy as layer 4 load balancer added, to complement the linux
+      virtual server load balancer.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      History Explorer
+     </term>
+    <listitem>
+     <para>
+      HAWK history explorer now includes off-line analysis capabilities.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+     Resource Agents
+     </term>
+    <listitem>
+     <para>
+      Resource agents got multiple updates, including a resource agent to
+      handle SCSI reservations
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   See
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SLE-HA/12-GEO/">https://www.suse.com/releasenotes/x86_64/SLE-HA/12-GEO/</ulink>
+   for what's new in the Geo clustering option for the SUSE Linux Enterprise
+   High Availability Extension 12.
+  </para>
+ </section>
+ <section id="InfraPackArch">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <para/>
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+   <title>Systems Management</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-320814" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320814" -->
+    <title>IPv6 Support in ldirectord</title>
+    <para>
+     <emphasis> Previously,
+     </emphasis><literal>ldirectord</literal><emphasis> did not support HTTP
+     checks for IPv6. </emphasis>
+    </para>
+    <para>
+     This issue was fixed by adding the packages
+     <literal>perl-Net-INET6Glue</literal> and
+     <literal>perl-IO-Socket-IP</literal> as dependencies to
+     <literal>ldirectord</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316323" remap="InfraPackArch:ArchIndependent:SystemsManagement,Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316323" -->
+    <title>Improved Help in crm Shell</title>
+    <para>
+     <emphasis>Some commands were undocumented or did not cover all use
+     cases.</emphasis>
+    </para>
+    <para>
+     The interactive help has been overhauled, and the online help for the
+     crm shell has been updated and improved.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Performance" remap="InfraPackArch:ArchIndependent:Performance">
+   <title>Performance Related Information</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-315054" remap="InfraPackArch:ArchIndependent:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315054" -->
+    <title>Faster Unlink Performance</title>
+    <para>
+     <emphasis>An unlink would generate unnecessary journalling requests.
+     This would hinder any write operations that would follow.</emphasis>
+    </para>
+    <para>
+     The unlink path has been changed to avoid the unnecessary journalling.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <para/>
+  <section id="Packages.New" remap="Packages:New">
+   <title>New Packages</title>
+<!-- *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires -->
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-316476" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316476" -->
+    <title>Include fence agent using SCSI reservations</title>
+    <para>
+     <emphasis>Support fencing via SCSI reservations.</emphasis>
+    </para>
+    <para>
+     The fence-agents package is now included which includes an agent
+     capable of fencing via SCSI reservations.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316459" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316459" -->
+    <title>Provide haproxy as an alternative to LVS</title>
+    <para>
+     <emphasis>Haproxy is useful in some scenarios where LVS cannot be
+     used.</emphasis>
+    </para>
+    <para>
+     Haproxy 1.5 is now provided.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Update" remap="Packages:Update">
+   <title>Updated Packages</title>
+<!-- *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) -->
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-316508" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316508" -->
+    <title>Relax-and-Recover: Upgrade to Latest Stable Upstream Version</title>
+    <para>
+     The current version of Relax-and-Recover (abbreviated as 'rear',
+     formerly 'ReaR') comes with many new features and fundamental changes.
+     In particular the file system creation is totally different (via the so
+     called "layout workflow" instead of the old "dr workflow" that has been
+     removed in version 1.14).
+    </para>
+    <para>
+     Warning: Users who already use it and want to upgrade (in particular
+     when upgrading from SUSE Linux Enterprise 11), must carefully
+     re-validate whether their particular disaster recovery procedure still
+     works.
+    </para>
+    <para>
+     A new and different RPM package name is used that contains the version
+     (e.g. "rear116"). It conflicts with all other rear packages to avoid
+     that an installed version could get accidentally replaced with another
+     version. This means "just a normal package installation" that would do
+     a version change of an already installed Relax-and Recover software is
+     intentionally prohibited.
+    </para>
+    <para>
+     Furthermore this version upgrade supersedes the formerly provided
+     package rear-SUSE.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316477" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316477" -->
+    <title>Support MariaDB as well as MySQL</title>
+    <para>
+     <emphasis>MariaDB is an alternative to MySQL, and the resource agent
+     for HA should support both.</emphasis>
+    </para>
+    <para>
+     The resource agent now supports MariaDB.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316465" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316465" -->
+    <title>Hawk: Limit access to wizards based on ACL permissions</title>
+    <para>
+     <emphasis>A user with limited ACL access may not have the correct
+     permissions to apply the configuration created by a wizard. Hawk should
+     detect this and warn before allowing the wizard to be
+     applied.</emphasis>
+    </para>
+    <para>
+     Hawk warns if the user lacks necessary write permissions to apply a
+     configuration wizard.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316464" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316464" -->
+    <title>crmsh: Configure all nodes in the cluster simultaneously using cluster scripts</title>
+    <para>
+     <emphasis>Ensuring that all nodes in the cluster have the correct
+     packages and file system configuration can be difficult. Sometimes, a
+     configuration wizard could be improved if it could make system-level
+     changes or inspect the state of all cluster nodes before applying a new
+     CIB configuration.</emphasis>
+    </para>
+    <para>
+     The crm shell now includes cluster scripts, which are able to validate
+     and modify the configuration of cluster nodes.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316332" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316332" -->
+    <title>Allow the configuration of corosync via crmsh</title>
+    <para>
+     <emphasis>The crm shell is an excellent tool for configuring pacemaker,
+     but the cluster stack consists of additional software. It should be
+     possible to leverage the abilities of crmsh for configuring these as
+     well.</emphasis>
+    </para>
+    <para>
+     crmsh can now configure the cluster infrastructure directly, via the
+     new cluster and corosync subcommands.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316330" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316330" -->
+    <title>Enable the use of reports generated by crm_report in crmsh and the history explorer</title>
+    <para>
+     <emphasis>A cluster report generated by crm_report contains much of the
+     information needed to debug issues with a cluster. It should be
+     possible to open these reports in the history explorer and
+     crmsh.</emphasis>
+    </para>
+    <para>
+     Both hawk and crmsh can now open reports generated by crm_report.
+     However, reports generated by hb_report contain additional information
+     and are preferred when possible.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316323-1" remap="InfraPackArch:ArchIndependent:SystemsManagement,Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316323" -->
+    <title>Improved Help in crm Shell</title>
+    <para>
+     <emphasis>Some commands were undocumented or did not cover all use
+     cases.</emphasis>
+    </para>
+    <para>
+     The interactive help has been overhauled, and the online help for the
+     crm shell has been updated and improved.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316322" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316322" -->
+    <title>Simplified OCFS2 configuration with wizard in Hawk</title>
+    <para>
+     <emphasis>The configuration of OCFS2 has been simplified, and the Hawk
+     configuration wizard as well as the configuration template in crm shell
+     should reflect this.</emphasis>
+    </para>
+    <para>
+     The Hawk wizard for cLVM2/OCFS2 has been updated.
+    </para>
+   </section>
+   <section role="notoc" id="fate-315163" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315163" -->
+    <title>Hawk wizard for configuring NFS</title>
+    <para>
+     <emphasis>To make the configuration of an NFS server easier, Hawk
+     should include a configuration wizard for this purpose.</emphasis>
+    </para>
+    <para>
+     Hawk includes a configuration wizard that configures an NFS server.
+    </para>
+   </section>
+   <section role="notoc" id="fate-315158" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315158" -->
+    <title>Allow resource sets and templates for location constraints</title>
+    <para>
+     <emphasis>Enabling the use of resource sets and templates in location
+     constraints makes configuration easier and can simplify the
+     CIB.</emphasis>
+    </para>
+    <para>
+     Both crmsh and hawk now supports creating location constraints that
+     reference resource sets. The syntax for crmsh is described in the Admin
+     Guide.
+    </para>
+   </section>
+   <section role="notoc" id="fate-315101" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315101" -->
+    <title>crmsh: Manage multiple resources as one using resource tags</title>
+    <para>
+     <emphasis>It may be desired to start and stop multiple resources all at
+     once, without having explicit dependencies between those
+     resources.</emphasis>
+    </para>
+    <para>
+     This feature adds resource tags to Pacemaker. Tags are collections of
+     resources that do not imply any colocation or ordering constraints, but
+     can be referenced in constraints or when starting and stopping
+     resources.
+    </para>
+   </section>
+   <section role="notoc" id="fate-315100" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/315100" -->
+    <title>crmsh: Enable Anonymous Shadow CIBs</title>
+    <para>
+     <emphasis>When scripting cluster configuration changes, the scripts are
+     more robust if changes are applied with a single commit. Creating a
+     shadow CIB to collect the changes makes this easier, but has previously
+     required naming the shadow CIB.</emphasis>
+    </para>
+    <para>
+     crmsh now allows the creation of shadow CIBs without explicitly
+     specifying a name. The name will be determined automatically and will
+     not clash with any other previously created shadow CIBs.
+    </para>
+   </section>
+   <section role="notoc" id="fate-314956" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/314956" -->
+    <title>Allow use of IP addresses without reliance on DNS in csync2 configuration</title>
+    <para>
+     <emphasis>Allowing the use of plain IP addresses can make it easier to
+     configure csync2.</emphasis>
+    </para>
+    <para>
+     csync2 allows the use of IP addresses for connectivity via a special
+     syntax. This is documented in Procedure 3.8: Configuring Csync2 with
+     YaST in the Admin Guide.
+    </para>
+   </section>
+   <section role="notoc" id="fate-314917" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/314917" -->
+    <title>Enable colocating resources without further dependency between them</title>
+    <para>
+     <emphasis>Sometimes, it is desired that two resources should run on the
+     same node. However, there should be no further dependency implied
+     between the two resources, so that if one fails, the other one can keep
+     running.</emphasis>
+    </para>
+    <para>
+     This can be accomplished using a third, dummy resource which both
+     resources depend on in turn. To make it easier to create a
+     configuration like this, the command "assist weak-bond" has been added
+     to crmsh.
+    </para>
+   </section>
+   <section role="notoc" id="fate-314396" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/314396" -->
+    <title>hawk: Wizards Can Use Multiple Instances of a Template Within a Workflow</title>
+    <para>
+     <emphasis>Simplify wizards with multiple identical config
+     instances.</emphasis>
+    </para>
+    <para>
+     In a wizard workflow, multiple steps to reference the same wizard
+     template with different sets of parameters are supported.
+    </para>
+    <para>
+     This is done by adding a type attribute to the template instance in the
+     workflow, which can be separate from the name identifying the step in
+     the workflow. Each step in the workflow can also override any attribute
+     of the wizard template, including the description.
+    </para>
+    <para>
+     This change is backwards compatible.
+    </para>
+   </section>
+   <section role="notoc" id="fate-313354" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/313354" -->
+    <title>Hawk off-line history explorer</title>
+    <para>
+     <emphasis>Sometimes, a system adminstrator may want to use the Hawk
+     history explorer to examine a cluster report on a machine that is not
+     part of the cluster.</emphasis>
+    </para>
+    <para>
+     This feature allows hawk to be installed and run without requiring
+     pacemaker to be running, and the history explorer can function as
+     expected.
+    </para>
+   </section>
+   <section role="notoc" id="fate-309206" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="Configuration,High Availability"; -->
+<!-- href="https://fate.novell.com/309206" -->
+    <title>Cluster health evaluation tool built in to crmsh</title>
+    <para>
+     <emphasis>Configuring a cluster node correctly is complicated, and
+     problems with hardware, network connectivity and system software can
+     cause issues when configuring cluster resources.</emphasis>
+    </para>
+    <para>
+     The crm shell now includes a cluster health script, which can run both
+     on an already-configured cluster node as well as a potential cluster
+     node, to perform various system-level health checks. It then presents a
+     list of potential issues, such as not having NTP configured correctly
+     or warning about low disk space.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InstUpgrade" remap="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-319420" remap="InstUpgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319420" -->
+   <title>Information on System Update</title>
+   <para>
+    A major version upgrade (for example, from version 11 to version 12) has
+    to take down the cluster, upgrade all nodes, and restart the cluster.
+   </para>
+   <para>
+    An upgrade to the next SP (GA to the SP1, SP to SP+1, etc.) can be
+    handled as a rolling upgrade.
+   </para>
+   <para>
+    For more information about the upgrade procedure, see the product
+    documentation.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Support">
+  <title>Support Statement for SUSE Linux Enterprise High Availability Extension 12</title>
+  <para>
+   Support requires an appropriate subscription from SUSE; for more
+   information, see <ulink url="http://www.suse.com/products/server/"/>.
+  </para>
+  <para>
+   A Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription is needed to receive support and maintenance to run
+   geographical clustering scenarios, including manual and automated setups.
+  </para>
+  <para>
+   Support for the DRBD storage replication is independent of the cluster
+   scenario and included as part of the SUSE Linux Enterprise High
+   Availability Extension product and does not require the addition of a Geo
+   Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.
+  </para>
+  <para>
+   General Support Statement
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     L1: Installation and problem determination - technical support designed
+     to provide compatibility information, installation and configuration
+     assistance, usage support, on-going maintenance and basic
+     troubleshooting. Level 1 Support is not intended to correct product
+     defect errors.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L2: Reproduction of problem isolation - technical support designed to
+     duplicate customer problems, isolate problem areas and potential
+     issues, and provide resolution for problems not resolved by Level 1
+     Support.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L3: Code Debugging and problem resolution - technical support designed
+     to resolve complex problems by engaging engineering in patch provision,
+     resolution of product defects which have been identified by Level 2
+     Support.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   SUSE will only support the usage of original (unchanged or not
+   recompiled) packages.
+  </para>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+<!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the CDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+    <para>
+     &lt;FILENAME&gt;. is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1
+     for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of CD1
+     of the SUSE Linux Enterprise High Availability Extension CDs. This
+     directory includes a PDF version of the High Availability Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/"/> contains additional
+     or updated documentation for SUSE Linux Enterprise High Availability
+     Extension 12.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="http://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2015 SUSE LLC.
+  </para>
+  <para>
+   Thanks for using SUSE Linux Enterprise High Availability Extension in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise High Availability Extension Team.
+  </para>
+ </section>
+</article>

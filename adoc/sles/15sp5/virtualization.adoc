@@ -1,0 +1,271 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virtualization.html.
+
+// ALL VIRTUALIZATION SUPPORT TABLES HAVE BEEN MOVED TO VIRTUALIZATION GUIDE
+// IN DOC REPO. RN WILL ONLY CONTAIN CHANGES SINCE PREVIOUS SP.
+
+.Virtualization limits and supported hosts/guests
+[IMPORTANT]
+====
+These release notes only document changes in virtualization support compared to the immediate previous service pack of {productname}.
+Full information regarding virtualization limits for KVM and Xen as well as supported guest and host systems is now available as part of the {productname} documentation.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+See the __Virtualization Guide__ at {doc-url-beta}/html/SLES-virtualization/cha-virt-support.html (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+See the __Virtualization Guide__ at {doc-url}/html/SLES-all/cha-virt-support.html.
+endif::[]
+====
+
+
+[#virtualization-kvm]
+==== KVM
+We increase the support from 288 up 768 VCPU per virtual Machine.
+
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+//[#jsc-SLE-18741]
+//===== {nvidia} vGPU 12.x and 13.x support
+//
+//The support for {nvidia} virtual GPU 12.x and //13.x has been added.
+
+
+[#virtualization-xen]
+// jsc-PED-1858
+==== Xen
+
+Xen has been updated to version 4.17:
+
+* The x86 MCE command line option info is now updated.
+* `__ro_after_init` support, for marking data as immutable after boot.
+* The project has officially adopted 4 directives and 24 rules of MISRA-C, added MISRA-C checker build integration, and defined how to document deviations.
+* IOMMU superpage support on x86, affecting PV guests as well as HVM/PVH ones when they don't share page tables with the CPU (HAP/EPT/NPT).
+* Support for `VIRT_SSBD` and `MSR_SPEC_CTRL` for HVM guests on AMD.
+* Improved TSC, CPU, and APIC clock frequency calibration on x86.
+* Support for Xen using x86 Control Flow Enforcement technology for its own protection. Both Shadow Stacks (ROP protection) and Indirect Branch Tracking (COP/JOP protection).
+* Add `mwait-idle` support for SPR and ADL on x86.
+* Extend security support for hosts to 12 TiB of memory on x86.
+* Add command line option to set cpuid parameters for dom0 at boot time on x86.
+* It is possible to use PV drivers with dom0less guests, allowing statically booted dom0less guests with PV devices.
+* Add Xue - console over USB 3 Debug Capability.
+* dropped support for the (x86-only) `vesa-mtrr` and `vesa-remap` command line options
+* `launch_security`: Use SEV-ES policy=0x07 if host supports it
+
+// Xen virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-qemu]
+// jsc-PED-1716
+// jsc-PED-1855
+==== QEMU
+
+QEMU has been updated to version 7.1:
+
+* Raise the maximum number of vCPUs a VM can have to 1024 (only 768 is supported)
+* Improve dependency handling (for example, what is recommended compared to what is required)
+* Add the `qemu-headless` subpackage that brings in all the packages that are needed for creating VMs with tools like `virt-install` or `VirtManager`; it can be run either locally or from a remote host
+* The old `qemu-binfmt` wrappers around the various `qemu-$ARCH` Linux user emulation binaries are not necessary any longer
+* Enable` aio=io_uring` on all KVM architectures
+
+For more information see the following:
+
+* https://wiki.qemu.org/ChangeLog/7.1
+* https://wiki.qemu.org/ChangeLog/7.0
+* https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+
+[NOTE]
+.Deprecation notice
+====
+In previous versions, if no explicit image format was provided, some QEMU tools tried to guess the format of the image, and then process it accordingly.
+Because this feature is a potential source of security issues, it has been deprecated and removed.
+It is now necessary to explicitly specify the image format.
+For more information, see https://qemu-project.gitlab.io/qemu/about/removed-features.html#qemu-img-backing-file-without-format-removed-in-6-1.
+====
+
+[#virtualization-libvirt]
+// jsc-PED-447
+// jsc-PED-225
+==== libvirt
+
+`libvirt` has been updated to version 9.0.0:
+
+* New `virt-qemu-sev-validate` utility for validating the measurement reported for a domain launched with AMD SEV
+* New subpackage `libvirt-client-qemu` providing client utilities to interact with QEMU-specific features of `libvirt`
+* Migration to `/usr/etc`: saving user changed configuration files in `/etc` and restoring them while an RPM update
+
+For more information see the following:
+
+* https://libvirt.org/news.html#v9-0-0-2023-01-16
+* https://libvirt.org/news.html#v8-10-0-2022-12-01
+* https://libvirt.org/news.html#v8-9-0-2022-11-01
+* https://libvirt.org/news.html#v8-8-0-2022-10-03
+* https://libvirt.org/news.html#v8-7-0-2022-09-01
+
+
+[#virtualization-vmware]
+==== VMware
+
+[#jsc-PED-1344]
+===== open-vm-tools
+
+`open-vm-tools` has been updated to version 12.1.5:
+
+* Migration of PAM settings to `/usr/lib/pam.d`
+* Remove libgrpc++, libgrpc, and libprotobuf from containerinfo `Requires` section.
+The dependencies will be added automatically.
+* Add `containerInfo` plugin
+* Add dependencies on grpc, protobuf, and containerd for container introspection
+* A number of Coverity reported issues have been addressed.
+* The `deployPkg` plugin may prematurely reboot the guest VM before cloud-init has completed user data setup.
+If both the Perl based Linux customization script and cloud-init run when the guest VM boots, the deployPkg plugin may reboot the guest before cloud-init has finished.
+The `deployPkg` plugin has been updated to wait for a running cloud-init process to finish before the guest VM reboot is initiated.
+* A `SIGSEGV` may be encountered when a non-quiesing snapshot times out
+* Unwanted `vmtoolsd` service error message if not on a VMware hypervisor
+When `open-vm-tools` comes preinstalled in a base Linux release, the `vmtoolsd` services are started automatically at system start and desktop login.
+If running on physical hardware or in a non-VMware hypervisor, the services will emit an error message to the systemd's logging service before stopping.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-other]
+==== Others
+
+// Other virtualization-related release notes go here
+
+// also https://confluence.suse.com/x/toIYTQ
+[#jsc-PED-5268]
+===== Deprecating host network management with `libvirt`
+
+Managing host network devices with ``libvirt``'s `virInterface*` APIs is deprecated and may be removed in a future service pack.
+Any users of these APIs or ``virsh``'s `iface-*` subcommands should use the distribution networking tools instead.
+For more information see the _Basic networking_ chapter of the _Administration Guide_ at {admin-guide-url}/#cha-network.
+
+
+[#jsc-SLE-18741]
+===== NVIDIA GRID
+
+Support for NVIDIA Virtual GPU (vGPU) v15.1 has been added.
+The support does NOT include NVIDIA vGPU live migration support.
+
+
+[#jsc-PED-2113]
+===== `virt-manager`
+
+`virt-manager` has been updated to version 4.1.0:
+
+* Specifying `--boot` no longer implies `no_install=yes`
+* add UI and cli support for `qemu-vdagent` channel
+* cli: More `--iothreads` suboptions
+* cli: Add support for URL query with disks
+
+===== `sanlock`
+
+`sanlock` has been updated to version 3.8.5:
+
+* Add support for Python 3
+* Add support for 4k sector size
+* Support `SANLOCK_RUN_DIR` and `SANLOCK_PRIVILEGED` environment variables
+
+===== Perl-Sys-Virt
+
+Update to 0.9.0:
+* Add all new APIs and constants in libvirt 9.0.0
+
+===== `numactl`
+
+`numactl` has been updated to version 2.0.15.0.g01a39cb:
+
+* Update to support multiple nodes
+* numademo: Add a new test for multiple-preferred-nodes policy
+* numactl: Simplify preferred selection
+
+===== libguestfs
+
+`libguestfs` has been updated to version 1.48.4:
+
+* Drop reiserfs
+* Multiple fixes to the OCaml bindings
+* Inspection of guests which use LUKS encryption on top of LVM logical volumes should now work `guestfs_remove_drive` has been deprecated and now returns an error.
+* `guestfs_add_drive` no longer supports hotplugging
+* In `guestfs_xfs_admin` the `lazycounter` parameter is deprecated because it is no longer supported in recent versions of XFS.
+* The User-mode Linux ("uml") backend has been removed.
+* This release has moved many virt tools like virt-builder, virt-cat, virt-customize, virt-df, etc. to the guestfs-tools project. This makes libguestfs a bit easier to build and manage.
+* We now use the `qemu`/`libvirt` feature `-cpu max` to select the best CPU to run the appliance.
+* The `qemu -enable-fips` option is no longer used.
+It was not needed and has been deprecated by `qemu`.
+* Using the equivalent SeaBIOS feature instead of `qemu`'s Serial Graphics Adapter option ROM
+* Renamed packages:
+** `guestfs-winsupport` -> `libguestfs-winsupport`
+** `guestfsd` -> `libguestfsd`
+* New packages:
+** `libguestfs`, `libguestfs-typelib-Guestfs`,
+** `libguestfs-gobject`, `libguestfs-gobject-devel`
+** `libguestfs-rescue`, `libguestfs-rsync`, `libguestfs-xfs`
+* Dropped packages:
+** `libguestfs-test`
+
+===== virt-v2v
+
+Update to version 2.0.7:
+
+* Virt-v2v has been modularised allowing external programs to examine the state of the conversion and inject their own copying step. Further enhancements will be made to this new architecture in forthcoming releases.
+* The command line is almost identical apart from some debugging features that were removed (see below). The only significant difference is that the output format (-of) now has to be specified if it is different from the input format, whereas previous versions of virt-v2v would use the same output formatas input format automatically.
+* A lot of time was spent improving the performance of virt-v2v in common cases.
+* Many bug fixes and performance enhancements were made to oVirt imageio output (Nir Soffer).
+* There is a new virt-v2v-in-place(1) tool which replaces the existing virt-v2v --in-place option.
+* Virt-v2v can now convert guests which use LUKS encrypted logical volumes.
+* Option -oo rhv-direct has been replaced by -oo rhv-proxy, and direct mode (which is much faster) is now the default when writing to oVirt, with proxy mode available for restricted network configurations.
+* The following command line options were removed: -print-estimate, --debug-overlays, --no-copy.
+* Virt-v2v no longer installs the RHEV-APT tool in Windows guests. This tool was deprecated and then removed in oVirt 4.3.
+* Deprecated tool virt-v2v-copy-to-local has been removed.
+
+
+===== `sevctl`
+
+The `sevctl` package version 0.3.2 has been added.
+It replaces the deprecated `sev-tool` package.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

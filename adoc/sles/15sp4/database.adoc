@@ -1,0 +1,57 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#database]
+=== Databases
+
+// Release notes for databases:
+//    PostgreSQL, MariaDB, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-20671]
+==== MariaDB 10.6 has been added
+
+The `mariadb` package has been updated to version 10.6.
+See https://mariadb.com/kb/en/changes-improvements-in-mariadb-106/[the full changelog] for more information.
+
+
+[#jsc-SLE-20556]
+==== `unixODBC` package drivers not for production
+
+Drivers in the `unixODBC` package are not suitable for production use.
+The drivers are provided for test purposes only.
+We have added a reference to the package's README file with information about third-party `unixODBC` drivers that are suitable for production use (http://www.unixodbc.org/drivers.html).
+
+// also bsc#1203256
+[#jsc-SLE-17703]
+==== The ODBC driver location has changed
+Previously in {productnameshort} 12, the unixODBC driver for PostgreSQL was included in the `postgresql10-odbc` package and was located in `/usr/pgsql-10/lib/psqlodbcw.so`.
+In {productnameshort} {this-version}, this driver is part of the `psqlODBC-<version>` package and it is located in `/usr/lib64/psqlodbcw.so`.
+
+For some more information, see: https://bugzilla.suse.com/show_bug.cgi?id=1169697.
+
+
+[#jsc-SLE-20673]
+==== PostgreSQL 14 has been added
+
+PostgreSQL 14 has been added to {product}.
+For information about changes between PostgreSQL 14 and 13, see the https://www.postgresql.org/docs/14/release.html[upstream release notes].
+
+At the same time, PostgreSQL 13 has been deprecated and has been moved to the Legacy module.
+PostgreSQL 12 has been removed.
+
+
+[#postgresql-reindex]
+==== PostgreSQL REINDEX is required when migrating
+
+If you migrate a PostgreSQL server from an earlier version than {productnameshort} 15{nbsp}SP3, a REINDEX is required before using the database productively again to avoid database corruptions.
+See https://www.suse.com/support/kb/doc/?id=000020305 for details.

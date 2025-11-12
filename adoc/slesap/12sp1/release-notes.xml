@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>12 SP1</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SLES for SAP Applications combines SUSE Linux Enterprise Server and its
+    High Availability Extension with additional software specifically meant
+    to simplify running and managing SAP applications. This document
+    provides an overview of high-level general features, capabilities, and
+    limitations of SLES for SAP Applications 12 SP1 and important product
+    updates.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media for SLES for SAP Applications
+<!-- &sp;&spversion;-->
+    . Any documentation (if installed) can be found in the
+    <filename>/usr/share/doc/</filename> directory of the installed system.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SLES for SAP Applications</title>
+  <para/>
+  <section id="Intro.New" remap="Intro:New">
+   <title>What's New?</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319058" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319058" -->
+    <title>Extended sapconf Architecture</title>
+    <para>
+     The architecture of <literal>sapconf</literal> has been adjusted to use
+     <literal>tuned</literal>. This allows much more flexibility (users can
+     now setup custom profiles) as well as providing several tuning profiles
+     for selection.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319056" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319056" -->
+    <title>SLES for SAP Application Images in Kiwi</title>
+    <para>
+     The SUSE Kiwi tool now allows creating SLES for SAP Applications
+     images. Such images can be used in private cloud deployments, for
+     example.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318968" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318968" -->
+    <title>Extensions to sapconf</title>
+    <para>
+     The <literal>sapconf</literal> package has been extended to support a
+     range of SAP products. Which products are currently supported is
+     documented in the respective man page.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318965" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318965" -->
+    <title>Identity Cleanup</title>
+    <para>
+     SLES for SAP Applications 12 SP1 now ships with a script which removes
+     all kind of identity information from the systems it is executed on.
+     After the execution, such a system (for example, a VM) can be used as a
+     Golden Image in virtualized environments. It is also possible to
+     execute the script on bare metal installations, for example when those
+     are shipped to other parties.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318078" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318078" -->
+    <title>Support of NW-VSI 2.0 in ClamSAP</title>
+    <para>
+     The ClamSAP package now supports the NW-VSI 2.0 interface from SAP.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318076" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318076" -->
+    <title>SAP Tuning Options</title>
+    <para>
+     Until the previous release of SLES for SAP Applications, the necessary
+     SAP tuning options for operating system value were set through the SAP
+     Installation Wizard. Without executing the Wizard, it was not possible
+     to set these values.
+    </para>
+    <para>
+     With SLES for SAP Applications 12 SP1, these settings are now also
+     available through the <literal>sapconf</literal> package which can be
+     executed separately.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Support" remap="Intro:Support">
+   <title>Support Statement for SLES for SAP Applications</title>
+   <para>
+    Support requires an appropriate subscription from SUSE; for more
+    information, see: <ulink url="http://www.suse.com/products/server/"/>.
+   </para>
+   <para>
+    General Support Statement
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      L1: Installation and problem determination - technical support
+      designed to provide compatibility information, installation and
+      configuration assistance, usage support, on-going maintenance and
+      basic troubleshooting. Level 1 Support is not intended to correct
+      product defect errors.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L2: Reproduction of problem isolation - technical support designed to
+      duplicate customer problems, isolate problem areas and potential
+      issues, and provide resolution for problems not resolved by Level 1
+      Support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L3: Code Debugging and problem resolution - technical support designed
+      to resolve complex problems by engaging engineering in patch
+      provision, resolution of product defects which have been identified by
+      Level 2 Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (unchanged or not
+    recompiled) packages.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319304" remap="Intro:Support">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319304" -->
+    <title>SAPHanaSR Is Now L3-Supported</title>
+    <para>
+     The package <literal>SAPHanaSR</literal> which provides the SAP HANA
+     resource agents for SLE HA is now fully L3-supported.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319280" remap="Intro:Support">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319280" -->
+    <title>SAP HANA Firewall Is Now L3-Supported</title>
+    <para>
+     The package <literal>HANA-Firewall</literal> which provides firewall
+     rules for SAP HANA is now fully L3-supported.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319057" remap="Intro:Support">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319057" -->
+    <title>ClusterTools2 Is Now L3-Supported</title>
+    <para>
+     The package <literal>ClusterTools2</literal>, providing a suite of
+     tools to check the configuration sanity of a SLE HA cluster
+     configuration (among other things), is now fully L3-supported.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Features">
+  <title>Features and Versions</title>
+  <para>
+   This section includes an overview of some of the major features provided
+   by SLES for SAP Applications.
+  </para>
+ </section>
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para/>
+  <section id="InstUpgrade.Installation" remap="InstUpgrade:Installation">
+   <title>Installation</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319061" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319061" -->
+    <title>Third-Party Repositories Can Now Be Added from the SAP Installation Wizard</title>
+    <para>
+     The SAP Installation Wizard now includes a step that gives users an
+     opportunity to add third-party repositories before proceeding with the
+     SAP installation.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318969" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318969" -->
+    <title>Tuning Settings in SAP Installation Wizard</title>
+    <para>
+     The SAP Installation Wizard now has an additional dialog for setting
+     tuning profile (coming from sapconf). Based on the type of installation
+     master the customer being installed, the dialog first makes a profile
+     recommendation which is set as the default. You can then choose a
+     different tuning profile. A description of the profile is displayed
+     beside its name.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318932" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318932" -->
+    <title>Installation on Systems with Multiple DVD Drives Is Now Possible</title>
+    <para>
+     It is now possible to install the product if more than one DVD drive is
+     available (for example, in virtualized environments).
+    </para>
+   </section>
+   <section role="notoc" id="fate-318077" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318077" -->
+    <title>Installation Wizard now works on AWS</title>
+    <para>
+     The Installation Wizard is now fully functional when being used on the
+     Amazon Web Services (AWS) cloud.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318072" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318072" -->
+    <title>Modified Boot Menu Options</title>
+    <para>
+     The installation options from the boot menu on the iso image have been
+     moved to the YaST installation process. Within YaST, you can now select
+     between:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       "Standard SLES Installation"
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       "SLES for SAP Applications Installation"
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       "SLES for SAP Applications Installation + Execution of SAP
+       Installation Wizard"
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+    <para>
+     &lt;FILENAME&gt;. is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological log of all changes made to the updated
+     packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SLES for SAP Applications media. This directory
+     includes a PDF version of the SLES for SAP Applications Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/sles_for_sap/"/> contains
+     additional or updated documentation for SLES for SAP Applications.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="http://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2015 SUSE LLC.
+  </para>
+  <para>
+   Thanks for using SLES for SAP Applications in your business.
+  </para>
+  <para>
+   The SLES for SAP Applications Team.
+  </para>
+ </section>
+</article>

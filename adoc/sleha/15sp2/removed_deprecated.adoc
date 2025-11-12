@@ -1,0 +1,33 @@
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#removedDeprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions.
+
+[#removedDeprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages had been deprecated with a previous release and have been removed with {product}{nbsp}{this-version}.
+
+* `pssh` has been removed. Use `crm cluster run` instead.
+
+[#jsc-SLE-9163]
+==== lvm2-cmirrord and lvm2-clvm Have Been Removed
+
+With the upgrade to lvm2 2.03, the packages `lvm2-clvm` and `lvm2-cmirrord` that were deprecated in {product}{this-ga}{nbsp}GA have been removed.
+
+
+[#removedDeprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////

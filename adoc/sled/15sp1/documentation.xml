@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section id="Intro.Documentation">
+ <title>Documentation and Other Information</title>
+ <para/>
+
+ <section id="Intro.Documentation.Media">
+  <title>On the Product Medium</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     For general product information, see the file
+     <filename>README</filename> <phrase condition="beta">and the file
+     <filename>README.BETA</filename></phrase> in the top level of the
+     product medium.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For a chronological log of all changes made to updated packages, see the
+     file <filename>ChangeLog</filename> in the top level of the product medium.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Detailed change log information about a particular package is available
+     using RPM:
+    </para>
+    <screen>rpm --changelog -qp <replaceable>FILE_NAME.rpm</replaceable></screen>
+    <para>
+     (Replace <replaceable>FILE_NAME.rpm</replaceable> with the name of the
+     RPM.)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For more information, see the directory <filename>docu</filename> of the
+     product medium of &product;&#160;&this-version;.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section id="Intro.Documentation.External">
+  <title>Externally Provided Documentation</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <phrase condition="beta;pre"><ulink url="&doc-url-beta;"/></phrase>
+     <phrase condition="maintained;unmaintained"><ulink url="&doc-url;"/></phrase>
+     contains additional or updated documentation for &product;&#160;&this-version;.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find a collection of White Papers in the &product; Resource Library
+     at <ulink url="&res-library-url;"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+</section>

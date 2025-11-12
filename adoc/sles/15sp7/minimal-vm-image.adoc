@@ -1,0 +1,36 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#install-upgrade-minimal-vm-image]
+=== {minvm} and {minimg}
+
+{sles} {minvm} and {minimg} is a slimmed-down form factor of {sles} that is ready to run in virtualization environments and the cloud.
+With {sles} {minvm} and {minimg}, you can choose the right-sized {sles} option to fit your needs.
+
+{suse} provides virtual disk images for {minvm} and {minimg} in the file formats `.qcow2`, `.vhdx`, and `.vmdk`, compatible with KVM, Xen, OpenStack, Hyper-V, and VMware environments.
+All {minvm} and {minimg} images set up the same disk size (24{nbsp}GB) for the system.
+Due to the properties of different file formats, the size of {minvm} and {minimg} image downloads differs between formats.
+
+[#jsc-SLE-21531]
+=== {jeos} renamed {minvm} and {minimg}
+
+We have received feedback from users confused by the name {jeos}, as a matter of fact the acronym {jeos}, which meant Just enough Operating System, was not well understood and could be confused with other images provided by {suse} or {opensuse}.
+
+We have decided to go with simplicity and rename {jeos} by "{minvm}" for all our Virtual Machine Images and "{minimg}" for the {rpi} Image.
+We have also removed a few other characters, in the full images name to make it more simple and clear:
+
+* `SLES15-SP4-Minimal-VM.x86_64-kvm-and-xen-GM.qcow2`
+* `SLES15-SP4-Minimal-VM.x86_64-OpenStack-Cloud-GM.qcow2`
+* `SLES15-SP4-Minimal-VM.x86_64-MS-HyperV-GM.vhdx.xz`
+* `SLES15-SP4-Minimal-VM.x86_64-VMware-GM.vmdk.xz`
+* `SLES15-SP4-Minimal-VM.aarch64-kvm-GM.qcow2`
+* `SLES15-SP4-Minimal-Image.aarch64-RaspberryPi-GM.raw.xz`
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

@@ -1,0 +1,83 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-systemsManagement]
+=== Systems Management
+
+// Release Notes for system management tools:
+//    YaST, Zypper, AutoYaST, KIWI, SUSEconnect, Salt, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-21522]
+==== `rsyslog` has been updated
+
+The `rsyslog` package has been updated from version 8.24 to 8.2106.
+There were the following notable changes:
+
+* Features
+** module `guardtime` removed (functionality now in `ksi` modules, see https://www.rsyslog.com/deprecated-how-to-sign-log-messages-through-signature-provider-guardtime/)
+** module `lmstrmsrv.so` removed (no longer needed)
+** module `openSSL` addded
+** module `fmhash.so` (new hash function module) added
+** module `fmhttp.so` (function module for HTTP functions) added
+* Dependencies
+** updated library versions for: `libfastjson`, `liblognorm`, `librelp`
+* Files
+** `rsyslog.service` and `journald-rsyslog.conf` added
+
+
+[#jsc-SLE-12830]
+==== Salt Has Been Updated to Version 3000
+
+Salt has been upgraded to upstream version 3000, plus a number of patches, backports and enhancements by {suse}.
+In particular, CVE-2020-11651 and CVE-2020-11652 fixes are included in our release.
+
+As part of this upgrade, cryptography is now managed by the Python-M2Crypto library (which is itself based on the well-known OpenSSL library).
+
+We intend to regularly upgrade Salt to more recent versions.
+
+For more details about changes in your manually-created Salt states, see the link:https://docs.saltstack.com/en/latest/topics/releases/3000.html[Salt 3000 upstream release notes].
+
+Salt 3000 is the last version of Salt which will support the old syntax of the `cmd.run` module.
+
+
+[#jsc-SLE-7025]
+==== Snapper's Space-Aware Snapshot Cleanup Has Been Improved
+
+Previously, the space-aware cleanup of snapshots integrated in Snapper
+only looked at the disk space used by all snapshots. In certain cases,
+this narrow focus meant that the file system ran out of space anyway.
+
+Starting with {product} 12 SP5, the space-aware cleanup of Snapper additionally
+looks at the free space of the file system and keeps the file system
+at least 20 percent free.
+
+[#jsc-SLE-5632]
+==== Samba Identity Mapping Backends
+
+The Windows Domain Membership {yast} module (`yast-samba-client`) has been updated
+to handle the new Samba `idmap` backend mappings. Previously, the {yast}
+module would only configure Samba to use the `tdb` back-end,
+which does not map users consistently on every Linux client. The module
+also configured Samba `idmap` with a deprecated syntax.
+
+Now the Windows Domain Membership module configures a host by default
+using the `rid` back-end, which will provide more consistent SID to `uid`
+mappings between clients. It also uses the newer Samba `idmap` syntax
+in the `smb.conf`.
+
+In addition to defaulting to a better `idmap` back-end, {product} {this-version}
+allows you to modify
+which configuration is chosen from the __Domain Join__ dialog. Advanced
+options include the `idmap` back-ends `tdb`, `ad`, `rid`, and `autorid`.
+Each back-end has its advantages and drawbacks.
+For more information, see https://www.suse.com/support/kb/doc/?id=7007006 and
+the man page of `idmap`.

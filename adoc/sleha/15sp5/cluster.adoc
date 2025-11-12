@@ -1,0 +1,55 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#cluster]
+== Cluster
+
+This section lists cluster-related information for {product}{nbsp}{this-version}.
+
+// cluster-relevant release notes go here
+
+
+////
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-2860]
+=== `crmsh` can use sudoer's SSH key as login
+
+Previously, only the `root` user could use `crmsh`.
+
+With this change, `crmsh` can use non-`root` sudoer's SSH key authentication as passwordless login to all nodes in the cluster.
+
+
+[#jsc-SLE-22493]
+=== Improve the graceful shutdown for the whole cluster
+
+There are several common use cases that might not result in a graceful shutdown of the whole cluster:
+
+1. When a user takes down the cluster nodes one by one a diskless-sbd cluster, the nodes get fenced unexpectedly once the cluster is inquorate.
+2. In the dlm cluster, with the highly suggested configuration `no-quorum-policy=freeze`, the cluster shutdown will hang once the cluster is inquorate.
+A new option `set_config` of `dlm_tools` is expected to help this situation.
+3. To shutdown the normal cluster, the system admin often takes down the cluster nodes one by one.
+This might create unnecessary the resources migration chaos among nodes.
+
+To help with some of these, a new `--all` options has been added to `crmsh`.
+The `--all` option tries to simplify the procedure and to make it more smoothly and reliable.
+
+[WARNING]
+====
+The `--all` option alone does not guarantee a graceful shutdown because the unforeseeable resource stop-failure might happen at the application level, which is out of the scope of the `--all` option.
+This means that users may need to take additional steps to match their product expectation.
+====
+
+[#jsc-SLE-22506]
+=== OCFS2 `nocluster` mount option has been added
+
+Until now it was possible only to by bring up the whole OCFS2 cluster stack.
+
+In {producta} {this-version}, the `nocluster` mount option has been added.
+This, for example, allows to access a OCFS2 file system on a standalone server where it is not necessary to have a fully functional cluster stack.

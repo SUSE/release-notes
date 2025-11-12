@@ -1,0 +1,228 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-technology-preview]
+=== Technology previews
+
+Technology previews are packages, stacks, or features delivered by {suse} to provide glimpses into upcoming innovations.
+Technology previews are included for your convenience to give you a chance to test new technologies within your environment.
+We would appreciate your feedback!
+If you test a technology preview, contact your {suse} representative and let them know about your experience and use cases.
+Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development.
+Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are *not* supported.
+* Technology previews may only be available for specific hardware architectures.
+Details and functionality of technology previews are subject to change.
+As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time.
+This may be the case, for example, if {suse} discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
+
+
+////
+  ** clear statement of TP (no support)
+  ** Title of the TP ** full description of the TP
+  ** link to official documentation (external)
+  ** link to SUSE's documentation
+////
+
+[#technology-preview-all]
+==== Technology previews for all architectures
+
+[#bsc-1176440]
+===== `schedutil`
+`schedutil` is a CPU frequency scaling governor that makes decisions based on the utilization data provided by the scheduler, as opposed to other governors that use CPU idle time, such as `ondemand`.
+It was introduced in the Linux kernel version 4.7.
+However, it is only viable for production use together with an optimization called `util_est` (short for "utilization estimation") that makes it much more responsive.
+This optimization is only available in Linux kernel version 4.17 and newer.
+For this reason it is only offered as technology preview in {slea} {this-version}.
+
+
+[#technology-preview-aarch64]
+===== Technology previews for {arm} 64-Bit (AArch64)
+
+[#jsc-SLE-15406]
+====== 64K page size kernel flavor has been added
+
+{arm-product} 12{nbsp}SP2 and later kernels have used a page size of 4K.
+This offers the widest compatibility also for small systems with little RAM,
+allowing to use Transparent Huge Pages (THP) where large pages make sense.
+
+As a technology preview, {arm-product} {this-version} adds a kernel flavor
+`64kb`, offering a page size of 64{nbsp}KiB and physical/virtual address size
+of 52 bits.
+Same as the `default` kernel flavor, it does not use preemption.
+
+Main purpose at this time is to allow for side-by-side benchmarking for
+High Performance Computing, Machine Learning and other Big Data use cases.
+Contact your {suse} representative if you notice performance gains
+for your specific workloads.
+
+// jsc#SLE-13577
+[IMPORTANT]
+.Btrfs file system uses page size as block size
+====
+It is currently not possible to use Btrfs file systems across page sizes.
+Block sizes below page size are not yet supported and block sizes above
+page size might never be supported.
+
+During installation, change the default partitioning proposal and choose
+another file system, such as Ext4 or XFS, to allow rebooting from the
+default 4K page size kernel of the Installer into `kernel-64kb` and back.
+
+See the __Storage Guide__ for a discussion of supported file systems.
+====
+
+[IMPORTANT]
+.Swap needs to be re-initialized
+====
+After booting the 64K kernel, any swap partitions need to re-initialized to be usable.
+To do this, run the `swapon` command with the `--fixpgsz` parameter on the swap partition.
+Note that this process deletes data present in the swap partition (for example, suspend data).
+In this example, the swap partition is on `/dev/sdc1`:
+[source,bash]
+swapon --fixpgsz /dev/sdc1
+====
+
+// jsc#SLE-14841
+[WARNING]
+.RAID{nbsp}5 uses page size as stripe size
+====
+It is currently not yet possible to configure stripe size on volume creation.
+This will lead to sub-optimal performance if page size and block size differ.
+
+Avoid RAID{nbsp}5 volumes when benchmarking 64K vs. 4K page size kernels.
+
+See the __Storage Guide__ for more information on software RAID.
+====
+
+[NOTE]
+.Cross-architecture compatibility considerations
+====
+The {product} {this-version} kernels on x86-64 use 4K page size.
+
+The {power-product} {this-version} kernel uses 64K page size.
+====
+
+
+[#jsc-SLE-13565]
+===== Driver enablement for {nvidia} {bluefield2} DPU as host platform
+
+{arm-product} 15{nbsp}SP1 and later kernels include drivers for installing on
+{nvidiareg} {bluefieldreg} Data Processing Unit (DPU) based server platforms
+and SmartNIC (Network Interface Controller) cards.
+
+As a technology preview, the {arm-product} {this-version} kernel includes
+updated drivers for running on {nvidia} {bluefield2} DPU.
+
+Should you wish to use {arm-product} on {nvidia} {bluefield2} or {bluefield2x}
+(or {bluefield3}) in production, contact your {suse} representative.
+
+[NOTE]
+.Host drivers and tools for {nvidia} {bluefield2} SmartNICs
+====
+This Technology Preview status applies only to installing
+{arm-product} {this-version} *on* {nvidia} {bluefield2} DPUs.
+
+For an {nvidia} {bluefield2} DPU PCIe card inserted as *SmartNIC* into a
+{product} {this-version} or {arm-product} {this-version} based server,
+check <<technology-preview-all>> and <<kernel>> for support status or known
+limitations of {nvidia} {connectxreg} network drivers for {bluefield2} DPUs
+(`mlx5_core` and others).
+
+The `rshim` tool is available from {ph} (<<package-hub-added-package>>).
+====
+
+
+[#jsc-SLE-9263-etnaviv]
+===== etnaviv drivers for {vivante} GPUs are available
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip (SoC)
+contains a {vivante} GC7000UL Graphics Processor Unit (GPU), and
+the {nxp} {imx}{nbsp}8M SoC contains a {vivante} GC7000L GPU.
+
+As a technology preview, the {arm-product} {this-version} kernel includes `etnaviv`,
+a Display Rendering Infrastructure (DRI) driver for {vivante} GPUs, and the
+`Mesa-dri` package contains a matching `etnaviv_dri` graphics driver library.
+Together they can avoid the need for third-party drivers and libraries.
+
+[NOTE]
+====
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {vivante} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+====
+
+
+[#jsc-SLE-8203-lima]
+===== lima driver for {arm} {mali} Utgard GPUs available
+
+The {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC contains
+an {armreg} {malireg}-400 Graphics Processor Unit (GPU).
+
+Prior to {arm-product} 15{nbsp}SP2,
+this GPU needed third-party drivers and libraries from your hardware vendor.
+
+As a technology preview, the {arm-product} 15{nbsp}SP2 kernel added
+`lima`, a Display Rendering Infrastructure (DRI) driver for {mali} _Utgard_
+microarchitecture GPUs, such as {mali}-400, and the `Mesa-dri` package
+contains a matching `lima_dri` graphics driver library.
+
+[NOTE]
+====
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {mali} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+====
+
+NOTE: The `panfrost` driver for {mali} _Midgard_ microarchitecture GPUs
+is supported since {arm-product} 15{nbsp}SP2.
+
+
+[#jsc-SLE-9263-malidp]
+===== mali-dp driver for {arm} {mali} Display Processors available
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018 System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor.
+
+As a technology preview, the {arm-product} 15{nbsp}SP2 kernel added `mali-dp`,
+a Display Rendering Manager (DRM) driver for {mali} Display Processors.
+It has undergone only limited testing because it requires an accompanying
+physical-layer driver for {displayportreg} output (see <<#jsc-SLE-9263-hdp>>).
+
+
+[#jsc-SLE-10302]
+===== Btrfs file system is enabled in U-Boot bootloader
+
+For {rpireg} devices, {arm-product} 12{nbsp}SP3 and later include
+__Das U-Boot__ as bootloader, in order to align the boot process with
+other platforms.
+By default, it loads GRUB as UEFI application from a FAT-formatted partition,
+and GRUB then loads Linux kernel and ramdisk from a file system such as Btrfs.
+
+As a technology preview, {arm-product} 15{nbsp}SP2 added a Btrfs driver to
+U-Boot for the {rpi} (package `u-boot-rpiarm64`).
+This allows its commands `ls` and `load` to access files on Btrfs-formatted
+partitions on supported boot media, such as microSD and USB.
+
+The U-Boot command `btrsubvol` lists Btrfs subvolumes.
+
+// note: shortened from 15 SP2
+
+
+// [#technology-previewx86-64]
+// ==== Technology previews for Intel 64/AMD64 (x86-64)
+
+
+// [#technology-preview-ibm-z]
+// ==== Technology previews for {ibmz} (s390x)
+
+
+// [#technology-preview-power]
+// ==== Technology previews for POWER (ppc64le)
+
+
+

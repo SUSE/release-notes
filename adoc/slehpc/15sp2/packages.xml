@@ -1,0 +1,1114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="package"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Software Changes</title>
+ <para/>
+
+ <section xml:id="package-new"> <!-- START NEW PACKAGES SECTION -->
+  <title>New Packages</title>
+  <para/>
+
+  <section role="package-new" xml:id="jsc-SLE-16461">
+   <title><literal>openmpi4</literal> Has Been Added</title>
+   <para>OpenMPI version 4 has been added - specifically version 4.0.5.</para>
+   <para>For more information see the <link xlink:href="https://raw.githubusercontent.com/open-mpi/ompi/v4.0.x/NEWS">full changelog</link>.</para>
+  </section>
+
+  <section xml:id="package-new-adios">
+   <title>Adaptable IO System (ADIOS) 1.13.1 Has Been Added</title>
+   <para>
+    The Adaptable IO System (ADIOS) provides a simple, flexible way for
+    scientists to describe the data in their code that may need to be
+    written, read, or processed outside of the running simulation.
+   </para>
+   <para>
+    For more information about this release, see the change log at
+    <link xlink:href="https://www.olcf.ornl.gov/center-projects/adios/"/>.
+    For more information about using ADIOS, see
+    <xref linkend="hpc-library-adios"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-new-boost">
+   <title>HPC Flavor of Boost Has Been Added</title>
+   <para>
+    Boost is a set of portable C++ libraries which provide a
+    reference implementation of <quote>existing practices</quote>.
+   </para>
+   <para>
+    See the full release notes for Boost 1.71 at
+    <link xlink:href="https://www.boost.org/users/history/version_1_71_0.html"/>.
+    For information about using Boost, see <xref linkend="hpc-library-boost"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-new-pnetcdf">
+   <title>HPC Flavor of <literal>pnetcdf</literal> Has Been Added</title>
+   <para>
+    NetCDF is a set of software libraries and self-describing,
+    machine-independent data formats that support the creation, access,
+    and sharing of array-oriented scientific data.
+    Parallel netCDF (<literal>PnetCDF</literal>) is a library providing
+    high-performance I/O while still maintaining file-format compatibility
+    with NetCDF by Unidata.
+   </para>
+   <para>
+    For information about using <literal>pnetcdf</literal>, see
+    <xref linkend="file-format-pnetcdf"/>.
+   </para>
+  </section>
+
+ </section> <!-- END NEW PACKAGES -->
+
+
+ <section xml:id="package-update"> <!-- START UPDATED PACKAGES SECTION -->
+  <title>Updated Packages</title>
+
+  <section xml:id="jsc-SLE-18780">
+    <title><literal>gnu11-compiler-hpc</literal></title>
+    <para>
+      This package adds an environment module for the GNU toolchain version 11.
+    </para>
+    <para>
+      It is needed to build and run applications against this version of the GNU
+      toolchain with environment module support.
+    </para>
+    <para>
+      To build software, install the package
+      <literal>gnu11-compiler-hpc-devel</literal>. This will install all
+      required packages (including the GNU C, C++ and Fortran compilers) and set
+      up the system accordingly. To build packages with these compilers, run
+      <literal>module load gnu</literal>. This sets the standard binaries for
+      the GNU compiler toolchain: <literal>gcc</literal>,
+      <literal>g++</literal>, and <literal>gfortran</literal> to the appropriate
+      version and sets environment variables <literal>CC</literal> and
+      <literal>CPP</literal> to the desired binaries.
+    </para>
+    <note>
+      <para>
+        The environment module system always takes the latest version of the
+        toolchain installed as the default. To load the environment for an older
+        toolchain version, the version number needs to be specified when loading
+        the module. For example: <literal>module load gnu/7</literal>.
+      </para>
+      <para>
+        To only run binaries, it is sufficient to install
+        <literal>gnu11-compiler-hpc</literal> by running <literal>zypper install
+        gnu11-compiler-hpc</literal>. However, building in this environment will
+        not be possible.
+      </para>
+    </note>
+  </section>
+
+
+  <section xml:id="package-update-netcdf-cxx">
+   <title><literal>netcdf-cxx4</literal> Has Been Updated to Version 4.3.1</title>
+   <para>
+    The update introduced the following enhancement:
+   </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added <literal>ncFile::create()</literal>, also added a new open function
+      and constructor to allow for more flexibility when opening a file.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For full release notes, see
+    <link xlink:href="https://github.com/Unidata/netcdf-cxx4/blob/master/RELEASE_NOTES.md#netcdf-cxx4-v431-september-12-2019"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-scalapack">
+   <title><literal>scalapack</literal> Has Been Updated to Version 2.1</title>
+   <para>
+    Version 2.1 of <literal>scalapack</literal> contains:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added robust ScaLAPACK routine for computing the QR factorization with column pivoting.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improved accuracy of Frobenius norm by making intermediate column sums.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Miscellaneous minor bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For further information, see the release notes of ScaLAPACK 2.1
+    <link xlink:href="http://netlib.org/scalapack/scalapack-2.1.0.html"/>.
+   </para>
+   <note>
+    <title>BLACS API</title>
+    <para>
+     <literal>libblacs</literal> is no longer packaged separately. The BLACS
+     ABI is part of <literal>libscalapack</literal>.
+    </para>
+   </note>
+  </section>
+
+  <section xml:id="package-update-cpuid">
+   <title><literal>cpuid</literal> Has Been Updated to Version 20180519</title>
+   <para>
+    <literal>cpuid</literal> 20180519 adds support for various new
+    CPUs and makes available a number of new bit fields.
+   </para>
+  </section>
+
+  <section xml:id="package-update-efaaws">
+   <title>Support for EFA in AWS</title>
+   <para>
+    Amazon Web Services (AWS) has introduced the EFA driver to support HPC
+    workloads. The Linux kernel of &product; now supports this driver.
+   </para>
+
+   <section xml:id="package-update-libfabric">
+    <title><literal>libfabric</literal> Has been Updated to Version 1.9.0</title>
+    <para>
+     For more information about the updates in <literal>libfabric</literal>
+     1.9.0, see  <link xlink:href="https://github.com/ofiwg/libfabric/blob/e2956e/NEWS.md"/>.
+    </para>
+   </section>
+
+   <section xml:id="package-update-rdma-core">
+    <title><literal>rdma-core</literal> Has Been Updated to Version 27.1</title>
+    <para>
+     For more information about the updates in <literal>rdma-core</literal>
+     27.1, see <link xlink:href="https://github.com/linux-rdma/rdma-core/releases/tag/v27.1"/>.
+    </para>
+   </section>
+
+   <section xml:id="package-update-openmpi3">
+    <title><literal>openmpi3</literal> Has Been Updated to Version 3.1.6</title>
+    <para>
+     For more information about the bug fixes in
+     <literal>openmpi3</literal> 3.1.6, see
+     <link xlink:href="https://github.com/open-mpi/ompi/blob/ea34872/NEWS"/>.
+    </para>
+   </section>
+  </section>
+
+  <section xml:id="package-update-fftw3">
+   <title><literal>fftw3</literal> Has Been Updated to Version 3.3.8</title>
+   <para>
+    <literal>fftw3</literal> 3.3.8 includes official support for the AArch64
+    architecture.
+   </para>
+  </section>
+
+  <section xml:id="package-update-gsl">
+   <title><literal>gsl</literal> Has Been Updated to Version 2.6</title>
+   <para>
+    For more information about the updates in gsl 2.6, see
+    <link xlink:href="http://git.savannah.gnu.org/cgit/gsl.git/tree/NEWS"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-hdf5">
+   <title><literal>hdf5</literal> Has Been Updated to Version 1.10.5</title>
+   <para>
+    For more information about the updates in hdf5 1.10.5, see
+    <link xlink:href="https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5-RELEASE.txt"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-hwloc">
+   <title><literal>hwloc</literal> Has Been Updated to Version 2.1.0</title>
+   <para>
+    Version 2.1.0 of hwloc brings numerous improvements:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      There are two new object types: <quote>Die</quote> for Xeon 9200
+      processors, and <quote>MemorySideCache</quote> (used when DDR is a
+      cache in front of NVDIMMs).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      There is better support for discovering the locality of memory.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>lstopo</literal> received a range of improvements: better
+      graphical output, factorization of identical objects, and many keyboard
+      shortcuts to configure interactive outputs.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      There are now Bash completions that ease command-line invocations.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information, see
+    <link xlink:href="https://www.mail-archive.com/hwloc-announce@lists.open-mpi.org/msg00127.html"/>.
+   </para>
+   <para>
+    Other changes include:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      New library ABI, with the following major changes:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        Memory, I/O and Misc objects now have their own children list.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Topologies always have at least one NUMA object.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <literal>HWLOC_OBJ_CACHE</literal> object disambiguated to
+        <literal>HWLOC_OBJ_L<replaceable>1-5</replaceable>CACHE</literal> and
+        <literal>HWLOC_OBJ_I<replaceable>1-5</replaceable>CACHE</literal>.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Reworked ignoring/filtering API.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        The distance API has been completely reworked.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Most functions in <filename>hwloc/bitmap.h</filename>
+        now return an integer informing about success or or allocation failure.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Add <filename>hwloc/shmem.h</filename> for sharing topologies between
+        processes running on the same machine.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Add the experimental Portable Network Locality
+        (<literal>netloc</literal>) subproject.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the new sysfs structure of Linux 5.3.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New objects <literal>HWLOC_OBJ_DIE</literal>, and distance-related
+      features: <literal>HWLOC_DISTANCES_KIND_HETEROGENEOUS_TYPES</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New topologies: <literal>HWLOC_OBJ_MEMCACHE</literal>,
+      <literal>HWLOC_OBJ_MEMCACHE</literal>,
+      <literal>HWLOC_HWLOC_OBJ_MEMCACHE</literal>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Details can be found at
+    <link xlink:href="https://github.com/open-mpi/hwloc/blob/f1a2e22/NEWS"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-imb">
+   <title><literal>imb</literal> Has Been Updated to Version 2019.3</title>
+   <para/>
+   <para>
+    Among the changes are:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added the <literal>warm_up</literal> option that enables additional
+      cycles before running benchmark (for all sizes).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added the <literal>Reduce_local</literal> benchmark for IMB-MPI1.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added IMB-P2P benchmarks.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For details, see
+    <link xlink:href="https://github.com/intel/mpi-benchmarks/blob/IMB-v2019.3/README.md"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-hypre">
+   <title>HYPRE Has Been Updated to Version 2.18.2</title>
+   <para>
+    HYPRE 2.18.2 includes bug fixes and some improvements, such as GPU
+    optimizations. For more information, see
+    <link xlink:href="https://github.com/hypre-space/hypre/blob/master/CHANGELOG"/>.
+   </para>
+  </section>
+
+  <section>
+   <title><literal>Lmod</literal> Has Been Updated to Version 8.2.5</title>
+   <para>
+    This update includes the following major changes:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>extension()</literal> function - allow modules to specify
+      extensions that provide <literal>import</literal>, that is a list of other packages
+      <link xlink:href="https://sourceforge.net/p/lmod/mailman/message/36796576/"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Extended Defaults: Allows partial matching of the version to pick the
+      most appropriate module. Users of a non-hierarchical module setup
+      can disable this feature by setting the environment
+      variable <literal>LMOD_EXTENDED_DEFAULT=no</literal>. For details, see
+      <link xlink:href="https://sourceforge.net/p/lmod/mailman/message/36660135/"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for Lua-based <literal>modulerc</literal> files. For details, see
+      <link xlink:href="https://sourceforge.net/p/lmod/mailman/message/36374560/"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Fix for <filename>sh_to_modulefile.sh</filename> which used to fail
+      when unknown options were passed. For details, see
+      <link xlink:href="https://sourceforge.net/p/lmod/mailman/message/36118404/"/>.
+    </para>
+    </listitem>
+    <listitem>
+     <para>
+      Supports reference counting for <literal>PATH</literal>-like variables.
+      For details, see
+      <link xlink:href="https://sourceforge.net/p/lmod/mailman/message/36045411/"/>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For other changes, see
+    <link xlink:href="https://github.com/TACC/Lmod/blob/8.2.5/README.md"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-memkind">
+   <title><literal>memkind</literal> Has Been Updated to Version 1.9.0</title>
+   <para>
+    memkind 1.9.0 includes a number of fixes and improvements over the
+    1.6.x version. Among these:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Fixed issue during dynamic loading.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added C++ allocator for file-backed memory (PMEM kind).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Extended memkind API with <literal>memkind_malloc_usable_size()</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added support to create <literal>kind</literal> without maximum size
+      limit of PMEM kind (<literal>max_size=0</literal>).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Provided the <literal>memkind_detect_kind()</literal> function to recognize a kind from memory allocation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Provided support for Dockerfiles.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Unified the <literal>memkind_realloc()</literal> behavior for all kinds.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information, see
+    <link xlink:href="https://github.com/memkind/memkind/releases/tag/v1.9.0"/>
+    and
+    <link xlink:href="https://github.com/memkind/memkind/blob/v1.9.0/ChangeLog"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-mpich">
+   <title><literal>MPICH</literal> Has Been Updated to Version 3.3.2</title>
+   <para>
+    MPICH 3.3.2 adds a number of improvements and bug fixes, highlights are:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Support for the struct sockaddr in MPICH, Hydra, and PMI socket code.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      A new CH4 device layer implementation designed for low software
+      overhead.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the PMIx client library in CH4 netmods. See also
+      <xref linkend="package-update-pmix"/> and
+      <link xlink:href="https://pmix.github.io/"/>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information, see the
+    <filename>README</filename> file in the package <package>mpich</package>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-mumps">
+   <title><literal>MUMPS</literal> Has Been Updated to Version 5.2.1</title>
+   <para>
+    MUltifrontal Massively Parallel sparse direct Solver (MUMPS) 5.2.1 includes
+    bug fixes, improved distributed memory usage and MPI granularity, and
+    reduced memory usage due to low-rank factorization. For more information,
+    see <link xlink:href="http://mumps.enseeiht.fr/index.php?page=dwnld#cl"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-mvapich2">
+   <title><literal>mvapich2</literal> Has Been Updated to Version 2.3.3</title>
+   <para>
+    For more information about the updates in mvapich2 2.3.3, see
+    <link xlink:href="http://mvapich.cse.ohio-state.edu/overview/"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-netcdf">
+   <title><literal>netcdf</literal> Has Been Updated to Version 4.7.3</title>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Provide byte-range reading of remote data sets.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Add a function for changing the ncid of an open file.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Corrected assignment of anonymous (that is, phony) dimensions in an HDF5 file.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Add a dispatch version number to <filename>netcdf_meta.h</filename> and
+      <filename>libnetcdf.settings</filename>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Now testing that endianness can only be set on atomic
+      <literal>int</literal>s and <literal>float</literal>s.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Various bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For the full release notes, see
+    <link xlink:href="https://github.com/Unidata/netcdf-c/releases/v4.7.3"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-trilinos">
+   <title><literal>Trilinos</literal> Has Been Updated to Version 12.14.1</title>
+   <para>
+    For details on the changes to the individual component (packages) in
+    Trilinos itself, see the respective packages.
+   </para>
+  </section>
+
+  <section xml:id="package-update-petsc">
+   <title><literal>petsc</literal> Has Been Updated to Version 3.12</title>
+   <para>
+    Various subsystems have received updates. For the list of changes, see:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <link xlink:href="https://www.mcs.anl.gov/petsc/documentation/changes/312.html">
+       Release notes version 3.12
+      </link>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://www.mcs.anl.gov/petsc/documentation/changes/311.html">
+       Release notes version 3.11
+      </link>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://www.mcs.anl.gov/petsc/documentation/changes/310.html">
+       Release notes version 3.10
+      </link>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://www.mcs.anl.gov/petsc/documentation/changes/39.html">
+       Release nodes version 3.9
+      </link>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-netcdf-cxx4">
+   <title>netcdf-cxx4 Has Been Updated to Version 4.3.1</title>
+   <para>
+    The <literal>netcdf-cxx4</literal> 4.3.1 adds
+    <literal>ncFile::create()</literal> and a new open function and
+    constructor to allow for more flexibility when opening a file.
+    For more information, see
+    <link xlink:href="https://www.unidata.ucar.edu/blogs/news/entry/netcdf-c-4-3-1"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-netcdf-fortran">
+   <title>netcdf-fortran Has Been Updated to Version 4.5.2</title>
+   <para>
+    For more about updates in netcdf-fortran 4.5.2, see the change logs at:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <link xlink:href="https://github.com/Unidata/netcdf-fortran/releases/tag/v4.5.2"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://github.com/Unidata/netcdf-fortran/releases/tag/v4.5.1"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://github.com/Unidata/netcdf-fortran/releases/tag/v4.5.0"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-openblas">
+   <title>OpenBLAS Has Been Updated to Version 0.3.7</title>
+   <para>
+    For more information about the updates in OpenBLAS 0.3.7, see
+    <link xlink:href="https://www.openblas.net/Changelog.txt"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-papi">
+   <title><literal>PAPI</literal> Has Been Updated to Version 5.7.0</title>
+   <para>
+    <literal>PAPI</literal> 5.7.0 includes a new component, called
+    <literal>pcp</literal> which interfaces to the Performance Co-Pilot
+    (PCP). This release also upgrades the PAPI <literal>nvml</literal>
+    component with write access to the information and controls exposed
+    via the NVIDIA Management Library. For more information, see
+    <link xlink:href="https://icl.cs.utk.edu/papi/news/news.html?id=381"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-pmix">
+   <title>Support for PMIx Has Been Added to Slurm and MPI libraries</title>
+   <para>
+    PMIx abstracts the internals of MPI implementations for workload
+    managers and unifies the way MPI jobs are started by the workload
+    manager: With PMIx, there is no need to utilize the individual MPI
+    launchers on Slurm anymore, <command>srun</command> will take care of
+    this. In addition, the workload manager can determine the topology of
+    the cluster. This removes the need for users to specify topologies
+    manually.
+   </para>
+  </section>
+
+  <section xml:id="package-update-python3-numpy">
+   <title>NumPy Has Been Updated to Version 1.16</title>
+   <para>
+    NumPy 1.16 (<package>python3-numpy</package>) includes several new
+    features and bug fixes, including:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added an extensible random module along with four selectable random
+      number generators and improved seeding designed for use in parallel
+      processes.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added radix sort and Timsort sorting methods.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information, see
+    <link xlink:href="https://numpy.org/doc/1.16/release.html"/>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-python-scipy">
+   <title><literal>python3-scipy</literal> Has Been Updated to Version 1.33</title>
+   <para>
+    SciPy 1.33 (<package>python3-scipy</package>) includes several new
+    features and bug fixes, including:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added a new extensible random module along with four selectable random
+      number generators and improved seeding designed for use in parallel
+      processes.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      For the Attribute-Relation File Format (ARFF),
+      added several relational attributes to
+      <literal>scipy.io.arff.loadarff</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Removed several functions from
+      <literal>scipy.interpolate</literal> (<literal>spleval</literal>,
+      <literal>spline</literal>, <literal>splmake</literal>, and
+      <literal>spltopp</literal>) and from
+      <literal>scipy.misc</literal> (<literal>bytescale</literal>, <literal>fr
+      omimage</literal>, <literal>imfilter</literal>, <literal>imread</literal>,
+      <literal>imresize</literal>, <literal>imrotate</literal>, <literal>im
+      save</literal>, <literal>imshow</literal>, <literal>toimage</literal>).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added a new function to compute the Epps-Singleton test statistic,
+      <literal>scipy.stats.epps_singleton_2samp</literal>, which can be
+      applied to continuous and discrete distributions.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added new functions
+      <literal>scipy.stats.median_absolute_deviation</literal> and
+      <literal>scipy.stats.gstd</literal> (geometric standard deviation). The
+      <literal>scipy.stats.combine_pvalues</literal> method now supports
+      <literal>pearson</literal>, <literal>tippett</literal> and
+      <literal>mudholkar_george</literal> pvalue combination methods.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>scipy.spatial.ConvexHull</literal> now has a good attribute
+      that can be used
+      alongside the QGn Qhull options to determine which external facets
+      of a convex hull are visible from an external query point.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Modernized <literal>scipy.spatial.cKDTree.query_ball_point</literal>
+      to use certain newer Cython features, including GIL handling
+      and exception translation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added new keyword to <literal>csgraph.dijsktra</literal> that allows users
+      to query the shortest path to any of the passed-in indices, as opposed
+      to the shortest path to every passed index.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added the keyword <literal>workers</literal> to the
+      <literal>scipy.optimize.brute</literal> minimizer,
+      which can be used to parallelize computation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Removed a dependency on <literal>np.polynomial</literal>:
+      Gaussian filter improves performance by up to an order of magnitude.
+      This may impact <literal>scipy.ndimage.gaussian_filter</literal>,
+      for example.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added wrappers for <literal>?syconv</literal> routines which convert a
+      symmetric matrix
+      given by a triangular matrix factorization into two matrices and vice
+      versa.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>scipy.linalg.clarkson_woodruff_transform</literal> now uses an
+      algorithm that
+      leverages sparsity. This provides a speedup of up to 90 % for dense input
+      matrices.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information, see:
+   </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.3.3.html">
+       Release Notes SciPy 1.3.3</link>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.3.2.html">
+       Release Notes SciPy 1.3.2</link>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.3.1.html">
+       Release Notes SciPy 1.3.1</link>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.3.0.html">
+       Release Notes SciPy 1.3.0</link>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.2.3.html">
+       Release Notes SciPy 1.2.3</link>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.2.2.html">
+       Release Notes SciPy 1.2.2</link>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <link xlink:href="https://docs.scipy.org/doc/scipy/reference/release.1.2.1.html">
+        Release Notes SciPy 1.2.1</link>
+      </para>
+     </listitem>
+    </itemizedlist>
+   <para>
+    <literal>python-scipy</literal> 1.3.3 is available for Python 3 only.
+    The last <literal>python-scipy</literal> version shipped with Python 2
+    support was 1.2.2 which is provided for backward compatibility.
+   </para>
+  </section>
+
+  <section xml:id="package-update-slurm">
+   <title>Changes to Slurm</title>
+
+   <section xml:id="package-update-slurm-2002">
+    <title>The default version of Slurm is now version 20.02</title>
+    <para>
+     Slurm is shipped in version 20.02, meaning the same version of Slurm
+     is now used across &product; versions.
+     Before upgrading your Slurm installation to a new major version, make
+     sure to read <xref linkend="hpc-tool-slurm-compatibility"/> and
+     <xref linkend="hpc-tool-slurm-upgrade"/>.
+    </para>
+
+    <section xml:id="package-slurm-webdoc">
+     <title>New Subpackage <package>slurm-webdoc</package></title>
+     <para>
+      <package>slurm-webdoc</package> installs a web server and the
+      <package>slurm-doc</package> package, so you can view Slurm
+      documentation. It also contains a tool to help you generate a
+      <filename>slurm.conf</filename>.
+     </para>
+    </section>
+   </section>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-configuration.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-upgrade-2302.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-upgrade-2205.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-upgrade-2011.xml"/>
+  </section>
+
+  <section xml:id="package-update-munge">
+   <title>MUNGE Has Been Updated to Version 0.5.14</title>
+   <para>
+    The update includes:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added negative caching of user lookups for processing supplementary groups.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added <literal>--origin</literal> and <literal>--stop</literal>
+      command-line options to <command>munged</command>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added <literal>--numeric</literal> command-line option to
+      <command>unmunge</command>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added several configuration options.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improved logging: Non-existing users are only logged once.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Bug fixes.
+    </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-conman">
+   <title><literal>conman</literal> Has Been Updated to Version 0.3.0</title>
+   <para>
+    This update includes a bug fix that has been previously released in a
+    maintenance update.
+   </para>
+   <para>
+    This update fixes slow connects to Unix socket consoles triggered from
+    <literal>inotify</literal>.
+   </para>
+  </section>
+
+  <section xml:id="package-update-genders">
+   <title><literal>genders</literal> Has Been Updated to Version 1.27.3</title>
+   <para>
+    This update adds the following features:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Improve file parsing speed.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support <literal>--compress-hosts</literal> option in nodeattr, to
+      compress genders database by hosts rather than attrs.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support <literal>--compress-attrs</literal> option as an alias of
+      <literal>--compress</literal> for consistency.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Various bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-clustduct">
+   <title><literal>clustduct</literal> Has Been Updated to Version 0.0.5</title>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      Integrated support for &slea; 15 SP2.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Numerous bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-ganglia-web">
+   <title><literal>ganglia-web</literal> Has Been Updated to Version 3.7.4</title>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added graph for disk space (Used/Avail/Total).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added graph for I/O read and write, from <literal>mod_io</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added time fields to the aggregate graphs.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added div for metric, as an anchor for metric search.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Allowed adding default graphs on host view only.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improved performance of the host view by only refreshing graphs that are visible
+      in the browser viewport.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improvements to the dialog content for adding items to views. For example,
+      only display warning/critical fields for metric graphs.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Add support for specifying the timezone to use for displaying performance
+      data.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improve user experience for selecting metrics as part of building aggregate
+      graphs.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Improve and fix <literal>cpu_guest</literal> and
+      <literal>cpu_gnice</literal> (<literal>guest_nice</literal>) display.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Multiple bug fixes.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section xml:id="package-update-scotch">
+   <title><literal>scotch</literal> Has Been Update to Version 6.0.9</title>
+   <para/>
+   <para>
+    This update brings a number of bug fixes.
+    For more information, see
+    <link xlink:href="https://gforge.inria.fr/frs/?group_id=248"/>.
+   </para>
+  </section>
+
+ </section> <!-- END UPDATED PACKAGES -->
+
+
+ <section xml:id="package-removed"><!-- START REMOVED PACKAGES SECTION -->
+  <title>Removed Packages and Functionality</title>
+  <para/>
+
+  <section xml:id="package-removed-ohpc">
+   <title><literal>ohpc</literal> Has Been Removed</title>
+   <para>
+    The package <literal>ohpc</literal> provided RPM macros for
+    compatibility with the OpenHPC project. It is no longer needed.
+   </para>
+  </section>
+
+ </section><!-- END REMOVED PACKAGES -->
+
+ <!-- <section xml:id="package-deprecated">
+  <title>Deprecated Packages and Functionality</title>
+  <para/>
+ </section> -->
+
+ <!-- <section xml:id="package-packaging">
+  <title>Changes in Packaging and Delivery</title>
+  <para/>
+ </section> -->
+</section>

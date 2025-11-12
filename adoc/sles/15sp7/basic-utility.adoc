@@ -1,0 +1,18 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#basic-utility]
+=== Basic utilities
+
+// Release notes for basic utilities
+//   less, sed, Vim, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

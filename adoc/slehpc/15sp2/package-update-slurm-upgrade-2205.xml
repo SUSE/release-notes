@@ -1,0 +1,513 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section [
+    <!ENTITY % myents SYSTEM "generic-rn.ent">
+    %myents;
+]>
+<section xml:id="package-slurm-upgrade-2205"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Slurm version 22.05</title>
+    <para>
+        An update to
+        <literal>Slurm</literal>
+        version 22.05 is available.
+    </para>
+    <section xml:id="id-important-notes-for-upgrading-to-version-22-05">
+        <title>Important notes for upgrading to version 22.05</title>
+        <para>Slurmdbd version 22.05 will work Slurm daemons of version 20.11.
+    You will not need to update all clusters at the same time, but it is very
+    important to update slurmdbd first and having it running before updating
+    any other clusters making use of it.</para>
+        <para>Slurm can be upgraded from version 20.11 to version 22.05 without loss of jobs
+    or other state information. Upgrading directly from an earlier version
+    of Slurm will result in loss of state information.</para>
+        <para>For more information and a recommended upgrade procedure, see the section
+    "Upgrading Slurm" in the chapter "Slurm — utility for HPC workload management"
+    of the in the SLE HPC 15 "Administration Guide".</para>
+        <para>All SPANK plugins must be recompiled when upgrading from any Slurm version
+    prior to 22.05.</para>
+        <para>If you are using the Slurm plugin for pdsh you must make sure,
+    pdsh_slurm_22_05` is installed together with slurm_22_05.</para>
+    </section>
+    <section xml:id="id-highlights-of-version-20-11">
+        <title>Highlights of version  20.11</title>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    The template
+                    <literal>slurmrestd.service</literal>
+                    unit file now defaults to listen on both the
+    Unix socket and the
+                    <literal>slurmrestd</literal>
+                    port.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    The template
+                    <literal>slurmrestd.service</literal>
+                    unit file now defaults to enable auth/jwt
+    and the munge unit is no longer a dependency by default.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add extra
+                    <quote>EnvironmentFile=-/etc/default/$service</quote>
+                    setting to service files.
+                </para>
+            </listitem>
+            <listitem>
+                <para>Allow jobs to pack onto nodes already rebooting with the desired features.</para>
+            </listitem>
+            <listitem>
+                <para>Reset job start time after nodes are rebooted, previously only done for
+    cloud/power save boots.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Node features (if any) are passed to
+                    <literal>RebootProgram</literal>
+                    if run from
+                    <literal>slurmctld</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Fail srun when using invalid
+                    <literal>--cpu-bind options</literal>
+                    (e.g.
+                    <literal>--cpu-bind=map_cpu:99</literal>
+                    when only 10 CPUs are allocated).
+                </para>
+            </listitem>
+            <listitem>
+                <para>Storing batch scripts and env vars are now in indexed tables using
+    substantially less disk space.  Those storing scripts in 21.08 will all
+    be moved and indexed automatically.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Run
+                    <literal>MailProg</literal>
+                    through
+                    <literal>slurmscriptd</literal>
+                    instead of directly fork+exec()'ing
+    from
+                    <literal>slurmctld</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add
+                    <literal>acct_gather_interconnect/sysfs</literal>
+                    plugin.
+                </para>
+            </listitem>
+            <listitem>
+                <para>Future and Cloud nodes are treated as "Planned Down" in usage reports.</para>
+            </listitem>
+            <listitem>
+                <para>Add new shard plugin for sharing GPUs but not with mps.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add support for Lenovo SD650 V2 in
+                    <literal>acct_gather_energy/xcc</literal>
+                    plugin.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Remove
+                    <literal>cgroup_allowed_devices_file.conf</literal>
+                    , since the default policy in modern
+    kernels is to whitelist by default. Denying specific devices must be done
+    through
+                    <literal>gres.conf</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Node state flags (
+                    <literal>DRAIN</literal>
+                    ,
+                    <literal>FAILED</literal>
+                    ,
+                    <literal>POWERING UP</literal>
+                    , etc.) will be cleared now if
+    node state is updated to
+                    <literal>FUTURE</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>srun</literal>
+                    will no longer read in
+                    <literal>SLURM_CPUS_PER_TASK</literal>
+                    . This means you will
+    implicitly have to specify
+                    <literal>--cpus-per-task</literal>
+                    on your
+                    <literal>srun</literal>
+                    calls, or set the
+    new
+                    <literal>SRUN_CPUS_PER_TASK</literal>
+                    environment variable to accomplish the same thing.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Remove
+                    <literal>connect_timeout</literal>
+                    and timeout options from
+                    <literal>JobCompParams</literal>
+                    as there’s no
+    longer a connectivity check happening in the
+                    <literal>jobcomp/elasticsearch</literal>
+                    plugin
+    when setting the location off of
+                    <literal>JobCompLoc</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>Add support for hourly reoccurring reservations.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Allow nodes to be dynamically added and removed from the system. Configure
+                    <literal>MaxNodeCount</literal>
+                    to accomodate nodes created with dynamic node registrations
+    (
+                    <literal>slurmd -Z --conf=""</literal>
+                    ) and
+                    <literal>scontrol</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>Added support for Cgroup Version 2.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>sacct</literal>
+                    - allocations made by
+                    <literal>srun</literal>
+                    will now always display the allocation and
+    step(s). Previously, the allocation and step were combined when possible.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>cons_tres</literal>
+                    - change definition of the "least loaded node" (LLN) to the node
+    with the greatest ratio of available CPUs to total CPUs.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add support to ship
+                    <literal>Include</literal>
+                    configuration files with configless.
+                </para>
+            </listitem>
+            <listitem>
+                <para>Provide a detailed reason in the job log as to why it has been terminated
+    when hitting a resource limit.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Pass and use
+                    <literal>alias_list</literal>
+                    through credential instead of environment variable.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add ability to get host addresses from
+                    <literal>nss_slurm</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Enable reverse fanout for
+                    <literal>cloud+alias_list jobs</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add support to delete/update nodes by specifying nodesets or the 'ALL'
+    keyword alongside the delete/update node message nodelist expression (i.e.
+                    <literal>scontrol delete/update NodeName=ALL</literal>
+                    or
+                    <literal>scontrol delete/update NodeName=ns1,nodes[1-3]</literal>
+                    ).
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Expanded the set of environment variables accessible through Prolog/Epilog
+    and
+                    <literal>PrologSlurmctld</literal>
+                    /
+                    <literal>EpilogSlurmctld</literal>
+                    to include
+                    <literal>SLURM_JOB_COMMENT</literal>
+                    ,
+                    <literal>SLURM_JOB_STDERR</literal>
+                    ,
+                    <literal>SLURM_JOB_STDIN</literal>
+                    ,
+                    <literal>SLURM_JOB_STDOUT</literal>
+                    ,
+                    <literal>SLURM_JOB_PARTITION</literal>
+                    ,
+                    <literal>SLURM_JOB_ACCOUNT</literal>
+                    ,
+                    <literal>SLURM_JOB_RESERVATION</literal>
+                    ,
+                    <literal>SLURM_JOB_CONSTRAINTS</literal>
+                    ,
+                    <literal>SLURM_JOB_NUM_HOSTS</literal>
+                    ,
+                    <literal>SLURM_JOB_CPUS_PER_NODE</literal>
+                    ,
+                    <literal>SLURM_JOB_NTASKS</literal>
+                    , and
+                    <literal>SLURM_JOB_RESTART_COUNT</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Attempt to requeue jobs terminated by
+                    <literal>slurm.conf</literal>
+                    changes (node vanish, node
+    socket/core change, etc). Processes may still be running on excised nodes.
+    Admin should take precautions when removing nodes that have jobs on running
+    on them.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add
+                    <literal>switch/hpe_slingshot</literal>
+                    plugin.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add new
+                    <literal>SchedulerParameters</literal>
+                    option
+                    <literal>bf_licenses</literal>
+                    to track licenses as
+    within the backfill scheduler.
+                </para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section xml:id="id-configureation-file-changes-for-details-see-the-appropriate-man-page">
+        <title>Configureation File changes (for details, see the appropriate man page)</title>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    <literal>AcctGatherEnergyType</literal>
+                    <literal>rsmi</literal>
+                    is now
+                    <literal>gpu</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>TaskAffinity</literal>
+                    parameter was removed from
+                    <literal>cgroup.conf</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Fatal if the mutually-exclusive
+                    <literal>JobAcctGatherParams</literal>
+                    options of
+                    <literal>UsePss</literal>
+                    and
+                    <literal>NoShared</literal>
+                    are both defined.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>KeepAliveTime</literal>
+                    has been moved into
+                    <literal>CommunicationParameters</literal>
+                    . The standalone
+    option will be removed in a future version.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>preempt/qos</literal>
+                    - add support for WITHIN mode to allow for preemption between
+    jobs within the same QOS.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Fatal error if
+                    <literal>CgroupReleaseAgentDir</literal>
+                    is configured in
+                    <literal>cgroup.conf</literal>
+                    . The
+    option has long been obsolete.
+                </para>
+            </listitem>
+            <listitem>
+                <para>Fatal if more than one burst buffer plugin is configured.</para>
+            </listitem>
+            <listitem>
+                <para>
+                    Added
+                    <literal>keepaliveinterval</literal>
+                    and
+                    <literal>keepaliveprobes</literal>
+                    to
+                    <literal>CommunicationParameters</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Added
+                    <literal>new max_token_lifespan=&lt;seconds&gt;</literal>
+                    to
+                    <literal>AuthAltParameters</literal>
+                    to allow sites
+    to restrict the lifespan of any requested ticket by an unprivileged user.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Disallow
+                    <literal>slurm.conf</literal>
+                    node configurations with
+                    <literal>NodeName=ALL</literal>
+                    .
+                </para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section xml:id="id-command-changes-for-details-see-the-appropriate-man-page">
+        <title>Command Changes (for details, see the appropriate man page)</title>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    Remove support for (non-functional)
+                    <literal>--cpu-bind=boards</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Added
+                    <literal>--prefer</literal>
+                    option at job submission to allow for 'soft' constraints.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    Add
+                    <literal>condflags=open</literal>
+                    to sacctmgr show events to return open/currently down
+    events.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>sacct -f</literal>
+                    flag implies
+                    <literal>-c</literal>
+                    flag.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>srun --overlap</literal>
+                    now allows the step to share all resources (CPUs, memory, and
+    GRES), where previously
+                    <literal>--overlap</literal>
+                    only allowed the step to share CPUs with
+    other steps.
+                </para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <section xml:id="id-api-changes">
+        <title>API Changes</title>
+        <itemizedlist>
+            <listitem>
+                <para>
+                    <literal>openapi/v0.0.35</literal>
+                    - Plugin has been removed.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>burst_buffer</literal>
+                    plugins -
+                    <literal>err_msg</literal>
+                    added to
+                    <literal>bb_p_job_validate()</literal>
+                    .
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>openapi</literal>
+                    - added flags to
+                    <literal>slurm_openapi_p_get_specification()</literal>
+                    . Existing
+    plugins only need to update their prototype for the function as
+    manipulating the flags pointer is optional.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>openapi</literal>
+                    - Added
+                    <literal>OAS_FLAG_MANGLE_OPID</literal>
+                    to allow plugins to request that the
+                    <literal>operationId</literal>
+                    of path methods be mangled with the full path to ensure
+    uniqueness.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <literal>openapi/[db]v0.0.36</literal>
+                    - Plugins have been marked as deprecated and will be
+    removed in the next major release.
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    switch plugins - add
+                    <literal>switch_g_job_complete()</literal>
+                    function.
+                </para>
+            </listitem>
+        </itemizedlist>
+    </section>
+</section>

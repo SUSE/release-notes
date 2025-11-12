@@ -1,0 +1,290 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#aarch64]
+== {arm} 64-bit-specific changes (AArch64)
+
+Information in this section applies to {arm-product} {this-version}.
+
+
+[#arm64-soc]
+=== System-on-Chip driver enablement
+
+{arm-product} {this-version} includes driver enablement for the following
+System-on-Chip (SoC) chipsets:
+
+* {amdreg} {opteronreg} A1100
+* {amperereg} {xgenereg}, {emagreg}, {altrareg}, _{altramax}_, _**{ampereonereg}**_
+* {awsreg} Graviton, Graviton2, Graviton3
+* {brcmreg} BCM2837/BCM2710, BCM2711
+* {fujitsureg} A64FX
+* {huaweireg} {kunpengreg} 916, {kunpeng} 920
+* {marvellreg} {thunderxreg}, {thunderx2reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
+* {nvidiareg} **{grace}**; {tegrareg}{nbsp}X1, Tegra{nbsp}X2, {xavierreg}, **{orin}**; {bluefieldreg}, _{bluefield2}_
+// jsc#SLE-12251 (LS1012A), jsc#SLE-11914 (i.MX 8MM)
+* {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
+* {qcomreg} {centriqreg} 2400
+* Rockchip RK3399
+* {socionextreg} {synquacerreg} SC2A11
+* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
+
+NOTE: Driver enablement is done as far as available and requested.
+Refer to the following sections for any known limitations.
+
+Some systems might need additional drivers for external chips, such as a
+Power Management Integrated Chip (PMIC), which may differ between systems
+with the same SoC chipset.
+
+For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
+or the Embedded Base Boot Requirements (EBBR),
+that is, the Unified Extensible Firmware Interface (UEFI) either
+implementing the Advanced Configuration and Power Interface (ACPI) or
+providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
+will default to the Device Tree; the kernel command line argument `acpi=force` can
+override this default behavior.
+
+Check for {suse} _YES!_ certified systems,
+which have undergone compatibility testing.
+
+
+[#aarch64-new]
+=== New features
+
+[#jsc-PED-1763]
+==== Driver enablement for {nvidiaorin}
+
+{arm-product} {this-version} adds initial enablement for the
+{nvidiaorinreg} SoC (T234), which is found on {jetsonreg} AGX{nbsp}{orin},
+{jetson} {orin}{nbsp}NX and {jetson} {orin}{nbsp}Nano System-on-Modules (SoM).
+// TODO NVIDIA IGX Orin
+
+// bsc#1212541, jsc#PED-7863
+[WARNING]
+.Firmware/kernel ABI break in {nvidia} {jetpack} 6.0 SDK
+====
+{nvidia} {jetpackreg} 6.0 boot firmware and Linux kernel 6.5
+changed the Application Binary Interface (ABI)
+for numbering General Purpose Input/Output (GPIO) pins --
+specifically the main GPIO ports X, Y, Z, AC, AD, AE, AF and AG --
+referenced in the machine-specific vendor Device Tree (DT) binary
+for {nvidiaorin} based systems.
+// https://github.com/SUSE/kernel-source/commit/d4ea3ee04f6c78a840bca4e8a8c5d5946581aa91
+// https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=12382ad05110b569d95d29c637e16bbeb115acca
+
+A {arm-product} {this-version} kernel maintenance update adopts the behavior of
+the latest kernels and is _fully_ compatible only with {jetpack} 6.0 and later:
+
+|===
+|Firmware |{slsa} {this-version} GM |{slsa} {this-version} QU1 |{slsa} {this-version} QU2 |{slsa} {this-version} QU3
+
+|{jetpack} 5.x
+|{sup}
+|{sup}
+|{sup}
+|{uns}
+
+|{jetpack} 6.x
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|===
+
+This is known to affect some peripherals on the following modules or systems:
+
+* {nvidia} {jetson} AGX{nbsp}{orin} Developer Kit:
+** USB Type-C controller
+** Ethernet controller
+** Camera sensors
+** PCIe endpoint mode
+* {nvidia} {jetson} {orin}{nbsp}NX:
+** Camera sensors
+* {nvidia} {jetson} {orin}{nbsp}Nano:
+** Camera sensors
+* For others, check with your system vendor.
+
+For installed systems running {jetpack} firmware versions prior to 6.0,
+suggested steps are:
+
+. Update the kernel packages from the installed system,
+  but do not reboot into the new kernel yet.
+. Shut the system down in order to enter its Recovery Mode.
+. Flash the latest {jetpack} firmware according to system vendor instructions.
+  Be careful to not overwrite your {arm-product} installation.
+  For example: `sudo ./flash.sh _device-identifier-and-boot-medium_ external`
+. Boot the system into the new kernel.
+
+For new installations, consider these options:
+
+* {arm-product} {this-version} Quarterly Update 3 (QU3) media from {scc}
+are expected to include the updated kernel suited for systems with
+{nvidia} {jetpack} 6.0 and later.
+Flash the latest vendor firmware before installing from these updated media.
+* In the meantime, with {this-version} Quarterly Update 2 and earlier media,
+consider installing from an earlier version of {jetpack} and following above
+update steps.
+* If a firmware downgrade is not available for your system,
+contact {suse} Customer Support for whether a custom kISO medium can be created.
+
+{arm-product} {next-version} will only support {nvidia} {jetpack} 6.0 and later.
+====
+
+Drivers for the integrated, {nvidia} _Ampere_ microarchitecture-based Graphics Processor Unit (GPU) are not included (<<#jsc-PED-1763-drm>>).
+
+
+[#jsc-PED-4564]
+==== Driver enablement for {nvidiagrace}
+
+A {arm-product} {previous-version} maintenance update added partial
+enablement for the {nvidiagracereg} SoC (T241).
+
+{arm-product} {this-version} adds further enablement for the {nvidiagrace} SoC.
+
+This also covers the {nvidiagracehopperreg} SoC with an integrated,
+_Hopper_ microarchitecture-based Graphics Processor Unit (GPU).
+Drivers for this integrated GPU are not included (<<jsc-PED-4564-drm>>).
+
+{nvidia} recommend to use `kernel-64kb` on {nvidiagrace} and {gracehopper} SoCs
+(<<jsc-PED-4489>>).
+
+
+[#jsc-PED-4489]
+=== 64K page size kernel flavor is supported
+
+{arm-product} 12{nbsp}SP2 and later kernels have used a page size of 4K.
+This offers the widest compatibility also for small systems with little RAM,
+allowing to use Transparent Huge Pages (THP) where large pages make sense.
+
+As a technology preview, {arm-product} {this-ga}{nbsp}SP3 added a kernel flavor
+`64kb`, offering a page size of 64{nbsp}KiB and physical/virtual address size
+of 52 bits.
+Same as the `default` kernel flavor, it does not use preemption.
+
+{arm-product} {this-version} largely removes this technology preview status,
+offering support for `kernel-64kb` on select platforms, such as
+{nvidiagracereg} (<<jsc-PED-4564>>).
+KVM virtualization remains a technology preview on this `64kb` kernel flavor
+(<<jsc-PED-4489-kvm>>).
+
+[NOTE]
+.Default file system no longer needs to be changed
+====
+{arm-product} {previous-version} and later allow the use of Btrfs based file systems
+with 4{nbsp}KiB block size also with 64{nbsp}KiB page size kernels.
+
+// See <<jsc-SLE-17674>> for details and known limitations.
+====
+
+[IMPORTANT]
+.Swap needs to be re-initialized
+====
+After booting the 64K kernel, any swap partitions need to re-initialized to be usable.
+To do this, run the `swapon` command with the `--fixpgsz` parameter on the swap partition.
+Note that this process deletes data present in the swap partition (for example, suspend data).
+In this example, the swap partition is on `/dev/sdc1`:
+[source,bash]
+swapon --fixpgsz /dev/sdc1
+====
+
+// jsc#SLE-14841
+// jsc#SLE-20728
+[WARNING]
+.RAID{nbsp}5 uses page size as stripe size
+====
+It is currently possible to configure stripe size by setting the following kernel parameter:
+[source,bash]
+echo 16384 > /sys/block/md1/md/stripe_size
+
+Keep in mind that `stripe_size` must be in multiples of 4KB and not bigger than `PAGE_SIZE`. Also, it is only supported on systems where `PAGE_SIZE` is not 4096, such as arm64.
+
+Avoid RAID{nbsp}5 volumes when benchmarking 64K vs. 4K page size kernels.
+
+See the __Storage Guide__ for more information on software RAID.
+====
+
+[NOTE]
+.Cross-architecture compatibility considerations
+====
+The {productname} {this-version} kernels on x86-64 use 4K page size.
+
+The {power-product} {this-version} kernel uses 64K page size.
+====
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#aarch64-known]
+=== Known limitations
+
+[#jsc-PED-4564-drm]
+==== No graphics drivers on {nvidiagracehopper}
+
+The {nvidiagracehopperreg} System-on-Chip contains an integrated,
+_Hopper_ microarchitecture-based Graphics Processor Unit (GPU).
+
+{arm-product} {this-version} maintenance updates currently provide packages
+`nvidia-open-driver-G06-signed-kmp-default` and `kernel-firmware-nvidia-gspx-G06`
+in version `535.104.05`, which does not yet enable {nvidiagracehopper} GH200.
+
+// bsc#1216872 for lack of -kmp-64kb packages
+
+Check for maintenance updates of those packages with version `545.29.02` or later,
+or contact the system vendor or chip vendor {nvidia} for whether third-party
+graphics drivers are available for {arm-product} {this-version}.
+
+[NOTE]
+.PCIe GPUs not affected
+====
+Discrete GPU cards with _Hopper_ microarchitecture, such as {nvidia} H100,
+are already enabled in shipping package versions.
+====
+
+
+[#jsc-PED-1763-drm]
+==== No graphics drivers on {nvidia} {jetson}
+
+The {nvidiareg} {tegrareg} System-on-Chip chipsets include an integrated
+Graphics Processor Unit (GPU).
+
+{arm-product} {this-version} does not include graphics drivers for any of the
+{nvidia} {jetsonreg}, {nvidia} IGX or {nvidiadrivereg} platforms.
+
+Contact the chip vendor {nvidia} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+
+[#jsc-SLE-9263-hdp]
+==== No {displayport} graphics output on {nxp} LS1028A and LS1018A
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor, whose output is connected to a
+{displayportreg} TX{nbsp}Controller (HDP-TX) based on
+{cadencereg} High Definition (HD) Display Intellectual Property (IP).
+
+A Display Rendering Manager (DRM) driver for the {arm} {mali}-DP500
+Display Processor is available as technology preview (<<#jsc-SLE-9263-malidp>>).
+
+However, there was no HDP-TX physical-layer (PHY) controller driver ready yet.
+Therefore no graphics output will be available, for example, on the
+{displayportreg} connector of the {nxp} LS1028A Reference Design Board (RDB).
+
+Contact the chip vendor {nxp} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+Alternatively, contact your hardware vendor for whether a bootloader update
+is available that implements graphics output, allowing to instead use `efifb`
+framebuffer graphics in {arm-product} {this-version}.
+
+NOTE: The {vivante} GC7000UL GPU driver (`etnaviv`) is available as a
+technology preview (<<jsc-SLE-9263-etnaviv>>).
+
+// [#arm64-rpi3-known]
+
+// [#arm64-rpi4-known]

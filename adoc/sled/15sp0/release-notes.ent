@@ -1,0 +1,45 @@
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+
+<!ENTITY suse "SUSE">
+<!ENTITY product "&sled;/&slewe;">
+<!ENTITY suse-version "15">
+<!ENTITY spversion "0">
+<!ENTITY sptext "GA">
+<!-- <!ENTITY sptext "SP&spversion;"> -->
+<!ENTITY this-version "&suse-version; &sptext;">
+<!ENTITY rel-date "June 2018">
+
+<!ENTITY next-version "15 SP1">
+<!ENTITY previous-version "12 SP3">
+<!ENTITY next-ga "16">
+<!ENTITY previous-ga "12">
+<!ENTITY opensuse "open&suse;">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sleda "SLED">
+<!ENTITY sles "&sle; Server">
+<!ENTITY slewe "&sle; Workstation Extension">
+<!ENTITY slewea "SLE-WE">
+<!ENTITY sleha "&sle; High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &sle; High Availability">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&sle; &sdk;">
+<!ENTITY ph "&suse; Package Hub">
+
+<!ENTITY support-url "https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server">
+
+<!-- FIXME: Update to correct SLED 15 URL before the release. -->
+<!ENTITY doc-url "https://www.suse.com/documentation/sled-15">
+<!ENTITY doc-url-beta "https://susedoc.github.io/doc-sle/develop">
+<!-- <!ENTITY doc-url "http://beta.suse.com/private/documentation/sles-15"> -->
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+
+<!-- FIXME: Update to correct SLED 15 URL before the release. -->
+<!-- <!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="Beta SUSE Linux Enterprise Desktop 15" component="Maintenance" assignee="lukas.kucharczyk@suse.com" ?>'> -->
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Desktop 15" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'>
+

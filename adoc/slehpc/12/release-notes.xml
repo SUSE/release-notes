@@ -1,0 +1,2187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+    type="text/xml"
+    title="Profiling step"
+?>
+<!DOCTYPE article
+[
+   <!ENTITY % entities SYSTEM "generic-rn.ent">
+   %entities;
+]>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en" xml:id="rnotes">
+ <title>&rnotes;</title>
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+    <dm:component>Release Notes</dm:component>
+    <dm:product>SUSE Linux Enterprise Server 12 SP2</dm:product>
+    <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
+   </dm:bugtracker>
+  </dm:docmanager>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&shpcm;</productname>
+  <productnumber>&this-version;</productnumber>
+  <abstract>
+   <para>
+<!-- This seems redundant.
+         jjolly: 19 July 2018 -->
+    This document provides guidance and an overview to high-level general
+    features and updates for the &hpcm; &this-version-long;. It
+    describes the capabilities and limitations of the
+    &hpcm; &this-version;.
+   </para>
+
+   <para>
+    If you are skipping one or more releases, check the release notes of the
+    skipped releases as well. Release notes usually only list changes that
+    happened between two subsequent releases. If you are only reading the
+    release notes of the current release, you could miss important changes.
+   </para>
+
+   <para>
+    General documentation can be found at:
+    <link xlink:href="https://www.suse.com/documentation/"/>.
+   </para>
+  </abstract>
+ </info>
+ <section xml:id="Intro">
+  <title>&shpcm; &this-version;</title>
+  <para>
+   The &hpcm; supplements &sles; &this-sle-version;. It provides tools
+   and libraries related to High Performance Computing. Presently, the tools
+   include:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Workload manager (Slurm)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Remote and parallel shells
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Performance monitoring and measuring tools
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Serial console monitoring tool
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Cluster power management tool
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Tool to discover the machine hardware topology
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Tool to monitor memory errors
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Tool to determine CPU model capabilities (x86-64 only)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     User extensible heap manager capable of distinguishing between different
+     kinds of memory (x86-64 only)
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   This document only describes features and procedures specific to this
+   module. Make sure to also review the release notes for the base product,
+   which is &sles; 12&#160;SP2 or later versions of &sles;&#160;12.
+   The release notes for &sles; 12&#160;SP2 are published at
+   <link xlink:href="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP2/"/>.
+  </para>
+ </section>
+ <section>
+  <title>Availability</title>
+  <para>
+   The &hpcm; &this-version-long; can be installed on &sles;
+   12&#160;SP2 and later. It is available to any registered user of
+   &sle;&#160;12 for the x86-64 and AArch64 platforms.
+  </para>
+ </section>
+ <section xml:id="intro-lifecycle">
+  <title>Support and Life Cycle</title>
+  <para>
+   The &shpcm; is supported throughout the life cycle of
+   &slea;&#160;12. Long Term Support Service is not available. Any
+   release is fully maintained and supported until the availability of the next
+   release.
+  </para>
+  <para>
+   For more information, see the Support Policy page
+   <link xlink:href="https://www.suse.com/support/policy.html"/>.
+  </para>
+ </section>
+ <section xml:id="intro-documentation">
+  <title>Documentation and Other Information</title>
+<!--<section>
+    <title>Available on the Product Media</title> -->
+  <para>
+   Accessing the documentation on the product media:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get the detailed change log information about a particular package from
+     the RPM (where <filename>&lt;FILENAME&gt;.rpm</filename> is the name
+     of the RPM):
+    </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     media for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+<!-- FIXME: For the near future, there will not be documentation. -
+     sknorr, 2017-03-28 -->
+<!-- <listitem>
+      <para> Find more information in the <filename>docu</filename> directory of the media of
+       the &shpcm; &this-version;. This directory includes PDF versions of the
+       &shpcm; &this-version; Installation Quick Start and Deployment Guides. Documentation (if installed) is
+       available below the <filename>/usr/share/doc/</filename> directory of an installed system.
+      </para>
+     </listitem> -->
+   <listitem>
+    <para>
+     These Release Notes are identical across all architectures, and the most
+     recent version is always available online at
+     <link xlink:href="https://www.suse.com/releasenotes/"/>. Some entries may
+     be listed twice, if they are important and belong to more than one
+     section.
+    </para>
+   </listitem>
+  </itemizedlist>
+<!-- </section> -->
+<!-- FIXME: For the near future, there will not be documentation. -
+   sknorr, 2017-03-28 -->
+<!-- <section>
+    <title>Externally Provided Documentation</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/documentation"/>
+       contains additional or updated documentation for the &shpcm; &this-version;.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find a collection of White Papers in the &shpcm; Resource Library
+       at <ulink
+       url="https://www.suse.com/products/server/resource-library"/>.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section> -->
+ </section>
+ <section xml:id="intro-sourcecode">
+  <title>How to Obtain Source Code</title>
+  <para>
+<!-- The links in this section are often broken across multiple lines,
+        and are hyphenated in the final PDF. Anyone actually manually typing
+        the URL may not realize that the line-breaking hyphen should be left
+        out of the URL.
+        jjolly 2018-07-19 -->
+   This SUSE product includes materials licensed to SUSE under the GNU General
+   Public License (GPL). The GPL requires SUSE to provide the source code that
+   corresponds to the GPL-licensed material. The source code is available for
+   download at
+   <link xlink:href="https://www.suse.com/download-linux/source-code.html"/>.
+  </para>
+  <para>
+   Also, for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be sent
+   by e-mail to <link xlink:href="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <link xlink:href="https://www.suse.com/download-linux/source-code.html"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section xml:id="intro-support">
+  <title>Support Statement &shpcm;</title>
+  <para>
+   To receive support, you need an appropriate subscription with SUSE. For more
+   information, see
+   <link xlink:href="https://www.suse.com/products/server/services-and-support/"/>.
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term>L1</term>
+    <listitem>
+     <para>
+      Problem determination, which means technical support designed to provide
+      compatibility information, usage support, ongoing maintenance,
+      information gathering and basic troubleshooting using available
+      documentation.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>L2</term>
+    <listitem>
+     <para>
+      Problem isolation, which means technical support designed to analyze
+      data, reproduce customer problems, isolate problem area and provide a
+      resolution for problems not resolved by Level 1 or alternatively prepare
+      for Level 3.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>L3</term>
+    <listitem>
+     <para>
+      Problem resolution, which means technical support designed to resolve
+      problems by engaging engineering to resolve product defects which have
+      been identified by Level 2 Support.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   For contracted customers and partners, the &shpcm; &this-version; is
+   delivered with L3 support for all packages, except the following:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Technology Previews
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     sound, graphics, fonts and artwork
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     packages that require an additional customer contract
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     development packages for libraries which are only delivered with
+     L2 support
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   SUSE will only support the usage of original (that is, unchanged and
+   un-recompiled) packages.
+  </para>
+ </section>
+<!-- ============================================================== -->
+<!-- =============== Technical Part Starts Here =================== -->
+<!-- ============================================================== -->
+ <section xml:id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>
+   To install packages from the &hpcm;:
+  </para>
+  <procedure>
+   <step>
+    <para>
+     Make sure that the &hpcm; is available for installation:
+    </para>
+<screen>SUSEConnect --list-extensions | grep HPC</screen>
+    <para>
+     The output should be <literal>HPC Module 12 x86_64</literal>.
+    </para>
+   </step>
+   <step>
+    <para>
+     The &hpcm; can now be added to the repositories by calling:
+    </para>
+<screen>SUSEConnect -p sle-module-hpc/12/x86_64</screen>
+   </step>
+   <step>
+    <para>
+     To verify that the repositories are correctly set up, run:
+    </para>
+<screen>SUSEConnect --status-text</screen>
+    <para>
+     If the module is registered, it will be mentioned in the output.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   Since different users may want to use different components from this module,
+   there are presently no preselected packages which will be installed by
+   default when this module is added.
+  </para>
+  <section xml:id="instupgrade-upgrade" remap="InstUpgrade:Upgrade">
+   <title>Upgrade-Related Notes</title>
+   <para>
+    This section includes upgrade-related information for the &hpcm;
+    &this-version;.
+<!-- FIXME: For the near future, there will not be documentation. -
+    sknorr, 2017-03-28 -->
+<!-- For information about general preparations and supported upgrade methods
+    and paths, see the documentation at
+    <ulink url="https://www.suse.com/documentation"/>. -->
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" xml:id="fate-323911" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323911" -->
+    <title>Error on Migration From 12 SP2 to 12 SP3 When &hpcm; Is Selected</title>
+    <para>
+     When the &hpcm; is selected, the following error message may be
+     encountered during migration from SLES 12 SP2 to SLES 12 SP3:
+    </para>
+<screen>Can't get available migrations from server: SUSE::Connect::ApiError: The requested products '' are not activated on the system.
+'/usr/lib/zypper/commands/zypper-migration' exited with status 1</screen>
+    <para>
+     The problem can be resolved by re-registering the &hpcm; using the
+     following two commands:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>rpm -e sle-module-hpc-release-POOL
+       sle-module-hpc-release</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>SUSEConnect -p sle-module-hpc/12/x86_64</literal>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     These commands can also be performed before migration as a preventive
+     measure.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+   <section role="notoc" xml:id="fate-325666" remap="InstUpgrade:Upgrade">
+    <title>Upgrading to &slea; 15</title>
+    <para>
+     You can upgrade to &shpca; 15 from &slsa; 12 SP3 or
+     &shpca; 12 SP3. When upgrading from &slsa; 12 SP3, the upgrade
+     will only be performed if the &shpcm; has been registered before
+     starting the upgrade. Otherwise, the system will instead be upgraded to
+     &slsa; 15.
+    </para>
+   </section>
+  </section>
+<!-- <section>
+   <title>For More Information</title>
+   <para>
+    For more information, see <xref linkend="InfraPackArch.ArchIndependent"/>
+    and the sections relating to your respective hardware architecture.
+   </para>
+  </section>-->
+ </section>
+<!-- Arch Independent -->
+ <section xml:id="packages-modules" remap="Packages:Modules">
+  <title>Functionality</title>
+  <para>
+   This section comprises information about packages and their functionality,
+   as well as additions, updates, removals and changes to the package layout of
+   software.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" xml:id="fate-321724" remap="Packages:Modules">
+<!-- sort_key="5"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321724" -->
+   <title>ConMan &mdash; The Console Manager</title>
+   <para>
+    ConMan is a serial console management program designed to support a large
+    number of console devices and simultaneous users. It supports:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      local serial devices
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      remote terminal servers (via the telnet protocol)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      IPMI Serial-Over-LAN (via FreeIPMI)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Unix domain sockets
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      external processes (for example, using 'expect' scripts for telnet, ssh,
+      or ipmi-sol connections)
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    ConMan can be used for monitoring, logging and optionally timestamping
+    console device output.
+   </para>
+   <para>
+    To install ConMan, run <literal>zypper in conman</literal>.
+   </para>
+   <important>
+    <title>conmand Sends Unencrypted Data</title>
+    <para>
+     The daemon <literal>conmand</literal> sends unencrypted data over the
+     network and its connections are not authenticated. Therefore, it should be
+     used locally only: Listening to the port <literal>localhost</literal>.
+     However, the IPMI console does offer encryption. This makes
+     <literal>conman</literal> a good tool for monitoring a large number of
+     such consoles.
+    </para>
+   </important>
+   <para>
+    Usage:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      ConMan comes with a number of expect-scripts: check
+      <literal>/usr/lib/conman/exec</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Input to <literal>conman</literal> is not echoed in interactive mode.
+      This can be changed by entering the escape sequence
+      <literal>&amp;E</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      When pressing <emphasis>Return</emphasis> in interactive mode, no line
+      feed is generated. To generate a line feed, press
+      <emphasis>Ctrl-L</emphasis>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information about options, see the ConMan man page.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-319512" remap="Packages:Modules">
+<!-- sort_key="10"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319512" -->
+   <title>cpuid &mdash; x86 CPU Identification Tool</title>
+   <para>
+    <literal>cpuid</literal> executes the x86 CPUID instruction and decodes and
+    prints the results to stdout. Its knowledge of Intel, AMD and Cyrix CPUs is
+    fairly complete.
+   </para>
+   <para>
+    To install <literal>cpuid</literal>, run: <literal>zypper in
+    cpuid</literal>.
+   </para>
+   <para>
+    For information about its options, see the man page
+    <literal>cpuid</literal>.
+   </para>
+   <para>
+    Note that this tool is only available for x86-64.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-323979" remap="Packages:Modules">
+<!-- sort_key="15"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323979" -->
+   <title>Ganglia &mdash; System Monitoring</title>
+   <para>
+    Ganglia is a scalable distributed monitoring system for high-performance
+    computing systems, such as clusters and grids. It is based on a
+    hierarchical design targeted at federations of clusters.
+   </para>
+   <para>
+    To use Ganglia, make sure to install <literal>ganglia-gmetad</literal> on
+    the management serve then start the Ganglia meta-daemon: <literal>rcgmetad
+    start</literal> To make sure the service is started after a reboot, run:
+    <literal>systemctl enable gmetad</literal>. On each cluster node which you
+    want to monitor, install <literal>ganglia-gmond</literal>, start the
+    service <literal>rcgmond start</literal> and make sure it is enabled to be
+    started automatically after a reboot: <literal>systemctl enable
+    gmond</literal>. To test whether the <literal>gmond</literal> daemon has
+    connected to the meta-daemon, run <literal>gstat -a</literal> and check
+    that each node to be monitored is present in the output.
+   </para>
+   <para>
+    When using the Btrfs file system, the monitoring data will be lost after a
+    rollback and the service <literal>gmetad</literal> will not start again. To
+    fix this issue, either install the package
+    <literal>ganglia-gmetad-skip-bcheck</literal> or create the file
+    <literal>/etc/ganglia/no_btrfs_check</literal>.
+   </para>
+   <para>
+    To use the Ganglia Web interface, it is required to add the "Web and
+    Scripting Module" first. This can be done by running <literal>SUSEConnect
+    -p sle-module-web-scripting/12/x86_64</literal>. Install
+    <literal>ganglia-web</literal> on the management server. Depending on which
+    PHP version is used (default is PHP 5), enable it in Apache2:
+    <literal>a2enmod php5</literal> or <literal>a2enmod php7</literal>. Then
+    start Apache2 on this machine: <literal>rcapache2 start</literal> and make
+    sure it is started automatically after a reboot: <literal>systemctl enable
+    apache2</literal>. The ganglia web interface should be accessible from
+    <literal>http://&lt;management_server&gt;/ganglia</literal>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-319511" remap="Packages:Modules">
+<!-- sort_key="20"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319511" -->
+   <title>hwloc &mdash; Portable Abstraction of Hierarchical Architectures for High-Performance Computing</title>
+   <para>
+    <literal>hwloc</literal> provides command-line tools and a C API to obtain
+    the hierarchical map of key computing elements, such as: NUMA memory nodes,
+    shared caches, processor packages, processor cores, processing units
+    (logical processors or "threads") and even I/O devices.
+    <literal>hwloc</literal> also gathers various attributes such as cache and
+    memory information, and is portable across a variety of different operating
+    systems and platforms. Additionally it may assemble the topologies of
+    multiple machines into a single topology so as to let applications consult
+    the topology of an entire fabric or cluster at once.
+   </para>
+   <para>
+    In graphical mode (X11), <literal>hwloc</literal> can display the topology
+    in a human-readable format. Alternatively, it can export to one of several
+    formats, including plain text, PDF, PNG, and FIG. For more information, see
+    the man pages provided by <literal>hwloc</literal>.
+   </para>
+   <para>
+    It also features full support for import and export of XML-formatted
+    topology files via the <literal>libxml2</literal> library.
+   </para>
+   <para>
+    The package <literal>hwloc-devel</literal> offers a library that can be
+    directly included into external programs. This requires that the
+    <literal>libxml2</literal> development library (package
+    <literal>libxml2-devel</literal>) is available when compiling
+    <literal>hwloc</literal>.
+   </para>
+   <para>
+    <literal>libxml2-devel</literal> is part of the Software Development Kit
+    (SDK). Therefore, installing the <literal>hwloc-devel</literal> package
+    requires the availability of SDK packages.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-318914" remap="Packages:Modules">
+<!-- sort_key="25"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318914" -->
+   <title>memkind &mdash; Heap Manager for Heterogeneous Memory Platforms and Mixed Memory Policies</title>
+   <para>
+    The <literal>memkind</literal> library is a user-extensible heap manager
+    built on top of <literal>jemalloc</literal> which enables control of memory
+    characteristics and a partitioning of the heap between kinds of memory. The
+    kinds of memory are defined by operating system memory policies that have
+    been applied to virtual address ranges. Memory characteristics supported by
+    <literal>memkind</literal> without user extension include control of NUMA
+    and page size features.
+   </para>
+   <para>
+    For more information, see:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      the man pages <literal>memkind</literal> and <literal>hbwallow</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://github.com/memkind/memkind"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <link xlink:href="https://memkind.github.io/memkind/"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Note that this tool is only available for x86-64.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321722" remap="Packages:Modules">
+<!-- sort_key="30"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321722" -->
+   <title>mrsh/mrlogin &mdash; Remote Login Using "munge" Authentication</title>
+   <para>
+    <emphasis>mrsh</emphasis> is a set of remote shell programs using the
+    "munge" authentication system instead of reserved ports for security.
+    "munge" allows users to connect as the same user from one machine to any
+    other machine which shares the same secret key. This can be used to set up
+    a cluster of machines between which the user can connect and execute
+    commands without any additional authentication.
+   </para>
+   <para>
+    It can be used as a drop-in replacement for <literal>rsh</literal> and
+    <literal>rlogin</literal>.
+   </para>
+   <para>
+    To install <literal>mrsh</literal>, do the following:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      If only the mrsh client is required (without allowing remote login to
+      this machine), use: <literal>zypper in mrsh</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      To allow logging in to a machine, the server needs to be installed:
+      <literal>zypper in mrsh-server</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      To get a drop-in replacement for <literal>rsh</literal> and
+      <literal>rlogin</literal>, run: <literal>zypper in
+      mrsh-rsh-server-compat</literal> or <literal>zypper in
+      mrsh-rsh-compat</literal>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    To set up a cluster of machines allowing remote login from each other, copy
+    the "munge" key from one machine (ideally a head node of the cluster) to
+    the other machines within this cluster:
+   </para>
+<screen>scp /etc/munge/munge.key root@&lt;nodeN&gt;:/etc/munge/munge.key</screen>
+   <para>
+    Then enable and start the services munge and mrlogin on each machine users
+    should log in to:
+   </para>
+<screen>systemctl enable munge.service
+systemctl start munge.service
+systemctl enable mrlogind.socket mrshd.socket
+systemctl start mrlogind.socket mrshd.socket</screen>
+   <para>
+    To start mrsh support at boot, run:
+   </para>
+<screen>systemctl enable munge.service
+systemctl enable mrlogin.service</screen>
+   <para>
+    We do not recommend using <literal>mrsh</literal> when logged in as the
+    user <literal>root</literal>. This is disabled by default. To enable it
+    anyway, run:
+   </para>
+<screen>echo "mrsh" &gt;&gt; /etc/securetty
+echo "mrlogin" &gt;&gt; /etc/securetty</screen>
+  </section>
+  <section role="notoc" xml:id="fate-321714" remap="Packages:Modules">
+<!-- sort_key="35"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321714" -->
+   <title>pdsh &mdash; Parallel Remote Shell Program</title>
+   <para>
+    <literal>pdsh</literal> is a parallel remote shell which can be used with
+    multiple back-ends for remote connections. It can run a command on multiple
+    machines in parallel.
+   </para>
+   <para>
+    To install pdsh, run <literal>zypper in pdsh</literal>.
+   </para>
+   <para>
+    On SLES 12, the back-ends <literal>ssh</literal>, <literal>mrsh</literal>,
+    and <literal>exec</literal> are supported. The <literal>ssh</literal>
+    back-end is the default. Non-default login methods can be used by either
+    setting the <literal>PDSH_RCMD_TYPE</literal> environment variable or by
+    using the <literal>-R</literal> command argument.
+   </para>
+   <para>
+    When using the <literal>ssh</literal> back-end, it is important that a
+    non-interactive (that is, password-less) login method is used.
+   </para>
+   <para>
+    The <literal>mrsh</literal> back-end requires the <literal>mrshd</literal>
+    to be running on the client. The <literal>mrsh</literal> back-end does not
+    require the use of reserved sockets. Therefore, it does not suffer from
+    port exhaustion when executing commands on many machines in parallel. For
+    information about setting up the system to use this back-end, see
+    <xref linkend="fate-321722"/>.
+   </para>
+   <para>
+    Remote machines can either be specified on the command line or
+    <literal>pdsh</literal> can use a <literal>machines</literal> file
+    (<literal>/etc/pdsh/machines</literal>), dsh (Dancer's shell) style groups
+    or netgroups. Also, it can target nodes based on the currently running
+    Slurm jobs.
+   </para>
+   <para>
+    The different ways to select target hosts are realized by modules. Some of
+    these modules provide identical options to <literal>pdsh</literal>. The
+    module loaded first will win and consume the option. Therefore, we
+    recommend limiting yourself to a single method and specifying this with the
+    <literal>-M</literal> option.
+   </para>
+   <para>
+    The <literal>machines</literal> file lists all target hosts one per line.
+    The appropriate netgroup can be selected with the <literal>-g</literal>
+    command line option.
+   </para>
+   <para>
+    Newer updates of <literal>pdsh</literal> provide the host-list plugins in
+    separate packages. This avoids conflicts between command line options for
+    different modules which happen to be identical and helps to keep
+    installations small and free of unneeded dependencies. Check the
+    <xref linkend="fate-325288"/> in pdsh for details.
+   </para>
+   <para>
+    For further information, see the man page <literal>pdsh</literal>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-320596" remap="Packages:Modules">
+<!-- sort_key="35"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320596" -->
+   <title>ohpc &mdash; OpenHPC Compatibility Macros</title>
+   <para>
+    <literal>ohpc</literal> contains compatibility macros to build OpenHPC
+    packages on SUSE Linux Enterprise.
+   </para>
+   <para>
+    To install <literal>ohpc</literal>, run: <literal>zypper in ohpc</literal>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321725" remap="Packages:Modules">
+<!-- sort_key="45"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321725" -->
+   <title>PowerMan &mdash; Centralized Power Control for Clusters</title>
+   <para>
+    PowerMan allows manipulating remote power control devices (RPC) from a
+    central location. It can control:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      local devices connected to a serial port
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      RPCs listening on a TCP socket
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      RPCs which are accessed through an external program
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    The communication to RPCs is controlled by "expect"-like scripts. For a
+    list of currently supported devices, see the configuration file
+    <literal>/etc/powerman/powerman.conf</literal>.
+   </para>
+   <para>
+    To install PowerMan, run <literal>zypper in powerman</literal>.
+   </para>
+   <para>
+    To configure it, include the appropriate device file for your RPC
+    (<literal>/etc/powerman/*.dev</literal>) in
+    <literal>/etc/powerman/powerman.conf</literal> and add devices and nodes.
+    The device "type" needs to match the "specification" name in one of the
+    included device files, the list of "plugs" used for nodes need to match an
+    entry in the "plug name" list.
+   </para>
+   <para>
+    After configuring PowerMan, start its service by:
+   </para>
+<screen>systemctl start powerman.service</screen>
+   <para>
+    To start PowerMan automatically after every boot, do:
+   </para>
+<screen>systemctl enable powerman.service</screen>
+   <para>
+    Optionally, PowerMan can connect to a remote PowerMan instance. To enable
+    this, add the option <literal>listen</literal> to
+    <literal>/etc/powerman/powerman.conf</literal>.
+   </para>
+   <important>
+    <title>Unencrypted Transfer</title>
+    <para>
+     Data is transferred unencrypted, therefore this is not recommended unless
+     the network is appropriately secured.
+    </para>
+   </important>
+  </section>
+  <section role="notoc" xml:id="fate-318824" remap="Packages:Modules">
+<!-- sort_key="50"; non-rn-fate-cats="RAS"; -->
+<!-- href="https://fate.novell.com/318824" -->
+   <title>rasdaemon &mdash; Utility to Log RAS Error Tracings</title>
+   <para>
+    <literal>rasdaemon</literal> is a RAS (Reliability, Availability and
+    Serviceability) logging tool. It records memory errors using the EDAC
+    tracing events. EDAC drivers in the Linux kernel handle detection of ECC
+    errors from memory controllers.
+   </para>
+   <para>
+    <literal>rasdaemon</literal> can be used on large memory systems to track,
+    record and localize memory errors and how they evolve over time to detect
+    hardware degradation. Furthermore, it can be used to localize a faulty DIMM
+    on the board.
+   </para>
+   <para>
+    To check whether the EDAC drivers are loaded, execute:
+   </para>
+<screen>ras-mc-ctl --status</screen>
+   <para>
+    The command should return <literal>ras-mc-ctl: drivers are
+    loaded</literal>. If it indicates that the drivers are not loaded, EDAC may
+    not be supported on your board.
+   </para>
+   <para>
+    To start <literal>rasdaemon</literal>, run <literal>systemctl start
+    rasdaemon.service</literal> To start <literal>rasdaemon</literal>
+    automatically at boot time, execute <literal>systemctl enable
+    rasdaemon.service</literal>. The daemon will log information to
+    <literal>/var/log/messages</literal> and to an internal database. A summary
+    of the stored errors can be obtained with:
+   </para>
+<screen>ras-mc-ctl --summary</screen>
+   <para>
+    The errors stored in the database can be viewed with
+   </para>
+<screen>ras-mc-ctl --errors</screen>
+   <para>
+    Optionally, you can load the DIMM labels silk-screened on the system board
+    to more easily identify the faulty DIMM. To do so, before starting
+    <literal>rasdaemon</literal>, run:
+   </para>
+<screen>systemctl start ras-mc-ctl start</screen>
+   <para>
+    For this to work, you need to set up a layout description for the board.
+    There are no descriptions supplied by default. To add a layout description,
+    create a file with an arbitrary name in the directory
+    <literal>/etc/ras/dimm_labels.d/</literal>. The format is:
+   </para>
+<screen>Vendor: &lt;vendor-name&gt;
+  Model: &lt;model-name&gt;
+    &lt;label&gt;: &lt;mc&gt;.&lt;top&gt;.&lt;mid&gt;.&lt;low&gt;</screen>
+  </section>
+  <section role="notoc" xml:id="fate-316379" remap="Packages:Modules">
+<!-- sort_key="55"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/316379" -->
+   <title>Slurm &mdash; Utility for HPC Workload Management</title>
+   <para>
+    Slurm is an open source, fault-tolerant, and highly scalable cluster
+    management and job scheduling system for Linux clusters containing up to
+    65,536 nodes. Components include machine status, partition management, job
+    management, scheduling and accounting modules.
+   </para>
+   <para>
+    For a minimal setup to run Slurm with "munge" support on one compute node
+    and multiple control nodes, follow these instructions:
+   </para>
+   <procedure>
+    <step>
+     <para>
+      Before installing Slurm, create a user and a group called
+      <literal>slurm</literal>.
+     </para>
+     <important>
+      <title>Make Sure of Consistent UIDs and GIDs for Slurm's Accounts</title>
+      <para>
+       For security reasons, Slurm does not run as the user
+       <systemitem class="username">root</systemitem> but under its own user.
+       It is important that the user
+       <systemitem class="username">slurm</systemitem> has the same UID/GID
+       across all nodes of the cluster.
+      </para>
+      <para>
+       If this user/group does not exist, the package <package>slurm</package>
+       creates this user and group when it is installed. However, this does not
+       guarantee that the generated UIDs/GIDs will be identical on all systems.
+      </para>
+      <para>
+       Therefore, we strongly advise you to create the user/group
+       <systemitem class="username">slurm</systemitem> before installing
+       <package>slurm</package>. If you are using a network directory service
+       such as LDAP for user and group management, you can use it to provide
+       the <systemitem class="username">slurm</systemitem> user/group as well.
+      </para>
+     </important>
+    </step>
+    <step>
+     <para>
+      Install <package>slurm-munge</package> on the control and compute nodes:
+      <command>zypper in slurm-munge</command>
+     </para>
+    </step>
+    <step>
+     <para>
+      Configure, enable and start "munge" on the control and compute nodes as
+      described in <xref linkend="fate-321722"/>.
+     </para>
+    </step>
+    <step>
+     <para>
+      On the compute node, edit <filename>/etc/slurm/slurm.conf</filename>:
+     </para>
+     <substeps performance="required">
+      <step>
+       <para>
+        Configure the parameter
+        <literal>ControlMachine=<replaceable>CONTROL_MACHINE</replaceable></literal>
+        with the host name of the control node.
+       </para>
+       <para>
+        To find out the correct host name, run <command>hostname -s</command>
+        on the control node.
+       </para>
+      </step>
+      <step>
+       <para>
+        Additionally add:
+       </para>
+<screen>NodeName=<replaceable>NODE_LIST</replaceable> Sockets=<replaceable>SOCKETS</replaceable> \
+  CoresPerSocket=<replaceable>CORES_PER_SOCKET</replaceable> \
+  ThreadsPerCore=<replaceable>THREADS_PER_CORE</replaceable> \
+  State=UNKNOWN</screen>
+       <para>
+        and
+       </para>
+<screen>PartitionName=normal Nodes=<replaceable>NODE_LIST</replaceable> \
+  Default=YES MaxTime=24:00:00 State=UP</screen>
+       <para>
+        where <replaceable>NODE_LIST</replaceable> is the list of compute nodes
+        (that is, the output of <command>hostname -s</command> run on each
+        compute node (either comma-separated or as ranges:
+        <literal>foo[1-100]</literal>). Additionally,
+        <replaceable>SOCKETS</replaceable> denotes the number of sockets,
+        <replaceable>CORES_PER_SOCKET</replaceable> the number of cores per
+        socket, <replaceable>THREADS_PER_CORE</replaceable> the number of
+        threads for CPUs which can execute more than one thread at a time.
+        (Make sure that <replaceable>SOCKETS</replaceable> *
+        <replaceable>CORES_PER_SOCKET</replaceable> *
+        <replaceable>THREADS_PER_CORE</replaceable> does not exceed the number
+        of system cores on the compute node).
+       </para>
+      </step>
+      <step>
+       <para>
+        On the control node, copy <filename>/etc/slurm/slurm.conf</filename> to
+        all compute nodes:
+       </para>
+<screen>scp /etc/slurm/slurm.conf <replaceable>COMPUTE_NODE</replaceable>:/etc/slurm/</screen>
+      </step>
+      <step>
+       <para>
+        On the control node, start
+        <systemitem class="daemon">slurmctld</systemitem>:
+       </para>
+<screen>systemctl start slurmctld.service</screen>
+       <para>
+        Also enable it so that it starts on every boot:
+       </para>
+<screen>systemctl enable slurmctld.service</screen>
+      </step>
+      <step>
+       <para>
+        On the compute nodes, start and enable
+        <systemitem class="daemon">slurmd</systemitem>:
+       </para>
+<screen>systemctl start slurmd.service
+systemctl enable slurmd.service</screen>
+       <para>
+        The last line causes <systemitem class="daemon">slurmd</systemitem> to
+        be started on every boot automatically.
+       </para>
+      </step>
+     </substeps>
+    </step>
+   </procedure>
+   <note>
+    <title>Epilog Script</title>
+    <para>
+     The standard epilog script will kill all remaining processes of a user on
+     a node. If this behavior is not wanted, disable the standard epilog
+     script.
+    </para>
+   </note>
+   <para>
+    For further documentation, see the
+    <link xlink:href="https://slurm.schedmd.com/quickstart_admin.html">Quick
+    Start Administrator Guide</link> and
+    <link xlink:href="https://slurm.schedmd.com/quickstart.html">Quick Start
+    User Guide</link>. There is further in-depth documentation on the
+    <link xlink:href="https://slurm.schedmd.com/documentation.html">Slurm
+    documentation page</link>.
+   </para>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slurm-deprecation.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-upgrade-2302.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-upgrade-2011.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-tool-slurm-upgrade.xml"/>
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="package-update-slurm-configuration.xml"/>
+  </section>
+  <section role="notoc" xml:id="fate-321705" remap="Packages:Modules">
+<!-- sort_key="100"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321705" -->
+   <title>GNU Compiler Collection for HPC</title>
+   <para>
+    <literal>gnu-compilers-hpc</literal> installs the base version of the GNU
+    compiler suite and provides environment files for Lmod to select this
+    compiler suite and provides environment module files for them. This version
+    of the compiler suite is required to enable linking against HPC libraries
+    enabled for environment modules.
+   </para>
+   <para>
+    This package requires <literal>lua-lmod</literal> to supply environment
+    module support.
+   </para>
+   <para>
+    To install <literal>gnu-compilers-hpc</literal>, run:
+   </para>
+<screen>zypper in gnu-compilers-hpc</screen>
+   <para>
+    To set up the environment appropriately and select the GNU toolchain, run:
+   </para>
+<screen>module load gnu</screen>
+   <para>
+    If you have more than one version of this compiler suite installed, add the
+    version number number of the compiler suite. For more information, see
+    <xref linkend="fate-321704"/>
+<!--the section on Lmod-->
+    .
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321704" remap="Packages:Modules">
+<!-- sort_key="105"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321704" -->
+   <title>Lmod &mdash; Lua-based Environment Modules</title>
+   <para>
+    Lmod is an advanced environment module system which allows the installation
+    of multiple versions of a program or shared library, and helps configure
+    the system environment for the use of a specific version. It supports
+    hierarchical library dependencies and makes sure that the correct version
+    of dependent libraries are selected. Environment Modules-enabled library
+    packages supplied with the HPC module support parallel installation of
+    different versions and flavors of the same library or binary and are
+    supplied with appropriate <literal>lmod</literal> module files.
+   </para>
+   <bridgehead renderas="sect5">Installation and Basic Usage</bridgehead>
+   <para>
+    To install Lmod, run: <literal>zypper in lua-lmod</literal>.
+   </para>
+   <para>
+    Before Lmod can be used, an init file needs to be sourced from the
+    initialization file of your interactive shell. The following init files are
+    available:
+   </para>
+<screen>/usr/share/lmod/&lt;lmod_version&gt;/init/bash
+/usr/share/lmod/&lt;lmod_version&gt;/init/ksh 
+/usr/share/lmod/&lt;lmod_version&gt;/init/tcsh
+/usr/share/lmod/&lt;lmod_version&gt;/init/zsh 
+/usr/share/lmod/&lt;lmod_version&gt;/init/sh</screen>
+   <para>
+    Pick the one appropriate for your shell. Then add the following to the init
+    file of your shell:
+   </para>
+<screen>. /usr/share/lmod/&lt;LMOD_VERSION&gt;/init/&lt;INIT-FILE&gt;</screen>
+   <para>
+    To obtain <literal>&lt;lmod_version&gt;</literal>, run:
+   </para>
+<screen>rpm -q lua-lmod | sed "s/.*-\([^-]\+\)-.*/\1/"</screen>
+   <para>
+    The init script adds the command <literal>module</literal>.
+   </para>
+   <bridgehead renderas="sect5">Listing Available Modules</bridgehead>
+   <para>
+    To list the available all available modules, run: <literal>module
+    spider</literal>. To show all modules which can be loaded with the
+    currently loaded modules, run: <literal>module avail</literal>. A module
+    name consists of a name and a version string separated by a
+    <literal>/</literal> character. If more than one version is available for a
+    certain module name, the default version (marked by <literal>*</literal>)
+    or (if this isn't set) the one with the highest version number is loaded.
+    To refer to a specific module version, the full string
+    <literal>&lt;name&gt;/&lt;version&gt;</literal> may be used.
+   </para>
+   <bridgehead renderas="sect5">Listing Loaded Modules</bridgehead>
+   <para>
+    <literal>module list</literal> shows all currently loaded modules. Refer to
+    <literal>module help</literal> for a short help on the module command and
+    <literal>module help &lt;module-name&gt;</literal> for a help on the
+    particular module. Please note that the 'module' command is available only
+    when you log in after installing <literal>lua-lmod</literal>.
+   </para>
+   <bridgehead renderas="sect5">Gathering Information About a Module</bridgehead>
+   <para>
+    To get information about a particular module, run: <literal>module whatis
+    &lt;module-name&gt;</literal> To load a module, run: <literal>module
+    load &lt;module-name&gt;</literal>. This will ensure that your
+    environment is modified (that is, the <literal>PATH</literal> and
+    <literal>LD_LIBRARY_PATH</literal> and other environment variables are
+    prepended) such that binaries and libraries provided by the respective
+    modules are found. To run a program compiled against this library, the
+    appropriate <literal>module load &lt;module-name&gt;</literal>
+    commands must to be issued beforehand.
+   </para>
+   <bridgehead renderas="sect5">Loading Modules</bridgehead>
+   <para>
+    The <literal>module load &lt;module&gt;</literal> command needs to be
+    run in the shell from which the module is to be used. Some modules require
+    a compiler toolchain or MPI flavor module to be loaded before they are
+    available for loading.
+   </para>
+   <bridgehead renderas="sect5">Environment Variables</bridgehead>
+   <para>
+    If the respective development packages are installed, build time
+    environment variables like <literal>LIBRARY_PATH</literal>,
+    <literal>CPATH</literal>, <literal>C_INCLUDE_PATH</literal> and
+    <literal>CPLUS_INCLUDE_PATH</literal> will be set up to include the
+    directories containing the appropriate header and library files. However,
+    some compiler and linker commands may not honor these. In this case, use
+    the appropriate options together with the environment variables <literal>-I
+    &lt;PACKAGE_NAME&gt;_INC</literal> and <literal>-L
+    &lt;PACKAGE_NAME&gt;_LIB</literal> to add the include and library
+    paths to the command lines of the compiler and linker.
+   </para>
+   <bridgehead renderas="sect5">For More Information</bridgehead>
+   <para>
+    For more information on Lmod, see
+    <link xlink:href="https://lmod.readthedocs.org">https://lmod.readthedocs.org</link>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324149" remap="Packages:Modules">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324149" -->
+   <title>Support for Genders Static Cluster Configuration Database</title>
+   <para>
+    Support for Genders has been added to the the HPC module.
+   </para>
+   <para>
+    Genders is a static cluster configuration database used for configuration
+    management. It allows grouping and addressing sets of hosts by attributes
+    and is used by a variety of tools. The Genders database is a text file
+    which is usually replicated on each node in a cluster.
+   </para>
+   <para>
+<!-- The pluses in "C++" are widely separated in the PDF -
+    bug at: suse-xsl#373 -->
+    Perl, Python, C, and C++ bindings are supplied with Genders, the respective
+    packages provide man pages or other documentation describing the APIs.
+   </para>
+   <para>
+    To create the Genders database, follow the instructions and examples in
+    <literal>/etc/genders</literal> and check
+    <literal>/usr/share/doc/packages/genders-base/TUTORIAL</literal>. Testing a
+    configuration can be done with <literal>nodeattr</literal> (for more
+    information, see <literal>man 1 nodeattr</literal>).
+   </para>
+   <para>
+    List of packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>genders</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>genders-base</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>genders-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>python-genders</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>genders-perl-compat</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libgenders0</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libgendersplusplus2</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section xml:id="InfraPackArch" remap="InfraPackArch">
+  <title>HPC Libraries</title>
+<!-- Misused for "HPC Libraries" section - sknorr, 2018-05-08 -->
+<!--v Items below imported from FATE-->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325660" -->
+<!-- title>[NOTITLE]Libraries</title -->
+  <para>
+   Library packages which support environment modules follow a distinctive
+   naming scheme: all packages have the compiler suite and, if built with MPI
+   support, the MPI flavor in their name:
+   <literal>*-[&lt;MPI-flavor&gt;]-&lt;compiler&gt;-hpc*</literal>.
+   To support a parallel installation of multiple versions of a library
+   package, the package name contains the version number (with dots
+   <literal>.</literal> replaced by underscores <literal>_</literal>). To
+   simplify the installation of a library, <literal>master</literal> -packages
+   are supplied which will ensure that the latest version of a package is
+   installed. When these 'master'-packages are updated the latest version of
+   the respective library packages will be installed while leaving previous
+   versions installed. Library packages are split between runtime and compile
+   time packages. The compile time packages typically supply include files and
+   .so-files for shared libraries. Compile time package names end with
+   <literal>-devel</literal>. For some libraries static (<literal>.a</literal>)
+   libraries are supplied as well, package names for these end with
+   <literal>-devel-static</literal>.
+  </para>
+  <para>
+   As an example: Package names of the ScaLAPACK library version 2.0.2 built
+   with GCC for Open MPI v1:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     master library package:
+     <literal>libscalapack2_2_0_2-gnu-openmpi1-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     master package: <literal>libscalapack2-gnu-openmpi1-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     development package:
+     <literal>libscalapack2_2_0_2-gnu-openmpi1-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     development master package:
+     <literal>libscalapack2-gnu-openmpi1-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     static library package:
+     <literal>libscalapack2_2_0_2-gnu-openmpi1-hpc-devel-static</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   (Note that the digit <literal>2</literal> appended to the library name
+   denotes the <literal>.so</literal> version of the library).
+  </para>
+  <para>
+   To install a library packages run <literal>zypper in
+   &lt;library-master-package&gt;</literal>, to install a development
+   file run <literal>zypper in
+   &lt;library-devel-master-package&gt;</literal>.
+  </para>
+  <para>
+   Presently, the GNU compiler collection version 4.8 as provided with SUSE
+   Linux Enterprise 12 and the MPI flavors Open MPI v.2 and MVAPICH2 are
+   supported.
+  </para>
+  <section role="notoc" xml:id="fate-321716" remap="InfraPackArch">
+<!-- sort_key="110"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321716" -->
+   <title>FFTW HPC Library &mdash; Discrete Fourier Transforms</title>
+   <para>
+    <literal>FFTW</literal> is a C subroutine library for computing the
+    Discrete Fourier Transform (DFT) in one or more dimensions, of both real
+    and complex data, and of arbitrary input size.
+   </para>
+   <para>
+    This library is available as both a serial and an MPI-enabled variant. This
+    module requires a compiler toolchain module loaded. To select an MPI
+    variant, the respective MPI module needs to be loaded beforehand. To load
+    this module, run:
+   </para>
+<screen>module load fftw3</screen>
+   <para>
+    List of master packages:
+   </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>libfftw3-gnu-hpc</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>fftw3-gnu-hpc-devel</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>libfftw3-gnu-openmpi1-hpc</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>fftw3-gnu-openmpi1-hpc-devel</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>libfftw3-gnu-mvapich2-hpc</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>fftw3-gnu-mvapich2-hpc-devel</literal>
+      </para>
+     </listitem>
+    </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>
+<!--the section about Lmod-->
+    .
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321710" remap="InfraPackArch">
+<!-- sort_key="115"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321710" -->
+   <title>HDF5 HPC Library &mdash; Model, Library, File Format for Storing and Managing Data</title>
+   <para>
+    HDF5 is a data model, library, and file format for storing and managing
+    data. It supports an unlimited variety of data types, and is designed for
+    flexible and efficient I/O and for high volume and complex data. HDF5 is
+    portable and extensible, allowing applications to evolve in their use of
+    HDF5.
+   </para>
+   <para>
+    There are serial and MPI variants of this library available. All flavors
+    require loading a compiler toolchain module beforehand. The MPI variants
+    also require loading the correct MPI flavor module.
+   </para>
+   <para>
+    To load the highest available serial version of this module run:
+   </para>
+<screen>module load hdf5</screen>
+   <para>
+    When an MPI flavor is loaded, the MPI version of this module can be loaded
+    by:
+   </para>
+<screen>module load phpdf5</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>hdf5-examples</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>hdf5-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_cpp-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_fortran-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_hl_cpp-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_hl_fortran-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>hdf5-gnu-openmpi1-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_fortran-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_hl_fortran-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>hdf5-gnu-mvapich2-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_fortran-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libhdf5_hl_fortran-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321721" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321721" -->
+   <title>HPC Library Package mpiP</title>
+   <para>
+    mpiP (package <literal>mpip</literal>) is a profiling library for MPI
+    applications. It only collects statistical information about MPI functions,
+    so mpiP generates less overhead and much less data than tracing tools.
+   </para>
+   <para>
+    This library is provided for the different MPI flavors supported. To use it
+    the environment module for the desired flavor needs to be loaded (see
+    above). To load the highest available version of this module, run:
+    <literal>module load mpiP</literal>
+   </para>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>mpiP-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>mpiP-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" xml:id="fate-321719" remap="InfraPackArch">
+<!-- sort_key="120"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321719" -->
+   <title>NetCDF HPC Library &mdash; Implementation of Self-Describing Data Formats</title>
+   <para>
+<!-- The pluses in "C++" are widely separated in the PDF -
+    bug at: suse-xsl#373 -->
+    The NetCDF software libraries for C, C++, FORTRAN, and Perl are a set of
+    software libraries and self-describing, machine-independent data formats
+    that support the creation, access, and sharing of array-oriented scientific
+    data.
+   </para>
+   <bridgehead renderas="sect5"><literal>netcdf</literal> Packages </bridgehead>
+   <para>
+    The packages with names starting with <literal>netcdf</literal> provide C
+    bindings for the NetCDF API. These are available with and without MPI
+    support.
+   </para>
+   <para>
+    There are serial and MPI variants of this library available. All flavors
+    require loading a compiler toolchain module beforehand. The MPI variants
+    also require loading the correct MPI flavor module.
+   </para>
+   <para>
+    The MPI variant becomes available when the MPI module is loaded. Both
+    variants require loading a compiler toolchain module beforehand. To load
+    the highest version of the non-MPI <literal>netcdf</literal> module, run:
+   </para>
+<screen>module load netcdf</screen>
+   <para>
+    To load the highest available MPI version of this module, run:
+   </para>
+<screen>module load pnetcdf</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-openmpi1-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-gnu-mvapich2-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <bridgehead renderas="sect5"><literal>netcdf-cxx</literal> Packages </bridgehead>
+   <para>
+<!-- The pluses in "C++" are widely separated in the PDF -
+    bug at: suse-xsl#373 -->
+    <literal>netcdf-cxx4</literal> provides a C++ binding for the NetCDF API.
+   </para>
+   <para>
+    This module requires loading a compiler toolchain module beforehand. To
+    load this module, run:
+   </para>
+<screen>module load netcdf-cxx4</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>libnetcdf-cxx4-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libnetcdf-cxx4-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>netcdf-cxx4-gnu-hpc-tools</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <bridgehead renderas="sect5"><literal>netcdf-fortran</literal> Packages</bridgehead>
+   <para>
+    The <literal>netcdf-fortran</literal> packages provide FORTRAN bindings for
+    the NetCDF API, with and without MPI support.
+   </para>
+   <bridgehead renderas="sect5">For More Information</bridgehead>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321709" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321709" -->
+   <title>NumPy Python Library</title>
+   <para>
+    NumPy is a general-purpose array-processing package designed to efficiently
+    manipulate large multi-dimensional arrays of arbitrary records without
+    sacrificing too much speed for small multi-dimensional arrays.
+   </para>
+   <para>
+    NumPy is built on the Numeric code base and adds features introduced by
+    numarray as well as an extended C-API and the ability to create arrays of
+    arbitrary type which also makes NumPy suitable for interfacing with
+    general-purpose data-base applications.
+   </para>
+   <para>
+    There are also basic facilities for discrete Fourier transform, basic
+    linear algebra and random number generation.
+   </para>
+   <para>
+    This package is available both for Python 2 and Python 3. The specific
+    compiler toolchain and MPI library flavor modules must be loaded for this
+    library. The correct library module for the Python version used needs to be
+    specified when loading this module.
+   </para>
+   <para>
+    To load this module, run for Python 2:
+   </para>
+<screen>module load python2-numpy</screen>
+   <para>
+    For Python 3:
+   </para>
+<screen>module load python3-numpy</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>python2-numpy-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>python2-numpy-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>python3-numpy-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>python3-numpy-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" xml:id="fate-321708" remap="InfraPackArch">
+<!-- sort_key="125"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321708" -->
+   <title>OpenBLAS Library &mdash; Optimized BLAS Library</title>
+   <para>
+    OpenBLAS is an optimized BLAS (Basic Linear Algebra Subprograms) library
+    based on GotoBLAS2 1.3, BSD version. It provides the BLAS API. It is
+    shipped as a package enabled for environment modules and thus requires
+    using Lmod to select a version. There are two variants of this library, an
+    OpenMP-enabled variant and a pthreads variant.
+   </para>
+   <bridgehead renderas="sect5">OpenMP-Enabled Variant</bridgehead>
+   <para>
+    The OpenMP variant covers all use cases:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <emphasis role="bold">Programs using OpenMP.</emphasis> This requires the
+      OpenMP-enabled library version to function correctly.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis role="bold">Programs using pthreads.</emphasis> This requires
+      an OpenBLAS library without pthread support. This can be achieved with
+      the OpenMP-version. We recommend limiting the number of threads that are
+      used to 1 by setting the environment variable
+      <literal>OMP_NUM_THREADS=1</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis role="bold">Programs without pthreads and without
+      OpenMP.</emphasis> Such programs can still take advantage of the OpenMP
+      optimization in the library by linking against the OpenMP variant of the
+      library.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    When linking statically, ensure that <literal>libgomp.a</literal> is
+    included by adding the linker flag <literal>-lgomp</literal>.
+   </para>
+   <bridgehead renderas="sect5">pthreads Variant</bridgehead>
+   <para>
+    The pthreads variant of the OpenBLAS library can improve the performance of
+    single-threaded programs. The number of threads used can be controlled with
+    the environment variable <literal>OPENBLAS_NUM_THREADS</literal>.
+   </para>
+   <bridgehead renderas="sect5">Installation and Usage</bridgehead>
+   <para>
+    This module requires loading a compiler toolchain beforehand. To select the
+    latest version of this module provided, run:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      OpenMP version:
+     </para>
+<screen>module load openblas-pthreads</screen>
+    </listitem>
+    <listitem>
+     <para>
+      pthreads version:
+     </para>
+<screen>module load openblas</screen>
+    </listitem>
+   </itemizedlist>
+   <para>
+    List of master package for:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>libopenblas-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libopenblas-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libopenblas-pthreads-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libopenblas-pthreads-gnu-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321720" remap="InfraPackArch">
+<!-- sort_key="130"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321720" -->
+   <title>PAPI HPC Library &mdash; Consistent Interface for Hardware Performance Counters</title>
+   <para>
+    PAPI (package <literal>papi</literal>) provides a tool with a consistent
+    interface and methodology for use of the performance counter hardware found
+    in most major microprocessors.
+   </para>
+   <para>
+    This package serves all compiler toolchains and does not require a compiler
+    toolchain to be selected. The latest version provided can be selected by
+    running:
+   </para>
+<screen>module load papi</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>papi-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>papi-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321718" remap="InfraPackArch">
+<!-- sort_key="135"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321718" -->
+   <title>PETSc HPC Library &mdash; Solver for Partial Differential Equations</title>
+   <para>
+    PETSc is a suite of data structures and routines for the scalable
+    (parallel) solution of scientific applications modeled by partial
+    differential equations.
+   </para>
+   <para>
+    This module requires loading a compiler toolchain as well as an MPI library
+    flavor beforehand. To load this module, run:
+   </para>
+<screen>module load petsc</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>libpetsc-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>petsc-gnu-openmpi1-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libpetsc-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>petsc-gnu-mvapich2-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-321715" remap="InfraPackArch">
+<!-- sort_key="140"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/321715" -->
+   <title>ScaLAPACK HPC Library &mdash; LAPACK Routines</title>
+   <para>
+    The library ScaLAPACK (short for "Scalable LAPACK") includes a subset of
+    LAPACK routines designed for distributed memory MIMD-parallel computers.
+   </para>
+   <para>
+    This library requires loading both a compiler toolchain and an MPI library
+    flavor beforehand. To load this library, run
+   </para>
+<screen>module load scalapack</screen>
+   <para>
+    List of master packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>libblacs2-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libblacs2-gnu-openmpi1-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libscalapack2-gnu-openmpi1-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libscalapack2-gnu-openmpi1-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libblacs2-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libblacs2-gnu-mvapich2-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libscalapack2-gnu-mvapich2-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libscalapack2-gnu-mvapich2-hpc-devel</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For general information about Lmod and modules, see
+    <xref linkend="fate-321704"/>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section xml:id="packages-update" remap="Packages:Update">
+  <title>Updated Packages</title>
+  <para/>
+  <section xml:id="jsc-SLE-18781">
+   <title><literal>gnu11-compiler-hpc</literal></title>
+   <para>
+     This package adds an environment module for the GNU toolchain version 11.
+   </para>
+   <para>
+     It is needed to build and run applications against this version of the GNU
+     toolchain with environment module support.
+   </para>
+   <para>
+     To build software, install the package
+     <literal>gnu11-compiler-hpc-devel</literal>. This will install all
+     required packages (including the GNU C, C++ and Fortran compilers) and set
+     up the system accordingly. To build packages with these compilers, run
+     <literal>module load gnu</literal>. This sets the standard binaries for
+     the GNU compiler toolchain: <literal>gcc</literal>,
+     <literal>g++</literal>, and <literal>gfortran</literal> to the appropriate
+     version and sets environment variables <literal>CC</literal> and
+     <literal>CPP</literal> to the desired binaries.
+   </para>
+   <note>
+     <para>
+       The environment module system always takes the latest version of the
+       toolchain installed as the default. To load the environment for an older
+       toolchain version, the version number needs to be specified when loading
+       the module. For example: <literal>module load gnu/7</literal>.
+     </para>
+     <para>
+       To only run binaries, it is sufficient to install
+       <literal>gnu11-compiler-hpc</literal> by running <literal>zypper install
+       gnu11-compiler-hpc</literal>. However, building in this environment will
+       not be possible.
+     </para>
+   </note>
+ </section>
+<!--v Items below imported from FATE-->
+  <section role="notoc" xml:id="fate-325288" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/325288" -->
+   <title>Support for Genders in pdsh</title>
+   <para>
+    Since Genders has been added to the HPC module, the
+    <literal>genders</literal> plugin for <literal>pdsh</literal> is now
+    supported.
+   </para>
+   <para>
+    At the same time, all host-list plugins to <literal>pdsh</literal> have
+    been packaged separately to avoid conflicts due to identical options.
+   </para>
+   <para>
+    Host list plugins are no longer installed automatically. If, for instance,
+    the <literal>slurm</literal> plugin has been used so far, it must be
+    installed separately after the update.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324199" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/324199" -->
+   <title>Lmod Has Been Updated to Version 7.6</title>
+   <para>
+    Lmod (package <literal>lua-lmod</literal> has been updated to version 7.6.
+    This version is the minimum version that is required to work with the
+    SUSE-supplied HPC libraries.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324170" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/324170" -->
+   <title>Support for Intel Knights Mill CPUs in cpuid</title>
+   <para>
+    <literal>cpuid</literal> has been updated to support Intel Knights Mill
+    CPUs (x86-64).
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324169" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/324169" -->
+   <title>pdsh Has Been Updated to Version 2.33</title>
+   <para>
+    <literal>pdsh</literal> has been updated version 2.33. For more information
+    on the update, see the package change log.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324168" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/324168" -->
+   <title>ConMan Has Been Updated to Version 0.2.8</title>
+   <para>
+    ConMan has been updated to version 0.2.8. For more information about the
+    update, see the package change log.
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-324026" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats="High Performance Computing"; -->
+<!-- href="https://fate.novell.com/324026" -->
+   <title>Slurm Has Been Updated to Version 17.02.9</title>
+   <para>
+    Slurm has been update to version 17.02.9. This update is recommended as it
+    contains a security update to fix CVE-2017-15566. For more information
+    about the update, see the package change log.
+   </para>
+   <para>
+    To make it possible to keep older versions of this library installed, with
+    this version, the <literal>libslurm</literal> and
+    <literal>libslurmdb</literal> have been split from the
+    <literal>slurm</literal> base package.
+   </para>
+   <para>
+    Together with the updated version, the deprecated package
+    <literal>slurm-sched-wiki</literal> has been removed. This package was only
+    relevant in connection with the MOAB and MAUI schedulers which were never
+    shipped with SUSE Linux Enterprise.
+   </para>
+   <para>
+    The subpackage <literal>slurm-torque</literal> has been newly introduced:
+    It provides a Torque-like set of commands to Slurm for users switching from
+    Torque.
+   </para>
+   <para>
+    When updating Slurm, the configuration file needs to be updated: In
+    <literal>/etc/slurm/slurm.conf</literal> set:
+    <literal>SlurmctldPidFile=/var/run/slurm/slurmctld.pid
+    SlurmdPidFile=/var/run/slurm/slurmd.pid</literal>
+   </para>
+  </section>
+  <section role="notoc" xml:id="fate-325569" remap="Packages:Update">
+   <title>Slurm Has Been Updated to Version 17.02.10</title>
+   <para>
+    <literal>slurm</literal> has been updated to version 17.02.10. The update
+    is recommended, as it contains the security fix CVE-2018-7033. For details
+    on this and other changes introduced by this version refer to the package
+    change log.
+   </para>
+   <para>
+    If the Slurm database daemon <literal>slurmdbd</literal> is used, its
+    configuration <literal>/etc/slurm/slurmdbd.conf</literal> may need to be
+    updated:
+   </para>
+<screen>PidFile=/var/run/slurm/slurmdbd.pid</screen>
+   <para>
+    During update one or more of the following error messages may occur:
+   </para>
+<screen>Job for slurmd.service failed because the control process exited
+with error code. See &quot;systemctl status slurmd.service&quot; and
+&quot;journalctl -xe&quot; for details.</screen>
+<screen>
+ Job for slurmctld.service failed because the control process exited with
+ error code. See &quot;systemctl status slurmctld.service&quot; and
+ &quot;journalctl -xe&quot; for details</screen>
+<screen>Job for slurmdbd.service failed because the control process exited
+ with error code. See &quot;systemctl status slurmdbd.service&quot; and
+ &quot;journalctl -xe&quot; for details</screen>
+   <para>
+    These messages should be harmless, the services should have been restarted
+    regardless. However, make sure that all enabled Slurm services are running
+    again after an update:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      for the control daemon, run: <literal>systemctl status
+      slurmctld</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      for the compute node daemon, run: <literal>systemctl status
+      slurmd</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      for the database daemon daemon, run: <literal>systemctl status
+      slurmctld</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    If any service is not running, restart it manually: <literal>systemctl
+    start &lt;service_name&gt;</literal>
+   </para>
+  </section>
+  <section role="notoc" xml:id="bsc-1095508" remap="Packages:Update">
+   <title>Slurm Has Been Updated to Version 17.02.11</title>
+   <para>
+    Slurm has been updated to version 17.02.11 to mitigate insecure handling of
+    user_name and gid fields as reported in CVE-2018-10995.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section xml:id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with respect to the contents or
+   use of this documentation, and specifically disclaims any express or implied
+   warranties of merchantability or fitness for any particular purpose.
+   Further, SUSE reserves the right to revise this publication and to make
+   changes to its content, at any time, without the obligation to notify any
+   person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with respect to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software, at
+   any time, without any obligation to notify any person or entity of such
+   changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may be
+   subject to U.S. export controls and the trade laws of other countries. You
+   agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <link xlink:href="https://www.suse.com/company/legal/"/> for more
+   information on exporting SUSE software. SUSE assumes no responsibility for
+   your failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative Commons
+   Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <link xlink:href="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in the
+   product that is described in this document. In particular, and without
+   limitation, these intellectual property rights may include one or more of
+   the U.S. patents listed at
+   <link xlink:href="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<link xlink:href="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

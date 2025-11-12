@@ -1,0 +1,92 @@
+[#changes]
+== New Features, Changes & Fixes
+
+Information in this section applies to all architectures supported by
+{product} {this-version} unless noted otherwise.
+
+////
+[#jsc-SLE-1234]
+=== Example entry
+
+Example text
+////
+
+
+// [#new-packages-SAP]
+// === Added Packages
+
+// The following packages have been added to {product} with {this-version}:
+
+// * TBD
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Issue explanation
+	
+////
+
+[#jsc-PED-407]
+=== Silence `KillMode=None` messages
+
+The log level of the deprecation warnings regarding `killmode=None` have been reduced.
+Instead of `warning`, they are now logged at the `debug` log level.
+
+
+[#jsc-SLE-24988]
+=== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-prem or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which will update system information automatically.
+
+For more details see the documentation at https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.
+
+
+[#bsc-1197511]
+=== SAP native systemd support
+
+In the past for Linux the systemV init service `sapinit` was starting the SAP Host Agent and all the `sapstartsrv` processes listed in `/usr/sap/sapservices`.
+A real systemd integration was not available.
+
+Now the native integration of SAP Host Agent is started via the `saphostagent.service` unit.
+Adaptations to the `saphostagent.service` unit must be done by adding a so-called drop-in file.
+
+For any native integrated SAP instance a systemd unit with name schema `SAP<SID>_<INO>` (for example, `SAPEN1_10`) is added.
+Adaptations should be done using a drop-in file.
+It is highly recommended to still use the `sapcontrol` functions which guarantees also the functionality of cluster integration like the `sap-suse-cluster-connector`.
+
+Before you start your new installation or update to the native systemd integration, make sure you update the resource agent packages to the newest available versions.
+The native SAP systemd integration is supported starting with the following package versions for {product} {this-ga}:
+
+* resource-agents 4.10.0
+* sapstartsrv-resource-agents 0.9.0+git.1645795466.55a8cca-1.12.1
+* SAPHanaSR 0.155.0
+* SAPHanaSR-ScaleOut 0.181.0
+
+For details please refer to the manual pages `ocf_suse_SAPStartSrv(7)`, `SAPHanaSR(7)`, and `SAPHanaSR-ScaleOut(7)`.
+
+[#bsc-1200271]
+=== {hana} HADR provider hook script `susCostOpt.py`
+
+The RPM `SAPHanaSR` now contains an HANA HADR provider hook script for the method `postTakeover()`.
+This script can be used to change HANA memory limits and table
+preload for the replicated HANA database in the scale-up cost-optimized setup.
+For details please refer to manual page `susCostOpt.py(7)`.
+
+// bsc#1200271
+[#provider-hook-sustkover]
+=== {hana} HADR provider hook script `susTkOver.py`
+
+The RPM `SAPHanaSR` now contains an HANA HADR provider hook script for the method `preTakeover()`.
+This script can be used to block manual HANA `sr_takeover` as long as the {suse} cluster is controlling the HANA database.
+Manual `sr_takeover` will be allowed only in context of the described maintenance procedures. For details please refer to manual pages `susTkOver.py(7)` and `SAPHanaSR_maintenance_examples(7)`.
+
+
+[#bsc-1204008]
+=== {hana} HADR provider hook script `susChkSrv.py`
+
+The RPMs `SAPHanaSR` and `SAPHanaSR`-ScaleOut now contain an HANA HADR provider hook script for the method `srServiceStateChanged()`.
+This script can be used to speed up the takeover in case of a failing HANA indexserver.
+HANA scale-out is supported only without standby nodes.
+For details please refer to manual pages `susChkSrv.py(7)`, `SAPHanaSR-hookHelper(8)`, and `SAPHanaSR-manageProvider(8)`.

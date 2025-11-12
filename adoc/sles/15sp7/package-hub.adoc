@@ -1,0 +1,32 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#package-hub]
+=== {ph}
+
+// Release notes for Package Hub
+
+{ph} brings open-source software packages from {opensuse} to {sles} and {sled}.
+
+Usage of software from {ph} is not covered by {suse} support agreements.
+At the same time, usage of software from {ph} does not affect the support status of your {sle} systems.
+{ph} is available at no additional cost and without an extra registration key.
+
+// [#package-hub-added-package]
+// ==== Important package additions to {ph}
+
+// Among others, the following packages have been added to {ph}:
+
+// * <<jsc-SLE-23450>>
+
+==== KDE migration issue
+
+Installing the full KDE Plasma Desktop (using the `kde` pattern) requires an extra subscription for the {we}.
+Upgrading to {this-version} might fail if you have the `kde` pattern installed but do not have the required subscription.
+
+A new `kde_minimal` pattern provides the KDE Plasma Desktop with fewer packages and does not require the {we} subscription.
+If your upgrade fails because of the missing subscription, finish the upgrade, then run these commands:
+
+[source]
+zypper rm -t pattern kde
+zypper in -t pattern kde_minimal

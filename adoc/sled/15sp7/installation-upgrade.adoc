@@ -1,0 +1,103 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#instUpgrade]
+== Installation and Upgrade
+
+{product} can be deployed in several ways:
+
+* Physical machine
+* Virtual host
+* Virtual machine
+* System containers
+* Application containers
+
+[#instUpgrade-installation]
+=== Installation
+
+This section includes information related to the initial installation of {product} {this-version}.
+
+.Installation Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the installation of {product}.
+However, they do not document the installation procedure itself.
+
+// disclaimer beta
+ifeval::["{lifecycle}" == "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url-beta}/html/SLED-deployment/ (draft version).
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+For installation documentation, see the __Deployment Guide__ at {doc-url}/html/SLED-all/book-deployment.html.
+endif::[]
+// disclaimer unmaintained
+ifeval::["{lifecycle}" == "unmaintained"]
+For installation documentation, see the __Deployment Guide__ at {doc-url}/.
+endif::[]
+====
+
+// Installation-related release notes go here
+
+[#jsc-PED-1863]
+=== {product} now supported in WSL (Windows Subsystem for Linux)
+
+During the initial setup of the {slesa} app in the Microsoft store, it is now possible to choose between registering the image as either {sles} or {sled}.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#instUpgrade-upgrade]
+=== Upgrade-Related Notes
+
+This section includes upgrade-related information for {product} {this-version}.
+
+.Upgrade Documentation
+[IMPORTANT]
+====
+The following release notes contain additional notes regarding the upgrade of {product}.
+However, they do not document the upgrade procedure itself.
+
+// disclaimer beta
+ifeval::["{lifecycle}" == "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url-beta}/html/SLED-upgrade/ (draft version).
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url}/html/SLED-all/book-upgrade.html.
+endif::[]
+// disclaimer unmaintained
+ifeval::["{lifecycle}" == "unmaintained"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url}/.
+endif::[]
+====
+
+// Upgrade-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1194837]
+==== Migration failure due to `insserv-compat`
+
+If `insserv-compat` is not installed prior to migration and other software has already created the `/etc/rc.d/` directory, the migration fails.
+As a workaround, remove the `/etc/rc.d/` directory and continue with migration.
+
+
+[#instUpgrade-more]
+=== For More Information
+
+For more information, see <<features>> and the sections relating to your respective hardware architecture.

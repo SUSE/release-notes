@@ -1,0 +1,22 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-techpreview]
+=== Technology Previews
+
+Technology previews are packages, stacks, or features delivered by {suse} to provide glimpses into upcoming innovations.
+Technology previews are included for your convenience to give you a chance to test new technologies within your environment.
+We would appreciate your feedback!
+If you test a technology preview, contact your {suse} representative and let them know about your experience and use cases.
+Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development.
+Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are *not* supported.
+* Technology previews may only be available for specific hardware architectures.
+Details and functionality of technology previews are subject to change.
+As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time.
+This may be the case, for example, if {suse} discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.

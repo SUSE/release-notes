@@ -1,0 +1,312 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#kernel]
+=== Kernel
+
+// Release Notes for General kernel/kernel module features
+//   including hardware and file system modules
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following:
+
+* <<kernel-parameter-changes>>
+
+[#jsc-SLE-7700]
+==== Using the `conntrack-tools`
+
+The previously SUSE-specific kernel helper was replaced by `conntrack-tools`, a helper for SLP (Service Location Protocol).
+
+The `conntrack-tools` consist of the userspace daemon `conntrackd` and the command line interface `conntrack`.
+These can be used to interact with the Connection Tracking System, which is a module that provides stateful packet inspection for `iptables`.
+
+
+[#jsc-SLE-22573]
+==== Unprivileged eBPF usage has been disabled
+
+A large amount of security issues was found and fixed in the Extended Berkeley Packet Filter (eBPF) code.
+To reduce the attack surface, its usage has been restricted to privileged users only.
+
+Privileged users include `root`.
+Programs with the `CAP_BPF` capability in the newer versions of the Linux kernel can still use eBPF as-is.
+
+To check the privileged state, you can check the value of the `/proc/sys/kernel/unprivileged_bpf_disabled` parameter.
+Value of 0 means "unprivileged enable", and value of 2 means "only privileged users enabled".
+
+This setting can be changed by the `root` user:
+
+* to enable it temporarily for all users by running the command `sysctl kernel.unprivileged_bpf_disabled=0`
+* to enable it permanently by adding `kernel.unprivileged_bpf_disabled=0` to the `/etc/sysctl.conf` file.
+
+
+[#bsc-1176278]
+==== Software Scrollback Has Been Removed
+
+The Linux console used to support a software scrollback buffer that could be reached with Shift-Page Up.
+
+This functionality has been removed from the Linux kernel's framebuffer and VGA console due to lack of usage and maintainers.
+
+
+[#jsc-SLE-6763]
+==== Kernel Upgraded to Version 5.3
+
+In alignment with the established cycle, the operating system kernel was upgraded to version 5.3 in this service pack.
+
+
+[#jsc-SLE-11117]
+==== Persistent Naming for SCSI Devices Is Now Active
+
+On modern {product} systems, device drivers are probed asynchronously.
+This has resulted in traditional device names like `/dev/sda` or `eth0` becoming non-deterministic.
+To solve this, persistent device naming was introduced.
+For example, for network devices like `eth0`, udev would rename the interfaces to be consistent with device MAC addresses.
+For disk devices like `/dev/sda`, persistent device name links in `/dev/disk/by-id` have been introduced.
+
+In the Linux 5.3 kernel, asynchronous probing has been added to more drivers.
+The `sd` driver handling SCSI disk devices uses asynchronous probing, too.
+The result is that `/dev/sdX` names even within individual SCSI hosts become non-deterministic.
+
+You might now see a device order like:
+
+[source]
+----
+# lsscsi
+
+[0:2:0:0]    disk    Lenovo   RAID 930-8i-2GB  5.08  /dev/sdd
+[0:2:1:0]    disk    Lenovo   RAID 930-8i-2GB  5.08  /dev/sdc
+[0:2:2:0]    disk    Lenovo   RAID 930-8i-2GB  5.08  /dev/sde
+----
+
+When using persistent device names as recommended, this will not pose a problem.
+Modern tools are well-equipped to handle this.
+
+However, some tools might expect a fixed device order or a predefined `/dev/sdX` name which then will fail to operate properly.
+In such cases, it is possible to disable asynchronous probing for specific drivers:
+
+. Find out the name of the driver(s) used for the device that you want to disable asynchronous probing for:
++
+[source]
+----
+# lsscsi -H
+
+[0]    megaraid_sas
+----
++
+The first number in the first column of the `lsscsi` output above corresponds to the SCSI host number.
+
+. Add the following option to the kernel command line:
++
+[source]
+----
+scsi_mod.disable_async_probing=<driver>[,<driver>]
+----
++
+Given the `lsscsi` output from the example above, you would add the following to the kernel command line:
+`scsi_mod.disable_async_probing=megaraid_sas`.
+
+
+[#jsc-SLE-7689]
+==== Booting Without Enabling Swap
+
+If a swap device is not available and the system cannot enable it during
+boot, booting may fail completely.
+
+To make such a system reliably bootable, you can disable the activation of swap devices.
+Append the following options on the kernel command line:
+
+[source, bash]
+----
+systemd.device_wants_unit=off systemd.mask=swap.target
+----
+
+This prevents activation of all swap units.
+You can also mask only specific swap units, for example:
+
+[source, bash]
+----
+systemd.mask=dev-sda1.swap
+----
+
+
+// related: jsc#SLE-12300
+[#bsc-1176570]
+==== Support for NVMe Surprise Removal
+
+{product} {this-version} supports NVMe surprise removal, that is, the removal of NVMe devices without any preceding prepare-to-remove operation.
+NVMe surprise removal is helpful in the field, allowing simple replacement of failed NVMe drives.
+
+
+[#jsc-SLE-13175]
+==== efivar Has Been Updated from v35 to v37
+
+With efivar v37, installing the OS and booting from NVDIMM devices is now supported.
+
+
+[#jsc-SLE-10427]
+==== Kernel Real-time Group Scheduling Configuration Changed
+
+The scheduler allows reserving runtime proportion to tasks with real-time priority.
+As an extension, the `CONFIG_RT_GROUP_SCHED` build option further allows distributing this real-time allocation among cgroups.
+However, there are limitations in the current mainline kernel implementation of this feature.
+
+Aligned with upstream recommendations, {product} kernel is now shipped with the `CONFIG_RT_GROUP_SCHED` build option disabled.
+The `cpu.rt_runtime_us` and `cpu.rt_runtime_us` CPU cgroup attributes have been removed.
+
+
+[#jsc-SLE-10162]
+==== Kernel Package Clean-up Reimplemented
+
+Kernel-purge functionality has been integrated into `zypper`.
+The original `/usr/sbin/purge-kernels` script has been removed from the `dracut` package and replaced by the new `zypper purge-kernels` command.
+There is a new package `purge-kernels-service` that is responsible for running kernel package clean-up upon boot.
+
+
+[#jsc-SLE-10160]
+==== Reflink Support on XFS
+
+Copy-on-write data extent sharing (reflinks), known from Btrfs, is now fully supported on XFS.
+This feature primarily allows for better storage space utilization.
+
+Reflinks are available only on file systems formatted with the `-m reflink=1` option of `mkfs.xfs`.
+The `duperemove` utility can be used for data deduplication on a reflink-enabled file system.
+Note that this feature is not yet compatible with file system DAX and is available on {product} 15 SP2 and later.
+Earlier releases of {product} can read reflink-enabled XFS file systems but not write them.
+Read-write mounts of reflink-enabled XFS file systems are strongly discouraged on these systems.
+
+
+[#jsc-SLE-9416]
+==== Support for squashfs Version 3.x Legacy Formats Has Been Removed From the Kernel
+
+squashfs 3.x file systems could last be created with SLE 11 GA.
+Since {slea} 11 SP1, the tools produce the squashfs 4.0 format.
+Until now, the {slea} kernel included convenience code allowing to mount file systems with the old format.
+Starting with {slea} 15 SP2, however, the operating system kernel supports only the squashfs 4.0 format.
+
+To migrate a squashfs file system from squashfs 3.x to squashfs 4.0:
+
+. Make sure the tool package `squashfs` is installed:
++
+[source, bash]
+----
+sudo zypper in squashfs
+----
+
+. Unpack the old squashfs file into a local directory:
++
+[source, bash]
+----
+unsquashfs -d squashfs-root rootfs.squashfs3
+----
+
+. Repack the directory contents using the squashfs 4.0 format:
++
+[source, bash]
+----
+mksquashfs squashfs-root rootfs.squashfs4
+----
+
+
+[#jsc-SLE-11831]
+==== Add Support for Large Increment per Cycle Events for AMD's Family 17h and Up
+
+The core AMD PMU has a 4-bit wide per-cycle increment for each performance monitor counter which works for most events.
+However, for AMD Zen CPU and later processors, some events can occur more than 15 times in a cycle.
+{product} 15 SP2 adds the support for handling such Large Increment per Cycle Events.
+
+
+[#jsc-SLE-11833]
+==== EDAC (Error Detection and Correction) Support for AMD's Family 19h
+
+{product} 15{nbsp}SP2 adds code to support EDAC (Error Detection and Correction) for the new AMD Zen 3 CPU architecture.
+
+
+[#jsc-SLE-9205]
+==== Systemtap Updated to Version 4.2
+
+Systemtap has been upgraded to version 4.2 to match the upgraded kernel.
+
+
+[#jsc-SLE-11439]
+==== Time Namespaces Supported in Kernel
+
+The kernel now implements time namespaces for enhanced container support.
+Time namespaces allow containers to keep their notion of time, specifically `CLOCK_MONOTONIC` and `CLOCK_BOOTTIME`, even after container migration.
+
+
+[#jsc-SLE-7041]
+==== The Legacy Microcode Loading Interface Has Been Removed
+
+The legacy `/dev/cpu/microcode` microcode loading interface has been removed.
+{product} updates CPU microcode during system boot through the early loading method in the initial system ramdisk.
+
+Loading microcode at runtime is discouraged in most scenarios and should only be used when absolutely necessary.
+For example, when early microcode loading is impossible as CPU features enabled by the microcode fail to be detected properly by the rest of the running system.
+
+
+[#kernel-limits]
+==== Kernel Limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {sles} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|ARMv8 (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|256
+|2048
+|768
+
+|Maximum amount of RAM (theoretical/certified)
+|> 1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|10{nbsp}TiB/{zwsp}256{nbsp}GiB
+|1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|256{nbsp}TiB/{zwsp}n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/{zwsp}128{nbsp}TiB
+|n.a.
+|4{nbsp}PiB^1^/{zwsp}2{nbsp}EiB
+|256{nbsp}TiB/{zwsp}256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1048576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 4{nbsp}PiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".
+

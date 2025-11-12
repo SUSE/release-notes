@@ -1,0 +1,41 @@
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: maintained
+// conditionals-end
+
+ifeval::["{lifecycle}" == "beta"]
+:label-pre: {nbsp}(prerelease)
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+:label-pre:
+endif::[]
+
+:product: {sleha}
+:producta: {sle} HA
+:this-ga: 15
+:this-sp: SP4
+:this-version: {this-ga}{nbsp}{this-sp}{label-pre}
+:rel-date: June 2022
+:next-sp: SP4
+:next-ga: 16
+:previous-sp: SP3
+:previous-ga: 12
+:kernel-version: 5.3
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:next-version: {this-ga}{nbsp}{next-sp}
+
+:abstract: {product} is an enterprise-level clustering solution to implement highly available Linux clusters and eliminate single points of failure. This document provides a high-level overview of features, capabilities, and limitations of {product}{nbsp}{this-version}, and highlights important product updates.
+
+:doc-url: https://documentation.suse.com/sle-ha-15
+:doc-url-beta: https://susedoc.github.io/doc-sleha/main
+:doc-url-source: https://www.suse.com/download/sle-ha/
+
+:doc-url-sles: https://documentation.suse.com/sles/15-SP4
+:doc-url-sles-beta: https://susedoc.github.io/doc-sle/main
+:support-url: https://www.suse.com/support/?id=SUSE_Linux_Enterprise_High_Availability_Extension
+:rn-url: https://www.suse.com/releasenotes
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

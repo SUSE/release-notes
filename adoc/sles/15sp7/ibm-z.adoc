@@ -1,0 +1,125 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#ibm-z]
+== {ibmz}-specific changes (s390x)
+
+Information in this section applies to {z-product} {this-version}.
+For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
+
+// [#ibm-z-hardware]
+// === Hardware
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// [#ibm-z-network]
+// === Networking
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+// [#ibm-z-performance]
+// === Performance
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#ibm-z-security]
+=== Security
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-12579]
+==== `paes-xts-plain64` cipher now supported for disk encryption during installation
+
+{productnameshort} {this-version} now allows selecting the `paes-xts-plain64` cipher for disk encryption in the {yast} partitioner.
+This feature requires a Crypto Express adapter.
+The adapter can operate in CCA or EP11 mode.
+EP11 mode specifically needs a CEX7S adapter or newer.
+
+When using LUKS2, you can choose between an AES data key or an AES cipher key.
+The crypto adapter must be correctly configured before installation.
+For configuration details, see https://www.ibm.com/docs/en/linux-on-systems?topic=utilities-master-key-administration.
+
+
+[#bsc-1222353]
+==== Secure boot IPL requirements
+
+Secure boot IPL has the following minimum system requirements, depending on the boot device to be IPLed:
+
+* NVMe disk: IBM LinuxONE III or newer.
+* FC-attached SCSI disk: IBM LinuxONE III, IBM z15 or newer.
+* ECKD DASD with CDL layout: IBM z16, LinuxONE 4 or newer.
+
+If these requirements are not met, the system can be IPLed in non-secure mode only.
+
+
+// [#ibm-z-storage]
+// === Storage
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// [#ibmz-virtualization]
+// === Virtualization
+
+// The following new features are supported in {productname} {this-version} under KVM:
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// [#ibm-z-kernel]
+// === Kernel
+
+// [#ibm-z-misc]
+// === Miscellaneous
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

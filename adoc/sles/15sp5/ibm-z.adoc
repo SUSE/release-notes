@@ -1,0 +1,372 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#ibm-z]
+== {ibmz}-specific changes (s390x)
+
+Information in this section applies to {z-product} {this-version}.
+For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
+
+[#ibm-z-hardware]
+=== Hardware
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+There were the following hardware-related changes:
+
+- Support for IBM z16 and LinuxONE 4 in qclib
+- Exploitation support of new {ibmz} crypto hardware in zcrypt DD
+- Support for a new set of crypto performance counters of the IBM z16 and LinuxONE 4
+- Add new CPU-MF Counters for IBM z16 and LinuxONE 4 in kernel,` s390-tools` and libpfm part.
+- Support for "Crypto Compliance" feature of the IBM z16 and LinuxONE 4 Processor-Activity-Instrumentation Facility in kernel and` s390-tools`
+
+[#ibm-z-network]
+=== Networking
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// also IBM-1034, IBM-1035
+[#jsc-PED-2175]
+==== Enablement for MIO Instructions - kernel and `rdma-core` parts
+
+Make use of the new PCI Load/Store instructions in the `rdma-core` package for increased performance.
+
+
+[#ibm-z-performance]
+=== Performance
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// also IBM-1024
+[#jsc-PED-1350]
+==== zlib CRC32 optimization for s390x
+
+This new feature utilizes SIMD instructions to accelerate the zlib CRC32 implementation, resulting in significant performance improvements for applications that rely heavily on zlib.
+
+
+[#ibm-z-security]
+=== Security
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1211316]
+==== Secure Execution
+
+If you want to use IBM Secure Execution see https://www.ibm.com/docs/en/linux-on-systems?topic=execution-prerequisites-restrictions
+
+
+// also IBM-1044
+[#jsc-PED-2867]
+==== openCryptoki: `p11sak` support Dilithium and Kyber keys
+
+The openCryptoki `p11sak` tool has been extended to manage Dilithium and Kyber keys.
+
+
+// also IBM-985
+[#jsc-PED-439]
+==== In-kernel crypto: SIMD implementation of `chacha20`
+
+Recent kernel releases provide support for the `chacha20` cipher and the goal of this feature is to use z System SIMD instruction to accelerate the `chacha20` implementation on {ibmz} and LinuxONE.
+
+// part of IBM-1001
+[#jsc-PED-442]
+==== openCryptoki ep11 token: master key consistency
+
+Ensuring that all APQNs used by an openCryptoki ep11 token are configured with the same master key, if not print an error message and fail initialization.
+
+// part of IBM-1014
+[#jsc-PED-472]
+==== zcrypt DD: Exploitation Support of new {ibmz} Crypto Hardware for kernel and `s390-tools`
+
+zcrypt DD: exploitation support of new {ibmz} crypto hardware by recognizing and supporting the CEX8 adapters.
+
+// part of IBM-1014
+[#pai-cpacf-counters]
+==== Display PAI (Processor Activity Instrumentation) CPACF counters (`s390-tools`)
+
+Provides a tool to display CPACF usage counters from the IBM z16 and LinuxONE 4 Processor Activity Instrumentation Facility.
+
+// part of IBM-1001
+[#opencryptoki-ep11-ibm-z16]
+==== openCryptoki EP11 token: IBM z16 and LinuxONE 4 support
+
+The openCryptoki EP11 token supports new vendor specific mechanisms for quantum safe ciphers (Dilithium and Kyber) supported by the CEX8S crypto adapter.
+
+// part of IBM-1001
+[#opencryptoki-ep11-vendor-specific-key]
+==== openCryptoki EP11 token: vendor-specific key derivation
+
+Support of a new function from EP11 7.2 by the openCryptoki EP11 token.
+Comprises the support of vendor-specific mechanisms for a key derivation function used with cryptocurrencies and Schnorr signatures.
+
+// part of IBM-1001
+[#opencryptoki-crypto-profiles]
+==== openCryptoki: support crypto profiles
+
+Support for a new configuration option to restrict cryptographic functions/mechanisms.
+
+// part of IBM-1001
+[#opencryptoki-key-generation]
+==== openCryptoki key generation with expected MKVP only on CCA and EP11 tokens
+
+For the EP11 and CCA tokens allow to configure expected master key verification pattern (MKVPs) configured in the crypto adapter(s) and upon generation of a new secure keys ensures that the MKVP of the generated key is equal to an expected MKVP.
+
+// part of IBM-981
+[#jsc-PED-478]
+==== libica: extend statistics to reflect security measures (crypto)
+
+Adds new `-k` parameter to `icastats` to display detailed counters to reflect security measures (key size/curve/hash size).
+
+// IBM-979
+[#jsc-PED-468]
+==== `libica`: eliminate SW fall backs - stage 2
+
+Eliminates implementations of SW fallback functions for RSA in `libica`.
+
+// IBM-978, part of IBM-1014
+[#jsc-PED-480]
+==== `zcryptctl` support for control domains - kernel and s390-tools parts
+
+Improves access control to crypto resources via device nodes, for example, for Docker containers by allowing to assign control domains to a device node created by `zcryptctl`.
+
+// part of IBM-1001
+[#opencryptoki-pkcs11-cka-derive-template]
+==== openCryptoki: PKCS #11 3.1 - support CKA_DERIVE_TEMPLATE
+
+In openCryptoki, support the new attribute `CKA_DERIVE_TEMPLATE` introduced with PKCS #11 v3.1.
+
+// IBM-977
+[#jsc-PED-440]
+==== `p11-kit`: add IBM specific mechanisms and attributes
+
+Adds support for IBM-specific attributes and mechanisms to the PKCS11 client-server implementation of `p11-kit`.
+
+// IBM-1046
+[#jsc-PED-2871]
+==== `libica`: FIPS 140-3 compliance
+
+Update of `libica` to fulfill FIPS 140-3 requirements.
+
+
+[#ibm-z-storage]
+=== Storage
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// IBM-1010, part of IBM-1014
+[#jsc-PED-444]
+==== Transparent DASD PPRC (Peer-to-Peer Remote Copy) handling
+
+Enables user of Linux on Z to use DASD volumes in a PPRC (Peer-to-Peer Remote Copy) relation like a normal DASD volume thereby enabling platform support along with improving user experience.
+
+// part of IBM-1014
+[#zdev-site-aware-device-configuration]
+==== zdev: Site-aware device configuration
+
+Enables a Linux on Z admin to prepare a Linux root/boot volume so that it can be started on a different system (site) or with different device IDs and parameters without manually changing the configuration.
+
+// part of IBM-1014
+[#zipl-support-secure-boot-ipl]
+==== `zipl` support for Secure Boot IPL and Dump from ECKD DASD
+
+Enables `zipl` to use an ECKD DASD for Secure Boot IPL and Dump.
+
+// part of IBM-1014
+[#zipl-site-aware-env-block]
+==== `zipl`: Site-aware environment block
+
+Enables a Linux on Z admin to create a `zipl` configuration file that enables different kernel parameters depending on the IPL site.
+
+// IBM-1009
+[#jsc-PED-457]
+==== Transparent PCI device recovery
+
+Improves reliability and reduces downtime by using cooperative recovery strategies that allow the drivers to recover from error scenarios automatically (without intervention from userspace), and without going through a complete tear-down and subsequent re-init.
+
+// IBM-1006
+[#jsc-PED-470]
+==== ROCE: Independent Usage of Secondary Physical Function
+
+This feature enables zLinux running in an LPAR to use the Phisical Function (PF) that corresponds to the second oprt of a ConnectX-5/6 card even if the PF that corresponds to the first port is assigned to a different LPAR.
+
+
+[#ibmz-virtualization]
+=== Virtualization
+
+The following new features are supported in {productname} {this-version} under KVM:
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// IBM-1017
+[#jsc-PED-461]
+==== KVM: Enable GISA support for Secure Execution guests
+
+GISA (Guest Interruption State Area) is now supported for Secure Execution
+Guests.
+This allows the direct injection of interrupts into running VMs, which
+results in reduced processing overhead.
+
+
+// IBM-976
+[#jsc-PED-473]
+==== Enhanced Interpretation for PCI Functions
+
+For improving performance, the interpretive execution of the PCI store and PCI load instructions are enabled.
+Further improvement is achieved by enabling the Adapter-Event-Notification Interpretation which enables customers to run PCI I/O intensive workloads in KVM guests.
+This feature also allows KVM guests to use the Shared Memory Communications - Direct (SMC-D) protocol.
+
+// IBM-975, part of IBM-1014
+[#jsc-PED-456]
+==== `vfio-ap` enhancements
+
+This feature adds hotplug support, which allows to dynamically assign and remove crypto adapters to or from a running KVM guest.
+This additionally provides a tool to persistently define the configuration of crypto adapters and domains that are allowed for passthrough usage as well as the configuration of the matrix/vfio-ap devices to be passed through to avoid that customers have to reconfigure after every IPL.
+
+// IBM-974, part of IBM- 998 and part of IBM-1014
+[#jsc-PED-449]
+==== Secure Execution guest dump encryption with customer keys, tool to process encrypted Secure Execution guest dumps
+
+These features implements dumps created in a way that can only be decrypted by the owner of the guest image and be used for problem determination hence mitigating the outcomes of situations where `kdump` hypervisor-initiated dumps are not helpful.
+
+// IBM-973
+[#jsc-PED-466]
+==== KVM: Attestation support for Secure Execution (crypto), KVM: Secure Execution Attestation Userspace Tool
+
+Provides attestation support, for example, for external frameworks, specific deployment models or potentially regulatory requirements.
+
+// IBM-972
+[#jsc-PED-445]
+==== KVM: Provide virtual CPU topology to guests
+
+This feature allows to specify a virtual CPU topology which can help to configure the guest for better performance.
+
+// Part of IBM-1014, part of IBM-998
+[#kvm-long-kernel-command-lines]
+==== KVM: Allow long kernel command lines for Secure Execution guests and QEMU
+
+This feature allows Secure Execution guests to use larger command lines.
+
+// IBM-1036
+[#jsc-PED-2317]
+==== Allow to list persisted `driverctl` definitions
+
+Updated `driverctl` to version newer than 0.111 because the previous version did not allow to list persisted override definitions.
+
+// IBM-1047
+[#jsc-PED-3182]
+==== KVM: Enablement of device busid for subchannels
+
+Displaying the original CCW device numbers for` vfio-ap` devices improves the usability of `vfio-ccw` device passthrough to KVM guests.
+
+[#ibm-z-kernel]
+=== Kernel
+
+// IBM-1005, part of IBM-1014
+[#nvme-standalone-dump-support]
+==== NVMe stand-alone dump support
+
+Supports the HW roadmap, full exploitation of NVMe on the {ibmz} platform.
+
+// IBM-1004, part of IBM-1014
+[#ibm-z16-pia-crypto-compliance]
+==== Support IBM z16 and LinuxONE 4 Processor-Activity-Instrumentation Facility
+
+Support for the Crypto Compliance feature of the IBM z16 and LinuxONE 4 Processor-Activity-Instrumentation Facility.
+
+// IBM-1003, part of IBM-1014, IBM-1002
+[#z16-new-cpu-mf-counters]
+==== New CPU-MF Counters for IBM z16 and LinuxONE 4
+
+Added new CPU-MF Counters for IBM z16 and LinuxONE 4.
+
+// IBM-1028, part of IBM-1014
+[#z16-pia-extension1]
+==== Support Processor Activity Instrumentation Extension 1
+
+Support for a new set of crypto performance counters of the IBM z16 and LinuxONE 4.
+
+// part of IBM-1014
+[#sclp-cpi-additional-info]
+==== Add additional information to SCLP CPI
+
+Includes distribution, release number, and detailed kernel version in CPI data to be displayed on the HMC.
+
+
+[#ibm-z-misc]
+=== Miscellaneous
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// IBM-965
+[#jsc-PED-432]
+==== Auto scale `crashkernel` size with hardware changes
+
+`kdump` now has a configuration option called `KDUMP_AUTO_RESIZE`.
+This option makes the boot-time init script call `kdumptool-calibrate --shrink`.
+This performs the same reservation size estimate that `kdumptool calibrate` normally does and shrinks the memory reservation to the calculated value by writing to `/sys/kernel/kexec_crash_size`.
+
+{yast} now has an option to turn this run-time auto-detection on.
+The result will be a very large `crashkernel=` value (around half the RAM) passed to the kernel and the reservation is reduced during boot using the `KDUMP_AUTO_RESIZE` option.
+
+// IBM-991
+[#jsc-PED-454]
+==== Enabled installer to configure PCI-attached networking devices
+
+The installer now supports PCI-attached networking devices.
+
+// IBM-990
+[#jsc-PED-482]
+==== Removed ESCON from installer
+
+Removed the ESCON entry from the menu because it is no longer supported by the {yast} module for network configuration.

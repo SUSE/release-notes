@@ -1,0 +1,207 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#system-management]
+=== System management
+
+// Release notes for system management tools:
+//    YaST, Zypper, AutoYaST, KIWI, SUSEconnect, Salt, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following notes:
+
+* <<jsc-SLE-20049>>
+
+[#jsc-PED-7978]
+==== Effective user limits in systemd setup
+
+Before, the lookup of the effective session limit in a systemd setup was not trivial.
+Now these new properties have been added:
+
+* `EffectiveMemoryMax`
+* `EffectiveMemoryHigh`
+* `EffectiveTasksMax`
+
+
+[#jsc-PED-407]
+==== Silence `KillMode=None` messages
+
+The log level of the deprecation warnings regarding `killmode=None` have been reduced.
+Instead of `warning`, they are now logged at the `debug` log level.
+
+
+[#jsc-SLE-19743]
+==== systemd updated to 249
+
+systemd has been updated to version 249.
+Find a summary of changes below.
+See the https://github.com/openSUSE/systemd/blob/SLE15-SP4/NEWS[full changelog] for more information.
+
+*New features*
+
+* Cryptography
+** A new `systemd-cryptenroll` tool has been added to enroll TPM 2.0, FIDO2 and PKCS#11 security tokens to LUKS volumes, list and destroy them.
+It also supports enrolling "recovery keys" and regular passphrases.
+** Support has been added to `systemd-cryptsetup` for extracting the PKCS#11 token URI and encrypted key from the LUKS2 JSON embedded metadata header.
+** `systemd-cryptsetup` gained support for unlocking LUKS2 volumes using TPM 2.0 hardware, as well as FIDO2 security tokens.
+** The `ConditionSecurity=tpm2` unit file setting may be used to check if the system has at least one TPM 2.0 (`tpmrm` class) device.
+** A new credentials logic has been added to system services.
+This is a simple mechanism to pass privileged data to services in a safe and secure way.
+* A concept of system extension images is introduced.
+Such images may be used to extend the `/usr/` and `/opt/` directory hierarchies at runtime with additional files (even if the file system is read-only).
+When a system extension image is activated, its `/usr/` and /opt/ hierarchies and `os-release` information are combined via `overlayfs` with the file system hierarchy of the host OS.
+A new `systemd-sysext` tool can be used to merge, un-merge, list, and refresh system extension hierarchies.
+* udev rules may now set `log_level=` option.
+This allows debug logs to be enabled for select events, for example, just for a specific subsystem or even a single device.
+* A new udev hardware database has been added for FireWire devices (IEEE 1394).
+
+*Deprecation warnings*
+
+* Builds with support for separate `/` and `/usr/` hierarchies (so-called "split-usr" builds, "non-merged-usr" builds) are now officially deprecated.
+A warning is emitted during build.
+* Systems with the legacy cgroup v1 hierarchy are now marked as "tainted", to make it clearer that using the legacy hierarchy is not recommended.
+* `systemctl --check-inhibitors=true` may now be used to obey inhibitors even when invoked non-interactively.
+The old `--ignore-inhibitors` switch is now deprecated and has been replaced with `--check-inhibitors=false`.
+
+*Incompatible changes*
+
+* The "net_id" built-in of udev has been updated with three backwards-incompatible changes:
+** PCI hotplug slot names on s390 systems are now parsed as hexadecimal numbers.
+They were incorrectly parsed as decimal previously, or ignored if the name was not a valid decimal number.
+** PCI onboard indices up to 65535 are allowed. Previously, numbers above 16383 were rejected. This primarily impacts s390 systems, where values up to 65535 are used.
+** Invalid characters in interface names are replaced with the character "_".
+* Kernel API incompatibility: Linux 4.14 introduced two new `uevents` to the Linux device model: `bind` and `unbind`. The introduction of these new `uevents` (which are typically generated for USB devices and devices needing a firmware upload before being functional) resulted in a number of issues.
+To minimize issues resulting from this kernel change starting with `systemd-udevd` 247, the udev tags concept (which is a concept for marking and filtering devices during enumeration and monitoring) has been reworked: udev tags are now "sticky", meaning that once a tag is assigned to a device it will not be removed from the device again until the device itself is removed (that is, unplugged).
+* Units using `ConditionNeedsUpdate=` will no longer be activated in the `initrd`.
+* `systemd-hostnamed` will now respect hostname being explicitly set to `localhost` instead of silently ignoring it.
+* PAM configuration in `/etc/pam.d` will take precedence before `/usr/lib/pam.d/`.
+* Support for the `ConditionNull=` unit file condition has been been removed.
+
+
+[#jsc-SLE-18820]
+==== {autoyast} per-product schema
+
+{autoyast} provides a scheme package, which can be used to manually validate a created {autoyast} profile.
+However, there are {autoyast} modules, which are only available in some products.
+
+Now there are different versions of the `yast2-schema` package, which only include the modules relevant for the particular product.
+
+
+[#jsc-SLE-20547]
+==== {yast} now offers several visual themes
+
+{yast} now makes it possible to select from several different visual themes.
+This includes a dark or a high-contrast mode, and several others.
+
+
+[#jsc-SLE-20563]
+==== {yast} now assigns subuids/subgids
+
+Previously, users added using {yast} did not have subuids/subgids assigned.
+This is required, for example, for running rootless containers.
+
+In {this-version}, users created using {yast} are always assigned subuids/subgids.
+
+
+// jsc-SLE-20563
+==== Dropped support in {yast} for groups password
+
+Previously, it was possible to set a group password in {yast}.
+However, group passwords are an inherent security problem.
+This even more true in {sle} because, for historical reasons, a separate `/etc/gshadow` file is not used.
+
+Thus this features has been removed from both the user interface and {autoyast}.
+When cloning a system with {autoyast}, the group description does not include the `<group_password>` or `<encrypted>` tags anymore.
+Those elements are also ignored when importing a group from an existing {autoyast} profile.
+
+
+// jsc-SLE-20563
+==== Changes in the section `<user_defaults>` of the {autoyast} profile
+
+The `<user_defaults>` section of the {autoyast} profile has been updated to only include relevant settings.
+
+As a result, the entries `<groups>`, `<no_groups>`, and `<skel>` will not longer be exported when cloning a system and they will be ignored when importing an existing {autoyast} profile during installation.
+
+
+[#jsc-SLE-20928]
+==== {autoyast} GRUB2 password protection
+
+{autoyast} now supports setting password protection in GRUB2 either in plain text or encrypted/hashed form.
+See the `password` option in the {doc-url-auto}/html/SLES-autoyast/cha-configuration-installation-options.html#CreateProfile-Bootloader-globals[__{autoyast} Guide__] for more information.
+
+[#jsc-SLE-18818]
+==== `zram` is now officially supported
+
+`zram` is a Linux kernel feature that provides a form of virtual memory compression.
+Previously, it has only been available in {ph}.
+
+In {this-version}, the `systemd-zram-service` package has been moved from {ph} and is thus now officially supported.
+
+See the https://github.com/mdomlop/systemd-zram[package's official website] and the https://www.kernel.org/doc/Documentation/blockdev/zram.txt[kernel documentation] for more information.
+
+
+[#jsc-SLE-18819]
+==== {autoyast} UEFI detection
+
+{autoyast} can now detect whether the system was booted in UEFI mode.
+This is exposed via the `boot_efi` ERB helper and the `efi` predefined system attribute.
+
+See the __{autoyast} Guide__ at {doc-url-auto}/html/SLES-autoyast/ for more information.
+
+
+[#jsc-SLE-12280]
+==== Hibernation proposal in installer
+
+The installer proposes hibernation (including adding the `resume` kernel option) only if these conditions are met:
+
+* Architecture is x86_64
+* There must be a swap partition
+
+In other cases, hibernation is not proposed but you can change it manually.
+
+[#jsc-SLE-7690]
+==== Support for System V init.d scripts is deprecated
+
+systemd in {product} {this-version} automatically converts System V `init.d` scripts to service files.
+Support for System V init.d scripts is deprecated and will be removed with the next major version of {product}.
+In the next major version of {product}, systemd will also stop converting System V `init.d` scripts to systemd service files.
+
+To prepare for this change, use the automatically generated systemd service files directly instead of using System V `init.d` scripts.
+To do so, copy the generated service files to `/etc/systemd/system`.
+To then control the associated services, use `systemctl`.
+
+The automatic conversion provided by systemd (specifically, `systemd-sysv-generator`) is only meant to ensure backward compatibility with System V init.d scripts.
+To take full advantage of systemd features, it can be beneficial to manually rewrite the service files.
+
+This deprecation also causes the following changes:
+
+// jsc#SLE-7192
+* The `/etc/init.d/halt.local` initscript is deprecated.
+Use systemd service files instead.
+// jsc#SLE-10912
+* `rc__SERVICE__` controls of systemd services are deprecated.
+Use systemd service files instead.
+// jsc#SLE-9004
+* `insserv.conf` is deprecated.
+
+// !STICKY
+[#zypper-search-packages]
+==== Searching packages across all {slea} modules
+
+In {slea} {this-version} you can search for packages both within and outside of currently enabled {slea} modules using the following command:
+
+[source,bash]
+----
+zypper search-packages -d SEARCH_TERM
+----
+
+This command contacts the SCC and searches all modules for matching packages.
+This functionality makes it easier for administrators and system architects to find the software packages needed.

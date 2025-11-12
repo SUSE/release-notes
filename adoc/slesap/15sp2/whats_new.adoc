@@ -1,0 +1,61 @@
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#intro-new]
+=== What Is New?
+
+////
+** Update information: link to severity ratings documentation
+** Installation: change, new kernel, compatibility
+** features: features description (not technical)
+** System update: link to the documentation (not just the tittle)
+** Update related notes : specific change to focus on.
+////
+
+==== General Changes
+
+Media Changes::
+   The Unified Installer and Packages DVDs known from {product} {this-ga} SP1 are deprecated and have been replaced by the following media:
++
+  * *Online Installation Media:* 
+   All SUSE Linux Enterprise 15 products can be installed with this stand alone media, after entering a registration key.
+   The necessary packages are fetched from online repositories only. 
+   For information about available modules, see https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15-SP2#Intro.ModuleExtensionRelated
+ * *Full Installation Media:* 
+   All {product} {this-ga} products can be installed without network connection with this media, for offline installation scenarios.
+   The media contains all necessary packages.
+   It consists of directories with module repositories which need to be added manually as needed.
+   RMT (Repository Mirroring Tool) and SUSE Manager provide additional options for disconnected or managed installation.
+Extended Package Search::
+   Use the new Zypper command `zypper search-packages` to search across all {suse} repositories available for your product even if they are not yet enabled.
+   This functionality makes it easier for administrators and system architects to find the software packages needed.
+   To do so, it leverages the {scc}.
+{sdk}::
+   With {slea} {this-ga}, the {sdk} is now integrated into the products.
+   Development packages are packaged alongside regular packages.
+   In addition, the _Development Tools_ module contains the tools for development.
+RMT Replaces SMT::
+   SMT (Subscription Management Tool) has been removed.
+   Instead, RMT (Repository Mirroring Tool) now allows mirroring SUSE repositories and custom repositories.
+   You can then register systems directly with RMT.
+   In environments with tightened security, RMT can also proxy other RMT servers.
+Kernel::
+  {slea} {this-version} will come with Kernel 5.3.
+  This new kernel release includes upstream features like 16 million new IPv4 addresses, utilization clamping support in the task scheduler, power efficient userspace waiting with the umwait x86 instructions and many more.
+
+.Major updates to the software selection:
+Salt::
+   {slea} {this-version} can be managed via salt to help integration into up-to-date management solutions, such as {suma}.
+Python 3::
+  As the first enterprise distribution, {slea} {this-ga} offers full support for Python 3 development in addition to Python 2.
+Directory Server::
+  389 Directory Server replaces OpenLDAP to provide a sustainable directory service.
+
+
+==== Changes in {product} {this-version}
+
+// jsc-SLE-4031
+Salt automation::
+  Salt automation for the deployment of {hana}, {nw} and DRBD is now
+  officially supported. See <<jsc-SLE-4031>> for details.
+

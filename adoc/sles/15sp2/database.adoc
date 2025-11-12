@@ -1,0 +1,105 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#databases]
+=== Databases
+
+// Release notes for Database features:
+//    PostgreSQL, MariaDB, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-20676]
+==== PostgreSQL 14 has been added
+
+PostgreSQL 14 has been added to {product}.
+For information about changes between PostgreSQL 14 and 13, see the https://www.postgresql.org/docs/14/release-14.html[upstream release notes].
+
+
+[#jsc-SLE-13242]
+==== The ODBC driver location has changed
+Previously in {producta} 12, the `postgresql10-odbc` package was located in `/usr/pgsql-10/lib/psqlodbcw.so`.
+In {producta} {this-version}, the `psqlODBC-10` package is located in `/usr/lib64/psqlodbcw.so`.
+
+For some more information, see: https://bugzilla.suse.com/show_bug.cgi?id=1169697.
+
+
+[#jsc-SLE-20554]
+==== `unixODBC` package drivers not for production
+
+Drivers in the `unixODBC` package are not suitable for production use.
+The drivers are provided for test purposes only.
+We have added a reference to the package's README file with information about third-party `unixODBC` drivers that are suitable for production use (http://www.unixodbc.org/drivers.html).
+
+
+[#jsc-SLE-17029]
+==== PostgreSQL 13 has been added
+
+PostgreSQL 13 has been added to {product}.
+For information about changes between PostgreSQL 13 and 12, see the upstream release notes:
+
+* https://www.postgresql.org/docs/13/release-13.html
+
+[WARNING]
+.REINDEX is required
+====
+If you migrate a PostgreSQL server to {producta} {this-version}, a REINDEX is required before using the database productively again to avoid database corruptions. See https://www.suse.com/support/kb/doc/?id=000020305 for details.
+====
+
+
+[#jsc-SLE-8269]
+==== MariaDB Has Been Updated to Version 10.4
+
+MariaDB has been updated to version 10.4.
+
+For information about changes between MariaDB 10.2 and 10.4, see the upstream release notes:
+
+* https://mariadb.com/kb/en/changes-improvements-in-mariadb-103/
+* https://mariadb.com/kb/en/changes-improvements-in-mariadb-104/
+
+In addition, see the corresponding upgrade notes:
+
+* https://mariadb.com/kb/en/upgrading-from-mariadb-102-to-mariadb-103/
+* https://mariadb.com/kb/en/upgrading-from-mariadb-103-to-mariadb-104/
+
+With MariaDB 10.4, we have introduced the following file and packaging changes:
+
+* There are `mariadb` variants of `mysql` binaries as symbolic links (`mariadb-dumpslow` is a symbolic link to `mysqldumpslow`, for example).
+* There is a `rcmariadb` link for compatibility.
+* `libmysqld.so` has been renamed to `libmariadbd.so` and its containing package `libmysqld` has been renamed to `libmariadbd`.
+* The systemd services `mariadb.service` and `mariadb@.service` have been enhanced.
+* The options `innodb_file_format` (the option was removed from MariaDB 10.3.1) and `innodb_file_per_table=ON` (now redundant) have been removed from `my.cnf`.
+* The option `sql_mode` has been removed from `my.cnf` (because `NO_ENGINE_SUBSTITUTION` and `STRICT_TRANS_TABLES` have been enabled by default since version 10.2.4).
+* MariaDB is now built with support for the Open Query GRAPH computation engine (OQGRAPH)
+
+[#jsc-SLE-11079]
+==== PostgreSQL 12 Has Been Added
+
+PostgreSQL 12 has been added to {product}.
+PostgreSQL 10 remains available in {product} 15{nbsp}SP2.
+
+For information about changes between PostgreSQL 10 and 12, see the upstream release notes:
+
+* https://www.postgresql.org/docs/11/release-11.html
+* https://www.postgresql.org/docs/12/release-12.html
+
+With PostgreSQL 12, there are the following packaging changes:
+
+* Functionality that was available in the package `postgresql10-devel` is now split into `postgresql12-devel` (for building database clients) and `postgresql12-server-devel` (for building server extensions).
+* There is a new optional package called `postgresql12-llvmjit`.
+
+All new packages have an accompanying `noarch` package without a version number in its name, such as `postgresql-server-devel` and `postgresql-llvmjit`.
+
+
+[#jsc-SLE-10913]
+==== RabbitMQ Server 3.8.3 Has Been Added
+
+RabbitMQ Server 3.8.3 has been added to {product} 15{nbsp}SP2.
+For more information about RabbitMQ, see the link:https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.3[RabbitMQ releases notes].

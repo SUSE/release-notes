@@ -1,0 +1,143 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virtualization.html.
+
+// ALL VIRTUALIZATION SUPPORT TABLES HAVE BEEN MOVED TO VIRTUALIZATION GUIDE
+// IN DOC REPO. RN WILL ONLY CONTAIN CHANGES SINCE PREVIOUS SP.
+
+.Virtualization limits and supported hosts/guests
+[IMPORTANT]
+====
+These release notes only document changes in virtualization support compared to the immediate previous service pack of {productname}.
+Full information regarding virtualization limits for KVM and Xen as well as supported guest and host systems is now available as part of the {productname} documentation.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+See the __Virtualization Guide__ at {doc-url-beta}/html/SLES-virtualization/cha-virt-support.html (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+See the __Virtualization Guide__ at {doc-url}/html/SLES-all/cha-virt-support.html.
+endif::[]
+====
+
+
+// [#virtualization-kvm]
+// ==== KVM
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+//[#jsc-SLE-18741]
+//===== {nvidia} vGPU 12.x and 13.x support
+//
+//The support for {nvidia} virtual GPU 12.x and //13.x has been added.
+
+
+[#virtualization-xen]
+//jsc-PED-8907
+==== Xen
+// Xen virtualization-related release notes go here
+Xen has been updated to version 4.20, for more information: https://wiki.xenproject.org/wiki/Xen_Project_4.20_Release_Notes
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-qemu]
+//jsc-PED-8908
+==== QEMU
+QEMU has been updated to version 9.2.2, full list of changes are available at https://wiki.qemu.org/ChangeLog/9.2
+
+Highlights include:
+
+* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+[#virtualization-libvirt]
+// jsc-PED-8909
+==== libvirt
+`libvirt` has been updated to version 11.0.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v11-0-0-2025-01-15
+
+Since SP6 `libvirt` provides two daemon deployment options: monolithic or modular daemons. Modular daemons are now enabled by default, but a deployment can be switched to the traditional monolithic daemon by disabling the individual daemons and enabling `libvirtd`.
+
+[#virtualization-vmware]
+==== VMware
+
+===== open-vm-tools
+`open-vm-tools` has been updated to version 12.5.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/ReleaseNotes.md
+
+
+[#virtualization-other]
+//jsc-PED-8910
+==== Others
+
+// Other virtualization-related release notes go here
+
+===== NVIDIA GRID
+Support for NVIDIA Virtual GPU (vGPU) v16.10 has been added, including migration under some specific scenarios.
+
+===== sanlock
+`sanlock` has been removed.
+
+===== libguestfs
+
+`libguestfs` has been updated to version 1.55.6.
+
+===== virt-v2v
+
+Update to version 2.7.7. ee main changes at: https://libguestfs.org/virt-v2v-release-notes-2.7.7.html
+
+- Implement --parallel=N for parallel disk copies
+- Update Translations
+- Various fixes
+
+===== `sevctl`
+
+The `sevctl` package has been updated to version 0.6.0.
+
+===== `snpguest`
+
+The `snpguest` package has been updated to version 7.1.
+
+===== `virtiofsd`
+
+The `virtiofsd` has been updated to 1.12.0.
+
+
+[#virtualization-limitations]
+==== limitations
+
+// [#bsc-1241602]
+===== virt-install option "--cdrom" can not work with the SEV environment
+This issue only occurs when installing an .iso file via CD-ROM. It is because the external device is not
+ trusted by default from the Guest's perspective under the SEV environment.
+
+SUSE has reported to upstream via https://github.com/tianocore/edk2/issues/11035
+
+Possible workarounds:
+
+- Using '--location' option instead of '--cdrom'.
+
+- Using a pre-existing disk image (like qcow2) or performing a network installation via PXE.
+
+- Disable SEV for guest installation, then user can enable SEV after guest installed.

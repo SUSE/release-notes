@@ -1,0 +1,107 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#desktop]
+=== Desktop
+
+// Release notes for desktop applications:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following notes:
+
+* <<jsc-SLE-19965>>
+
+[#jsc-SLE-20406]
+==== {productnameshort}-specific Windows Terminal shortcuts in WSL
+
+`WSL-DistroLauncher` will now install branded shortcuts for Windows Terminal upon installation.
+
+
+[#jsc-SLE-21511]
+==== Graphical application support in Windows Subsystem for Linux
+
+Users who plan to run Linux graphical applications under Windows using WSL are recommended to install the `wsl_gui` pattern.
+This pattern includes packages that enable running of graphical applications without issues like missing fonts etc.
+
+
+[#jsc-SLE-18651]
+==== Pipewire has been added
+
+Both `pulseaudio` and `pipewire` have been updated to their latest versions.
+
+Right now, `pipewire` is mainly used to provide support for screen sharing in the Wayland session.
+In the default installation, `pipewire` doesn't have sound support because it is still currently provided by `pulseaudio`.
+
+To enable `pipewire` for audio, install the `pipewire-pulseaudio` package which will remove all `pulseaudio`-related packages and install `wireplumber-audio`, enabling audio support in `pipewire` and `pulseaudio` emulation so that most applications will keep working with `pipewire`.
+
+
+[#jsc-SLE-18860]
+==== Printing in GNOME
+
+With GNOME we provide a fully-featured printing stack, which includes `cups`, GNOME itself, and `avahi`.
+We encourage users to use GNOME settings to manage their printers as it is the most complete solution.
+
+Additionally:
+
+* the relevant GNOME components (`gnome-shell`, `gnome-control-center`, `gnome-settings-daemon`) have been updated to version 41
+* `avahi` has been updated to version 0.8
+* CUPS has been updated to version 2.2.7
+
+
+[#jsc-SLE-18648]
+==== GNOME has been updated
+
+The GNOME desktop has been updated to version 41.
+Among others, the changes include:
+
+* power profiles
+* updated app store appearance
+* new multitasking options
+* new connections app
+
+See the https://help.gnome.org/misc/release-notes/41.0/[full changelog] for more information.
+
+
+[#jsc-SLE-17243]
+==== High-quality Bluetooth codecs are now supported
+
+In {this-version}, the `pulseaudio` package has been updated to version 15, which among other changes brings support for the LDAC, AptX and SBC XQ codecs.
+See the https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/blob/master/NEWS[full changelog] for more information.
+
+
+[#jsc-SLE-18248]
+==== Qt 5 has been updated
+
+The Qt 5 stack has been updated to version 5.15.2.
+This service pack update also contains KDE's Qt 5 Patch Collection.
+See https://dot.kde.org/2021/04/06/announcing-kdes-qt-5-patch-collection for more information.
+
+
+[#jsc-SLE-17858]
+==== GTK has been updated
+
+The GTK toolkit has been updated to version 4.0.
+
+This is a major release with many notable changes.
+Some of the areas that have seen work are the following:
+
+* Data transfers
+* Event controllers
+* Layout managers
+* Render nodes
+* Media playback
+* Scalable lists
+* Shaders
+* Accessibility
+
+See https://blog.gtk.org/2020/12/16/gtk-4-0/[the full changelog] for more information.

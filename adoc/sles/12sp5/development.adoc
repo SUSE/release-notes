@@ -1,0 +1,126 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-development]
+=== Development
+
+// Release Notes for Development tool/library features:
+//   JVM, Python, GCC, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-21234]
+==== `nodejs16` has been added
+
+The `nodejs16` package has been added to the _Web and Scripting Module_.
+
+
+[#jsc-SLE-21015]
+==== `tcl` has been updated
+
+The `tcl` package has been updated to version 8.6.12.
+See the https://sourceforge.net/projects/tcl/files/Tcl/8.6.11/tcltk-release-notes-8.6.11.txt/download[full changelog] for more information.
+
+
+[#development-java-versions]
+==== Supported Java Versions
+
+The following table lists Java implementations available in {product} {this-version}:
+
+[cols="40%,20%,40%,20%" options="header"]
+|===
+|Name (Package Name)
+|Version
+|Part of {product}
+|Support
+
+|OpenJDK (java-11-openjdk)
+|11
+|SLES
+|SUSE, L3, until 2024-10-31footnote:[Support of OpenJDK 11 in SLES 12 is intended to enable the running of third-party applications. Other Java-related SLES packages (e.g., Maven) are only guaranteed to work with and supported when ran against OpenJDK 1.8.]
+
+|OpenJDK (java-1_8_0-openjdk)
+|1.8.0
+|SLES
+|SUSE, L3, until 2027-10-31
+
+|OpenJDK (java-1_7_0-openjdk)
+|1.7.0
+|SLES
+|SUSE, L3, until 2022-09-30
+
+|IBM Java (java-1_8_0-ibm)
+|1.8.0
+|SLES
+|External only, until 2025-04-30
+
+|IBM Java (java-1_7_1-ibm)
+|1.7.1
+|SLES
+|External only, until 2022-09-30
+
+|IBM Java (java-1_6_0-ibm)
+|1.6.0
+|Legacy Module
+|External only, until 2017-09-30
+|===
+
+
+[#jsc-SLE-11177]
+==== Git Has Been Updated to Version 2.26.2
+
+{product} now includes version 2.26.2 of the version control Git.
+This version of Git supports the SHA256 cipher.
+
+Refer to the link:https://github.com/git/git/blob/main/Documentation/RelNotes/2.26.0.txt[git Release Notes] for more detailed information.
+
+This update fixes the following security vulnerabilities:
+
+* https://www.suse.com/security/cve/CVE-2017-15298
+* https://www.suse.com/security/cve/CVE-2018-11233
+* https://www.suse.com/security/cve/CVE-2018-11235
+* https://www.suse.com/security/cve/CVE-2018-17456
+* https://www.suse.com/security/cve/CVE-2019-1348
+* https://www.suse.com/security/cve/CVE-2019-1349
+* https://www.suse.com/security/cve/CVE-2019-1350
+* https://www.suse.com/security/cve/CVE-2019-1351
+* https://www.suse.com/security/cve/CVE-2019-1352
+* https://www.suse.com/security/cve/CVE-2019-1353
+* https://www.suse.com/security/cve/CVE-2019-1354
+* https://www.suse.com/security/cve/CVE-2019-1387
+* https://www.suse.com/security/cve/CVE-2019-19604
+* https://www.suse.com/security/cve/CVE-2020-11008
+* https://www.suse.com/security/cve/CVE-2020-5260
+
+
+[#jsc-SLE-12474]
+==== PHP Has Been Updated to Version 7.4
+
+We upgraded PHP to version 7.4 to provide you with the latest release.
+To learn more about PHP version 7.4, we recommend reading the link:https://www.php.net/releases/7_4_0.php[PHP release announcement] and the link:https://www.php.net/manual/en/migration74.php[7.3.x to 7.4.x migration guide].
+
+As of January 2021, PHP 7.2 is no longer supported.
+For more information, see https://scc.suse.com/docs/lifecycle/sle/12/modules.
+
+
+[#development-python]
+==== Python
+
+[#jsc-SLE-6975]
+===== Added Basic Support for Python 3.6
+In {product} 12 SP5, we are enabling the latest Python 3.6 development which also enables machine-learning applications.
+The Python 3.6 interpreter is shipped in the `python36-base` package.
+
+For more information, see the upstream release notes at https://docs.python.org/3/whatsnew/3.6.html.
+
+
+[#jsc-SLE-5059]
+===== Added tkinter with python-3.4
+Python module allowing to use tensorflow with python 3.4

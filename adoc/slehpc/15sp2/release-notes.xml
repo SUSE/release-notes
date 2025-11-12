@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+
+<article xml:lang="en" xml:id="rnotes"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>&rnotes;</title>
+ <info>
+  &bugtracker-pi;
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&product;</productname>
+  <productnumber>&this-version;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="abstract.xml"/>
+ </info>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-rn.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-product.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="related-product.xml"/>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="technology-preview.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="installation-upgrade.xml"/>
+
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="packages.xml"/>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-tool.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mpi-library.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-library.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-file-library.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="benchmark.xml"/>
+
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="source-code.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+</article>

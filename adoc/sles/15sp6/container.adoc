@@ -1,0 +1,40 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#container]
+=== Containers
+
+// Release notes for containers:
+//    LXC, Docker, Podman, ...
+
+// Also see the following additional note:
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+//
+* WSL images now include a free `SLE_BCI` RPM repository.
+The `SLE_BCI` repository is disabled after registering the base product.
+
+// related: jsc-SMO-379
+[#jsc-PED-8291]
+==== Default container registries
+
+The container registry entries for Docker Hub and {opensuse} Registry, which were previously included by default, have now been removed.
+If you want to pull container images from either of them, add them to the `/etc/containers/registries.conf` file.
+
+
+// !STICKY
+[#jsc-SLE-15587]
+==== `suse/sle15` container uses NDB as the database back-end for RPM
+
+Starting with {sle} 15{nbsp}SP3, the `rpm` package in the `suse/sle15` container image no longer supports the BDB back-end (based on Berkeley DB) and switches to the NDB back-end.
+Tools for scanning, diffing, and building container image using the `rpm` binary of the host for introspection can fail or return incorrect results if the host's version of `rpm` does not recognize the NDB format.
+
+To use such tools, make sure that the host supports reading NDB databases, such as hosts with {sle} 15{nbsp}SP2 and later.

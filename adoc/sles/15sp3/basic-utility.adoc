@@ -1,0 +1,35 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#basic-utility]
+=== Basic utilities
+
+// Release notes for basic utilities
+//   less, sed, Vim, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#jsc-SLE-17611]
+==== `at` user's default shell has been set to `/bin/false`
+
+The default shell of the user used by the job manager application `at` was set to `/bin/bash.`
+
+That is considered to be against security best practices.
+In {product} {this-version}, its default shell is now set to `/bin/false`.
+
+
+[#jsc-SLE-15652]
+==== Bash is now available under `/usr/bin/bash`
+
+The Bash is now available at both of the following paths: `/usr/bin/bash` and `/bin/bash`.
+This is part of the `/usr` merge initiative and provides compatibility with {tw}.
+For more information, see the link:https://en.opensuse.org/openSUSE:Usr_merge[the {opensuse} wiki].

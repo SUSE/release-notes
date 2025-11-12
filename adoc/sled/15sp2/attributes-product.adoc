@@ -1,0 +1,56 @@
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: beta
+// conditionals-end
+
+ifeval::["{lifecycle}" == "beta"]
+:label-pre: {nbsp}(prerelease)
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+:label-pre:
+endif::[]
+
+:product: {sled}/{slewe}
+:producta: {sleda}/{slewea}
+
+:this-ga: 15
+:this-sp: SP2
+:rel-date: July 2020
+:next-sp: SP3
+:next-ga: 16
+:previous-sp: SP1
+:previous-ga: 12
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:this-version: {this-ga}{nbsp}{this-sp}{label-pre}
+:next-version: {this-ga}{nbsp}{next-sp}
+// FIXME: update kernel version before release - https://build.suse.de/package/show/SUSE:SLE-15-SP3:GA/kernel-default
+:kernel-version: 5.3
+
+:abstract: {product} is an enterprise-quality Linux desktop with market-leading usability and interoperability. This document provides a high-level overview of features, capabilities, and limitations of {product} {this-version} and highlights important product updates.
+
+:url-docs: https://documentation.suse.com
+:doc-url: https://documentation.suse.com/sles/{this-ga}-{this-sp}
+:doc-url-beta: https://susedoc.github.io/doc-sle/main
+:doc-url-source: https://www.suse.com/products/server/download/
+:support-url: https://www.suse.com/support/?id=SUSE_Linux_Enterprise_Server
+:rn-url: https://www.suse.com/releasenotes
+
+:doc-url-sles: https://documentation.suse.com/sles/{this-ga}-{this-sp}
+:doc-url-sles-beta: https://susedoc.github.io/doc-sle/main
+
+ifeval::["{lifecycle}" == "beta"]
+:doc-url-auto: {doc-url-beta}
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+:doc-url-auto: {doc-url}
+endif::[]
+// disclaimer unmaintained
+ifeval::["{lifecycle}" == "unmaintained"]
+:doc-url-auto: {doc-url}
+endif::[]
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

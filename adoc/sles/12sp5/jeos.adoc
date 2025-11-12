@@ -1,0 +1,50 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#instUpgrade-jeos]
+=== {jeos} (Just enough Operating System)
+
+// Release Notes for JeOS:
+
+{sles} {jeos} is a slimmed down form factor of {sles} that is ready to run in virtualization environment and cloud.
+With {sles} JeOS, you can choose the right sized {sles} option to fit your needs.
+
+We are providing different virtual disk images for {jeos}, using the `.qcow2`, `.vhdx`, and `.vmdk` file formats respectively for KVM, Xen, OpenStack, Hyper-V, and VMware environments.
+All {jeos} images are setting up the same disk size (24 GB) for the {jeos} system but due to the nature of the different file formats, the size of the {jeos} images are different.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#fate-327755]
+==== {jeos} Images for Hyper-V and VMware Are Now Compressed
+
+Starting with {product} {this-version}, the {jeos} images for Hyper-V and VMware using the `.vhdx` and `.vmdk` file formats respectively, are now compressed with the LZMA2 compression algorithm by default.
+Therefore, we are now delivering these images in an `.xz` file format, so you
+need to decompress the image before using it in your Hyper-V or VMware environment by, for example, using the `unxz` command.
+
+The other {jeos} images will remain uncompressed because the `.qcow2` format already optimizes the size of the images.
+
+[#jsc-SLE-6962]
+==== firewalld not Available on the OpenStack {jeos} Image
+
+Having a firewall inside an instance is unnecessary and confusing in an OpenStack environment since OpenStack provides security and network capabilities on a different level.
+OpenStack, for instance, uses security groups which block any incoming connection (no ICMP, no UDP, no TCP) by default.
+ The OpenStack Administrator needs to explicitely enable ICMP and TCP via the security groups configuration, to ping and ssh into an instance.
+
+The official OpenStack recommendation for Linux-based images is to disable any firewalls inside the image (see https://docs.openstack.org/image-guide/openstack-images.html ), so we decided to remove the package `firewalld` from our OpenStack {jeos} images.
+
+[#jsc-SLE-5063]
+==== kiwi-templates-SLES12-JeOS Package is Added to the SDK 12 SP5
+
+The package `kiwi-templates-SLES12-JeOS` contains the necessary files to create
+and customize your own {jeos} image.
+In previous Service Pack this package was only provided in the download area of {jeos} on https://download.suse.com/.
+
+With {product} {this-version}, we are providing the `kiwi-templates-SLES12-JeOS` package directly with the Software Development Kit 12 Service Pack 5 Media and its online channel.

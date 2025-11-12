@@ -1,0 +1,34 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#removedDeprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions. 
+
+[#removedDeprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages have been removed in this release.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////
+
+[#removedDeprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////

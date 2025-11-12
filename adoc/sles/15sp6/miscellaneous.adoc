@@ -1,0 +1,129 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#miscellaneous]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries that do not fit elsewhere.
+// Where possible, find a matching category.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1247839]
+==== Apache's Portable Runtime Library devel package renaming
+
+These two packages have been renamed:
+
+* `libapr1-devel` to `apr-devel`
+* `libapr-util1-devel` to `apr-util-devel`
+
+
+[#jsc-PED-12703]
+==== New systems-management module
+
+A new module called _Systems Management Module_ has been added.
+This module will include systems-management packages, such as Ansible.
+
+
+[#jsc-PED-5016]
+==== `xorriso` split
+
+The `xorriso` package has been split into `xorriso` (command-line only) and `xorriso-tcltk` (a GUI frontend).
+
+
+[#jsc-PED-8070]
+==== `sysctl` monitoring tool
+
+The `sysctl-logger` package has been added.
+It is a sysctl monitoring tool that tracks changes to `sysctl` value based on BPF.
+
+
+[#jsc-PED-7247]
+==== IMA EVM signing plugin
+
+A RPM plugin for IMA (Integrity Measurement Architecture)/EVM (Linux Extended Verification Module) signing has been added.
+The plugin is installed as part of the following package:
+
+* `rpm-imaevmsign`
+
+
+[#jsc-PED-7561]
+==== Installer update URL changed
+
+Previously, the self-updater URL on the installation media was pointing to `updates.suse.com`.
+In {productname} {this-version} it now points to `installer-updates.suse.com`.
+If you are behind a firewall you might need to update your system as per the support article at https://www.suse.com/support/kb/doc/?id=000021034.
+
+
+// also bsc#1223408
+[#jsc-DOCTEAM-1384]
+==== `kdump` output directory format changed
+
+The `kdump` output directory format has been changed.
+The format has changed from `YYYY-MM-DD-HH:MN` to `YYYY-MM-DD-HH-MN`.
+That is, the separator between hours and minutes has changed from ":" to "-".
+
+For more information see the https://github.com/openSUSE/kdump/releases/tag/v1.9[full changelog].
+
+
+[#bsc-1216868]
+==== SSH between different architectures
+
+By default, recent versions of the X.org and Xwayland servers do not accept connections from clients on different architectures.
+
+For more information see {doc-url-auto}/single-html/SLES-deployment/#adm-ssh-x-byte-swapping.
+
+
+[#jsc-PED-4846]
+==== systemd updated to 254
+
+systemd has been updated from 249 to version 254.
+
+Some of the changes in this version include:
+
+*New*
+
+* Support for encrypted and authenticated credentials has been added. (v250)
+* The default maximum numbers of inodes have been raised from 64k to 1M for `/dev`, and from 400k to 1M for `/tmp`. (v250)
+
+*Breaking changes*
+
+* The minimum kernel version required has been bumped from 3.13 to 4.15, and `CLOCK_BOOTTIME` is now assumed to always exist. (v251)
+* `busctl` capture now writes output in the newer `pcapng` format instead of `pcap`. (v251)
+* `systemctl` will now warn when invoked without `/proc/` mounted (for example, when invoked after `chroot()` into an directory tree without the API mount points like `/proc/` being set up).
+Operation in such an environment is not fully supported. (v252)
+* 'udevadm hwdb' subcommand is deprecated and will emit a warning. `systemd-hwdb` (added in 2014) should be used instead.
+* `udev` rules in `60-evdev.rules` have been changed to load `hwdb` properties for all `modalias` patterns.
+Previously only the first matching pattern was used.
+This could change what properties are assigned if the user has more and less specific patterns that could match the same device, but it is expected that the change will have no effect for most users. (v253)
+* `after-local` SysV init script has been removed.
+However for existing systems backward compatibility is kept by creating the relevant symlink/file in `/etc` during upgrades.
+
+See https://github.com/systemd/systemd/releases/tag/v254 for the full changelog.
+
+
+[#jsc-PED-1447]
+==== systemd uses cgroup v2 by default
+
+{productname} {this-version} changes default cgroup mode to unified (cgroup v2).
+Hybrid mode can be enabled using a boot parameter for workloads that depend on cgroup v1,
+see {doc-url}/html/SLES-all/cha-tuning-cgroups.html#sec-cgroups-hybrid-hierarchy.
+
+[#jsc-PED-8569]
+==== Clarify support of BPF-related tools
+
+* The main userspace library and tooling, libbpf and bpftool, is only supported when running on a kernel of the same product, pairing libbpf and bpftool from different products is not supported
+
+* bcc/libbcc is only supported when running on a kernel of the same product, and additionally uses kernel headers from the `kernel-*-devel` package of the same product to access in-kernel data types
+
+* bpftrace is only supported when running on a kernel of the same product, and additionally uses either 1) kernel headers from the `kernel-*-devel` package of the same product or 2) builtin BTF of kernel, when access in-kernel data types

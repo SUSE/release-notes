@@ -1,0 +1,18 @@
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+
+<!ENTITY suse "SUSE">
+<!ENTITY suse-version "12">
+<!ENTITY spversion "SP3">
+<!ENTITY opensuse "open&suse;">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sles "&sle; Server">
+<!ENTITY sleha "&sle; High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &sle; High Availability">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&sle; &sdk;">

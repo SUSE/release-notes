@@ -1,0 +1,1071 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+	 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+  <?dbsuse-bugtracker
+   url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Server 12 SP1"
+   component="Documentation"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>
+   <phrase os="sles">&sles;</phrase>
+  </productname>
+  <productnumber>12 SP&spversion;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <!-- msvec and marketing, 2013-05-13 -->
+   <!-- new initial para -->
+   <para>
+    This document provides guidance and an overview to high level
+    general features and updates for &sles; 12 SP&spversion;. Besides architecture or
+    product-specific information, it also describes the capabilities and
+    limitations of SLES 12 SP&spversion;.
+   </para>
+   <para>
+    If you are skipping one or more service packs, check the release notes of
+    the skipped service packs as well. Release notes usually only list
+    changes that happened between two subsequent releases. If you are only
+    reading the release notes of the current release, you could miss
+    important changes.
+   </para>
+   <para>
+    General documentation can be found at:
+    <ulink url="http://www.suse.com/documentation/sles-12/"/>.
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="Intro">
+  <title>&sles;</title>
+
+  <remark> SLE definition: general information </remark>
+
+  <!-- Marketing, Kerry Kim, 2009-02-09 -->
+  <!-- Changed by MgE, 2012-02-02 -->
+  <!-- Feedback by Robert, 2012-02-27 -->
+
+  <para> &sles; is a highly reliable, scalable, and secure server operating system, built to
+   power mission-critical workloads in both physical and virtual environments. It is an affordable,
+   interoperable, and manageable open source foundation. With it, enterprises can cost-effectively
+   deliver core business services, enable secure networks, and simplify the management of their
+   heterogeneous IT infrastructure, maximizing efficiency and value. </para>
+  <para> The only enterprise Linux recommended by Microsoft and SAP, &sles; is optimized to
+   deliver high-performance mission-critical services, as well as edge of network, and web
+   infrastructure workloads. </para>
+  <para> Designed for interoperability, &sles; integrates into classical Unix as well as Windows
+   environments, supports open standard interfaces for systems management, and has been
+   certified for IPv6 compatibility.</para>
+  <para> This modular, general purpose operating system runs on three processor architectures and is
+   available with optional extensions that provide advanced capabilities for tasks such as real time
+   computing and high availability clustering. </para>
+  <para> &sles; is optimized to run as a high performing guest on leading hypervisors and
+   supports an unlimited number of virtual machines per physical system with a single subscription,
+   making it the perfect guest operating system for virtual computing. </para>
+  <para> &sles; is backed by award-winning support from SUSE, an established technology leader
+   with a proven history of delivering enterprise-quality support services. </para>
+
+  <!-- bnc#821338 -->
+  <!-- bnc#828478 -->
+  <!-- bnc#882262 -->
+    <para>
+     SUSE Linux Enterprise Server 12 has a 13 years life cycle, with 10
+     years of General Support and 3 years of Extended Support.  The
+     current version (SP&spversion;) will be fully maintained and
+     supported until 6 months after the release of SUSE Linux Enterprise
+     Server 12 SP2. If you need additional time to design, validate and
+     test your upgrade plans, Long Term Service Pack Support can extend
+     the support you get an additional 12 to 36 months in twelve month
+     increments, giving you a total of 3 to 5 years of support on any
+     given service pack.
+    </para>
+    <para>
+For more information, check our Support Policy page <ulink
+url="https://www.suse.com/support/policy.html"/> or the Long Term
+Service Pack Support Page <ulink
+url="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>.
+    </para>
+
+  <section id="Intro.New">
+   <title>What's New?</title>
+
+   <remark> Marketing POV. </remark>
+   <para/>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on.
+    BNC#898123
+   </remark>
+
+   <para>SUSE Linux Enterprise Server 12 introduces a number of
+   innovative changes. Here are some of the highlights:</para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      Robustness on administrative errors and improved management
+      capabilities with full system rollback based on Btrfs as the
+      default file system for the operating system partition and SUSE's
+      Snapper technology.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      An overhaul of the installer introduces a new workflow that allows
+      you to register your system and receive all available maintenance
+      updates as part of the installation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server Modules offer a choice of
+      supplemental packages, ranging from tools for Web Development and
+      Scripting, through a Cloud Management module, all the way to a
+      sneak preview of SUSE's upcoming management tooling called
+      Advanced Systems Management.  Modules are part of your SUSE Linux
+      Enterprise Server subscription, are technically delivered as
+      online repositories, and differ from the base of SUSE Linux
+      Enterprise Server only by their life cycle.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New core technologies like systemd (replacing the time honored
+      System V based init process) and wicked (introducing a modern,
+      dynamic network configuration infrastructure).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The open source database system MariaDB is fully supported now.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the open-vm-tools together with VMware for better
+      integration into VMware based hypervisor environments.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Linux Containers are integrated into the virtualization management
+      infrastructure (libvirt).  Docker is provided as a fully supported
+      technology. For more details, see
+      <ulink url="https://www.suse.com/promo/sle/docker/"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the 64-bit Little-Endian variant of IBM's POWER
+      architecture, in addition to continued support for the Intel 64 /
+      AMD64 and IBM System z architectures.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      GNOME 3.10 (or just GNOME 3), giving users a modern desktop
+      environment with a choice of several different look and feel
+      options, including a special SUSE Linux Enterprise Classic mode
+      for easier migration from earlier SUSE Linux Enterprise desktop
+      environments
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      For users wishing to use the full range of productivity
+      applications of a Desktop with their SUSE Linux Enterprise Server,
+      we are now offering the SUSE Linux Enterprise Workstation
+      Extension (needs a SUSE Linux Enterprise Desktop subscription).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Integration with the new SUSE Customer Center, SUSE's central web
+      portal to manage Subscriptions, Entitlements, and provide access
+      to Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+
+
+  <!-- FATE#312947 -->
+   <remark> This is Read Me First information. </remark>
+
+   <para>
+    If you are upgrading from a previous &sles; release, you should review at
+    least the following sections:
+   </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+
+  </section>
+
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para>Read the READMEs on the media.</para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed change log information about a particular package
+       from the RPM (where <filename>&lt;FILENAME&gt;.rpm</filename> is the name of the RPM):
+      </para>
+      <screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>Check the <filename>ChangeLog</filename> file in the top level of the media for a
+       chronological log of all changes made to the updated packages. </para>
+     </listitem>
+     <listitem>
+      <para> Find more information in the <filename>docu</filename> directory of the media of
+       &sles; 12 SP&spversion;. This directory includes PDF versions of the
+       &sles; 12 SP&spversion; Installation Quick Start and Deployment Guides. Documentation (if installed) is
+       available below the <filename>/usr/share/doc/</filename> directory of an installed system.
+      </para>
+     </listitem>
+     <listitem>
+      <!-- msvec and marketing, 2013-05-13 -->
+      <!-- moved from the abstract to this location -->
+      <!-- moved here to the beginning, because 'mustread'now comes
+       later... -->
+
+      <para>
+       <!-- fixme: see bnc#733012 --> These &rnotes; are identical across all architectures, and
+       the most recent version is always available online at <ulink
+        url="http://www.suse.com/releasenotes/"/>. Some entries are listed twice, if they are
+       important and belong to more than one section. <!-- <ulink -->
+       <!-- url="http://www.novell.com/linux/releasenotes/x86_64/SUSE-SLES/11-SP2/"/>, -->
+       <!-- <ulink -->
+       <!-- url="http://www.novell.com/linux/releasenotes/s390x/SUSE-SLES/11-SP2/"/>, -->
+       <!-- etc. -->
+       <!--
+         The URL-template ist
+         <filename>http://www.novell.com/linux/releasenotes/&lt;ARCH&gt;/&lt;PRODUCT&gt;/&lt;Version&gt;/</filename>.
+     -->
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+   <section>
+    <title>Externally Provided Documentation</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <ulink url="http://www.suse.com/documentation/sles-12/"/>
+       contains additional or updated documentation for &sles; 12 SP&spversion;.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find a collection of White Papers in the &sles; Resource Library
+       at <ulink
+       url="https://www.suse.com/products/server/resource-library/?ref=b#WhitePapers"/>.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+  </section>
+
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+   <!-- msvec and legal (ciaran), 2013-05-13 -->
+   <!-- moved from the abstract to this location as the first section -->
+   <para>
+    This SUSE product includes materials licensed to SUSE under the GNU
+    General Public License (GPL). The GPL requires SUSE to provide the
+    source code that corresponds to the GPL-licensed material. The
+    source code is available for download at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+    for up to three years after distribution of the SUSE product, upon
+    request, SUSE will mail a copy of the source code.  Requests should
+    be sent by e-mail to <ulink
+    url="mailto:sle_source_request@suse.com"/> or as otherwise
+    instructed at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>.  SUSE
+    may charge a reasonable fee to recover distribution costs.
+   </para>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for &sles;</title>
+   <para> To receive support, customers need an appropriate subscription with &suse;; for more
+    information, see <ulink url="http://www.suse.com/products/server/services-and-support/"/>. </para>
+   <section id="Intro.Support.General">
+    <title>General Support Statement</title>
+    <para> The following definitions apply: </para>
+    <variablelist>
+     <!-- Now using http://support.novell.com/products/server/supported_packages/
+  -->
+     <varlistentry>
+      <!--
+   <term>L1 &mdash; Installation Help and Problem Determination</term>
+   <listitem>
+    <para>
+     With this level of technical support customers obtain compatibility
+     information, installation assistance, and basic troubleshooting to
+     apply best practises as documented in manuals, knowledgebase and
+     other product specific documentation.  This level of support has no
+     provisions to address product defects.
+    </para>
+   </listitem>
+   -->
+      <term>L1</term>
+      <listitem>
+       <para> Problem determination, which means technical support designed to provide compatibility
+        information, usage support, on-going maintenance, information gathering and basic
+        troubleshooting using available documentation. </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <!--
+   <term>L2 &mdash; Reproduction and Isolation of a Given Problem</term>
+   <listitem>
+    <para>
+     In addition to all the benefits of L1 support customers obtain
+     assistance in isolating potential problem areas.  It includes in
+     depth analysis of data and testing to prepare for L3 or to suggest
+     workarounds, and it may even include suggestions for conceptual
+     changes.  This level of support has provisions to resolve product
+     defects.
+    </para>
+   </listitem>
+   -->
+      <term>L2</term>
+      <listitem>
+       <para> Problem isolation, which means technical support designed to analyze data, duplicate
+        customer problems, isolate problem area and provide resolution for problems not resolved by
+        Level 1 or alternatively prepare for Level 3. </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <!--
+   <term>L3 &mdash; Code Debugging and Problem Resolution</term>
+   <listitem>
+    <para>
+     In addition to all the benefits of L2 support customers obtain
+     resolution of product defects.  This may also involve code changes
+     and patch provisioning done by software engineers.
+    </para>
+   </listitem>
+   -->
+      <term>L3</term>
+      <listitem>
+       <para> Problem resolution, which means technical support designed to resolve problems by
+        engaging engineering to resolve product defects which have been identified by Level 2
+        Support. </para>
+      </listitem>
+
+     </varlistentry>
+    </variablelist>
+
+    <para> For contracted customers and partners, &sles; 12
+    SP&spversion; and its Modules are delivered with L3 support
+     for all packages, except the following: </para>
+    <itemizedlist>
+     <listitem>
+      <para> Technology Previews </para>
+     </listitem>
+     <listitem>
+      <para> sound, graphics, fonts and artwork </para>
+     </listitem>
+     <listitem>
+      <para> packages that require an additional customer contract </para>
+     </listitem>
+     <listitem>
+      <para> packages provided as part of the Software Development Kit (SDK) </para>
+     </listitem>
+    </itemizedlist>
+    <para> &suse; will only support the usage of original (e.g., unchanged or un-recompiled)
+     packages. </para>
+   </section>
+   <section id="Intro.Support.Techpreviews">
+    <title>Technology Previews</title>
+
+    <remark> ** clear statement of TP (no support) ** Title of the TP ** full description of the TP
+     ** link to official documentation (external) ** link to the SUSE's documentation </remark>
+
+    <!-- bnc#662712 -->
+    <para> Technology previews are packages, stacks, or features delivered by SUSE. These features
+     are not supported. They may be functionally incomplete, unstable or in other ways not suitable
+     for production use. They are mainly included for customer convenience and give customers a
+     chance to test new technologies within an enterprise environment. </para>
+
+    <para> Whether a technical preview will be moved to a fully supported package later, depends on
+     customer and market feedback. A technical preview does not automatically result in support at a
+     later point in time. Technical previews could be dropped at any time and SUSE is not committed
+     to provide a technical preview later in the product cycle. </para>
+
+    <para>Give your SUSE representative feedback, including your experience and use case.
+     <!--
+  Alternatively, use the Novell Requirements Portal
+  at <ulink url="http://www.novell.com/rms"/>.
+  -->
+    </para>
+
+    <section id="Intro.Support.Techpreviews.Power">
+     <title>Technology Previews: POWER (ppc64le)</title>
+     <para/>
+    </section>
+
+    <section id="Intro.Support.Techpreviews.SystemZ">
+     <title>Technology Previews: System z (s390x)</title>
+     <para/>
+    </section>
+    <section id="Intro.Support.Techpreviews.x86_64">
+     <title>Technology Previews: AMD64/Intel64 64-Bit (x86_64)</title>
+     <para/>
+    </section>
+
+   </section>
+   <!-- see fate#316990 -->
+   <section id="Intro.Support.External">
+    <title>Software Requiring Specific Contracts</title>
+    <para/>
+   </section>
+  </section>
+
+  <section id="Intro.Derived_Products">
+   <title>Derived and Related Products</title>
+   <remark> Marketing POV. </remark>
+
+   <!--
+   <section id='SDK'>
+    <title>Software Development Kit</title>
+    now via fate#317704
+    -->
+   <remark> ** clear statement of SDK (no support) ** list of SDK available ** version comparison
+    table from previous SP/Product ** Version of SDK </remark>
+
+   <itemizedlist>
+    <listitem>
+     <para><ulink url="https://www.suse.com/products/desktop/">&sled;</ulink></para>
+    </listitem>
+    <listitem>
+     <para><ulink url="https://www.suse.com/products/suse-cloud/">Cloud</ulink></para>
+    </listitem>
+    <listitem>
+     <para><ulink url="https://www.suse.com/products/suse-manager/">SUSE Manager</ulink></para>
+    </listitem>
+    <listitem>
+     <para><ulink url="https://www.suse.com/products/highavailability/">&sleha;</ulink> &mdash; With the <emphasis>&sleha; 12</emphasis>, SUSE offers the
+      most modern open source High Availability Stack for Mission Critical environments.</para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section id="Intro.Certification">
+   <title>Security, Standards, and Certification</title>
+   <para>&sles; 12 SP&spversion; has been submitted to the certification bodies for:</para>
+   <itemizedlist>
+    <listitem>
+     <para><ulink url="http://www.commoncriteriaportal.org/">Common Criteria Certification</ulink></para>
+    </listitem>
+    <listitem>
+     <para> FIPS 140-2 validation, see: <ulink url="http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf"/></para>
+    </listitem>
+   </itemizedlist>
+   <para>For more information about certification, refer to <ulink url="https://www.suse.com/security/certificates.html"></ulink>.</para>
+  </section>
+ </section>
+ <!-- In SLED, we want this in derived resp. 'Related Products'
+ <section id="Third_Party">
+  <title>Third Party</title>
+  <remark>
+   descripton and information of technology
+  </remark>
+  <itemizedlist>
+   <listitem>
+    <para>
+     VMDP
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     VMware
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Third party software
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+-->
+
+
+ <!-- ============================================================== -->
+ <!-- =============== Technical Part Starts Here =================== -->
+ <!-- ============================================================== -->
+
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>&sles; can be deployed in several ways:</para>
+  <itemizedlist>
+   <listitem>
+    <para>Physical machine</para>
+   </listitem>
+   <listitem>
+    <para>Virtual host</para>
+   </listitem>
+   <listitem>
+    <para>Virtual machine</para>
+   </listitem>
+   <listitem>
+    <para>System containers</para>
+   </listitem>
+   <listitem>
+    <para>Application containers</para>
+   </listitem>
+  </itemizedlist>
+  <section id="InstUpgrade.Installation">
+   <title>Installation</title>
+   <para/>
+  </section>
+  <section id="InstUpgrade.Upgrade">
+   <title>Upgrade-Related Notes</title>
+   <para> This section includes upgrade-related information for this release. </para>
+  </section>
+  <section>
+   <title>For More Information</title>
+   <para>For more information, see <xref linkend="InfraPackArch"/>.</para>
+  </section>
+ </section>
+
+ <section id="InfraPackArch">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+
+  <remark> This is highly technical * Know issues categorized ** full description of the problem **
+   how to reproduce the issue ** link to Bugzilla number ** command line change/configuration change
+   ** work around if available
+  </remark>
+
+  <remark> Move items from technical.xml to a proper location. </remark>
+
+  <!-- Arch Independent -->
+  <!-- basically empty, including directly
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+              href="known-issues.xml"/>
+  -->
+  <section id="InfraPackArch.ArchIndependent">
+   <title>Architecture Independent Information</title>
+
+   <section id="InfraPackArch.ArchIndependent.Kernel">
+    <title>Kernel</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Kernel_Modules">
+    <title>Kernel Modules</title>
+    <!-- 2014-03-19, ke: bnc#869159 -->
+    <!-- 2014-04-29, ke: find the same text in the SLED RN -->
+    <para>
+     An important requirement for every Enterprise operating system is the
+     level of support a customer receives for his environment.  Kernel
+     modules are the most relevant connector between hardware
+     ("controllers") and the operating system.
+    </para>
+
+    <para>
+     <!--  bnc#869159 -->
+     For more information about the handling of kernel modules, see the
+     &sle; Administration Guide.
+    </para>
+   </section>
+
+   <section id="InfraPackArch.ArchIndependent.Security">
+    <title>Security</title>
+
+    <para/>
+   </section>
+
+   <section id="InfraPackArch.ArchIndependent.Network">
+    <title>Networking</title>
+
+    <para/>
+   </section>
+  </section>
+
+  <!--
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+              href="known-sysman.xml"/>
+  -->
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement">
+   <title>Systems Management</title>
+
+   <para/>
+  </section>
+
+  <!-- include directly
+       <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+       href="known-performance.xml"/>
+  -->
+  <section id="InfraPackArch.ArchIndependent.Performance">
+   <title>Performance Related Information</title>
+
+   <para/>
+  </section>
+
+  <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="known-storage.xml"/> -->
+
+  <section id="InfraPackArch.ArchIndependent.Storage">
+   <title>Storage</title>
+   <para/>
+  </section>
+
+  <section id="InfraPackArch.ArchIndependent.Virtualization">
+   <title>Virtualization</title>
+   <para/>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.KVM">
+   <title>KVM</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.XEN">
+   <title>XEN</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Containers">
+   <title>Containers</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.libvirt">
+   <title>libvirt</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Other">
+   <title>Others</title>
+   <para/>
+  </section>
+  </section>
+  </section>
+
+  <section id="InfraPackArch.ArchIndependent.Misc">
+   <title>Miscellaneous</title>
+   <para/>
+  </section>
+
+  <!--
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+              href="known-x86_64.xml"/>
+  -->
+  <section id="InfraPackArch.x86_64">
+   <title>AMD64/Intel64 64-Bit (x86_64) Specific Information</title>
+
+   <section id="InfraPackArch.x86_64.System">
+    <title>System and Vendor Specific Information</title>
+    <para/>
+   </section>
+
+   <section id="InfraPackArch.x86_64.Virtualization">
+    <title>Virtualization</title>
+
+    <para/>
+   </section>
+   <section id="InfraPackArch.x86_64.RAS">
+    <title>Reliability, Availability, Serviceability (RAS)</title>
+    <para />
+   </section>
+  </section>
+
+  <section id="InfraPackArch.Power">
+   <title>POWER (ppc64le) Specific Information</title>
+   <para/>
+  </section>
+
+  <section id="InfraPackArch.SystemZ">
+   <title>System z (s390x) Specific Information</title>
+   <para>
+    For more information, see
+    <ulink url="http://www.ibm.com/developerworks/linux/linux390/documentation_novell_suse.html"/>
+   </para>
+   <para>
+    IBM zEnterprise 196 (z196) and IBM zEnterprise 114 (z114) further on
+    referred to as z196 and z114.
+   </para>
+   <section id="InfraPackArch.SystemZ.Hardware">
+    <title>Hardware</title>
+    <para/>
+   </section>
+
+   <section id="InfraPackArch.SystemZ.Virtualization">
+    <title>Virtualization</title>
+    <para/>
+   </section>
+
+   <section id="InfraPackArch.SystemZ.Storage">
+    <title>Storage</title>
+    <para/>
+   </section>
+
+   <section id="InfraPackArch.SystemZ.Network">
+    <title>Network</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.SystemZ.Security">
+    <title>Security</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.SystemZ.RAS">
+    <title>Reliability, Availability, Serviceability (RAS)</title>
+    <para />
+   </section>
+   <section id="InfraPackArch.SystemZ.Performance">
+    <title>Performance</title>
+    <para />
+   </section>
+
+   <section id="InfraPackArch.SystemZ.Misc">
+    <!-- entries from SP1 RNs -->
+    <title>Miscellaneous</title>
+    <para/>
+   </section>
+ <!-- 2014-03-17, ke: if still needed, to be provided via fate -->
+ <!--
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="technical.xml"/>
+ -->
+  </section>
+  <section id="Driver_Updates">
+  <title>Driver Updates</title>
+  <remark>** list of update by category ** version comparison table from
+  previous SP/Product </remark>
+
+  <para/>
+
+  <section id="Driver_Updates.Network">
+   <title>Network Drivers</title>
+   <para/>
+  </section>
+
+  <section id="Driver_Updates.Storage">
+   <title>Storage Drivers</title>
+   <para/>
+  </section>
+
+  <section id="Driver_Updates.Other">
+   <title>Other Drivers</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <para>
+   This section comprises changes to packages, such as additions, updates,
+   removals and changes to the package layout of software. It also contains
+   information about modules available for &sles;.
+   <phrase role="check-xref">For information about changes to package
+   management tools, such as Zypper or RPM, see
+   <xref linkend="InfraPackArch.ArchIndependent.SystemsManagement"/>.</phrase>
+  </para>
+
+  <section id="Packages.New">
+   <title>New Packages</title>
+
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+  </section>
+  <section id="Packages.Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+   <!-- For the moment, track version info here -->
+   <!-- to be provided via fate
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="features-basic.xml"/>
+   -->
+   <!-- included directly
+   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="features-desktop.xml"/>
+   -->
+<!-- 2014-03-20, ke: feedback by fcrozat
+2014-09-24, aginies: remove has already in another section
+<section>
+ <title>Desktop</title>
+ <para />
+ <itemizedlist>
+
+  <listitem>
+    bnc#804973
+   <para>
+     GNOME 3.10
+   </para>
+  </listitem>
+
+  <listitem>
+   <para>
+     X.org 7.7
+   </para>
+  </listitem>
+
+ </itemizedlist>
+</section>
+-->
+
+  </section>
+
+  <section id="Packages.Deprecated">
+   <title>Removed and Deprecated Functionality</title>
+   <remark>
+    ** Why this choice?
+    ** How to handle this deprecation in your system
+    ** specific case (LTSS etc.)
+   </remark>
+
+    <section id="Packages.Deprecated.rm_with_12">
+     <title>Packages Removed with &sles; 12</title>
+     <para>
+      The following packages were removed with the major release of
+      &sles; 12:
+     </para>
+    </section>
+    <section id="Packages.Deprecated.rm_with_12sp1">
+     <title>Packages Removed with &sles; 12 SP&spversion;</title>
+     <para>
+      The following packages were removed with the release of
+      &sles; 12 SP&spversion;:
+     </para>
+    <!--
+   <variablelist>
+    <varlistentry>
+     <term>PKG</term>
+     <listitem><para></para></listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>...</term>
+     <listitem><para></para></listitem>
+    </varlistentry>
+   </variablelist>
+   -->
+   </section>
+
+   <section id="Packages.Deprecated.Future">
+    <title>Packages and Features to Be Removed in the Future</title>
+
+    <para/>
+   </section>
+  </section>
+
+  <!-- was: InfraPackArch.ArchIndependent.Package -->
+  <section id="Packages.Packaging">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+  </section>
+
+  <section id="Packages.Modules">
+   <title>Modules</title>
+   <para/>
+
+   <informaltable frame='all'>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>
+        <emphasis>Module Name</emphasis>
+       </entry>
+       <entry>
+        <emphasis>Content</emphasis>
+       </entry>
+       <entry>
+        <emphasis>Life Cycle</emphasis>
+       </entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>Web and Scripting Module</entry>
+       <entry>PHP, Python, Ruby on Rails</entry>
+       <entry>3 years, ~18 months overlap</entry>
+      </row>
+
+      <row>
+       <entry>Legacy Module</entry>
+       <entry>Sendmail, old Java, …</entry>
+       <entry>3 years</entry>
+      </row>
+      <row>
+       <entry>Public Cloud Module</entry>
+       <entry>Public cloud initialization code and tools</entry>
+       <entry>Continuous integration</entry>
+      </row>
+      <row>
+       <entry>Toolchain Module</entry>
+       <entry>GCC</entry>
+       <entry>Yearly delivery</entry>
+      </row>
+      <row>
+       <entry>Advanced Systems Management Module</entry>
+       <entry>cfengine, puppet and the new "machinery" tool</entry>
+       <entry>Continuous integration</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+
+   <para>
+    For more information about the life cycle of packages contained in
+    modules, see
+    <ulink url="https://scc.suse.com/docs/lifecycle/sle/12/modules"/>.
+   </para>
+  </section>
+
+ </section>
+
+ <section id="TechInfo">
+  <title>Technical Information</title>
+  <para> This section contains information about system limits, a number of technical changes and
+   enhancements for the experienced user. </para>
+  <!-- bnc#483250 -->
+  <para>When talking about CPUs, we use the following terminology:</para>
+  <variablelist>
+   <varlistentry>
+    <term>CPU Socket</term>
+    <listitem>
+     <para>The visible physical entity, as it is typically mounted to a motherboard or an
+      equivalent.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>CPU Core</term>
+    <listitem>
+     <para>The (usually not visible) physical entity as reported by the CPU vendor.</para>
+     <para>On System z this is equivalent to an IFL.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Logical CPU</term>
+    <listitem>
+     <para>This is what the Linux Kernel recognizes as a "CPU".</para>
+     <para>We avoid the word "thread" (which is sometimes used), as the word "thread" would also
+      become ambiguous subsequently.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Virtual CPU</term>
+    <listitem>
+     <para>A logical CPU as seen from within a Virtual Machine.</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kernel-limits.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kvm-limits.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xen-limits.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="filesystems.xml"/>
+ </section>
+
+ <section id="Miscellaneous">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+
+ <!-- Legal notice copied from SLED release notes, mge@novell.com, 2010-05-07 -->
+ <!-- Legal notice updated, to smell more like SUSE -->
+
+ <section id="Legal">
+  <title>Legal Notices</title>
+
+  <para>
+   SUSE makes no representations or warranties with respect to the
+   contents or use of this documentation, and specifically disclaims any
+   express or implied warranties of merchantability or fitness for any
+   particular purpose. Further, SUSE reserves the right to revise this
+   publication and to make changes to its content, at any time, without
+   the obligation to notify any person or entity of such revisions or
+   changes.
+  </para>
+
+  <para>
+   Further, SUSE makes no representations or warranties with respect to
+   any software, and specifically disclaims any express or implied
+   warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to make changes to any and
+   all parts of SUSE software, at any time, without any obligation to
+   notify any person or entity of such changes.
+  </para>
+
+  <para>
+   Any products or technical information provided under this Agreement
+   may be subject to U.S.  export controls and the trade laws of other
+   countries. You agree to comply with all export control regulations
+   and to obtain any required licenses or classifications to export,
+   re-export, or import deliverables. You agree not to export or
+   re-export to entities on the current U.S.  export exclusion lists or
+   to any embargoed or terrorist countries as specified in U.S. export
+   laws. You agree to not use deliverables for prohibited nuclear,
+   missile, or chemical/biological weaponry end uses. Refer to
+   <ulink url="http://www.suse.com/company/legal/"/> for more
+   information on exporting SUSE software. SUSE assumes no
+   responsibility for your failure to obtain any necessary export
+   approvals.
+  </para>
+
+   <para>
+    Copyright © 2010-<?dbtimestamp format="Y" ?> SUSE LLC. This release notes document is
+    licensed under a Creative Commons Attribution-NoDerivs 3.0 United
+    States License (CC-BY-ND-3.0 US, <ulink
+    url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+   </para>
+
+   <para>
+    SUSE has intellectual property rights relating to technology
+    embodied in the product that is described in this document. In
+    particular, and without limitation, these intellectual property
+    rights may include one or more of the U.S. patents listed at <ulink
+    url="http://www.suse.com/company/legal/"/> and one or more
+    additional patents or pending patent applications in the U.S. and
+    other countries.
+   </para>
+
+   <para>
+    For SUSE trademarks, see SUSE Trademark and Service Mark list
+    (<ulink url="http://www.suse.com/company/legal/"/>).  All
+    third-party trademarks are the property of their respective
+    owners.
+   </para>
+
+ </section>
+ <section>
+  <title>Colophon</title>
+  <para> Thanks for using &sles; in your business. </para>
+  <para> The &sles; Team. </para>
+ </section>
+</article>

@@ -1,0 +1,29 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-Specific Features & Fixes (ppc64le)
+
+Information in this section applies to {power-product} {this-version}.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#bsc-1136157]
+=== Speed of `ibmveth` Interface Not Reported Accurately
+
+The `ibmveth` interface is a paravirtualized interface.
+When communicating between LPARs within the same system, the interface's speed is limited only by the system's CPU and memory bandwidth.
+When the virtual Ethernet is bridged to a physical network, the interface's speed is limited by the speed of that physical network.
+
+Unfortunately, the `ibmveth` driver has no way of determining automatically whether it is bridged to a physical network and what the speed of that link is.
+`ibmveth` therefore reports its speed as a fixed value of 1{nbsp}Gb/s which in many cases will be inaccurate.
+To determine the actual speed of the interface, use a benchmark.
+Using `ethtool`, you can then set a more accurate displayed speed.

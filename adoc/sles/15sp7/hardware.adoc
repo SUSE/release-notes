@@ -1,0 +1,27 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#hardware]
+=== Hardware
+
+// Release notes for hardware-related features that are not part of the kernel
+//    Graphics under Wayland, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// also jsc#PED-10206, jsc#PED-10224, jsc#PED-10243, jsc#PED-10365, jsc#PED-10390, bsc#1235460
+[#jsc-PED-10203]
+==== Lack of PMU support for Intel hybrid CPUs
+
+Performance Monitoring Unit (PMU) features do not function correctly on systems with Intel hybrid CPUs in this release.
+The Linux kernel requires additional changes to fully support the PMU on these processors, which were only introduced in Linux kernel version 6.9.
+
+Because {productnameshort} {this-version} is based on kernel 6.4, these improvements are not included.

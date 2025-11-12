@@ -1,0 +1,30 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#legal]
+== Legal Notices
+
+{suse} makes no representations or warranties with regard to the contents or use of this documentation, and specifically disclaims any express or implied warranties of merchantability or fitness for any particular purpose.
+Further, {suse} reserves the right to revise this publication and to make changes to its content, at any time, without the obligation to notify any person or entity of such revisions or changes.
+
+Further, {suse} makes no representations or warranties with regard to any software, and specifically disclaims any express or implied warranties of merchantability or fitness for any particular purpose.
+Further, {suse} reserves the right to make changes to any and all parts of {suse} software, at any time, without any obligation to notify any person or entity of such changes.
+
+Any products or technical information provided under this Agreement may be subject to U.S. export controls and the trade laws of other countries.
+You agree to comply with all export control regulations and to obtain any required licenses or classifications to export, re-export, or import deliverables.
+You agree not to export or re-export to entities on the current U.S. export exclusion lists or to any embargoed or terrorist countries as specified in U.S. export laws.
+You agree to not use deliverables for prohibited nuclear, missile, or chemical/biological weaponry end uses.
+Refer to https://www.suse.com/company/legal/ for more information on exporting {suse} software.
+{suse} assumes no responsibility for your failure to obtain any necessary export approvals.
+
+Copyright © {copyright-begin}-2019 {company}.
+{additional-rightsholders}
+
+This release notes document is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License (CC-BY-ND-4.0). You should have received a copy of the license along with this document. If not, see https://creativecommons.org/licenses/by-nd/4.0/.
+
+{suse} has intellectual property rights relating to technology embodied in the product that is described in this document.
+In particular, and without limitation, these intellectual property rights may include one or more of the U.S. patents listed at https://www.suse.com/company/legal/ and one or more additional patents or pending patent applications in the U.S. and other countries.
+
+For {suse} trademarks, see the {suse} Trademark and Service Mark list (https://www.suse.com/company/legal/).
+All third-party trademarks are the property of their respective owners.

@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Server for SAP Applications 12 SP3" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>15 GA</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    These are the release notes of SLES for SAP Applications. SLES for SAP
+    Applications combines SUSE Linux Enterprise Server and its High
+    Availability Extension with additional software specifically meant to
+    simplify running and managing SAP applications.
+   </para>
+
+   <para condition="beta;pre">
+    This product will be released in June 2018.
+   </para>
+
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version is
+    always available at <ulink url="https://www.suse.com/releasenotes"/>.
+    General documentation can be found at:
+    <ulink url="https://www.suse.com/documentation/sles_for_sap/"/>.
+   </para>
+
+   <para condition="unmaintained">
+    The support period for SLES for SAP Applications 15 GA has ended. To
+    keep systems secure and supported, upgrade to a current SLES for SAP
+    Applications version. Before starting the upgrade, make sure to apply
+    all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SLES for SAP Applications</title>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 15 GA which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15"/>.
+  </para>
+<!-- This section is commented because we are (ab)using the FATE category of
+  the same name for "Features." This one was empty anyway- sknorr, 2016-09-12
+  -->
+<!-- <section id="Intro.New" role="remove-empty">
+   <title>What Is New?</title>
+   <para></para>
+  </section> -->
+  <section id="Intro.Support">
+   <title>Support Statement for SLES for SAP Applications</title>
+   <para>
+    Support requires an appropriate subscription from SUSE. For more
+    information, see
+    <ulink url="https://www.suse.com/products/sles-for-sap"/>.
+   </para>
+   <para>
+    General Support Statement
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      L1: Installation and problem determination - technical support
+      designed to provide compatibility information, installation and
+      configuration assistance, usage support, on-going maintenance and
+      basic troubleshooting. Level 1 Support is not intended to correct
+      product defect errors.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L2: Reproduction of problem isolation - technical support designed to
+      duplicate customer problems, isolate problem areas and potential
+      issues, and provide resolution for problems not resolved by Level 1
+      Support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L3: Code Debugging and problem resolution - technical support designed
+      to resolve complex problems by engaging engineering in patch
+      provision, resolution of product defects which have been identified by
+      Level 2 Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (unchanged or not
+    recompiled) packages.
+   </para>
+  </section>
+ </section>
+<!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+ <section id="Intro.New" remap="Intro:New">
+  <title>Features</title>
+  <para>
+   This section includes an overview of major new features provided by SUSE
+   Linux Enterprise Server for SAP Applications.
+  </para>
+  <section role="notoc" id="jsc-SLE-12242">
+   <title>Priority Fencing Delay Has Been Added</title>
+   <para>
+    This change introduces a specified delay for the fencings that are targeting
+    the lost nodes with the highest total resource priority in case there is no
+    majority of the nodes in the given cluster partition.
+   </para>
+   <para>
+     By default, priority fencing delay is disabled.
+   </para>
+   <para>
+    For more information, see <literal>priority-fencing-delay</literal> in the
+    <ulink url="https://www.clusterlabs.org/pacemaker/doc/2.1/Pacemaker_Explained/html/options.html#cluster-options">Pacemaker documentation</ulink>.
+   </para>
+  </section>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325363" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325363" -->
+   <title>sapconf Automatically Starts Dependent Daemons After Installation</title>
+   <para>
+    <literal>sapconf</literal> now will automatically set parameters and
+    start necessary daemons after the installation of the
+    <literal>sapconf</literal> package. The following daemons will be
+    started automatically via systemd dependencies: <literal>tuned</literal>, <literal>uuidd.socket</literal>, and <literal>sysstat</literal>.
+   </para>
+   <important>
+    <title>Reboot to Enable Parameter UserTaskMax</title>
+    <para>
+     During the first installation of the <literal>sapconf</literal>
+     package, the parameter <literal>UserTaskMax</literal> will be set to
+     the recommended value. However, to be effective, a system reboot is
+     still needed.
+    </para>
+   </important>
+  </section>
+  <section role="notoc" id="fate-324490" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324490" -->
+   <title>sapconf Legacy Command-Line Interface /usr/sbin/sapconf Has Been Removed</title>
+   <para>
+    <emphasis> The CLI of </emphasis><literal>sapconf</literal><emphasis>
+    was deprecated since the release of SLES for SAP 12 SP1 and kept only
+    for backward compatibility with SLES 11. </emphasis>
+   </para>
+   <para>
+    With SLES 15, <literal>/usr/bin/sapconf</literal> was removed
+    completely. To enable tuning profiles, use <literal>tuned-adm</literal>
+    directly: <literal>tuned-adm profile [PROFILE]</literal>.
+   </para>
+  </section>
+  <section role="notoc" id="fate-324489" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324489" -->
+   <title>New sapconf Profile Is Used Instead of Profiles for Specific SAP Applications</title>
+   <para>
+    <emphasis> In the past, </emphasis><literal>sapconf</literal><emphasis>
+    provided profiles for specific SAP applications that was deployed, for
+    example, SAP HANA, SAP Netweaver, SAP ASE, SAP BOBJ, but then demanded
+    more steps during the system configuration for SAP applications.
+    </emphasis>
+   </para>
+   <para>
+    To simplify the system configuration for deployment of SAP applications
+    and after a revision of the configurations needed by each profile, all
+    configurations were consolidated in only one profile, called
+    <literal>sapconf</literal> that will is used to configure the system for
+    any SAP applications.
+   </para>
+  </section>
+  <section role="notoc" id="fate-325727" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325727" -->
+   <title>Package insserv-compat Has Been Added to SAP Application Server Base Pattern</title>
+   <para>
+    <emphasis> SAP Applications depends on a
+    </emphasis><literal>sapinit</literal><emphasis> System V script that is
+    widely used in all SAP Applications. </emphasis>
+   </para>
+   <para>
+    The package <literal>insserv-compat</literal> was included to be
+    installed on the SAP Applications Server Base pattern by default, as
+    this pattern is used and recommended to configure a SAP Application
+    Server. That way, it will provide the System V compatibility until SAP
+    fully adopts systemd unit scripts.
+   </para>
+  </section>
+  <section role="notoc" id="fate-326967" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326967" -->
+   <title>Support for SAP HANA Workloads on Intel Optane DC Memory</title>
+   <para>
+    SUSE Linux Enterprise Server 15 and SUSE Linux Enterprise Server for SAP
+    Applications 15 add support for Intel Optane DC memory. This enables SAP
+    workloads, such as SAP HANA to benefit from persistent memory in the
+    future to shorten start times of the system and provide better overall
+    system stability. Currently, configurations up to 12 TB of NVDIMMs plus
+    3 TB of regular DIMMS of supported memory and 4 socket machines have
+    been tested. Additional configurations will be tested over time.
+   </para>
+   <para>
+    From a file system perspective, the XFS file system is supported for the
+    NVDIMMs, with SAP HANA running in DAX mode. SUSE intends to keep the
+    leading position as technology provider, working closely with SAP on
+    future developments.
+   </para>
+   <para>
+    If there are <literal>pmem</literal> namespaces, these need to be
+    destroyed before the installation. To mount persistent memory directly
+    on boot, we recommend adding the <literal>nofail</literal> mount option
+    in <literal>/etc/fstab</literal> as it can take a long time for the
+    <literal>/dev/pmem</literal> devices to become usable.
+   </para>
+   <para>
+    For example:
+   </para>
+<screen>/dev/pmem0    /mnt/pmem0    xfs    dax,nofail    0  0
+/dev/pmem1    /mnt/pmem1    xfs    dax,nofail    0  0</screen>
+   <para>
+    Namespaces need to be created individually. That means, you need to
+    execute the following command for each namespace you want to create:
+   </para>
+<screen>ndctl create-namespace --mode=fsdax --map=dev</screen>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para/>
+  <section id="InstUpgrade.Installation" remap="InstUpgrade:Installation">
+   <title>Installation</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325479" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325479" -->
+    <title>New SLES for SAP Applications System Role</title>
+    <para>
+     <emphasis>With the adoption of a unified installer in SLE 15, system
+     roles are the way to customize the installation for each product's
+     needs.</emphasis>
+    </para>
+    <para>
+     The new SLES for SAP Applications system roles provides the same
+     installation workflow provided on the SLES for SAP 12 SP3 installation
+     media, offering specific steps specially designed for SAP Applications,
+     such as:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       SAP Installation Wizard usage option
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Special partitioning recommendations
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       RDP access enablement
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Skip the first user creation
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Base, Gnome Basic and SAP Server Pattern installation
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section role="notoc" id="fate-323778" remap="InfraPackArch:ArchIndependent:Kernel">
+ <!-- sort_key="None"; non-rn-fate-cats=""; -->
+ <!-- href="https://fate.novell.com/323778" -->
+    <title>Page Cache Limit Is Now Opt-in cgroup Isolation</title>
+    <para>
+     <emphasis>The kernel swaps out rarely accessed memory pages to use freed
+     memory pages as cache to speed up file system operations, for example
+     during backup operations. Certain applications use large amounts of
+     memory for accelerated access to business data. Rarely accessed parts of
+     this memory are subject of this swap out. Later access to swapped out
+     memory regions results in poor application response times.</emphasis>
+    </para>
+    <para>
+     In previous SUSE Linux Enterprise versions there was a tunable known as
+     page cache limit to mitigate this problem. This has now been replaced
+     with a more mature mainline mechanism known as opt-in memory cgroup
+     isolation.
+    </para>
+    <para>
+     A memory cgroup can define its so-called low limit (<literal>memory.low_limit_in_bytes</literal>) which works as a
+     protection against memory pressure. Work loads that need to be isolated
+     from outside memory management activity should set the value to the
+     expected Resident Set Size (RSS) plus some head room. If a memory
+     pressure condition triggers on the system and the particular group is
+     still under its low limit, its memory is protected against being
+     reclaimed. As a result, work loads outside of the cgroup do not need the
+     aforementioned capping.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325548" remap="InfraPackArch:ArchIndependent:Performance">
+ <!-- sort_key="None"; non-rn-fate-cats=""; -->
+ <!-- href="https://fate.novell.com/325548" -->
+    <title>sapconf SAP Tuning Tool Sets All Specified Tuning Values on OS Irrespective of Current Value</title>
+    <para>
+     <emphasis> The previous solution only allowed
+     </emphasis><literal>sapconf</literal><emphasis> to increase values, but
+     in some cases a lower value may be the correct path to take. Therefore,
+     </emphasis><literal>sapconf</literal><emphasis> needed to set all values
+     irrespective of whether the current value is greater than or less than
+     what </emphasis><literal>sapconf</literal><emphasis> wants to set.
+     </emphasis>
+    </para>
+    <para>
+     <literal>sapconf</literal> provides a default set of values for SAP
+     workloads which should apply to the majority of use cases. If a default
+     <literal>sapconf</literal> value is not appropriate for any reason (for
+     example, special workloads, support cases), then
+     <literal>sapconf</literal> offers the possibility to enter own values.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Deprecated">
+   <title>Deprecated and Removed Packages</title>
+   <section id="jsc-SLE-12171">
+     <title><literal>sles4sap-white-papers</literal></title>
+     <para>
+      The <literal>sles4sap-white-papers</literal> package is obsolete.
+      You can find the most recent documentation at <ulink url="https://documentation.suse.com/sles-sap/15-GA/"/>
+     </para>
+   </section>
+ </section>
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME</replaceable>.rpm</screen>
+    <para>
+     <replaceable>FILE_NAME</replaceable> is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological log of all changes made to the updated
+     packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SLES for SAP Applications media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="https://www.suse.com/documentation/sles_for_sap/"/>
+     contains additional or updated documentation for SLES for SAP
+     Applications.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For the latest product news from SUSE, visit
+     <ulink url="http://www.suse.com/products/"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material.
+   The source code is available for download at
+   <ulink url="https://www.suse.com/download/sle-sap/"/> on Medium 2.
+   For up to three years after distribution of the SUSE product, upon request,
+   SUSE will mail a copy of the source code.
+   Send requests by e-mail to <ulink url="mailto:sle_source_request@suse.com"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting SUSE software. SUSE assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative
+   Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <ulink url="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

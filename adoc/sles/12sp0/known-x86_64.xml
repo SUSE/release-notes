@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id="InfraPackArch.x86_64">
+ <title>AMD64/Intel64 64-Bit (x86_64) Specific Information</title>
+ 
+ <section id="InfraPackArch.x86_64.System">
+  <title>System and Vendor Specific Information</title>
+  <para/>
+   <!-- bnc#810756, ke 2013-03-21 and 2013-04-29 -->
+   <!-- bnc#819950, ke 2013-05-15 -->
+          <!-- eventually via fate#317852: Installation on 4KB Sector
+          Drives Not Supported -->
+          <!--
+  <section>
+    <title>Installation on 4KB Sector Drives Not Supported</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    Legacy installations are not supported on 4KB sector drives that are
+    installed in x86_64 servers.  (UEFI installations and the use of
+    the 4KB sector disks as non-boot disks are supported).
+   </para>
+  </section>
+-->
+   <!-- per mail, 2012-06-11 -->
+   <!-- 2014-04-07, ke: now via fate#317187 -->
+   <!-- <title>Insecurity with XEN on Some AMD Processors</title> -->
+
+<!--
+        fate#317853: Boot Device Larger than 2 TiB
+        <section>
+    <title>Boot Device Larger than 2 TiB</title>
+    <para>CHECKIT:SLE11.3</para>
+    <para>
+     Due to limitations in the legacy x86_64 BIOS implementations,
+     booting from devices larger than 2 TiB is technically not possible
+     using legacy partition tables (DOS MBR).
+    </para> 
+    <para>
+     Since &sles; 11 Service Pack 1 we support installation and boot using uEFI
+     on the x86_64 architecture and certified hardware.
+    </para>
+  </section>
+-->
+
+   <!-- https://bugzilla.novell.com/show_bug.cgi?id=448734#c37 -->
+   <!--
+   <section>
+    <title>NIC Enumeration</title>
+    <para>CHECKIT:SLE11.3: systemd?</para>
+    <para>
+     Ethernet interfaces on some hardware do not get enumerated in a way
+     that matches the marking on the chassis.
+    </para>
+   </section>
+   -->
+
+   <!-- https://bugzilla.novell.com/show_bug.cgi?id=448734#c41 -->
+   <!--
+   <section>
+    <title>HP High Performance Mouse for iLO Remote Console.</title>
+    <para>CHECKIT:SLE11.3</para>
+    <para>
+     The desktop in &sles; 11 now recognizes the HP High Performance
+     Mouse for iLO Remote Console and is configured to accept and
+     process events from it.  For the desktop mouse and the HP High
+     Performance Mouse to stay synchronized, it is necessary to turn off
+     mouse acceleration. As a result, the HP iLO2 High-Performance mouse
+     (hpmouse) package is no longer needed with &sles; 11 once one of
+     the following three options are implemented.
+    </para>
+    <orderedlist>
+     <listitem>
+      <para>
+       In a terminal run <literal>xset m 1</literal> &mdash; this
+       setting will not survive a reset of the desktop.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       (Gnome) In a terminal run <literal>gconf-editor</literal> and go
+       to desktop->gnome->peripherals->mouse. Edit the "motion
+       acceleration" field to be 1.
+      </para>
+      <para>
+       (KDE) Open "Personal Settings (Configure Desktop)" in the menu
+       and go to "Computer
+       Administration->Keyboard&amp;Mouse->Mouse->Advanced" and change
+       "Pointer Acceleration" to 1.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       (Gnome) In a terminal run "gnome-mouse-properties" and adjust the
+       "Pointer Speed" slide scale until the HP High Performance Mouse
+       and the desktop mouse run at the same speed across the screen.
+       The recommended adjustment is close to the middle, slightly on
+       the "Slow" side.
+      </para>
+     </listitem>
+    </orderedlist>
+    <para>
+     After acceleration is turned off, sync the desktop mouse and the
+     ILO mouse by moving to the edges and top of the desktop to line
+     them up in the vertical and horizontal directions.  Also if the HP
+     High Performance Mouse is disabled, pressing the &lt;Ctrl&gt; key
+     will stop the desktop mouse and allow easier synching of the two
+     pointers.
+    </para>
+    <para>For more details, see Novell TID 7002735 <ulink url="http://www.novell.com/support/documentLink.do?externalID=7002735"/>.</para>
+   </section>
+   -->
+ </section>
+
+ <section id="InfraPackArch.x86_64.Virtualization">
+  <title>Virtualization</title>
+
+<para/>
+        <!--  https://bugzilla.novell.com/show_bug.cgi?id=448734#c40 -->
+        <!--
+        <section>
+         <title>
+          Video Mode Selection for Xen Kernels
+         </title>
+         <para>CHECKIT:SLE11.3</para>
+         <para>In a few cases, following the installation of Xen, the
+         hypervisor does not boot into the graphical environment. To
+         work around this issue, modify
+         <filename>/boot/grub/menu.lst</filename> and replace
+         <filename>vga=&lt;number&gt;</filename> with
+         <filename>vga=mode-&lt;number&gt;</filename>. For example, if
+         the setting for your native kernel is
+         <literal>vga=0x317</literal>, then for Xen you will need to use
+         <literal>vga=mode-0x317</literal>.
+         </para>
+        </section>
+        -->
+
+        <!-- bnc#477729 -->
+        <!--
+        <section>
+         <title>
+          Time Synchronization in virtualized Domains with NTP
+         </title>
+         <para>CHECKIT:SLE11.3</para>
+         <para>
+          Paravirtualized (PV) DomUs usually receive the time from the
+          hypervisor. If you want to run "ntp" in PV DomUs, the DomU
+          must be decoupled from the Dom0's time. At runtime, this is
+          done with:
+         </para>
+         <screen>echo 1 &gt; /proc/sys/xen/independent_wallclock</screen>
+         <para>
+          To set this at boot time:
+         </para>
+         <orderedlist>
+          <listitem><para>either append "independent_wallclock=1" to kernel cmd line in DomU's grub configuration file </para>
+          </listitem>
+          <listitem><para>or append "xen.independent_wallclock = 1" to <filename>/etc/sysctl.conf</filename> in the DomU.</para>
+          </listitem>
+         </orderedlist>
+
+         <para>If you encounter time synchronization issues with
+         Paravirtualized Domains, we encourage you to use NTP.</para>
+        </section>
+      </section>
+      -->
+
+      <section id="InfraPackArch.x86_64.RAS">
+       <title>RAS</title>
+       <para />
+      </section>
+      
+<!--
+  <listitem>
+    <para>
+     Kernel Limits (Maximum Memory, Number of CPUs)
+    </para>
+    <para>
+    </para>
+  </listitem>
+-->
+
+</section>
+</section>

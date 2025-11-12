@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="functionality-mpi-library"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>MPI Libraries</title>
+ <para>
+  Three different implementation of the Message Passing Interface (MPI)
+  standard are provided standard with the HPC module:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    Open MPI (version 2 and 3)
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    MVAPICH2
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    MPICH
+   </para>
+  </listitem>
+ </itemizedlist>
+ <para>
+  These packages have been built with full environment module support (Lmod).
+ </para>
+ <para>
+  The following packages are available:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>for Open MPI:</para>
+   <itemizedlist>
+    <listitem>
+     <para>user programs: <literal>openmpi2-gnu-hpc</literal> and
+     <literal>openmpi3-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>shared libraries: <literal>libopenmpi2-gnu-hpc</literal> and
+     <literal>libopenmpi3-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>development libraries, headers and tools required for building:
+     <literal>openmpi2-gnu-hpc-devel</literal> and
+     <literal>openmpi3-gnu-hpc-devel</literal></para>
+    </listitem>
+    <listitem>
+     <para>documentation: <literal>openmpi2-gnu-hpc-docs</literal> and
+     <literal>openmpi3-gnu-hpc-docs</literal>.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>for MVAPICH2</para>
+   <itemizedlist>
+    <listitem>
+     <para>user programs and libraries:
+     <literal>mvapich2-gnu-hpc</literal></para>
+    </listitem>
+    <listitem>
+     <para>development libraries, headers and tools for building:
+     <literal>mvapich2-gnu-hpc-devel</literal></para>
+    </listitem>
+    <listitem>
+     <para>documentation: <literal>mvapich2-gnu-hpc-doc</literal></para>
+    </listitem>
+   </itemizedlist>
+   <para>for MPICH:</para>
+   <itemizedlist>
+    <listitem>
+     <para>user programs and libraries: <literal>mpich-gnu-hpc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>development libraries, headers and tools for building:
+     <literal>mpich-gnu-hpc-devel</literal></para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+ </itemizedlist>
+ <para>
+  The different MPI implementations and versions are independent of each
+  other can be installed in parallel.
+ </para>
+ <para>
+  Use environment modules to pick the version to use:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    for Open MPI version 2:
+   </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> openmpi/2</screen>
+  </listitem>
+  <listitem>
+   <para>
+    for Open MPI version 3:
+   </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> openmpi/3</screen>
+  </listitem>
+  <listitem>
+   <para>
+    for MVAPICH2:
+   </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> mvapich2</screen>
+  </listitem>
+  <listitem>
+   <para>
+    for MPICH:
+   </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> mpich</screen>
+  </listitem>
+ </itemizedlist>
+   <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+
+</section>

@@ -1,0 +1,169 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#install-upgrade]
+== Installation and upgrade
+
+{product} can be deployed in several ways:
+
+* Physical machine
+* Virtual host
+* Virtual machine
+* System containers
+* Application containers
+
+
+[#install]
+=== Installation
+
+This section includes information related to the initial installation of {product} {this-version}.
+
+[IMPORTANT]
+.Installation documentation
+====
+The following release notes contain additional notes regarding the installation of {product}.
+However, they do not document the installation procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url-beta}/html/SLES-deployment/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url}/html/SLES-all/book-deployment.html.
+endif::[]
+====
+
+// Installation-related release notes go here
+
+Also see the following additional notes:
+
+* <<#bsc-1170059>>
+* <<jsc-SLE-17630>>
+* <<bsc-1188762>>
+
+
+[#bsc-1194837]
+==== Migration failure due to `insserv-compat`
+
+If `insserv-compat` is not installed prior to migration and other software has already created the `/etc/rc.d/` directory, the migration fails.
+As a workaround, remove the `/etc/rc.d/` directory and continue with migration.
+
+
+[#jsc-SLE-15487]
+==== {yast} will warn when the `root` account is set up with an SSH key only but SSH access is unavailable
+
+With its default settings, the {producta} installer blocks access via SSH.
+However, during the installation of {producta}, you can enable login via SSH key for the `root` user, either exclusively or as an alternative to a password.
+Combining the default settings with exclusive SSH key login, you can effectively lock yourself out.
+
+Starting with {producta} {this-version}, the page __Installation Summary__ will display a warning if the `root` user will not be able to log in after installation.
+
+
+// !STICKY
+[#jsc-SLE-7101]
+==== New media layout
+
+The set of media has changed with 15{nbsp}SP2.
+There still are two different installation media, but the way they can be used has changed:
+
+* You can install with registration using either the online-installation medium (as with {product} 15{nbsp}SP1) or the full medium.
+
+* You can install without registration using the full medium.
+The installer has been added to the full medium and the full medium can now be used universally for all types of installations.
+
+* You can install without registration using the online-installation medium.
+Point the installer at the required SLE repositories, combining the `install=` and `instsys=` boot parameters:
+
+** With the `install=` parameter, select a path that contains either just the product repository or the full content of the media.
+** With the `inst-sys=` parameter, point at the installer itself, that is, `/boot/ARCHITECTURE/root` on the medium.
+
++
+For more information about the parameters, see https://en.opensuse.org/SDB:Linuxrc#p_install.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#upgrade]
+=== Upgrade-related notes
+
+This section includes upgrade-related information for {product} {this-version}.
+
+[IMPORTANT]
+.Upgrade documentation
+====
+The following release notes contain additional notes regarding the upgrade of {product}.
+However, they do not document the upgrade procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url-beta}/html/SLES-upgrade/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {upgrade-guide-url}.
+endif::[]
+====
+
+// Upgrade-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-17419]
+==== Migration procedure to {leap} has changed
+
+The migration procedure between {sle} and {leap} has changed.
+For more information, see the _Upgrade Guide_ at {upgrade-guide-url}#sec-upgrade-online-opensuse-to-sle.
+
+[#bsc-1178261]
+==== Differences between {autoyast} profiles in {producta} 12 and 15
+
+Significant changes in {producta} 15 required changes in AutoYaST.
+If you want to reuse existing {producta} 12 profiles with {producta} 15, you need to adjust them as documented in https://documentation.suse.com/sles/15-SP2/html/SLES-all/appendix-ay-12vs15.html.
+
+
+//bsc#1178616
+==== Upgrading `glibc` can cause issues in some software
+For more information see <<#bsc-1178616>>.
+
+
+// !STICKY
+[#upgrade-update-system]
+==== Make sure the current system is up-to-date before upgrading
+
+Upgrading the system is only supported from the most recent patch level.
+Make sure the latest system updates are installed by either running `zypper patch` or by starting the {yast} module __Online Update__.
+An upgrade on a system that is not fully patched may fail.
+
+
+// !STICKY
+[#upgrade-skip-sp]
+==== Skipping service packs requires LTSS
+
+Skipping service packs during an upgrade is only supported if you have a Long Term Service Pack Support contract.
+Otherwise, you need to first upgrade to {slea} {this-ga}{nbsp}{previous-sp} before upgrading to {slea} {this-version}.
+
+
+// JeOS-specific content is in a separate file
+include::jeos.adoc[]
+
+
+[#install-upgrade-more]
+=== For more information
+
+For more information, see <<all-architecture>> and the sections relating to your respective hardware architecture.

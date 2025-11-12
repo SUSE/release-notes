@@ -1,0 +1,905 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="functionality-hpc-tool"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>HPC Tools</title>
+ <para/>
+
+ <section xml:id="hpc-tool-cpuid">
+  <title>cpuid &mdash; x86 CPU Identification Tool</title>
+  <para>
+   <literal>cpuid</literal> executes the x86 CPUID instruction and decodes
+   and prints the results to stdout. Its knowledge of Intel, AMD and Cyrix
+   CPUs is fairly complete. It also supports Intel Knights Mill CPUs (x86-64).
+  </para>
+  <para>
+   To install <literal>cpuid</literal>, run: <literal>zypper in
+   cpuid</literal>.
+  </para>
+  <para>
+   For information about runtime options for <literal>cpuid</literal>, see the
+   man page <literal>cpuid(1)</literal>.
+  </para>
+  <para>
+   Note that this tool is only available for x86-64.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-conman">
+  <title>ConMan &mdash; The Console Manager</title>
+  <para>
+   ConMan is a serial console management program designed to support a
+   large number of console devices and simultaneous users. It supports:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     local serial devices
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     remote terminal servers (via the telnet protocol)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     IPMI Serial-Over-LAN (via FreeIPMI)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Unix domain sockets
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     external processes (for example, using <command>expect</command> scripts
+     for Telnet, SSH, or ipmi-sol connections)
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   ConMan can be used for monitoring, logging and optionally timestamping
+   console device output.
+  </para>
+  <para>
+   To install ConMan, run <literal>zypper in conman</literal>.
+  </para>
+  <important>
+   <title><systemitem class="daemon">conmand</systemitem> Sends Unencrypted Data</title>
+   <para>
+    The daemon <systemitem class="daemon">conmand</systemitem> sends
+    unencrypted data over the
+    network and its connections are not authenticated. Therefore, it should
+    be used locally only: Listening to the port
+    <literal>localhost</literal>. However, the IPMI console does offer
+    encryption. This makes <literal>conman</literal> a good tool for
+    monitoring a large number of such consoles.
+   </para>
+  </important>
+  <para>
+   Usage:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     ConMan comes with a number of expect-scripts: check
+     <filename>/usr/lib/conman/exec</filename>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Input to <literal>conman</literal> is not echoed in interactive mode.
+     This can be changed by entering the escape sequence
+     <literal>&amp;E</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     When pressing <keycap function="enter"/> in interactive mode, no line
+     feed is generated. To generate a line feed, press
+     <keycombo><keycap function="control"/><keycap>L</keycap></keycombo>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   For more information about options, see the man page of ConMan.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-ganglia">
+  <title>Ganglia &mdash; System Monitoring</title>
+  <para>
+   Ganglia is a scalable distributed monitoring system for high-performance
+   computing systems, such as clusters and grids. It is based on a
+   hierarchical design targeted at federations of clusters.
+  </para>
+  <bridgehead renderas="sect5">Using Ganglia</bridgehead>
+  <para>
+   To use Ganglia, make sure to install <package>ganglia-gmetad</package>
+   on the management server. Then start the Ganglia meta-daemon:
+   <command>rcgmead start</command>. To make sure the service is started
+   after a reboot, run: <command>systemctl enable gmetad</command>. On
+   each cluster node which you want to monitor, install
+   <package>ganglia-gmond</package>, start the service <command>rcgmond
+   start</command> and make sure it is enabled to be started automatically
+   after a reboot: <command>systemctl enable gmond</command>. To test
+   whether the <systemitem class="daemon">gmond</systemitem> daemon has
+   connected to the
+   meta-daemon, run <command>gstat -a</command> and check that each node to
+   be monitored is present in the output.
+  </para>
+  <bridgehead renderas="sect5">Ganglia on Btrfs</bridgehead>
+  <para>
+   When using the Btrfs file system, the monitoring data will be lost after
+   a rollback and the service <systemitem class="daemon">gmetad</systemitem>
+   will not start again. To fix this issue, either install the package
+   <package>ganglia-gmetad-skip-bcheck</package> or create the file
+   <filename>/etc/ganglia/no_btrfs_check</filename>.
+  </para>
+  <bridgehead renderas="sect5">Using the Ganglia Web Interface</bridgehead>
+  <para>
+   Install <package>ganglia-web</package> on the management server.
+   Depending on which PHP version is used (default is PHP 7), enable it in
+   Apache2: <command>a2enmod php7</command>.
+  </para>
+  <para>
+   Then start Apache2 on this
+   machine: <command>rcapache2 start</command> and make sure it is started
+   automatically after a reboot: <command>systemctl enable apache2</command>.
+   The Ganglia Web interface should be accessible from
+   <literal>http://<replaceable>MANAGEMENT_SERVER</replaceable>/ganglia-web</literal>.
+  </para>
+ </section>
+
+ <section xml:id="fate-324149">
+  <title>Genders &mdash; Static Cluster Configuration Database</title>
+  <para>
+   Support for Genders has been added to the HPC module.
+  </para>
+  <para>
+   Genders is a static cluster configuration database used for
+   configuration management. It allows grouping and addressing sets of
+   hosts by attributes and is used by a variety of tools. The Genders
+   database is a text file which is usually replicated on each node in a
+   cluster.
+  </para>
+  <para>
+   Perl, Python, Lua, C, and C++ bindings are supplied with Genders, the
+   respective packages provide man pages or other documentation describing
+   the APIs.
+  </para>
+  <para>
+   To create the Genders database, follow the instructions and examples in
+   <filename>/etc/genders</filename> and check
+   <filename>/usr/share/doc/packages/genders-base/TUTORIAL</filename>.
+   Testing a configuration can be done with <literal>nodeattr</literal>
+   (for more information, see <command>man 1 nodeattr</command>).
+  </para>
+  <para>
+   List of packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>genders</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>genders-base</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>genders-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>python-genders</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>genders-perl-compat</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libgenders0</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libgendersplusplus2</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-tool-gcc">
+  <title>GNU Compiler Collection for HPC</title>
+  <para>
+   On &shpca; the GNU compiler collection version 7 is provided as the base
+   compiler.
+   The <package>gnu-compilers-hpc</package> provides the environment module
+   for the base version of the GNU compiler suite. This package must be installed
+   when using any of the HPC libraries enabled for environment modules.
+  </para>
+  <section>
+   <title>Environment Module</title>
+   <para>
+    This package requires <package>lua-lmod</package> to supply environment
+    module support.
+   </para>
+   <para>
+    To install <package>gnu-compilers-hpc</package>, run:
+   </para>
+<screen>zypper in gnu-compilers-hpc</screen>
+   <para>
+    To make libraries built with the base compilers available, you need to
+    set up the environment appropriately and select the GNU toolchain.
+    To do so, run:
+   </para>
+<screen>module load gnu</screen>
+  </section>
+  <section>
+   <title>Building HPC Software with GNU Compiler Suite</title>
+   <para>
+    To use the GNU compiler collection to build your own libraries and
+    applications, <package>gnu-compilers-hpc-devel</package> needs to be
+    installed. It makes sure all compiler components required for HPC (that is,
+    C, C++, and Fortran Compilers) are installed.
+   </para>
+   <para>
+    The environment variables <literal>CC</literal>, <literal>CXX</literal>,
+    <literal>FC</literal> and <literal>F77</literal> will be set correctly
+    and the path will be adjusted so that the correct compiler version will
+    be found.
+   </para>
+  </section>
+  <section>
+   <title>Later Versions</title>
+   <para>
+   The Development Tools module may provide later versions of the GNU
+   compiler suite.
+   To determine the available compiler suites, run:
+   </para>
+<screen>zypper search '*-compilers-hpc'</screen>
+   <para>
+    If you have more than one version of
+    the compiler suite installed, <emphasis>Lmod</emphasis> will pick the
+    latest one by default. If you require an older version&mdash;or the base
+    version&mdash;append the version number  of the compiler suite:
+   </para>
+<screen>module load gnu/7</screen>
+   <para>
+    For more information, see <xref linkend="hpc-tool-lmod"/>.
+   </para>
+  </section>
+ </section>
+
+ <section xml:id="hpc-tool-hwloc">
+  <title>hwloc &mdash; Portable Abstraction of Hierarchical Architectures for High-Performance Computing</title>
+  <para>
+   <literal>hwloc</literal> provides CLI tools and a C API to
+   obtain the hierarchical map of key computing elements, such as: NUMA
+   memory nodes, shared caches, processor packages, processor cores,
+   processing units (logical processors or <quote>threads</quote>) and
+   even I/O devices.
+   <literal>hwloc</literal> also gathers various attributes such as cache
+   and memory information, and is portable across a variety of different
+   operating systems and platforms. Additionally it can assemble the
+   topologies of multiple machines into a single one, to let
+   applications consult the topology of an entire fabric or cluster at
+   once.
+   <!-- "consult" above sounds like the wrong word. - sknorr, 2020-12-16 -->
+  </para>
+  <para>
+   <emphasis>lstopo</emphasis> allows the user to obtain the topology
+   of a machine or convert topology information obtained on a remote
+   machine into one of several output formats. In graphical mode (X11),
+   it displays the topology in a window, several other output formats
+   are available as well , including plain text, PDF, PNG, SVG and FIG.
+   For more information, see the man pages provided by
+   <literal>hwloc</literal> and <literal>lstopo</literal>.
+  </para>
+  <para>
+   It also features full support for import and export of XML-formatted
+   topology files via the <literal>libxml2</literal> library.
+  </para>
+  <para>
+   The package <literal>hwloc-devel</literal> offers a library that can be
+   directly included into external programs. This requires that the
+   <literal>libxml2</literal> development library (package
+   <literal>libxml2-devel</literal>) is available when compiling
+   <literal>hwloc</literal>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-lmod">
+  <title>Lmod &mdash; Lua-based Environment Modules</title>
+  <para>
+   Lmod is an advanced environment module system which allows the
+   installation of multiple versions of a program or shared library, and
+   helps configure the system environment for the use of a specific
+   version. It
+   supports hierarchical library dependencies and makes sure that the
+   correct version of dependent libraries are selected. Environment
+   Modules-enabled library packages supplied with the HPC module support
+   parallel installation of different versions and flavors of the same
+   library or binary and are supplied with appropriate
+   <literal>lmod</literal> module files.
+  </para>
+  <bridgehead renderas="sect5">Installation and Basic Usage</bridgehead>
+  <para>
+   To install Lmod, run: <command>zypper in lua-lmod</command>.
+  </para>
+  <para>
+   Before Lmod can be used, an init file needs to be sourced from the
+   initialization file of your interactive shell. The following init files
+   are available:
+  </para>
+<screen>/usr/share/lmod/lmod/init/bash
+/usr/share/lmod/lmod/init/ksh
+/usr/share/lmod/lmod/init/tcsh
+/usr/share/lmod/lmod/init/zsh
+/usr/share/lmod/lmod/init/sh</screen>
+  <para>
+   Pick the appropriate file for your shell. Then add the following to the
+   init file of your shell:
+  </para>
+  <screen>source /usr/share/lmod/lmod/init/&lt;INIT-FILE&gt;</screen>
+  <para>
+   The init script adds the command <command>module</command>.
+  </para>
+  <bridgehead renderas="sect5">Listing Available Modules</bridgehead>
+  <para>
+   To list available modules, run: <command>module
+   spider</command>. To show all modules which can be loaded with the
+   currently loaded modules, run: <command>module avail</command>. A
+   module name consists of a name and a version string separated by a
+   <literal>/</literal> character. If more than one version is available
+   for a certain module name, the default version (marked by
+   <literal>*</literal>). If there is no default, the module with the highest
+   version number is loaded. To reference a specific module version, you can use
+   the full string <literal><replaceable>NAME</replaceable>/<replaceable>VERSION</replaceable></literal>.
+  </para>
+  <bridgehead renderas="sect5">Listing Loaded Modules</bridgehead>
+  <para>
+   <command>module list</command> shows all currently loaded modules. Refer
+   to <command>module help</command> for a short help on the module command
+   and <command>module help <replaceable>MODULE-NAME</replaceable></command>
+   for a help on the
+   particular module. The <command>module</command> command is only available
+   when you log in after installing <literal>lua-lmod</literal>.
+  </para>
+  <bridgehead renderas="sect5">Gathering Information About a Module</bridgehead>
+  <para>
+   To get information about a particular module, run: <command>module
+   whatis <replaceable>MODULE-NAME</replaceable></command>. To load a module,
+   run:
+   <command>module load <replaceable>MODULE-NAME</replaceable></command>. This
+   will ensure
+   that your environment is modified (that is, the <literal>PATH</literal> and
+   <literal>LD_LIBRARY_PATH</literal> and other environment variables are
+   prepended) such that binaries and libraries provided by the respective
+   modules are found. To run a program compiled against this library, the
+   appropriate <command>module load</command> commands must be issued
+   beforehand.
+  </para>
+  <bridgehead renderas="sect5">Loading Modules</bridgehead>
+  <para>
+   The <command>module load <replaceable>MODULE</replaceable></command>
+   command needs to be
+   run in the shell from which the module is to be used. Some modules
+   require a compiler toolchain or MPI flavor module to be loaded before
+   they are available for loading.
+  </para>
+  <bridgehead renderas="sect5">Environment Variables</bridgehead>
+  <para>
+   If the respective development packages are installed, build-time
+   environment variables like <literal>LIBRARY_PATH</literal>,
+   <literal>CPATH</literal>, <literal>C_INCLUDE_PATH</literal> and
+   <literal>CPLUS_INCLUDE_PATH</literal> will be set up to include the
+   directories containing the appropriate header and library files.
+   However, some compiler and linker commands may not honor these. In this
+   case, use the appropriate options together with the environment
+   variables <literal>-I <replaceable>PACKAGE_NAME</replaceable>_INC</literal>
+   and <literal>-L <replaceable>PACKAGE_NAME</replaceable>_LIB</literal>
+   to add the include and library paths
+   to the command lines of the compiler and linker.
+  </para>
+  <bridgehead renderas="sect5">For More Information</bridgehead>
+  <para>
+   For more information on Lmod, see
+   <link xlink:href="https://lmod.readthedocs.org"/>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-pdsh">
+  <title>pdsh &mdash; Parallel Remote Shell Program</title>
+  <para>
+   <literal>pdsh</literal> is a parallel remote shell which can be used
+   with multiple back-ends for remote connections. It can run a command on
+   multiple machines in parallel.
+  </para>
+  <para>
+   To install pdsh, run <command>zypper in pdsh</command>.
+  </para>
+  <para>
+   On &shpca;, the back-ends <literal>ssh</literal>,
+   <literal>mrsh</literal>, and <literal>exec</literal> are supported. The
+   <literal>ssh</literal> back-end is the default. Non-default login methods
+   can be used by either setting the <literal>PDSH_RCMD_TYPE</literal>
+   environment variable or by using the <literal>-R</literal> command
+   argument.
+  </para>
+  <para>
+   When using the <literal>ssh</literal> back-end, it is important that a
+   non-interactive (that is, passwordless) login method is used.
+  </para>
+  <para>
+   The <literal>mrsh</literal> back-end requires the
+   <literal>mrshd</literal> to be running on the client. The
+   <literal>mrsh</literal> back-end does not require the use of reserved
+   sockets. Therefore, it does not suffer from port exhaustion when
+   executing commands on many machines in parallel. For information about
+   setting up the system to use this back-end, see
+   <xref linkend="hpc-tool-mrsh-mrlogin"/>.
+  </para>
+  <para>
+   Remote machines can be specified on the command line. Alternatively,
+   <command>pdsh</command> can use a <filename>machines</filename> file
+   (<filename>/etc/pdsh/machines</filename>), <literal>dsh</literal>-style
+   (Dancer's shell) groups, or netgroups.
+   It can target also nodes based on the currently running Slurm jobs.
+  </para>
+  <para>
+   The different ways to select target hosts are realized by modules. Some
+   of these modules provide identical options to <command>pdsh</command>.
+   The module loaded first will win and handle the option. Therefore, we
+   recommend limiting yourself to a single method and specifying this with
+   the <literal>-M</literal> option.
+  </para>
+  <para>
+   The <filename>machines</filename> file lists all target hosts one per
+   line. The appropriate netgroup can be selected with the
+   <literal>-g</literal> command line option.
+  </para>
+  <para>
+   The following host-list plugins for <command>pdsh</command> are supported:
+   <literal>machines</literal>, <literal>slurm</literal>,
+   <literal>netgroup</literal> and <literal>dshgroup</literal>.
+   Each host-list plugin is provided in a separate package. This avoids
+   conflicts between command-line options for different plugins which
+   happen to be identical and helps to keep installations small and free
+   of unnecessary dependencies. Package dependencies have been set up to
+   prevent the installation of plugins with conflicting command options. To
+   install one of the plugins, run:
+  </para>
+  <screen>zypper in pdsh-<replaceable>PLUGIN_NAME</replaceable></screen>
+  <para>
+   For more information, see the man page <command>pdsh</command>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-powerman">
+  <title>PowerMan &mdash; Centralized Power Control for Clusters</title>
+  <para>
+   PowerMan allows manipulating remote power control devices (RPC) from a
+   central location. It can control:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     local devices connected to a serial port
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     RPCs listening on a TCP socket
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     RPCs which are accessed through an external program
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   The communication to RPCs is controlled by <quote>expect</quote>-like
+   scripts. For a
+   list of currently supported devices, see the configuration file
+   <filename>/etc/powerman/powerman.conf</filename>.
+  </para>
+  <para>
+   To install PowerMan, run <command>zypper in powerman</command>.
+  </para>
+  <para>
+   To configure it, include the appropriate device file for your RPC
+   (<filename>/etc/powerman/*.dev</filename>) in
+   <filename>/etc/powerman/powerman.conf</filename> and add devices and
+   nodes. The device <quote>type</quote> needs to match the
+   <quote>specification</quote> name in one
+   of the included device files, the list of <quote>plugs</quote> used for
+   nodes need to
+   match an entry in the <quote>plug name</quote> list.
+  </para>
+  <para>
+   After configuring PowerMan, start its service by:
+  </para>
+<screen>systemctl start powerman.service</screen>
+  <para>
+   To start PowerMan automatically after every boot, do:
+  </para>
+<screen>systemctl enable powerman.service</screen>
+  <para>
+   Optionally, PowerMan can connect to a remote PowerMan instance. To
+   enable this, add the option <literal>listen</literal> to
+   <filename>/etc/powerman/powerman.conf</filename>.
+  </para>
+  <important>
+   <title>Unencrypted Transfer</title>
+   <para>
+    Data is transferred unencrypted, therefore this is not recommended
+    unless the network is appropriately secured.
+   </para>
+  </important>
+ </section>
+
+ <section xml:id="hpc-tool-rasdaemon">
+  <title>rasdaemon &mdash; Utility to Log RAS Error Tracings</title>
+  <para>
+   <systemitem class="daemon">rasdaemon</systemitem> is a RAS
+   (Reliability, Availability and
+   Serviceability) logging tool. It records memory errors using the EDAC
+   tracing events. EDAC drivers in the Linux kernel handle detection of ECC
+   errors from memory controllers.
+  </para>
+  <para>
+   <systemitem class="daemon">rasdaemon</systemitem> can be used on large
+   memory systems to
+   track, record and localize memory errors and how they evolve over time
+   to detect hardware degradation. Furthermore, it can be used to localize
+   a faulty DIMM on the board.
+  </para>
+  <para>
+   To check whether the EDAC drivers are loaded, execute:
+  </para>
+<screen>ras-mc-ctl --status</screen>
+  <para>
+   The command should return <literal>ras-mc-ctl: drivers are
+   loaded</literal>. If it indicates that the drivers are not loaded, EDAC
+   may not be supported on your board.
+  </para>
+  <para>
+   To start <systemitem class="daemon">rasdaemon</systemitem>, run
+   <command>systemctl start rasdaemon.service</command>.
+   To start <systemitem class="daemon">rasdaemon</systemitem>
+   automatically at boot time, execute <command>systemctl enable
+   rasdaemon.service</command>. The daemon will log information to
+   <filename>/var/log/messages</filename> and to an internal database. A
+   summary of the stored errors can be obtained with:
+  </para>
+<screen>ras-mc-ctl --summary</screen>
+  <para>
+   The errors stored in the database can be viewed with:
+  </para>
+<screen>ras-mc-ctl --errors</screen>
+  <para>
+   Optionally, you can load the DIMM labels silk-screened on the system
+   board to more easily identify the faulty DIMM. To do so, before starting
+   <systemitem class="daemon">rasdaemon</systemitem>, run:
+  </para>
+<screen>systemctl start ras-mc-ctl start</screen>
+  <para>
+   For this to work, you need to set up a layout description for the board.
+   There are no descriptions supplied by default. To add a layout
+   description, create a file with an arbitrary name in the directory
+   <filename>/etc/ras/dimm_labels.d/</filename>. The format is:
+  </para>
+<screen>Vendor: <replaceable>VENDOR-NAME</replaceable>
+ Model: <replaceable>MODEL-NAME</replaceable>
+   <replaceable>LABEL</replaceable>: <replaceable>MC</replaceable>.<replaceable>TOP</replaceable>.<replaceable>MID</replaceable>.<replaceable>LOW</replaceable></screen>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-tool-slurm.xml"/>
+
+ <section xml:id="hpc-tool-pam-slurm-adopt">
+  <title>Enabling the <literal>pam_slurm_adopt</literal> Module</title>
+  <para>
+   The <literal>pam_slurm_adopt</literal> module allows restricting access to
+   compute nodes to those users that have jobs running on them. It can also
+   take care of <emphasis>run-away processes</emphasis> from user's jobs and
+   end these processes when the job has finished.
+  </para>
+  <para>
+   <literal>pam_slurm_adopt</literal> works by binding the login process
+   of a user and all its child processes to the <literal>cgroup</literal>
+   of a running job.
+  </para>
+  <para>
+   It can be enabled with following steps:
+  </para>
+  <procedure>
+   <step>
+    <para>
+     In the configuration file <filename>slurm.conf</filename>, set the option
+     <literal>PrologFlags=contain</literal>.
+    </para>
+    <para>
+     Make sure the option <literal>ProctrackType=proctrack/cgroup</literal>
+     is also set.
+    </para>
+   </step>
+   <step>
+    <para>
+     Restart the services
+     <systemitem class="daemon">slurmctld</systemitem> and
+     <systemitem class="daemon">slurmd</systemitem>.
+    </para>
+    <para>
+     For this change to take effect, it is not sufficient to issue the command
+     <command>scontrol reconfigure</command>.
+    </para>
+   </step>
+   <step>
+    <!-- FIXME: Does limiting apply to CPU use only? -->
+    <para>
+     Decide whether to limit resources:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       If resources are not limited, user processes can continue running on
+       a node even after the job to which they were bound has finished.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       If resources are limited using a <literal>cgroup</literal>, user
+       processes will be killed when the job finishes, and the controlling
+       <literal>cgroup</literal> is deactivated.
+      </para>
+      <para>
+       To activate resource limits via a <literal>cgroup</literal>, in the
+       file <filename>/etc/slurm/cgroup.conf</filename>, set the option
+       <literal>ConstrainCores=yes</literal>.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     Due to the complexity of accurately determining RAM requirements of jobs,
+     limiting the RAM space is not recommended.
+    </para>
+   </step>
+   <step>
+    <para>
+     Install the package <package>slurm-pam_slurm</package>:
+    </para>
+    <screen>zypper install slurm-pam_slurm</screen>
+   </step>
+   <step performance="optional">
+    <para>
+     You can disallow logins by users who have no running job in the machine:
+    </para>
+   </step>
+  </procedure>
+  <para>
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Disabling SSH Logins Only:</title>
+     <para>
+      In the file <literal>/etc/pam.d/ssh</literal>, add the option:
+     </para>
+    </formalpara>
+    <screen>account     required pam_slurm_adopt.so</screen>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Disabling All Types of Logins:</title>
+     <para>
+      In the file <filename>/etc/pam.d/common-account</filename>, add the
+      option:
+     </para>
+    </formalpara>
+    <screen>account    required pam_slurm_adopt.so</screen>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-tool-memkind">
+  <title>memkind &mdash; Heap Manager for Heterogeneous Memory Platforms and Mixed Memory Policies</title>
+  <para>
+   The <literal>memkind</literal> library is a user-extensible heap manager
+   built on top of <literal>jemalloc</literal> which enables control of
+   memory characteristics and a partitioning of the heap between kinds of
+   memory. The kinds of memory are defined by operating system memory
+   policies that have been applied to virtual address ranges. Memory
+   characteristics supported by <literal>memkind</literal> without user
+   extension include control of NUMA and page size features.
+  </para>
+  <para>
+   For more information, see:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     the man pages <literal>memkind</literal> and
+     <literal>hbwallow</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link xlink:href="https://github.com/memkind/memkind"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link xlink:href="https://memkind.github.io/memkind/"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <note role="compact">
+   <para>
+    This tool is only available for x86-64.
+   </para>
+  </note>
+ </section>
+ <section xml:id="hpc-tool-munge">
+  <title>MUNGE Authentication</title>
+  <para>
+   MUNGE allows for secure communication between
+   different machines which share the same secret key. The most common
+   use case is the <emphasis>slurm</emphasis> workload manager which
+   uses MUNGE for the encryption of its messages.
+   Another use case is authentication for the parallel shell
+   <emphasis>mrsh</emphasis>.
+  </para>
+  <para>
+   MUNGE uses the UID/GID to uniquely identify
+   and authenticate users. This care must be taken that the users who
+   are to be authenticated across a network have unified UIDs and GIDs.
+  </para>
+  <para>
+   MUNGE credentials have a limited time-to-live.
+   Therefore it must be ensured  that the time is synchronized across
+   the entire cluster.
+  </para>
+  <para>
+   Install MUNGE using <command>zypper in munge</command>.
+   This will install all packages required at runtime. The package
+   <package>munge-devel</package> can be used to build applications that require
+   MUNGE authentication.
+  </para>
+  <para>
+   When installing MUNGE, a new key is generated on every system.
+   However, the entire cluster needs to use the same MUNGE key.
+   Therefore the key from one system needs to be copied to all other nodes in
+   the cluster in a secure way.
+   Make sure that the key is only readable by the
+   <systemitem class="username">munge</systemitem> user (permissions mask
+   <literal>0400</literal>).
+  </para>
+  <para>
+   <emphasis>pdsh</emphasis> (with SSH) can be used to do this:
+  </para>
+  <para>
+   Check permissions, owner, and file type of the file located under
+   <filename>/etc/munge/munge.key</filename> key on the local system:
+  </para>
+  <screen>&prompt;stat --format "%F %a %G %U %n" /etc/munge/munge.key</screen>
+  <para>
+   The settings should be:
+  </para>
+  <screen>400 regular file munge munge /etc/munge/munge.key</screen>
+  <para>
+   Calculate the MD5 sum of <filename>munge.key</filename>:
+  </para>
+  <screen>&prompt;md5sum /etc/munge/munge.key</screen>
+  <para>
+   Copy the key to the listed nodes:
+  </para>
+<screen>&prompt;pdcp -R ssh -w <replaceable>HOSTLIST</replaceable> /etc/munge/munge.key \
+  /etc/munge/munge.key</screen>
+  <para>
+   Check the key settings in the remote host:
+  </para>
+<screen>&prompt;pdsh -R ssh -w <replaceable>HOSTLIST</replaceable> stat --format \"%F %a %G %U %n\" \
+  /etc/munge/munge.key
+&prompt;pdsh -R ssh -w <replaceable>HOSTLIST</replaceable> md5sum /etc/munge/munge.key</screen>
+  <para>
+   Make sure they match.
+  </para>
+  <para>
+   <emphasis>munged</emphasis> needs to be run on all nodes where MUNGE
+   authentication is to take place. If MUNGE is used for authentication
+   across the network, it needs to run on each side of the communication.
+  </para>
+  <para>
+   To start the service and make sure it is started after every reboot, on
+   each node, run:
+  </para>
+<screen>systemctl enable munge.service
+systemctl start munge.service</screen>
+  <para>
+   To perform this on multiple nodes, you can also use <command>pdsh</command>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-tool-mrsh-mrlogin">
+  <title>mrsh/mrlogin &mdash; Remote Login Using MUNGE Authentication</title>
+  <para>
+   <emphasis>mrsh</emphasis> is a set of remote shell programs using the
+   MUNGE authentication system instead of reserved ports
+   for security.
+  </para>
+  <para>
+   It can be used as a drop-in replacement for <literal>rsh</literal> and
+   <literal>rlogin</literal>.
+  </para>
+  <para>
+   To install <emphasis>mrsh</emphasis>, do the following:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     If only the <literal>mrsh</literal> client is required (without allowing remote login to
+     this machine), use: <command>zypper in mrsh</command>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     To allow logging in to a machine, the server needs to be installed:
+     <literal>zypper in mrsh-server</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     To get a drop-in replacement for <command>rsh</command> and
+     <command>rlogin</command>, run: <command>zypper in
+     mrsh-rsh-server-compat</command> or <command>zypper in
+     mrsh-rsh-compat</command>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   To set up a cluster of machines allowing remote login from each other,
+   first follow the instructions for setting up and starting
+   MUNGE authentication in <xref linkend="hpc-tool-munge"/>.
+   After MUNGE has been successfully
+   started, enable and start <command>mrlogin</command> on each machine on
+   which the user will log in:
+  </para>
+<screen>systemctl enable mrlogind.socket mrshd.socket
+systemctl start mrlogind.socket mrshd.socket</screen>
+  <para>
+   To start <literal>mrsh</literal> support at boot, run:
+  </para>
+<screen>systemctl enable munge.service
+systemctl enable mrlogin.service</screen>
+  <!-- There is no explanation for the recommendation-why is this a bad idea?
+  Why are we explaining how to execute the bad idea anyway? - sknorr,
+  2020-12-16 -->
+  <para>
+   We do not recommend using <emphasis>mrsh</emphasis> when logged in as the
+   user <systemitem class="username">root</systemitem>. This is disabled by
+   default. To enable it anyway, run:
+  </para>
+<screen>echo "mrsh" &gt;&gt; /etc/securetty
+echo "mrlogin" &gt;&gt; /etc/securetty</screen>
+ </section>
+</section>

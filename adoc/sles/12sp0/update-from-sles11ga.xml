@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+
+  <!-- This section includes update-related information -->
+
+  <section id='Update.GAToSP3'>
+  <title>Update from &sles; 11</title>
+
+  <section>
+  <!-- bnc#632856 -->
+  <title>Changed Routing Behavior</title>
+    <para>
+      &sles; 10 and &sles; 11 set <literal>net.ipv4.conf.all.rp_filter =
+      1</literal> in <filename>/etc/sysctl.conf</filename> with the
+      intention of enabling route path filtering.  However, the kernel
+      fails to enable routing path filtering, as intended, by default in
+      these products.
+    </para>
+    <para>
+      Since SLES 11 SP1, this bug is fixed and most simple single-homed
+      unicast server setups will not notice a change. But it may cause
+      issues for applications that relied on reverse path filtering
+      being disabled (e.g., multicast routing or multi-homed servers).
+    </para>
+    <para>
+      For more details, see
+      <ulink url="http://ifup.org/2011/02/03/reverse-path-filter-rp_filter-by-example/" />.
+    </para>
+  </section>
+
+
+  <section>
+   <title>Kernel Devel Packages</title>
+    <para>
+      Starting with &sles; 11 Service Pack 1 the configuration files for recompiling the
+      kernel were moved into their own sub-package:
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>kernel-flavor-devel</term>
+      <listitem>
+       <para>
+        This package contains only the configuration for one kernel type
+        (<quote>flavor</quote>), such as <literal>default</literal> or
+        <literal>desktop</literal>.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

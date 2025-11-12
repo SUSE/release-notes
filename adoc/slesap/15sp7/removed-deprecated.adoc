@@ -1,0 +1,93 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions.
+
+// [#removed-deprecated-removed]
+// === Removed Features and Packages
+
+// The following features and packages have been removed in this release.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////
+
+[#removed-deprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed in the future.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////
+
+// jsc#PED-11048
+* `ocfs2` has been deprecated.
+
+
+[#jsc-PED-11566]
+==== `SAPHanaSR`, `SAPHanaSR-ScaleOut` and filesystem resource agent deprecations
+
+We are announcing some important changes to HA cluster resource agents and packages in {producta} 16.0. Please be aware of the following deprecations and plan your deployments accordingly:
+
+[cols="1,1,1,1,1",options="header"]
+|===
+|Feature
+|Deprecated Component
+|Replacement Component
+|Supported in {producta} {this-version}
+|Supported in {producta} 16.0
+
+|{hana} System Replication
+|`SAPHanaSR`, `SAPHanaSR-ScaleOut`
+|`SAPHanaSR-angi`
+|Yes (but migration recommended)
+|Yes
+
+|HA for SAP S/4HANA & NetWeaver Central Services
+|Filesystem resource agent
+|simple-mount solution with `SAPStartSrv` resource agent
+|Yes (but migration recommended)
+|No
+|===
+
+1. {hana} System Replication (HANA SR)
+* The `SAPHanaSR` and `SAPHanaSR-ScaleOut` packages are deprecated and will be replaced by `SAPHanaSR-angi` in {producta} 16.0.
+* We recommend using `SAPHanaSR-angi` for new deployments, even on {producta} {this-version}. This new package offers improved performance and scalability.
+* Existing clusters using `SAPHanaSR` or `SAPHanaSR-ScaleOut` on {producta} {this-version} will remain supported.
+For more information on `SAPHanaSR-angi` see
+**  https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-angi-perfopt-15/index.html[SAP HANA System Replication Scale-Up - Performance Optimized Scenario]
+** https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-angi-scaleout-perfopt-15/index.html[SAP HANA System Replication Scale-Out - Performance-Optimized Scenario]
+2. HA for SAP S/4HANA and SAP NetWeaver Central Services
+
+* The HA solution based on the Filesystem resource agent is deprecated and will not be supported in {producta} 16.0.
+* Instead, use the simple-mount solution based on the `SAPStartSrv` resource agent. This is the recommended approach for new deployments on {producta} {this-version} and later.
+* Existing clusters using the Filesystem resource agent on {producta} {this-version} will remain supported.
+
+For detailed information on setting up the simple-mount solution, see https://documentation.suse.com/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html[SAP S/4 HANA - Enqueue Replication 2 High Availability Cluster With Simple Mount]
+
+These changes are being made to simplify deployment, improve performance, and enhance the overall HA experience in {producta}.
+
+==== Additional legacy tool deprecated
+
+The following legacy tools are deprecated and will be removed in a future package version:
+
+* `SAPHanaSR-filter-legacy`
+* `SAPHanaSR-monitor-legacy`
+* `SAPHanaSR-replay-archive-legacy`
+* `SAPHanaSR-showAttr-legacy`
+
+These tools are not compatible with the new `SAPHanaSR-angi` package.
+Customers using `SAPHanaSR-angi` should transition away from these legacy tools.

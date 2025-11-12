@@ -1,0 +1,143 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-network]
+=== Networking
+
+// Release Notes for networking features:
+//     Wicked, NetworkManager, Open VSwitch, Chrony....
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-22248]
+==== `chrony` has been updated
+
+The `chrony` package has been updated to version 4.1.
+
+Be aware especially about the following potential incompatible changes:
+
+* Drop support for RIPEMD keys (RMD128, RMD160, RMD256, RMD320footnote:[https://git.tuxfamily.org/chrony/chrony.git/commit/?id=4a219ecbf1e2689c4d45d22ad4cbf5a697529da9]
+* Drop support for long (non-standard) MACs in NTPv4 packets (chrony 2.x
+  clients using non-MD5/SHA1 keys need to use option "version 3")footnote:[https://git.tuxfamily.org/chrony/chrony.git/commit/?id=7661a6e95b7292c3ab12246920c389d740684c91]
+
+See the https://gitlab.com/chrony/chrony/-/blob/master/NEWS[full changelog] for more information.
+
+
+[#network-samba]
+==== Samba
+
+// bnc#606288
+The version of Samba shipped with {sles} {this-version} delivers integration with Windows Active Directory domains.
+In addition, we provide the clustered version of Samba as part of {sleha} {this-version}.
+
+[#jsc-SLE-23330]
+===== Samba has been updated
+
+The `samba` package has been updated to version 4.15.
+This update will require also updating other packages depending on it, namely:
+
+* `apparmor`
+* `cacertificates`
+* `gnutls`
+* `libldb`
+* `libnettle`
+* `libtalloc`
+* `libtdb`
+* `libtevent`
+* `p11-kit`
+* `sssd`
+
+After the update, the `ldb` and `tdb` files created by `samba` (internal databases in `/var/lib/samba/**`) should be managed with the tools installed in `/usr/lib[64]/samba/bin/`.
+The reason is that we are not updating these libraries because the newer versions required by `samba` 4.15 do not provide Python 2 bindings and we can not remove them with the update, so we built `samba` with the libraries bundled in.
+The system's `talloc`, `tdb`, `tevent`, and `ldb` packages will not be modified by the update so the databases created using them (not by `samba`) must be administrated with the tools provided by the system's `ldb-tools` and `tdb-tools` packages as before the update.
+
+
+[#jsc-SLE-20041]
+===== DFS share failover when remounting
+
+Previously, when a DFS (Distributed File System) target link changed, it was necessary to manually unmount and remount the filesystem.
+
+Now the switch is done automatically.
+
+[#network-nfs4]
+==== NFSv4
+
+// bnc#608543 and bnc#574572
+NFSv4 with IPv6 is only supported for the client side.
+An NFSv4 server with IPv6 is not supported.
+
+[#jsc-SLE-6951]
+===== gssproxy
+
+`gssproxy` comes with added suppoprt for kerberos authentication on NFSv4.
+
+==== FTP
+
+[#jsc-SLE-7257]
+===== vsftpd
+
+Support for virtual Users has been added to `vsftp`.
+
+[#network-wicked]
+==== Wicked
+
+===== Packaging
+
+The wicked library (package `libwicked`) is no longer shipped in a separate package, but part or the package `wicked`.
+
+===== DHCPv6 Prefix-Length
+
+In accordance with RFC5942 Wicked no longer assumes a `/64` default prefix-length for the DHCPv6 addresses.
+
+To use DHCPv6 on networks missing IPv6 Router advertisements that provide the prefix-length of the local network, you need to configure this value.
+To do so, set the `DHCLIENT6_ADDRESS_LENGTH` ifcfg-variable in `/etc/sysconfig/network/dhcp` to the prefix-length, for example:
+
+`DHCLIENT6_ADDRESS_LENGTH=64`
+
+Alternatively configure the radvd daemon on a (router) machine in the network to provide the router advertisements.
+
+If you are installing {product} {this-version} in a network missing IPv6 router advertisements, use the ifcfg boot parameter on the kernel command line to set the prefix-length, for example:
+
+`ifcfg=*=dhcp,DHCLIENT6_MODE=managed,DHCLIENT6_ADDRESS_LENGTH=64`
+
+[#network-updates]
+==== Notable Network Package Updates
+
+//jsc-SLE-5107
+* freeradius-server-3.0.19
+//jsc-SLE-452
+* rsync 3.1.3
+//jsc-SLE-5061
+* squid-4.8
+//jsc-SLE-5123
+* warnquota now supports ldap
+
+[#jsc-SLE-11183]
+==== New GeoIP Database Sources
+
+The GeoIP databases allow approximately geo-locating users by their IP address.
+In the past, the company MaxMind made such data available for free in its GeoLite Legacy databases.
+On January 2, 2019, MaxMind discontinued the GeoLite Legacy databases, now offering only the newer GeoLite2 databases for download.
+To comply with new data protection regulation, since December 30, 2019, GeoLite2 database users are required to comply with an additional usage license.
+This change means users now need to register for a MaxMind account and obtain a license key to download GeoLite2 databases.
+For more information about these changes, see the link:https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/[MaxMind blog].
+
+{product} includes the `GeoIP` package of tools that are only compatible with GeoLite Legacy databases.
+As an update for {product} 12 SP5, we introduce the following new packages to deal with the changes to the GeoLite service:
+
+* `geoipupdate`: The official Maxmind tool for downloading GeoLite2 databases.
+To use this tool, set up the configuration file with your MaxMind account details.
+This configuration file can also be generated on the Maxmind web page.
+For more information, see https://dev.maxmind.com/geoip/geoip2/geolite2/.
+
+* `geolite2legacy`: A script for converting GeoLite2 CSV data to the GeoLite Legacy format.
+
+* `geoipupdate-legacy`: A convenience script that downloads GeoLite2 data, converts it to the GeoLite Legacy format, and stores it in `/var/lib/GeoIP`.
+With this script, applications developed for use with the legacy `geoip-fetch` tool will continue to work.

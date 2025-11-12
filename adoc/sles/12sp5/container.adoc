@@ -1,0 +1,32 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-container]
+=== Containers
+
+// Release Notes for containers:
+//    LXC, Docker, ... 
+
+
+[#bsc-1168741]
+==== Packaged Docker Images Are No Longer Supported
+
+The packaged base container images like `sles11sp4-docker-image` and `suse-sles12sp3-image` that ship with the {slea} 12 Containers module will not receive further updates.
+We recommend using the {sles} 12 SP3 and newer images that can be obtained through the Docker registry at https://registry.suse.com.
+
+
+[#jsc-ECO-338]
+==== New package: container-diff
+
+The new package provides the command line tool `container-diff`. It allows
+to analyze and compare certain criteria of container images including:
+
+* Docker Image History
+* Image file system
+* Image size
+* various software packages (RPM, apt, pip, npm)
+
+These analyses can be performed on a single image, or a diff can be performed
+on two images to compare. The tool helps to better understand what is
+changing inside their images, and provides an overview of an image contains.

@@ -1,0 +1,254 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#release-2025-10-31]
+=== 2025-10-31
+
+==== New
+
+* Added note about removal of `docker-runc` to <<removed-deprecated>> ({jira-url}PED-4018[Jira])
+* Mention firmware updates from LVFS using UEFI capsule update features in <<miscellaneous>> ({jira-url}PED-229[Jira])
+* <<jsc-PED-2966>> ({jira-url}PED-2966[Jira])
+* <<bsc-1247839>> ({bugzilla-url}1247839[Bugzilla])
+
+
+[#release-2025-08-21]
+=== 2025-08-21
+
+==== New
+
+* <<jsc-PED-13352>> ({jira-url}PED-13352[Jira])
+
+[#release-2025-01-09]
+=== 2025-01-09
+
+==== New
+
+* Added deprecation note for PHP 7.4 to <<removed-deprecated>> ({jira-url}PED-8166[Jira])
+* OpenLDAP server has been re-added to ease migration to 389 Directory Server.
+A note has been added to <<removed-deprecated>> to reflect that. ({jira-url}PED-8118[Jira])
+* <<jsc-PED-7978>> ({jira-url}PED-7978[Jira])
+* <<jsc-SLE-13591>> ({jira-url}SLE-13591[Jira])
+* Added warning about changing system Python to <<jsc-PED-3799>>
+* <<bsc-1233354>> ({bugzilla-url}1233354[Bugzilla])
+
+==== Updated
+
+* Changed product names:
+** SLE-HA to SLE HA
+** Minimal-VM and Minimal-Image to Minimal VM and Minimal Image, respectively
+** SLE High Availability Extension to {sle} High Availability
+** {sle}-WE to {sle} WE
+** {slea}S-{sap} to {slesa} for {sap}
+** {slea}-{sdk} to {slea} {sdk}
+
+
+[#release-2023-12-13]
+=== 2023-12-13
+
+==== New
+
+* <<bsc-1211550>> ({bugzilla-url}1211550[Bugzilla])
+
+[#release-2023-11-06]
+=== 2023-11-06
+
+==== New
+
+* <<jsc-PED-4564>> ({jira-url}PED-4564[Jira])
+* <<jsc-PED-4564-drm>> ({jira-url}PED-4564[Jira])
+
+==== Updated
+
+* Added {nvidiagracereg} to <<arm64-soc>> ({jira-url}PED-4564[Jira])
+* Moved <<jsc-PED-4489>> from <<technology-preview-aarch64>>, updating it and replacing it with <<jsc-PED-4489-kvm>> ({jira-url}PED-4489[Jira])
+
+[#release-2023-09-29]
+=== 2023-09-29
+
+==== New
+
+* <<jsc-PED-3806>> ({jira-url}PED-3806[Jira])
+* <<jsc-PED-5268>> ({jira-url}PED-5268[Jira])
+* <<bsc-1209235>> ({bugzilla-url}1209235[Bugzilla])
+* <<jsc-PED-1911>> ({jira-url}PED-1911[Jira])
+* <<jsc-PED-983>> ({jira-url}PED-983[Jira])
+* <<aarch64>>
+* <<technology-preview-aarch64>>
+* <<jsc-PED-1763>> ({jira-url}PED-1763[Jira])
+* <<jsc-PED-1763-drm>> ({jira-url}PED-1763[Jira])
+
+[#release-2023-05-22]
+=== 2023-05-22
+
+==== Updated
+
+* Changed wording of <<intro-certification>> ({bugzilla-url}1211471[Bugzilla]):
+```diff
+-SUSE Linux Enterprise Server 15 SP5 has been submitted to the certification bodies for:
+-* Common Criteria Certification, see https://www.commoncriteriaportal.org/
+-* FIPS 140-2 validation, see https://doi.org/10.6028/NIST.FIPS.140-2
++SUSE Linux Enterprise Server 15 SP5 will not be submitted for certification to either Common Criteria or NIST FIPS 140-3.
++As a practice, SUSE only submits even-numbered Service Packs (for example: SLES 15, SP2, SP4, etc.) for certification.
+```
+
+
+[#release-2023-05-15]
+=== 2023-05-15
+
+==== New
+
+* <<bsc-1211316>> ({bugzilla-url}1211316[Bugzilla])
+
+[#release-2023-05-11]
+=== 2023-05-11
+
+==== New
+
+* Added note about xpram removal in <<removed-deprecated>> ({bugzilla-url}1205381[Bugzilla])
+* <<jsc-PED-2319>> ({jira-url}PED-2319[Jira])
+* <<jsc-PED-2638>> ({jira-url}PED-2638[Jira])
+* Added note about NVMf-FC kdump in <<power-virtualization>> ({jira-url}PED-1256[Jira])
+* <<jsc-PED-530>> ({jira-url}PED-530[Jira])
+* <<jsc-PED-512>> ({jira-url}PED-512[Jira])
+* Added a note about cryptography enhancements in NSS FreeBL in <<power-security>> ({jira-url}PED-495[Jira])
+* <<jsc-PED-520>> ({jira-url}PED-520[Jira])
+* <<jsc-PED-505>> ({jira-url}PED-505[Jira])
+
+[#release-2023-05-10]
+=== 2023-05-10
+
+==== New
+
+* <<jsc-PED-2653>> ({jira-url}PED-2653[Jira])
+* <<jsc-PED-1884>> ({jira-url}PED-1884[Jira])
+* <<jsc-PED-2867>> ({jira-url}PED-2867[Jira])
+* <<jsc-PED-461>> ({jira-url}PED-461[Jira])
+* <<bsc-1209365>> ({bugzilla-url}1209365[Bugzilla])
+* <<jsc-DOCTEAM-978>> ({jira-url}DOCTEAM-978[Jira])
+* <<bsc-1210197>> ({bugzilla-url}1210197[Bugzilla])
+* <<jsc-PED-1805>> ({jira-url}PED-1805[Jira])
+
+[#release-2023-04-12]
+=== 2023-04-12
+
+==== New
+
+* <<sclp-cpi-additional-info>> ({jira-url}PED-472[Jira])
+* <<z16-pia-extension1>> ({jira-url}PED-472[Jira])
+* <<z16-new-cpu-mf-counters>> ({jira-url}PED-472[Jira])
+* <<ibm-z16-pia-crypto-compliance>> ({jira-url}PED-472[Jira])
+* <<nvme-standalone-dump-support>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-482>> ({jira-url}PED-482[Jira])
+* <<jsc-PED-454>> ({jira-url}PED-454[Jira])
+* <<jsc-PED-432>> ({jira-url}PED-432[Jira])
+* <<jsc-PED-3182>> ({jira-url}PED-3182[Jira])
+* <<jsc-PED-2317>> ({jira-url}PED-2317[Jira])
+* <<kvm-long-kernel-command-lines>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-445>> ({jira-url}PED-445[Jira])
+* <<jsc-PED-466>> ({jira-url}PED-466[Jira])
+* <<jsc-PED-449>> ({jira-url}PED-449[Jira])
+* <<jsc-PED-456>> ({jira-url}PED-456[Jira])
+* <<jsc-PED-473>> ({jira-url}PED-473[Jira])
+* <<jsc-PED-470>> ({jira-url}PED-470[Jira])
+* <<zipl-site-aware-env-block>> ({jira-url}PED-472[Jira])
+* <<zipl-support-secure-boot-ipl>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-457>> ({jira-url}PED-457[Jira])
+* <<zdev-site-aware-device-configuration>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-444>> ({jira-url}PED-444[Jira])
+* <<jsc-PED-2871>> ({jira-url}PED-2871[Jira])
+* <<jsc-PED-440>> ({jira-url}PED-440[Jira])
+* <<opencryptoki-pkcs11-cka-derive-template>> ({jira-url}PED-442[Jira])
+* <<jsc-PED-480>> ({jira-url}PED-480[Jira])
+* <<pai-cpacf-counters>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-468>> ({jira-url}PED-468[Jira])
+* <<jsc-PED-478>> ({jira-url}PED-478[Jira])
+* <<opencryptoki-key-generation>> ({jira-url}PED-442[Jira])
+* <<opencryptoki-crypto-profiles>> ({jira-url}PED-442[Jira])
+* <<opencryptoki-ep11-vendor-specific-key>> ({jira-url}PED-442[Jira])
+* <<opencryptoki-ep11-ibm-z16>> ({jira-url}PED-442[Jira])
+* <<jsc-PED-472>> ({jira-url}PED-472[Jira])
+* <<jsc-PED-442>> ({jira-url}PED-442[Jira])
+* <<jsc-PED-439>> ({jira-url}PED-439[Jira])
+* <<jsc-PED-1350>> ({jira-url}PED-1350[Jira])
+* <<jsc-PED-3799>> ({jira-url}PED-3799[Jira])
+* <<jsc-PED-2175>> ({jira-url}PED-2175[Jira])
+
+==== Updated
+
+* Changed {productnameshort} release date year to the correct 2023
+
+
+[#release-2023-03-01]
+=== 2023-03-01
+
+==== New
+
+* <<jsc-PED-1891>> ({jira-url}PED-1891[Jira])
+* <<jsc-PED-1344>> ({jira-url}PED-1344[Jira])
+
+==== Updated
+
+* <<virtualization-xen>> ({jira-url}PED-1858[Jira])
+* <<virtualization-qemu>> ({jira-url}PED-1716[Jira])
+* <<virtualization-kvm>> ({jira-url}PED-1855[Jira])
+* <<virtualization-libvirt>> ({jira-url}PED-447[Jira], {jira-url}PED-225[Jira])
+
+[#release-2023-02-01]
+=== 2023-02-01
+
+==== New
+
+* <<bsc-1206585>> ({bugzilla-url}1206585[Bugzilla])
+* <<jsc-PED-407>> ({jira-url}PED-407[Jira])
+
+
+[#release-2022-11-30]
+=== 2022-11-30
+
+==== New
+
+* Deprecation of `gnote` in <<deprecated>> ({jira-url}PED-1839[Jira])
+* Removal of `samba-ad-dc-libs` in <<removed>> ({jira-url}PED-143[Jira])
+* <<bsc-1204978>> ({bugzilla-url}1204978[Bugzilla])
+
+// ==== Updated
+
+[#release-2022-11-02]
+=== 2022-11-02
+
+==== New
+
+* <<jsc-PED-63>> ({jira-url}PED-63[Jira])
+* Added note about `openmpi2` and `openmpi3` in <<deprecated>> ({jira-url}PED-904[Jira])
+
+// ==== Updated
+
+[#release-2022-10-18]
+=== 2022-10-18
+
+==== New
+
+* Added note about removing Kerberos/LDAP from {yast} in <<removed-deprecated>> ({bugzilla-url}1202257[Bugzilla])
+* Added note about removing `thunderbolt-user-space` in <<removed-deprecated>> ({jira-url}PED-1358[Jira])
+
+==== Updated
+
+* Updated Java lifecycle in <<java-version>> ({jira-url}PED-1590[Jira]):
+** OpenJDK 11 end of life is now end of 2026
+** OpenJDK 17 added
+** OpenJDK 18 end of life is now end of 2026
+
+// [#release-YYYY-MM-DD]
+// === YYYY-MM-DD
+
+// ==== New
+// ==== Updated
+// ==== Removed

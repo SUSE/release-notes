@@ -1,0 +1,177 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#miscellaneous]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries that do not fit elsewhere.
+// Where possible, find a matching category.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-21469]
+==== `net-snmp` user data location change
+
+The `net-snmp` package now writes user data to `/etc/snmp/snmpd.conf` instead of `/usr/share/snmp/snmpd.conf`.
+
+
+[#bsc-1247839]
+==== Apache's Portable Runtime Library devel package renaming
+
+These two packages have been renamed:
+
+* `libapr1-devel` to `apr-devel`
+* `libapr-util1-devel` to `apr-util-devel`
+
+
+[#jsc-SLE-25130]
+==== STIG-compliant installation settings
+
+During installation, you can have your installation checked for compliance with the _Defense Information Systems Agency STIG_ security policy.
+For more information, see the following documentation:
+
+* _Security Policies_ section in the _Installation Quickstart_ at https://documentation.suse.com/sles/15-SP4/html/SLES-all/article-installation.html#sec-sle-installquick-install-inst-settings
+* _Security Profiles_ section in the _Deployment Guide_ at https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-install.html#sec-yast-install-proposal-security-profile
+* _Using OpenSCAP security policies_ section in the _{autoyast} Guide_ at https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-configuration-installation-options.html#CreateProfile-Security-policies
+
+[#jsc-PED-12703]
+==== New systems-management module
+
+A new module called _Systems Management Module_ has been added.
+This module will include systems-management packages, such as Ansible.
+
+
+[#jsc-CSD-100]
+==== Change of {suseconnect} handling of licenses
+
+Some third party repositories available as SLE extension modules come with their own EULAs.
+Previously, {suseconnect} silently accepted these licenses when registering such modules.
+
+Now {suseconnect} will display the license text and explicitly ask user for acceptance in interactive mode.
+
+[NOTE]
+This can break some existing scripts which relied on automatic acceptance of licenses.
+Users who want to use {suseconnect} with third party licenses in an automatic way can use the `--auto-agree-with-licenses` CLI option.
+
+
+[#jsc-SLE-24988]
+==== Enriched system visibility in the {sccfull}
+
+{suse} is committed to helping provide better insights into the consumption of {suse} subscriptions regardless of where they are running or how they are managed; physical or virtual, on-prem or in the cloud, connected to SCC or {rmtfull}, or managed by {suma}.
+To help you identify or filter out systems in SCC that are no longer running or decommissioned, {suseconnect} now features a daily “ping”, which will update system information automatically.
+
+For more details see the documentation at {url-docs}/subscription/suseconnect/single-html/SLE-suseconnect-visibility/.
+
+
+[#bsc-1200070]
+==== `modinfo` does not show driver versions
+
+Outputting the driver version when using `modinfo` has been removed upstream.
+This has been done mainly because drivers developed as part of the Linux kernel tree are already versioned along with the kernel, and having a separate version was optional and confusing.
+
+
+[#jsc-SLE-20416]
+==== Use `/dev/mapper` instead of UUID in `fstab` for LUKS-back-up devices
+
+During installation, the entries generated for LUKS devices in `/etc/fstab` used UUID.
+This meant that tools such as systemd generators could not know which LUKS device to activate to make a filesystem appear, unless all volumes were set up at boot.
+
+To fix this, entries in `/etc/fstab` now use the name of the resulting encrypted block device (`/dev/mapper/cr_xxx`) because it identifies the LUKS-backed device without ambiguity.
+
+
+[#jsc-SLE-21225]
+==== `adcli` now supports setting password expiry
+
+The `adcli` command now supports the `--dont-expire-password` parameter.
+
+This parameter sets or unsets the `DONT_EXPIRE_PASSWORD` flag in the `userAccountControl` attribute to indicate if the machine account password should expire or not.
+By default `adcli` will set this flag while joining the domain which corresponds to the default behavior of Windows clients.
+
+
+[#jsc-SLE-17026]
+==== NTLM support in the Unified Installer
+
+The online {productnameshort} media require that customers register with {scc} at installation time.
+However, previously the Unified Installer proxy configuration did not support NTLM authentication.
+NTLM is a common form of authentication in enterprise environments with Microsoft Active Directory.
+
+In {productnameshort} {this-version}, support for NTLM authentication in the Unified Installer has been added.
+
+
+[#jsc-SLE-17334]
+==== `chrony` Network Time Security (NTS) support
+
+This option enables authentication using the Network Time Security (NTS) mechanism.
+Unlike with the `key` option, the server and client do not need to share a key in a key file.
+NTS has a Key Establishment (NTS-KE) protocol using the Transport Layer Security (TLS) protocol to get the keys and cookies required by NTS for authentication of NTP packets.
+
+
+[#jsc-SLE-17603]
+==== New version of {suseconnect} eliminates Ruby requirements
+
+Previously, {suseconnect} was written in Ruby and therefore required the Ruby stack to be present in the installed system.
+This conflicted with the increasing demand for minimal product footprint, especially for products that were targeted for edge and embedded use cases.
+
+In {productnameshort} {this-version}, `SUSEConnect` has been replaced by the new version written in Go called `suseconnect-ng`.
+This new version also obsoletes the previously separate plugins `zypper-migration-plugin` and `zypper-search-packages-plugin`, which have been removed.
+
+//bsc#1195106
+[NOTE]
+.Abbreviated options
+Abbreviated options not mentioned in `--help` are not supported.
+Previously, some abbreviated options worked due to the way Ruby parses options but they were not officially supported nor documented.
+
+
+[#jsc-SLE-18823]
+==== Boot-time graphics DRM enablement for UEFI and VESA framebuffers
+
+On system start-up, the graphics console is first serviced by the framebuffer drivers.
+Later in the process, the framebuffer driver hands over the graphics-card memory to the Direct Rendering Manager (DRM).
+In some scenarios, the handover can fail and the system graphics console can appear frozen.
+{this-version} provides a DRM native boot-time graphics driver, called `simpledrm`, as a replacement to the framebuffer drivers.
+
+To use the new graphics driver, `simpledrm`, the module has to be loaded during boot. As root, on the console, type:
+
+[source,bash]
+echo "simpledrm" > /etc/modules-load.d/simpledrm.conf
+
+systemd will automatically load the `simpledrm` driver on the next startup.
+To avoid this, simply remove the file.
+To use the driver, pass the kernel parameter `enable_sysfb` on the next boot.
+This can be done from within the GRUB boot menu.
+
+There should be no difference from regular boot.
+Everything should look as before.
+To verify that the `simpledrm` driver has been used, in the console type:
+
+[source,bash]
+dmesg | grep drm
+
+The output should mention `simpledrm`.
+
+By default, the hardware's native driver replaces `simpledrm` during boot.
+To disable native drivers, pass the kernel parameters `enable_sysfb` and `nomodeset` to the kernel on the next boot.
+The former parameter enables `simpledrm` and the latter disables the native driver.
+Afterwards, all the graphic output will be done by `simpledrm`.
+
+
+
+[#jsc-SLE-18305]
+==== Adding a new welcome screen for `jeos-firstboot` to all consoles
+
+Finding the right console for the `jeos-firstboot` wizard can be tricky for the user and nothing was in place before to introduce the `jeos-firstboot` wizard to the user.
+
+This features addressed these two issues:
+
+* It adds a welcome screen to greet the user and tell them about which distribution is about to be started and configured.
+* It shows the welcome screen on all the consoles. This solves the issue where the user might not know which console needs to be used for the `jeos-firstboot` wizard.

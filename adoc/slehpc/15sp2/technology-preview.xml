@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="technology-preview"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Technology Previews</title>
+
+ <para>
+  Technology previews are packages, stacks, or features delivered by &suse;
+  which are not supported. They may be functionally incomplete, unstable or
+  in other ways not suitable for production use. They are included for your
+  convenience and give you a chance to test new technologies within an
+  enterprise environment.
+ </para>
+
+ <para>
+  Whether a technology preview becomes a fully supported technology later
+  depends on customer and market feedback.
+  Technology previews can be dropped at any time and &suse; does not commit
+  to providing a supported version of such technologies in the future.
+ </para>
+
+ <para>
+  Give your &suse; representative feedback about technology previews,
+  including your experience and use case.
+ </para>
+</section>

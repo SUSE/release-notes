@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id='Intro.Support.Techpreviews'>
+ <title>Technology Previews</title>
+
+<remark>
+** clear statement of TP (no support)
+** Title of the TP
+** full description of the TP
+** link to official documentation (external)
+** link to the SUSE's documentation
+</remark>
+
+ <!-- bnc#662712 -->
+ <para>
+  Technology previews are packages, stacks, or features delivered by
+  SUSE. These features are not supported. They may be functionally
+  incomplete, unstable or in other ways not suitable for production use.
+  They are mainly included for customer convenience and give customers a
+  chance to test new technologies within an enterprise
+  environment.
+ </para>
+
+ <para>
+  Whether a technical preview will be moved to a fully supported package
+  later, depends on customer and market feedback. A technical preview
+  does not automatically result in support at a later point in time.
+  Technical previews could be dropped at any time and SUSE is not
+  committed to provide a technical preview later in the product
+  cycle.
+ </para>
+
+ <para>
+  Please, give your SUSE representative feedback, including your
+  experience and use case.
+  <!--
+  Alternatively, use the Novell Requirements Portal
+  at <ulink url="http://www.novell.com/rms"/>.
+  -->
+  </para>
+
+
+  <!-- fate#316731: Hot-Add Memory -->
+  <!--
+  <section>
+   <title>Hot-Add Memory</title>
+   <para>
+     Hot-add memory is currently only supported on the following hardware:
+   </para>
+   <itemizedlist>
+    <!-\- bnc#810756 -\->
+    <!-\- bnc#819950 -\->
+    <listitem><para>IBM x3800, x3850, single node x3950, x3850 M2,
+    single node x3950 M2,</para></listitem>
+    <!-\- FATE#304276: RAS features for x86_64: Memory hot-add, IOH hot-add -\->
+    <listitem><para>certified systems based on recent Intel Xeon
+    Architecture,</para></listitem>
+    <!-\- FATE#304275: RAS features for IPF: Memory hotadd, IOH offline/hot-remove, IOH online/hot-add -\->
+    <listitem><para>certified systems based on recent Intel IPF
+    Architecture,</para></listitem>
+    <!-\- bnc#600361 mge@novell.com, 20100508 -\->
+    <!-\- bnc#810575 ke@suse.com, 20130321    -\->
+    <listitem><para>all IBM servers and blades with POWER5, POWER6,
+    POWER7, or POWER7+ processors and recent firmware. (This requires
+    the Power Linux service and productivity tools available at
+    <ulink url="http://www14.software.ibm.com/webapp/set2/sas/f/lopdiags/yum.html"/>.)</para></listitem>
+   </itemizedlist>
+   <para>
+    If your specific machine is not listed, please call SUSE support to
+    confirm whether or not your machine has been successfully
+    tested. Also, regularly check our maintenance update information,
+    which will explicitly mention the general availability of this
+    feature.
+   </para>
+   <para>
+     Restriction on using IBM eHCA InfiniBand adapters in conjunction with
+     hot-add memory on IBM Power:
+   </para>
+   <para>
+     The current eHCA Device Driver will prevent dynamic memory operations on
+     a partition as long as the driver is loaded. If the driver is unloaded
+     prior to the operation and then loaded again afterwards, adapter
+     initialization may fail. A Partition Shutdown / Activate sequence on the
+     HMC may be needed to recover from this situation.
+   </para>
+  </section>
+  -->
+  <!--
+  <section>
+   <title>Internet Storage Naming Service (iSNS)</title>
+   <para>The Internet Storage Naming Service (iSNS) package is by design
+   suitable for secure internal networks only. SUSE will continue to
+   work with the community on improving security.</para>
+  </section>
+  -->
+  <!-- see fate-311111 -->
+  <!--
+  <listitem>
+    <para>Ext4 Filesystem</para>
+    <para>
+      The Ext4 kernel modules and userland tools
+      shipped with &sles; 11 are a preview of a new filesystem for Linux.
+    </para>
+  </listitem>
+  -->
+
+  <!-- bnc#441079 -->
+  <!-- see fate-311333 -->
+  <!--
+  <listitem>
+    <para>biosdevname</para>
+    <para>
+      biosdevname in its simplest form takes a kernel name as
+      an argument and returns the BIOS-given name it "should"
+      be. This is necessary on systems where the BIOS name for
+      a given device (e.g., the label on the chassis is "Gb1")
+      doesn't map directly and obviously to the kernel name
+      (e.g., eth0).
+    </para>
+  </listitem>
+  -->
+
+  <!-- FATE XXX/agruen -->
+  <!-- bnc#652349 -->
+  <!-- now fate#316732: Read-Only Root File System -->
+  <!--
+  <section>
+   <title>Read-Only Root File System</title>
+   <para>It is possible to run &sles; 12 on a shared read-only root
+   file system.  A read-only root setup consists of the read-only root
+   file system, a scratch and a state file system.  The
+   <filename>/etc/rwtab</filename> file defines which files and
+   directories on the read-only root file system are replaced by which
+   files on the state and scratch file systems for each system
+   instance.</para>
+
+   <para>The <filename>readonlyroot</filename> kernel command line
+   option enables read-only root mode; the <filename>state=</filename>
+   and <filename>scratch=</filename> kernel command line options
+   determine the devices on which the state and scratch file systems are
+   located.</para>
+
+   <para>In order to set up a system with a read-only root file system,
+   set up a scratch file system, set up a file system to use for storing
+   persistent per-instance state, adjust
+   <filename>/etc/rwtab</filename> as needed, add the appropriate kernel
+   command line options to your boot loader configuration, replace
+   <filename>/etc/mtab</filename> with a symlink to
+   <filename>/proc/mounts</filename> as described below, and (re)boot
+   the system.</para>
+<remark>emap: Confusing paragraph. Should be broken into steps like
+below (where it's not really necessary.</remark>
+<remark>ke: I'd say, as an overview it is probably ok-\-at least, for the
+moment.</remark>
+
+   <para>To replace <filename>/etc/mtab</filename> with the appropriate
+   symlinks, call:</para>
+   <screen>ln -sf /proc/mounts /etc/mtab</screen>
+
+   <para>See the rwtab(5) manual page for further details and <ulink
+   url="http://www.redbooks.ibm.com/abstracts/redp4.52.html"/> for
+   limitations on System z.</para>
+
+  </section>
+-->
+</section>

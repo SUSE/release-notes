@@ -1,0 +1,473 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#storage]
+=== Storage and file systems
+
+// Release notes for storage tool/library features:
+//   Btrfs, CFS, ext3, Snapper, ntfs-3g, ceph, ... (including kernel file systems)
+
+// Also see the following additional note:
+
+////
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-2966]
+==== Booting from NVMe-oF™ over TCP
+
+{productname} {this-version} and later support booting from NVMe-oF™ over TCP according to the https://nvmexpress.org/wp-content/uploads/NVM-Express-Boot-Specification-2022.11.15-Ratified.pdf[NVM Express® Boot Specification 1.0].
+Previous versions of SLE supported boot from NVMe-oF over Fibre Channel only.
+
+For more information see https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-nvmeof.html#sec-nvmeof-boot[the documentation].
+
+
+[#jsc-PED-1884]
+==== dracut default persistent policy change
+
+The previously used `by-path` policy had the following shortcomings:
+
+* doesn't work for multi-path
+* very fragile for iSCSI
+* can change with hardware changes
+
+To avoid the above problems, the persistent policy of `dracut` is now set to `by-uuid`.
+
+
+// !STICKY
+[#file-system-comparison]
+==== Comparison of supported file systems
+
+
+{sle} was the first enterprise Linux distribution to support journaling file systems and logical volume managers in 2000.
+Later, we introduced XFS to Linux, which allows for reliable large-scale file systems, systems with heavy load, and multiple parallel reading and writing operations.
+With {sle} 12, we started using the copy-on-write file system Btrfs as the default for the operating system, to support system snapshots and rollback.
+
+The following table lists the file systems supported by {sle}.
+
+__Support status:__ {sup} supported / {uns} unsupported
+
+[cols="25,^15,^15,^15,^15" options="header"]
+|===
+|Feature
+|Btrfs
+|XFS
+|Ext4
+|OCFS 2^1^
+
+|Supported in product
+|{slea}
+|{slea}
+|{slea}
+|{haa}
+
+|Data/metadata journaling
+|N/A^2^
+|{uns} / {sup}
+|{sup} / {sup}
+|{uns} / {sup}
+
+
+|Journal internal/external
+|N/A^2^
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {uns}
+
+|Journal checksumming
+|N/A^2^
+|{sup}
+|{sup}
+|{sup}
+
+|Subvolumes
+|{sup}
+|{uns}
+|{uns}
+|{uns}
+
+|Offline extend/shrink
+|{sup} / {sup}
+|{uns} / {uns}
+|{sup} / {sup}
+|{sup} / {uns}^3^
+
+|Inode allocation map
+|B-tree
+|B+-tree
+|Table
+|B-tree
+
+|Sparse files
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Tail packing
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Small files stored inline
+|{sup} (in metadata)
+|{uns}
+|{sup} (in inode)
+|{sup} (in inode)
+
+|Defragmentation
+|{sup}
+|{sup}
+|{sup}
+|{uns}
+
+|Extended file attributes/ACLs
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+
+|User/group quotas
+|{uns} / {uns}
+|{sup} / {sup}
+|{sup} / {sup}
+|{sup} / {sup}
+
+|Project quotas
+|{uns}
+|{sup}
+|{sup}
+|{uns}
+
+|Subvolume quotas
+|{sup}
+|N/A
+|N/A
+|N/A
+
+|Data dump/restore
+|{uns}
+|{sup}
+|{uns}
+|{uns}
+
+|Block size default
+4+|4{nbsp}KiB^4^
+
+|Maximum file system size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+
+|Maximum file size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+|===
+
+
+^1^ OCFS 2 is fully supported as part of the {sleha}.
+
+^2^ Btrfs is a copy-on-write file system.
+Instead of journaling changes before writing them in-place, it writes them to a new location and then links the new location in.
+Until the last write, the changes are not "committed".
+Because of the nature of the file system, quotas are implemented based on subvolumes (`qgroups`).
+
+^3^ To extend an OCFS 2 file system, the cluster must be online but the file system itself must be unmounted.
+
+^4^ The block size default varies with different host architectures.
+64{nbsp}KiB is used on POWER, 4{nbsp}KiB on other systems.
+The actual size used can be checked with the command `getconf _PAGE_SIZE_`.
+
+*Additional notes*
+
+Maximum file size above can be larger than the file system's actual size because of the use of sparse blocks.
+All standard file systems on {sles} have LFS, which gives a maximum file size of 2^63^{nbsp}bytes in theory.
+
+The numbers in the table above assume that the file systems are using a 4{nbsp}KiB block size which is the most common standard.
+When using different block sizes, the results are different.
+
+In this document:
+
+* 1024{nbsp}Bytes = 1{nbsp}KiB
+* 1024{nbsp}KiB = 1{nbsp}MiB;
+* 1024{nbsp}MiB = 1{nbsp}GiB
+* 1024{nbsp}GiB = 1{nbsp}TiB
+* 1024{nbsp}TiB = 1{nbsp}PiB
+* 1024{nbsp}PiB = 1{nbsp}EiB.
+
+See also http://physics.nist.gov/cuu/Units/binary.html.
+
+// bsc#1073261
+Some file system features are available in {sles} {this-version} but are not supported by {suse}.
+By default, the file system drivers in {sles} {this-version} will refuse mounting file systems that use unsupported features (in particular, in read-write mode).
+To enable unsupported features, set the module parameter `allow_unsupported=1` in `/etc/modprobe.d` or write the value `1` to `/sys/module/_MODULE_NAME_/parameters/allow_unsupported`.
+However, note that setting this option will render your kernel and thus your system unsupported.
+
+
+// !STICKY
+[#file-system-btrfs-feature]
+==== Supported Btrfs features
+
+The following table lists supported and unsupported Btrfs features across multiple {slsa} versions.
+
+__Support status:__ {sup} supported / {uns} unsupported
+
+// Table according to bsc-979501, this attachment: https://bugzilla.suse.com/attachment.cgi?id=687340
+[cols="22,^13,^13,^13,^13,^13,^13" options="header"]
+|===
+|Feature
+|{slsa} 11 SP4
+|{slsa} 12 SP5
+|{slsa} 15 GA
+|{slsa} 15 SP1
+|{slsa} 15 SP2
+|{slsa} 15 SP3
+
+|Copy on write
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Free space tree (Free Space Cache v2)
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Snapshots/subvolumes
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Swap files
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Metadata integrity
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Data integrity
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Online metadata scrubbing
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Automatic defragmentation
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Manual defragmentation
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|In-band deduplication
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Out-of-band deduplication
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Quota groups
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Metadata duplication
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Changing metadata UUID
+|{uns}
+|{uns}
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+
+|Multiple devices
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 0
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 1
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|RAID 5
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|RAID 6
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|RAID 10
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Hot add/remove
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Device replace
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Seeding devices
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Compression
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Big metadata blocks
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Skinny metadata
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Send without file data
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Send/receive
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+
+|Inode cache
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+|{uns}
+
+|Fallocate with hole punch
+|{uns}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|{sup}
+|===

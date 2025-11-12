@@ -1,0 +1,28 @@
+include::attributes.adoc[]
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#rnotes]
+= {rnotes}
+
+include::abstract.adoc[]
+
+include::about-rn.adoc[]
+
+include::about-product.adoc[]
+
+include::related_products.adoc[]
+
+include::changes.adoc[]
+
+// Known Issues
+include::known_issues.adoc[]
+
+// Removed & deprecated packages & features
+// commented, currently empty
+//include::removed_deprecated.adoc[]
+
+// ===================================================================
+include::source-code.adoc[]
+
+include::legal.adoc[]

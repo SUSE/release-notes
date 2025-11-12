@@ -1,0 +1,61 @@
+// jsc-SLE-11213
+
+[#kernel-parameter-changes]
+== Kernel parameter changes
+
+[WARNING]
+This list of changes may not be exhaustive.
+
+
+[#kernel-parameter-changes-current-sp]
+=== During {this-version}
+
+These Linux kernel parameters have been changed during {producta} {this-version}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Package | More details
+|`net.ipv6.conf.lo.accept_redirects`|0|1|wicked-0.6.68-3.8.1| https://bugzilla.suse.com/show_bug.cgi?id=1181163[Bug 1181163]
+|`net.ipv6.conf.lo.use_tempaddr`|1|-1|wicked-0.6.68-3.8.1| https://bugzilla.suse.com/show_bug.cgi?id=1181163[Bug 1181163]
+|==========
+
+// jsc-SLE-14977
+[#kernel-parameter-changes-last-sp]
+===  Since {this-ga}{nbsp}{previous-sp}
+
+These Linux kernel parameters have been changed since {producta} {this-ga}{nbsp}{previous-sp}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Package | More details
+|`sysctl_net_ipv4_conf_all_accept_redirects` | 1 | 0 ||
+|`sysctl_net_ipv6_conf_all_accept_redirects` | 1 | 0 ||
+|`sysctl_net_ipv4_conf_default_accept_redirects` | 1 | 0 ||
+|`sysctl_net_ipv4_conf_all_rp_filter` | 1 | 2 ||
+|`sysctl_net_ipv4_conf_default_accept_source_route` | 1 | 0 ||
+|`sysctl_net_ipv4_neigh_default_unres_qlen` | 31 | 101 ||
+|`sysctl_net_ipv6_neigh_default_unres_qlen` | 31 | 101 ||
+|`sysctl_net_ipv4_neigh_default_unres_qlen_bytes` | 65536 | 212992 ||
+|`sysctl_net_ipv6_neigh_default_unres_qlen_bytes` | 65536 | 212992 ||
+// sysctl_net_ipv4_ping_group_range: see bsc#1193054
+|`sysctl_net_ipv4_ping_group_range` | 1 0 | 0 2147483647 ||
+|`sysctl_net_ipv4_tcp_allowed_congestion_control` |  | ||
+|`sysctl_net_ipv4_tcp_available_congestion_control` |  | ||
+|`sysctl_net_ipv4_tcp_limit_output_bytes` | 262144 | 1048576 ||
+|`sysctl_net_ipv4_tcp_max_syn_backlog` | 2048 | 4096 ||
+|`sysctl_net_ipv4_tcp_tw_reuse` | 2 | 0 ||
+|`sysctl_net_ipv4_xfrm4_gc_thresh` | 2147483647 | 32768 ||
+// bsc#1195107
+|`sysctl_net_ipv6_conf_lo_accept_redirects` | 0 | 1 | `wicked`|
+// bsc#1195107
+|`sysctl_net_ipv6_conf_lo_use_tempaddr` | 1 | -1 | `wicked`|
+|`sysctl_net_ipv6_xfrm6_gc_thresh` | 2147483647 | 32768 ||
+|`sysctl_user_max_inotify_instances` | 128 | 191651 ||
+|`sysctl_user_max_inotify_watches` | 65536 | 128 ||
+|`sysctl_vm_hugepages_treat_as_movable` |  | ||
+|`sysctl_vm_lowmem_reserve_ratio` |  | ||
+|`sysctl_vm_nr_pdflush_threads` |  | ||
+|`sysctl_vm_numa_zonelist_order` | 1 | 0 ||
+|`sysctl_vm_numa_zonelist_order` | default | Node ||
+|`sysctl_vm_watermark_boost_factor` | 10000 | 15000 ||
+|==========

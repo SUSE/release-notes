@@ -1,0 +1,42 @@
+<!ENTITY rnotes                       'Release Notes'                         >
+<!ENTITY rversion                     '@VERSION@'                             >
+
+<!ENTITY yast                         'YaST'                                  >
+<!ENTITY autoyast                     'AutoYaST'                              >
+
+<!ENTITY suse                         'SUSE'                                  >
+<!ENTITY product "&s4sa;">
+<!ENTITY suse-version                 '15'                                    >
+<!ENTITY spversion                    'GA'                                    >
+<!-- <!ENTITY spversion               'SP3'                                   > -->
+<!ENTITY this-version                 '&suse-version; &spversion;'            >
+<!ENTITY rel-date                     'June 2018'                             >
+
+<!ENTITY previous-ga                  "12"                                    >
+<!ENTITY next-ga                      "16"                                    >
+
+<!ENTITY opensuse                     'open&suse;'                            >
+<!ENTITY sle                          '&suse; Linux Enterprise'               >
+<!ENTITY sled                         '&sle; Desktop'                         >
+<!ENTITY sles                         '&sle; Server'                          >
+<!ENTITY hae                          'High Availability Extension'           >
+<!ENTITY sleha                        '&sle; &hae;'                           >
+<!ENTITY slehag                       'Geo Clustering for &sle; High Availability'>
+<!ENTITY ha-guide                     'High Availability Guide'               >
+<!ENTITY s4s                          '&sles; for SAP Applications'           >
+<!ENTITY s4sa                         'SLES for SAP Applications'             >
+<!ENTITY s4s-guide                    '&s4s; Guide'                           >
+<!ENTITY sles4sap                     '&s4s;'                                 >
+<!ENTITY ses                          '&suse; Enterprise Storage'             >
+<!ENTITY ses-guide                    '&suse; Enterprise Storage Administration Guide'>
+<!ENTITY sdk                          'Software Development Kit'              >
+<!ENTITY slesdk                       '&sle; &sdk;'                           >
+
+<!-- FIXME: Update to correct S4S 15 URL before the release. -->
+<!ENTITY doc-url "https://www.suse.com/documentation/sles_for_sap/">
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+<!ENTITY rn-url-sles "&rn-url;/x86_64/SUSE-SLES/15">
+<!ENTITY rn-url-ha "&rn-url;/x86_64/SLE-HA/15">
+
+<!-- FIXME: Need correct Bugzilla product for 15 -->
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Server for SAP Applications 12 SP3" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'>

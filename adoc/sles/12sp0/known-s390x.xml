@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id="InfraPackArch.SystemZ">
+ <title>System z (s390x) Specific Information</title>
+ <para>
+  Look at
+  <ulink url="http://www.ibm.com/developerworks/linux/linux390/documentation_novell_suse.html"/>
+  for more information.
+ </para>
+ <para>
+IBM zEnterprise 196 (z196) and IBM zEnterprise 114 (z114) further on
+referred to as z196 and z114.
+ </para>
+
+  <section id="InfraPackArch.SystemZ.Hardware">
+  <title>Hardware</title>
+  <para/>
+  </section>
+
+ <section id="InfraPackArch.SystemZ.Virtualization">
+  <title>Virtualization</title>
+
+
+  <!-- bnc#738559 -->
+  <!-- ihno, 2013-05-27: applies for SP3 as well -->
+  <section>
+   <title>Support of Live Guest Relocation (LGR) with z/VM 6.2
+          <!-- on SLES 11 SP2--></title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+Live guest relocation (LGR) with z/VM 6.2 <!-- on SLES 11 SP2 -->
+requires z/VM service
+applied, especially with Collaborative Memory Management (CMMA) active
+(<literal>cmma=on</literal>).
+   </para>
+   <para>
+Apply z/VM APAR  VM65134.
+   </para>
+  </section>
+
+  <!-- bnc#743338 -->
+  <section>
+   <title>Linux Guests Running on z/VM 5.4 and 6.1 Require z/VM Service
+   Applied</title>
+
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    Linux guests using dedicated devices may experience a loop, if an
+    available path to the device goes offline prior to the IPL of Linux.
+   </para>
+   <para>
+     Apply recommended z/VM service APARs VM65017 and VM64847.
+    </para>
+  </section>
+
+ </section>
+
+ <section id="InfraPackArch.SystemZ.Storage">
+  <title>Storage</title>
+
+  <para/>
+   <!-- bnc#792066 -->
+   <!-- fate#314888: still an issue on SLE12 -->
+   <!-- now via fate#317707 -->
+   <!--
+   <title>New Partition Types Added to the fdasd Command</title>
+   -->
+ </section>
+ <section id="InfraPackArch.SystemZ.Network">
+  <title>Network</title>
+
+  <para/>
+  <!-- bnc#728611 -->
+  <!--
+  <section>
+   <title>YaST May Fail to Activate Hipersocket Devices in Layer 2 Mode</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    In rare occasions Hipersocket devices in layer 2 mode may remain in
+    softsetup state when configured via YaST.
+   </para>
+   <para>
+    Perform <command>ifup</command> manually.
+   </para>
+  </section>
+  -->
+  <!-- bnc#728611 -->
+  <!--
+  <section>
+   <title>YaST Sets an Invalid Default MAC Address for OSA Devices in
+   Layer 2 Mode</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+OSA devices in layer 2 mode remain in softsetup state when "Set default MAC
+address" is used in YaST.
+   </para>
+   <para>
+Do not select "Set default MAC address" in YaST.  If default MAC address
+got selected in YaST remove the line
+<literal>LLADR='00:00:00:00:00:00'</literal> from the
+<filename>ifcfg</filename> file in
+<filename>/etc/sysconfig/network</filename>.
+   </para>
+  </section>
+  -->
+  <!-- bnc#744841 -->
+  <!--
+  <section>
+   <title>Limitations with the "qetharp" Utility</title>
+   <para>CHECKIT:SLE11.3</para>
+   <variablelist>
+    <varlistentry>
+    <term><command>qetharp -d</command></term>
+    <listitem>
+     <para>
+      Deleting: An ARP entry, which is part of Shared OSA should not get
+      deleted from the arp cache.
+     </para>
+     <para>
+      Current Behavior: An ARP entry, which is part of shared OSA is
+      getting deleted from the arp cache.
+     </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><command>qetharp -p</command></term>
+     <listitem>
+      <para>
+       Purging: It should remove all the remote entries, which are not
+       part of shared OSA.
+      </para>
+      <para>
+       Current Behavior: It is only flushing out the remote entries,
+       which are not part of shared OSA for first time. Then, if the
+       user pings any of the purged ip address, the entry gets added
+       back to the arp cache. Later, if the user runs purge for a second
+       time, that particular entry is not getting removed from the arp
+       cache.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+ </section>
+-->
+ </section>
+ <section id="InfraPackArch.SystemZ.Security">
+  <title>Security</title>
+
+  <section>
+   <!-- "bnc#721253" -->
+
+   <title>Existing Data Execution Protection Removed for System z</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+The existing data execution protection for Linux on System z relies on the
+System z hardware to distinguish instructions and data through the secondary
+memory space mode. As of System z10, new load-relative-long instructions do not
+make this distinction. As a consequence, applications that have been compiled
+for System z10 or later fail when running with the existing data execution
+protection.
+   </para>
+   <para>
+Therefore, data execution protection for Linux on System z has been removed.
+   </para>
+  </section>
+ </section>
+
+ <section id="InfraPackArch.SystemZ.RAS">
+  <title>RAS</title>
+  <para />
+ </section>
+
+ <section id="InfraPackArch.SystemZ.Performance">
+  <title>Performance</title>
+  <para />
+ </section>
+
+ <section id="InfraPackArch.SystemZ.Misc">
+  <!-- entries from SP1 RNs -->
+  <title>Miscellaneous</title>
+
+  <!--
+  <section>
+   <title>IBM System z Architecture Level Set (ALS) Preparation</title>
+
+   <!-\- AI:ihno, mkraft , information is old -\->
+
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    To exploit new IBM System z architecture capabilities during the
+    lifecycle of &sles; 11, support for machines of the types z900,
+    z990, z800, z890 is deprecated in this release. SUSE plans to
+    introduce an ALS earliest with &sles; 11 Service Pack 1 (SP1),
+    latest with SP2.  After ALS, &sles; 11 only executes on z9 or newer
+    processors.
+   </para>
+   <para>
+    With &sles; 11 GA, only machines of type z9 or newer are supported.
+   </para>
+   <para>
+    When developing software, we recommend to switch gcc to z9/z10 optimization:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>install gcc</para>
+    </listitem>
+    <listitem>
+     <para>install gcc-z9 package (change gcc options to -march=z9-109 -mtune=z10)</para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  -->
+  <section>
+   <title>Minimum Storage Firmware Level for LUN Scanning</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>For LUN Scanning to work properly, the minimum storage firmware level should be:</para>
+   <itemizedlist>
+    <listitem><para>DS8000 Code Bundle Level 64.0.175.0</para></listitem>
+    <listitem><para> DS6000 Code Bundle Level 6.2.2.108</para></listitem>
+   </itemizedlist>
+  </section>
+
+  <section>
+   <title>Large Page Support in IBM System z</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    Large Page support allows processes to allocate process memory in
+    chunks of 1 MiB instead of 4 KiB. This works through the hugetlbfs.
+   </para>
+  </section>
+
+  <!-- bnc#417244, outdate -->
+  <!-- bnc#753005 -->
+  <section>
+   <title>Collaborative Memory Management Stage II (CMM2) Lite</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    SLES 11 SP2 supports CMM2 Lite for optimized memory usage and to
+    handle memory overcommitment via memory page state transitions based
+    on "stable" and "unused" memory pages of z/VM guests using the
+    existing <literal>arch_alloc_page</literal> and
+    <literal>arch_free_page</literal> callbacks.
+   </para>
+  </section>
+
+  <!-- bnc#488642 -->
+  <!--
+  <section>
+   <title>Issue with SLES 11 and NSS under z/VM</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    Starting SLES 11 under z/VM with NSS sometimes causes a guest to
+    logoff by itself.
+   </para>
+   <para>Solution: IBM addresses this issue with APAR VM64578.</para>
+  </section>
+  -->
+ </section>
+
+</section>
+

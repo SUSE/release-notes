@@ -1,0 +1,163 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-product} {this-version}.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#power-hardware]
+=== Hardware
+
+// also see jsc#SLE-22522
+[#bsc-1192121]
+==== IBM Power10 support
+
+On {productnameshort} {this-version}, the Power10 CPU is supported in default mode, which includes performance counters, prefixed instructions, new idle state timings, and MMA unit.
+Previous {slesa} releases that support the POWER9 CPU can work on Power10 (POWER9 Compatibility mode).
+However, new features and performance counters are not supported and the use of idle states might not be optimal.
+
+[#power-performance]
+=== Performance
+
+There were the following performance-related changes:
+
+// SLE-18143
+* OpenBlas package for POWER provides Power10 capabilities and includes optimization for matrix multiplication GEMM kernels
+// SLE-18644
+* enablement of GZIP engines on PowerVM to seng GZIP compression requests directly to NX without kernel involvement
+
+[#jsc-SLE-18135]
+==== Enhanced `libgcrypt` cryptography performance
+
+Community contributions improved the performance of GHASH and SHA2 for POWER9 and Power10.
+
+[#jsc-SLE-18136]
+==== Enhanced OpenSSL cryptography performance
+
+ECC improvements were added for Power10 in OpenSSL 3.0.
+These are backported to OpenSSL 1.1.1.
+
+[#jsc-SLE-18133]
+==== Enhanced NSS FreeBL cryptography performance
+
+Community contributions improved the performance of Chacha20 for POWER9 and Power10.
+
+[#power-security]
+=== Security
+
+Also see the following notes:
+
+* <<jsc-SLE-18265>>
+// SLE-18266
+* Enable Strict RWX support for IBM Power, improving kernel protection and security.
+
+// also SLE-18144
+// also SLE-18145
+// also SLE-18126
+[#jsc-SLE-18271]
+==== POWER guest secure boot with static keys
+
+PowerVM LPAR guest secure boot with static keys with verification to extend the chain of trust from partition firmware to the OS kernel and includes key management.
+
+
+// also SLE-18123
+[#jsc-SLE-18122]
+==== The LPAR security flavor in human-readable format
+
+The LPAR security flavor is available in a human-readable format from inside the LPAR via the `lparstat -x` option.
+
+[#jsc-SLE-18267]
+==== Key Management Interoperability Protocol (KMIP)
+
+The Key Management Interoperability Protocol (KMIP) C client `libkmip` package from OpenKMIP has been added.
+KMIP provides a standard protocol for managing keys over the network to automate many key management tasks.
+
+
+[#power-virtualization]
+=== Virtualization
+
+The following new features are supported in {productnameshort} {this-version} under PowerVM:
+
+// SLE-18131
+* Provide dump capture support to HNV based dump target.
+// SLE-18127
+* Linux Hybrid Network Virtualization (HNV) support for Wicked
+// SLE-23097
+* Support IBM vNIC as backend device for Hybrid Network Virtualization (HNV)
+
+Additionally, there are the following virtualization-related notes:
+
+[#jsc-SLE-23831]
+==== Logical partition migration when using NX coprocessor
+
+Each Power10+ chip has NX coprocessor to support hardware compression.
+Logical partitions can access to the NX coprocessor with Virtual Accelerator Switchboard (VAS) windows without going through the kernel.
+Once the VAS window is established, the userspace may use `copy` and `paste` instruction pairs to issue compression requests directly to NX coprocessor.
+So all VAS windows opened on a coprocessor belongs to a specific PowerPC chip.
+For the logical partition migration, the hypervisor expects the partition to close all active windows on the sources system and reopen them after migration on the destination machine.
+
+The partition migration support with the NX coprocessor is not included in {productnameshort} {this-version} but is expected in {next-version}.
+That means the logical partition migration can not be used in {this-version} if NX is used by applications.
+
+The following command can be used to determine which process is currently using the NX coprocessor:
+
+[source,bash]
+fuser /dev/crypto/nx-gzip
+
+[NOTE]
+Make sure no workload that uses hardware compression is running at the time of partition migration because it is possible that a workload might open VAS windows after the migration is initiated.
+
+
+[#jsc-SLE-20056]
+==== Multiqueue support for `ibmvfc` SCSI driver (NPIV)
+
+The `ibmvfc` client can negotiate with the VIOS server adapter the use of multiple queues such that those queues can be exploited by the `blk-mq`/`scsi-mq` in Linux.
+
+
+[#power-misc]
+=== Miscellaneous
+
+There were the following miscellaneous changes:
+
+// SLE-18196
+* Improved management of cached writes for persistent memory devices like NVDIMMs.
+// SLE-18272
+* Improve robustness of `fadump` further by isolating `initrd` to capture the vmcore inside the default `initrd` and activating it only during dump capture.
+// SLE-23098
+Improved the numa locality of workload allocations.
+
+
+[#bsc-1198415]
+==== LPM and DLPAR cannot be used with Secure Boot
+
+When Secure Boot is enabled for a logical partitioning (LPAR), the Linux kernel enables lockdown which disables access to kernel memory from userspace.
+Some Run-Time Abstraction Service (RTAS) services are not available when access to the kernel memory is disabled.
+Without these RTAS services, RMC connection to LPAR cannot be established.
+As a result, LPM and dynamic logical partitioning(DLPAR) operation is not possible.
+
+It is expected that in the future a new interface to RTAS that does not require kernel memory access will be provided.
+
+
+[#jsc-SLE-18430]
+====  Enhanced mechanism to handle the installer errors
+Enhanced mechanism to handle the installer errors and summarize the errors in the installer (a single popup message for everything and a page listing all the details).
+
+
+[#jsc-SLE-16056]
+==== Transactional memory is deprecated and disabled
+
+On POWER9, transactional memory is partially emulated by the hypervisor, but this does not give the expected performance.
+
+Therefore, transactional memory is now disabled by default in the kernel.
+For legacy applications on platforms that still support transactional memory, it can be enabled with the `ppc_tm=on` kernel parameter.

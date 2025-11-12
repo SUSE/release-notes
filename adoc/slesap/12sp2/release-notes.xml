@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>12 SP2</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications combines SUSE Linux
+    Enterprise Server and its High Availability Extension with additional
+    software specifically meant to simplify running and managing SAP
+    applications. These are the release notes of SLES for SAP Applications.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media for SUSE Linux Enterprise Server for SAP
+    Applications. Any documentation (if installed) can be found in the
+    <filename>/usr/share/doc/</filename> directory of the installed system.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SLES for SAP Applications</title>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 12 SP2 which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP2/"/>.
+  </para>
+<!-- This section is commented because we are (ab)using the FATE category of
+  the same name for "Features." This one was empty anyway- sknorr, 2016-09-12
+  -->
+<!-- <section id="Intro.New" role="remove-empty">
+   <title>What Is New?</title>
+   <para></para>
+  </section> -->
+  <section id="Intro.Support">
+   <title>Support Statement for SLES for SAP Applications</title>
+   <para>
+    Support requires an appropriate subscription from SUSE. For more
+    information, see
+    <ulink url="https://www.suse.com/products/sles-for-sap"/>.
+   </para>
+   <para>
+    General Support Statement
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      L1: Installation and problem determination - technical support
+      designed to provide compatibility information, installation and
+      configuration assistance, usage support, on-going maintenance and
+      basic troubleshooting. Level 1 Support is not intended to correct
+      product defect errors.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L2: Reproduction of problem isolation - technical support designed to
+      duplicate customer problems, isolate problem areas and potential
+      issues, and provide resolution for problems not resolved by Level 1
+      Support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L3: Code Debugging and problem resolution - technical support designed
+      to resolve complex problems by engaging engineering in patch
+      provision, resolution of product defects which have been identified by
+      Level 2 Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (unchanged or not
+    recompiled) packages.
+   </para>
+  </section>
+ </section>
+<!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+ <section id="Intro.New" remap="Intro:New">
+  <title>Features</title>
+  <para>
+   This section includes an overview of major new features provided by SUSE
+   Linux Enterprise Server for SAP Applications.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-320360" remap="Intro:New">
+<!-- sort_key="5"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320360" -->
+   <title>saptune: Comprehensive System Tuning Management for SAP Applications</title>
+   <para>
+    <emphasis>Automatically adjust system parameters to allow running SAP
+    applications at satisfactory performance.</emphasis>
+   </para>
+   <para>
+    SLES for SAP Applications 12 SP2 now ships with the system tuning
+    utility <literal>saptune</literal>. It can be used to replace
+    <literal>sapconf</literal> (which is still available, however). The
+    utility unleashes the full potential of system hardware for all SAP
+    workloads by optimizing the CPU scheduler, memory management,
+    disk/network I/O and more. <literal>saptune</literal> can also tune for
+    the following scenarios:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <emphasis role="bold">SAP S/4 HANA:</emphasis> These applications use
+      the same tuning techniques that also apply to SAP HANA and SAP
+      NetWeaver and they do not require special tuning techniques.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis role="bold">Virtualized environments:</emphasis> You are
+      advised to carefully review tuning techniques described by SAP in
+      various SAP notes with regard to virtualized environments, especially
+      the parameters involving the hypervisor software itself.
+      <literal>saptune</literal> helps implement SAP Note 2161991 by
+      adjusting the I/O scheduler. This technique is generally favorable in
+      all virtualized guests and cloud instances.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For information about the usage of <literal>saptune</literal>, see the
+    <literal>saptune</literal> documentation.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320633" remap="Intro:New">
+<!-- sort_key="10"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320633" -->
+   <title>Benchmarking HANA Performance Under Optimized System Configuration</title>
+   <para>
+    Optimize the operating system configuration for running SAP HANA
+    benchmarks.
+   </para>
+   <para>
+    The new program <literal>saptune</literal> can automate system
+    optimization to unleash the full potential of your SAP HANA deployment.
+    Explore all tuning options of the program and find the best combination
+    for your system with SAP HANA benchmarks. For information about the
+    usage of <literal>saptune</literal>, see the <literal>saptune</literal>
+    documentation.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321142" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321142" -->
+   <title>Accessing SUSE Product Registration, Modules, and Extensions from the Desktop</title>
+   <para>
+    In SLES for SAP 12 SP2, the desktop includes a shortcut
+    <emphasis>Product Registration</emphasis> which allows starting YaST's
+    SCC Registration module. This enables you to easily discover software
+    and services that support SAP solutions.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320566" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320566" -->
+   <title>Monitor and Control saprouter via systemd</title>
+   <para>
+    You can now monitor and control the SAP Network Interface Router via
+    systemd with the new service <literal>saprouter.service</literal>
+    (contained in the software package <literal>saprouter-systemd</literal>).
+   </para>
+   <para>
+    Make sure to install the SAP Network Interface Router first, then
+    install the package <literal>saprouter-systemd</literal>. You can then
+    control the SAP router daemon via standard systemd mechanisms and
+    commands.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320564" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320564" -->
+   <title>New Features in HANA Firewall Configuration Editor</title>
+   <para>
+    The revamped HANA Firewall configuration editor in YaST offers a
+    simplified user interface and enhanced configuration capabilities:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      If there are new SAP HANA instances installed after an initial
+      firewall configuration, a dialog will prompt you to apply a firewall
+      setup to the new instances.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The editor can generate a default set of firewall rules that open
+      running SAP HANA services on all network interfaces, including the
+      services required for a high availability setup.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-320408" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320408" -->
+   <title>Support for SAP HANA TDI Environments in the SAP Installation Wizard</title>
+   <para>
+    The SAP Installation Wizard now follows SAP's recommendation for
+    partitioning and creates the following setup:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>/hana/data</literal>, size: RAM*1
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/hana/log</literal>, size: RAM*1, with a maximum of 512 GB
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/hana/shared</literal>, size: RAM*1, with a maximum of 1 TB
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/usr/sap</literal>, size: 52 GB
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-320367" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320367" -->
+   <title>cryptctl: New Disk Encryption Utility</title>
+   <para>
+    The new disk encryption utility <literal>cryptctl</literal> helps set up
+    LUKS-based disk encryption using randomly generated keys and safely
+    keeps them on a dedicated key server.
+   </para>
+   <para>
+    <literal>cryptctl</literal> comprehensively and transparently protects
+    application data including configuration files, logs, and databases. It
+    does so fulfilling many encryption compliance requirements. The
+    encryption mechanism takes full advantage of hardware acceleration to
+    improve speeds, incurring only negligible overhead to applications such
+    as SAP NetWeaver.
+   </para>
+  </section>
+  <section role="notoc" id="fate-318793" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318793" -->
+   <title>Support for Scale-Out Scenarios in SAPHanaSR</title>
+   <para>
+    The SAPHanaSR resource agents now also support SAP HANA System
+    Replication for scale-out in the performance optimized scenario (package
+    SAPHanaSR-ScaleOut).
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+  <title>Systems Management</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-321766" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321766" -->
+   <title>Requirements for Installation of SAP HANA SPS 12</title>
+   <para>
+    Before installing HANA SPS 12 on SLES for SAP 12 SP2, make sure that
+    your hardware meets all prerequisites. The root partition must have a
+    size of at least 25 GB to fit the operating system and a copy of the SAP
+    HANA installer. Ideally, use a size of 50 GB for the root partition.
+   </para>
+   <para>
+    For more information, see
+    <ulink url="http://launchpad.support.sap.com/#/notes/1944799">SAP Note
+    1944799</ulink> and the <emphasis>Configuration Guide</emphasis>
+    attached to it.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321680" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321680" -->
+   <title>Cannot Log In to SAP HANA Graphical User Interface</title>
+   <para>
+    <emphasis>When a SAP HANA database is installed on SLES for SAP, the
+    database administrator user is not able to log in to the graphical
+    interface. This issue also occurs when installing with the newest
+    available release of the SAP HANA installer.</emphasis>
+   </para>
+   <para>
+    There are currently no workarounds available.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320407" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320407" -->
+   <title>Enrolling in a Microsoft Active Directory Domain via YaST</title>
+   <para>
+    <emphasis>You can configure a SLES computer to become a member in
+    Microsoft Active Directory to leverage its user account and group
+    management. In previous versions of SLES, enrolling a computer in a
+    Microsoft Active Directory was a lengthy and error-prone
+    procedure.</emphasis>
+   </para>
+   <para>
+    In SLES 12 SP2, YaST ships with the new configuration tool
+    <emphasis>User Logon Management</emphasis> (previously
+    <emphasis>Authentication Client</emphasis>) which offers a powerful yet
+    simple user interface for joining an Active Directory domain and allows
+    authenticating users using those domain accounts. In addition to Active
+    Directory, the editor can also set up authentication against a generic
+    Kerberos or LDAP service.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Miscellaneous">
+  <title>Miscellaneous</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-323648" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323648" -->
+   <title>MSR Cannot Be Modified When UEFI Secure Boot Is On</title>
+   <para>
+    <emphasis> Write access to MSRs (model-specific registers) allows
+    userspace applications to modify the running kernel which runs counter
+    to the goals of UEFI Secure Boot. Therefore, MSRs cannot be written to
+    by tools like </emphasis><literal>cpupower</literal><emphasis> to
+    control processor performance when UEFI Secure Boot is enabled on a
+    system. </emphasis>
+   </para>
+   <para>
+    <emphasis> This also prevents tuning tools, such as
+    </emphasis><literal>saptune</literal><emphasis> and
+    </emphasis><literal>sapconf</literal><emphasis> from working correctly.
+    </emphasis>
+   </para>
+   <para>
+    The only current workaround is disabling Secure Boot.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME</replaceable>.rpm</screen>
+    <para>
+     <replaceable>FILE_NAME</replaceable> is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological log of all changes made to the updated
+     packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SLES for SAP Applications media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/sles_for_sap/"/> contains
+     additional or updated documentation for SLES for SAP Applications.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For the latest product news from SUSE, visit
+     <ulink url="http://www.suse.com/products/"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+  <para>
+   Thank you for using SUSE Linux Enterprise Server for SAP Applications in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise Server for SAP Applications Team.
+  </para>
+ </section>
+</article>

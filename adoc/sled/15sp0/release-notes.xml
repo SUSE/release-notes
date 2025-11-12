@@ -1,0 +1,1750 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Desktop 15" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</productname>
+  <productnumber>15 GA</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    This document provides guidance and an overview to high level general
+    features and updates for SUSE Linux Enterprise Desktop/SUSE Linux
+    Enterprise Workstation Extension 15 GA. Besides product-specific
+    information, it also describes the capabilities and limitations of SUSE
+    Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 15
+    GA.
+   </para>
+
+   <para condition="beta;pre">
+    This product will be released in June 2018. The latest version of these
+    release notes is always available at
+    <ulink url="https://www.suse.com/releasenotes"/>. Drafts of the general
+    documentation can be found at
+    <ulink url="https://susedoc.github.io/doc-sle/develop/"/>.
+   </para>
+
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version of
+    these release notes is always available at
+    <ulink url="https://www.suse.com/releasenotes"/>. General documentation
+    can be found at
+    <ulink url="https://www.suse.com/documentation/sled-15"/>.
+   </para>
+
+   <para condition="unmaintained">
+    The support period for SUSE Linux Enterprise Desktop/SUSE Linux
+    Enterprise Workstation Extension 15 GA has ended. To keep systems secure
+    and supported, upgrade to a current SUSE Linux Enterprise Desktop/SUSE
+    Linux Enterprise Workstation Extension version. Before starting the
+    upgrade, make sure to apply all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="rn.about">
+  <title>About the Release Notes</title>
+  <para>
+   The most recent version of these Release Notes is always available online
+   at <ulink url="https://www.suse.com/releasenotes"/>.
+  </para>
+<!-- partly: msvec and marketing, 2013-05-13 -->
+<!-- moved from the abstract to before 'mustread' section... -->
+<!-- moved to beginning of document again, because we now have an
+  explanatory section. - sknorr-l, 2017-05-18 -->
+  <para>
+   Some entries may be listed twice, if they are important and belong to
+   more than one section.
+  </para>
+  <para>
+   Release notes usually only list changes that happened between two
+   subsequent releases. Always review all release notes documents that apply
+   in your upgrade scenario.
+<!-- Not yet in SLED RN... to come? - sknorr, 2017-07-03 -->
+<!-- Certain important entries from the release notes documents of
+   previous product versions are repeated. To make these entries easier to
+   identify, they contain a note to that effect.
+  </para>
+  <para>
+   However, repeated entries are provided as a courtesy only. Therefore, if
+   you are skipping one or more service packs, check the release notes of the
+   skipped service packs as well. If you are only reading the release notes
+   of the current release, you could miss important changes. -->
+  </para>
+ </section>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</title>
+  <remark> SLE definition: general information </remark>
+  <para>
+   SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension
+   is the market's only enterprise-quality Linux desktop ready for routine
+   business use. Developed and backed by SUSE, SUSE Linux Enterprise
+   Desktop/SUSE Linux Enterprise Workstation Extension provides
+   market-leading usability, seamless interoperability with existing IT
+   systems, and dozens of essential applications—all at a fraction of the
+   price of proprietary operating systems.
+  </para>
+  <section id="Intro.Interoperability">
+   <title>Interoperability and Hardware Support</title>
+<!-- Novell Teaming is now Micro Focus Vibe. Not sure we still integrate
+   with it. - sknorr, 2016-10-21 -->
+   <para>
+    It comes bundled with the latest versions of leading applications such
+    as LibreOffice office productivity suite, Mozilla Firefox Web browser,
+    and Evolution e-mail and calendar suite. In addition, it integrates with
+    Microsoft SharePoint
+<!--and Novell Teaming -->
+    for group collaboration and supports a wide range of multimedia file
+    formats, wireless and networking standards, and plug-and-play devices.
+   </para>
+   <para>
+    Through the latest enhancements in power management and security, SUSE
+    Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension
+    also provides an environmentally friendly IT experience (Green IT) and
+    an error-proof desktop. Finally, SUSE Linux Enterprise Desktop/SUSE
+    Linux Enterprise Workstation Extension offers unparalleled flexibility.
+    You can deploy it on a wide range of thick client devices (including
+    desktops, notebooks, netbooks, and workstations), on thin client
+    devices, or as a virtual desktop. By leveraging the power of SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension, your
+    business can dramatically reduce costs, improve end user security and
+    increase workforce productivity.
+   </para>
+  </section>
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+<!-- bsc#882262, bsc#999197 -->
+   <para>
+<!-- FIXME: Is 10 years correct for SLED 15? - sknorr, 2017-10-20 -->
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension 15 has a 10 year life cycle. The current version (GA) will be
+    fully maintained and supported until 6 months after the release of SUSE
+    Linux Enterprise 15 SP1.
+   </para>
+   <para>
+    SUSE does not support skipping Service Packs of SUSE Linux Enterprise
+    Desktop/SUSE Linux Enterprise Workstation Extension when upgrading.
+   </para>
+  </section>
+  <section id="Intro.New" remap="Intro:New">
+   <title>What Is New?</title>
+   <remark> Marketing POV. </remark>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the title) ** Update related notes : specific change to
+    focus on </remark>
+<!-- FIXME: Find out highlights of SLED 15 - sknorr, 2017-08-18 -->
+   <para>
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension 15 introduces many innovative changes compared to SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 12.
+<!-- Here are the highlights: -->
+   </para>
+<!-- <itemizedlist>
+     <listitem>
+      <para>
+       Robustness on administrative errors and improved management
+       capabilities with full system rollback based on Btrfs as the
+       default file system for the operating system partition and
+       snapper technology from &suse;.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       An overhaul of the installer introduces a new workflow that allows you
+       to register your system and receive all available maintenance updates
+       as part of the installation.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New core technologies like systemd, replacing the time honored
+       System V based init process.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       GNOME 3.20 gives users a modern desktop
+       environment with a choice of several look and feel
+       options, including a special &sle; Classic mode
+       for easier migration from earlier &product;
+       environments.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For users wanting to use the full range of productivity
+       applications of a Desktop with &sles;, we
+       are now offering the &sle; Workstation Extension
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Integration with the new SUSE Customer Center, the central Web
+       portal from &suse; to manage subscriptions, entitlements, and provide
+       access to support.
+      </para>
+     </listitem>
+    </itemizedlist> -->
+<!-- Commented for the moment: only intro.support has no content and thus this
+   section looks a bit pathetic. - sknorr, 2016-08-04 -->
+<!-- <remark> This is Read Me First information. </remark> -->
+<!-- <para> For users upgrading from a previous &product; release it is recommended to review: </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>-->
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-324198" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324198" -->
+    <title>System Roles for SUSE Linux Enterprise Desktop</title>
+    <para>
+     With SLED 15, it is possible to choose specific roles for the system
+     based on modules selected during the installation process. There are
+     four roles available:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GNOME Desktop (Wayland): available when Desktop Productivity (on
+       SLED) or Workstation Extension are selected.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       GNOME Desktop (X11): available when Desktop Productivity (on SLED) or
+       Workstation Extension are selected.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       GNOME Desktop (Basic): available when the Desktop Application module
+       is selected.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       IceWM Desktop (Minimal): available when Basesystem module is
+       selected.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+<!-- Rethink use of the word media here. There is just one installation
+   medium. - sknorr, 2017-10-20 -->
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Read the READMEs on the media.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed changelog information about a particular package
+       from the RPM (<replaceable>FILENAME</replaceable> is the name of the
+       RPM):
+      </para>
+<screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>
+       Check the <filename>ChangeLog</filename> file in the top level of the
+       media for a chronological log of all changes made to the updated
+       packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find more information in the <filename>docu</filename> directory of
+       the media of SUSE Linux Enterprise Desktop/SUSE Linux Enterprise
+       Workstation Extension 15 GA.
+<!-- FIXME: Not sure acrtually true - sknorr, 2017-10-20 -->
+<!-- This directory includes
+       PDF versions of the &product; &this-version; Installation Quick
+       Start and Deployment Guides. -->
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section>
+    <title>Additional or Updated Documentation</title>
+    <para>
+     For the most up-to-date version of the documentation for SUSE Linux
+     Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 15 GA,
+     see
+     <phrase condition="beta;pre"><ulink url="https://susedoc.github.io/doc-sle/develop"/>
+     (draft
+     version)</phrase><phrase condition="maintained;unmaintained"><ulink url="https://www.suse.com/documentation/sled-15"/></phrase>.
+    </para>
+   </section>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</title>
+   <para>
+    To receive support, you need an appropriate subscription with SUSE. For
+    more information, see
+    <ulink url="https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server"/>.
+   </para>
+  </section>
+  <section id="Intro.Support.General" remap="Intro:Support:General">
+   <title>General Support Statement</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-324503" remap="Intro:Support:General">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324503" -->
+    <title>Reflink Feature of XFS Is Not Supported</title>
+    <para>
+     XFS reflink support is currently considered experimental in current
+     upstream Linux and is also not supported in SUSE Linux Enterprise.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Support.Techpreviews" remap="Intro:Support:Techpreviews:x86_64">
+   <title>Technology Previews</title>
+   <para>
+    Technology previews are packages, stacks, or features delivered by SUSE.
+    These features are not supported. They may be functionally incomplete,
+    unstable or in other ways not suitable for production use. They are
+    mainly included for customer convenience and give customers a chance to
+    test new technologies within an enterprise environment.
+   </para>
+   <para>
+    Technology previews can be dropped at any time and SUSE does not commit
+    to providing a supported version of such technologies in the future.
+   </para>
+   <para>
+    Give your SUSE representative feedback, including your experience and
+    use case.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-322124" remap="Intro:Support:Techpreviews:x86_64">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322124" -->
+    <title>Support for AMD Secure Encrypted Virtualization</title>
+    <para>
+     As a technology preview, SLE 15 now supports AMD Secure Encrypted
+     Virtualization (SEV). SEV integrates main memory encryption
+     capabilities (SME) with the existing AMD-V virtualization architecture
+     to support encrypted virtual machines. Encrypting virtual machines
+     helps protect them from physical threats and other virtual machines or
+     even the hypervisor itself. SEV represents a new approach to security
+     that is particularly suited to cloud computing where virtual machines
+     may not fully trust the hypervisor and administrator of their host
+     system. As with SME, no application software modifications are required
+     to support SEV.
+    </para>
+    <para>
+     See also <xref linkend="fate-322123"/>
+<!--the note about SME-->
+     .
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Derived_Products">
+   <title>Related Products</title>
+   <para>
+    This section lists related products. Usually, these products have own
+    release notes documents that are available from
+    <ulink url="https://www.suse.com/releasenotes"/>.
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Enterprise Storage:
+      <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server:
+      <ulink url="https://www.suse.com/products/server"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server for SAP Applications:
+      <ulink url="https://www.suse.com/products/sles-for-sap"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Manager:
+      <ulink url="https://www.suse.com/products/suse-manager"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE OpenStack Cloud:
+      <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+<!-- FIXME: List with one entry ahead. - sknorr, 2017-10-20 -->
+    Additionally, there is the following extension which is not covered by
+    SUSE support agreements, available at no additional cost and without an
+    extra registration key:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+ </section>
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>
+   This section includes information related to the initial installation of
+   SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension
+   15 GA. For installation documentation, see <citetitle>Deployment
+   Guide</citetitle> at
+   <phrase condition="maintained;unmaintained"><ulink url="https://www.suse.com/documentation/sled-15/singlehtml/book_sle_deployment/book_sle_deployment.html"/></phrase><phrase condition="beta;pre"><ulink url="https://susedoc.github.io/doc-sle/develop/SLED-deployment/html/"/>
+   (draft version)</phrase>.
+  </para>
+  <section id="InstUpgrade.Installation" remap="InstUpgrade:Installation">
+   <title>Installation</title>
+   <para>
+    This section includes information related to the initial installation of
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension 15 GA.
+   </para>
+   <important>
+    <title>Installation Documentation</title>
+    <para>
+     The following release notes contain additional notes regarding the
+     installation of SUSE Linux Enterprise Desktop/SUSE Linux Enterprise
+     Workstation Extension. However, they do not document the installation
+     procedure itself.
+    </para>
+    <para>
+     For installation documentation, see <citetitle>Deployment
+     Guide</citetitle> at
+     <phrase condition="maintained;unmaintained"><ulink url="https://www.suse.com/documentation/sled-15/singlehtml/book_sle_deployment/book_sle_deployment.html"/></phrase><phrase condition="beta;pre"><ulink url="https://susedoc.github.io/doc-sle/develop/SLED-deployment/html/"/>
+     (draft version)</phrase>.
+    </para>
+   </important>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325468" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325468" -->
+    <title>Parted Supports Linux-Specific GPT GUID for Partitions</title>
+    <para>
+     <emphasis>When Parted 3.1, the version shipped with earlier versions of
+     SLE, was released, there was no Linux-specific GPT GUID. Therefore, it
+     used the Microsoft Basic Data partition type for all new
+     partitions.</emphasis>
+    </para>
+    <para>
+     With SLE 15, Parted 3.2 is shipped. This version uses the new Linux GPT
+     GUID by default. If an old Linux GPT partition that uses the Microsoft
+     Basic Data type is found, Parted will set the flag
+     <literal>msftdata</literal> on it.
+    </para>
+    <para>
+     In partition editors and other GPT-enabled disk tools, such partitions
+     may be mislabeled as <emphasis>Windows Data Partitions</emphasis> or
+     similar. This affects the YaST Expert Partitioner, as well as
+     <literal>fdisk</literal>, <literal>gdisk</literal>, etc.
+    </para>
+    <para>
+     The partition can be converted and the flag be cleared like this:
+    </para>
+<screen>parted [DEVICE] set [PARTITION_NUMBER] msftdata off</screen>
+   </section>
+   <section role="notoc" id="fate-325453" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325453" -->
+    <title>Drivers for Nvidia GPUs</title>
+    <para>
+     On SLED 15, users of Nvidia graphical chipsets can choose between two
+     different drivers:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       The proprietary Nvidia driver, which is available after registering
+       at the SUSE Customer Center from the repository
+       <literal>SUSE_Linux_Enterprise_Desktop_15_x86_64:SLE-15-GA-Desktop-nVidia-Driver</literal>. This driver is fully supported by Nvidia.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The Nouveau driver (available in the
+       <literal>kernel-default-extra</literal> and
+       <literal>xf86-video-nouveau</literal> packages), which is provided
+       as-is and not supported by SUSE.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     Installing the proprietary Nvidia driver will disable the nouveau
+     driver.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InstUpgrade.Upgrade" remap="InstUpgrade:Upgrade">
+   <title>Update-Related Notes</title>
+   <para>
+    This section includes upgrade-related information for SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 15 GA.
+   </para>
+   <important>
+    <title>Upgrade Documentation</title>
+    <para>
+     The following release notes contain additional notes regarding the
+     upgrade of SUSE Linux Enterprise Desktop/SUSE Linux Enterprise
+     Workstation Extension. However, they do not document the upgrade
+     procedure itself.
+    </para>
+    <para>
+     For upgrade documentation, see
+     <phrase condition="maintained;unmaintained"><ulink url="https://www.suse.com/documentation/sled-15/singlehtml/book_sle_deployment/book_sle_deployment.html#cha.update.sle"/></phrase><phrase condition="beta;pre"><ulink url="https://susedoc.github.io/doc-sle/develop/SLED-deployment/html/cha.update.sle.html"/>
+     (draft version)</phrase>.
+    </para>
+   </important>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325795" remap="InstUpgrade:Upgrade,Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325795" -->
+    <title>The User Space X Drivers cirrus/mga/ast Have Been Removed</title>
+    <para>
+     The packages <literal>xf86-video-cirrus</literal>,
+     <literal>xf86-video-mga</literal>, and
+     <literal>xf86-video-ast</literal> have been removed in SLE 15. Kernel
+     mode setting and mode-setting X drivers for these graphics cards have
+     been available throughout the SLE 12 cycle and were used for all new
+     SLE 12 installations. The user space X driver packages were only
+     retained to ease upgrades from SLE 11.
+    </para>
+    <para>
+     If you are upgrading a machine from SLE 12 to SLE 15 that has
+     previously been upgraded from SLE 11 to SLE 12, X may no longer start
+     after the upgrade to SLE 15. If that is the case, rename or remove the
+     file <literal>/etc/X11/xorg.conf</literal>, for example using:
+    </para>
+<screen>sudo old /etc/X11/xorg.conf</screen>
+   </section>
+   <section role="notoc" id="fate-323394" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323394" -->
+    <title>ReiserFS Support Removed</title>
+    <para>
+     ReiserFS support for new installations was removed from YaST in SUSE
+     Linux Enterprise 12 but upgrades were still supported.
+    </para>
+    <para>
+     With SUSE Linux Enterprise 15, support for ReiserFS will be completely
+     removed from YaST and the installer will block the upgrade when it
+     detects a ReiserFS file system.
+    </para>
+    <para>
+     For existing data partitions formatted with ReiserFS, we suggest
+     converting them to Btrfs before migrating your system to SUSE Linux
+     Enterprise 15.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319454" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319454" -->
+    <title>System-wide Locale/Keymap/Font Settings are not read from /etc/sysconfig/ anymore</title>
+    <para>
+     <emphasis>Previously, there were different places for configuring a
+     given setting.</emphasis>
+    </para>
+    <para>
+     <emphasis>For example, to set the system-wide locale, you could
+     either:</emphasis>
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <emphasis> write the settings in
+       </emphasis><literal>/etc/locale.conf</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <emphasis> use </emphasis><literal>localectl</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <emphasis> write
+       </emphasis><literal>ROOT_USES_LANG</literal><emphasis> in
+       </emphasis><literal>/etc/sysconfig/language</literal><emphasis> if
+       </emphasis><literal>LANG</literal><emphasis> was not already
+       configured in
+       </emphasis><literal>/etc/locale.conf</literal><emphasis>.
+       </emphasis>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <emphasis> This could be confusing, especially since settings in
+     </emphasis><literal>/etc/sysconfig/language</literal><emphasis> usually
+     override the locale settings used by users's shells only and therefore
+     should not influence the system-wide locale. </emphasis>
+    </para>
+    <para>
+     <emphasis>Similar situations and similar problems could also be seen
+     for the keymap/font settings:</emphasis>
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <emphasis> The keyboard layout could be configured in both
+       </emphasis><literal>/etc/vconsole.conf</literal><emphasis> and
+       </emphasis><literal>/etc/sysconfig/keyboard</literal><emphasis>, the
+       former having a higher priority. </emphasis>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <emphasis> the font used by virtual consoles could be read from both
+       </emphasis><literal>/etc/vconsole.conf</literal><emphasis> and
+       </emphasis><literal>/etc/sysconfig/console.conf</literal><emphasis>,
+       the former having a higher priority. </emphasis>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     With SLE 15, systemd does not read certain settings from the following
+     files anymore:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>/etc/sysconfig/language</literal> for the system-wide locale
+       settings (<literal>ROOT_USES_LANG</literal>)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>/etc/sysconfig/keyboard</literal> for the keyboard layout
+       used by the virtual consoles (<literal>CONSOLE_FONT</literal>,
+       <literal>CONSOLE_SCREENMAP</literal>,
+       <literal>CONSOLE_UNICODEMAP</literal>)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>/etc/sysconfig/console</literal> for the font used by the
+       virtual consoles (<literal>KEYTABLE</literal>)
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     All variables defined in <literal>/etc/sysconfig/language</literal>
+     will still be used to override the system-wide locale and to define a
+     different locale settings for users's shells as it is currently
+     described in the official documentation.
+    </para>
+    <para>
+     To keep backward compatibility with the old systems, during the update
+     of the systemd package, all variables mentioned will be migrated from
+     sysconfig to their final destinations if they are not already defined
+     there.
+    </para>
+    <bridgehead renderas="sect5">Replacement settings:</bridgehead>
+    <para>
+     Locale:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       The system-wide locale can be changed via
+       <literal>localectl(1)</literal> or YaST.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The settings are stored in <literal>/etc/locale.conf</literal>, see
+       <literal>man 5 locale.conf</literal>.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <emphasis role="bold">Virtual Consoles:</emphasis> The settings can
+     instead be written directly in <literal>/etc/vconsole.conf</literal>.
+     Also see <literal>man 5 vconsole.conf</literal>.
+    </para>
+    <para>
+     Keyboard:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       The system-wide locale can be changed via localect(1).
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The settings are stored in /etc/vconsole.conf, see man
+       vconsole.conf(5).
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Kernel" remap="InfraPackArch:ArchIndependent:Kernel">
+  <title>Kernel</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322484" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322484" -->
+   <title>Support for Scalable Machine Check Architecture (Scalable MCA)</title>
+   <para>
+    Scalable MCA improves hardware error reporting to better diagnose issues
+    in AMD Zen processors. It provides a clearer, easier to use rules for
+    the kinds of information supplied by the hardware when reporting errors.
+   </para>
+   <para>
+    This clearer separation of architectural and implementation-specific
+    functions allows operating systems to better take advantage of
+    architectural features.
+   </para>
+   <para>
+    In addition, it expands information logged in MCA banks to allow for
+    improved error handling, better diagnosability, and future scalability.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322123" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322123" -->
+   <title>Support for AMD Memory Encryption</title>
+   <para>
+    To provide protection against physical attacks on a system, AMD SME can
+    provide full or partial memory encryption depending on the use case, on
+    AMD family 17h CPU processors. Full memory encryption means all DRAM
+    contents are encrypted using random keys. This provides strong
+    protection against cold boot, DRAM interface snooping and similar types
+    of attacks. This technology is especially prominent for systems equipped
+    with NVDIMMs whose contents remain intact after powering down the
+    system.
+   </para>
+   <para>
+    Memory encryption support is present in SLE 15 kernels but not enabled
+    by default. To enable it on compatible hardware (AMD family 17h CPU,
+    with proper BIOS/UEFI support), supply the boot option
+    <literal>mem_encrypt=on</literal>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Kernel_Modules" remap="InfraPackArch:ArchIndependent:Kernel_Modules">
+  <title>Kernel Modules</title>
+<!-- 2014-03-19, ke: bnc#869159 -->
+<!-- 2014-04-29, ke: find the same text in the SLES RN -->
+  <para>
+   An important requirement for every Enterprise operating system is the
+   level of support customer receive for their environment. Kernel modules
+   are the most relevant connector between hardware
+   (<quote>controllers</quote>) and the operating system.
+  </para>
+  <para>
+<!--  bnc#869159 -->
+   For more information about the handling of kernel modules, see the SUSE
+   Linux Enterprise Administration Guide.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325796" remap="InfraPackArch:ArchIndependent:Kernel_Modules">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325796" -->
+   <title>Using Thunderbolt Devices</title>
+   <para>
+    SLE 15 supports the Thunderbolt hardware interface. However, there are
+    limitations to this support:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Hot-unplugging is supported on a bus level but we cannot guarantee
+      that every PCI driver also used for Thunderbolt devices supports it.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      GPUs must not be hotplugged/hot-unplugged, as doing so can crash the
+      system.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Thunderbolt monitors are not supported.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+  <title>Systems Management</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-319428" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319428" -->
+   <title>Support for Socket-Based Services Activation</title>
+   <para>
+    <emphasis>Systemd allows for new ways of starting services, such as the
+    so-called socket-based activation. Services which are configured to be
+    started on demand will not run until it is needed, for example, when a
+    new request comes in.</emphasis>
+   </para>
+   <para>
+    The YaST Services Manager has been extended to allow setting services to
+    be started on-demand. Currently, only a subset of services supports this
+    configuration. The current start mode is displayed in the column
+    <emphasis>Start</emphasis> of the YaST Services Manager. In the
+    drop-down box <emphasis>Start Mode</emphasis> of the YaST Services
+    Manager, the mode <emphasis>On-demand</emphasis> will only be shown when
+    it is available for the selected service.
+   </para>
+   <para>
+    Additionally, the table column <emphasis>Active</emphasis> has been
+    adapted to show the correct value provided by Systemd.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Storage" remap="InfraPackArch:ArchIndependent:Storage">
+  <title>Storage</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325797" remap="InfraPackArch:ArchIndependent:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325797" -->
+   <title>Updated Btrfs Subvolume Layout</title>
+   <para>
+    SLE 15 introduces a new default Btrfs subvolume layout that aims for the
+    following:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Simplified snapshots and rollbacks
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Prevention of accidental data loss
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Better performance of databases and VM images stored in
+      <literal>/var</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Instead of using multiple Btrfs subvolumes for different subdirectories
+    of <literal>/var</literal>, SLE 15 ships with a single subvolume for
+    all of <literal>/var</literal>. This new subvolume has copy-on-write
+    functionality disabled.
+   </para>
+   <para>
+    There is no defined way of upgrading to this new Btrfs subvolume layout.
+    Therefore, if you want to take advantage of it, make sure to freshly
+    install SLE 15 instead of upgrading.
+   </para>
+   <para>
+    For more information on the default Btrfs subvolume layout before and
+    after this change, see <ulink url="https://en.opensuse.org/SDB:BTRFS"/>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Security" remap="InfraPackArch:ArchIndependent:Security">
+  <title>Security</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-326526" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326526" -->
+   <title>GPG Does Not Support GPG V3 Keys Anymore, Resulting in Zypper/rpm Warnings</title>
+   <para>
+    <emphasis> SLE 12 shipped with GPG 2.0, while SLE 15 includes GPG 2.2.
+    In between these GPG versions, support for GPG V3 keys was removed. If
+    your system's key database still contains GPG V3 keys, you may receive
+    warnings about this when executing Zypper or
+    </emphasis><literal>rpm</literal><emphasis> commands, as these commands
+    are checking the integrity of the package database. These warnings take
+    the form </emphasis><literal>warning: Unsupported version of key:
+    V3</literal><emphasis>. </emphasis>
+   </para>
+   <para>
+    Usually, these warnings are benign, as these keys may have been used for
+    repositories that are no longer enabled on the system or that have since
+    had key updates. However, if these keys are still in active use by the
+    upstream repository, they must be replaced as soon as possible:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Package management tools in SLE 15 can no longer use them to verify
+      package integrity.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The keys in themselves are insecure. Hence, even though older package
+      management tools will use them to verify integrity of packages, the
+      result of this check cannot be trusted anymore.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    To delete such keys, perform the following:
+   </para>
+   <orderedlist>
+    <listitem>
+     <para>
+      Run an <literal>rpm</literal> tt with high verbosity and check its
+      output:
+     </para>
+<screen>rpm -vv -qf /etc
+
+ufdio: 1 reads, 18883 total bytes in 0.000006 secs
+[...]
+D: read h# 168 Header sanity check: OK
+warning: Unsupported version of key: V3
+[...]</screen>
+     <para>
+      In the example, header 168 is associated with an outdated key - the
+      warning appears directly after the message that this specific header
+      is being checked.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Find out the key number associated with the header: <literal>rpm -q
+      --querybynumber HEADER</literal>
+     </para>
+     <para>
+      Replace <literal>HEADER</literal> with the required header number. In
+      the example, that would be <literal>168</literal>.
+     </para>
+     <para>
+      This command returns a key identifier starting with
+      <literal>gpg-pubkey-</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      (Optional) Use the key identifier (<literal>KEY_ID</literal>) to
+      learn more about the key: <literal>rpm -qi KEY_ID</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Remove the key from the system: <literal>sudo rpm -e KEY_ID</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      If you continue to see warnings on subsequent uses of package
+      management tools, repeat the procedure.
+     </para>
+    </listitem>
+   </orderedlist>
+  </section>
+  <section role="notoc" id="fate-323084" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323084" -->
+   <title>GnuPG Uses SHA-2 Family of Digests by Default</title>
+   <para>
+    <emphasis>Research was published that showed weakesses in the SHA-1
+    family of hashes for some applications. The use of stronger digests is
+    advised for most applications.</emphasis>
+   </para>
+   <para>
+    The default behavior for GnuPG (<literal>gpg2</literal>) has been
+    changed to use SHA-2 family digests for key certificates, default
+    preferences stored in keys, and signature generation in the absense of a
+    configuration file. GnuPG no longer generates a new configuration when
+    called in an empty home. Existing GnuPG configurations are not altered.
+    GnuPG continues to support SHA-1 digest generation and verification as
+    mandated by OpenPGP standards.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322473" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322473" -->
+   <title>All SLE 15 Packages Are Enabled for Address Space Layout Randomization</title>
+   <para>
+    <emphasis>Security consists of layers of defense. One of those layers of
+    defense is randomizing address for programs, so offsets and functions
+    and similar are at randomized addresses on every start.</emphasis>
+   </para>
+   <para>
+    All SUSE Linux Enterprise 15 binaries are built with support for PIE
+    (Position-Independent Executables) which will randomize all code layout
+    in memory on every startup of the binary.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320794" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats="Network"; -->
+<!-- href="https://fate.novell.com/320794" -->
+   <title>firewalld Replaces SuSEfirewall2 as Default Software Firewall</title>
+   <para>
+    <emphasis>SuSEfirewall2 was originally tailored towards running a router
+    with forwarding and/or NAT rules. This use case is rarely required
+    anymore. Furthermore, the static nature of SuSEfirewall2 made it
+    difficult to react to today's dynamic networking events like hotplugged
+    network interfaces or virtual networking.</emphasis>
+   </para>
+   <para>
+    To allow greater flexibility in SLE 15, the default firewall has been
+    switched to the firewalld upstream solution. It provides a resident
+    daemon process which can dynamically adjust firewall rules on behalf of
+    the user or other programs. SuSEfirewall2 is no longer available.
+   </para>
+   <para>
+    There is no automatic migration from SuSEfirewall2 to firewalld. To
+    migrate an existing SuSEfirewall2 configuration to firewalld, you can
+    use the script from the package
+    <literal>susefirewall2-to-firewalld</literal>. However, after running
+    the script, you still need to manually adjust and verify the resulting
+    firewalld rules.
+   </para>
+   <para>
+    More technical information about firewalld could be found in the
+    Security Guide at
+    <ulink url="https://www.suse.com/documentation/sles-15/singlehtml/book_security/book_security.html#sec.security.firewall.firewalld"/>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+  <title>Networking</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-323869" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="5"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323869" -->
+   <title>Mozilla Thunderbird Provided as a Cross-Platform E-Mail Client</title>
+   <para>
+    Mozilla Thunderbird is provided as a cross-platform graphical e-mail
+    client with calendaring capabilities. It supports the S/MIME (RFC 2633)
+    e-mail encryption standard. Support for OpenPGP (RFC 2440) can be added
+    by installing the extension Enigmail (package
+    <literal>enigmail</literal>).
+   </para>
+  </section>
+  <section role="notoc" id="fate-325486" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="10"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325486" -->
+   <title>Enigmail Extension Provided for OpenPGP Support in Mozilla Thunderbird</title>
+   <para>
+    <emphasis>Mozilla Thunderbird provides support for the S/MIME (RFC 2633)
+    e-mail encryption standard, but needs and additional plugin-in to
+    support OpenPGP (RFC 2440).</emphasis>
+   </para>
+   <para>
+    The Enigmail plugin for Mozilla Thunderbird is provided to add support
+    for OpenPGP (RFC 2440) e-mail encryption. It uses the local GnuPG
+    installation, configuration and keys.
+   </para>
+   <para>
+    Additionally, the plugin adds support for the following protocols,
+    enabled by default:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Protected e-mail headers: Encrypts e-mail subjects and replaces them
+      with a dummy text.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Autocrypt: Automatically generates and exchanges encryption keys to
+      seamlessly switch to encrypted communication without user
+      configuration.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Web Key Discovery: Discovers and downloads unavailable keys during
+      message composition.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Pretty Easy Privacy: Scheme for end-to-end e-mail encryption.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Virtualization" remap="InfraPackArch:ArchIndependent:Virtualization">
+  <title>Virtualization</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-323405" remap="InfraPackArch:ArchIndependent:Virtualization">
+<!-- sort_key="None"; non-rn-fate-cats="Virtualization"; -->
+<!-- href="https://fate.novell.com/323405" -->
+   <title>Support for Nested Virtualization Performance Features in Newer AMD Processors</title>
+   <para>
+    <emphasis>In nested virtualization, the hypervisor has to intercept and
+    emulate most virtualization instructions in KVM guests in software. This
+    slows down nested virtualization.</emphasis>
+   </para>
+   <para>
+    Newer AMD processors have support for hardware virtualization of common
+    virtualization instructions, making software emulation unnecessary.
+    These features in newer AMD processors are now supported, making nested
+    virtualization faster.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Misc">
+  <title>Miscellaneous</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325753" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325753" -->
+   <title>Plymouth/GDM May Hang If No Display Is Connected</title>
+   <para>
+    <emphasis>When you are using the graphical boot target (with GDM) but
+    there is no display connected, Plymouth may be unable to quit. This
+    affects the start of systemd services that are normally started
+    subsequent to Plymouth.</emphasis>
+   </para>
+   <para>
+    <emphasis> To diagnose whether a system is in the problematic status,
+    remotely log in to it and run the command </emphasis><literal>systemctl
+    list-jobs</literal><emphasis>. The system is affected if the
+    </emphasis><literal>plymouth-quit-wait.service</literal><emphasis> is
+    shown as running. </emphasis>
+   </para>
+   <para>
+    Any of the following methods can be used as a workaround:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Connect the machine to a monitor.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Add <literal>plymouth.enable=0</literal> in kernel boot options.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Run command <literal>plymouth quit</literal> when the system is
+      running to the status.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-325703" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325703" -->
+   <title>Graphics Chipset Compatibility under Wayland</title>
+   <para>
+    <emphasis>The drivers for the following graphics chipsets do not yet
+    support Wayland sessions:</emphasis>
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <emphasis>Nvidia GPUs running under the proprietary driver from
+      Nvidia</emphasis>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis>Cirrus Logic chipsets in QEMU virtual machines</emphasis>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis>Matrox mgag20 chipset</emphasis>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <emphasis>Aspeed graphics chipsets</emphasis>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    In all of these cases, even if the Wayland stack is fully installed,
+    GNOME will automatically fall back to starting an X session.
+   </para>
+  </section>
+  <section role="notoc" id="fate-324214" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324214" -->
+   <title>No Default Compose Key Combination</title>
+   <para>
+    <emphasis> In previous versions of SLE, the compose key combination
+    allowed typing characters that were not part of the regular keyboard
+    layout. For example, to produce "å", you could press and release
+    Shift-Right Ctrl and then press
+    </emphasis><literal>a</literal><emphasis> twice. </emphasis>
+   </para>
+   <para>
+    Starting with SLE 15, there is no longer a predefined compose key
+    combination because Shift-Right Ctrl does not work as expected anymore.
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      To define a system-wide custom compose key combination, use the file
+      <literal>/etc/X11/Xmodmap</literal> and look for the following lines:
+     </para>
+<screen>[...]
+!! Third example: Change right Control key to Compose key.
+!! To do Compose Character, press this key and afterwards two
+!! characters (e.g. `a' and `^' to get 342).
+!remove  Control  = Control_R
+!keysym Control_R = Multi_key
+!add     Control  = Control_R
+[...]</screen>
+     <para>
+      To uncomment the example code, remove the <literal>!</literal>
+      characters at the beginning of lines. However, note that the setup
+      from <literal>Xmodmap</literal> will be overwritten if you are using
+      <literal>setxkbmap</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      To define a user-specific compose key combination, use your desktop's
+      keyboard configuration tool or the command-line tool
+      <literal>setxkbmap</literal>:
+     </para>
+<screen>setxkbmap [...] -option compose:COMPOSE_KEY</screen>
+     <para>
+      For the variable <literal>COMPOSE_KEY</literal>, use your preferred
+      character, for example <literal>ralt</literal>,
+      <literal>lwin</literal>, <literal>rwin</literal>,
+      <literal>menu</literal>, <literal>rctl</literal>, or
+      <literal>caps</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Alternatively, use an IBus input method that allows typing the
+      characters you need without a Compose key.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-316497" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316497" -->
+   <title>Wayland Cannot Be Used on Machines with Hybrid GPUs</title>
+   <para>
+    <emphasis>On SLED 15, hybrid GPUs are not fully supported on Wayland.
+    This affects, for example, laptops that have an integrated Intel GPU and
+    a discrete Nvidia or AMD GPU connected to the HDMI ports. When the BIOS
+    of a machine is set to use discrete graphics, GNOME will automatically
+    fall back to starting an X session (which better supports the discrete
+    GPU).</emphasis>
+   </para>
+   <para>
+    There is an <emphasis>unsupported</emphasis> workaround to use Wayland
+    when a discrete graphic card is enabled. This workaround brings up GNOME
+    on Wayland under SLED 15. However, external monitors with discrete
+    graphic cards are not allowed in this configuration and it can lead to
+    additional display-related issues.
+   </para>
+   <para>
+    To enable the unsupported workaround, do:
+   </para>
+   <orderedlist>
+    <listitem>
+     <para>
+      Append the following line to the file
+      <literal>/etc/environment</literal>:
+     </para>
+<screen>MUTTER_ALLOW_HYBRID_GPUS=1</screen>
+    </listitem>
+   </orderedlist>
+  </section>
+<!--^ End of Items imported from FATE-->
+
+   <section role="notoc" id="bsc-1163166">
+    <!-- originally reported for openSUSE at boo#1091021 -->
+    <title>Use <command>update-alternatives</command> to Set Display Manager and Desktop Session</title>
+    <para>
+     In SLE 12 SP5 and earlier, you could use
+     <filename>/etc/sysconfig</filename> or the YaST module
+     <guimenu>/etc/sysconfig Editor</guimenu> to define the display
+     manager (also called the login manager) and desktop session.
+     Starting with SLE 15 GA, the values are not defined using
+     <filename>/etc/sysconfig</filename> anymore but with the alternatives
+     system.
+    </para>
+    <para>
+     To change the defaults, use the following alternatives:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Display manager: <literal>default-displaymanager</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Wayland session: <literal>default-waylandsession.desktop</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       X desktop session: <literal>default-xsession.desktop</literal>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     For example, to check the value of
+     <literal>default-displaymanager</literal>, use:
+    </para>
+<screen><command>sudo update-alternatives --display default-displaymanager</command></screen>
+    <para>
+     To switch the <literal>default-displaymanager</literal> to
+     <command>xdm</command>, use:
+    </para>
+<screen><command>sudo update-alternatives --set default-displaymanager \
+  /usr/lib/X11/displaymanagers/xdm</command></screen>
+    <para>
+     To enable graphical management of alternatives, use the YaST module
+     <guimenu>Alternatives</guimenu> that can be installed from the package
+     <package>yast2-alternatives</package>.
+    </para>
+   </section>
+
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <section id="Packages.New" remap="Packages:New">
+   <title>New Packages</title>
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-324159" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324159" -->
+    <title>wodim Has Been Replaced by cdrtools</title>
+    <para>
+     <literal>wodim</literal><emphasis> was created as fork of
+     </emphasis><literal>cdrtools</literal><emphasis>. Unfortunately, the
+     </emphasis><literal>wodim</literal><emphasis> project stagnated over
+     the years. </emphasis>
+    </para>
+    <para>
+     SLE 15 migrates back to using cdrtools. This means that some tools have
+     been renamed. The following package names have changed:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>genisoimage</literal> has been renamed to
+       <literal>mkisofs</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>wodim</literal> has been renamed to
+       <literal>cdrecord</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>icedax</literal> has been renamed to
+       <literal>cdda2wav</literal>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <literal>cdrkit-cdrtools-compat</literal> is no longer supplied. It
+     only provided symbolic links for compatibility between
+     <literal>cdrtools</literal> and <literal>wodim</literal>. If you were
+     using it, no changes are necessary. If you were using the replaced
+     packages above, executable binaries were renamed accordingly.
+    </para>
+   </section>
+   <section role="notoc" id="fate-323896" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323896" -->
+    <title>UnRAR Has Been Replaced by unar</title>
+    <para>
+     <emphasis>UnRAR is freeware command-line application for extracting RAR
+     archives. Unfortunately, it is non-free.</emphasis>
+    </para>
+    <para>
+     In SLE 15, The Unarchiver command-line tool, which is LGPL-licensed
+     (package <literal>unar</literal>, binaries <literal>unar</literal> and
+     <literal>lsar</literal>), has replaced UnRAR.
+    </para>
+    <para>
+     Unarchiver supports the same archive formats (including RAR5), except
+     for UUE, JAR, and limited support for ARJ (no multi-part) and ACE (no
+     support for Ace 2.0).
+    </para>
+    <para>
+     UnRAR and Unarchiver are not completely CLI-compatible, as they have a
+     different set of options. Because of this, a simple wrapper script was
+     added within the unrar_wrapper package (with a symbolic link to
+     <literal>/usr/bin/unrar</literal>). This script transforms a subset of
+     <literal>unrar</literal> commands to <literal>unar</literal> and
+     <literal>lsar</literal> to provide a backwards compatibility:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Supported commands: <literal>l[t[a],b]</literal>,
+       <literal>t</literal>, <literal>v[t[a],b]</literal>,
+       <literal>x</literal>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Supported options: <literal>-o+</literal>, <literal>-o-</literal>,
+       <literal>-or</literal>, <literal>-p</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Other: <literal>files</literal>, <literal>@listfiles</literal> and
+       <literal>path_to_extract/</literal> (only for extracting)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Return codes: <literal>0</literal> (success), <literal>1</literal>
+       (error), <literal>2</literal> (invalid argument)
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     For more information about functionality supported by the wrapper, see
+     <ulink url="https://github.com/openSUSE/unrar_wrapper"/>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-323432" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323432" -->
+    <title>ntpd Has Been Replaced With Chrony</title>
+    <para>
+     The time server synchronization daemon <literal>ntpd</literal> has been
+     replaced with the more modern daemon Chrony.
+    </para>
+    <para>
+     This change means that AutoYaST files with an
+     <literal>ntp_client</literal> section need to be updated to a new
+     format for this section. For more information about the new AutoYaST
+     <literal>ntp_client</literal> format, see <emphasis>AutoYaST Guide,
+     section NTP Client</emphasis> (<ulink url="https://www.suse.com/documentation/sles-15/singlehtml/book_autoyast/book_autoyast.html#Configuration.Network.Ntp"/>).
+    </para>
+    <para>
+     To sync time in intervals, YaST sets up a cron configuration file. From
+     SLE 15 on, the configuration file used for this is owned by the package
+     <literal>yast2-ntp-client</literal> (previously no package owned it).
+     The configuration file has been renamed from
+     <literal>novell.ntp-synchronization</literal> to
+     <literal>suse-ntp_synchronization</literal> to be consistent with other
+     cron configuration files. The upgrade from <literal>ntpd</literal> to
+     Chrony is performed automatically during the SLE upgrade: If a file
+     with the old name is found, it will be renamed and references to
+     <literal>ntpd</literal> in it will be replaced by
+     <literal>chrony</literal>.
+    </para>
+    <para>
+     <literal>ntpd</literal> has been moved to the Legacy module. For more
+     information, see <xref linkend="fate-323411"/>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Update" remap="Packages:Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-323341" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323341" -->
+    <title>Wireshark Qt UI Replaces Deprecated GTK+ UI</title>
+    <para>
+     <emphasis>The GTK+ user interface of the Wireshark network protocol
+     analyzer has been deprecated by the upstream project.</emphasis>
+    </para>
+    <para>
+     The Wireshark Qt interface is now shipped in the package
+     <literal>wireshark-ui-qt</literal>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GCC 7.4 and GCC 8.2
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       glibc 2.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Linux kernel 4.12
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GNOME 3.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       X.org 7.6
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Other">
+    <title>Other Software Updates</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Samba 4.7
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       UEFI Enablement on AMD64/Intel 64
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SWAP over NFS
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Python 2.7 and Python 3.6
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Perl 5.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Ruby 2.5
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Packages.Deprecated" remap="Packages:Deprecated">
+   <title>Removed Packages and Features</title>
+   <para>
+    The following packages have been removed in this release.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325795-1" remap="InstUpgrade:Upgrade,Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325795" -->
+    <title>The User Space X Drivers cirrus/mga/ast Have Been Removed</title>
+    <para>
+     The packages <literal>xf86-video-cirrus</literal>,
+     <literal>xf86-video-mga</literal>, and
+     <literal>xf86-video-ast</literal> have been removed in SLE 15. Kernel
+     mode setting and mode-setting X drivers for these graphics cards have
+     been available throughout the SLE 12 cycle and were used for all new
+     SLE 12 installations. The user space X driver packages were only
+     retained to ease upgrades from SLE 11.
+    </para>
+    <para>
+     If you are upgrading a machine from SLE 12 to SLE 15 that has
+     previously been upgraded from SLE 11 to SLE 12, X may no longer start
+     after the upgrade to SLE 15. If that is the case, rename or remove the
+     file <literal>/etc/X11/xorg.conf</literal>, for example using:
+    </para>
+<screen>sudo old /etc/X11/xorg.conf</screen>
+   </section>
+   <section role="notoc" id="fate-323207" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323207" -->
+    <title>x11vnc Has Been Removed</title>
+    <para>
+     In SLE 15, the package <literal>x11vnc</literal> is not available
+     anymore. Instead, use <literal>x0vncserver</literal>. The command
+     <literal>x11vnc</literal> is now a compatibility wrapper that
+     internally starts <literal>x0vncserver</literal>. It does not have all
+     features that <literal>x11vnc</literal> had, but it is faster, more
+     secure, and built from better tested and maintained code.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Modules" remap="Packages:Modules">
+   <title>Modules</title>
+   <para>
+    This section contains information about important changes to modules.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-323411" remap="Packages:Modules">
+<!-- sort_key="61"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323411" -->
+    <title>Legacy Module: ntpd is now part of the Legacy Module</title>
+    <para>
+     With SLE 15, the network time daemon <literal>ntpd</literal> has been
+     replaced by <literal>chrony</literal>. <literal>ntpd</literal> has
+     been moved to the Legacy module instead.
+    </para>
+   </section>
+   <section role="notoc" id="fate-323920" remap="Packages:Modules">
+<!-- sort_key="63"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323920" -->
+    <title>Legacy Module: OpenSSL 1.0.x Has Been Moved to the Legacy Module</title>
+    <para>
+     <emphasis>The lifetime of OpenSSL versions 1.0.x does not cover the
+     full lifetime of the product. Additionally, OpenSSL will not support
+     TLS 1.3. However, some applications may require this older version for
+     a transitional period.</emphasis>
+    </para>
+    <para>
+     OpenSSL libraries version 1.0.x were moved to the Legacy Module. The
+     module has a different lifecycle from SUSE Linux Enterprise Server
+     itself. This version is not expected to receive feature updates or
+     security certifications. For new development, make sure to use the
+     default OpenSSL version 1.1.x.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Sourcecode">
+  <title>Obtaining Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material.
+   The source code is available for download at
+   <ulink url="https://www.suse.com/download/sled/"/> on Medium 2.
+   For up to three years after distribution of the SUSE product, upon request,
+   SUSE will mail a copy of the source code.
+   Send requests by e-mail to <ulink url="mailto:sle_source_request@suse.com"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting SUSE software. SUSE assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative
+   Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <ulink url="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

@@ -1,0 +1,96 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#desktop]
+=== Desktop
+
+// Release Notes for Desktop application features:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1186415]
+==== GNOME and `vncserver`
+
+The `vncserver` command creates multiple GNOME sessions for the same user which is not supported by GNOME.
+This can cause strange behaviors, for example when unlocking the screen.
+
+
+[#jsc-SLE-8244]
+==== GNOME Desktop Update
+
+The GNOME Desktop (and associated applications) has been updated to version 3.34 (from version 3.26). This updates brings many improvements, performance improvements, and new features.
+Among those, you might notice visual refreshes for a number of applications, including the desktop itself and the icon set, custom folders in application overview, redesign of various control panels, and a new on-screen keyboard.
+
+
+[#bsc-1176032]
+==== Enabling Desktop Icons in GNOME
+
+With the version of GNOME shipped in {product} 15{nbsp}SP1 and earlier, it was possible to enable desktop icons from a setting in the GNOME Tweaks tool.
+With GNOME 3.34, shipped in {product} 15{nbsp}SP2, this option has been removed.
+
+To enable desktop icons in {product} {this-version}, enable __Desktop Icons__ from the __Extensions__ panel of GNOME Tweaks.
+This extension is part of the package `gnome-shell-classic`, meaning this package needs to be installed.
+When upgrading from older versions of {product}, by default, the extension __Desktop Icons__ will only be enabled for the __SLE Classic__ session of GNOME but not for the default GNOME session.
+
+
+[#jsc-SLE-7747]
+==== Remote Desktop Packages Update
+
+Various packages used for remote desktop have been updated:
+xrdp to 0.9.11 and xorgxrdp to 0.2.11.
+
+[#jsc-SLE-8085]
+==== Qt5 Update
+
+Qt5 libraries have been updated to latest 5.12 LTS branch.
+
+[#jsc-SLE-9610]
+==== Gstreamer Update
+
+The Gstreamer multimedia framework has been updated to version 1.16.2.
+This version includes among various bug fixes and features, support for WebRTC.
+
+[#jsc-SLE-5552]
+==== libxml++ Support
+
+Libxml++ libraries are available and supported in {product} {this-version}.
+
+
+// originally reported for openSUSE: bsc#1091021
+[#bsc-1163166]
+==== Use `update-alternatives` to Set Display Manager and Desktop Session
+
+In {product} 12{nbsp}SP5 and earlier, you could use `/etc/sysconfig` or the {yast} module __/etc/sysconfig Editor__ to define the display manager (also called the login manager) and desktop session.
+Starting with {product} 15{nbsp}GA, the values are not defined using `/etc/sysconfig` anymore but with the alternatives system.
+
+To change the defaults, use the following alternatives:
+
+* Display manager: `default-displaymanager`
+* Wayland session: `default-waylandsession.desktop`
+* X desktop session: `default-xsession.desktop`
+
+For example, to check the value of `default-displaymanager`, use:
+
+[source]
+----
+sudo update-alternatives --display default-displaymanager
+----
+
+To switch the `default-displaymanager` to `xdm`, use:
+
+[source]
+----
+sudo update-alternatives --set default-displaymanager \
+  /usr/lib/X11/displaymanagers/xdm
+----
+
+To enable graphical management of alternatives, use the {yast} module __Alternatives__ that can be installed from the package `yast2-alternatives`.

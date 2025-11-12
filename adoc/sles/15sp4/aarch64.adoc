@@ -1,0 +1,170 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#aarch64]
+== {arm} 64-bit-specific changes (AArch64)
+
+Information in this section applies to {arm-product} {this-version}.
+
+
+[#arm64-soc]
+=== System-on-Chip driver enablement
+
+{arm-product} {this-version} includes driver enablement for the following
+System-on-Chip (SoC) chipsets:
+
+* {amdreg} {opteronreg} A1100
+* {amperereg} {xgenereg}, {emagreg}, {altrareg}, _{altramaxreg}_
+// jsc#SLE-24526 (Graviton3)
+* {awsreg} Graviton, Graviton2, *Graviton3*
+* {brcmreg} BCM2837/BCM2710, BCM2711
+* {fujitsureg} A64FX
+* {huaweireg} {kunpengreg} 916, {kunpeng} 920
+* {marvellreg} {thunderxreg}, {thunderx2reg}, {thunderx3reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
+* {nvidiareg} {tegrareg}{nbsp}X1, Tegra{nbsp}X2, {xavierreg}; {bluefieldreg}, {bluefield2}
+// jsc#SLE-12251 (LS1012A), jsc#SLE-11914 (i.MX 8MM)
+* {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
+* {qcomreg} {centriqreg} 2400
+* Rockchip RK3399
+* {socionextreg} {synquacerreg} SC2A11
+* {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
+
+NOTE: Driver enablement is done as far as available and requested.
+Refer to the following sections for any known limitations.
+
+Some systems might need additional drivers for external chips, such as a
+Power Management Integrated Chip (PMIC), which may differ between systems
+with the same SoC chipset.
+
+For booting, systems need to fulfill either the Server Base Boot Requirements (SBBR)
+or the Embedded Base Boot Requirements (EBBR),
+that is, the Unified Extensible Firmware Interface (UEFI) either
+implementing the Advanced Configuration and Power Interface (ACPI) or
+providing a Flat Device Tree (FDT) table. If both are implemented, the kernel
+will default to the Device Tree; the kernel command line argument `acpi=force` can
+override this default behavior.
+
+Check for {suse} _YES!_ certified systems,
+which have undergone compatibility testing.
+
+
+[#aarch64-new]
+=== New features
+
+[#jsc-SLE-17963]
+==== Uacce support
+
+Uacce (Unified/User-space-access-intended Accelerator Framework) aims to provide Shared Virtual Addressing (SVA) between accelerators and processes.
+
+There are more and more heterogeneous processors, such as encryption/decryption accelerators, TPUs, or EDGE processors.
+The intention of Uacce is to make sure the accelerator and process can share the same address space, so the accelerator ISA can directly address any data structure of the main CPU.
+This differs from the data sharing between CPU and IO device, which share data content rather than address.
+
+
+[#jsc-SLE-19045]
+==== Support execute-only permissions with Enhanced PAN on ARMv8.7
+
+Enhanced Privileged Access Never (EPAN) allows Privileged Access Never to be used with Execute-only mappings.
+The feature is detected at runtime, and will remain disabled if the CPU does not implement the feature.
+
+
+[#jsc-SLE-19742]
+==== OpenSSL 3 improvements backported to OpenSSL 1.1.1k
+
+OpenSSL 3 contains performance improvements that are beneficial to {arm} architectures.
+
+This patchset includes:
+
+- Optimize RSA on {armv8} (A72 and N1) footnote:[https://git.openssl.org/?p=openssl.git;a=commit;h=10646160125ac1328d892f1dd27f2847892d33c5]
+- Optimize AES-XTS mode in OpenSSL for {aarch64} footnote:[https://git.openssl.org/?p=openssl.git;a=commit;h=9ce8e0d17e608de4f85f7543c52b146e3c6a2291]
+- Optimize AES-GCM for microarchitectures with unroll and new instructions footnote:[https://github.com/openssl/openssl/pull/15916]
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#aarch64-known]
+=== Known limitations
+
+[#jsc-SLE-9263-hdp]
+==== No {displayport} graphics output on {nxp} LS1028A and LS1018A
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor, whose output is connected to a
+{displayportreg} TX{nbsp}Controller (HDP-TX) based on
+{cadencereg} High Definition (HD) Display Intellectual Property (IP).
+
+A Display Rendering Manager (DRM) driver for the {arm} {mali}-DP500
+Display Processor is available as technology preview (<<#jsc-SLE-9263-malidp>>).
+
+However, there was no HDP-TX physical-layer (PHY) controller driver ready yet.
+Therefore no graphics output will be available, for example, on the
+{displayportreg} connector of the {nxp} LS1028A Reference Design Board (RDB).
+
+Contact the chip vendor {nxp} for whether third-party graphics drivers are
+available for {arm-product} {this-version}.
+
+Alternatively, contact your hardware vendor for whether a bootloader update
+is available that implements graphics output, allowing to instead use `efifb`
+framebuffer graphics in {arm-product} {this-version}.
+
+NOTE: The {vivante} GC7000UL GPU driver (`etnaviv`) is available as a
+technology preview (<<jsc-SLE-9263-etnaviv>>).
+
+[#arm64-rpi3-known]
+
+[#arm64-rpi4-known]
+
+[#jsc-SLE-17153]
+=== Removal of {nxp} {layerscape} LX2160A rev.{nbsp}1 silicon support
+
+{nxpreg} {layerscapereg} LX2160A System-on-Chip silicon revision{nbsp}1.0
+differs from revision{nbsp}2.0 in the PCIe controller ({mobiveil} based
+vs. {synopsis} {designwarereg} based respectively).
+
+The {arm-product} {previous-version} kernel supported the PCIe controllers in
+both silicon revisions of {nxpreg} {layerscapereg} LX2160A SoC.
+
+[NOTE]
+====
+The bootloader of the system may need to detect the chip revision and
+to patch the Device Tree to pass the right `compatible` string to the kernel:
+
+* `fsl,lx2160a-pcie` for rev.{nbsp}1.0 silicon,
+* `fsl,ls2088a-pcie` for rev.{nbsp}2.0 silicon.
+
+To verify which one has been passed to the kernel, you can check the DT nodes:
+
+[source,bash]
+----
+cat /sys/firmware/devicetree/base/soc/pcie@3400000/compatible
+----
+====
+
+Deprecated with {arm-product} {previous-version},
+{this-sp} removes the support for rev.{nbsp}1.0
+silicon by dropping patches from the kernel.
+This will now result in failure to boot on rev.{nbsp}1.0 silicon due to a
+kernel panic (`SError` interrupt request).
+
+This affects among others the original {nxp} {layerscape} LX2160A
+Reference Design Board; the RDB revision{nbsp}B uses rev.{nbsp}2.0 silicon.
+
+[NOTE]
+====
+To check whether an LX2160A SoC-based machine will be affected by this,
+read the chip revision from its kernel:
+
+[source,bash]
+----
+cat /sys/bus/soc/devices/soc0/revision
+----
+
+If this prints `1.0`, your system is affected; if it prints `2.0`, it is not.
+====

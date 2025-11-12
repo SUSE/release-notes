@@ -1,0 +1,65 @@
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: beta
+// conditionals-end
+
+ifeval::["{lifecycle}" == "beta"]
+:label-pre: {nbsp}(prerelease)
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+:label-pre:
+endif::[]
+
+:productname: {sles}
+:productnameshort: {slsa}
+
+:this-ga: 15
+:this-sp: SP7
+:rel-date: June 2025
+:previous-sp: SP6
+:previous-ga: 12
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:this-version: {this-ga}{nbsp}{this-sp}{label-pre}
+:next-version: 16.0
+// jsc#PED-4594
+:kernel-version: 6.4
+
+:abstract: {productname} is a modern, modular operating system for both multimodal and traditional IT. This document provides a high-level overview of features, capabilities, and limitations of {productname} {this-version} and highlights important product updates.
+
+:arm-product: {productname} for {arm}
+:rpi-appliance: {arm-product} for the {rpi}
+:this-rpi-appliance: {arm-product} {this-version} for the {rpi}
+:z-product: {productname} for IBM Z and LinuxONE
+:power-product: {productname} for POWER
+
+:url-docs: https://documentation.suse.com
+:doc-url: https://documentation.suse.com/sles/{this-ga}-{this-sp}
+:doc-url-beta: https://susedoc.github.io/doc-sle/main
+:doc-url-source: https://www.suse.com/products/server/download/
+:support-url: https://www.suse.com/support/?id=SUSE_Linux_Enterprise_Server
+:rn-url: https://www.suse.com/releasenotes
+
+ifeval::["{lifecycle}" == "beta"]
+:doc-url-auto: {doc-url-beta}
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+:doc-url-auto: {doc-url}
+endif::[]
+// disclaimer unmaintained
+ifeval::["{lifecycle}" == "unmaintained"]
+:doc-url-auto: {doc-url}
+endif::[]
+
+:package-list-url: https://documentation.suse.com/package-lists/sle/{this-ga}-{this-sp}/package-changes_SLE-{this-ga}-{previous-sp}-GA_SLE-{this-ga}-{this-sp}-GA.txt
+:module-list-url: https://documentation.suse.com/package-lists/sle/{this-ga}-{this-sp}/module-changes_SLE-{this-ga}-{previous-sp}-GA_SLE-{this-ga}-{this-sp}-GA.txt
+
+:upgrade-guide-url: https://documentation.suse.com/sles/{this-ga}-{this-sp}/html/SLES-all/cha-upgrade-online.html
+:admin-guide-url: {url-docs}/sles/{this-ga}-{this-sp}/single-html/SLES-administration
+
+
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

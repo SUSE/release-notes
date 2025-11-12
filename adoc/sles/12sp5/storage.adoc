@@ -1,0 +1,32 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-storage]
+=== Storage
+
+// Release Notes for Storage tool/library features:
+//   Snapper, ntfs-3g, ceph, ... (not: kernel features)
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-22661]
+==== XFS V4 format file systems have been deprecated
+
+Customers who have created XFS file system on {slea} 11 or prior will see the following message:
+```
+Deprecated V4 format (crc=0) will not be supported after September 2030
+```
+
+While the file system will work and be supported until the date mentioned, it is best to re-create the file system:
+
+1. Backup all the data to another drive or partition
+2. Create the file system on the device
+3. Restore the data from the backup

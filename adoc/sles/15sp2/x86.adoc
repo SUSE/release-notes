@@ -1,0 +1,58 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#x86-64]
+== AMD64/Intel 64-Specific Features & Fixes (x86-64)
+
+Information in this section applies to {product} {this-version} for the AMD64/Intel 64 architectures.
+
+See the following additional notes:
+
+* <<#jsc-SLE-7957>>
+
+// X86_64-specific release notes go here (see below for Kernel modules)
+
+////
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+// Possible categories (optional)
+
+////
+[#x86_64-system]
+=== System and Vendor Specific Information
+
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+
+
+
+[#x86_64-virtualization]
+=== Virtualization
+
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+
+
+
+[#x86_64-ras]
+=== Reliability, Availability, Serviceability (RAS)
+
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

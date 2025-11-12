@@ -1,0 +1,136 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro]
+== {product}
+
+{product}{nbsp}{this-version} is a highly reliable, scalable, and secure server operating system, built to power mission-critical workloads in both physical and virtual environments.
+It is an affordable, interoperable, and manageable open source foundation.
+With it, enterprises can cost-effectively deliver core business services, enable secure networks, and simplify the management of their heterogeneous IT infrastructure, maximizing efficiency and value.
+
+The only enterprise Linux recommended by Microsoft and SAP, {sles} is optimized to deliver high-performance mission-critical services, as well as edge of network, and web infrastructure workloads.
+
+[#intro-interoperability]
+=== Interoperability and Hardware Support
+
+Designed for interoperability, {product} integrates into classical Unix and Windows environments, supports open standard interfaces for systems management, and has been certified for IPv6 compatibility.
+
+This modular, general purpose operating system runs on four processor architectures and is available with optional extensions that provide advanced capabilities for tasks such as real time computing and high availability clustering.
+
+{product} is optimized to run as a high performing guest on leading hypervisors and supports an unlimited number of virtual machines per physical system with a single subscription. This makes it the perfect guest operating system for virtual computing.
+
+
+
+[#intro-important]
+=== Important Sections of This Document
+
+If you are upgrading from a previous {product} release, you should review at least the following sections:
+
+* <<intro-support>>
+* <<instUpgrade-upgrade>>
+* <<all-architecture>>
+
+
+[#intro-certification]
+=== Security, Standards, and Certification
+
+{product}{nbsp}{this-version} has been submitted to the certification bodies for:
+
+* Common Criteria Certification, see https://www.commoncriteriaportal.org/
+* FIPS 140-2 validation, see http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf
+
+For more information about certification, see https://www.suse.com/security/certificates.html.
+
+include::about-documentation.adoc[]
+
+[#intro-lifecycle]
+=== Support and life cycle
+
+{product} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
+
+// bnc#821338, bnc#828478, bnc#882262
+{product}{nbsp}{this-ga} has a 13-year life cycle, with 10 years of General Support and 3 years of Extended Support.
+The current version ({this-sp}) will be fully maintained and supported until the end of the {product} {this-ga}{nbsp}{this-sp} lifecycle. See
+https://www.suse.com/lifecycle for details.
+
+If you need additional time to design, validate and test your upgrade plans, Long Term Service Pack Support can extend the support duration.
+You can buy an additional 12 to 36 months in twelve month increments.
+This means, you receive a total of 3 to 5 years of support per Service Pack.
+
+For more information, check our Support Policy page https://www.suse.com/support/policy.html or the Long Term Service Pack Support Page https://www.suse.com/support/programs/long-term-service-pack-support.html.
+
+
+[#intro-support]
+=== Support statement for {product}
+
+To receive support, you need an appropriate subscription with {suse}.
+For more information, see {support-url}.
+
+The following definitions apply:
+
+L1::
+Problem determination, which means technical support designed to provide compatibility information, usage support, ongoing maintenance, information gathering and basic troubleshooting using available documentation.
+L2::
+Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem area and provide a resolution for problems not resolved by Level{nbsp}1 or prepare for Level{nbsp}3.
+L3::
+Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level{nbsp}2 Support.
+
+For contracted customers and partners, {product} is delivered with L3 support for all packages, except for the following:
+
+* Technology Previews, see <<intro-techpreview>>
+* Sound, graphics, fonts and artwork
+* Packages that require an additional customer contract, see <<intro-support-external>>
+* Some packages shipped as part of the module _Workstation Extension_ are L2-supported only
+* Packages with names ending in `-devel` (containing header files and similar developer resources) will only be supported together with their main packages.
+* Packages provided as part of the {sdk} ({sdka})
+
+{suse} will only support the usage of original packages. That is, packages that are unchanged and not recompiled.
+
+[#intro-support-general]
+==== General support
+
+To learn about supported features and limitations, refer to the following
+sections in this document:
+
+* <<all-architecture-kernel>>
+* <<all-architecture-virtualization>>
+* <<all-architecture-filesystems>>
+* <<removed-deprecated>>
+
+// see fate#316990, bsc#1161529
+[#intro-support-external]
+==== Software requiring specific contracts
+
+Certain software delivered as part of {product} may require an external contract.
+Check the support status of individual packages using the RPM metadata that can be viewed with `zypper`.
+
+Major packages and groups of packages affected by this are:
+
+* PostgreSQL (all versions, including all subpackages)
+
+include::tech-previews.adoc[]
+
+// see jsc#SLE-7191
+[#intro-license-agpl]
+==== Software under GNU AGPL
+
+////
+How to create a list:
+1. Go to https://scc.suse.com/packages
+2. Choose product, version, pick x86_64 architecture, click Search
+3. Download as CSV
+4. Open in LibreOffice
+5. Select entire table, Data > Pivot Table > Insert or Edit, click OK
+6. Drag all column headers to Row Fields, OK
+7. In License header, search for "agpl", pick all of those; in Module header, select everything but Package Hub
+////
+
+{product} {this-version} (and the {sle} modules) includes the following software that is shipped __only__ under a GNU AGPL software license:
+
+* Ghostscript (including subpackages)
+
+{product} {this-version} (and the {sle} modules) includes the following software that is shipped under multiple licenses that include a GNU AGPL software license:
+
+* MySpell dictionaries and LightProof
+* ArgyllCMS

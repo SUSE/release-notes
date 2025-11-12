@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+  &bugtracker-pi;
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&product;</productname>
+  <productnumber>&this-version;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="abstract.xml"/>
+ </articleinfo>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-rn.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-product.xml"/>
+
+ <section id="Intro.Derived_Products">
+  <title>Related Products</title>
+  <para>
+   This section lists related products. These
+   products have own release notes documents that are available from
+   <ulink url="&rn-url;"/>.
+  </para>
+
+  <itemizedlist>
+   <listitem>
+    <para>&ses;: <ulink url="https://www.suse.com/products/suse-enterprise-storage"/></para>
+   </listitem>
+   <listitem>
+    <para>&sles;: <ulink url="https://www.suse.com/products/server"/></para>
+   </listitem>
+   <listitem>
+    <para>&s4s;: <ulink url="https://www.suse.com/products/sles-for-sap"/></para>
+   </listitem>
+   <listitem>
+    <para>&soc;: <ulink url="https://www.suse.com/products/suse-openstack-cloud"/></para>
+   </listitem>
+   <listitem>
+    <para>&suma;: <ulink url="https://www.suse.com/products/suse-manager"/></para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <!-- FIXME: List with one entry ahead. - sknorr, 2017-10-20 -->
+   Additionally, there is the following extension which is not covered by
+   SUSE support agreements, available at no additional cost and without an
+   extra registration key:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     &ph;: <ulink url="https://packagehub.suse.com/"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="technology-preview.xml"/>
+
+ <section id="InstUpgrade" role="remove-empty">
+  <title>Installation and Upgrade</title>
+   <para>
+    This section includes information related to the initial installation of
+    &product; &this-version;.
+   </para>
+
+  <section id="InstUpgrade.Installation" role="remove-empty">
+   <title>Installation</title>
+   <para>
+    This section includes information related to the initial installation of
+    &product; &this-version;.
+   </para>
+   <important>
+    <title>Installation Documentation</title>
+    <para>
+     The following release notes contain additional notes regarding the
+     installation of &product;. However, they do not document the
+     installation procedure itself.
+    </para>
+    <!-- FIXME: URLs! -->
+    <!-- <para>
+     For installation documentation, see
+     <citetitle>Deployment Guide</citetitle> at
+     <phrase condition="maintained;unmaintained"><ulink
+     url="&doc-url;/singlehtml/book_sle_deployment/book_sle_deployment.html"/></phrase><phrase
+     condition="beta;pre"><ulink url="&doc-url-beta;/SLED-deployment/html/"/>
+     (draft version)</phrase>.
+    </para> -->
+   </important>
+  </section>
+
+  <section id="InstUpgrade.Upgrade" role="remove-empty">
+   <title>Update-Related Notes</title>
+   <para>
+    This section includes upgrade-related information for &product;
+    &this-version;.
+   </para>
+   <important>
+    <title>Upgrade Documentation</title>
+    <para>
+     The following release notes contain additional notes regarding the
+     upgrade of &product;. However, they do not document the
+     upgrade procedure itself.
+    </para>
+    <!-- FIXME: URLs! -->
+    <!-- <para>
+     For upgrade documentation, see
+     <phrase condition="maintained;unmaintained"><ulink
+     url="&doc-url;/singlehtml/book_sle_deployment/book_sle_deployment.html#cha.update.sle"/></phrase><phrase
+     condition="beta;pre"><ulink url="&doc-url-beta;/SLED-deployment/html/cha.update.sle.html"/>
+     (draft version)</phrase>.
+    </para> -->
+   </important>
+  </section>
+
+ </section>
+
+ <section id="InfraPackArch" role="remove-empty">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <para/>
+  <remark>
+   Nothing should be in here, everything should be in "subordinate" categories.
+   - sknorr, 2016-09-29
+  </remark>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent" role="remove-empty">
+  <title>Architecture Independent Information</title>
+  <para/>
+  <remark>
+   Nothing should be in here either since SLED is x86-64-only anyway.
+   - sknorr, 2017-07-03
+  </remark>
+ </section>
+
+  <section id="InfraPackArch.ArchIndependent.Kernel" role="remove-empty">
+   <title>Kernel</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Kernel_Modules" role="remove-empty">
+   <title>Kernel Modules</title>
+   <!-- 2014-03-19, ke: bnc#869159 -->
+   <!-- 2014-04-29, ke: find the same text in the SLES RN -->
+   <para>
+    An important requirement for every Enterprise operating system is the
+    level of support customer receive for their environment. Kernel
+    modules are the most relevant connector between hardware
+    (<quote>controllers</quote>) and the operating system.
+   </para>
+
+   <para>
+    <!--  bnc#869159 -->
+    For more information about the handling of kernel modules, see the
+    &sle; Administration Guide.
+   </para>
+  </section>
+
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" role="remove-empty">
+   <title>Systems Management</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Storage" role="remove-empty">
+   <title>Storage</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Security" role="remove-empty">
+   <title>Security</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Network" role="remove-empty">
+   <title>Networking</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Performance" role="remove-empty">
+   <title>Performance</title>
+   <para/>
+  </section>
+ <section id="InfraPackArch.ArchIndependent.Virtualization" role="remove-empty">
+  <title>Virtualization</title>
+  <para/>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.KVM" role="remove-empty">
+   <title>KVM</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.XEN" role="remove-empty">
+   <title>Xen</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Containers" role="remove-empty">
+   <title>Containers</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.libvirt" role="remove-empty">
+   <title>libvirt</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization.Other" role="remove-empty">
+   <title>Others</title>
+   <para/>
+  </section>
+ </section>
+  <section id="InfraPackArch.ArchIndependent.Misc" role="remove-empty">
+   <title>Miscellaneous</title>
+   <para/>
+  </section>
+
+ <section id="InfraPackArch.x86_64" role="remove-empty">
+  <title>AMD64/Intel 64 (x86_64) Specific Information</title>
+  <para/>
+  <section id="InfraPackArch.x86_64.System" role="remove-empty">
+   <title>System and Vendor Specific Information</title>
+   <para/>
+  </section>
+  <section id="InfraPackArch.x86_64.Virtualization" role="remove-empty">
+   <title>Virtualization</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Driver_Updates" role="remove-empty">
+  <title>Driver Updates</title>
+  <remark>** list of update by category ** version comparison table from previous SP/Product </remark>
+  <para/>
+  <section id="Driver_Updates.Storage" role="remove-empty">
+   <title>Storage Drivers</title>
+   <para/>
+  </section>
+  <section id="Driver_Updates.Network" role="remove-empty">
+   <title>Network Drivers</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="Packages" role="remove-empty">
+  <title>Packages and Functionality Changes</title>
+
+  <section id="Packages.New" role="remove-empty">
+   <title>New Packages</title>
+
+   <remark>
+    * Description of the new package with direct link to the official website (need the
+      URL tag)
+    * Version and release of the package
+    * Why this new package: enhancements request
+    * link to the official documentation
+    * link to the SUSE's documentation
+    * Dependencies and Build requires
+    </remark>
+   <para/>
+  </section>
+  <section id="Packages.Update">
+   <title>Updated Packages</title>
+   <remark>
+    * Description of the new package with direct link to the official website
+    * version comparison table from previous SP/product
+    * Bugs fixed since previous SP/Product (link to Bugzilla)
+    * Enhancements request (link to Fate number)
+    * link to the official documentation
+    * link to the SUSE's documentation
+    * Security fixes (link to CVE or SUSE's security web site), link to PIF
+    * Changelog diff (all other information non relative to security/fate/bugs)
+    </remark>
+   <para/>
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GCC 7.4 and GCC 8.2
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       glibc 2.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Linux kernel 4.12
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GNOME 3.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       X.org 7.6
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+   <section id="Features.Other">
+    <title>Other Software Updates</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Samba 4.7
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       UEFI Enablement on AMD64/Intel 64
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SWAP over NFS
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Python 2.7 and Python 3.6
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Perl 5.26
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Ruby 2.5
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+  </section>
+
+  <section id="Packages.Deprecated" role="remove-empty">
+   <title>Removed Packages and Features</title>
+   <para>
+    The following packages have been removed in this release.
+   </para>
+  </section>
+  <section id="Packages.Deprecated.Future" role="remove-empty">
+   <title>Deprecated Packages and Features</title>
+   <para>
+    The following packages are deprecated and will be removed with
+    a future service pack of &product;.
+   </para>
+  </section>
+  <section id="Packages.Packaging" role="remove-empty">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+  </section>
+  <section id="Packages.Modules" role="remove-empty">
+   <title>Modules</title>
+   <para>
+    This section contains information about important changes to modules.
+   </para>
+  </section>
+ </section>
+
+ <section id="TechInfo" role="remove-empty">
+  <title>Technical Information</title>
+  <para>
+   This section contains lists technical data that is important for
+   experienced users.
+  </para>
+
+  <section id="TechInfo.Kernel" role="remove-empty">
+   <title>Kernel Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Xen" role="remove-empty">
+   <title>Xen Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Filesystems" role="remove-empty">
+   <title>File Systems</title>
+   <para/>
+  </section>
+
+ </section>
+
+ <section id="Miscellaneous" role="remove-empty">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="source-code.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+</article>

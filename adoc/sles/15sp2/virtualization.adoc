@@ -1,0 +1,366 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release Notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virt.html.
+
+[#virtualization-hypervisors]
+==== Supported Host Environments (Hypervisors)
+
+Support status of {product} {this-ga} running as a guest operating system on top of various virtualization hosts (hypervisors).
+
+The following {suse} host environments are supported:
+
+* {slsa} 11 SP4: Xen and KVM
+* {slsa} 12 SP1 to SP5: Xen and KVM
+* {slsa} 15 GA to SP2: Xen and KVM
+
+The following third-party host environments are supported:
+
+* Citrix XenServer 7.0, 7.1, 8.0
+* Microsoft Windows 2008 R2 SP1+, 2012+, 2012 R2+, 2016, 2019
+* Nutanix Acropolis Hypervisor with AOS 5.8
+* Oracle VM 3.4
+* VMware ESXi 6.5, 6.7
+
+The level of support is as follows:
+
+* Support for SUSE host operating systems is full L3 (both for the guest and host) in accordance with the respective https://www.suse.com/lifecycle/[product life cycle].
+* {suse} provides full L3 support for {product} guests within third-party host environments.
+  Support for the host and cooperation with {product} guests must be provided by the host system's vendor.
+
+[#virtualization-guests]
+==== Supported Guest Operating Systems
+
+Support status of guest operating systems running virtualized on top of {product}.
+
+The following guest operating systems are fully supported (L3 in accordance with the respective https://www.suse.com/lifecycle/[product life cycle]):
+
+* {slsa} 11 SP4
+* {slsa} 12 SP1, SP2, SP3, SP4, SP5
+* {slsa} 15 GA, SP1, SP2
+* OES 11 SP2, 2015, 2015 SP1, 2018, 2018 SP1, 2018 SP2
+* NetWare 6.5 SP8 (32-bit only)
+* Windows Server 2008 SP2+, 2008 R2 SP1+, 2012+, 2012 R2+, 2016, 2019
+
+The following guest operating systems are supported as a technology preview (L2, fixes if reasonable):
+
+* {slda} 15 SP1, SP2
+
+The following Red Hat guest operating systems are supported on a commercially-reasonable basis for all customers (L2, fixes if reasonable) and fully supported for customers with Expanded Support (L3):
+
+* RHEL 5.11+, 6.9+, 7.7+, 8.0+
+
+The following Microsoft guest operating systems are supported on a commercially-reasonable basis (L2, fixes if reasonable):
+
+* Windows 8+, 8.1+, 10+
+
+All guest operating systems are supported both fully virtualized and paravirtualized, with the exception of Windows guests, which are only supported fully virtualized and OES and NetWare guests, which are only supported paravirtualized.
+
+All guest operating systems are supported both in 32-bit and 64-bit environments, unless stated otherwise (NetWare).
+
+[#virtualization-liveMigration]
+==== Supported VM Migration Scenarios
+
+{product} supports migrating a virtual machine from one physical host to another.
+
+[#virtualization-liveMigration-offline]
+===== Offline Migration Scenarios
+
+{product} supports offline migration (the VM needs to be shut down prior to the migration), from SLE 12 to {product} {this-version}.
+The following host operating system combinations are fully supported (L3 in accordance with the respective https://www.suse.com/lifecycle/[product life cycle]) for migrating guests from one host to another:
+
+* {slsa} 12 SP3 to {slsa} 12 SP4
+* {slsa} 12 SP3 to {slsa} 12 SP5
+* {slsa} 12 SP3 to {slsa} 15
+* {slsa} 12 SP4 to {slsa} 12 SP5
+* {slsa} 12 SP4 to {slsa} 15 (KVM only)
+* {slsa} 12 SP4 to {slsa} 15 SP1
+* {slsa} 12 SP5 to {slsa} 15 SP1
+* {slsa} 15 GA to {slsa} 15 SP1
+* {slsa} 15 GA to {slsa} 15 SP2
+* {slsa} 15 SP1 to {slsa} 15 SP2
+
+[#virtualization-liveMigration-live]
+===== Live Migration Scenarios
+
+Support status of various live migration scenarios when running virtualized on top of {slsa}.
+Please also refer to the supported live migration requirements in the {doc-url}/html/SLES-all/book-virt.html[official Virtualization Guide].
+
+The following host operating system combinations are fully supported (L3 in accordance with the respective https://www.suse.com/lifecycle/[product life cycle]) for live-migrating guests from one host to another:
+
+* {slea} 12 SP3 to {slea} 12 SP4
+* {slea} 12 SP4 to {slea} 12 SP4
+* {slea} 12 SP4 to {slea} 12 SP5
+* {slea} 12 SP4 to {slea} 15 (KVM only)
+* {slea} 12 SP4 to {slea} 12 SP5
+* {slea} 12 SP4 to {slea} 15 SP1
+* {slea} 12 SP5 to {slea} 12 SP5
+* {slea} 12 SP5 to {slea} 15 SP1
+* {slea} 15 GA to {slea} 15 GA
+* {slea} 15 GA to {slea} 15 SP1
+* {slea} 15 SP1 to {slea} 15 SP1
+* {slea} 15 SP1 to {slea} 15 SP2
+* {slea} 15 SP2 to {slea} 15 SP2
+
+
+{suse} always supports live migration of virtual machines of {product} hosts to hosts running the next service pack of the same major version of {product}.
+
+{suse} strives to support live migration of virtual machines from a host running a service pack supported under LTSS to a host running a newer service pack of the same major version of {product}. {suse} only performs minimal testing of such LTSS migration scenarios and recommends thorough on-site testing before migrating critical virtual machines.
+
+Live migration of Xen-based virtual machines from SLE 11 to SLE 12 is not supported because of the different toolstacks.
+For details, see the https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/#fate-317306[{slsa} 12 release notes].
+
+
+[#jsc-SLE-4591]
+==== qemu-guest-agent Will Be Installed Automatically
+
+On {product} 15{nbsp}SP1 and higher, if the YaST installer detects that it is running within a KVM or Xen virtual machine, the package `qemu-guest-agent` is automatically installed.
+The guest agent allows management applications running on the host OS to communicate with {product} running inside the virtual machine.
+For more information about using the guest agent, see the Virtualization Guide at https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-qemu-ga.html.
+
+
+[#virtualization-kvm]
+==== KVM
+
+// KVM virtualization-related release notes go here
+
+===== Important Changes
+
+// jsc#SLE-7923
+* Added support for Intel Cooper Lake CPUs
+// boo#1130134 jsc#SLE-11089
+* Stop using system memory barriers as this is a blocker for using QEMU in the context of containers.
+  ({suse} now builds the package with `--disable-membarrier`.)
+* Support for SDL is dropped, add obsoletes directive for `qemu-audio-sdl` and `qemu-ui-sdl`.
+* QEMU updated to 4.2 version (http://wiki.qemu.org/ChangeLog/4.2).
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-kvm-limits]
+===== KVM Limits
+
+Supported (and tested) virtualization limits of a {product} {this-ga} host running Linux guests on x86-64.
+For information about KVM limits on {arm-product}, see <<jsc-SLE-7698>>.
+For other operating systems, refer to the specific vendor.
+
+.Virtual Machine Limits
+* Maximum virtual CPUs per VM: 288
+* Maximum memory per VM: 4{nbsp}TiB
+* Suspend and hibernate modes and not supported.
+
+.Host Limits
+* Maximum total virtual CPUs per host: See https://documentation.suse.com/sles/15-SP2/html/SLES-all/article-vt-best-practices.html#sec-vt-best-perf-cpu-assign[recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs].
+  The total number of virtual CPUs should be proportional to the number of available physical CPUs.
+* Other limits are identical to those of {sles}.
+
+
+[#virtualization-xen]
+==== Xen
+
+[#bsc-1188109]
+===== Running Xenstore in a separate Stub Domain (`stubdom`)
+
+Since Xen 4.9, it is easy to configure Xenstore to run in a separate `stubdom` instead of `dom0`.
+`stubdom` is a lightweight "service" or "driver" domain.
+Running Xenstore as a `stubdom` increases safety, stability, and improves response times of Xenstore in case `dom0` is under heavy load.
+
+The memory configuration (initial size, maximum size) is done via entries in the `/etc/sysconfig/xencommon` file.
+The Xenstore `stubdom` will automatically increase in size according to memory needs.
+There are no devices for the domain and no extra action or specific maintenance required, apart from the above configuration.
+
+Because Xenstore must be available all the time, saving, restoring, migrating, and stopping of the domain is prohibited.
+
+[#virtualization-xen-update]
+===== Update to Xen 4.13
+
+Xen has been updated to version 4.13.
+Among others, this update contains the following new features:
+
+// jsc#SLE-10172, bsc#1055731
+* Handle degraded raid for xendomains, add helper script and systemd service
+  with new package `xen-tools-xendomains-wait-disk`. See the included README for usage instructions (`/usr/share/doc/packages/xen-tools-xendomains-wait-disk/xendomains-wait-disks.README.md`)
+* Added controls for the use of Transactional Synchronization eXtensions (http://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#tsx)
+* The `exec-sp` Boolean controls whether EPT superpages with execute permissions are permitted.
+  In general, this improves performance (http://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#ept).
+// jsc#SLE-3026
+* Core scheduling (contributed by {suse})
+* Branch hardening to mitigate against Spectre v1 (contributed by Citrix)
+// jsc#SLE-9167
+* Added support for AMD Rome CPUs
+
+// Xen virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-xen-limits]
+===== Xen Limits
+
+With {sles} 11 SP2, we removed the 32-bit hypervisor as a virtualization host.
+32-bit virtual guests are not affected and are fully supported with the provided 64-bit hypervisor.
+
+.Virtual Machine Limits
+* Maximum virtual CPUs per VM: 128 (HVM), 64 (HVM Windows guest) or 512 (PV)
+* Maximum memory per VM: 2{nbsp}TB (64bit guest), 16{nbsp}GB (32-bit guest with PAE)
+
+.Host Limits
+* Maximum total physical CPUs: 1024
+* Maximum total virtual CPUs per host: See https://documentation.suse.com/sles-15/html/SLES-all/article-vt-best-practices.html#sec-vt-best-perf-cpu-assign[recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs].
+  The total number of virtual CPUs should be proportional to the number of available physical CPUs.
+* Maximum physical memory: 16{nbsp}TB
+
+
+[#virtualization-libvirt]
+==== libvirt
+
+// libvirt virtualization-related release notes go here
+Libvirt has been updated to version 6.0.x (https://www.libvirt.org/news.htm).
+
+[#virtualization-libvirt-changes]
+===== Important Changes
+
+* Removed the `--listen` option from `LIBVIRTD_ARGS` in `/etc/sysconfig/libvirtd`, because it is incompatible with socket activation.
+// bsc#1156161
+* Added the `--timeout` option for consistency with upstream.
+* libvirtd now supports systemd socket activation. `libvirtd.socket` and `libvirtd-ro.socket` are now enabled along with `libvirtd.service`.
+  libvirtd will still start at boot in case there are guests that need to be autostarted, but it will exit after `--timeout xxx` seconds of inactivity.
+  systemd will start it again when there are connections on the sockets.
+* Added `TSX_CTRL` and `TAA_NO` bits for IA32_ARCH_CAPABILITIES MSR (CVE-2019-11135).
+// bsc#1154093
+* Added SLE 15 and SLE 12 service pack support to `virt-create-rootfs`.
+// jsc#SLE-6998
+* Added support for parallel migration, which allows memory pages to be processed in parallel by several threads and sent to the destination host using several connections at the same time (`virsh migrate vm-name --live --parallel --parallel-connections 2`).
+* Xen: Added support for the credit2 scheduler parameters (see https://wiki.xenproject.org/wiki/Credit2_Scheduler for more information)
+// bsc#1157100
+* Xen: libvirtd shutdowns will now be inhibited when domains are running
+
+[#virtualization-libvirt-osinfo]
+===== osinfo-db Has Been Updated
+
+* osinfo-db now supports more guests.
+// bsc#1159838
+* The `hwdata` package now provides up-to-date information on usb.ids and pci.ids.
+  Prior to version 1.7.x, libosinfo included its own, outdated copies of this information.
+
+[#virtualization-libvirt-spicegtk]
+===== spice-gtk PulseAudio Back-end Is Deprecated
+
+The PulseAudio back-end of spice-gtk is deprecated and will be removed with {product} 15{nbsp}SP3.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-vagrant-box]
+===== Vagrant Boxes for {sles} and {sled}
+
+Starting with {product} {this-version}, we are providing official Vagrant Boxes for {sles} and {sled} for x86_64 and AArch64 using the VirtualBox and `libvirt` providers.
+These boxes come with the bare minimum of packages to reduce their size and are not registered, thus users need to register the boxes prior to further provisioning.
+
+These boxes are only available for direct download from https://download.suse.com.
+Therefore, downloaded boxes must be registered manually with Vagrant as follows:
+
+[source,bash]
+----
+vagrant box add --name SLES-15-SP2 SLES15-SP2-Vagrant.x86_64-15.2-libvirt-*.vagrant.libvirt.box
+----
+
+The box is then available under the name *SLES-15-SP2* and can be used like other Vagrant boxes:
+
+[source,bash]
+----
+vagrant init SLES-15-SP2
+vagrant up
+vagrant ssh
+----
+
+===== AArch64 Support
+
+The {sles} box is also available for the AArch64 architecture using the `libvirt`
+provider.
+It has been pre-configured for the usage on {sles} on AArch64 and might not launch on other operating systems without additional settings.
+Running it on architectures other than AArch64 is not supported.
+
+In case the box fails to start with a `libvirt` error message, add the following to your +Vagrantfile+ and adjust the variables according to the guest operating system:
+
+[source,ruby]
+----
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+    libvirt.host = 'localhost'
+    libvirt.uri = 'qemu:///system'
+    libvirt.host = "main"
+    libvirt.features = ["apic"]
+    # path to the UEFI loader for aarch64
+    libvirt.loader = "/usr/share/qemu/aavmf-aarch64-code.bin"
+    libvirt.video_type = "vga"
+    libvirt.cpu_mode = "host-passthrough"
+    libvirt.machine_type = "virt-3.1"
+    # path to the qemu aarch64 emulator
+    libvirt.emulator_path = "/usr/bin/qemu-system-aarch64"
+  end
+----
+
+[#jsc-SLE-10111]
+==== AMD SEV tools
+
+{suse} has worked with AMD to improve the AMD SEV Tool (https://github.com/AMDESE/sev-tool).
+
+[#virtualization-other]
+==== Others
+
+[#jsc-SLE-11239]
+===== Improved Windows Subsystem for Linux (WSL) Images for {sles}
+
+Starting with {product} {this-version}, we are providing official WSL 2 images for {sles} for x86-64.
+You can find all {suse} images in the Microsoft store at https://www.microsoft.com/en-us/search/shop/Apps?q=%22SUSE+Linux+Enterprise%22.
+
+The new images are made possible by using the latest `WSL-DistroLauncher`.
+Images are now fully built in the Open Build Service (OBS), using the native WSL support of KIWI.
+
+The {product} image for Windows Subsystem for Linux (WSL) now uses `yast2-firstboot` instead of the first-boot wizard provided by upstream.
+This means the initial setup now has the {suse} look and feel.
+
+
+[#jsc-ECO-2164]
+==== `open-vm-tools` Has Been Updated to 11.1.x
+
+Version 11.1.x of `open-vm-tools` has a new subpackage for a Service Discovery Plugin called `open-vm-tools-sdmp`.
+For more information, see the link:https://github.com/vmware/open-vm-tools/blob/stable-11.1.x/ReleaseNotes.md[upstream release notes].
+
+
+// Other virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

@@ -1,0 +1,42 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#desktop]
+=== Desktop
+
+// Release notes for desktop applications:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1210197]
+==== `nouveau` disabled for Nvidia Turing and Ampere GPUs / openGPU recommendation
+
+The `nouveau` driver is still considered experimental for Nvidia Turing and Ampere GPUs.
+Therefore it has been disabled by default on systems with these GPUs.
+
+Instead of using the `nouveau` driver we recommend using Nvidia's new openGPU driver.
+Install this driver by installing these following packages:
+
+* `nvidia-open-driver-G06-signed-kmp-default`
+* `kernel-firmware-nvidia-gsp-G06`
+
+Then uncomment the `options nvidia` line in the `/etc/modprobe.d/50-nvidia-default.conf` file so that it looks like the following afterwards:
+
+[source,ini]
+----
+### Enable support on *all* Turing/Ampere GPUs: Alpha Quality!
+options nvidia NVreg_OpenRmEnableUnsupportedGpus=1
+----
+
+If you prefer using `nouveau` driver anyway, add `nouveau.force_probe=1` to your kernel boot parameters, and do not install the above openGPU package.
+
+

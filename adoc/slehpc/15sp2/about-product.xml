@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="intro"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>&product;</title>
+
+ <para>
+  &product; is a highly scalable, high performance open-source operating
+  system designed to utilize the power of parallel computing for modeling,
+  simulation and advanced analytics workloads.
+ </para>
+ <para>
+  &product; &this-version; provides
+  tools and libraries related to High Performance Computing.
+  This includes:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    Workload manager
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Remote and parallel shells
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Performance monitoring and measuring tools
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Serial console monitoring tool
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Cluster power management tool
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    A tool for discovering the machine hardware topology
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    System monitoring
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    A tool for monitoring memory errors
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    A tool for determining the CPU model and its capabilities (x86-64 only)
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    User-extensible heap manager capable of distinguishing between
+    different kinds of memory (x86-64 only)
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Serial and parallel computational libraries providing the common
+    standards BLAS, LAPACK, ...
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Various MPI implementations
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Serial and parallel libraries for the HDF5 file format
+   </para>
+  </listitem>
+ </itemizedlist>
+
+ <section xml:id="intro-hardware-platform">
+  <title>Hardware Platform Support</title>
+  <para>
+   &product; &this-version; is available for the
+   &x86-64; (x86-64) and &arm64; platforms.
+  </para>
+ </section>
+
+ <!-- FIXME: This is still sort of a new product with 15 SP1, so I guess it
+ is excused for now... Or not? - sknorr, 2018-09-28 -->
+ <!-- <section xml:id="intro-new">
+  <title>What Is New?</title>
+
+  <para>
+   &product; &this-ga; introduces many innovative changes compared to
+   &product; &previous-ga;. The most important changes are listed below:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Feature 1:</title>
+     <para>
+      It exists!
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Feature 2:</title>
+     <para>
+      It is great!
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist>
+ </section> -->
+
+ <section xml:id="intro-important-section">
+  <title>Important Sections of This Document</title>
+
+  <para>
+   If you are upgrading from a previous &product; release, you should review at
+   least the following sections:
+  </para>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     <xref linkend="intro-support"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="upgrade"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="intro-lifecycle">
+  <title>Support and Life Cycle</title>
+  <para>
+   &product; is backed by award-winning support from &suse;, an established
+   technology leader with a proven history of delivering enterprise-quality
+   support services.
+  </para>
+  <para>
+   &product; &this-ga; has a 13-year life cycle, with 10 years of
+   General Support and 3 years of Extended Support. The current version
+   (&this-sp;) will be fully maintained and supported until 6 months after the
+   release of &product; &this-ga; &next-sp;.
+  </para>
+  <para>
+   <!-- FIXME: Copied from 15 GA release notes but not fully sure what this
+   means wrt ESPOS etc. or even just regular maintenance. -->
+   Any release package is fully maintained and supported until the
+   availability of the next release.
+  </para>
+  <para>
+   &espos; (ESPOS) and &ltss; (LTSS) are also available for this product.
+   If you need additional time to design, validate and
+   test your upgrade plans, Long Term Service Pack Support (LTSS) can extend
+   the support you get by an additional 12 to 36 months in 12-month
+   increments, providing a total of 3 to 5 years of support on any
+   given Service Pack.
+  </para>
+  <para>
+   For more information, see:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     The support policy at
+     <link xlink:href="https://www.suse.com/support/policy.html"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Long Term Service Pack Support page at
+     <link xlink:href="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="support-statement.xml"/>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="documentation.xml"/>
+
+</section>

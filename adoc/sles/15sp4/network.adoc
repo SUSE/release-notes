@@ -1,0 +1,128 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#network]
+=== Networking
+
+// Release notes for networking features:
+//     Wicked, NetworkManager, Open VSwitch...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following notes:
+
+* <<jsc-SLE-17762>>
+
+
+[#jsc-SLE-13591]
+==== `frr` (FRRouting Routing daemon) has been added
+
+The `frr` package has been added.
+It manages TCP/IP based routing protocols.
+
+FRR is a fork of Quagga, which has stopped development in 2018.
+Its developers moved to the FRR project and thus Quagga will receive no further updates.
+
+We recommend migrating to `frr`.
+The configuration is mostly backward compatible, including the `vtysh` shell to configure the routing protocols.
+However, there were several changes, improvements, and new functionality added to `frr`.
+
+See https://frrouting.org/ for more information.
+
+
+[#bsc-1215156]
+==== `set-hostname` has been deprecated
+
+The `set-hostname` command has been deprecated.
+Use `hostnamectl hostname` instead.
+
+
+[#bsc-1201266]
+==== `bind-chrootenv` has been removed, functionality replaced with systemd
+
+The `bind-chrootenv` package has been removed.
+Instead of protecting the system using a chroot jail, the built-in systemd methods to provide chroot like containment are now used.
+
+To fix potential issues arising from this change, in `/etc/sysconfig/named` remove any mention of `run_chrooted`.
+The log file paths also need to be adjusted because they are different from the chroot setup.
+
+
+// !STICKY
+[#network-samba]
+==== Samba
+
+// bnc#606288
+The version of Samba shipped with {sles} {this-version} delivers integration with Windows Active Directory domains.
+In addition, we provide the clustered version of Samba as part of {sleha} {this-version}.
+
+[#jsc-SLE-20577]
+===== Samba has been updated to 4.15
+
+The `samba` package has been updated to version 4.15.
+
+Some of the changes in this version are the following:
+
+* File server
+** The following SMB (development) dialects are no longer supported: `SMB2_22`, `SMB2_24`, and `SMB3_10`
+** Modernized VFS interface, basing all access to the server's filesystem on file handles and not on paths
+** "server multi channel support" no longer experimental, enabled by default
+** `samba-tool` available without `ad-dc`
+** Improved command line user experience
+* Winbind
+** Scanning of trusted domains disabled by default
+** Enterprise principals enabled by default
+** The `net` utility supports Offline Domain Join
+
+[#ad-dc-deprecated]
+===== Samba Active Directory Domain Controller has been deprecated
+
+The Samba Active Directory Domain Controller (package `ad-dc`) has been deprecated.
+It had previously been available only as a technical preview.
+
+[#jsc-SLE-24334]
+===== SMB1 support has been deprecated
+
+With Samba 4.17 it is planned to disable the SMB1 protocol.
+We therefore deprecated SMB1 for a possible future update of Samba.
+This affects the Samba file server, its libraries and clients, as well as the kernel CIFS client (`cifs.ko` and `mount.cifs`).
+This version of the protocol is insecure and usage of version 2.02 or later is recommended.
+
+[#nt-dc-deprecated]
+===== NT Domain Controller has been deprecated
+
+The NT Domain Controller support has been deprecated since Samba 4.13.
+
+[#samba-nis-deprecated]
+===== Samba NIS support has been deprecated
+
+NIS (netgroups) support has been deprecated.
+It was removed upstream in Samba 4.15 but we have retained it for this release in a deprecated state.
+
+[#network-nfs]
+==== NFS
+
+// !STICKY
+[#network-nfs4]
+===== NFSv4
+
+// bnc#608543 and bnc#574572
+NFSv4 with IPv6 is only supported for the client side.
+An NFSv4 server with IPv6 is not supported.
+
+[#bsc-1197001]
+===== NFS readahead size has been decreased
+Previously, the default readahead size was set to a 15× the maximum read size reported by the server.
+This artificial increase has been dropped in {this-version}.
+
+Networks and storage are now faster and having a large amount of reads in flight is usually not beneficial anymore.
+However, the reduced readahead size can result in worse performance in case of multiple parallel sequential IO streams on slow networks or with slow workloads.
+To increase the maximum readahead size, change the value of `/sys/devices/virtual/bdi/$BDI_NUM/read_ahead_kb`.
+The `$BDI_NUM` of the mount can be found, for example, in the third column of `/proc/self/mountinfo`.

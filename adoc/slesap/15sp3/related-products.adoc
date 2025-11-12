@@ -1,0 +1,56 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-modulesExtensionsRelated]
+== Modules, Extensions, and Related Products
+
+This section comprises information about modules and extensions for {product} {this-version}. Modules and extensions add functionality to the system.
+
+[#intro-modulesExtensionsRelated-modules]
+=== Modules in the {slea} {this-version} Product Line
+
+The {slea} {this-version} product line is made up of modules that contain software packages.
+Each module has a clearly defined scope.
+Modules differ in their life cycles and update timelines.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+The modules available within the product line based on {sle} {this-version} at the release of {product} {this-version} are listed in the __Modules and Extensions Quick Start__ at {doc-url-sles-beta}/html/SLES-modulesquick/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+The modules available within the product line based on {sle} {this-version} at the release of {product} {this-version} are listed in the __Modules and Extensions Quick Start__ at {doc-url-sles}/html/SLES-all/article-modules.html.
+endif::[]
+
+Not all {slea} modules are available with a subscription for {product} {this-version} itself (see the column _Available for_).
+
+For information about the availability of individual packages within modules, see https://scc.suse.com/packages.
+
+[#intro-modulesExtensionsRelated-extension]
+=== Available Extensions
+
+Extensions add extra functionality to the system and require their own registration key, usually at additional cost.
+Most extensions have their own release notes documents that are available from {rn-url}.
+
+
+The following extensions are available for {product} {this-version}:
+
+* {sle} Live Patching: https://www.suse.com/products/live-patching
+
+The following extension is not covered by {suse} support agreements, available at no additional cost, and without an extra registration key:
+
+* {ph}: https://packagehub.suse.com/
+
+[#intro-modulesExtensionsRelated-related]
+=== Derived and Related Products
+
+This sections lists derived and related products.
+Usually, these products have their own release notes documents that are available from {rn-url}.
+
+* {sles}: https://www.suse.com/products/server
+* {sle} JeOS: https://www.suse.com/products/server/jeos
+* {sled}: https://www.suse.com/products/desktop
+* {slehpc}: https://www.suse.com/products/server/hpc
+* {slert}: https://www.suse.com/products/realtime
+* {suse} Manager: https://www.suse.com/products/suse-manager

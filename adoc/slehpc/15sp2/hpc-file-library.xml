@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="functionality-file-format"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>HPC File Format Libraries</title>
+
+ <section xml:id="hpc-library-adios">
+  <title>Adaptable IO System (ADIOS)</title>
+  <para>
+   The Adaptable IO System (ADIOS) provides a simple, flexible way for
+   scientists to describe the data in their code that may need to be
+   written, read, or processed outside of the running simulation. For more
+   information, see
+   <link xlink:href="https://www.olcf.ornl.gov/center-projects/adios/"/>.
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> adios</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>adios-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>adios-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Replace <replaceable>MPI_FLAVOR</replaceable> with one of the
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="file-format-hdf5">
+  <title>HDF5 HPC Library &mdash; Model, Library, File Format for Storing and Managing Data</title>
+  <para>
+   HDF5 is a data model, library, and file format for storing and managing
+   data. It supports an unlimited variety of data types, and is designed for
+   flexible and efficient I/O and for high volume and complex data. HDF5 is
+   portable and extensible, allowing applications to evolve in their use of
+   HDF5.
+  </para>
+  <para>
+   There are serial and MPI variants of this library available. All flavors
+   require loading a compiler toolchain module beforehand. The MPI variants
+   also require loading the correct MPI flavor module.
+  </para>
+  <para>
+   To load the highest available serial version of this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> hdf5</screen>
+  <para>
+   When an MPI flavor is loaded, the MPI version of this module can be
+   loaded by:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> phpdf5</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>hdf5-examples</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>hdf5-gnu-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_cpp-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_fortran-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_hl_cpp-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_hl_fortran-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>hdf5-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_fortran-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>libhdf5_hl_fortran-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="file-format-netcdf">
+  <title>NetCDF HPC Library &mdash; Implementation of Self-Describing Data Formats</title>
+  <para>
+   The NetCDF software libraries for C, C++, FORTRAN, and Perl are a set of
+   software libraries and self-describing, machine-independent data formats
+   that support the creation, access, and sharing of array-oriented
+   scientific data.
+  </para>
+  <bridgehead renderas="sect5"><literal>netcdf</literal> Packages</bridgehead>
+  <para>
+   The packages with names starting with <literal>netcdf</literal> provide
+   C bindings for the NetCDF API. These are available with and without MPI
+   support.
+  </para>
+  <para>
+   There are serial and MPI variants of this library available. All flavors
+   require loading a compiler toolchain module beforehand. The MPI variants
+   also require loading the correct MPI flavor module.
+  </para>
+  <para>
+   The MPI variant becomes available when the MPI module is loaded. Both
+   variants require loading a compiler toolchain module beforehand. To
+   load the highest version of the non-MPI <literal>netcdf</literal> module,
+   run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> netcdf</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>netcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <bridgehead renderas="sect5"><literal>netcdf-cxx</literal> Packages</bridgehead>
+  <para>
+   <package>netcdf-cxx4</package> provides a C++ binding for the NetCDF
+   API.
+  </para>
+  <para>
+   This module requires loading a compiler toolchain module beforehand. To
+   load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> netcdf-cxx4</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libnetcdf-cxx4-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-cxx4-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>netcdf-cxx4-gnu-hpc-tools</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <bridgehead renderas="sect5"><literal>netcdf-fortran</literal> Packages</bridgehead>
+  <para>
+   The <literal>netcdf-fortran</literal> packages provide FORTRAN bindings
+   for the NetCDF API, with and without MPI support.
+  </para>
+  <para>
+   There are serial and MPI variants of this library available. All flavors
+   require loading a compiler toolchain module beforehand. The MPI variants
+   also require loading the correct MPI flavor module.
+  </para>
+  <para>
+   The MPI variant becomes available when the MPI module is loaded. Both
+   variants require loading a compiler toolchain module beforehand. To
+   load the highest version of the non-MPI <literal>netcdf-fortran</literal> module,
+   run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> netcdf-fortran</screen>
+  <para>
+   or
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> netcdf-fortran</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libnetcdf-fortran-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="file-format-pnetcdf">
+  <title>HPC Flavor of <literal>pnetcdf</literal></title>
+  <para>
+   NetCDF is a set of software libraries and self-describing,
+   machine-independent data formats that support the creation, access,
+   and sharing of array-oriented scientific data.
+  </para>
+  <para>
+   Parallel NetCDF (<literal>PnetCDF</literal>) is a library providing
+   high-performance I/O while still maintaining file-format compatibility
+   with NetCDF by Unidata.
+  </para>
+  <para>
+   The package is available for the MPI Flavors: Open MPI 2 and 3, MVAPICH2
+   and MPICH.
+  </para>
+  <para>
+   To load the highest available serial version of this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> pnetcdf</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>libpnetcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>pnetcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>pnetcdf-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+</section>

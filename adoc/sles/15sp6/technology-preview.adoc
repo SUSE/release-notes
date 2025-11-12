@@ -1,0 +1,262 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-technology-preview]
+=== Technology previews
+
+Technology previews are packages, stacks, or features delivered by {suse} to provide glimpses into upcoming innovations.
+Technology previews are included for your convenience to give you a chance to test new technologies within your environment.
+We would appreciate your feedback!
+If you test a technology preview, contact your {suse} representative and let them know about your experience and use cases.
+Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development.
+Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are *not* supported.
+* Technology previews may only be available for specific hardware architectures.
+Details and functionality of technology previews are subject to change.
+As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time.
+This may be the case, for example, if {suse} discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
+
+
+////
+  ** clear statement of TP (no support)
+  ** Title of the TP ** full description of the TP
+  ** link to official documentation (external)
+  ** link to SUSE's documentation
+////
+
+// [#technology-preview-all]
+// ==== Technology previews for all architectures
+
+// [#bsc-1176440]
+// ===== `schedutil`
+// `schedutil` is a CPU frequency scaling governor that makes decisions based on the utilization data provided by the scheduler, as opposed to other governors that use CPU idle time, such as `ondemand`.
+// It was introduced in the Linux kernel version 4.7.
+// However, it is only viable for production use together with an optimization called `util_est` (short for "utilization estimation") that makes it much more responsive.
+// This optimization is only available in Linux kernel version 4.17 and newer.
+// For this reason it is only offered as technology preview in {slea} {this-version}.
+
+
+// [#jsc-SLE-17762]
+// ===== Redfish-finder functionality in wicked
+
+// The new version of `wicked` in {slesa} {this-version} has added initial support to decode the SMBIOS Management Controller Host Interface (Type 42) structure.
+// It will expose it as `wicked` `firmware:redfish` configuration to setup a Host Network Interface (to the BMC) using the `Redfish over IP` protocol.
+// This allows access to the Redfish Service (via `redfish-localhost` in `/etc/hosts`) used to manage the computer system.
+
+// This functionality has been added as a technical preview.
+
+
+// [#jsc-SLE-22725]
+// ===== Support for Intel's Alderlake graphics platform
+
+// {productnameshort} {this-version} adds support for Intel's Alderlake graphics platform as technology preview.
+// You can enable it by adding the `i915.force_probe=<Device-ID>` parameter to your kernel options in GRUB configuration.
+// In order to figure out the `<Device ID>` of the Intel graphics adapter, use the `inxi -aG` command.
+
+// The output should look like this:
+
+// [source,bash]
+// ~> inxi -aG
+// Graphics:
+//   Device-1: Intel (R) Graphics vendor: Lenovo driver: i915 v: kernel
+//   bus ID: 00:02.0 chip ID: 8086:46a6
+
+// So in this case, use `i915.force_probe=46a6` as the kernel option.
+// The command to add the option to the bootloader configuration would then be:
+
+// [source,bash]
+// pbl --add-option 'i915.force_probe=46a6' --config
+
+
+// [#jsc-SLE-21329]
+// ===== `zypper` single transaction mode
+
+// Traditionally, `zypper` executes the `rpm` command separately for each operation in a transaction.
+// This is among other things a lot slower for a large number of packages.
+// Therefore we have implemented a new backend that runs all the operations in a single transaction using `librpm`.
+
+// This feature can be enabled by setting the environmental variable `ZYPP_SINGLE_RPMTRANS` to `1`.
+// Because this feature is offered as a technology preview, enabling it system-wide is known to have issues, thus we recommend enabling this feature per command, for example:
+
+// [source,bash]
+// env ZYPP_SINGLE_RPMTRANS=1 zypper dup
+
+
+[#technology-preview-aarch64]
+==== Technology previews for {arm} 64-Bit (AArch64)
+
+[#jsc-PED-4489-kvm]
+===== KVM virtualization with 64K page size kernel flavor
+
+As a technology preview, {arm-product} {this-ga}{nbsp}SP3 added a kernel flavor
+`64kb`.
+{arm-product} {previous-version} introduced support for this `64kb` kernel flavor (<<jsc-PED-4489>>).
+
+KVM virtualization with this `64kb` kernel flavor remains a technology preview.
+Use the `default` kernel flavor for virtualization support.
+
+
+[#jsc-SLE-13565]
+===== Driver enablement for {nvidia} {bluefield2} DPU as host platform
+
+{arm-product} 15{nbsp}SP1 and later kernels include drivers for installing on
+{nvidiareg} {bluefieldreg} Data Processing Unit (DPU) based server platforms
+and SmartNIC (Network Interface Controller) cards.
+
+As a technology preview, the {arm-product} {previous-version} and {this-sp} kernels
+include drivers for running on {nvidia} {bluefield2} DPU.
+
+Should you wish to use {arm-product} on {nvidia} {bluefield2} or {bluefield2x}
+(or {bluefield3}) in production, contact your {suse} representative.
+
+[NOTE]
+.Host drivers and tools for {nvidia} {bluefield2} SmartNICs
+====
+This Technology Preview status applies only to installing
+{arm-product} {this-version} *on* {nvidia} {bluefield2} DPUs.
+
+For an {nvidia} {bluefield2} DPU PCIe card inserted as *SmartNIC* into a
+{productname} {this-version} or {arm-product} {this-version} based server,
+check <<intro-technology-preview>> and <<kernel>> for support status or known
+limitations of {nvidia} {connectxreg} network drivers for {bluefield2} DPUs
+(`mlx5_core` and others).
+
+The `rshim` tool is available from {ph} (<<package-hub>>).
+====
+
+
+[#jsc-SLE-9263-etnaviv]
+===== etnaviv drivers for {vivante} GPUs are available
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018A System-on-Chip (SoC)
+contains a {vivante} GC7000UL Graphics Processor Unit (GPU), and
+the {nxp} {imx}{nbsp}8M SoC contains a {vivante} GC7000L GPU.
+
+As a technology preview, the {arm-product} {this-version} kernel includes `etnaviv`,
+a Display Rendering Infrastructure (DRI) driver for {vivante} GPUs, and the
+`Mesa-dri` package contains a matching `etnaviv_dri` graphics driver library.
+Together they can avoid the need for third-party drivers and libraries.
+
+[NOTE]
+====
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {vivante} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+====
+
+
+[#jsc-SLE-8203-lima]
+===== lima driver for {arm} {mali} Utgard GPUs available
+
+The {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC contains
+an {armreg} {malireg}-400 Graphics Processor Unit (GPU).
+
+Prior to {arm-product} 15{nbsp}SP2,
+this GPU needed third-party drivers and libraries from your hardware vendor.
+
+As a technology preview, the {arm-product} 15{nbsp}SP2 kernel added
+`lima`, a Display Rendering Infrastructure (DRI) driver for {mali} _Utgard_
+microarchitecture GPUs, such as {mali}-400, and the `Mesa-dri` package
+contains a matching `lima_dri` graphics driver library.
+
+[NOTE]
+====
+To use them, the Device Tree passed by the bootloader to the kernel needs to
+include a description of the {mali} GPU for the kernel driver to get loaded.
+You may need to contact your hardware vendor for a bootloader firmware upgrade.
+====
+
+NOTE: The `panfrost` driver for {mali} _Midgard_ microarchitecture GPUs
+is supported since {arm-product} 15{nbsp}SP2.
+
+
+[#jsc-SLE-9263-malidp]
+===== mali-dp driver for {arm} {mali} Display Processors available
+
+The {nxpreg} {layerscapereg} LS1028A/LS1018 System-on-Chip contains
+an {armreg} {malireg}-DP500 Display Processor.
+
+As a technology preview, the {arm-product} 15{nbsp}SP2 kernel added `mali-dp`,
+a Display Rendering Manager (DRM) driver for {mali} Display Processors.
+It has undergone only limited testing because it requires an accompanying
+physical-layer driver for {displayportreg} output (see <<#jsc-SLE-9263-hdp>>).
+
+
+[#jsc-SLE-10302]
+===== Btrfs file system is enabled in U-Boot bootloader
+
+For {rpireg} devices, {arm-product} 12{nbsp}SP3 and later include
+__Das U-Boot__ as bootloader, in order to align the boot process with
+other platforms.
+By default, it loads GRUB as UEFI application from a FAT-formatted partition,
+and GRUB then loads Linux kernel and ramdisk from a file system such as Btrfs.
+
+As a technology preview, {arm-product} 15{nbsp}SP2 added a Btrfs driver to
+U-Boot for the {rpi} (package `u-boot-rpiarm64`).
+This allows its commands `ls` and `load` to access files on Btrfs-formatted
+partitions on supported boot media, such as microSD and USB.
+
+The U-Boot command `btrsubvol` lists Btrfs subvolumes.
+
+// note: shortened from 15 SP2
+
+
+[#technology-previewx86-64]
+==== Technology previews for Intel 64/AMD64 (x86-64)
+
+[#jsc-PED-983]
+===== Support for AMD Wheat Nas GPU
+
+{productnameshort} {this-version} includes the kernel driver support for AMD Wheat Nas GPU (Navi32 dGPU).
+However because the corresponding firmware is still not publicly released yet, this feature is considered a technology preview.
+
+[#jsc-PED-7757]
+===== Add IAA Crypto Driver
+
+{productnameshort} {this-version} includes the Intel Analytics Accelerators (IAA) crypto compression kernel driver.
+Since this is a new upstream feature, is is considered a technology preview.
+
+[#jsc-PED-8022]
+===== Confidential Computing module
+
+A new Confidential Computing module has been added in {productname} {this-version}.
+It provides hosts with confidential capabilities and all the tools needed to deploy secure virtual machines with remote attestation.
+Because the module contains unsupported packages, it is disabled by default and only available as technical preview.
+
+// [#jsc-SLE-19965]
+// ===== Wayland now works with the latest {nvidia} proprietary driver
+
+// The {nvidia} proprietary display driver on Linux has been updated to version 470.57.02 as technology preview.
+// This release provides an enhanced support of Wayland as well as providing X applications on Wayland (via XWayland) with 3D acceleration.
+
+// See the https://www.nvidia.com/Download/driverResults.aspx/177145/en-us[full changelog] for more details.
+
+// [#jsc-SLE-18735]
+// ===== virt-tuner
+
+// `virt-tuner` is a tool for optimizing libvirt XML definitions of a virtual machine for specific use cases. It is shipped as technology preview.
+
+// [#jsc-SLE-14424]
+// ===== `virt-manager` SEV detection
+
+// `virt-manager` is now providing a simple check box that is only enabled on SEV-compatible hardware and only when an installation is being configured.
+// The GUI will not allow the feature to be enabled for a guest that is already installed nor can it be turned off for a guest that was installed with the feature enabled.
+
+// [#technology-preview-ibm-z]
+// ==== Technology previews for {ibmz} (s390x)
+
+
+// [#technology-preview-power]
+// ==== Technology previews for POWER (ppc64le)
+
+// [#jsc-SLE-18265]
+// ===== `keylime` has been added
+
+// The `keylime` package provides an end-to-end solution for utilizing TPM technology to provide remote trust.
+// See https://github.com/keylime/keylime for more information.
+// The `keylime` package is offered as a technical preview.

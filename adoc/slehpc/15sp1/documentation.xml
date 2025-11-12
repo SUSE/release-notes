@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+    type="text/xml"
+    title="Profiling step"
+?>
+<!DOCTYPE section
+[
+   <!ENTITY % entities SYSTEM "generic-rn.ent">
+   %entities;
+]>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="intro-documentation">
+ <title>Documentation and Other Information</title>
+ <para/>
+ <section xml:id="intro-documentation-media">
+  <title>On the Product Medium</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     For general product information, see the file <filename>README</filename>
+     <phrase condition="beta">and the file
+     <filename>README.BETA</filename></phrase> in the top level of the product
+     medium.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For a chronological log of all changes made to updated packages, see the
+     file <filename>ChangeLog</filename> in the top level of the product
+     medium.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Detailed change log information about a particular package is available
+     using RPM:
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME.rpm</replaceable></screen>
+    <para>
+     (Replace <replaceable>FILE_NAME.rpm</replaceable> with the name of the
+     RPM.)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For more information, see the directory <filename>docu</filename> of the
+     product medium of &product;&#160;&this-version;.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section xml:id="intro-documentation-external">
+  <title>Externally Provided Documentation</title>
+  <itemizedlist>
+<!-- FIXME: The existence of documentation is currently a lie... - sknorr,
+   2018-09-28 -->
+<!-- <listitem>
+    <para>
+     <ulink url="&doc-url;"/>
+     contains additional or updated documentation for &product;&#160;&this-version;.
+    </para>
+   </listitem> -->
+   <listitem>
+    <para>
+     Find a collection of White Papers in the &product; Resource Library at
+     <link xlink:href="&res-library-url;"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+</section>

@@ -1,0 +1,115 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-new]
+=== What Is New?
+
+////
+** Update information: link to severity ratings documentation
+** Installation: change, new kernel, compatibility
+** features: features description (not technical)
+** System update: link to the documentation (not just the tittle)
+** Update related notes : specific change to focus on.
+////
+
+==== General Changes
+
+Media Changes::
+   The Unified Installer and Packages DVDs known from {product} {this-ga} SP1 are deprecated and have been replaced by the following media:
++
+  * *Online Installation Media:* 
+   All SUSE Linux Enterprise 15 products can be installed with this stand alone media, after entering a registration key.
+   The necessary packages are fetched from online repositories only. 
+   For information about available modules, see https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15-SP2#Intro.ModuleExtensionRelated
+ * *Full Installation Media:* 
+   All {product} {this-ga} products can be installed without network connection with this media, for offline installation scenarios.
+   The media contains all necessary packages.
+   It consists of directories with module repositories which need to be added manually as needed.
+   RMT (Repository Mirroring Tool) and SUSE Manager provide additional options for disconnected or managed installation.
+Extended Package Search::
+   Use the new Zypper command `zypper search-packages` to search across all {suse} repositories available for your product even if they are not yet enabled.
+   This functionality makes it easier for administrators and system architects to find the software packages needed.
+   To do so, it leverages the {scc}.
+{sdk}::
+   With {slea} {this-ga}, the {sdk} is now integrated into the products.
+   Development packages are packaged alongside regular packages.
+   In addition, the _Development Tools_ module contains the tools for development.
+RMT Replaces SMT::
+   SMT (Subscription Management Tool) has been removed.
+   Instead, RMT (Repository Mirroring Tool) now allows mirroring SUSE repositories and custom repositories.
+   You can then register systems directly with RMT.
+   In environments with tightened security, RMT can also proxy other RMT servers.
+Kernel::
+  {slea} {this-version} will come with Kernel {kernel-version}.
+  This new kernel release includes upstream features like 16 million new IPv4 addresses, utilization clamping support in the task scheduler, power efficient userspace waiting with the umwait x86 instructions and many more.
+
+.Major updates to the software selection:
+Salt::
+   {slea} {this-version} can be managed via salt to help integration into up-to-date management solutions, such as {suma}.
+Python 3::
+  As the first enterprise distribution, {slea} {this-ga} offers full support for Python 3 development in addition to Python 2.
+Directory Server::
+  389 Directory Server replaces OpenLDAP to provide a sustainable directory service.
+
+
+==== Changes in {product} {this-version}
+
+[#bsc-1188446]
+===== ClusterTools2
+* The `cs_clear_sbd_devices`, `cs_show_saphanasr_status`, and `cs_wait_for_idle` commands have been added.
+* Usage of `systemd-timer` instead of `cron`.
+* The `supportconfig` plugins `cat_messages`, `show_error_patterns`, and `show_elevator` are now disabled by default when the package ClusterTools2 is installed the first time.
+Existing configurations will not be changed during package update.
+* The format of error pattern variables for `cs_show_error_patterns` and `cs_show_supportconfig` will be changed in a future release of ClusterTools2.
+This change is planned for {producta} 15 SP3.
+
+For details please refer to these manual pages:
+
+* `cs_clear_sbd_devices(8)`
+* `cs_show_saphanasr_status(8)`
+* `cs_wait_for_idle(8)`
+* `ClusterTools2-timer(7)`
+* `supportconfig_plugins(5)`
+* `cs_show_error_patterns(8)`
+
+[#bsc-1188301]
+===== `SAPHanaSR-ScaleOut`
+
+Starting with package version 0.180, SAP HANA multi-target system replication is supported for SAP HANA scale-out systems.
+In addition to the two sites controlled by the SUSE HA cluster, one system replication site can be connected from outside that cluster.
+
+The new `SAPHanaSR-ScaleOut` package contains updated resource agents and a new HADR provider hook script.
+New CRM attributes are used for managing site-specific system replication status.
+These attributes are not backward compatible with the global ones.
+
+Two upgrade scenarios are supported:
+
+* upgrading the RPM only, without adding support for multi-target system replication
+* upgrading the RPM and adding support for multi-target system replication
+
+The `SAPHanaSR-manageAttr` tool helps with performing an upgrade.
+
+For details please refer to these manual pages:
+
+* `SAPHanaSR-ScaleOut(7)`
+* `ocf_suse_SAPHanaController(7)`
+* `SAPHanaSrMultiTarget.py(7)`
+* `SAPHanaSR-manageAttr(8)`
+
+[#bsc-1188304]
+===== `sapstartsrv-resource-agents` has been added
+
+The new `sapstartsrv-resource-agents` package eliminates the need for a dedicated instance work directory filesystems in SUSE HA clusters for {nw} and {s4hana} enqueue replication setups.
+A common NFS share can now be statically mounted on all cluster nodes.
+The packages contains a new resource agent called `ocf:suse:SAPStartSrv`.
+
+Additionally, the `resource-agents` package has been updated.
+It now contains a new version of the `ocf:heartbeat:SAPInstance` resource agent.
+
+For more information, see:
+
+* these manual pages:
+** `ocf_suse_SAPStartSrv(7)`
+** `ocf_heartbeat_SAPInstance(7)`
+* this SUSE TID:
+** https://www.suse.com/support/kb/doc/?id=000019944

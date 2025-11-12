@@ -1,0 +1,72 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#security]
+=== Security
+
+// Release Notes for Security tool/library features:
+//    new TLS standards in OpenSSL, new nmap feature, ...
+//    (not: security bugs/fixes in applications)
+
+In addition to the notes in this section, also see the following security-related notes:
+
+* <<jsc-SLE-7472>>
+* <<jsc-SLE-9294>>
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-17083]
+==== `sudo` has been updated
+
+The `sudo` package has been updated to the version 1.8.27.
+Among others, there are the following notable changes:
+
+* PAM account management modules and BSD authentication approval modules are now run even when no password is required.
+* The LDAP and SSS back-ends now use the same rule evaluation code as the `sudoers` file backend.
+* On systems using PAM, `sudo` now ignores the `PAM_NEW_AUTHTOK_REQD` and `PAM_AUTHTOK_EXPIRED` errors from PAM account management if authentication is disabled for the user.
+
+
+[#jsc-SLE-17755]
+==== strongSwan now with enabled network namespaces
+
+The strongSwan package included in {producta} {this-version} has been compiled with support for Linux network namespaces.
+
+
+[#jsc-SLE-10161]
+==== AppArmor Has Been Updated to Version 2.13
+
+AppArmor has been updated to version 2.13.
+The main new feature is a boot speed-up enabled by using precompiled profiles and caching.
+
+For information about changes in AppArmor 2.13, see the link:https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13[AppArmor release notes]
+
+
+[#bsc-1174679]
+==== `seccheck` Scripts Controlled by systemd Timers
+
+Until {product} 15{nbsp}GA, `seccheck` scripts were run automatically using `cron`.
+
+Starting with {product} 15{nbsp}SP1, `seccheck` scripts are run automatically using systemd timers.
+For more information, see the link:https://documentation.suse.com/sles/15-SP2/html/SLES-all/sec-sec-prot-general-seccheck.html[`seccheck` documentation].
+
+
+[#jsc-SLE-11473]
+==== `cryptctl` Is Now Available as Part of the Base System Module
+
+When using remote servers serviced by a third party, it is necessary to balance convenience with privacy requirements.
+`cryptctl` allows encrypting sensitive directories on such servers using LUKS and offers the following additional features:
+
+* Encryption keys are located on a central server, which can be located on your premises.
+* Encrypted partitions are automatically remounted after an unplanned reboot.
+
+In the past, `cryptctl` was shipped as part of {slessapa} only.
+With {slea} {this-version}, it is now available directly as part of {product}.
+
+For more information, see the link:https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-configure-cryptctl.html[`cryptctl` documentation].

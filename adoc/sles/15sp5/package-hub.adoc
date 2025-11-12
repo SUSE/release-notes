@@ -1,0 +1,20 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#package-hub]
+=== {ph}
+
+// Release notes for Package Hub
+
+{ph} brings open-source software packages from {opensuse} to {sles} and {sled}.
+
+Usage of software from {ph} is not covered by {suse} support agreements.
+At the same time, usage of software from {ph} does not affect the support status of your {sle} systems.
+{ph} is available at no additional cost and without an extra registration key.
+
+[#package-hub-added-package]
+==== Important package additions to {ph}
+
+Among others, the following packages have been added to {ph}:
+
+// * <<jsc-SLE-23450>>

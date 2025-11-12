@@ -1,0 +1,23 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#modules]
+== Modules
+
+=== HPC module
+
+The HPC module contains HPC specific packages. These include the workload manager {slurm}, the node deployment tool `clustduct`, `munge` for user authentication, the remote shell `mrsh`, the parallel shell `pdsh`, as well as numerous HPC libraries and frameworks.
+
+This module is available with the {slehpc} only. It is selected by default during the installation. It can be added or removed using the {yast} UI or the `SUSEConnect` CLI tool. Refer to the system administration guide for further details.
+
+=== {nvidia} Compute Module
+
+The {nvidia} Compute Module provides the {nvidia} CUDA repository for {sle} {this-ga}. Note that that any software within this repository is under a 3rd party EULA. For more information check https://docs.nvidia.com/cuda/eula/index.html.
+
+This module is not selected for addition by default when installing {slehpc}. It may be selected manually during installation from the _Extension and Modules_ screen. You may also select it on an installed system using {yast}. To do so, run from a shell as root `yast registration`, select: `Select Extensions` and search for `{nvidia} Compute Module` and press `Next`.
+
+[IMPORTANT]
+Do not attempt to add this module with the `SUSEConnect` CLI tool. This tool is not yet capable of handling 3rd party repositories.
+
+Once you have selected this module you will be asked to confirm the 3rd party license and verify the repository signing key. 

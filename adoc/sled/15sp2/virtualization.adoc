@@ -1,0 +1,61 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+[#allArch-virtualization-vagrant]
+==== Vagrant
+
+// Vagrant-related release notes go here
+
+[WARNING]
+.{sled} only supported as guest
+====
+Because {sled} does not support virtualization, it is only supported as a guest OS.
+This means that {sled} cannot be used to run Vagrant.
+To run Vagrant, you can use {sles}.
+====
+
+https://www.vagrantup.com/[Vagrant] is a tool that provides a unified workflow
+for the creation, deployment and management of virtual development environments.
+It provides an abstraction layer for various virtualization providers (like
+VirtualBox, VMWare or libvirt) via a simple configuration file that allows
+developers and operators to quickly spin up a VM running Linux or any other
+operating system.
+
+A new VM can be launched with Vagrant via the following set of commands.
+The example uses the Vagrant Box for {opensuse} Tumbleweed:
+
+[source,bash]
+----
+vagrant init opensuse/Tumbleweed.x86_64
+vagrant up
+# your box is now going to be downloaded and started
+vagrant ssh
+# and now you've got ssh access to the new VM
+----
+
+===== Vagrant Boxes for {sles} and {sled}
+
+Starting with {product} {this-version}, we are providing official Vagrant Boxes for {sles} and {sled} for x86_64 and AArch64 (only for {slsa} using the libvirt provider).
+These boxes come with the bare minimum of packages to reduce their size and are not registered, thus users need to register the boxes prior to further provisioning.
+
+These boxes are only available for direct download via SCC and must be manually registered with Vagrant as follows:
+
+[source,bash]
+----
+vagrant box add --name SLED-15-SP2 SLED15-SP2-Vagrant.x86_64-15.2-libvirt-*.vagrant.libvirt.box
+----
+
+The box is then available under the name *SLED-15-SP2* and can be used like other Vagrant boxes:
+
+[source,bash]
+----
+vagrant init SLED-15-SP2
+vagrant up
+vagrant ssh
+----
+
+For more information about this topic, see https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-libvirt-manage-vagrant.html.
+

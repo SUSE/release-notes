@@ -1,0 +1,71 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#x86-64]
+== AMD64/Intel 64-specific changes (x86-64)
+
+Information in this section applies to {product} {this-version} for the AMD64/Intel 64 architectures.
+
+// x86-64-specific release notes go here (see below for kernel modules)
+
+[#bsc-1189786]
+=== Intel platforms and technologies
+
+{product} {this-version} introduces support for the following Intel platforms and technologies:
+
+- Initial enabling for platforms based on the Intel 4th generation Scalable XEON Processors (known as Eagle Stream / Sapphire Rapids)
+- Prepare support for next generation Intel Optane Persistent Memory (known as Crow Pass)
+- Platforms based on next generation Xeon-D Processors (known as Idaville)
+- Platforms based on latest Intel XEON E3 Processors (known as Tatlow)
+- Platforms using 11th Gen Intel Core i Processors (known as Tiger Lake-UP3/-UP4/-H)
+- Platforms using 11th Gen Intel Core S-series desktop processors (known as Rocket Lake-S)
+
+
+////
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+// Possible categories (optional)
+
+////
+[#x86-64-system]
+=== System-specific and vendor-specific information
+
+
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+////
+[#x86-64-virtualization]
+=== Virtualization
+
+
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+////
+[#x86-64-ras]
+=== Reliability, availability, serviceability (RAS)
+
+
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

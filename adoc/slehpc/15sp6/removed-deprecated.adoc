@@ -1,0 +1,106 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {product} or will be removed in upcoming versions.
+
+* `dapl`, `rds-tools`, and `imgen` are being deprecated due to lack of upstream activity.
+* `openmpi` 2 and `openmpi` 3 are being deprecated due to being replaced by `openmpi` 4.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+// SLE-23359
+* Python 2 bindings for `genders` has been removed.
+These are now provided for Python 3.
+
+// SLE-17777
+* Ganglia is not supported anymore in {this-version}.
+It has been replaced with Grafana (https://grafana.com/)
+
+// SLE-17776
+* Due to a lack of usage by customers, some library packages have been removed from the  HPC module in {producta} {this-version}. On {sle} you can build your own library using `spack`.
+These libraries will continue to be available through {ph}.
+The following libraries have been removed:
+** `boost`
+** `adios`
+** `gsl`
+** `fftw3`
+** `hypre`
+** `metis`
+** `mumps`
+** `netcdf`
+** `ocr`
+** `petsc`
+** `ptscotch`
+** `scalapack`
+** `superlu`
+** `trilinos`
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+The following features and packages are deprecated and will be removed in a future version of {product}.
+
+
+// 1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature has been deprecated and will be removed in {product} 15{nbsp}SP2.
+
+// jsc#EX-0000
+* Example Deprecated Feature 2 has been deprecated and will be removed in {product} 15{nbsp}SP2.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+// jsc#PED-12383
+* The "Hierarchical Data Format version 5" library and tools have been deprecated and will be removed from the HPC Module in {slesa} SP7.
+If you require this library beyond {producta} {this-version}, use the Spack package manager to create it according to your requirements.
+
+// jsc#PED-2798
+* `clustduct` is deprecated and will be removed in {product} {next-version}.
+With {producta} {this-version}, `warewulf4` has been introduced as cluster deployment tool, and users are advised to migrate to it.
+
+
+////
+2. Deprecations that will be removed in the next SLE major version:
+////
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated and will be removed in {product} 16.
+////
+
+
+////
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated.
+////

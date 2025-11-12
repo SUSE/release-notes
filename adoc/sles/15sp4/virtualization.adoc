@@ -1,0 +1,265 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#virtualization]
+=== Virtualization
+
+// Release notes for virtualization:
+//    KVM, Xen, libvirt, ...
+
+For more information about acronyms used below, see {doc-url}/html/SLES-all/book-virtualization.html.
+
+// ALL VIRTUALIZATION SUPPORT TABLES HAVE BEEN MOVED TO VIRTUALIZATION GUIDE
+// IN DOC REPO. RN WILL ONLY CONTAIN CHANGES SINCE PREVIOUS SP.
+
+.Virtualization limits and supported hosts/guests
+[IMPORTANT]
+====
+These release notes only document changes in virtualization support compared to the immediate previous service pack of {product}.
+Full information regarding virtualization limits for KVM and Xen as well as supported guest and host systems is now available as part of the {product} documentation.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+See the __Virtualization Guide__ at {doc-url-beta}/html/SLES-virtualization/cha-virt-support.html (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+See the __Virtualization Guide__ at {doc-url}/html/SLES-all/cha-virt-support.html.
+endif::[]
+====
+
+
+[#virtualization-kvm]
+==== KVM
+
+// KVM virtualization-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// jsc#SLE-23241
+* KVM supports PMEM access for VMs in AppDirect mode
+
+
+[#jsc-SLE-22652]
+===== Virtualized TPM (vTPM) support for Windows Server 2022
+
+The new Windows Server Virtualization Validation Program (SVVP) now requires TPM.
+
+For this reason, in {slea} {this-version} virtualized TPM (vTPM) now works with KVM.
+
+
+//[#jsc-SLE-18741]
+//===== {nvidia} vGPU 12.x and 13.x support
+//
+//The support for {nvidia} virtual GPU 12.x and //13.x has been added.
+
+
+// also SLE-18632
+[#bsc-1193910]
+===== Native graphical installer with `virtio-gpu`
+
+Support for native graphical installer has been added if `virtio-gpu` is used.
+
+To that effect, the display type dialog shown during installation has been changed:
+
+* the `X11` option has been renamed to `Remote X11`
+* the `ASCII Console` option has been renamed to `Text-based UI`
+* a `Graphical UI` option has been added, which is a graphical Qt-based UI
+
+You can also explicitly display the dialog by adding the `netsetup=display` parameter to boot options.
+
+For additional information see the https://documentation.suse.com/sles/15-SP3/single-html/SLES-deployment/#sec-prep-connect[Connecting to the SUSE Linux Enterprise Server installation system] section in the __Deployment Guide__.
+
+
+[#jsc-SLE-18732]
+===== Support for AMD SEV-ES
+Support for AMD Secure Encrypted Virtualization-Encrypted State (SEV-ES) has been added.
+The main use case is preventing access by third parties to data hosted in a public cloud.
+For more information see https://developer.amd.com/sev/.
+
+
+[#virtualization-xen]
+==== Xen
+
+// Xen virtualization-related release notes go here
+
+[#bsc-1210490]
+===== Dom0 suspend/resume not supported
+
+The suspend/resume feature is not supported with Xen Dom0.
+
+
+[#jsc-SLE-11435]
+===== Automatic virtual firmware selection
+
+Before, firmware such as OMVF had to be specified by an explicit path to the firmware.
+
+With this change, the upstream communities now define metadata that describe the firmware.
+This allows firmware to be automatically selected based on user-friendly configuration.
+For example, the user can now simply specify EFI and the appropriate firmware will be selected.
+
+
+[#jsc-SLE-18262]
+===== Xen has been updated to 4.16.0
+
+Xen has been updated to version 4.16.0.
+Some of the changes in this version are the following:
+* Miscellaneous fixes to the TPM manager software in preparation for TPM 2.0 support.
+* Increased reliance on the PV shim as 32-bit PV guests will only be supported in shim mode going forward.
+This change reduces the attack surface in the hypervisor.
+* Increased hardware support by allowing Xen to boot on Intel devices that lack a Programmable Interval Timer.
+* Cleanup of legacy components by no longer building QEMU Traditional or PV-Grub by default.
+Note both projects have upstream Xen support merged now, so it is no longer recommended to use the Xen specific forks.
+* Xen can now export Intel Processor Trace (IPT) data from guests to tools in dom0.
+* Xenstored and oxenstored both now support LiveUpdate (tech preview).
+* Switched x86 MSR accesses to deny by default policy.
+* Named PCI devices for xl/libxl and improved documentation for xl PCI configuration format.
+* x86: Allow domains to use AVX-VNNI instructions.
+* Added `XEN_SCRIPT_DIR` configuration option to specify location for Xen scripts.
+* Increase the maximum number of guests which can share a single IRQ from 7 to 16, and make this configurable with `irq-max-guests`.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-qemu]
+==== QEMU
+
+[#jsc-SLE-18259]
+===== QEMU has been updated to 6.2
+
+QEMU has been updated to version 6.2.
+For the full changelog see https://wiki.qemu.org/ChangeLog/6.2.
+
+[NOTE]
+.Deprecation notice
+====
+In previous versions, if no explicit image format was provided, some QEMU tools tried to guess the format of the image, and then process it accordingly.
+Because this feature is a potential source of security issues, it has been deprecated and removed.
+It is now necessary to explicitly specify the image format.
+For more information, see https://qemu-project.gitlab.io/qemu/about/removed-features.html#qemu-img-backing-file-without-format-removed-in-6-1.
+====
+
+[#virtualization-libvirt]
+==== libvirt
+
+[#jsc-SLE-18260]
+===== libvirt has been updated to 0.8.0
+
+libvirt has been updated to version 0.8.0.
+For more information see https://libvirt.org/news.html.
+
+
+// [#virtualization-spice]
+// ==== spice
+
+// [#virtualization-vmware]
+// ==== VMware
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#virtualization-other]
+==== Others
+
+// Other virtualization-related release notes go here
+
+[#jsc-SLE-22902]
+===== `cloud-init` has been updated
+
+The `cloud-init` package has been updated to version 21.3.
+
+Additionally, the update also provides the VMware data source.
+
+
+[#jsc-SLE-22704]
+===== `apparmor-parser` is now installed by default in {minvm} images
+
+Enforcing good behavior and preventing both known and unknown security flaws from being exploited is highly recommended in the Linux world.
+
+For this reason, our {minvm} images now have {apparmor} packages installed by default.
+This allows a user to configure {apparmor} policies at will right after the first boot of our {minvm} images.
+It also makes it easier to install {rke}/{k3s} on our images.
+
+
+[#jsc-SLE-15935]
+===== KubeVirt
+
+KubeVirt is a technology which enables container-native virtualization.
+A specific documentation about KubeVirt can be found at {url-docs}/en-us/sbp/all/html/SBP-KubeVirt-SLES15SP3/.
+
+
+//jsc#SLE-18261
+[#virtualization-virt-manager]
+===== `virt-manager`
+
+`virt-manager` has been updated to version 4.0.0
+
+* It is now possible to prefer UEFI when creating new virtual machines.
+Add an option to allow users to default to UEFI when creating a new VM.
+libvirt decides which firmware file to use.
+* Add `virtiofs` filesystem driver UI option
+* Enable a TPM by default when UEFI is used
+* Use `virtio-gpu` video for most modern distros
+* Default to extra PCIe root ports for q35
+* Set `discard=unmap` by default for sparse disks and block devices
+* `virt-install`: missing `--os-variant`/`--osinfo` is now a hard error
+
+
+[#virtualization-virt-viewer]
+===== `virt-viewer` has been updated
+
+`virt-viewer` has been updated to version 11.0.
+Some of the changes in this version are the following:
+
+* Remove clashing -r command line shortcut for `resize` that clashed with existing `reconnect` shortcut
+* Support modifier-only hotkeys for cursor release
+* Add USB device reset hotkey support
+* Second display support
+* Remapping keys using the `--keymap` argument
+* Bash completion for the client
+
+For more information see https://gitlab.com/virt-viewer/virt-viewer/-/tree/v11.0.
+
+
+[#virtualization-libguestfs]
+===== `libguestfs` has been updated to 1.44.2
+
+`libguestfs` has been updated to version 1.44.2.
+`virt-v2v` and `virt-p2v` have been separated from `libguestfs` into their own packages.
+
+
+[#jsc-SLE-16682]
+===== VM installer of {yast} can no longer install LXC containers
+
+The {yast} module for installing VMs (`yast2-vm`) has the following changes:
+
+* As support for libvirt LXC containers has been removed with {product} 15{nbsp}SP4, the option to install the `libvirt-daemon-lxc` package has been removed.
+* As Xen is only supported on x86-64, Xen-related options have been disabled for AArch64.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+===== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

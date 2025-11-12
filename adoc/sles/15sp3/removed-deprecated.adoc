@@ -1,0 +1,164 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {product} or will be removed in upcoming versions.
+
+
+[NOTE]
+.Package and module changes in {this-version}
+For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+
+// jsc#SLE-17723
+* `libreiserfs` has been removed.
+
+// removal: jsc#SLE-16036, deprecation: jsc#SLE-10978, new package for NodeJS 14: jsc#SLE-10977
+* NodeJS 8 and NodeJS 10 have been removed.
+For more information, see <<#jsc-SLE-10977>>.
+
+* The PulseAudio back-end of spice-gtk has been removed.
+For more information, see <<#virtualization-libvirt-spicegtk>>.
+
+// jsc#SLE-16854
+* The `rxe_cfg` binary has been removed from the package `libibverbs` (part of `rdma-core`).
+
+// jsc#SLE-11529
+* Kernel support for early {marvellreg} {thunderx2reg} silicon has been removed.
+For more information, see <<#jsc-SLE-11529>>.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+The following features and packages are deprecated and will be removed in a future version of {product}.
+
+Also see the following release notes:
+
+* <<jsc-SLE-22663>>
+
+// 1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+
+// jsc#PED-8166
+* PHP 7.4 will be removed in {producta} 15 SP7.
+
+// jsc#SLE-17839
+* The `imgen` package, containing Mellanox firmware generator, is deprecated and will be removed with {producta}{nbsp}{next-version}.
+
+
+* The OpenLDAP server is deprecated and will be removed with {producta} 15{nbsp}SP4.
+It will no longer be available from the __Legacy__ {slea} module.
+For more information, see <<#jsc-SLE-16552>>.
+
+
+* Python 2 to will be removed entirely from {slea} with {slea} 15 SP4 and will no longer be available via the __Python 2__ SLE module.
+For more information, see <<#jsc-SLE-16746>>.
+
+* TLS 1.0 and 1.1 are deprecated and will be removed in a future service pack of {product} 15.
+For more information, see <<jsc-SLE-9294>>.
+
+
+* NXP LX2160A revision 1 silicon quirks will be removed with {arm-product} 15{nbsp}SP4.
+For more information, see <<jsc-SLE-17152>>.
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature has been deprecated and will be removed in {product} 15{nbsp}SP2.
+
+// jsc#EX-0000
+* Example Deprecated Feature 2 has been deprecated and will be removed in {product} 15{nbsp}SP2.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+
+////
+2. Deprecations that will be removed in the next SLE major version:
+////
+
+// jsc#SLE-7690, jsc#SLE-7192, jsc#SLE-10912, jsc#SLE-9004
+* Support for System V `init.d` scripts is deprecated and will be removed with the next major version of {product}.
+In consequence, the `/etc/init.d/halt.local` initscript, `rc__SERVICE__` controls, and `insserv.conf` are also deprecated.
+For more information, see <<#jsc-SLE-7690>>.
+
+* Support for libvirt LXC containers is deprecated and will be removed with {product} 15{nbsp}SP4.
+For more information, see <<#jsc-SLE-16682>>.
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated and will be removed in {product} 16.
+////
+
+
+////
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+* systemd `KillMode=none` is deprecated.
+For more information see <<#bsc-1183034>>.
+
+// jsc#SLE-17859
+* `lftp_wrapper` is deprecated.
+Use `lftp` directly instead.
+
+// jsc#SLE-15651
+* `pam_ldap` and `nss_ldap` are deprecated.
+Use SSSD instead.
+
+// jsc#SLE-15782
+* PostgreSQL 10 is deprecated and has been moved to the Legacy module.
+For more information about PostgreSQL, see <<#jsc-SLE-17030>>.
+
+* On the POWER architecture, transactional memory is deprecated.
+For more information, see <<#jsc-SLE-16056>>.
+
+// jsc#SLE-17280
+* System containers using LXC have been deprecated and will be removed in {product} 15 SP4.
+For more information, see <<#jsc-SLE-17280>>.
+
+[#jsc-SLE-12191]
+==== Berkeley DB removed from packages
+Berkeley DB, used as a database in certain packages, is dual-licensed under GNU
+AGPLv3/Sleepycat licenses. Because service vendors that redistribute our
+packages could find packages with these licenses potentially detrimental to
+their solutions, we have decided to remove Berkeley DB as a dependency from
+these packages. In the long term, {suse} aims to provide a solution without
+Berkeley DB.
+
+This change affects the following packages:
+
+* `apr-util`
+* `cyrus-sasl`
+* `iproute2`
+* `perl`
+* `php7`
+* `postfix`
+* `rpm`
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated.
+////

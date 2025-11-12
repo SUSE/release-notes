@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<!-- newcat: Driver_Updates.Network -->
+<section id='Drivers.Network'>
+<title>Network Drivers</title>
+
+<para>CHECKIT:SLE11.3</para>
+  <itemizedlist>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Updated bnx driver to version 2.0.4
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Updated bnx2x driver to version 1.52.1-7
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Updated e100 driver to version 3.5.24-k2
+    </para>
+  </listitem>
+
+  <!-- FATE #307117 -->
+  <listitem>
+    <para>
+      Updated tg3 driver to version 3.106
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Added bna driver for Brocade 10Gbit LAN card in version 2.1.2.1
+    </para>
+  </listitem>
+
+  <!-- bnc#561881 -->
+  <listitem>
+    <para>
+      Updated bfa driver to version 2.1.2.1
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Updated qla3xxx driver to version 2.03.00-k5
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Updated sky2 driver to version 1.25
+    </para>
+  </listitem>
+
+  </itemizedlist>
+
+  <!-- bnc#744652 -->
+  <!-- 2013-12-03: fate#315406
+  <section>
+   <title>Updating Firmware for QLogic 82XX based CNA</title>
+   <para>CHECKIT:11.3</para>
+   <para>
+    For QLogic 82XX based CNA, update the firmware to the latest from
+    the QLogic website or whatever is recommended by the OEM in case you
+    are running 4.7.x FW version.
+   </para>
+  </section>
+  -->
+
+  <!-- bnc#742845 -->
+  <!-- bnc#750414 -->
+<!--   <section> -->
+<!--    <title>Broadcom 57712 vNICs/NPAR PCIE Functions Disappearing under -->
+<!--    SP2</title> -->
+
+<!--    <para> -->
+<!-- SP2 scans for the functions on a PCI device in a new way using ARI. -->
+<!-- This can cause some of the functions on the Broadcom 57712 adapter to be -->
+<!-- missing after upgrading to SP2. -->
+<!--    </para> -->
+<!--    <para> -->
+<!-- Contact your system vendor to receive the latest firmware for the -->
+<!-- 57712 adapter that resolves this issue. -->
+<!-- Alternatively, upgrading to kernel 3.0.26 and adding the boot parameter -->
+<!-- 'pci=noari' will allow all the functions on the 57712 adapter to become visible -->
+<!-- under SLES 11 SP2 and later. -->
+<!--    </para> -->
+<!--   </section> -->
+
+</section>

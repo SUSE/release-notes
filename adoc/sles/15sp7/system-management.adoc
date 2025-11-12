@@ -1,0 +1,44 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#system-management]
+=== System management
+
+// Release notes for system management tools:
+//    YaST, Zypper, AutoYaST, KIWI, SUSEconnect, Salt, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-7978]
+==== Effective user limits in systemd setup
+
+Before, the lookup of the effective session limit in a systemd setup was not trivial.
+Now these new properties have been added:
+
+* `EffectiveMemoryMax`
+* `EffectiveMemoryHigh`
+* `EffectiveTasksMax`
+
+
+// !STICKY
+[#zypper-search-packages]
+==== Searching packages across all {slea} modules
+
+In {slea} {this-version} you can search for packages both within and outside of currently enabled {slea} modules using the following command:
+
+[source,bash]
+----
+zypper search-packages SEARCH_TERM
+----
+
+This command contacts the SCC and searches all modules for matching packages.
+This functionality makes it easier for administrators and system architects to find the software packages needed.
+This feature is now also available when a system is registered against RMT.
+

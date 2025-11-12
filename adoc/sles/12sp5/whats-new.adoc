@@ -1,0 +1,22 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-new]
+=== What Is New?
+
+////
+** Update information: link to severity ratings documentation
+** Installation: change, new kernel, compatibility
+** features: features description (not technical)
+** System update: link to the documentation (not just the tittle)
+** Update related notes : specific change to focus on.
+////
+
+{product} {this-ga} introduces many innovative changes compared to {sles} {previous-ga}.
+Here are some of the highlights:
+
+////
+* new 1
+* new 2
+////

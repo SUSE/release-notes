@@ -1,0 +1,79 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-new]
+=== What Is New?
+
+////
+** Update information: link to severity ratings documentation
+** Installation: change, new kernel, compatibility
+** features: features description (not technical)
+** System update: link to the documentation (not just the tittle)
+** Update related notes : specific change to focus on.
+////
+
+==== General Changes in {slea} 15
+
+{product}{nbsp}{this-ga} introduces many innovative changes compared to {product}{nbsp}{previous-ga}.
+The most important changes are listed below.
+
+Migration from {leap} to {product}::
+   Starting with {slea} {this-ga}, we support migrating from {leap} {this-ga} to {product} {this-ga}.
+   Even if you decide to start out with the free community distribution you can later easily upgrade to a distribution with enterprise-class support.
+Extended Package Search::
+   Use the new Zypper command `zypper search-packages` to search across all {suse} repositories available for your product even if they are not yet enabled.
+   This functionality makes it easier for administrators and system architects to find the software packages needed.
+   To do so, it leverages the {scc}.
+{sdk}::
+   With {slea} {this-ga}, the {sdk} is now integrated into the products.
+   Development packages are packaged alongside regular packages.
+   In addition, the _Development Tools_ module contains tools for development.
+RMT Replaces SMT::
+   SMT (Subscription Management Tool) has been removed.
+   Instead, RMT (Repository Mirroring Tool) now allows mirroring SUSE repositories and custom repositories.
+   You can then register systems directly with RMT.
+   In environments with tightened security, RMT can also proxy other RMT servers.
+   If you are planning to migrate SLE 12 clients to version 15, RMT is the supported product to handle such migrations.
+   If you still need to use SMT for these migrations, beware that the migrated clients will have _all_ installation modules enabled.
+
+.Major updates to the software selection:
+Salt::
+   {slea} {this-version} can be managed via Salt, making it integrate better with modern management solutions, such as {suma}.
+Python 3::
+  As the first enterprise distribution, {slea} {this-ga} offers full support for Python 3 development in addition to Python 2.
+Directory Server::
+  389 Directory Server replaces OpenLDAP as the LDAP directory service.
+
+==== Changes in {this-version}
+
+{product}{nbsp}{this-version} introduces changes compared to {product}{nbsp}{previous-sp}.
+The most important changes are listed below.
+
+Media Changes::
+   The Unified Installer and Packages DVDs known from {product} {this-ga} SP1 are deprecated and have been replaced by the following media:
++
+ * *Online Installation Media:*
+   All SUSE Linux Enterprise 15 products can be installed with this stand alone media, after entering a registration key.
+   The necessary packages are fetched from online repositories only.
+   For information about available modules, see <<intro-modulesExtensionsRelated-modules>>.
+ * *Full Installation Media:*
+   All {product} {this-ga} products can be installed without network connection with this media, for offline installation scenarios.
+   The media contains all necessary packages.
+   It consists of directories with module repositories which need to be added manually as needed.
+   RMT (Repository Mirroring Tool) and SUSE Manager provide additional options for disconnected or managed installation.
+Kernel::
+  {slea} {this-version} includes the Linux {kernel-version} kernel.
+  This new kernel release includes upstream features such as 16 million additionally usable IPv4 addresses, utilization clamping support in the task scheduler, power-efficient userspace waiting with the `umwait` x86_64 instructions and many more.
+
+Vagrant Boxes::
+  {slsa} {this-version} and {slda} {this-version} will be available as a Vagrant Box.
+  You can obtain boxes for the following architectures:
++
+* *{sles}:*
+** x86_64: libvirt and VirtualBox
+** AArch64: libvirt
+* *{sled}:*
+** x86_64: libvirt and VirtualBox
+
++
+For more information, see <<virtualization-vagrant-box>>.

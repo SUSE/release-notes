@@ -1,0 +1,166 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#kernel]
+=== Kernel
+
+// Release notes for kernel and kernel module features
+// including hardware drivers, excluding file system modules
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following:
+
+* <<kernel-parameter-changes>>
+* <<jsc-SLE-17630>>
+
+[#jsc-SLE-22593]
+==== Unprivileged eBPF usage has been disabled
+
+A large amount of security issues was found and fixed in the Extended Berkeley Packet Filter (eBPF) code.
+To reduce the attack surface, its usage has been restricted to privileged users only.
+
+Privileged users include `root`.
+Programs with the `CAP_BPF` capability in the newer versions of the Linux kernel can still use eBPF as-is.
+
+To check the privileged state, you can check the value of the `/proc/sys/kernel/unprivileged_bpf_disabled` parameter.
+Value of 0 means "unprivileged enable", and value of 2 means "only privileged users enabled".
+
+This setting can be changed by the `root` user:
+
+* to enable it temporarily for all users by running the command `sysctl kernel.unprivileged_bpf_disabled=0`
+* to enable it permanently by adding `kernel.unprivileged_bpf_disabled=0` to the `/etc/sysctl.conf` file.
+
+
+[#bsc-1182065]
+==== No firmware reserved region can cover this RMRR
+
+You can see the above message on systems with BIOS.
+This is not an OS-specific issue.
+Currently, we are waiting for the BIOS vendor to provide a fix.
+
+
+[#jsc-SLE-10886]
+==== Kernel module compression
+
+Kernel module files are now stored in compressed form.
+As a result, the kernel package storage footprint is almost halved.
+The module file extension has changed from `.ko` to `.ko.xz` and the content is LZMA-compressed.
+All {slea} components that manipulate the kernel modules have been adapted.
+Third-party software that does in-depth examination of kernel modules may require adjustments.
+
+
+[#jsc-SLE-16775]
+==== New scheduler preemption mode switch
+
+Until recently, the process scheduler preemption mode could be selected only in the build configuration.
+This {product} release brings the possibility to choose voluntary preemption mode via a kernel command line option.
+The exact option is `preempt=<value>` and the value can be either `none` (the default) or `voluntary`.
+Note that `preempt=voluntary` changes the system performance characteristics and performance degradations observed in this mode may be excluded from {suse} support guarantees.
+
+
+[#jsc-SLE-16268]
+==== Pstore block oops/panic logging
+
+Oops/panic logs can now be saved to a block or a non-block device before the system crashes.
+After a reboot, they can be retrieved from the `pstore` file system.
+The kernel modules responsible for this are `mtdpstore` and `pstore_blk`.
+For more information, see the documentation file `/usr/src/linux-__KERNEL_VERSION__/Documentation/admin-guide/pstore-blk.rst` from the `kernel-source` package.
+
+[#bsc1190394]
+==== NVMe-oF TCP Support
+Starting from {producta} 15 SP2, NVMe-oF TCP is supported and validated by several partners such as EMC and NetApp.
+
+
+[#bsc-1177876]
+==== `RLIMIT_NOFILE` has been increased
+
+The Linux kernel's default `RLIMIT_NOFILE` hard limit, `fs.file-max`, and `fs.nr_open` have been increased by a newer version of systemd.
+The primary reason is to allow to serve more files without an administrator intervention.
+The `RLIMIT_NOFILE` soft limit has to be increased explicitly to benefit from this change.
+Controlling the maximum number of file descriptors that can be opened by a process is therefore simplified and only the `RLIMIT_NOFILE` hard and soft limits need to be considered by a process.
+
+Note that select(2) is not safe to be used with the increased soft limit.
+For more information, see https://github.com/openSUSE/systemd/blob/SLE15-SP3/NEWS#L2084.
+
+
+[#jsc-SLE-17488]
+==== Support for Goya deep learning inference hardware
+
+The Linux kernel in {producta} {this-version} now supports Habana Labs Goya AI Processor (AIP) PCIe cards that are designed to accelerate deep learning inference and training workloads.
+
+
+[#jsc-SLE-17286]
+==== `util-linux` has been updated
+
+The `util-linux` package has been updated to version 2.36.2.
+For more information about the changes see https://www.kernel.org/pub/linux/utils/util-linux/v2.36/v2.36-ReleaseNotes.
+
+
+// !STICKY
+[#kernel-limits]
+==== Kernel limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {sles} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|ARMv8 (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|256
+|2048
+|768
+
+|Maximum amount of RAM (theoretical/certified)
+|>1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|10{nbsp}TiB/{zwsp}256{nbsp}GiB
+|1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|256{nbsp}TiB/{zwsp}n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/{zwsp}128{nbsp}TiB
+|n.a.
+|4{nbsp}PiB^1^/{zwsp}2{nbsp}EiB
+|256{nbsp}TiB/{zwsp}256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1,048,576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 4{nbsp}PiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".

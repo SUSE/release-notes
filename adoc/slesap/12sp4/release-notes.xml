@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Server for SAP Applications 12 SP4"
+   component="Release Notes"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>12 SP4</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications combines SUSE Linux
+    Enterprise Server and its High Availability Extension with additional
+    software specifically meant to simplify running and managing SAP
+    applications. These are the release notes of SLES for SAP Applications.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media for SUSE Linux Enterprise Server for SAP
+    Applications. Any documentation (if installed) can be found in the
+    <filename>/usr/share/doc/</filename> directory of the installed system.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SLES for SAP Applications</title>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 12 SP4 which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP4/"/>.
+  </para>
+<!-- This section is commented because we are (ab)using the FATE category of
+  the same name for "Features." This one was empty anyway- sknorr, 2016-09-12
+  -->
+<!-- <section id="Intro.New" role="remove-empty">
+   <title>What Is New?</title>
+   <para></para>
+  </section> -->
+  <section id="Intro.Support">
+   <title>Support Statement for SLES for SAP Applications</title>
+   <para>
+    Support requires an appropriate subscription from SUSE. For more
+    information, see
+    <ulink url="https://www.suse.com/products/sles-for-sap"/>.
+   </para>
+   <para>
+    General Support Statement
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      L1: Installation and problem determination - technical support
+      designed to provide compatibility information, installation and
+      configuration assistance, usage support, on-going maintenance and
+      basic troubleshooting. Level 1 Support is not intended to correct
+      product defect errors.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L2: Reproduction of problem isolation - technical support designed to
+      duplicate customer problems, isolate problem areas and potential
+      issues, and provide resolution for problems not resolved by Level 1
+      Support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L3: Code Debugging and problem resolution - technical support designed
+      to resolve complex problems by engaging engineering in patch
+      provision, resolution of product defects which have been identified by
+      Level 2 Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (unchanged or not
+    recompiled) packages.
+   </para>
+  </section>
+ </section>
+<!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+ <section id="Intro.New" remap="Intro:New">
+  <title>Features</title>
+  <para>
+   This section includes an overview of major new features provided by SUSE
+   Linux Enterprise Server for SAP Applications.
+  </para>
+  <section role="notoc" id="jsc-SLE-12242">
+   <title>Priority Fencing Delay Has Been Added</title>
+   <para>
+    This change introduces a specified delay for the fencings that are targeting
+    the lost nodes with the highest total resource priority in case there is no
+    majority of the nodes in the given cluster partition.
+   </para>
+   <para>
+     By default, priority fencing delay is disabled.
+   </para>
+   <para>
+    For more information, see <literal>priority-fencing-delay</literal> in the
+    <ulink url="https://www.clusterlabs.org/pacemaker/doc/2.1/Pacemaker_Explained/html/options.html#cluster-options">Pacemaker documentation</ulink>.
+   </para>
+  </section>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325957" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325957" -->
+   <title>Unattended Mode for SAP HANA-SR Wizard on Bare-Metal</title>
+   <para>
+    Setting up a reproducable SAP HANA-SR infrastructure on several machines
+    can be lot of administrative work. The SAP HANA-SR wizard is a manual
+    tool that reduces the workload. However, it still requires some manual
+    steps by admins to set it up.
+   </para>
+   <para>
+    With this version of SUSE Linux Enterprise Server for SAP Applications,
+    we are introducing a new unattended mode for the SAP HANA-SR wizard.
+    Administrators now only have to define a configuration inside the wizard
+    once and can then re-apply the saved configuration file without user
+    interaction.
+   </para>
+   <para>
+    To deploy a preconfigured HANA-SR environments, we offer an unattended
+    installation mode for the HANA-SR wizard on bare-metal servers. To use
+    it, first create a configuration file by running the YaST
+    <literal>sap_ha</literal> module manually and saving the configuration
+    on its last screen. This configuration can then be used for automatic
+    deployments using the following CLI commands:
+   </para>
+   <orderedlist>
+    <listitem>
+     <para>
+      Upload and validate the configuration automatically: <literal>yast2
+      sap_ha readconfig &lt;CONFIGURATION_FILE_PATH&gt;</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Import, validate, and install the cluster unattendedly, based on the
+      provided configuration file: <literal>yast2 sap_ha readconfig
+      &lt;CONFIGURATION_FILE_PATH&gt; unattended</literal>
+     </para>
+    </listitem>
+   </orderedlist>
+  </section>
+  <section role="notoc" id="fate-324542" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324542" -->
+   <title>SAP HANA System Replication Wizard Now Available for Azure Deployments</title>
+   <para>
+    Setting up a reproducible SAP HANA System Replication infrastructure on
+    several machines can be a lot of administrative work. The SAP HANA-SR
+    wizard is a manual tool that reduces the workload. However, it still
+    requires some manual steps by administrators to set it up.
+   </para>
+   <para>
+    With this version of SUSE Linux Enterprise Server for SAP Applications,
+    we are extending the SAP HANA-SR wizard capabilities for the Azure
+    Cloud. Administrators can now use the SAP HANA-SR Wizard to configure
+    the SAP HANA cluster on Azure and only have to define a configuration
+    inside the wizard once and can then re-apply the saved configuration
+    without user interaction.
+   </para>
+   <para>
+    To deploy a preconfigured SAP HANA-SR environments, we offer an
+    unattended installation mode for the SAP HANA-SR wizard. To use it,
+    first create a configuration file by running the YaST module
+    <literal>sap_ha</literal> manually and saving the configuration on its
+    last screen. This configuration can then be used for automatic
+    deployments using the following commands:
+   </para>
+   <orderedlist>
+    <listitem>
+     <para>
+      Upload and validate the configuration automatically: <literal>yast2
+      sap_ha readconfig &lt;CONFIGURATION_FILE_PATH&gt;</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Import, validate, and install the cluster unattendedly, based on the
+      provided configuration file: <literal>yast2 sap_ha readconfig
+      &lt;CONFIGURATION_FILE_PATH&gt; unattended</literal>
+     </para>
+    </listitem>
+   </orderedlist>
+   <para>
+    For information on Near Zero Downtime for SAP HANA System Replication,
+    see also
+    <ulink url="https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.03/en-US/ee3fd9a0c2e74733a74e4ad140fde60b.html">Use
+    SAP HANA System Replication for Near Zero Downtime Upgrades</ulink>.
+   </para>
+  </section>
+  <section role="notoc" id="fate-323465" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323465" -->
+   <title>SAP NetWeaver Integration</title>
+   <para>
+    The SAP NetWeaver integration has been improved to match the growing
+    usability of cluster solutions especially during SAP maintenance
+    procedures. This includes the visibility of the cluster solution in the
+    SAP Management Console (SAP MC) and support for SAP kernel updates.
+   </para>
+   <para>
+    <literal>sap_suse_cluster_connector</literal> has been updated to API
+    version 3 to support the newest features and calls from
+    <literal>sapstartsrv</literal>. This includes transparent support for
+    SAP rolling kernel switches (RKS) for central services instances and
+    replication instances.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320368" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320368" -->
+   <title>yast2-hana-update Provides an Easier Way to Upgrade SAP HANA Cluster</title>
+   <para>
+    An important and regularly occurring maintenance task for SAP HANA
+    clusters is upgrading the SAP HANA database. If installing the initial
+    cluster is already critical, upgrading is even more so, as you now need
+    to care about data integrity and system availability.
+   </para>
+   <para>
+    The <literal>yast2-hana-update</literal> module provides a YaST workflow
+    that will guide you step-by-step on the process of upgrading your SAP
+    HANA in a SUSE cluster setup. The entire process is based on the
+    so-called Near Zero Downtime Upgrade process described in the official
+    SAP HANA documentation. The wizard handles the part of the procedure
+    related to the SUSE cluster, leaving only some steps related to be
+    performed manually by the SAP HANA administrator.
+   </para>
+  </section>
+  <section role="notoc" id="fate-325647" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325647" -->
+   <title>Support for SAP HANA Workloads on Intel Optane DC Memory</title>
+   <para>
+    SUSE Linux Enterprise Server 12 SP4 and SUSE Linux Enterprise Server for
+    SAP Applications 12 SP4 add support for Intel Optane DC memory. This
+    enables SAP workloads, such as SAP HANA to benefit from persistent
+    memory in the future to shorten start times of the system and provide
+    better overall system stability. Currently, configurations up to 12 TB
+    of NVDIMMs plus 3 TB of regular DIMMS of supported memory and 4 socket
+    machines have been tested. Additional configurations will be tested over
+    time.
+   </para>
+   <para>
+    From a file system perspective, the XFS file system is supported for the
+    NVDIMMs, with SAP HANA running in DAX mode. SUSE intends to keep the
+    leading position as technology provider, working closely with SAP on
+    future developments.
+   </para>
+   <para>
+    If there are <literal>pmem</literal> namespaces, these need to be
+    destroyed before the installation. To mount persistent memory directly
+    on boot, we recommend adding the <literal>nofail</literal> mount option
+    in <literal>/etc/fstab</literal> as it can take a long time for the
+    <literal>/dev/pmem</literal> devices to become usable.
+   </para>
+   <para>
+    For example:
+   </para>
+<screen>/dev/pmem0    /mnt/pmem0    xfs    dax,nofail    0  0
+/dev/pmem1    /mnt/pmem1    xfs    dax,nofail    0  0</screen>
+   <para>
+    Namespaces need to be created individually. That means, you need to
+    execute the following command for each namespace you want to create:
+   </para>
+<screen>ndctl create-namespace --mode=fsdax --map=dev</screen>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME</replaceable>.rpm</screen>
+    <para>
+     <replaceable>FILE_NAME</replaceable> is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological log of all changes made to the updated
+     packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SLES for SAP Applications media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/sles_for_sap/"/> contains
+     additional or updated documentation for SLES for SAP Applications.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For the latest product news from SUSE, visit
+     <ulink url="http://www.suse.com/products/"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+  <para>
+   Thank you for using SUSE Linux Enterprise Server for SAP Applications in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise Server for SAP Applications Team.
+  </para>
+ </section>
+</article>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+
+<section id="Features.Server">
+ <title>Server</title>
+ <para/>
+ <note>
+  <para>
+	In the following text version numbers do not necessarily give the 
+	final patch- and security-status of an application, as SUSE may have added
+	additional patches to the specific version of an application.
+  </para>
+ </note>
+
+	<remark>Versions will be mentioned via FATE:
+	Apache: FATE#311973: virtual hosting: provide several SSL based domains on one IP address through Server Name Indication(SNI)
+	Bind: FATE#308859: Upgrade BIND to long term supported version 9.6
+	Samba: FATE#311645: Samba server version update
+	</remark>
+
+</section>

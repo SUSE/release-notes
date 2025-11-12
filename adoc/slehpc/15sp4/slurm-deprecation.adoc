@@ -1,0 +1,43 @@
+== Deprecation of old Versions of Slurm
+
+SLE receives a new Slurm version for roughly every second upstream release. To
+facilitate this, old version of Slurm will go out of maintenance successively.
+Users of these versions are encouraged to migrate to a later version
+before the expiry date. Note, that Slurm only allows migration two
+versions upwards without loss of data. To migrate to the latest version,
+migrations to intermedite versions may be required.
+
+Once Slurm versions are out of maintenance, updates to to packages depending
+on this Slurm version will no longer be provided. In particular, this will
+be the case for `pdsh-slurm` - the Slurm plugin to Pdsh. Note that
+`pdsh-slurm` is compatible to the Slurm initially shipped with a
+product/service pack) while packages `pdsh-slurm_<slurm_version>` is
+compatible with an upgade version of Slurm.
+
+.Table Sunset Schedule for Slurm
+|===
+| Slurm Version | Released for Service Pack | Support End Date
+| 17.02
+| SLE-12-SP2
+| May 2024
+
+| 18.08
+| SLE-15-SP1 and older
+| October 2024
+
+| 20.02
+| SLE-15-SP2 and older
+| Januar 2025
+
+| 20.11
+| SLE-15-SP3/4 and older
+| January 2026
+
+| 22.05
+| SLE-15-SP4 and older
+| December 2026
+
+| 23.02
+| SLE-15-SP5/6 and older
+| January 2028
+|===

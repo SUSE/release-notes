@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="hpc-tool-slurm"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Slurm &mdash; Utility for HPC Workload Management</title>
+ <para>
+  Slurm is an open-source, fault-tolerant, and highly scalable cluster
+  management and job scheduling system for Linux clusters containing up to
+  65,536 nodes. Components include machine status, partition management,
+  job management, scheduling and accounting modules.
+ </para>
+ <section xml:id="hpc-tool-slurm-install">
+  <title>Installing Slurm</title>
+  <para>
+   For a minimal setup to run Slurm with MUNGE support on
+   one compute
+   node and multiple control nodes, follow these instructions:
+  </para>
+  <procedure>
+   <step>
+    <para>
+     Before installing Slurm, create a user and a group called
+     <literal>slurm</literal>.
+    </para>
+    <important>
+     <title>Make Sure of Consistent UIDs and GIDs for Slurm's Accounts</title>
+     <para>
+      For security reasons, Slurm does not run as the user
+      <systemitem class="username">root</systemitem> but under its own
+      user. It is important that the user
+      <systemitem class="username">slurm</systemitem> has the
+      same UID/GID across all nodes of the cluster.
+     </para>
+     <para>
+      If this user/group does not exist, the package
+      <package>slurm</package> creates this user and group when it is
+      installed. However, this does not guarantee
+      that the generated UIDs/GIDs will be identical on all systems.
+     </para>
+     <para>
+      Therefore, we strongly advise you to create the user/group
+      <systemitem class="username">slurm</systemitem> before
+      installing <package>slurm</package>.
+      If you are using a network directory service such as LDAP for user and
+      group management, you can use it to
+      provide the <systemitem class="username">slurm</systemitem>
+      user/group as well.
+     </para>
+    </important>
+   </step>
+   <step>
+    <para>
+     Install <package>slurm-munge</package> on the control and compute
+     nodes: <command>zypper in slurm-munge</command>.
+    </para>
+   </step>
+   <step>
+    <para>
+     Configure, enable and start <command>munge</command> on the control and
+     compute nodes as described in <xref linkend="hpc-tool-mrsh-mrlogin"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     On the compute node, edit <filename>/etc/slurm/slurm.conf</filename>:
+    </para>
+    <substeps>
+     <step>
+      <para>
+       Configure the parameter
+       <literal>ControlMachine=<replaceable>CONTROL_MACHINE</replaceable></literal>
+       with the host name of the control node.
+      </para>
+      <para>
+       To find out the correct host name, run
+       <command>hostname -s</command> on the control node.
+      </para>
+     </step>
+     <step>
+      <para>
+       Additionally add:
+      </para>
+<screen>NodeName=<replaceable>NODE_LIST</replaceable> Sockets=<replaceable>SOCKETS</replaceable> \
+ CoresPerSocket=<replaceable>CORES_PER_SOCKET</replaceable> \
+ ThreadsPerCore=<replaceable>THREADS_PER_CORE</replaceable> \
+ State=UNKNOWN</screen>
+      <para>
+       and
+      </para>
+<screen>PartitionName=normal Nodes=<replaceable>NODE_LIST</replaceable> \
+ Default=YES MaxTime=24:00:00 State=UP</screen>
+      <para>
+       Replace the following parameter values:
+      </para>
+      <itemizedlist>
+       <listitem>
+        <para>
+         <replaceable>NODE_LIST</replaceable> denotes the list of compute
+         nodes. That is, it should contain the output of <command>hostname
+         -s</command> run on each compute node, either comma-separated or as
+         ranges (for example, <literal>foo[1-100]</literal>).
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         <replaceable>SOCKETS</replaceable> denotes the number of sockets.
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         <replaceable>CORES_PER_SOCKET</replaceable> denotes the number of
+         cores per socket.
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         <replaceable>THREADS_PER_CORE</replaceable> denotes the number of
+         threads for CPUs which can execute more than one thread at a time.
+        </para>
+       </listitem>
+      </itemizedlist>
+      <para>
+       Make sure that <replaceable>SOCKETS</replaceable> *
+       <replaceable>CORES_PER_SOCKET</replaceable> *
+       <replaceable>THREADS_PER_CORE</replaceable> does not exceed the
+       number of system cores on the compute node.
+      </para>
+     </step>
+     <step>
+      <para>
+       On the control node, copy <filename>/etc/slurm/slurm.conf</filename>
+       to all compute nodes:
+      </para>
+<screen>scp /etc/slurm/slurm.conf <replaceable>COMPUTE_NODE</replaceable>:/etc/slurm/</screen>
+     </step>
+     <step>
+      <para>
+       On the control node, start <systemitem class="daemon">slurmctld</systemitem>:
+      </para>
+<screen>systemctl start slurmctld.service</screen>
+      <para>
+       Also enable it so that it starts on every boot:
+      </para>
+<screen>systemctl enable slurmctld.service</screen>
+     </step>
+     <step>
+      <para>
+       On the compute nodes, start and enable
+       <systemitem class="daemon">slurmd</systemitem>:
+      </para>
+<screen>systemctl start slurmd.service
+systemctl enable slurmd.service</screen>
+      <para>
+       The last line causes <systemitem class="daemon">slurmd</systemitem>
+       to be started on every boot automatically.
+      </para>
+     </step>
+    </substeps>
+   </step>
+  </procedure>
+ </section>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="slurm-deprecation.xml"/>
+ <section xml:id="hpc-tool-slurm-add-cluster">
+  <title>Adding a Cluster to the Database</title>
+  <para>
+   When using <literal>slurmdbd</literal> make sure a table for a cluster is
+   added to the database before <literal>slurmctld</literal> is started (or
+   restart it afterwards). Otherwise, no accounting information may be written
+   to the database.
+  </para>
+  <para>
+   To add a cluster table, run:
+   <command>sacctmgr -i add cluster <replaceable>CLUSTERNAME</replaceable></command>.
+  </para>
+ </section>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="hpc-tool-slurm-upgrade.xml"/>
+ <section xml:id="slurm-more-information">
+  <title>For More Information</title>
+  <para>
+   For further documentation, see the
+   <link xlink:href="https://slurm.schedmd.com/quickstart_admin.html">Quick Start
+   Administrator Guide</link> and
+   <link xlink:href="https://slurm.schedmd.com/quickstart.html">Quick Start User
+   Guide</link>. There is further in-depth documentation on the
+   <link xlink:href="https://slurm.schedmd.com/documentation.html">Slurm
+   documentation page</link>.
+  </para>
+ </section>
+</section>

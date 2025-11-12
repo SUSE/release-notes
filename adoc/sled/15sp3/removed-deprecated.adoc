@@ -1,0 +1,35 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removedDeprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that were removed from {product} or
+will be removed in upcoming versions.
+
+[NOTE]
+.Package changes in {this-version}
+For more information about all package changes since the last version, see <<intro-package-changes>>.
+
+
+[#removedDeprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages were removed from {product} {this-version}.
+
+
+[#removedDeprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+// jsc#SLE-17839
+* The `imgen` package, containing Mellanox firmware generator, is deprecated and will be removed with {this-ga}{nbsp}{next-sp}.
+
+////
+[#<jsc-SLE-10978>]
+==== Example Entry
+
+NodeJS 8 will be discontinued in SUSE Linux Enterprise 15 SP3
+////
+

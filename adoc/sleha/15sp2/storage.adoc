@@ -1,0 +1,15 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#storage]
+== Storage
+
+This section list storage-related information for {product}{nbsp}{this-version}.
+////
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

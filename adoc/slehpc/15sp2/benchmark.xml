@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="functionality-benchmark"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Profiling and Benchmarking Libraries and Tools</title>
+ <para>
+  Performance optimization plays an important role in HPC. That applications
+  are run across multiple cluster nodes poses an additional challenge.
+  &shpca; provides a number of tools for profiling MPI applications and
+  benchmarking MPI performance.
+ </para>
+
+ <section xml:id="benchmark-intel-mpi">
+  <title>IMB &mdash; Intel* MPI Benchmarks</title>
+  <para>
+   Intel* MPI Benchmarks provides a set of elementary benchmarks that conform
+   to MPI-1, MPI-2, and MPI-3 standard. One can run all of the supported
+   benchmarks, or a subset specified in the command line using one executable
+   file. Use command-line parameters to specify various settings, such as time
+   measurement, message lengths, and selection of communicators. For details, see
+   the Intel* MPI Benchmarks User's Guide located at:
+   <link xlink:href="https://software.intel.com/en-us/imb-user-guide"/>.
+  </para>
+  <para>
+   For the IMB binaries to be found, a compiler toolchain and an MPI flavor
+   needs to be loaded beforehand. To load this, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> imb</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>imb-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="benchmark-papi">
+  <title>PAPI HPC Library &mdash; Consistent Interface for Hardware Performance Counters</title>
+  <para>
+   PAPI (package <package>papi</package>) provides a tool with a
+   consistent interface and methodology for use of the performance counter
+   hardware found in most major microprocessors.
+  </para>
+  <para>
+   This package works with all compiler toolchains and does not require a
+   compiler toolchain to be selected. The latest version provided can be
+   loaded by running:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> papi</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>papi-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>papi-hpc-devel</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   For general information about Lmod and modules, see
+   <xref linkend="hpc-tool-lmod"/>.
+  </para>
+ </section>
+
+ <section xml:id="benchmark-mpip">
+  <title>mpiP &mdash; lightweight MPI Profiling Library</title>
+  <para>
+   mpiP is a lightweight profiling library for MPI applications.
+   Because it only collects statistical information about MPI
+   functions, mpiP generates considerably less overhead and much
+   less data than tracing tools. All the information captured
+   by mpiP is task-local. It only uses communication during
+   report generation, typically at the end of the experiment,
+   to merge results from all of the tasks into one output file.
+  </para>
+  <para>
+   For this library a compiler toolchain and and MPI flavor
+   needs to be loaded beforehand. To load this, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> mpip</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>mpiP-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>mpiP-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>mpiP-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-doc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+</section>

@@ -1,0 +1,166 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+// This section is intended as a quick-to-consume list of deprecations/removals
+// Do not add longer notes to this section. Instead:
+//   * Add one list item per removed/deprecated feature/package
+//   * Optionally, add a longer note to the appropriate section in #all-architecture.
+//     Cross-reference the longer note in this section with <<note-id>>.
+
+This section lists features and packages that were removed from {product} or will be removed in upcoming versions.
+
+
+[NOTE]
+.Package and module changes in {this-version}
+For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+[#removed]
+=== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+////
+// jsc#EX-0000
+* Example Removed Feature has been removed.
+Use Replacement Feature instead.
+
+// jsc#EX-0000
+* Example Removed Feature 2 has been removed.
+For more information, see <<jsc-SLE-0000>>.
+////
+
+* Vagrant boxes of {product} have been discontinued.
+* `bind-chroot` has been removed. See <<bsc-1201266>>.
+* `bzr` has been removed. See <<jsc-SLE-21914>>.
+* MariaDB 10.5 has been removed.
+* PostgreSQL 12 and earlier have been removed.
+* The `raw` application of the `util-linux` package has been removed. See <<jsc-SLE-21111>>.
+// jsc#SLE-21259
+* `nodejs12` has been removed.
+// jsc#SLE-20309
+* The `udev` package has been removed as a dependency of the `rpm` package.
+// jsc#SLE-17839
+* The `imgen` package, containing Mellanox firmware generator, has been removed.
+* The OpenLDAP server has been removed.
+For more information, see <<#jsc-SLE-16552>>.
+* Python 2 has been removed entirely from {slea} with {slea} 15 SP4 and is no longer be available via the __Python 2__ SLE module.
+For more information, see <<jsc-SLE-16747>>.
+* NXP LX2160A revision 1 silicon quirks have been removed.
+For more information, see <<jsc-SLE-17153>>.
+* Support for libvirt LXC containers has been removed.
+For more information, see <<#jsc-SLE-16682>>.
+// jsc#SLE-17280
+* System containers using LXC have been removed.
+For more information, see <<#jsc-SLE-17280>>.
+// jsc#SLE-11448
+* `pam_ldap` and `nss_ldap` have been removed.
+Use SSSD instead.
+// jsc#SLE-20923
+* libmodman has been removed.
+libproxy is now shipped with an internal modman.
+// jsc#SLE-23694
+* Eclipse has been removed.
+* `systemd-journal-remote` has been removed.
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {product}.
+
+// jsc#PED-4018
+* `docker-runc` has been deprecated and will be removed in {productnameshort} 15 SP6. Use `runc` instead.
+// jsc#PED-8166
+* PHP 7.4 will be removed in {productnameshort} 15 SP7.
+* PostgreSQL 13 has been deprecated and moved to the Legacy module.
+* TLS 1.0 and 1.1 are deprecated and will be removed in a future service pack of {product} 15.
+For more information, see <<jsc-SLE-9294>>.
+// jsc#SLE-23196
+// also bsc#1191738
+* OSN support on IBM Z has been deprecated.
+// jsc-SLE-20348
+* The `mkinitrd` wrapper has been replaced with `dracut` everywhere and will be removed in the next major version of {product}.
+// jsc#SLE-17861
+* The `lftp_wrapper` package has been deprecated and will be removed in the near future.
+It is still available as an `update-alternative` for `ftp`, but it is no longed used by default.
+The default implementation of `ftp` is now the `lftp` executable.
+// jsc#SLE-7690, jsc#SLE-7192, jsc#SLE-10912, jsc#SLE-9004
+* Support for System V `init.d` scripts is deprecated and will be removed with the next major version of {product}.
+In consequence, the `/etc/init.d/halt.local` initscript, `rc__SERVICE__` controls, and `insserv.conf` are also deprecated.
+For more information, see <<#jsc-SLE-7690>>.
+// jsc#SLE-17859
+* `lftp_wrapper` is deprecated.
+Use `lftp` directly instead.
+* On the POWER architecture, transactional memory is deprecated.
+For more information, see <<#jsc-SLE-16056>>.
+// jsc#SLE-21060
+* The `opa-fmgui` package is not maintained upstream anymore.
+It has been deprecated, moved to the Legacy module, and will be removed in a future service pack.
+// jsc#SLE-19359
+* The `thunderbolt-user-space` package does not work properly with a later revision of the TBT hardware.
+For this reason, {productnameshort} {this-version} now includes the `bolt-tools` package which can work with both new and old TBT hardware.
+The `thunderbolt-user-space` package will be removed in {productnameshort} {next-version} to allow time for customers to adapt.
+// jsc#SLE-24335
+* NIS is deprecated and will be removed with the next major version of {product}.
+This includes packages implementing NIS, like `ypserv`.
+NIS code will be removed from SUSE tools and all NIS client code will be dropped with the next major version of {product}.
+
+Also see the following release notes elsewhere:
+
+* <<bsc-1215156>>
+* <<jsc-SLE-18816>>
+* <<jsc-SLE-22664>>
+* <<ad-dc-deprecated>>
+* <<jsc-SLE-24334>>
+* <<nt-dc-deprecated>>
+* <<samba-nis-deprecated>>
+
+[#bsc-1216929]
+==== `sched_` parameters are deprecated
+
+The following scheduler parameters have been moved to `debugfs` and will be removed in the future.
+They have been moved from `/proc/sys/kernel/sched_*` to `/sys/kernel/debug/sched/*`:
+
+* `sched_latency_ns`
+* `sched_migration_cost_ns`
+* `sched_min_granularity_ns`
+* `sched_nr_migrate`
+* `sched_tunable_scaling`
+* `sched_wakeup_granularity_ns`
+
+The sysctls still exist but a deprecation warning will be logged and there is no guarantee that either the sysctls or debugfs options will exist in a future {slea} release due to changes in the CPU scheduler implementation.
+
+
+[#jsc-SLE-12191]
+==== Berkeley DB removed from packages
+Berkeley DB, used as a database in certain packages, is dual-licensed under GNU
+AGPLv3/Sleepycat licenses. Because service vendors that redistribute our
+packages could find packages with these licenses potentially detrimental to
+their solutions, we have decided to remove Berkeley DB as a dependency from
+these packages. In the long term, {suse} aims to provide a solution without
+Berkeley DB.
+
+This change affects the following packages:
+
+* `apr-util`
+* `cyrus-sasl`
+* `iproute2`
+* `perl`
+* `php7`
+* `postfix`
+* `rpm`
+
+////
+// jsc#EX-0000
+* Example Deprecated Feature 3 has been deprecated.
+////

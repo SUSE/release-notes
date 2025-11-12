@@ -1,0 +1,50 @@
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+
+<!ENTITY suse "SUSE">
+<!ENTITY this-version "15 GA">
+<!ENTITY next-version "15 SP1">
+<!ENTITY rel-date "July 2018">
+
+<!ENTITY opensuse "open&suse;">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sles "&sle; Server">
+<!ENTITY caasp "&suse; Container as a Service Platform">
+
+<!ENTITY hpc "High Performance Computing">
+<!ENTITY hpca "HPC">
+<!ENTITY shpc "&sle; &hpc;">
+<!ENTITY shpca "&slea; &hpca;">
+<!ENTITY product "&shpc;">
+
+<!ENTITY mos "&slea; MicroOS">
+<!ENTITY sleha "&sle; High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &sleha;">
+<!ENTITY slert "&sle; Real Time">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&sle; &sdk;">
+<!ENTITY we "Workstation Extension">
+<!ENTITY slewe "&sle; &we;">
+<!ENTITY slea "SLE">
+<!ENTITY slda "&slea;D">
+<!ENTITY slsa "&slea;S">
+<!ENTITY haa "&slea; HA">
+<!ENTITY haga "&slea; HA Geo">
+<!ENTITY slewea "&sle;-WE">
+<!ENTITY caaspa "CaaSP">
+<!ENTITY sdka "&slea; &sdk;">
+<!ENTITY ibmz "IBM z Systems">
+
+<!ENTITY kernel-version "4.4">
+<!ENTITY mdash "—">
+
+<!-- FIXME: Update to correct SLES 15 URL before the release. -->
+<!ENTITY doc-url "https://www.suse.com/documentation/sles-15">
+<!ENTITY rn-url "https://www.suse.com/releasenotes">
+
+<!ENTITY bugtracker-pi '<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise Server 15" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>'>

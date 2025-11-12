@@ -1,0 +1,212 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#development]
+=== Development
+
+////
+Also see the following additional note:
+
+* <<#jsc-SLE-16764>>
+////
+
+// Release notes for development tool/library features:
+//   JVM, Python, GCC, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-11036]
+==== `redis` has been added
+
+The `redis` package version 6.0 has been added to the _Server Applications Module_.
+Redis bindings for various programming languages have been added to {ph}.
+
+
+[#jsc-SLE-17893]
+==== `icu` 69.1 has been added
+
+This `icu` package version 69.1 is available in addition to the regular `icu` (currently version 65.1).
+The package is named `icu691`.
+
+
+[#jsc-SLE-23332]
+==== `git` has been updated
+
+The `git` package has been updated to version 2.35.3.
+Among others, there were these notable changes since the last version:
+
+* introduced SSH commit signing
+* ".gitattributes", ".gitignore", and ".mailmap" files that are symbolic links are ignored
+
+See the https://github.com/git/git/tree/master/Documentation/RelNotes[full changelog] for more information.
+
+
+[#jsc-SLE-21016]
+==== `tcl` has been updated
+
+The `tcl` package has been updated to version 8.6.12.
+See the https://sourceforge.net/projects/tcl/files/Tcl/8.6.11/tcltk-release-notes-8.6.11.txt/download[full changelog] for more information.
+
+
+[#jsc-SLE-23381]
+==== Rust developer tools have been added
+
+The following packages have been added to the _Development Tools Module_ to improve the Rust developer's experience:
+
+* `cargo-packaging` - macros to assist with Cargo and Rust packaging
+* `rustup` - tool for managing user Rust toolchains
+* `sccache` - compiler caching tool
+
+
+[#jsc-SLE-17498]
+==== `nodejs-common` has been updated
+
+The `nodejs-common` package has been updated.
+It provides these sub-packages:
+
+* `nodejs-default`
+* `npm-default`
+* `nodejs-devel-default`
+
+In {product} {this-version}, the NodeJS version of these subpackages is set to `nodejs14`.
+
+
+[#jsc-SLE-17159]
+==== `python-kubernetes` has been added
+
+The `python-kubernetes` package has been added.
+It is the official Python client library for Kubernetes.
+
+
+[#jsc-SLE-17487]
+==== `erlang` has been updated to version 22.3
+
+The `erlang` package has been updated to version 22.3.
+
+For more information, see https://www.erlang.org/news/137.
+
+// related: bsc#1181134
+[#jsc-DOCTEAM-12]
+==== `rpcgen` has been moved from `glibc-devel` to its own package
+
+`rpcgen` has been removed from `glibc-devel`.
+
+As a replacement, the `rpcgen` package has been added.
+
+
+// related: jsc#SLE-16036
+// related: bsc#1191917
+// related: jsc#SLE-21235
+[#jsc-SLE-10977]
+==== Web and Scripting Module: NodeJS 16 and NodeJS 14 have been added, NodeJS 8 and NodeJS 10 have been removed
+
+NodeJS 8 (package `nodejs8`) and NodeJS 10 (package `nodejs10`) have been removed from the {slea} Module __Web and Scripting__.
+NodeJS 14 (package `nodejs14`) and NodeJS 16 (package 'nodejs16') have been added to the module.
+
+
+// also: jsc#SLE-16243
+[#jsc-SLE-16674]
+==== New Python modules: `python3-kerberos`, `python-cassandra-driver`, and `python-arrow` have been added
+
+The following new Python modules have been added as packages:
+
+* `python3-kerberos` is a Python Kerberos module that is available in addition to `python-krb5`.
+Both modules provide the same `.so` objects and cannot coexist.
+* `python3-cassandra-driver` can initialize tables in Apache Cassandra
+* `python3-arrow` handles timestamps
+
+
+[#bsc-1178616]
+==== Package `compat-libpthread-nonshared` has been added
+
+A `glibc` package update in {producta} {this-version} caused some enterprise software to fail due to the missing `libpthread_nonshared.a` file.
+This includes the products _Oracle Database_ and _Oracle Forms & Reports_.
+
+The newly provided `compat-libpthread-nonshared` package enables applications that directly reference `libpthread_nonshared.a` to work properly.
+
+
+[#jsc-SLE-12262]
+==== `librabbitmq` has been added
+
+The package `librabbitmq` v0.10.0 has been added.
+It is C-language AMQP client library for use with the RabbitMQ broker.
+
+
+[#jsc-SLE-13738]
+==== Support for Python 3.9 has been added
+
+Support for Python version 3.9 has been added.
+Right now, this is only an interpreter, including `pip` and `setuptools`.
+
+This is in addition to the system-default Python 3.6 that has already been present and continues to be available.
+All {slea} `python3-*` packages are only verified to be compatible with the system Python.
+
+[#jsc-SLE-13756]
+==== `glibc` has been updated to version 2.31
+
+The `glibc` package has been updated to version 2.31.
+For more information about changes see https://www.gnu.org/software/libc/.
+
+
+// !STICKY
+// also: FATE#327577
+[#jsc-SLE-16746]
+==== Python 2 is deprecated
+
+The `python` executable is only provided via the __Python{nbsp}2__ module, not via the default repositories.
+
+With {product} 15{nbsp}SP1, {suse} has started to phase out support for Python{nbsp}2 in {slea}.
+Within the standard distribution, only Python{nbsp}3 (executable name `python3`) is available.
+Python 2 (executable names `python2` and `python`) is only provided via the __Python{nbsp}2__ {slea} module.
+This module is disabled by default and will be removed entirely starting with {slea} 15 SP4.
+
+Python scripts usually expect the `python` executable (without a version number) to refer to the Python{nbsp}2.x interpreter.
+If the Python{nbsp}3 interpreter is started instead, this can lead to applications failing or misbehaving.
+For this reason, {suse} has decided _not_ to ship a symbolic link `/usr/bin/python` pointing to the Python{nbsp}3 executable.
+
+To run Python{nbsp}2 scripts, make sure to enable the Python{nbsp}2 module and install the package `python`.
+
+
+// !STICKY
+[#java-version]
+==== Supported Java versions
+
+The following Java implementations are available in {product} {this-version}:
+
+// relevant source: https://confluence.suse.com/display/SLE/Java
+//             and: bsc#1171541
+
+[cols="33%,17%,17%,33%" options="header"]
+|===
+|Name (Package Name)
+|Version
+|Module
+|Support
+
+|OpenJDK +
+(`java-11-openjdk`)
+|11
+|Base System
+|SUSE, L3, until 2026-12-31
+
+|OpenJDK +
+(`java-1_8_0-openjdk`)
+|1.8.0
+|Legacy
+|SUSE, L3, until 2026-12-31
+
+|IBM Java +
+(`java-1_8_0-ibm`)
+|1.8.0
+|Legacy
+|External, until 2025-04-30
+|===
+

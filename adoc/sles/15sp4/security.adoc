@@ -1,0 +1,128 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#security]
+=== Security
+
+// Release notes for security tool/library features:
+//    new TLS standards in OpenSSL, new nmap feature, ...
+//    (not: security bugs/fixes in applications)
+
+* `tpm2-pkcs11` has been added. This library is a PKCS#11 interface for TPM2 hardware
+
+// !STICKY
+// related: FATE#323868 [removal info in FATE is incorrect, correction via mail from meissner, 2020-06-05]
+[#jsc-SLE-9294]
+==== TLS 1.1 and 1.0 are no longer recommended for use
+
+The TLS 1.0 and 1.1 standards have been superseded by TLS 1.2 and TLS 1.3.
+TLS 1.2 has been available for considerable time now.
+
+{product} packages using OpenSSL, GnuTLS, or Mozilla NSS already support TLS 1.3.
+We recommend no longer using TLS 1.0 and TLS 1.1, as {suse} plans to disable these protocols in a future service pack.
+However, not all packages, for example, Python, are TLS 1.3-enabled yet as this is an ongoing process.
+
+[#jsc-PED-8000]
+==== New 4096-bit signing key
+
+{sle} 15 product family switched over from a RSA 2048-bit signing key to a new RSA 4096-bit key.
+This change covers RPM packages, package repositories and ISO signatures.
+For more information see https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-update-preparation.html#sec-update-preparation-update
+
+
+[#jsc-SLE-18495]
+==== `p11-kit-server` has been added
+
+The `p11-kit-server` package has been added.
+It provides command line tools that enable exporting of PKCS#11 modules through a Unix domain socket.
+
+
+// jsc#SLE-20287
+[#bsc-1203781]
+==== Global `crypto-policies` have been added
+
+Previously, every cryptography-using tool and library had been using its own cryptographic configuration.
+Some packages used `DEFAULT_SUSE` SSL cipherset in older releases but this was a hardcoded set of ciphers.
+
+In {productnameshort} {this-version}, we use global cryptographic policies.
+The default setting will already block some algorithms that are considered insecure.
+To enable all legacy ciphers use:
+
+[source,bash]
+update-crypto-policies --set LEGACY
+
+Please see the man page for `crypto-policies` for details on further configuration.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-11611]
+==== `fail2ban` has been added
+
+The `fail2ban` package has been added to the _Basesystem Module_.
+It is used to ban addresses that make too many authentication failures, based on scanning various log files.
+
+
+[#jsc-SLE-21421]
+==== OpenSSL 3.0 availability
+
+Starting with {this-version}, {productnameshort} includes the OpenSSL 3.0 library in addition to the system OpenSSL 1.1.1 library.
+
+The OpenSSL 3 library is currently not used by system applications but can be used by third-party libraries and applications already.
+It can be used in processes together with the 1.1.1 library.
+
+
+[#bsc-1197688]
+==== `/dev` is not mounted `noexec` anymore
+
+Since systemd v248, `/dev` is not mounted `noexec` anymore.
+This did not provide any significant security benefits and conflicted with the executable mappings used with `/dev/sgx` device nodes.
+The previous behavior can be restored for individual services with `NoExecPaths=/dev` (or by allow-listing and excluding `/dev` from `ExecPaths=`).
+
+
+[#jsc-SLE-18457]
+==== Certificate Auto Enrollment
+
+Certificate Auto Enrollment allows devices to enroll for certificates from Active Directory Certificate Services.
+It is enabled by Group Policy using Samba's `samba-gpupdate` command.
+
+
+[#jsc-SLE-18822]
+==== Unlocking LUKS volumes with TPM 2.0 or FIDO2
+
+The unlocking of fully-encrypted devices using TPM 2.0 or FIDO2 is now supported.
+
+There are at least 2 common use cases for this:
+
+* laptops and similar devices: unlocking encrypted disk only with an external, secure factor
+* server or edge: automated encryption of server disks at boot, especially in remote locations, that are made unusable if the disk is physically stolen
+
+
+[#jsc-SLE-23133]
+==== FIPS mode now available
+
+{productnameshort} now supports enabling FIPS mode.
+The Federal Information Processing Standard 140-2 (FIPS 140-2) is a security standard for cryptographic modules.
+It is frequently needed when doing work for the United States federal government.
+
+See the {doc-url}/html/SLES-all/cha-security-fips.html[Enabling compliance with FIPS 140-2] section in the __Security and Hardening Guide__ for more information.
+
+
+[#jsc-SLE-23476]
+==== `sigstore` support has been added
+
+`sigstore` is a project that aims to improve the open source software supply chain by easing the adoption of cryptographic software signing, backed by transparency log technologies.
+
+As part of adding support for `sigstore`, the following were added:
+
+* `rekor` - a global log, includes server and client
+* `cosign` - container signing and verification
+
+For more information see https://sigstore.github.io/.

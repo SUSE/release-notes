@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+  &bugtracker-pi;
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&product;</productname>
+  <productnumber>&this-version;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="abstract.xml"/>
+ </articleinfo>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-rn.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="about-product.xml"/>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="technology-preview.xml"/>
+
+ <!--<section id="InstUpgrade" role="remove-empty">
+  <title>Installation and Upgrade</title>
+  <para/>
+  <section id="InstUpgrade.Installation" role="remove-empty">
+   <title>Installation</title>
+   <para/>
+  </section>
+  <section id="InstUpgrade.Upgrade" role="remove-empty">
+   <title>Upgrade</title>
+   <para/>
+  </section>
+ </section>-->
+
+ <!--<section id="InfraPackArch.ArchIndependent.HA.Cluster" role="remove-empty">
+  <title>Cluster</title>
+  <para/>
+ </section>-->
+
+ <!--<section id="InfraPackArch.ArchIndependent.HA.Tools" role="remove-empty">
+  <title>High-Availability Tools</title>
+  <para/>
+ </section>-->
+
+ <!--<section id="InfraPackArch.ArchIndependent.HA.Resources" role="remove-empty">
+  <title>Resources and Resource Agents</title>
+  <para/>
+ </section>-->
+
+ <!--<section id="InfraPackArch.ArchIndependent.HA.Storage" role="remove-empty">
+  <title>Storage</title>
+  <para/>
+ </section>-->
+
+ <!--<section id="Miscellaneous" role="remove-empty">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>-->
+
+ <!--<section id="TechInfo" role="remove-empty">
+  <title>Technical Information</title>
+  <para/>
+  <section id="TechInfo.IPv6" role="remove-empty">
+   <title>IPv6 Implementation and Compliance</title>
+   <para/>
+  </section>
+ </section>-->
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="removed-deprecated.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="source-code.xml"/>
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+</article>

@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>12 SP3</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications combines SUSE Linux
+    Enterprise Server and its High Availability Extension with additional
+    software specifically meant to simplify running and managing SAP
+    applications. These are the release notes of SLES for SAP Applications.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media for SUSE Linux Enterprise Server for SAP
+    Applications. Any documentation (if installed) can be found in the
+    <filename>/usr/share/doc/</filename> directory of the installed system.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro" remap="Intro">
+  <title>SLES for SAP Applications</title>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 12 SP3 which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/"/>.
+  </para>
+<!-- This section is commented because we are (ab)using the FATE category of
+  the same name for "Features." This one was empty anyway- sknorr, 2016-09-12
+  -->
+<!-- <section id="Intro.New" role="remove-empty">
+   <title>What Is New?</title>
+   <para></para>
+  </section> -->
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-324251" remap="Intro">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324251" -->
+   <title>ESPOS Updates Shipped Directly in Update Repositories</title>
+   <para>
+    In SLES for SAP 11, updates related to Extended Service Pack Overlay
+    Support (ESPOS) were shipped from special repositories.
+   </para>
+   <para>
+    In SLES for SAP 12 SP3 and later, updates related to ESPOS are shipped
+    directly from the <literal>Update</literal> repositories. This means,
+    there is no separate ESPOS repository to set up.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section id="Intro.Support">
+   <title>Support Statement for SLES for SAP Applications</title>
+   <para>
+    Support requires an appropriate subscription from SUSE. For more
+    information, see
+    <ulink url="https://www.suse.com/products/sles-for-sap"/>.
+   </para>
+   <para>
+    General Support Statement
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      L1: Installation and problem determination - technical support
+      designed to provide compatibility information, installation and
+      configuration assistance, usage support, on-going maintenance and
+      basic troubleshooting. Level 1 Support is not intended to correct
+      product defect errors.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L2: Reproduction of problem isolation - technical support designed to
+      duplicate customer problems, isolate problem areas and potential
+      issues, and provide resolution for problems not resolved by Level 1
+      Support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      L3: Code Debugging and problem resolution - technical support designed
+      to resolve complex problems by engaging engineering in patch
+      provision, resolution of product defects which have been identified by
+      Level 2 Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (unchanged or not
+    recompiled) packages.
+   </para>
+  </section>
+ </section>
+<!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+ <section id="Intro.New" remap="Intro:New">
+  <title>Features</title>
+  <para>
+   This section includes an overview of major new features provided by SUSE
+   Linux Enterprise Server for SAP Applications.
+  </para>
+  <section role="notoc" id="jsc-SLE-12242">
+   <title>Priority Fencing Delay Has Been Added</title>
+   <para>
+    This change introduces a specified delay for the fencings that are targeting
+    the lost nodes with the highest total resource priority in case there is no
+    majority of the nodes in the given cluster partition.
+   </para>
+   <para>
+     By default, priority fencing delay is disabled.
+   </para>
+   <para>
+    For more information, see <literal>priority-fencing-delay</literal> in the
+    <ulink url="https://www.clusterlabs.org/pacemaker/doc/2.1/Pacemaker_Explained/html/options.html#cluster-options">Pacemaker documentation</ulink>.
+   </para>
+  </section>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322293" remap="Intro:New">
+<!-- sort_key="5"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322293" -->
+   <title>cryptctl Disk Encryption Utility Verifies Client Computer Identity via TLS certificates</title>
+   <para>
+    Previously, the <literal>cryptctl</literal> server would hand out an
+    encryption key to all computers that requested one using a valid disk
+    UUID. The client computer's identity was not further verified.
+   </para>
+   <para>
+    In the version of <literal>cryptctl</literal> shipped with SLES for SAP
+    12 SP3, servers can optionally also verify the identity of client
+    computers via TLS certificates for all communications that take place
+    between them.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322979" remap="Intro:New">
+<!-- sort_key="10"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322979" -->
+   <title>cryptctl Disk Encryption Utility Can Work with Dedicated Key Management Appliances</title>
+   <para>
+    KMIP (Key Management Interoperability Protocol) is an industrial
+    standard protocol for managing cryptographic keys. In the latest
+    <literal>cryptctl</literal>, KMIP version 1.3 is supported so that
+    <literal>cryptctl</literal> can store and manage disk encryption keys on
+    a KMIP-compatible key management appliance.
+   </para>
+   <para>
+    Be aware that the decision to use a key management appliance for key
+    storage must be made during the initial server setup. There is no
+    migration path between storing keys on a key management appliance versus
+    on a server's hard drive.
+   </para>
+  </section>
+  <section role="notoc" id="fate-326973" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326973" -->
+   <title>SLES for SAP Identifies as SLES in /etc/os-release</title>
+   <para>
+    SLES for SAP 12 SP3 now uses the value <literal>SUSE Linux Enterprise
+    Server 12 SP3</literal> as its <literal>PRETTY_NAME</literal> in
+    <literal>/etc/os-release</literal>.This change improves general
+    compatibility with application checking for a standard SLES installation
+    only.
+   </para>
+   <para>
+    However, if you are using a tool that identifies operating systems by
+    their <literal>NAME</literal>, <literal>PRETTY_NAME</literal>, or
+    <literal>ID</literal> value, make sure to adapt to the change. For
+    example, the configuration management tool Ansible uses
+    <literal>PRETTY_NAME</literal> to check for the OS.
+   </para>
+  </section>
+  <section role="notoc" id="fate-323465" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323465" -->
+   <title>SAP NetWeaver Integration</title>
+   <para>
+    The SAP NetWeaver integration has been improved to match the growing
+    usability of cluster solutions especially during SAP maintenance
+    procedures. This includes the visibility of the cluster solution in the
+    SAP Management Console (SAP MC) and support for SAP kernel updates.
+   </para>
+   <para>
+    <literal>sap_suse_cluster_connector</literal> has been updated to API
+    version 3 to support the newest features and calls from
+    <literal>sapstartsrv</literal>. This includes transparent support for
+    SAP rolling kernel switches (RKS) for central services instances and
+    replication instances.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322612" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322612" -->
+   <title>Improved Documentation for Setup and Usage of clamsap</title>
+   <para>
+    The documentation for <literal>clamsap</literal> has been added to the
+    package and a new chapter in the online documentation has been added.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322387" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322387" -->
+   <title>Modified RPM Software Pattern for SAP Business One</title>
+   <para>
+    The RPM software pattern for SAP Business One has been adjusted to
+    include packages required by version 9.3.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322281" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322281" -->
+   <title>Installation Wizard Support for SAP HANA MDC</title>
+   <para>
+    SAP HANA allows installing multiple database containers (MDC) within a
+    single SAP HANA installation. Now the SAP Installation Wizard allows for
+    such an installation as well.
+   </para>
+  </section>
+  <section role="notoc" id="fate-322066" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322066" -->
+   <title>Extended clone-master-clean-up.sh Script</title>
+   <para>
+    Further clean up steps have been added to
+    <literal>clone-master-clean-up.sh</literal>, such as
+    <literal>MachineId</literal> and UUIDs within
+    <literal>/etc/fstab</literal>, etc.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320408" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320408" -->
+   <title>Support for SAP HANA TDI Environments in the SAP Installation Wizard</title>
+   <tip role="compact">
+    <para>
+     This entry has appeared in a previous release notes document.
+    </para>
+   </tip>
+   <para>
+    The SAP Installation Wizard now follows SAP's recommendation for
+    partitioning and creates the following setup:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>/hana/data</literal>, size: RAM*1
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/hana/log</literal>, size: RAM*1, with a maximum of 512 GB
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/hana/shared</literal>, size: RAM*1, with a maximum of 1 TB
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>/usr/sap</literal>, size: 52 GB
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-320368" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320368" -->
+   <title>yast2-hana-update Provides an Easier Way to Upgrade SAP HANA Cluster</title>
+   <para>
+    An important and regularly occurring maintenance task for SAP HANA
+    clusters is upgrading the SAP HANA database. If installing the initial
+    cluster is already critical, upgrading is even more so, as you now need
+    to care about data integrity and system availability.
+   </para>
+   <para>
+    The <literal>yast2-hana-update</literal> module provides a YaST workflow
+    that will guide you step-by-step on the process of upgrading your SAP
+    HANA in a SUSE cluster setup. The entire process is based on the
+    so-called Near Zero Downtime Upgrade process described in the official
+    SAP HANA documentation. The wizard handles the part of the procedure
+    related to the SUSE cluster, leaving only some steps related to be
+    performed manually by the SAP HANA administrator.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320359" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320359" -->
+   <title>Extended sapconf/saptune Coverage</title>
+   <para>
+    The packages <literal>sapconf</literal> and <literal>saptune</literal>
+    have been extended to cover system tuning for SAP Adaptive Server
+    Enterprise and SAP Business Objects.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.Power" remap="InfraPackArch:Power">
+  <title>POWER-Specific Features</title>
+  <para>
+   The following notes apply to SLES for SAP Applications on the POWER
+   architecture.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322470" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322470" -->
+   <title>512 TB Virtual Address Space on POWER</title>
+   <para>
+    Certain workloads require a large virtual address space for a single
+    process
+   </para>
+   <para>
+    The virtual address space limit has been increased from 64 TB to 512 TB
+    on the POWER architecture. To maintain compatibility with older software
+    and hardware, processes are limited to 128 TB virtual address space
+    unless they explicitly map memory above 128 TB.
+   </para>
+   <para>
+    This functionality is supported starting with kernel 4.4.103. We always
+    recommend using the latest kernel update to get fixes for any issues
+    found over the product lifetime.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME</replaceable>.rpm</screen>
+    <para>
+     <replaceable>FILE_NAME</replaceable> is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological log of all changes made to the updated
+     packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SLES for SAP Applications media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/sles_for_sap/"/> contains
+     additional or updated documentation for SLES for SAP Applications.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For the latest product news from SUSE, visit
+     <ulink url="http://www.suse.com/products/"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+  <para>
+   Thank you for using SUSE Linux Enterprise Server for SAP Applications in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise Server for SAP Applications Team.
+  </para>
+ </section>
+</article>

@@ -1,0 +1,63 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#known-issues]
+== Known Issues & Workarounds
+
+This is a list of known issues for this release.
+
+
+// PERMANENT ENTRY. ALSO FOR UPCOMING VERSIONS
+[#bsc1137213]
+=== Workarounds to Enable {hana} Workloads on Intel Optane DC Memory
+
+{product} {this-ga} supports Intel Optane DC persistent memory.
+This enables {sap} workloads, such as {hana} to benefit from persistent memory
+This shortens start times of the system and provides better system stability.
+
+From a file system perspective, the XFS file system is supported for persistent memory, with SAP HANA running in DAX mode.
+Make sure to also check the {sap} instructions for using persistent memory with {hana}.
+{suse} is working closely with SAP on future developments.
+
+If there are pmem namespaces, these need to be destroyed before the installation.
+To mount persistent memory directly on boot, the respective entries need to be added to `/etc/fstab`, for example:
+
+----
+/dev/pmem0    /mnt/pmem0    xfs    dax    0  0
+/dev/pmem1    /mnt/pmem1    xfs    dax    0  0
+----
+
+Namespaces need to be created individually.
+Execute the following command for each namespace you want to create:
+
+[source, bash]
+----
+ndctl create-namespace --mode=fsdax --map=dev
+----
+
+Because the systemd and udev default timeout may be too short for large memory setups to become usable, your system may run into a timeout and the boot process may stop with an emergency shell.
+To prevent this from happening, increase the timeout to 1200 seconds.
+Create the file `/etc/systemd/system/systemd-udev-settle.service.d/00-override.conf` with the following content:
+
+----
+[Service]
+TimeoutSec=1200s
+ExecStart=/usr/bin/udevadm settle -t 300
+----
+
+[IMPORTANT]
+====
+In an earlier version of this document, we recommended mounting persistent memory with the `nofail` option in `/etc/fstab`.
+This frequently required a manual mount of pmem devices on reboot.
+To automatically mount pmem file systems after reboot, we strongly recommend removing the `nofail` option and modifying the timeout value as described above.
+====
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Issue explanation
+
+////

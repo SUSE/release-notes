@@ -1,0 +1,147 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#install-upgrade]
+== Installation and upgrade
+
+{productname} can be deployed in several ways:
+
+* Physical machine
+* Virtual host
+* Virtual machine
+* System containers
+* Application containers
+
+
+[#install]
+=== Installation
+
+This section includes information related to the initial installation of {productname} {this-version}.
+
+[IMPORTANT]
+.Installation documentation
+====
+The following release notes contain additional notes regarding the installation of {productname}.
+However, they do not document the installation procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url-beta}/html/SLES-deployment/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For installation documentation, see the __Deployment Guide__ at {doc-url}/html/SLES-all/book-deployment.html.
+endif::[]
+====
+
+// Installation-related release notes go here
+
+// !STICKY
+[#jsc-SLE-7101]
+==== New media layout
+
+The set of media has changed with 15{nbsp}SP2.
+There still are two different installation media, but the way they can be used has changed:
+
+* You can install with registration using either the online-installation medium (as with {productname} 15{nbsp}SP1) or the full medium.
+
+* You can install without registration using the full medium.
+The installer has been added to the full medium and the full medium can now be used universally for all types of installations.
+
+* You can install without registration using the online-installation medium.
+Point the installer at the required SLE repositories, combining the `install=` and `instsys=` boot parameters:
+
+** With the `install=` parameter, select a path that contains either just the product repository or the full content of the media.
+** With the `inst-sys=` parameter, point at the installer itself, that is, `/boot/ARCHITECTURE/root` on the medium.
+
++
+For more information about the parameters, see https://en.opensuse.org/SDB:Linuxrc#p_install.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#upgrade]
+=== Upgrade-related notes
+
+This section includes upgrade-related information for {productname} {this-version}.
+
+[IMPORTANT]
+.Upgrade documentation
+====
+The following release notes contain additional notes regarding the upgrade of {productname}.
+However, they do not document the upgrade procedure itself.
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {doc-url-beta}/html/SLES-upgrade/ (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+For upgrade documentation, see the __Upgrade Guide__ at {upgrade-guide-url}.
+endif::[]
+====
+
+// Upgrade-related release notes go here
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// !STICKY
+[#upgrade-update-system]
+==== Make sure the current system is up-to-date before upgrading
+
+Upgrading the system is only supported from the most recent patch level.
+Make sure the latest system updates are installed by either running `zypper patch` or by starting the {yast} module __Online Update__.
+An upgrade on a system that is not fully patched may fail.
+
+
+// !STICKY
+[#upgrade-skip-sp]
+==== Skipping service packs requires LTSS
+
+Skipping service packs during an upgrade is only supported if you have a Long Term Service Pack Support contract.
+Otherwise, you need to first upgrade to {slea} {this-ga}{nbsp}{previous-sp} before upgrading to {slea} {this-version}.
+
+// !STICKY
+[#rmt-replaces-smt]
+==== SMT has been replaced by RMT
+
+_{slea} 12 is the last codestream that SMT (Subscription Management Tool) is available for._
+
+When upgrading your OS installation to {slea} 15, we recommend also upgrading from SMT to its replacement RMT (Repository Mirroring Tool). RMT provides the following functionality:
+
+- Mirroring of {suse}-originated repositories for the {slea} 12-based and {slea} 15-based products your organization has valid subscriptions for.
+- Synchronization of subscriptions from {scc} using your organization's mirroring credentials. (These credentials can be found in SCC under _Select Organization_, _Organization_, _Organization Credentials_)
+- Selecting repositories to be mirrored locally via `rmt-cli` tool.
+- Registering systems directly to RMT to get required updates.
+- Adding custom repositories from external sources and distributing them via RMT to target systems.
+- Improved security with proxying: If you have strict security requirements, an RMT instance with direct Internet access can proxy to another RMT instance without direct Internet access.
+- Nginx as Web server: The default Web server of RMT is Nginx which has a smaller memory footprint and comparable performance than that used for SMT.
+
+Note that unlike SMT, RMT does not support installations of {slea} 11 and earlier.
+
+For more feature comparison between RMT and SMT, see https://github.com/SUSE/rmt/blob/master/docs/smt_and_rmt.md.
+
+For more information about RMT, also see the new RMT Guide at https://documentation.suse.com/sles/html/SLES-all/book-rmt.html.
+
+
+// Minimal-VM and Minimal-Image-specific content is in a separate file
+include::minimal-vm-image.adoc[]
+
+[#install-upgrade-more]
+=== For more information
+
+For more information, see <<all-architecture>> and the sections relating to your respective hardware architecture.

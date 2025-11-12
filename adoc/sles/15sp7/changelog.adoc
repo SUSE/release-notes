@@ -1,0 +1,119 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#pre-release]
+=== Pre-release
+
+==== New
+
+* Added note about PostgreSQL 14 to <<database>> ({jira-url}PED-13777[Jira])
+* Added note about SLE 16.0 clients to <<rmt-replaces-smt>>
+
+
+[#release-2025-10-31]
+=== 2025-10-31
+
+==== New
+
+* Added a note about MariaDB 11.8 to <<database>> ({jira-url}PED-13318[Jira])
+* Added a note about dmesg warnings when using deprecated cgroup v1 features in <<miscellaneous>> ({jira-url}PED-12406[Jira])
+* <<jsc-PED-13449>> ({jira-url}PED-13449[Jira])
+* Added note about `KBD_DISABLE_CAPS_LOCK` removal in <<removed>> ({jira-url}PED-12575[Jira])
+* <<bsc-1247839>> ({bugzilla-url}1247839[Bugzilla])
+
+==== Changed
+
+* Extend IBM Java support lifecycle in <<java-version>> ({jira-url}PED-13389[Jira])
+
+[#release-2025-08-21]
+=== 2025-08-21
+
+==== New
+
+* <<jsc-PED-13352>> ({jira-url}PED-13352[Jira])
+
+[#release-2025-07-11]
+=== 2025-07-11
+
+==== Changed
+
+* changed `ntp` from being removed to moved to _Legacy Module_ in <<removed>>
+* changed OpenLDAP server from being removed to being deprecated in <<jsc-PED-13239>> ({jira-url}PED-13239[Jira])
+
+[#release-2025-06-25]
+=== 2025-06-25
+
+==== New
+
+* <<jsc-PED-11875>> ({jira-url}PED-11875[Jira])
+* <<jsc-PED-12579>> ({jira-url}PED-12579[Jira])
+* <<jsc-PED-8000>> ({jira-url}PED-8000[Jira])
+
+
+
+
+[#release-2025-05-28]
+=== 2025-05-28
+
+==== New
+
+* <<bsc-1237496>> ({bugzilla-url}1237496[Bugzilla])
+
+[#release-2025-04-07]
+=== 2025-04-07
+
+==== New
+
+* <<jsc-PED-4943>> ({jira-url}PED-4943[Jira])
+* <<jsc-PED-12434>> ({jira-url}PED-12434[Jira])
+* Added `redis` removal notice in <<removed>> ({jira-url}PED-11967[Jira])
+* <<jsc-PED-12263>> ({jira-url}PED-12263[Jira])
+* <<jsc-PED-12711>> ({jira-url}PED-12711[Jira])
+
+[#release-2025-03-10]
+=== 2025-03-10
+
+==== New
+
+* <<jsc-PED-11907>> ({jira-url}PED-11907[Jira])
+* <<jsc-PED-11816>> ({jira-url}PED-11816[Jira])
+* <<jsc-PED-11935>> ({jira-url}PED-11935[Jira])
+* <<jsc-PED-11692>> ({jira-url}PED-11692[Jira])
+* <<jsc-PED-8462>> ({jira-url}PED-8462[Jira])
+* <<jsc-PED-12170>> ({jira-url}PED-12170[Jira])
+// jsc#PED-11270
+* Added `netiucv` and `lcs` to <<deprecated>>
+* Added `chrony` to the list of removed packages in <<removed-deprecated>>
+* <<bsc-1234633>> ({bugzilla-url}1234633[Bugzilla])
+
+
+[#release-2025-01-14]
+=== 2025-01-14
+
+==== New
+
+* <<jsc-PED-8569>> ({jira-url}PED-8569[Jira])
+
+[#release-2024-09-12]
+=== 2024-09-12
+
+==== New
+
+* Initial SP7 release
+
+
+
+
+// [#release-YYYY-MM-DD]
+// === YYYY-MM-DD
+
+// ==== New
+// ==== Updated
+// ==== Removed

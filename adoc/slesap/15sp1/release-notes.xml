@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="Beta SUSE Linux Enterprise Server for SAP Applications 15 SP1" component="Maintenance" assignee="lukas.kucharczyk@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Server for SAP Applications</productname>
+  <productnumber>15 SP1</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+
+  <abstract>
+<!-- msvec and marketing, 2013-05-13 -->
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications combines SLES and
+    SLE HA with additional software specifically meant to simplify running
+    and managing SAP applications. This document provides an overview of
+    high-level general features, capabilities, and limitations of SUSE Linux
+    Enterprise Server for SAP Applications 15 SP1 and important product
+    updates.
+   </para>
+
+   <para condition="beta;pre">
+    This product will be released in June 2019. The latest version of these
+    release notes is always available at
+    <ulink url="https://www.suse.com/releasenotes"/>. Drafts of the general
+    documentation can be found at
+    <ulink url="https://susedoc.github.io/#slesforsap"/>.
+   </para>
+
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version is
+    always available at <ulink url="https://www.suse.com/releasenotes"/>.
+    General documentation can be found at:
+    <ulink url="https://documentation.suse.com/sles-sap/15-SP1"/>.
+   </para>
+
+   <para condition="unmaintained">
+    The support period for SUSE Linux Enterprise Server for SAP Applications
+    15 SP1 has ended. To keep systems secure and supported, upgrade to a
+    current SUSE Linux Enterprise Server for SAP Applications version.
+    Before starting the upgrade, make sure to apply all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="rn.about">
+  <title>About the Release Notes</title>
+  <para>
+   The most recent version of the Release Notes is available online at
+   <ulink url="https://www.suse.com/releasenotes"/>.
+  </para>
+  <para>
+   These Release Notes are identical across all supported architectures.
+  </para>
+  <para>
+   Entries can be listed multiple times if they are important and belong to
+   multiple sections.
+  </para>
+  <para>
+   Release notes usually only list changes that happened between two
+   subsequent releases. Certain important entries from the release notes
+   documents of previous product versions may be repeated. To make such
+   entries easier to identify, they contain a note to that effect.
+  </para>
+  <para>
+   Repeated entries are provided as a courtesy only. Therefore, if you are
+   skipping one or more service packs, check the release notes of the
+   skipped service packs as well. If you are only reading the release notes
+   of the current release, you could miss important changes.
+  </para>
+ </section>
+
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Server for SAP Applications</title>
+  <para>
+   SUSE Linux Enterprise Server for SAP Applications is the leading Linux
+   platform for SAP HANA, SAP NetWeaver, and SAP S/4HANA applications that
+   provides optimized performance, reduced downtime, and faster SAP
+   landscape deployments. It includes features to secure SAP HANA systems
+   and ease the transition to SAP S/4HANA for systems administrators. SUSE
+   Linux Enterprise Server for SAP Applications combines SUSE Linux
+   Enterprise Server and its SLE HA with additional software specifically
+   meant to simplify running and managing SAP applications.
+  </para>
+<!-- FIXME: We're unfortunately (mis)using the ID Intro.New for another
+ section currently. Probably a good idea to stop doing that at some point. -->
+<section id="Intro.New">
+  <title>What Is New?</title>
+
+  <para>
+   SLES for SAP 15 SP1 introduces many innovative changes compared to
+   SLES for SAP 15 GA. The most important changes are listed below:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <!-- see: jsc#SLE-4044 -->
+     <title>SAP HANA-SR Wizard Can Be Used in Unattended Mode</title>
+     <para>
+      For more information, see <ulink url="https://documentation.suse.com/sles-sap/15-SP1/single-html/SLES4SAP-guide/#sec-s4s-hana-cluster-wizard-semiautomatic"/>.
+     </para>
+    </formalpara>
+   </listitem>
+   <!-- <listitem>
+    <formalpara>
+     <title>Feature 2:</title>
+     <para>
+      It is great!
+     </para>
+    </formalpara>
+   </listitem> -->
+  </itemizedlist>
+ </section>
+  <section id="Intro.Important">
+   <title>Important Sections of This Document</title>
+   <para>
+    If you are upgrading from a previous SUSE Linux Enterprise Server for
+    SAP Applications release, you should review at least the following
+    sections:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section id="Intro.Additional">
+   <title>Additional Release Notes Documents</title>
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications also includes the
+    software selection of SUSE Linux Enterprise Server and SUSE Linux
+    Enterprise High Availability Extension.
+   </para>
+   <para>
+    Make sure to review the release notes for both products in addition to
+    this document:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server:
+      <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15-SP1/"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise High Availability Extension:
+      <ulink url="https://www.suse.com/releasenotes/x86_64/SLE-HA/15-SP1/"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+<!-- This is highly product-specific, make sure to adapt! -->
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications is backed by
+    award-winning support from SUSE, an established technology leader with a
+    proven history of delivering enterprise-quality support services.
+   </para>
+<!-- FIXME: Are these values all correct? - sknorr, 2018-09-28 -->
+   <para>
+    SUSE Linux Enterprise Server for SAP Applications 15 has a 13-year life
+    cycle, with 10 years of General Support and 3 years of Extended
+    Support. SUSE Linux Enterprise Server for SAP Applications comes
+    Extended Service Pack Overlay Support by default, this means the current
+    version (SP1) will be fully maintained and supported until 3.5 years
+    after the release of SUSE Linux Enterprise Server for SAP
+    Applications 15 SP2.
+   </para>
+   <para>
+    If you need additional time to design, validate and test your upgrade
+    plans, Long Term Service Pack Support (LTSS) can extend the support you
+    get by an additional 12 to 36 months in 12-month increments, providing a
+    total of 3 to 5 years of support on any given Service Pack.
+   </para>
+   <para>
+    For more information, see:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      The support policy at
+      <ulink url="https://www.suse.com/support/policy.html"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Long Term Service Pack Support page at
+      <ulink url="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Server for SAP Applications</title>
+   <para>
+    To receive support, you need an appropriate subscription with SUSE. For
+    more information, see
+    <ulink url="https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server_for_SAP_Applications"/>.
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term>L1</term>
+     <listitem>
+      <para>
+       Problem determination, which means technical support designed to
+       provide compatibility information, usage support, ongoing
+       maintenance, information gathering and basic troubleshooting using
+       available documentation.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L2</term>
+     <listitem>
+      <para>
+       Problem isolation, which means technical support designed to analyze
+       data, reproduce customer problems, isolate problem area and provide a
+       resolution for problems not resolved by Level 1 or prepare for
+       Level 3.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L3</term>
+     <listitem>
+      <para>
+       Problem resolution, which means technical support designed to resolve
+       problems by engaging engineering to resolve product defects which
+       have been identified by Level 2 Support.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <para>
+    For contracted customers and partners, SUSE Linux Enterprise Server for
+    SAP Applications 15 SP1 is delivered with L3 support for all packages,
+    except for the following:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Technology Previews
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Sound, graphics, fonts and artwork
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Packages that require an additional customer contract
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original packages. That is, packages
+    that are unchanged and not recompiled.
+   </para>
+  </section>
+
+  <section id="tech-previews">
+   <title>Technology Previews</title>
+   <para>
+    Technology previews are packages, stacks, or features delivered by SUSE
+    which are not supported. They may be functionally incomplete, unstable or
+    in other ways not suitable for production use. They are included for your
+    convenience and give you a chance to test new technologies within an
+    enterprise environment.
+   </para>
+   <para>
+    Whether a technology preview becomes a fully supported technology later
+    depends on customer and market feedback. Technology previews can be dropped
+    at any time and SUSE does not commit to providing a supported version of
+    such technologies in the future.
+   </para>
+   <para>
+    Give your SUSE representative feedback about technology previews, including
+    your experience and use case.
+   </para>
+  </section>
+
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section id="Intro.Documentation.Media">
+    <title>On the Product Medium</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       For general product information, see the file
+       <filename>README</filename> <phrase condition="beta">and the file
+       <filename>README.BETA</filename></phrase> in the top level of the
+       product medium.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For a chronological log of all changes made to updated packages, see
+       the file <filename>ChangeLog</filename> in the top level of the
+       product medium.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Detailed change log information about a particular package is
+       available using RPM:
+      </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME.rpm</replaceable></screen>
+      <para>
+       (Replace <replaceable>FILE_NAME.rpm</replaceable> with the name of
+       the RPM.)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For more information, see the directory <filename>docu</filename> of
+       the product medium of SUSE Linux Enterprise Server for SAP
+       Applications 15 SP1.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Intro.Documentation.External">
+    <title>Externally Provided Documentation</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <ulink url="https://documentation.suse.com/sles-sap/15-SP1"/>
+       contains additional or updated documentation for SUSE Linux
+       Enterprise Server for SAP Applications 15 SP1.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find a collection of White Papers in the SUSE Linux Enterprise Server
+       for SAP Applications Resource Library at
+       <ulink url="https://www.suse.com/products/sles-for-sap/#resources"/>.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+ </section>
+
+<!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+
+ <section id="InfraPackArch.Power" remap="InfraPackArch:Power">
+  <title>SUSE Linux Enterprise Server for SAP Applications for POWER</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-327774" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327774" -->
+   <title>On POWER, the Minimum Certified Revision of SAP HANA 2.0 SPS04 Is Revision 41</title>
+   <para>
+    On SLES for SAP 15 SP1 for POWER, the minimum certified revision of SAP
+    HANA 2.0 SPS04 is revision 41. For earlier revisions of SAP HANA 2.0
+    SPS04, there is a compatibility issue.
+   </para>
+   <para>
+    However, this issue does not affect other versions of SAP HANA, such as
+    version SAP HANA 2.0 SPS03, which is supported.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+
+ <section id="Changes">
+  <title>New Features, Changes &amp; Fixes</title>
+  <section role="notoc" id="bsc-1197511">
+   <title>SAP native systemd support</title>
+   <para>
+    In the past for Linux the systemV init service <literal>sapinit</literal>
+    was starting the SAP Host Agent and all the <literal>sapstartsrv</literal>
+    processes listed in
+    <literal>/usr/sap/sapservices</literal>. A real systemd integration was not
+    available.
+   </para>
+   <para>
+    Now the native integration of SAP Host Agent is started via the
+    <literal>saphostagent.service</literal> unit. Adaptations to the
+    <literal>saphostagent.service</literal> unit must be done by adding a
+    so-called drop-in file.
+   </para>
+   <para>
+    For any native integrated SAP instance a systemd unit with name schema
+    <literal>&lt;SID&gt;_&lt;INO&gt;</literal> (for example,
+    <literal>SAPEN1_10</literal>) is added. Adaptations should be done using a
+    drop-in file. It is highly recommended to still use the
+    <literal>sapcontrol</literal>
+    functions which guarantees also the functionality of cluster integration
+    like the <literal>sap-suse-cluster-connector</literal>.
+   </para>
+   <para>
+    Before you start your new installation or update to the native systemd
+    integration, make sure you update the resource agent packages to the newest
+    available versions. The native SAP systemd integration is supported starting
+    with the following package versions for SLES for SAP Applications 15:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>resource-agents 4.3.0184.6ee15eb2-4.60.1</para>
+    </listitem>
+    <listitem>
+     <para>sapstartsrv-resource-agents
+     0.9.0+git.1645795466.55a8cca-1.12.1</para>
+    </listitem>
+    <listitem>
+     <para>SAPHanaSR 0.155.0</para>
+    </listitem>
+    <listitem>
+     <para>SAPHanaSR-ScaleOut 0.181.0</para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For details please refer to the manual pages
+    <literal>ocf_suse_SAPStartSrv(7)</literal>,
+    <literal>SAPHanaSR(7)</literal>, and
+    <literal>SAPHanaSR-ScaleOut(7)</literal>.
+   </para>
+  </section>
+ </section>
+ <section id="Packages.New" remap="Packages:New">
+  <title>Added Packages</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325727" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325727" -->
+   <title>Package insserv-compat Has Been Added to SAP Application Server Base Pattern</title>
+   <para>
+    <emphasis>SAP applications depend on the
+    </emphasis><literal>sapinit</literal><emphasis> System V script. Other
+    third-party software not yet updated to include systemd unit scripts may
+    also depend on System V init scripts. On its own, systemd does not
+    support System V init scripts anymore.</emphasis>
+   </para>
+   <para>
+    The package <literal>insserv-compat</literal> adds compatibility with
+    System V init scripts to systemd and can be used both SAP and non-SAP
+    applications. This package is now also included in the <emphasis>SAP
+    Applications Server Base</emphasis> pattern.
+   </para>
+   <para>
+    That way, <literal>insserv-compat</literal> will provide System V
+    compatibility until SAP and other third parties fully adopt systemd unit
+    scripts.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+
+ <section id="Sourcecode">
+  <title>Obtaining Source Code</title>
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material.
+   The source code is available for download at
+   <ulink url="https://www.suse.com/download/sle-sap/"/> on Medium 2.
+   For up to three years after distribution of the SUSE product, upon request,
+   SUSE will mail a copy of the source code.
+   Send requests by e-mail to <ulink url="mailto:sle_source_request@suse.com"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting SUSE software. SUSE assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-<?dbtimestamp format="Y" ?> SUSE LLC.
+  </para>
+
+  <para>
+   This release notes document is licensed under a Creative Commons
+   Attribution-NoDerivatives 4.0 International License (CC-BY-ND-4.0). You
+   should have received a copy of the license along with this document. If
+   not, see <ulink url="https://creativecommons.org/licenses/by-nd/4.0/"/>.
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

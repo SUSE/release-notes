@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent">
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ &bugtracker-pi;
+ <title>&rnotes;</title>
+ <articleinfo>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&sles4sap;</productname>
+  <productnumber>&this-version;</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    These are the release notes of &product;. &product; combines &sles; and
+    its &hae; with additional software specifically meant to simplify running
+    and managing SAP applications.
+   </para>
+   <para condition="beta;pre">
+    This product will be released in &rel-date;.
+   </para>
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version is always
+    available at <ulink url="&rn-url;"/>.
+    General documentation can be found at: <ulink url="&doc-url;"/>.
+   </para>
+   <para condition="unmaintained">
+    The support period for &product; &this-version; has ended. To keep systems
+    secure and supported, upgrade to a current &product; version. Before
+    starting the upgrade, make sure to apply all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="Intro">
+  <title>&product;</title>
+  <para>
+   Make sure to also review the release notes for the base product, &sles;
+   &this-version; which are published at
+   <ulink url="&rn-url-sles;"/>.
+  </para>
+  <!-- This section is commented because we are (ab)using the FATE category of
+  the same name for "Features." This one was empty anyway- sknorr, 2016-09-12
+  -->
+  <!-- <section id="Intro.New" role="remove-empty">
+   <title>What Is New?</title>
+   <para></para>
+  </section> -->
+
+  <section id="Intro.Scenarios" role="remove-empty">
+   <title>Supported Deployment Scenarios of &product;</title>
+   <para/>
+  </section>
+
+  <section id="Intro.Support">
+   <title>Support Statement for &product;</title>
+   <para>
+    Support requires an appropriate subscription from SUSE. For more
+    information, see <ulink url="https://www.suse.com/products/sles-for-sap"/>.
+   </para>
+   <para>General Support Statement </para>
+   <para>The following definitions apply: </para>
+   <itemizedlist>
+    <listitem>
+     <para> L1: Installation and problem determination - technical support designed to provide
+      compatibility information, installation and configuration assistance, usage support, on-going
+      maintenance and basic troubleshooting. Level 1 Support is not intended to correct product
+      defect errors. </para>
+    </listitem>
+    <listitem>
+     <para> L2: Reproduction of problem isolation - technical support designed to duplicate customer
+      problems, isolate problem areas and potential issues, and provide resolution for problems not
+      resolved by Level 1 Support. </para>
+    </listitem>
+    <listitem>
+     <para> L3: Code Debugging and problem resolution - technical support designed to resolve complex
+      problems by engaging engineering in patch provision, resolution of product defects which have
+      been identified by Level 2 Support. </para>
+    </listitem>
+   </itemizedlist>
+   <para>SUSE will only support the usage of original (unchanged or not recompiled) packages.
+   </para>
+  </section>
+ </section>
+
+ <!-- There is no 12 version of the "Features" category, so we are using
+ Intro.New as a catch-all. - sknorr, 2016-09-12 -->
+ <section id="Intro.New" role="remove-empty">
+  <title>Features</title>
+
+  <para>
+   This section includes an overview of major new features
+   provided by &s4s;.</para>
+ </section>
+
+ <section id="InstUpgrade" role="remove-empty">
+  <title>Installation and Upgrade</title>
+  <para/>
+  <section id="InstUpgrade.Installation" role="remove-empty">
+   <title>Installation</title>
+   <para/>
+  </section>
+  <section id="InstUpgrade.Upgrade" role="remove-empty">
+   <title>Upgrade-Related Notes</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent.SystemsManagement" role="remove-empty">
+  <title>Systems Management</title>
+  <para/>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent.Kernel" role="remove-empty">
+  <title>Kernel</title>
+  <para/>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent.Performance" role="remove-empty">
+  <title>Performance</title>
+  <para/>
+ </section>
+ 
+ <section id="Packages" remap="Packages:New" role="remove-empty">
+  <title>Packages</title>
+  <para/>
+ </section>
+
+ <section id="Miscellaneous" role="remove-empty">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+
+ <section id="Feedback">
+  <title>More Information and Feedback</title>
+
+  <itemizedlist>
+   <listitem>
+    <para>Read the READMEs on the media.</para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the RPM:
+    </para>
+    <screen>rpm --changelog -qp <replaceable>FILE_NAME</replaceable>.rpm</screen>
+    <para><replaceable>FILE_NAME</replaceable> is the name of the RPM.</para>
+   </listitem>
+   <listitem>
+    <para> Check the <filename>ChangeLog</filename> file in the top level of the
+     first medium for a chronological
+     log of all changes made to the updated packages. </para>
+   </listitem>
+   <listitem>
+        <para> Find more information in the <filename>docu</filename>
+    directory of first medium of the &product; media.</para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="&doc-url;"/> contains
+     additional or updated documentation for &product;.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     For the latest product news from &suse;, visit
+     <ulink url="http://www.suse.com/products/"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+  <!-- msvec and legal (ciaran), 2013-05-13 -->
+  <!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This &suse; product includes materials licensed to &suse; under the GNU
+   General Public License (GPL). The GPL requires &suse; to provide the
+   source code that corresponds to the GPL-licensed material. The source code
+   is available for download at
+   <ulink url="https://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the &suse; product, upon
+   request, &suse; will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="https://www.suse.com/download-linux/source-code.html"/>. &suse;
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   &suse; makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, &suse; reserves the right to revise this publication
+   and to make changes to its content, at any time, without the obligation
+   to notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, &suse; makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, &suse;
+   reserves the right to make changes to any and all parts of &suse;
+   software, at any time, without any obligation to notify any person or
+   entity of such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting &suse; software. &suse; assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-<?dbtimestamp format="Y" ?> SUSE LLC. This release notes
+   document is licensed under a Creative Commons Attribution-NoDerivs 3.0
+   United States License (CC-BY-ND-3.0 US,
+   <ulink url="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   &suse; has intellectual property rights relating to technology embodied
+   in the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For &suse; trademarks, see &suse; Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

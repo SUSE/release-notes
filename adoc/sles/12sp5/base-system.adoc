@@ -1,0 +1,69 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-baseSystem]
+=== Base System
+
+// Release Notes for the base system
+//   less, sed, Vim, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-11159]
+==== Xorg Server Has Been Updated to Version 1.19.6-4.3.1
+
+{product} {this-version} now includes version 1.19.6-4.3.1 of these two packages:
+
+* xorg-x11-server
+* xorg-x11-server-extra
+
+The previous version was 7.6_1.15.2-36.21.
+
+[#jsc-SLE-4867]
+==== Better NVDIMM support
+// jsc-SLE-4867, jsc-SLE-4777, jsc-SLE-6469
+Updated the NVDIMM support and configuration utilities including `ndctl` and others.
+
+[#bsc-1157037]
+==== Default Size for Core Files Has Changed to `unlimited`
+
+With `systemd-coredump` as the default coredump handler, the coredumping logic  on {product} has been enabled for all services by default.
+`systemd-coredump` allows to store and manage the coredump in a more comprehensive and clean way.
+
+Therefore the default size for core files has changed to `unlimited`.
+In previous versions of {product}, the default size for core files was set to `0`.
+To restore the previous behaviour, set
+
+`DefaultLimitCORE=0`
+
+in `/etc/systemd/system.conf`.
+
+[#general-changes]
+==== General Changes
+
+// jsc-SLE-5110
+* Replaced init script of `ebtables` with systemd service file
+// jsc-SLE-5057
+* sar: Better logging information on system shutdown
+// jsc-SLE-5586
+* Improved NoCOW settings, specifically in `/var/log`.
+It affects only new installations, the upgrade process does not touch storage settings.
+// jsc-SLE-5929
+* systemd: enabled GDPR compliant stack backtraces
+
+
+====  Notable Updates
+// jsc-SLE-4995
+* Augeas was updated to version 1.10.1
+// jsc-SLE-5112
+* autofs was updated to version 5.1.3
+// jsc-SLE-6463
+* Intel VROC support was updated to latest version
+

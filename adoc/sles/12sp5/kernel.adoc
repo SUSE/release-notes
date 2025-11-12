@@ -1,0 +1,131 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-kernel]
+=== Kernel
+
+// Release Notes for General kernel/kernel module features
+//   including hardware and file system modules
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+Also see the following:
+
+* <<kernel-parameter-changes>>
+
+[#jsc-SLE-22593]
+==== Unprivileged eBPF usage has been disabled
+
+A large amount of security issues was found and fixed in the Extended Berkeley Packet Filter (eBPF) code.
+To reduce the attack surface, its usage has been restricted to privileged users only.
+
+Privileged users include `root`.
+Programs with the `CAP_BPF` capability in the newer versions of the Linux kernel can still use eBPF as-is.
+
+To check the privileged state, you can check the value of the `/proc/sys/kernel/unprivileged_bpf_disabled` parameter.
+Value of 0 means "unprivileged enable", and value of 2 means "only privileged users enabled".
+
+This setting can be changed by the `root` user:
+
+* to enable it temporarily for all users by running the command `sysctl kernel.unprivileged_bpf_disabled=0`
+* to enable it permanently by adding `kernel.unprivileged_bpf_disabled=0` to the `/etc/sysctl.conf` file.
+
+
+[#jsc-SLE-6115]
+==== Support for Hygon Dhyana CPUs
+
+SUSE Linux Enterprise Server 12 SP5 now supports the Hygon Dhyana CPUs.
+They are AMD-based CPUs produced in China by a joint venture between AMD and Hygon.
+
+
+[#jsc-SLE-5568]
+==== IOMMU Passthrough is now Default on all Architectures
+
+Passthrough mode provides improved I/O performance, especially for high-speed devices, because DMA remapping is not needed for the host (bare-metal or hypervisor).
+
+IOMMU passthrough is now enabled by default in SUSE Linux Enterprise products.
+Therefore, you no longer need to add `iommu=pt` (Intel 64/AMD64) or `iommu.passthrough=on` (AArch64) on the kernel command line.
+To disable passthrough mode, use `iommu=nopt` (Intel 64/AMD64) or `iommu.passthrough=off` (AArch64), respectively.
+
+
+[#jsc-SLE-4855]
+==== Enable NVDIMMs in Memory Mode
+
+Due to missing auto detection by the hardware, enabling NVDIMMs in memory mode, requires the kernel boot parameter `page_alloc.shuffle=1`.
+
+
+[#bsc-1143465]
+==== Kernel Firmware Shipped in `kernel-firmware` Package
+
+In past releases, the `kernel-default` package contained firmware for in-kernel drivers.
+
+Starting with {product} 12{nbsp}SP3, such firmware is delivered as part of the package `kernel-firmware`.
+
+
+[#all-architecture-kernel-limits]
+==== Kernel Limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {sles} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|ARMv8 (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|256
+|2048
+|480
+
+|Maximum amount of RAM (theoretical/certified)
+|> 1{nbsp}PiB/64{nbsp}TiB
+|10{nbsp}TiB/256{nbsp}GiB
+|1{nbsp}PiB/64{nbsp}TiB
+|256{nbsp}TiB/n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/128{nbsp}TiB
+|n.a.
+|512{nbsp}TiB^1^/2{nbsp}EiB
+|256{nbsp}TiB/256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1048576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 512{nbsp}TiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".
+

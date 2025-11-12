@@ -1,0 +1,22 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#features]
+== General Features & Fixes
+
+// Release Notes for Desktop application features:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+include::desktop.adoc[]
+// include::base-system.adoc[]
+// include::virtualization.adoc[]

@@ -1,0 +1,43 @@
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: beta
+// conditionals-end
+
+ifeval::["{lifecycle}" == "beta"]
+:label-pre: {nbsp}(prerelease)
+endif::[]
+ifeval::["{lifecycle}" != "beta"]
+:label-pre:
+endif::[]
+
+:product: {slessap}
+:producta: {slessapa}
+
+:this-ga: 15
+:this-sp: SP6
+:this-version: {this-ga}{nbsp}{this-sp}{label-pre}
+:rel-date: June 2024
+:next-sp: SP7
+:next-ga: 16
+:previous-ga: 12
+:previous-sp: SP5
+:kernel-version: 6.4
+:previous-version: {this-ga}{nbsp}{previous-sp}
+:next-version: {this-ga}{nbsp}{next-sp}
+
+:abstract: This document provides guidance and an overview to high-level general features and updates for {product}{nbsp}{this-version}. In addition to architecture- or product-specific information, it also describes the capabilities and limitations of {product}{nbsp}{this-version}.
+
+:doc-url: https://documentation.suse.com/sles-sap/{this-ga}-{this-sp}
+:doc-url-beta: https://susedoc.github.io/doc-slesforsap/main
+:doc-url-source: https://www.suse.com/download/sle-sap/
+
+:support-url: https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server_for_SAP_Applications
+:rn-url: https://www.suse.com/releasenotes
+
+:doc-url-sles: https://documentation.suse.com/sles/{this-ga}-{this-sp}
+:doc-url-sles-beta: https://susedoc.github.io/doc-sle/main
+
+:copyright-begin: 2010
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

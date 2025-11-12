@@ -1,0 +1,535 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="SUSE Linux Enterprise High Availability Extension 12 SP3" component="Release Notes" assignee="lukas.kucharczyk@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise High Availability Extension</productname>
+  <productnumber>15 GA</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise High Availability Extension is a suite of
+    clustering technologies that enable enterprises to implement highly
+    available Linux clusters and eliminate single points of failure. This
+    document gives an overview of features and limitations of SUSE Linux
+    Enterprise High Availability Extension. Some sections do not apply to a
+    particular architecture or product, this is explicitly marked.
+   </para>
+
+   <para condition="beta;pre">
+    This product will be released in June 2018.
+   </para>
+
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version is
+    always available at <ulink url="https://www.suse.com/releasenotes"/>.
+    General documentation can be found at:
+    <ulink url="https://www.suse.com/documentation"/>.
+   </para>
+
+   <para condition="unmaintained">
+    The support period for SUSE Linux Enterprise High Availability Extension
+    15 GA has ended. To keep systems secure and supported, upgrade to a
+    current SUSE Linux Enterprise High Availability Extension version.
+    Before starting the upgrade, make sure to apply all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise High Availability Extension</title>
+  <para>
+   SUSE Linux Enterprise High Availability Extension is an affordable,
+   integrated suite of robust open source clustering technologies that
+   enable enterprises to implement highly available Linux clusters and
+   eliminate single points of failure.
+  </para>
+  <para>
+   Used with SUSE Linux Enterprise Server, it helps firms maintain business
+   continuity, protect data integrity, and reduce unplanned downtime for
+   their mission-critical Linux workloads.
+  </para>
+  <para>
+   SUSE Linux Enterprise High Availability Extension provides all of the
+   essential monitoring, messaging, and cluster resource management
+   functionality of proprietary third-party solutions, but at a more
+   affordable price, making it accessible to a wider range of enterprises.
+  </para>
+  <para>
+   It is optimized to work with SUSE Linux Enterprise Server, and its tight
+   integration ensures customers have the most robust, secure, and up to
+   date high availability solution. Based on an innovative, highly flexible
+   policy engine, it supports a wide range of clustering scenarios.
+  </para>
+  <para>
+   With static or stateless content, the High Availability cluster can be
+   used without a cluster file system. This includes web-services with
+   static content as well as printing systems or communication systems like
+   proxies that do not need to recover data.
+  </para>
+  <para>
+   Finally, its open source license minimizes the risk of vendor lock-in,
+   and its adherence to open standards encourages interoperability with
+   industry standard tools and technologies.
+  </para>
+ </section>
+ <section id="Support">
+  <title>Support Statement for SUSE Linux Enterprise High Availability Extension 15 GA</title>
+  <para>
+   Support requires an appropriate subscription from SUSE. For more
+   information, see
+   <ulink url="https://www.suse.com/products/highavailability/"/>.
+  </para>
+  <para>
+   A Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription is needed to receive support and maintenance to run
+   geographical clustering scenarios, including manual and automated setups.
+  </para>
+  <para>
+   Support for the DRBD storage replication is independent of the cluster
+   scenario and included as part of the SUSE Linux Enterprise High
+   Availability Extension product and does not require the addition of a Geo
+   Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.
+  </para>
+  <para>
+   General Support Statement
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     L1: Installation and problem determination - technical support designed
+     to provide compatibility information, installation and configuration
+     assistance, usage support, on-going maintenance and basic
+     troubleshooting. Level 1 Support is not intended to correct product
+     defect errors.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L2: Reproduction of problem isolation - technical support designed to
+     duplicate customer problems, isolate problem areas and potential
+     issues, and provide resolution for problems not resolved by Level 1
+     Support.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L3: Code Debugging and problem resolution - technical support designed
+     to resolve complex problems by engaging engineering in patch provision,
+     resolution of product defects which have been identified by Level 2
+     Support.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   SUSE will only support the usage of original (unchanged or not
+   recompiled) packages.
+  </para>
+ </section>
+ <section id="Intro.New">
+  <title>What Is New?</title>
+<!-- FIXME: Find out highlights of SLED 15 - sknorr, 2017-08-18 -->
+  <para>
+   SUSE Linux Enterprise High Availability Extension 15 introduces many
+   innovative changes compared to SUSE Linux Enterprise High Availability
+   Extension 12.
+<!-- Here are the highlights: -->
+  </para>
+<!--<variablelist>
+    <varlistentry>
+     <term>
+    Cluster File System
+     </term>
+     <listitem>
+      <para>
+       GFS2 cluster file system with read/write support, to complement
+       the &suse; recommended OCFS2 cluster file system.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+      Load balancer
+     </term>
+     <listitem>
+      <para>
+       HAProxy as layer 4 load balancer added, to complement the Linux
+       virtual server load balancer.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+      History Explorer
+     </term>
+     <listitem>
+      <para>
+     Hawk history explorer now includes off-line analysis capabilities.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>
+     Resource Agents
+     </term>
+     <listitem>
+      <para>
+       Resource agents got multiple updates, including a resource agent
+       to handle SCSI reservations
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>-->
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 15 GA which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15"/>
+   (these release notes are identical across all supported hardware
+   architectures).
+  </para>
+ </section>
+ <section id="Intro.Support.Techpreviews" remap="Intro:Support:Techpreviews">
+  <title>Technology Previews</title>
+  <para>
+   Technology previews are packages, stacks, or features delivered by SUSE
+   which are not supported. They may be functionally incomplete, unstable or
+   in other ways not suitable for production use. They are included for your
+   convenience and give you a chance to test new technologies within an
+   enterprise environment.
+  </para>
+  <para>
+   Whether a technology preview becomes a fully supported technology later
+   depends on customer and market feedback. Technology previews can be
+   dropped at any time and SUSE does not commit to providing a supported
+   version of such technologies in the future.
+  </para>
+  <para>
+   Give your SUSE representative feedback, including your experience and use
+   case.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-324044" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324044" -->
+   <title>SCSI Locking on Multipath With mpathpersist Resource Agent</title>
+   <para>
+    <emphasis> In previous versions, the
+    </emphasis><literal>sg_persist</literal><emphasis> resource agent only
+    deals with the SCSI device directly and could not handle multipath
+    devices. </emphasis>
+   </para>
+   <para>
+    As a technology preview, the <literal>mpathpersist</literal> resource
+    agent now has a new functionality that allows for HA clusters that have
+    a SCSI locking mechanism on top of multipath.
+   </para>
+  </section>
+  <section role="notoc" id="fate-323415" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323415" -->
+   <title>Container Bundles</title>
+   <para>
+    <emphasis>Configuring containers as cluster resources often means
+    configuring network and storage resources and using the remote node
+    feature to monitor services running inside the container. Previously,
+    there was no convenient way to configure these resources and
+    features.</emphasis>
+   </para>
+   <para>
+    As a technology preview, SLE HA 15 GA ships with the feature container
+    bundles. Container bundles allow managing Docker and Rkt containers
+    together with associated functionality like network ranges, port mapping
+    and storage mapping.
+   </para>
+  </section>
+  <section role="notoc" id="fate-323171" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323171" -->
+   <title>Clustering Support for MD RAID10 Devices</title>
+   <para>
+    With SUSE Linux Enterprise High Availability Extension 15, RAID10 is
+    included as technology preview, which enables locking and
+    synchronization across multiple systems on the cluster, so all nodes in
+    the cluster can access the MD devices simultaneously.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321385" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321385" -->
+   <title>QDevice/QNetd Support for Corosync Quorum Device</title>
+   <para>
+    <emphasis>For two-node clusters, quorum is normally not available.
+    Therefore in the past, to resolve split-brain scenarios, fencing had to
+    be used in two-node clusters.</emphasis>
+   </para>
+   <para>
+    As a technology preview, Corosync 2.4 in SLE HA 15 GA now includes
+    <literal>qnetd</literal>. <literal>qnetd</literal> is a network quorum
+    device that can be used for quorum that avoids the need for fencing.
+    This device can be used as a third node only for quorum. This extra node
+    is very lightweight and can therefore be shared among many two-node
+    clusters.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Cluster" remap="InfraPackArch:ArchIndependent:HA:Cluster">
+  <title>Cluster</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-322100" remap="InfraPackArch:ArchIndependent:HA:Cluster">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322100" -->
+   <title>Support for Manual Tickets in Geo Clustering</title>
+   <para>
+    <emphasis>Previously, granting tickets always required a quorum of the
+    geo cluster. This meant that for a geo cluster with only 2 sites, it was
+    not possible to grant a ticket if one site was lost. Hence, an
+    arbitrator had to be used in all 2-site geo cluster setups.</emphasis>
+   </para>
+   <para>
+    With SLE HA 15 GA, you can now manually grant tickets to the healthy
+    site if no automatic fail-over is required in a split-brain scenarios.
+    Manual tickets are controlled only by administrator commands, which make
+    them very user-predictable. However, you must make sure yourself that
+    none of these tickets is granted to any other site at the same time.
+   </para>
+   <para>
+    The YaST Geo Cluster module now also allows configuring manual tickets.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Tools" remap="InfraPackArch:ArchIndependent:HA:Tools">
+  <title>High-Availability Tools</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-324441" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324441" -->
+   <title>Probing Guest Nodes for Resource Status</title>
+   <para>
+    <emphasis> With the new version, Pacemaker now also probes guest nodes
+    for resource status. (Guest nodes are virtual machines that are created
+    by resource agents, such as VirtualDomain and run the
+    </emphasis><literal>pacemaker_remote</literal><emphasis> daemon). This
+    change unifies the behaviors in regard of probes for all types of nodes,
+    cluster nodes, remote nodes and guest nodes. This prevents concurrency
+    violations. </emphasis>
+   </para>
+   <para>
+    <emphasis> However, if you have configured a location constraint with an
+    </emphasis><literal>-inf</literal><emphasis> score to prevent a resource
+    from running on a guest node, this can lead to problems. For example, if
+    the software required by this resource is not installed on the guest
+    node, probing for resource status might fail. </emphasis>
+   </para>
+   <para>
+    If you have configured a location constraint with an
+    <literal>-inf</literal> score to keep a resource off a guest node,
+    prevent Pacemaker from probing the resource on this node. To do so, set
+    the <literal>resource-discovery</literal> property for this constraint
+    to <literal>never</literal>. (Limiting resource discovery to allowed
+    nodes in this way can also significantly boost performance if you are
+    using Pacemaker Remote to scale a cluster to hundreds of nodes.)
+   </para>
+   <para>
+    For more information, see
+    <ulink url="http://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/1.1/html-single/Pacemaker_Explained/index.html#_deciding_which_nodes_a_resource_can_run_on"/>.
+   </para>
+  </section>
+  <section role="notoc" id="fate-323863" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323863" -->
+   <title>AutoYaST Support for Geo Clustering</title>
+   <para>
+    <emphasis>Instead of installing manually, you can also use AutoYaST to
+    clone the HA configuration of existing nodes. However in the past, the
+    Geo Clustering extension had to be installed manually on all
+    machines.</emphasis>
+   </para>
+   <para>
+    In SLE HA 15 GA, AutoYaST now has support for Geo Clustering for SUSE
+    Linux Enterprise High Availability Extension as well. This even includes
+    support for the new manual ticket mode (for more information, see
+    <xref linkend="fate-322100"/>).
+   </para>
+  </section>
+  <section role="notoc" id="fate-321936" remap="InfraPackArch:ArchIndependent:HA:Tools,InfraPackArch:ArchIndependent:Kernel_Modules">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321936" -->
+   <title>IPVS Has Been Moved From the HA Extension to the Base OS</title>
+   <para>
+    <emphasis>IPVS (IP Virtual Server) implements transport-layer load
+    balancing (Layer 4 LAN switching) in the Linux kernel. In SLES 12 and
+    prior versions, IPVS was shipped only with the SUSE Linux Enterprise
+    High Availability extension. However, IPVS is increasingly used outside
+    the HA context, for example by Docker.</emphasis>
+   </para>
+   <para>
+    With SLES 15, IPVS has been moved into the base system. Other HA-related
+    functionality that relies on IPVS remains part of the HA extension.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321640" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321640" -->
+   <title>crm Report (hb_report) Configuration File</title>
+   <para>
+    <emphasis>When creating reports, it may be desired to have certain
+    options set each time. Currently, these have to be documented or
+    maintained externally.</emphasis>
+   </para>
+   <para>
+    <literal>hb_report</literal> now alows for a configuration file in which
+    an administrator can configure the report settings once, and have them
+    apply to each report generated in the cluster from then on.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321020" remap="InfraPackArch:ArchIndependent:HA:Tools">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321020" -->
+   <title>Hawk Data Files Installed to /usr/share/hawk</title>
+   <para>
+    <emphasis> Previous versions of Hawk installed their data files into
+    </emphasis><literal>/srv/www</literal><emphasis>. This is not compliant
+    with the FHS standard for package's data file locations and does not
+    allow for using a read-only root file system. </emphasis>
+   </para>
+   <para>
+    The Hawk data files are now installed to
+    <literal>/usr/share/hawk</literal>, with some runtime data in
+    <literal>/var/lib/hawk</literal>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Feedback">
+<!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the media.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM (where <replaceable>FILENAME</replaceable> is the name of the RPM):
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1
+     for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SUSE Linux Enterprise High Availability Extension
+     media. This directory includes a PDF version of the High Availability
+     Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="https://www.suse.com/documentation"/> contains additional
+     or updated documentation for SUSE Linux Enterprise High Availability
+     Extension 15 GA.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="https://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="https://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material.
+   The source code is available for download at
+   <ulink url="https://www.suse.com/download/sle-ha/"/> on Medium 2.
+   For up to three years after distribution of the SUSE product, upon request,
+   SUSE will mail a copy of the source code.
+   Send requests by e-mail to <ulink url="mailto:sle_source_request@suse.com"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting SUSE software. SUSE assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative
+   Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <ulink url="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

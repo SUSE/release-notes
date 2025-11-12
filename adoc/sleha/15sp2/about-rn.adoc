@@ -1,0 +1,18 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#about]
+== About the Release Notes
+
+These {rnotes} are identical across all architectures, and the most recent version is always available online at {rn-url}.
+
+Entries can be listed twice, if they are important and belong to more than one section.
+
+Release notes usually only list changes that happened between two subsequent releases.
+Certain important entries from the release notes of previous product versions are repeated.
+To make these entries easier to identify, they contain a note to that effect.
+
+However, repeated entries are provided as a courtesy only.
+If you are skipping one or more service packs, check the release notes of the skipped service packs as well.
+If you are only reading the release notes of the current release, you could miss important changes.

@@ -1,0 +1,56 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#hardware]
+=== Hardware
+
+// Release Notes for Hardware-related features that are not part of the kernel
+//    Graphics under Wayland, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1122173]
+==== Pure Userspace X Drivers Are Not Supported Anymore
+
+Under SLES 15 SP2 and later, only drivers with support for kernel mode-setting will continue to work.
+Pure userspace X drivers do not work anymore and are not supported.
+In particular, this affects the virtualization-related `qxl` and `vmware` drivers that will no longer work.
+
+
+[#jsc-SLE-7143]
+==== Support for Modes of Intel Optane DC Persistent Memory
+
+With {product} {this-version}, Intel Optane DIMMs can be used in different modes on YES-certified platforms:
+
+* In __App Direct Mode__, the Intel Optane memory is used as fast persistent storage, an alternative to SSDs and NVMe devices.
+  Data is persistent: It is kept when the system is powered off.
++
+App Direct Mode has been supported since {slea}{nbsp}12{nbsp}SP4.
+
+* In __Memory Mode__, the Intel Optane memory serves as a cost-effective, high-capacity alternative to DRAM.
+  In this mode, separate DRAM DIMMs act as a cache for the most frequently-accessed data while the Optane DIMMs memory provide large memory capacity.
+  However, compared with DRAM-only systems, this mode is slower under random access workloads.
+  If you run applications without Optane-specific enhancements that take advantage of this mode, memory performance may decrease.
+  Data is __not__ persistent: It is lost when the system is powered off.
++
+Memory Mode has been supported since {slea}{nbsp}15{nbsp}SP1.
+
+* In __Mixed Mode__, the Intel Optane memory is partitioned, so it can serve in both modes simultaneously.
++
+Mixed Mode has been supported since {slea}{nbsp}15{nbsp}SP1.
+
+__Not all certified platforms support all modes mentioned above.__
+Direct hardware-related questions at your hardware partner.
+{suse} works with all major hardware vendors to make use of Intel Optane a perfect experience on the OS- and open-source infrastructure level.
+
+[#jsc-ECO-1386]
+==== Support for Pensando Ethernet Adapter Family
+
+{product} {this-version} includes a kernel driver for Pensando* PCI Ethernet controllers.

@@ -1,0 +1,123 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro]
+== {product}
+
+{product} is the market's only enterprise-quality Linux desktop ready for routine business use.
+Developed and backed by {suse}, {product} provides market-leading usability, seamless interoperability with existing IT systems, and dozens of essential applications—all at a fraction of the price of proprietary operating systems.
+
+
+[#intro-interoperability]
+=== Interoperability and Hardware Support
+
+{product}{nbsp}{this-version} comes bundled with the latest versions of leading applications such as LibreOffice office productivity suite, Mozilla Firefox Web browser, and Evolution e-mail and calendar suite.
+In addition, it integrates with Microsoft SharePoint for group collaboration and supports a wide range of multimedia file formats, wireless and networking standards, and plug-and-play devices.
+
+Through the latest enhancements in power management and security, {product}{nbsp}{this-version} also provides an environmentally friendly IT experience (Green{nbsp}IT) and an error-proof desktop.
+Finally, {product} offers unparalleled flexibility.
+You can deploy it on a wide range of thick client devices (including desktops, notebooks, netbooks, and workstations), on thin client devices, or as a virtual desktop.
+By leveraging the power of {product}, your business can dramatically reduce costs, improve end user security and increase workforce productivity.
+
+include::whats-new.adoc[]
+
+[#intro-important]
+=== Important Sections of This Document
+
+If you are upgrading from a previous {product} release, you should review at least the following sections:
+
+* <<intro-support>>
+* <<instUpgrade-upgrade>>
+* <<features>>
+
+
+[#intro-documentation]
+=== Documentation and Other Information
+
+// Rethink use of the word media here. There is just one installation medium. - sknorr, 2017-10-20
+
+[#intro-documentation-media]
+==== Available on the Product Media
+
+* Read the READMEs on the media.
+* Get the detailed change log information about a particular package from the RPM (where `_FILENAME_.rpm` is the name of the RPM):
++
+----
+rpm --changelog -qp FILENAME.rpm
+----
+* Check the `ChangeLog` file in the top level of the media for a chronological log of all changes made to the updated packages.
+* Find more information in the `docu` directory of the media of {product}{nbsp}{this-version}.
+  This directory includes PDF versions of the {product}{nbsp}{this-version} Installation Quick Start Guide.
+
+[#intro-documentation-external]
+==== Online Documentation
+
+// disclaimer beta
+ifeval::["{lifecycle}" == "beta"]
+* For the most up-to-date version of the documentation for {product}{nbsp}{this-version}, see {doc-url-beta} (draft version).
+endif::[]
+// disclaimer maintained
+ifeval::["{lifecycle}" == "maintained"]
+* For the most up-to-date version of the documentation for {product}{nbsp}{this-version}, see {doc-url}.
+endif::[]
+// disclaimer unmaintained
+ifeval::["{lifecycle}" == "unmaintained"]
+* For the most up-to-date version of the documentation for {product}{nbsp}{this-version}, see {doc-url}.
+endif::[]
+* Find a collection of White Papers in the {product} Resource Library at https://www.suse.com/products/desktop/#resources.
+
+
+[#intro-lifecycle]
+=== Support and Life Cycle
+
+{product} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
+
+// bnc#821338, bnc#828478, bnc#882262
+{product}{nbsp}{this-ga} has a 10-year life cycle, with 10 years of General Support.
+The current version ({this-sp}) will be fully maintained and supported until 6 months after the release of {product}{nbsp}{this-ga}{nbsp}{next-sp}.
+
+For more information, check our Support Policy page https://www.suse.com/support/policy.html.
+
+
+[#intro-support]
+=== Support Statement for {product}
+
+To receive support, you need an appropriate subscription with {suse}.
+For more information, see {support-url}.
+
+The following definitions apply:
+
+L1::
+Problem determination, which means technical support designed to provide compatibility information, usage support, ongoing maintenance, information gathering and basic troubleshooting using available documentation.
+L2::
+Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem area and provide a resolution for problems not resolved by Level{nbsp}1 or prepare for Level{nbsp}3.
+L3::
+Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level{nbsp}2 Support.
+
+For contracted customers and partners, {product} is delivered with L3 support for all packages, except for the following:
+
+* Technology Previews, see <<intro-techpreview>>
+* Sound, graphics, fonts and artwork
+* Packages that require an additional customer contract, see <<intro-support-external>>
+* Some packages shipped as part of the module _Workstation Extension_ are L2-supported only
+* Packages with names ending in `-devel` (containing header files and similar developer resources) will only be supported together with their main packages.
+
+{suse} will only support the usage of original packages. That is, packages that are unchanged and not recompiled.
+
+[#intro-support-general]
+==== General Support
+
+To learn about supported features and limitations, refer to the following
+sections in this document:
+
+* <<removedDeprecated>>
+* For supported file systems and virtualization options, see the {rnotes} of {sles} {this-version} at {rn-url}/x86_64/SUSE-SLES/15-SP2.
+
+// see fate#316990
+[#intro-support-external]
+==== Software Requiring Specific Contracts
+
+Support for specific packages may require a support contract with a third party.
+
+include::tech-previews.adoc[]

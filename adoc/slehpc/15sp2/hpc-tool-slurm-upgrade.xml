@@ -1,0 +1,647 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="hpc-tool-slurm-upgrade"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Upgrading Slurm</title>
+ <section xml:id="hpc-tool-slurm-compatibility">
+  <title>Slurm Upgrade Compatibility</title>
+ <!--
+ [SLE-12 only:
+  <para>
+   Before upgrading to Slurm 18.08, create a user and group
+   <literal>slurm</literal> on all nodes of the cluster (including the
+   management nodes). The ID of the user <literal>slurm</literal> and group
+   <literal>slurm</literal> need to be identical across the cluster.
+  </para>
+ ]
+ -->
+  <para>
+   New major versions of Slurm are released in regular intervals. With some
+   restrictions (see below), interoperability is guaranteed between 3 consecutive
+   versions. However, unlike updates to maintenance releases (that is, releases
+   which differ in the last version number), upgrades to newer major versions
+   may require more careful planning.
+  </para>
+  <para>
+   For existing products under general support, version upgrades of Slurm are
+   provided regularly. Unlike maintenance updates, these upgrades will not be
+   installed automatically using <literal>zypper patch</literal> but require the
+   administrator to request their installation explicitly. This ensures
+   that these upgrades are not installed unintentionally and gives the
+   administrator the opportunity to plan version upgrades beforehand.
+  </para>
+  <para>
+   On new installations, we recommend installing the latest available
+   version.
+  </para>
+  <para>
+   Slurm uses a segmented version number: The first two segments denote the
+   major version, the final segment denotes the patch level.
+  </para>
+  <para>
+   Check the list below for available major versions.
+  </para>
+  <para>
+   Upgrade packages (that is, packages that were not a part of the
+   module or service pack initially) have their major version encoded in the
+   package name (with periods <literal>.</literal> replaced by underscores
+   <literal>_</literal>). For example, for version 18.08, this would be:
+   <literal>slurm_18_08-*.rpm</literal>.
+  </para>
+  <para>
+   To upgrade the package <package>slurm</package> to 18.08, run the command:
+  </para>
+  <screen>zypper install --force-resolution slurm_18_08</screen>
+  <para>
+   To upgrade Slurm subpackages, proceed analogously.
+  </para>
+   <important>
+    <para>
+     If any additional Slurm packages are installed, make sure to upgrade those as well.
+     These include:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       slurm-pam_slurm
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-sview
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       perl-slurm
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-lua
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-torque
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-config-man
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-doc
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-webdoc
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       slurm-auth-none
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       pdsh-slurm
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     All Slurm packages should be upgraded at the same time to avoid
+     conflicts between packages of different versions. This can be done by
+     adding them to the <literal>zypper install</literal> command line
+     described above.
+    </para>
+   </important>
+  <para>
+   In addition to the <quote>three-major version rule</quote> mentioned at the
+   beginning of this section, obey the following rules regarding the order of
+   updates:
+  </para>
+  <orderedlist>
+   <listitem>
+    <para>
+     The version of <literal>slurmdbd</literal> must be identical to or higher
+     than the version of <literal>slurmctld</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The version of <literal>slurmctld</literal> must the identical to or higher
+     than the version of <literal>slurmd</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The version of <literal>slurmd</literal> must be identical to or higher
+     than the version of the <literal>slurm</literal> user applications.
+    </para>
+   </listitem>
+  </orderedlist>
+  <para>
+   Or in short:
+  </para>
+  <para>
+   version(<literal>slurmdbd</literal>) &gt;=
+   version(<literal>slurmctld</literal>) &gt;=
+   version(<literal>slurmd</literal>) &gt;= version (Slurm user CLIs).
+  </para>
+  <para>
+   With each version, configuration options for
+   <literal>slurmctld</literal>/<literal>slurmd</literal> or
+   <literal>slurmdbd</literal> may
+   be deprecated. While deprecated, they will remain valid for this version and
+   the two subsequent versions but they may be removed later.
+  </para>
+  <para>
+   Therefore, it is advisable to update the configuration files after the
+   upgrade and replace deprecated configuration options before finally
+   restarting a service.
+  </para>
+  <para>
+   It should be noted that a new major version of Slurm introduces a new version
+   of <literal>libslurm</literal>. Older versions of this library might no longer
+   work with an upgraded Slurm. For all &slea; software depending on
+   <literal>libslurm </literal> an upgrade will be provided. Any locally
+   developed Slurm modules or tools might require modification and/or
+   recompilation.
+  </para>
+ </section>
+ <section xml:id="hpc-tool-slurm-upgrade-workflow">
+  <title>Upgrade Workflow</title>
+  <para>
+   For this workflow it is assumed that
+   MUNGE authentication is used and that
+   <literal>pdsh</literal>, the <literal>pdsh</literal> Slurm plugin and
+   <literal>mrsh</literal> can be used to access all machines of the cluster.
+   That means, <literal>mrshd</literal> is running on all nodes in the cluster.
+  </para>
+  <para>
+   If this is not the case, install <literal>pdsh</literal>:
+  </para>
+<screen>&prompt;zypper in pdsh-slurm</screen>
+  <para>
+   If <literal>mrsh</literal> is not used in the cluster, the
+   SSH back-end for <literal>pdsh</literal> can be used as
+   well for this: Replace the option <literal>-R mrsh</literal> with
+   <literal>-R ssh</literal> in the <literal>pdsh</literal> commands below.
+   This is less scalable and you may run out of usable ports.
+  </para>
+  <warning>
+   <title>Upgrade <literal>slurmdbd</literal> databases before other Slurm components</title>
+   <para>
+    If <literal>slurmdbd</literal> is used, always upgrade the
+    <literal>slurmdbd</literal> database <emphasis>before</emphasis> starting
+    the upgrade of any other Slurm component.
+    The same database can be connected multiple clusters and must be upgraded
+    before all of them.
+   </para>
+   <para>
+    Upgrading other Slurm components before the database can lead to data loss.
+   </para>
+  </warning>
+  <procedure xml:id="hpc-tool-slurm-upgrade-procedure">
+   <title>Upgrading Slurm</title>
+   <step>
+    <para>
+     <emphasis role="bold">Upgrade <literal>slurmdbd</literal> Database Daemon</emphasis>
+    </para>
+    <para>
+     Upon the first start of <literal>slurmdbd</literal> after a
+     <literal>slurmdbd</literal> upgrade, it will convert its database.
+     If the database is large, the conversion will take several 10s of minutes.
+     During this time, the database is not accessible.
+    </para>
+    <para>
+     We strongly recommend creating a backup of the database in case an
+     error occurs during or after the upgrade process.
+     Without a backup, all accounting data collected in the database might
+     be lost in such an event.
+     A database
+     converted to a newer version cannot be converted back to an older one and
+     older versions of <literal>slurmdbd</literal> will not recognize the
+     newer formats. To back up and upgrade <literal>slurmdbd</literal>,
+     follow this procedure:
+    </para>
+    <substeps>
+     <step>
+      <para>
+       Stop the <literal>slurmdbd</literal> service:
+      </para>
+      <screen>&prompt;rcslurmdbd stop</screen>
+      <para>
+       Make sure that <literal>slurmdbd</literal> is not running anymore:
+      </para>
+      <screen>&prompt;rcslurmdbd status</screen>
+      <para>
+       It should be noted that <literal>slurmctld</literal> might remain running
+       while the database daemon is down. While it is down, requests intended
+       for <literal>slurmdbd</literal> are queued internally. The DBD Agent
+       Queue size is limited, however, and should therefore be monitored with
+       <literal>sdiag</literal>.
+      </para>
+     </step>
+     <step>
+      <para>
+       Create a backup of the <literal>slurm_acct_db</literal> database:
+      </para>
+      <screen>&prompt;mysqldump -p slurm_acct_db &gt; slurm_acct_db.sql</screen>
+      <note role="compact">
+       <para>
+        If needed, this can be restored by running:
+       </para>
+       <screen>&prompt;mysql -p slurm_acct_db &lt; slurm_acct_db.sql</screen>
+      </note>
+     </step>
+     <step>
+      <para>
+       In preparation of the conversion, make sure the variable
+       <literal>innodb_buffer_size</literal> is set to a value &gt;= 128 Mb:
+      </para>
+      <para>
+       On the database server, run:
+      </para>
+<screen>&prompt;echo  'SELECT @@innodb_buffer_pool_size/1024/1024;' | \
+ mysql --password --batch</screen>
+      <para>
+       If the size is less than 128 Mb, it can be changed on the fly for the
+       current session (on <literal>mariadb</literal>):
+      </para>
+<screen>&prompt;echo 'set GLOBAL innodb_buffer_pool_size = 134217728;' | \
+ mysql --password --batch</screen>
+      <para>
+       Alternatively, the size can be changed permanently by editing
+       <filename>/etc/my.cnf</filename> and setting it to 128 Mb.
+       Then restart the database:
+      </para>
+      <screen>&prompt;rcmysql restart</screen>
+     </step>
+     <step xml:id="st-slurm-install-slurmdbd">
+      <para>
+       Install the upgrade of <literal>slurmdbd</literal>:
+      </para>
+      <screen>zypper install --force-resolution slurm_<replaceable>version</replaceable>-slurmdbd</screen>
+      <note>
+       <title>Update MariaDB Separately</title>
+       <para>
+        If you also need to update <literal>mariadb</literal>, it is
+        recommended to perform this step separately,
+        <emphasis>before</emphasis> performing
+        <xref linkend="st-slurm-install-slurmdbd"/>.
+       </para>
+      </note>
+      <substeps>
+       <step>
+        <para>
+         Upgrade MariaDB:
+        </para>
+        <screen>&prompt;zypper update mariadb</screen>
+       </step>
+       <step>
+        <para>
+         Run the conversion of the database tables to the new version of
+         MariaDB:
+        </para>
+        <screen>mysql_upgrade --user=root --password=<replaceable>root_db_password</replaceable>;</screen>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Rebuild database</emphasis>
+      </para>
+      <para>
+       Because a conversion can take a considerable amount of time, the systemd
+       service can run into a timeout during the conversion. Thus we recommend
+       to perform the migration manually by running
+       <literal>slurmdbd</literal> from the command line in the foreground:
+      </para>
+<screen>&prompt;/usr/sbin/slurmdbd -D -v</screen>
+      <para>
+       When you see the below message, <literal>slurmdbd</literal> can be shut
+       down:
+      </para>
+<screen>Conversion done:
+success!</screen>
+      <para>
+        To do so, use signal <literal>SIGTERM</literal> (that is, press
+       <keycombo><keycap function="control"/><keycap>C</keycap></keycombo>).
+      </para>
+      <para>
+       When using a backup <literal>slurmdbd</literal>, the conversion needs to be performed
+       on the primary. The backup will not start until the conversion has
+       taken place.
+      </para>
+     </step>
+     <step>
+      <para>
+       Before restarting the service, remove or replace deprecated
+       configuration options. For a list of deprecated options, see
+       <xref linkend="package-slurm-configuration-change"/>.
+      </para>
+      <para>
+       When this has been completed, restart
+       <literal>slurmdbd</literal>.
+       During the database rebuild that <literal>slurmdbd</literal> performs
+       upon the first start, it will not daemonize.
+      </para>
+      <note>
+       <title>Convert Primary <literal>slurmbd</literal> First</title>
+       <para>
+        If a backup database daemon is used, the primary one needs to be
+        converted first. The backup will not start until this has happened.
+       </para>
+      </note>
+      <para>
+       Only after the conversion has been completed, the backup will start.
+      </para>
+     </step>
+    </substeps>
+   </step>
+   <step>
+    <para>
+     <emphasis role="bold">Update slurmctld and slurmd</emphasis>
+    </para>
+    <para>
+     When the Slurm database has been updated, the
+     <literal>slurmctld</literal> and <literal>slurmd</literal>
+     instances can be updated. We recommend updating the head and compute
+     nodes all in a single pass. If this is not feasible, the compute nodes
+     (<literal>slurmd</literal>) can be updated on a node-by-node basis.
+     However, this requires that the master nodes (<literal>slurmctld</literal>)
+     have been updated successfully.
+    </para>
+    <substeps>
+     <step>
+      <para>
+       <emphasis role="bold">Back up the
+       <literal>slurmctld</literal>/<literal>slurmd</literal>
+       configuration</emphasis>
+      </para>
+      <para>
+       It is advisable to create a backup copy of the Slurm configuration
+       before starting the upgrade process. Since the configuration file
+       <literal>/etc/slurm/slurm.conf</literal> should be identical across the
+       entire cluster, it is sufficient to do so on the master controller node.
+      </para>
+     </step>
+     <step xml:id="st-slurm-timeout">
+      <para>
+       <emphasis role="bold">Increase Timeouts</emphasis>
+      </para>
+      <para>
+       Set <literal>SlurmdTimeout</literal> and
+       <literal>SlurmctldTimeout</literal> in
+       <literal>/etc/slurm/slurm.conf</literal> to sufficiently high values to
+       avoid timeouts while <literal>slurmctld</literal> and
+       <literal>slurmd</literal> are down. We recommend at least 60 minutes,
+       more on larger clusters.
+      </para>
+      <substeps>
+       <step>
+        <para>
+         Edit <literal>/etc/slurm/slurm.conf</literal> on the master controller
+         node and set the values for this variable to at least
+         <literal>3600</literal> (1 hour).
+        </para>
+<screen>SlurmctldTimeout=3600
+SlurmdTimeout=3600</screen>
+       </step>
+       <step xml:id="st-slurm-configuration-distribute">
+        <para>
+         Copy <literal>/etc/slurm/slurm.conf</literal> to all nodes. If
+         MUNGE authentication is used in the cluster as
+         recommended, use these steps:
+        </para>
+        <substeps>
+         <step>
+          <para>
+           Obtain the list of partitions in <filename>/etc/slurm/slurm.conf</filename>.
+          </para>
+         </step>
+         <step>
+          <para>
+           Execute:
+          </para>
+<screen>&prompt;cp /etc/slurm/slurm.conf /etc/slurm/slurm.conf.update
+&prompt;sudo -u slurm /bin/bash -c 'cat /etc/slurm/slurm.conf.update \
+ | pdsh -R mrsh -P <replaceable>partitions</replaceable> \
+ "cat > /etc/slurm/slurm.conf"'
+&prompt;rm /etc/slurm/slurm.conf.update
+&prompt;scontrol reconfigure
+</screen>
+         </step>
+         <step>
+          <para>
+           Verify that the reconfiguration took effect:
+          </para>
+          <screen>&prompt;scontrol show config | grep Timeout</screen>
+         </step>
+        </substeps>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Shut down any running <literal>slurmctld</literal>
+       instances</emphasis>
+      </para>
+      <substeps>
+       <step>
+        <para>
+         If applicable, shut down any backup controllers on the backup head
+         nodes:
+        </para>
+        <screen>&prompt_backup;systemctl stop slurmctld</screen>
+       </step>
+       <step>
+        <para>
+         Shut down the master controller:
+        </para>
+<screen>&prompt_master;systemctl stop slurmctld</screen>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Back up the <literal>slurmctld</literal> state files</emphasis>
+      </para>
+      <para>
+       Also, it should be noted, that <literal>slurmctld</literal> maintains
+       state information that is persistent. Almost every major version
+       involves changes to the <literal>slurmctld</literal> state files.
+       This state information will be upgraded as well if the upgrade remains
+       within the supported version range and no data will be lost.
+      </para>
+      <para>
+       However, if a downgrade should become necessary, state information
+       from newer versions will not be recognized by an older version of
+       <literal>slurmctld</literal> and thus will be discarded, resulting in a loss of all
+       running and pending jobs. Thus it is useful to back up the old state
+       in case an update needs to be rolled back.
+      </para>
+      <substeps>
+       <step>
+        <para>
+         Determine the <literal>StateSaveLocation</literal> directory:
+        </para>
+<screen>&prompt;scontrol show config | grep StateSaveLocation</screen>
+       </step>
+       <step>
+        <para>
+         Create a backup of the content of this directory to be able to roll
+         back the update if an issue arises.
+        </para>
+        <para>
+         Should a downgrade be required, make sure to restore the content of the
+         <literal>StateSaveLocation</literal> directory from this backup.
+        </para>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Shut down <literal>slurmd</literal> on the nodes</emphasis>
+      </para>
+<screen>&prompt;pdsh -R ssh -P <replaceable>partitions</replaceable> systemctl stop slurmd</screen>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Update <literal>slurmctld</literal> on the
+       master and backup nodes as well as <literal>slurmd</literal> on the
+       compute nodes</emphasis>
+      </para>
+      <substeps>
+       <step>
+        <para>
+         On the master/backup node(s), run:
+        </para>
+<screen>&prompt_master;zypper install \
+ --force-resolution slurm_<replaceable>version</replaceable></screen>
+       </step>
+       <step>
+        <para>
+         On the master node, run:
+        </para>
+<screen>&prompt_master;pdsh -R ssh -P <replaceable>partitions</replaceable> \
+ zypper install --force-resolution \
+ slurm_<replaceable>version</replaceable>-node</screen>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Replace deprecated options</emphasis>
+      </para>
+      <para>
+       If deprecated options need to be replaced in the configuration files (see
+       the list in <xref linkend="package-slurm-configuration-change"/>),
+       this can be performed before updating the services. These
+       configuration files can be distributed to all controllers and nodes of
+       the cluster by using the method described in
+       <xref linkend="st-slurm-configuration-distribute"/>.
+      </para>
+      <note>
+       <title>Memory Size Seen by <literal>slurmd</literal> Can Change on Update</title>
+       <para>
+        Under certain circumstances, the amount of memory seen by
+        <literal>slurmd</literal> can change after an update. If this
+        happens, <literal>slurmctld</literal> will put the nodes
+        in a <literal>drained</literal> state. To check whether the amount of
+        memory seem by <literal>slurmd</literal> will change after the update,
+        run the following on a single compute node:
+       </para>
+<screen>&prompt_node1;slurmd -C</screen>
+       <para>
+        Compare the output with the settings in
+        <filename>slurm.conf</filename>. If required, correct the setting.
+       </para>
+      </note>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Restart <literal>slurmd</literal> on all compute
+       nodes</emphasis>
+      </para>
+      <para>
+       On the master controller, run:
+      </para>
+<screen>&prompt_master;pdsh -R ssh -P <replaceable>partitions</replaceable> \
+ systemctl start slurmd</screen>
+      <para>
+       On the master, run:
+      </para>
+<screen>&prompt_master;systemctl start slurmctld</screen>
+      <para>
+       Then execute the same on the backup controller(s).
+      </para>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Verify whether the system operates properly</emphasis>
+      </para>
+      <substeps>
+       <step>
+        <para>
+         Check the status of the controller(s).
+        </para>
+        <para>
+         On the master and backup controllers, run:
+        </para>
+<screen>&prompt;systemctl status slurmctld</screen>
+       </step>
+       <step>
+        <para>
+         Verify that the services are running without errors using:
+        </para>
+<screen>sinfo -R</screen>
+        <para>
+         You will see whether there are any down, drained, failing, or
+         failed nodes after the restart.
+        </para>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       <emphasis role="bold">Clean up</emphasis>
+      </para>
+      <para>
+       Restore the <literal>SlurmdTimeout</literal> and
+       <literal>SlurmctldTimeout</literal> values in
+       <literal>/etc/slurm/slurm.conf</literal> on all nodes and run
+       <literal>scontrol reconfigure</literal> (see
+       <xref linkend="st-slurm-timeout"/>).
+      </para>
+     </step>
+    </substeps>
+   </step>
+  </procedure>
+  <para>
+   Each service pack of &product; includes a new major version of
+   <literal>libslurm</literal>.
+   The old version will not be uninstalled on upgrade.
+   User-provided applications will work, as long as the library version used
+   for building is no more than two major versions behind.
+   We strongly recommend rebuilding local applications using
+   libslurm&mdash;such as MPI libraries with Slurm support&mdash;as early as
+   possible.
+   This can require updating user application if new arguments were
+   introduced to existing functions.
+  </para>
+ </section>
+</section>

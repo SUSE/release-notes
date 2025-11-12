@@ -1,0 +1,114 @@
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#intro]
+== {product}
+
+{product}{nbsp}{this-version} is an industry-leading open source high availability clustering system.
+It is designed to virtually eliminate unplanned downtime, be easy to use and be deployed in both physical and virtual environments.
+Also included are geo clustering capabilities, designed to manage cluster servers in data centers anywhere in the world.
+High availability clustering helps to minimize data loss due to corruption or failure by protecting your data assets using your existing IT infrastructure.
+
+High availability clustering is used to automate application and data recovery.
+You can use our flexible, policy-driven clustering solution to implement highly available Linux clusters and eliminate single points of failure.
+Your servers are continuously monitored, and when a fault or failure occurs, the workload is transferred from one server to another, or the application is automatically restarted on a known working system.
+This helps you maintain business continuity and minimize unplanned downtime.
+
+include::whats_new.adoc[]
+
+[#intro-important]
+=== Important Sections of This Document
+
+If you are upgrading from a previous {product} release, you should review at least the following sections:
+
+* <<intro-support>>
+* <<instUpgrade-upgrade>>
+// * <<allArch>>
+
+
+[#intro-documentation]
+=== Documentation and Other Information
+
+// Rethink use of the word media here. There is just one installation medium. - sknorr, 2017-10-20
+
+[#intro-documentation-media]
+==== Available on the Product Media
+
+* Read the READMEs on the media.
+* Get the detailed change log information about a particular package from the RPM (where `_FILENAME_.rpm` is the name of the RPM):
++
+----
+rpm --changelog -qp FILENAME.rpm
+----
+* Check the `ChangeLog` file in the top level of the media for a chronological log of all changes made to the updated packages.
+* Find more information in the `docu` directory of the media of {product}{nbsp}{this-version}.
+  This directory includes the basic Quick Starts for {product}{nbsp}{this-version} in PDF format.
+
+[#intro-external-documentation]
+==== Online Documentation
+
+// beta
+ifeval::["{lifecycle}" == "beta"]
+* For the most up-to-date version of the documentation for {product}{nbsp}{this-version}, see {doc-url-beta} (draft version).
+endif::[]
+// maintained/unmaintained
+ifeval::["{lifecycle}" != "beta"]
+* For the most up-to-date version of the documentation for {product}{nbsp}{this-version}, including {suse} Best Practices, see {doc-url}.
+endif::[]
+* Find a collection of White Papers at https://www.suse.com/products/server/#resources.
+  As `Resource Type`, select `White Papers`.
+
+
+[#intro-lifecycle]
+=== Support and Life Cycle
+
+{product} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
+
+// bnc#821338, bnc#828478, bnc#882262
+{product}{nbsp}{this-ga} has a 13-year life cycle, with 10 years of General Support and 3 years of Extended Support.
+The current version ({this-sp}) will be fully maintained and supported until 6 months after the release of {product}{nbsp}{this-ga}{nbsp}{next-sp}.
+
+If you need additional time to design, validate and test your upgrade plans, Long Term Service Pack Support can extend the support duration.
+You can buy an additional 12 to 36 months in twelve month increments.
+This means, you receive a total of 3 to 5 years of support per Service Pack.
+
+For more information, check our Support Policy page https://www.suse.com/support/policy.html or the Long Term Service Pack Support Page https://www.suse.com/support/programs/long-term-service-pack-support.html.
+
+
+[#intro-support]
+=== Support Statement for {product}
+
+To receive support, you need an appropriate subscription with {suse}.
+For more information, see {support-url}.
+
+The following definitions apply:
+
+L1::
+Problem determination, which means technical support designed to provide compatibility information, usage support, ongoing maintenance, information gathering and basic troubleshooting using available documentation.
+L2::
+Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem area and provide a resolution for problems not resolved by Level{nbsp}1 or prepare for Level{nbsp}3.
+L3::
+Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level{nbsp}2 Support.
+
+For contracted customers and partners, {product} is delivered with L3 support for all packages, except for the following:
+
+* Technology Previews, see <<intro-techpreview>>
+* Sound, graphics, fonts and artwork
+* Packages that require an additional customer contract
+* Some packages shipped as part of the module _Workstation Extension_ are L2-supported only
+* Packages with names ending in `-devel` (containing header files and similar developer resources) will only be supported together with their main packages.
+
+{suse} will only support the usage of original packages. That is, packages that are unchanged and not recompiled.
+
+[#intro-support-general]
+==== General Support
+
+To learn about supported features and limitations, refer to the following
+sections in this document:
+
+// * <<allArch-kernel>>
+// * <<allArch-virtualization>>
+// * <<allArch-filesystems>>
+* <<removedDeprecated>>
+
+include::tech_previews.adoc[]

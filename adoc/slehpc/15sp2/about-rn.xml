@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="about-rn"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>About the Release Notes</title>
+ <para>
+  The most recent version of the &rnotes; is available online at
+  <link xlink:href="&rn-url;"/>.
+ </para>
+ <para>
+  Entries can be listed multiple times if they are important and belong to
+  multiple sections.
+ </para>
+ <para>
+  Release notes only list changes that happened between two subsequent
+  releases.
+  Always review all release notes documents that apply in your upgrade
+  scenario.
+ </para>
+</section>

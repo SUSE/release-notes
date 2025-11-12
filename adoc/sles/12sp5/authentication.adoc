@@ -1,0 +1,25 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-authentication]
+=== Authentication
+
+// Release notes for authentication tools:
+//   Active Directory, LDAP, Kerberos, Samba, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+==== Notable Updates
+//jsc-SLE-5107
+* `freeradius-server`: Updated to version 3.0.19.
+//jsc-SLE-5123
+* `warnquota`: now supports LDAP as default
+//jsc-SLE-5123
+* OpenID is now supported. This feature is provided by `apache2-mod_auth_openidc`.

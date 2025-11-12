@@ -1,0 +1,35 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#intro-techpreview]
+=== Technology Previews
+
+Technology previews are packages, stacks, or features delivered by {suse}
+which are not supported.
+They may be functionally incomplete, unstable or in other ways not suitable
+for production use.
+They are included for your convenience and give you a chance to test new technologies within an enterprise environment.
+
+Whether a technology preview becomes a fully supported technology later depends on customer and market feedback.
+Technology previews can be dropped at any time and {suse} does not commit to providing a supported version of such technologies in the future.
+
+Give your {suse} representative feedback about technology previews, including your experience and use case.
+
+////
+  ** clear statement of TP (no support)
+  ** Title of the TP ** full description of the TP
+  ** link to official documentation (external)
+  ** link to SUSE's documentation
+////
+
+//[#intro-techpreview-all]
+//==== Technology Previews for All Architectures
+
+
+//[#intro-techpreview-x86_64]
+//==== Technology Previews for AMD64/Intel 64 64-Bit (x86_64)
+
+
+//[#intro-techpreview-power]
+//==== Technology Previews for POWER (ppc64le)

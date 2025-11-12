@@ -1,0 +1,30 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#aarch64]
+== ARM 64-Bit-Specific Features & Fixes (AArch64)
+
+Information in this section applies to the version of {product} {this-version} for the AArch64 architecture.
+
+[#jsc-SLE-9534]
+=== cpufreq driver for Raspberry Pi
+
+The cpufreq allowing the system to change its frequency dynamically, has been added.
+This makes the system use less power consumption when idle.
+Also, writing a configuration file to change the frequency is no longer necessary.
+
+
+[#jsc-SLE-7169]
+=== HDMI Audio support for Raspberry Pi 3
+
+HDMI Audio support has been added for the Raspberry Pi 3 platform.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

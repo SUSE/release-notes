@@ -1,0 +1,45 @@
+
+include::entities_all.adoc[]
+include::entities15.adoc[]
+
+[#cluster]
+== Cluster
+
+This section lists cluster-related information for {product}{nbsp}{this-version}.
+
+// cluster-relevant release notes go here
+
+
+[#jsc-ECO-2035]
+=== `crmsh` Will Not Overwrite SSH Keys
+
+Previously, `crmsh` by default overwrote the root `id_rsa` SSH key if not chosen otherwise.
+
+In {product} {this-sp}, the SSH key will never be overwritten.
+
+[#bsc-1155609]
+=== To Take Down Cluster Nodes, Always Use `crm cluster stop`
+
+In previous versions of {product}, you could stop a cluster node by only executing `systemctl stop pacemaker`.
+The Corosync service would then automatically quit in response.
+
+However, this behavior of Corosync was problematic in rare edge cases when SBD was used as the fencing mechanism:
+If the Pacemaker service failed more often in a short time than allowed by systemd's `StartLimitBurst`, systemd would not restart Pacemaker anymore.
+In consequence, the Corosync and SBD services would be stopped and the node would unexpectedly go offline while still holding resources.
+With SBD not running, the node could also not be fenced anymore.
+
+To avoid this issue, starting with {product} 15{nbsp}SP2, the Corosync service will no longer be stopped when the Pacemaker service fails.
+
+For starting, stopping, and restarting cluster nodes, we recommend consistently using the commands `crm cluster start`, `crm cluster stop`, and `crm cluster restart`.
+
+If you want to continue to use `systemctl` commands, make sure to read the {suse} blog post link:https://www.suse.com/c/suse-high-availability-cluster-services-how-to-stop-start-or-view-the-status/[SUSE High Availability Cluster Services – How to stop, start or view the status].
+
+
+////
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+

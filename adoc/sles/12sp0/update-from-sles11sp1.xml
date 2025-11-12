@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id='Update.SP1ToSP3'>
+ <title>Update from &sles; 11 SP1</title>
+
+ <para>
+  The direct update from &sles; 11 SP1 to SP3 is not supported.  For
+  more information, see <xref linkend="Update.General.Sequence"/>.
+ </para>
+
+ <!-- most probably, this is not supported (simona will confirm it)
+  <section>
+   <title>Update from SUSE Linux Enterprise Server 11 SP 1</title>
+    <para>
+     ***CHECKIT
+     Updating from SUSE Linux Enterprise Server 11 SP 1 with AutoYaST is
+     supported.
+    </para>
+  </section>
+ -->
+</section>

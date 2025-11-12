@@ -1,0 +1,125 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#network]
+=== Networking
+
+// Release notes for networking features:
+//     Wicked, NetworkManager, Open VSwitch...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-13591]
+==== `frr` (FRRouting Routing daemon) has been added
+
+The `frr` package has been added.
+It manages TCP/IP based routing protocols.
+
+FRR is a fork of Quagga, which has stopped development in 2018.
+Its developers moved to the FRR project and thus Quagga will receive no further updates.
+
+We recommend migrating to `frr`.
+The configuration is mostly backward compatible, including the `vtysh` shell to configure the routing protocols.
+However, there were several changes, improvements, and new functionality added to `frr`.
+
+See https://frrouting.org/ for more information.
+
+
+[#jsc-SLE-20042]
+==== DFS share failover when remounting
+
+Previously, when a DFS (Distributed File System) target link changed, it was necessary to manually unmount and remount the filesystem.
+
+Now the switch is done automatically.
+
+
+[#bsc-1193054]
+==== All users can now create ICMP Echo sockets
+
+The Linux kernel parameter `net.ipv4.ping_group_range` now covers all groups.
+This allows all users of the operating system create ICMP Echo sockets without using `setuid` binaries or needing to have the `CAP_NET_ADMIN` and `CAP_NET_RAW` file capabilities.
+This improves the overall security by using ICMP instead of raw sockets and simplifies configuration of tools like `ping`, `fping`, `traceroute`, `prometheus-blackbox_exporter`, `collectd-ping`, etc.
+
+
+[#jsc-SLE-16300]
+==== `nftables` backend in `firewalld`
+
+`firewalld` now supports `nftables` as a firewall backend.
+`nftables` in a replacement for `iptables` that brings many advantages, such as built-in sets, faster rule updates, and combined IPv4/IPv6 processing.
+
+For more information, see https://firewalld.org/2018/07/nftables-backend.
+
+[#jsc-SLE-12804]
+==== WireGuard userland tools have been added
+
+The package `wireguard-tools` version 1.0.20200827 has been added.
+It contains userland tools for the kernel WireGuard module.
+
+WireGuard is a secure, fast, and easy-to-use VPN that uses modern cryptography.
+For more information, see https://www.wireguard.com.
+
+
+[#jsc-SLE-17767]
+==== NetworkManager not supported for server workloads
+
+NetworkManager is only supported for desktop workloads with {sleda} or {we}.
+All server certifications are done with `wicked` as the network configuration tool and using NetworkManager might render them invalid.
+NetworkManager is not supported for server workloads.
+NetworkManager might be removed from the server products in a future release.
+
+
+[#jsc-SLE-15488]
+==== RFC2132 DHCP without MAC address
+
+Certain environments, for example, Microsoft Active Directory, require DHCP requests in the RFC2132 format.
+`linuxrc`, as shipped with previous versions of {product}, required passing MAC address as an argument to get RFC2132-formatted DHCP.
+This could pose a maintenance issue when managing large numbers of machines.
+
+`linuxrc` can now send RFC2132-formatted DHCP requests without providing MAC address.
+
+
+// !STICKY
+[#network-samba]
+==== Samba
+
+// bnc#606288
+The version of Samba shipped with {sles} {this-version} delivers integration with Windows Active Directory domains.
+In addition, we provide the clustered version of Samba as part of {sleha} {this-version}.
+
+[#jsc-SLE-23330]
+===== Samba has been updated
+
+The `samba` package has been updated to version 4.15.
+This update will require also updating other packages depending on it, namely:
+
+* `apparmor`
+* `cacertificates`
+* `gnutls`
+* `libldb`
+* `libnettle`
+* `libtalloc`
+* `libtdb`
+* `libtevent`
+* `p11-kit`
+* `sssd`
+
+After the update, the `ldb` and `tdb` files created by `samba` (internal databases in `/var/lib/samba/**`) should be managed with the tools installed in `/usr/lib[64]/samba/bin/`.
+The reason is that we are not updating these libraries because the newer versions required by `samba` 4.15 do not provide Python 2 bindings and we can not remove them with the update, so we built `samba` with the libraries bundled in.
+The system's `talloc`, `tdb`, `tevent`, and `ldb` packages will not be modified by the update so the databases created using them (not by `samba`) must be administrated with the tools provided by the system's `ldb-tools` and `tdb-tools` packages as before the update.
+
+
+// !STICKY
+[#network-nfs4]
+==== NFSv4
+
+// bnc#608543 and bnc#574572
+NFSv4 with IPv6 is only supported for the client side.
+An NFSv4 server with IPv6 is not supported.

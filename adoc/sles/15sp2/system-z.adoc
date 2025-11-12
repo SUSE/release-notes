@@ -1,0 +1,266 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#ibmz]
+== {ibmz}-Specific Features & Fixes (s390x)
+
+Information in this section applies to {z-product} {this-version}.
+For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
+
+[#ibmz-hardware]
+=== Hardware
+
+==== Support for IBM z15 in binutils, glibc and gdb
+
+Binutils, glibc and gdb have been updated to support instructions introduced with IBM z15.
+
+==== Compression Improvements for zlib
+
+The zlib library has been updated to exploit the IBM z15 compression capabilities.
+
+==== Compression Improvements for gzip
+
+The gzip tool has been updated to exploit the IBM z15 compression capabilities.
+
+==== Performance Counters for IBM z15 (CPU-MF)
+
+For optimized performance tuning, the CPU-measurement counter facility now supports counters, including the MT-diagnostic counter set, which was originally introduced with IBM z14.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#ibmz-network]
+=== Network
+
+==== qeth: Support for HiperSockets Multi-Write
+
+Multi-Write allows transferring multiple 64{nbsp}KB buffers with a single instruction.
+This reduces CPU utilization, speeds up data transfer, and reduces receiver-side interrupts.
+
+
+[#bsc-1153309]
+==== Degraded Performance on RoCE ConnectX-4 Hardware
+
+Using default settings of {product} 15{nbsp}SP1, 15{nbsp}SP2, and 15{nbsp}SP3, the performance of RoCE ConnectX-4 hardware on IBM{nbsp}z14 and IBM{nbsp}z15 systems is degraded compared to when used under {product} 15{nbsp}GA.
+
+To improve performance to the same level as with {product} 15{nbsp}GA, set the following flag for all RoCE ethernet interfaces: `ethtool --set-priv-flags DEVNAME rx_striding_rq`.
+This needs to be done for each RoCE interface and at each boot.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#ibmz-performance]
+=== Performance
+
+==== CPU-MF/perf: Export Sampling Data for Post-Processing
+
+Enhances the hardware sampling in the `perf` PMU driver to export additional information for improved `perf` tool post-processing.
+Displays the address and function name from where a sample was taken.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#ibmz-security]
+=== Security
+
+==== Support for SHA3 via CPACF (MSA6)
+
+Support for hardware acceleration in the kernel for the SHA3 algorithm (CPACF MSA6) on CPACF hardware.
+
+
+==== New Tool `zcryptstats` to Extract Crypto Measurement Data
+
+Added a new tool `zcryptstats` to the `s390-tools` package to obtain and display measurement data from crypto adapters for capacity planning.
+
+
+==== openCryptoki: Exploit PRNO Pseudo-Random Numbers in ICA, CCA and EP11 Tokens
+
+Support for a NIST compliant pseudo-random number generator that can be seeded with true random numbers based on CPACF functions for the NIST curves P256, P384, and P521.
+
+
+==== Support for AES Cipher Keys in pkey and paes Modules and zkey
+
+The generation and transformation of AES cipher keys is now supported in the `pkey` and `paes` modules and `zkey`.
+
+
+==== Support for the Crypto Express7S Crypto Card
+
+Added support for the new IBM z15 Crypto Express7S crypto card.
+
+
+==== openCryptoki: Support for SHA*-RSA_PKCS_PSS Mechanisms in libica Token
+
+Added support for the following mechanisms to the libica token of openCryptoki: `CKM_SHA256_RSA_PKCS_PSS`, `CKM_SHA384_RSA_PKCS_PSS`, `CKM_SHA512_RSA_PKCS_PSS`.
+
+
+==== libica: Support for Elliptic Curve Cryptography (ECC) via CPACF MSA9
+
+Use functions provided by IBM z15 with CPACF MSA9 to implement, for example, EC key generation (PCC) and ECDSA sign/verify functions (including the Ed25510, Ed448, X25519, and X448 curves).
+
+
+==== openssl-ibmca: Support for Elliptic Curve Cryptography (ECC) via CPACF MSA9
+
+Use functions provided by IBM z15 with CPACF MSA9 to implement, for example, EC key generation (PCC) and ECDSA sign/verify functions (including the Ed25510, Ed448, X25519, and X448 curves).
+
+
+==== zkey: Enhanced Consistency Checks
+
+Various zkey enhancements have been added based on customer experiences, including checks to ensure that all HSMs used to encrypt a volume use the same encryption keys.
+
+
+==== openSSL: Support for Elliptic Curve Cryptography (ECC) via CPACF MSA9
+
+Use functions provided by IBM z15 with CPACF MSA9 to implement, for example, EC key generation (PCC) and ECDSA sign/verify functions (including the P256, P384, P521, Ed25510, Ed448, X25519 and X448 curves).
+
+
+==== Kernel Address Space Layout Randomization (KASLR)
+
+With kernel address space layout randomization (KASLR), the kernel can be loaded to a random location in memory.
+This offers protection against certain security attacks that rely on knowledge of the kernel addresses.
+
+
+==== Installer Enhancements for Encrypting Partitions.
+
+The installer has been enhanced to support `dm-crypt` to use protected keys to encrypt partitions.
+
+
+==== Support for Secure Execution
+
+{product} 15{nbsp}SP2 supports the IBM Secure Execution for Linux technology introduced with IBM z15 and LinuxONE III.
+For more information, see https://www.ibm.com/support/knowledgecenter/linuxonibm/com.ibm.linux.z.lxse/lxse_t_secureexecution.html.
+
+
+[#jsc-SLE-7482]
+==== libp11 Has Been Added in Version 0.4.10
+
+In {product} 15{nbsp}SP2, We have added `libp11` in version 0.4.10.
+`libp11` is a library implementing a thin layer on top of the RSA Security Inc. PKCS #11 Cryptographic Token Interface (Cryptoki) API to make using PKCS#11 implementations easier.
+
+For more information, see https://github.com/OpenSC/libp11/wiki.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#systemZ-storage]
+=== Storage
+
+==== zdsfs: Online VTOC Refresh
+
+A Linux application can now access new data sets that were created after `zdsfs` was mounted without the need to remount `zdsfs`.
+
+
+==== Installer Support for I/O Device Pre-Configuration
+
+{yast} now allows the user to process device configuration data obtained from the IBM Dynamic Partition Manager at boot time.
+
+
+==== Split DIF and DIX Boot Time Controls
+
+Enables the user to separately configure DIF and DIF+DIX integrity protection mechanisms for zFCP-attached SCSI devices.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#ibmz-virtualization]
+=== Virtualization
+
+The following new features are supported in {product} {this-version} under KVM:
+
+==== New CPU Model IBM z14 ZR1
+
+Provide the CPU model for the IBM z14 ZR1 to enable KVM guests to transparently exploit new hardware features on the z14 ZR1.
+
+
+==== New CPU Model IBM z15
+
+Provide the CPU model for the IBM z15 to enable KVM guests to transparently exploit new hardware features on the z15.
+
+
+==== libvirt CPU Model Comparison and Baselining APIs for IBM Z
+
+Enabled APIs for libvirt CPU model comparison and baselining for IBM Z that will allow customers to optimize utilization of heterogeneous KVM host environments.
+
+
+==== DASD Passthrough Support
+
+Enables KVM guests to directly access ECKD DASD devices using CCW passthrough.
+This allows the exploiting advanced features like HyperPAV and reserve/release.
+IPL from DASD is provided as a technology preview in {product} {this-version}.
+
+
+==== Interrupt Support for Crypto Passthrough
+
+Added interrupt support to improve performance and CPU utilization.
+
+
+[#jsc-SLE-7468]
+==== Secure Linux Boot Toleration
+
+Linux operating system images using a secure boot on-disk format can now be run in KVM without modifications required, lowering overall administrative overhead.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#ibmz-misc]
+=== Miscellaneous
+
+[#jsc-SLE-9099]
+==== `fadump` Support Extended to OPAL-based Firmware
+
+Firmware-assisted dump (`fadump`) support has been added to OPAL firmware.
+Corresponding support is added to the {producta} {this-version} kernel.
+Systems running OPAL firmware with this support can now use `fadump`.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

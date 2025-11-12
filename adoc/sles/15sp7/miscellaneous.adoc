@@ -1,0 +1,134 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#miscellaneous]
+=== Miscellaneous
+
+// Miscellaneous release notes go here
+
+// This section contains release notes entries that do not fit elsewhere.
+// Where possible, find a matching category.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// jsc#PED-12406
+* Warnings are now printed using `dmesg` when deprecated cgroup v1 features are used
+
+[#bsc-1247839]
+==== Apache's Portable Runtime Library devel package renaming
+
+These two packages have been renamed:
+
+* `libapr1-devel` to `apr-devel`
+* `libapr-util1-devel` to `apr-util-devel`
+
+
+[#jsc-PED-11875]
+==== `hwloc` has been updated
+
+The `hwloc` package has been updated to version 2.11.2:
+
+* Add missing CPU info attrs for aarch64 on Linux.
+* Use ACPI CPPC on Linux to get better information about cpukinds, at
+least on AMD CPUs.
+* `+hwloc-calc --cpuset-output-format+` systemd-dbus-api now allows. to
+generate `+AllowedCPUs+` information for systemd slices. See the
+`+hwloc-calc+` manpage for examples.
+* API
+** Add `+HWLOC_MEMBIND_WEIGHTED_INTERLEAVE+` memory binding policy on
+Linux 6.9+.
+*** `+weighted_interleave_membind+` is added to membind support bits.
+*** The "`weighted`" policy is added to the `+hwloc-bind+` tool.
+** Add `+hwloc_obj_set_subtype()+`.
+* GPU support
+** Don’t hide the GPU NUMA node on NVIDIA Grace Hopper.
+** Get Intel GPU OpenCL device locality.
+** Add bandwidths between subdevices in the `+LevelZero+`
+`+XeLinkBandwidth+` matrix.
+* Tools
+** Option `+--best-memattr+` may now return multiple nodes. Additional
+configuration flags may be given to tweak its behavior.
+** `+hwloc-info+` has a new `+--get-attr+` option to get a single
+attribute.
+** `+hwloc-info+` now supports "`levels`", "`support`" and "`topology`"
+special keywords for backward compatibility for hwloc 3.0.
+** The `+--taskset+` command-line option is superseded by the new
+`+--cpuset-output-format+` which also allows to export as list.
+** `+hwloc-calc+` may now import bitmasks described as a list of bits
+with the new `+--cpuset-input-format list+`.
+* Misc
+** The `+MemoryTiersNr+` info attribute in the root object now says how
+many memory tiers were built.
+** Fix the management of infinite cpusets in the bitmap printf/sscanf
+API as well as in command-line tools.
+** Add section "`Compiling software on top of hwloc’s C API`" in the
+documentation with examples for GNU Make and CMake. Bug Fixes:
+* Fix crash when manipulating cpukinds after topology duplication.
+* Fix missing input target checks in memattr functions
+* Fix a memory leak when ignoring NUMA distances on FreeBSD.
+* Fix build failure on old Linux distributions without accessat().
+* Fix non-Windows importing of XML topologies and CPUID dumps exported
+on Windows.
+* Some fixes in manpage EXAMPLES and split them into subsections.
+* Fix bash completions
+** Fix PCI Gen4+ link speed of NVIDIA GPU obtained from NVML.
+
+
+[#bsc-1237496]
+==== systemd default configurations moved to `/usr`
+
+Main configuration files have been moved from `/etc` to `/usr`.
+This ensures that main configuration files have lower precedence, allowing them to be overriden by package-supplied drop-in snippets.
+
+Local configuration should be created by either modifying the default file in `/usr` (or a copy of it placed in `/etc` if the original file is shipped in `/usr`), or by creating drop-in snippets in the appropriate directory in (for example, `/etc/systemd/coredump.conf.d/`) - this is recommended.
+
+Remove configurations in `/etc` to restore defaults.
+
+
+[#jsc-PED-12263]
+==== FADump and kdump speed improvement
+
+The default for `KDUMP_CPUS` changed from `1` to `32`, allowing `kdump` to use up to 32 threads to generate a kernel dump.
+
+
+[#jsc-PED-11907]
+==== New systems-management module
+
+A new module called _Systems Management Module_ has been added.
+This module will include systems-management packages, such as Ansible.
+
+
+[#jsc-PED-11816]
+==== Ansible is now available
+
+In {productnameshort} {this-version}, Ansible has been added to the _Systems Management Module_.
+
+
+[#bsc-1234633]
+==== "IDXD: user: probe of wq1.0 failed with error -95" errors
+
+Certain configurations can cause errors viewable using the `dmesg` command, with the following content:
+```
+IDXD: user: probe of wq1.0 failed with error -95
+```
+These can be safely ignored for now.
+They will be fixed in a future release.
+
+
+[#jsc-PED-8569]
+==== Support of BPF-related tools
+
+* The main userspace library and tooling, `libbpf` and `bpftool`, is only supported when running on a kernel of the same product.
+Pairing `libbpf` and `bpftool` from different products is not supported.
+* `bcc`/`libbcc` is only supported when running on a kernel of the same product, and additionally uses kernel headers from the `kernel-*-devel` package of the same product to access in-kernel data types.
+* `bpftrace` is only supported when running on a kernel of the same product, and additionally uses one of these:
+** kernel headers from the `kernel-*-devel` package of the same product
+** builtin BTF of kernel, when accessing in-kernel data types

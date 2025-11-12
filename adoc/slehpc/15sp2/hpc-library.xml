@@ -1,0 +1,918 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="functionality-hpc-library"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>General HPC Libraries</title>
+ <para>
+  Library packages which support environment modules follow a distinctive
+  naming scheme: All packages have the compiler suite and, if built with
+  MPI support, the MPI flavor included in their name:
+  <literal>*-[<replaceable>MPI_FLAVOR</replaceable>-]<replaceable>COMPILER</replaceable>-hpc*</literal>.
+  To facilitate the parallel installation of multiple versions of a library,
+  the package name contains the version number (with dots
+  <literal>.</literal> replaced by underscores <literal>_</literal>). To
+  simplify the installation of a library, master packages are supplied
+  which will ensure that the latest version of a package is installed.
+  When these master packages are updated, the latest version of the
+  respective packages will be installed while leaving previous versions
+  installed. Library packages are split between runtime and compile-time
+  packages. The compile-time packages typically supply include files and
+  <literal>.so</literal> files for shared libraries. Compile-time
+  package names end with <literal>-devel</literal>. For some libraries,
+  static libraries (<literal>.a</literal>) are supplied as well, package
+  names for these end with <literal>-devel-static</literal>.
+ </para>
+ <para>
+  As an example, package names of the ScaLAPACK library version 2.0.2 built
+  with GCC for Open MPI v1:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    library package:
+    <package>libscalapack2_2_0_2-gnu-openmpi2-hpc</package>
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    library master package: <package>libscalapack2-gnu-openmpi2-hpc</package>
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    development package:
+    <package>libscalapack2_2_0_2-gnu-openmpi2-hpc-devel</package>
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    development master package:
+    <package>libscalapack2-gnu-openmpi2-hpc-devel</package>
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    static library package:
+    <package>libscalapack2_2_0_2-gnu-openmpi2-hpc-devel-static</package>
+   </para>
+  </listitem>
+ </itemizedlist>
+ <para>
+  The digit <literal>2</literal> appended to the library name
+  denotes the <literal>.so</literal> version of the library.
+ </para>
+ <para>
+  To install a library packages, run <command>zypper in
+  <replaceable>LIBRARY-MASTER-PACKAGE</replaceable></command>. To install a
+  development file,
+  run <command>zypper in <replaceable>LIBRARY-DEVEL-MASTER-PACKAGE</replaceable></command>.
+ </para>
+ <para>
+  For GNU compiler collection, see <xref linkend="hpc-tool-gcc"/>.
+  Supported MPI flavors are described in
+  <xref linkend="functionality-mpi-library"/>.
+ </para>
+ <para>
+  The Development Tools module may provide later versions of the GNU
+  compiler suite. To view available compilers, run:
+ </para>
+ <screen>zypper search '*-compilers-hpc'</screen>
+
+ <section xml:id="hpc-library-boost">
+  <title><literal>boost</literal> &mdash; Boost C++ Libraries</title>
+  <para>
+   Boost is a set of portable C++ libraries which provide a
+   reference implementation of <quote>existing practices</quote>.
+   See the full release notes for Boost 1.71 at
+   <link xlink:href="https://www.boost.org/users/history/version_1_71_0.html"/>.
+  </para>
+  <para>
+   To load the highest available serial version of this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> boost</screen>
+  <para>
+   To use the MPI-specific Boost libraries, add an argument for the MPI flavor
+   to the command:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> boost</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <package>boost-gnu-hpc</package>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <package>boost-gnu-hpc-devel</package>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Most Boost libraries do not depend on MPI flavors. However, Boost
+   contains a set of libraries to abstract interactions with MPI. These
+   libraries depend on the MPI flavor used.
+  </para>
+  <para>
+   List of MPI master packages:
+  </para>
+  <itemizedlist>
+   <listitem><para>
+     <package>boost-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</package>
+    </para></listitem>
+   <listitem><para>
+     <package>boost-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</package>
+    </para></listitem>
+   <listitem><para>
+     <package>boost-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-python3</package>
+    </para></listitem>
+  </itemizedlist>
+  <para>
+   Replace <replaceable>MPI_FLAVOR</replaceable> with one of the
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-library-fftw">
+  <title>FFTW HPC Library &mdash; Discrete Fourier Transforms</title>
+  <para>
+   <literal>FFTW</literal> is a C subroutine library for computing the
+   Discrete Fourier Transform (DFT) in one or more dimensions, of both real
+   and complex data, and of arbitrary input size.
+  </para>
+  <para>
+   This library is available as both a serial and an MPI-enabled variant.
+   This module requires a compiler toolchain module loaded. To select an
+   MPI variant, the respective MPI module needs to be loaded beforehand. To
+   load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> fftw3</screen>
+  <para>
+   or
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> fftw3</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libfftw3-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>fftw3-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libfftw3-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>fftw3-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Replace <replaceable>MPI_FLAVOR</replaceable> with one of the
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-library-gsl">
+  <title>GSL &mdash; GNU Scientific Library</title>
+  <para>
+   The GNU Scientific Library (GSL) is a numerical library for C and
+   C++ programmers.
+  </para>
+  <para>
+   The library provides a wide range of mathematical routines such
+   as random number generators, special functions and least-squares
+   fitting. There are over 1000 functions in total with an extensive
+   test suite.
+  </para>
+  <para>
+   It is free software under the GNU General Public License.
+  </para>
+  <para>
+   For this library, a compiler toolchain needs to be loaded
+   beforehand. To load <literal>gsl</literal>, run:
+  </para>
+  <screen>module load <replaceable>TOOLCHAIN</replaceable> gsl</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>gsl-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>gsl-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>gsl-gnu-hpc-doc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libgsl-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libgslcblas-gnu-hpc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-hypre">
+  <title>HYPRE &mdash; Scalable Linear Solvers and Multigrid Methods</title>
+  <para>
+   HYPRE is a library of linear solvers which aim to solve large
+   and detailed simulations faster than traditional methods at
+   large scales.
+  </para>
+  <para>
+   The library offers a comprehensive suite of
+   scalable solvers for large-scale scientific simulation,
+   featuring parallel multigrid methods for both structured
+   and unstructured grid problems. HYPRE is highly portable,
+   and supports a number of languages. It is developed at the
+   Lawrence Livermore National Laboratory.
+  </para>
+  <para>
+   For this library, a compiler toolchain and an MPI flavor
+   needs to be loaded beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> hypre</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>hypre-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libHYPRE-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="sec-lib-metis">
+  <title>METIS &mdash; Serial Graph Partitioning and Fill-reducing Matrix Ordering Library</title>
+  <para>
+   METIS is a set of serial programs for partitioning graphs,
+   partitioning finite element meshes, and producing fill reducing
+   orderings for sparse matrices. The algorithms implemented in
+   METIS are based on the multilevel recursive-bisection,
+   multilevel k-way, and multi-constraint partitioning schemes.
+  </para>
+  <para>
+   Experiments on a wide range of graphs have shown that METIS
+   is one to two orders of magnitude faster than other widely
+   used partitioning algorithms. Graphs with several millions
+   vertices can be partitioned in 256 parts in a few seconds
+   on current generation systems.
+  </para>
+  <para>
+   The fill-reducing orderings produced by METIS are significantly
+   better than those produced by other widely used algorithms
+   including multiple minimum degree. For many classes of problems
+   arising in scientific computations and linear programming,
+   METIS is able to reduce the storage and computational
+   requirements of sparse matrix factorization, by up to an
+   order of magnitude. Moreover, unlike multiple minimum
+   degree, the elimination trees produced by METIS are suitable
+   for parallel direct factorization. Furthermore, METIS is able
+   to compute these orderings very fast. Matrices with millions
+   of rows can be reordered in just a few seconds on current
+   generation workstations and PCs.
+  </para>
+  <para>
+   For this library, a compiler toolchain needs to be loaded
+   beforehand. To load METIS, run:
+  </para>
+  <screen>module load <replaceable>TOOLCHAIN</replaceable> metis</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>metis-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>metis-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>metis-gnu-hpc-doc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>metis-gnu-hpc-examples</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libmetis-gnu-hpc</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-mumps">
+  <title>MUMPS &mdash; Multifrontal Massively Parallel Sparse Direct Solver</title>
+  <para>
+   MUMPS (MUltifrontal Massively Parallel sparse direct Solver)
+   solves a sparse system of linear equations A x = b using
+   Gaussian elimination.
+  </para>
+  <para>
+   This library requires a compiler toolchain and an MPI flavor
+   to be loaded beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> mumps</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libmumps-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>mumps-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>mumps-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-doc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>mumps-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-examples</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-numpy">
+  <title>NumPy Python Library</title>
+  <para>
+   NumPy is a general-purpose array-processing package designed to
+   efficiently manipulate large multi-dimensional arrays of arbitrary
+   records without sacrificing too much speed for small multi-dimensional
+   arrays.
+  </para>
+  <para>
+   NumPy is built on the Numeric code base and adds features introduced by
+   numarray as well as an extended C API and the ability to create arrays
+   of arbitrary type which also makes NumPy suitable for interfacing with
+   general-purpose data-base applications.
+  </para>
+  <para>
+   There are also basic facilities for discrete Fourier transform, basic
+   linear algebra, and random number generation.
+  </para>
+  <para>
+   This package is available both for Python 2 and 3. The specific
+   compiler toolchain module must be loaded for this library.
+   The correct library module for the Python version used needs
+   to be specified when loading this module. To load this module,
+   run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> python<replaceable>PYTHON_VERSION</replaceable>-numpy</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>python<replaceable>PYTHON_VERSION</replaceable>-numpy-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>python<replaceable>PYTHON_VERSION</replaceable>-numpy-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="sec-lib-ocr">
+  <title>OCR &mdash; Open Community Runtime (OCR) for Shared Memory</title>
+  <para>
+   The Open Community Runtime project is an application-building framework
+   that explores methods for high-core-count programming with focus on
+   HPC applications.
+  </para>
+  <para>
+   This first reference implementation is a functionally
+   complete implementation of the OCR 1.0.0 specification, with extensive
+   tools and demonstration examples, running on both
+   single-node and clusters.
+  </para>
+  <para>
+   This library is available both without and with MPI support.
+   For this library a compiler toolchain and if applicable, an MPI
+   flavor needs to be loaded beforehand. To load ocr, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> ocr</screen>
+  <para>
+   or
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> ocr</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>ocr-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>ocr-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>ocr-gnu-hpc-doc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>ocr-gnu-hpc-examples</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>ocr-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>ocr-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>ocr-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-doc</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>ocr-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-examples</literal>
+     </para>
+    </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-openblas">
+  <title>OpenBLAS Library &mdash; Optimized BLAS Library</title>
+  <para>
+   OpenBLAS is an optimized BLAS (Basic Linear Algebra Subprograms) library
+   based on GotoBLAS2 1.3, BSD version. It provides the BLAS API. It is
+   shipped as a package enabled for environment modules and thus requires
+   using Lmod to select a version. There are two variants of this library,
+   an OpenMP-enabled variant and a pthreads variant.
+  </para>
+  <bridgehead renderas="sect5">OpenMP-Enabled Variant</bridgehead>
+  <para>
+   The OpenMP variant covers all use cases:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <emphasis role="bold">Programs using OpenMP.</emphasis> This requires
+     the OpenMP-enabled library version to function correctly.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis role="bold">Programs using pthreads.</emphasis> This
+     requires an OpenBLAS library without pthread support. This can be
+     achieved with the OpenMP-version. We recommend limiting the number of
+     threads that are used to 1 by setting the environment variable
+     <literal>OMP_NUM_THREADS=1</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis role="bold">Programs without pthreads and without
+     OpenMP.</emphasis> Such programs can still take advantage of the
+     OpenMP optimization in the library by linking against the OpenMP
+     variant of the library.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   When linking statically, ensure that <literal>libgomp.a</literal> is
+   included by adding the linker flag <literal>-lgomp</literal>.
+  </para>
+  <bridgehead renderas="sect5">pthreads Variant</bridgehead>
+  <para>
+   The pthreads variant of the OpenBLAS library can improve the performance
+   of single-threaded programs. The number of threads used can be
+   controlled with the environment variable
+   <literal>OPENBLAS_NUM_THREADS</literal>.
+  </para>
+  <bridgehead renderas="sect5">Installation and Usage</bridgehead>
+  <para>
+   This module requires loading a compiler toolchain beforehand. To select
+   the latest version of this module provided, run:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     standard version:
+    </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> openblas</screen>
+   </listitem>
+   <listitem>
+    <para>
+     pthreads version:
+    </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> openblas-pthreads</screen>
+   </listitem>
+  </itemizedlist>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master package:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libopenblas-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libopenblas-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libopenblas-pthreads-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libopenblas-pthreads-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-petsc">
+  <title>PETSc HPC Library &mdash; Solver for Partial Differential Equations</title>
+  <para>
+   PETSc is a suite of data structures and routines for the scalable
+   (parallel) solution of scientific applications modeled by partial
+   differential equations.
+  </para>
+  <para>
+   This module requires loading a compiler toolchain as well as an MPI
+   library flavor beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> petsc</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libpetsc-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>petsc-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-library-scalapack">
+  <title>ScaLAPACK HPC Library &mdash; LAPACK Routines</title>
+  <para>
+   The library ScaLAPACK (short for <emphasis>Scalable LAPACK</emphasis>)
+   includes a subset of
+   LAPACK routines designed for distributed memory MIMD-parallel computers.
+  </para>
+  <para>
+   This library requires loading both a compiler toolchain and an MPI
+   library flavor beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> scalapack</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libscalapack2-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>libscalapack2-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   <replaceable>MPI_FLAVOR</replaceable> must be one of the supported
+   MPI flavors described in <xref linkend="functionality-mpi-library"/>.
+  </para>
+ </section>
+
+ <section xml:id="hpc-library-scotch">
+  <title>SCOTCH &mdash; Static Mapping and Sparse Matrix Reordering Algorithms</title>
+  <para>
+   SCOTCH is a set of programs and libraries which implement
+   the static mapping and sparse matrix reordering algorithms
+   developed within the SCOTCH project.
+  </para>
+  <para>
+   Its purpose is to apply graph theory, with a divide and
+   conquer approach, to scientific computing problems such as
+   graph and mesh partitioning, static mapping, and sparse
+   matrix ordering, in application domains ranging from
+   structural mechanics to operating systems or bio-chemistry.
+  </para>
+  <para>
+   For this library a compiler toolchain and an MPI flavor
+   needs to be loaded beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> scotch</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libptscotch-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>ptscotch-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+       <listitem>
+    <para>
+     <literal>ptscotch-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpi-library-scipy">
+  <!-- href="https://fate.novell.com/321709" -->
+  <title>SciPy Python Library</title>
+  <para>
+   SciPy is a collection of mathematical algorithms and convenience functions
+   built on the NumPy extension of Python. It adds significant power to the
+   interactive Python session by providing the user with high-level commands and
+   classes for manipulating and visualizing data. With SciPy, an interactive
+   Python session becomes a data-processing and system-prototyping environment.
+  </para>
+  <para>
+   The additional benefit of basing SciPy on Python is that this also makes a
+   powerful programming language available for use in developing sophisticated
+   programs and specialized applications. Scientific applications using SciPy
+   benefit from the development of additional modules in numerous niches of
+   the software landscape by developers across the world. Everything from
+   parallel programming to web and data-base subroutines and classes have
+   been made available to the Python programmer. All of this power is
+   available in addition to the mathematical libraries in SciPy.
+  </para>
+  <para>
+   This package is available both for Python 2 (up to version 1.2.0 only)
+   and 3. The specific compiler toolchain modules must be loaded for this
+   library. The correct library module for the Python version used needs
+   to be specified when loading this module. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> python<replaceable>PYTHON_VERSION</replaceable>-scipy</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>python<replaceable>PYTHON_VERSION</replaceable>-scipy-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>python<replaceable>PYTHON_VERSION</replaceable>-scipy-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-superlu">
+  <title>SuperLU &mdash; Supernodal LU Decomposition of Sparse Matrices</title>
+  <para>
+   SuperLU is a general purpose library for the direct solution of large,
+   sparse, nonsymmetric systems of linear equations. The library is written
+   in C and can be called from C and Fortran programs.
+  </para>
+  <!-- Possible fixmes in the following para:
+    * 5-word compound noun: "Working precision iterative refinement subroutines"
+    * Can "preordering" be replaced by "sorting" or something similarly unambiguous?
+    * "equilibrate" seems unnecessarily complicated
+    - sknorr, 2020-12-17
+  -->
+  <para>
+   It uses MPI and OpenMP to support various forms of parallelism. It supports
+   both real and complex data types, both single and double precision, and
+   64-bit integer indexing. The library routines performs an LU decomposition
+   with partial pivoting and triangular system solves through forward and
+   back substitution. The LU factorization routines can handle non-square
+   matrices but the triangular solves are performed only for square matrices.
+   The matrix columns can be preordered (before factorization) either through
+   library or user-supplied routines. This preordering for sparsity is
+   completely separate from the factorization. Working precision iterative
+   refinement subroutines are provided for improved backward stability.
+   Routines are also provided to equilibrate the system, estimate the
+   condition number, calculate the relative backward error, and estimate
+   error bounds for the refined solutions.
+  </para>
+  <para>
+   This library requires a compiler toolchain and an MPI flavor
+   to be loaded beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> superlu</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libsuperlu-gnu-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>superlu-gnu-hpc-devel</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>superlu-gnu-hpc-doc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>superlu-gnu-hpc-examples</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="hpc-library-trilinos">
+  <title>Trilinos &mdash; Object-oriented Software Framework</title>
+  <para>
+   The Trilinos Project is an effort to develop algorithms and
+   enabling technologies within an object-oriented software
+   framework for the solution of large-scale, complex
+   multi-physics engineering and scientific problems. A unique
+   design feature of Trilinos is its focus on packages.
+  </para>
+  <para>
+   This library needs a compiler toolchain and and MPI flavor
+   to be loaded beforehand. To load this module, run:
+  </para>
+<screen>module load <replaceable>TOOLCHAIN</replaceable> <replaceable>MPI_FLAVOR</replaceable> trilinos</screen>
+  <para>
+   For information about the toolchain to load, see
+   <xref linkend="hpc-tool-gcc"/>.
+   For information about available MPI flavors, see
+   <xref linkend="functionality-mpi-library"/>.
+  </para>
+  <para>
+   List of master packages:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>libtrilinos-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc</literal>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>trilinos-gnu-<replaceable>MPI_FLAVOR</replaceable>-hpc-devel</literal>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+</section>

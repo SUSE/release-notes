@@ -1,0 +1,105 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#container]
+=== Containers
+
+// Release Notes for containers:
+//    LXC, Docker, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-18750]
+==== Nvidia GPU utilities have been added
+
+The following Nvidia utilities for working with GPUs in containers have been added to the _Containers Module_:
+
+* `nvidia-container-runtime`
+* `nvidia-container-toolkit`
+* `libnvidia-container`
+
+
+[#jsc-SLE-7697]
+==== Bash Completion for Docker Commands
+
+A completion for Docker commands has been added to the Bash shell.
+For more information, see https://docs.docker.com/machine/completion/.
+
+
+// jsc#DOCTEAM-31
+[#bsc-1183609]
+==== `kubernetes-client` Has Been Renamed
+
+In {this-version}, the `kubernetes-client` package has been renamed to `kubernetes1.18-client`.
+
+
+[#jsc-SLE-10446]
+==== `umoci` Has Been Added
+
+Before {producta} {this-version}, building Docker images with Kiwi was not possible without installing the unsupported package `umoci` on the build host.
+
+To resolve this, the package `umoci` has been added.
+
+
+[#jsc-SLE-9112]
+==== Support for `podman`
+
+Starting with {product} 15 SP2, `podman` is a supported container engine.
+However, certain features of `podman` are currently not supported:
+
+* The varlink remote API
+* Rootless containers
+* Support for cgroups v2
+* Any CNI plugin other than default bridge plug-in
+* Automatic generation of systemd units via `podman generate systemd`
+* Pod management via `podman pod ...` and `podman play`
+* The `podman container diff` command
+
+[#jsc-PED-1805]
+=== Podman upgrade from 3.4.x to 4.3.1
+
+Podman 4.x is a major release with 60 new features and more than 50 bug fixes compared to Podman 3.
+It also includes a complete rewrite of the network stack.
+
+Podman 4.x brings a new container network stack based on https://github.com/containers/netavark[Netavar], the new container network stack and https://github.com/containers/aardvark-dns[Aardvark DNS server] in addition to the existing container network interface (CNI) stack used by Podman 3.x . The new stack brings 3 important improvement:
+
+ * Better support for containers in multiple networks
+ * Better IPv6 support
+ * Better performance
+
+To ensure that nothing break with this major change, the old CNI stack will remain the default on existing installations, while new installs will use Netavark.
+
+New installations can opt to use CNI by explicitly specifying it via the `containers.conf` configuration file, using the `network_backend` field.
+
+If you have run Podman 3.x before upgrading to Podman 4, Podman will continue to use CNI plugins as it had before.
+There is a marker in Podman's local storage that indicates this.
+In order to begin using Podman 4, you need to destroy that marker with `podman system reset`.
+This will destroy the marker, all of the images, all of the networks, and all of the containers.
+
+[WARNING]
+Before testing Podman 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
+You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are  available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
+
+Last but not least CNI will be deprecated from upstream at a future date: https://github.com/containers/podman/tree/main/cni
+
+For a complete overview of the changes, please check out the upstream https://github.com/containers/podman/releases/tag/v4.0.0[4.0.0] but also https://github.com/containers/podman/releases/tag/v4.1.1[4.1.1], https://github.com/containers/podman/releases/tag/v4.2.0[4.2.0] and https://github.com/containers/podman/releases/tag/v4.3.0[4.3.0] to be informed about all the new features and changes.
+
+
+
+[#jsc-SLE-16660]
+==== LXC Containers Have Been Deprecated
+System containers using LXC have been deprecated and will be removed in {product} 15 SP4.
+This includes the following packages:
+
+* `libvirt-lxc`
+* `virt-sandbox`
+
+As a replacement, we recommend commonly used alternatives like Docker or Podman.

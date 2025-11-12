@@ -1,0 +1,79 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#power]
+== POWER-specific changes (ppc64le)
+
+Information in this section applies to {power-product} {this-version}.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#bsc-1192121]
+=== IBM POWER10 support
+
+On {producta} {this-version}, the Power10 CPU is supported in default mode, which includes performance counters, prefixed instructions, new idle state timings, and MMA unit.
+Previous {slesa} releases that support the POWER9 CPU can work on Power10 (POWER9 Compatibility mode).
+However, new features and performance counters are not supported and the use of idle states might not be optimal.
+
+
+[#jsc-SLE-13288]
+=== ServiceReport has been added
+
+A new tool named ServiceReport has been added.
+The tool allows you to quickly validate the FFDC (First Failure Data Capture) configuration and optionally fix the incorrect configurations automatically.
+This automation drastically reduces the time required to set up the FFDC and improves serviceability.
+
+
+[#bsc-1184898]
+=== Rebuild capture kernel initrd after migration and/or hardware changes
+
+The initrd for the `kdump` kernel is generated against the system it will run on to save memory usage and disk space.
+It contains the minimum set of kernel modules and utilities to boot the machine to a stage where the dump target could be mounted.
+
+With the `kdump` service enabled, `kdump` will try to detect system changes and rebuild the `kdump` initrd if needed.
+But it can not guarantee to cover every possible case.
+If there was a hardware change, disk migration, storage setup update, or any similar system level change, it is highly recommended to rebuild the initrd manually with following command:
+
+[source,bash]
+----
+mkdumprd -f; systemctl restart kdump
+----
+
+
+[#bsc-1178019]
+=== Increased memory when running `fadump`
+
+Firmware-assisted dump (`fadump`) in PowerVM was crashing due to low memory.
+
+To resolve this, in {producta} {this-version} the memory has been increased to 4 GB when running `fadump`.
+
+
+[#bsc-1136157]
+=== Speed of `ibmveth` interface not reported accurately
+
+The `ibmveth` interface is a paravirtualized interface.
+When communicating between LPARs within the same system, the interface's speed is limited only by the system's CPU and memory bandwidth.
+When the virtual Ethernet is bridged to a physical network, the interface's speed is limited by the speed of that physical network.
+
+Unfortunately, the `ibmveth` driver has no way of determining automatically whether it is bridged to a physical network and what the speed of that link is.
+`ibmveth` therefore reports its speed as a fixed value of 1{nbsp}Gb/s which in many cases will be inaccurate.
+To determine the actual speed of the interface, use a benchmark.
+Using `ethtool`, you can then set a more accurate displayed speed.
+
+
+[#jsc-SLE-16056]
+=== Transactional memory is deprecated and disabled
+
+On POWER9, transactional memory is partially emulated by the hypervisor, but this does not give the expected performance.
+
+Therefore, transactional memory is now disabled by default in the kernel.
+For legacy applications on platforms that still support transactional memory, it can be enabled with the `ppc_tm=on` kernel parameter.

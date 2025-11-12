@@ -1,0 +1,38 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#install-upgrade-jeos]
+=== {jeos}: Just Enough Operating System
+
+// Release notes for JeOS:
+
+{sles} {jeos} is a slimmed-down form factor of {sles} that is ready to run in virtualization environments and the cloud.
+With {sles} JeOS, you can choose the right-sized {sles} option to fit your needs.
+
+{suse} provides virtual disk images for {jeos} in the file formats `.qcow2`, `.vhdx`, and `.vmdk`, compatible with KVM, Xen, OpenStack, Hyper-V, and VMware environments.
+All {jeos} images set up the same disk size (24{nbsp}GB) for the {jeos} system.
+Due to the properties of different file formats, the size of {jeos} image downloads differs between formats.
+
+
+[#jsc-SLE-15348]
+==== Removing the locale warning from `jeos-firstboot`
+
+With {slsa} {jeos} 15{nbsp}SP1, the dialog for choosing the system locale was replaced by a warning dialog.
+It explained about `en_US` being the only locale available and provided instructions on how to change the locale after the first boot.
+On {slsa} {jeos} 15{nbsp}SP3, this dialog has been removed.
+Instructions on how to change the locale are provided by the link:https://documentation.suse.com/sles-15/html/SLES-all/article-jeos.html[{jeos} Quick Start Guide].
+
+
+[#jsc-SLE-13849]
+==== {jeos} KVM image is available for aarch64
+
+In addition to the {slsa} {jeos} 15{nbsp}SP3 for KVM on x86_64, we are now providing the same image for aarch64.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

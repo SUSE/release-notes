@@ -1,0 +1,58 @@
+// jsc-SLE-11213
+
+[#kernel-parameter-changes]
+== Kernel parameter changes
+
+[WARNING]
+This list of changes may not be exhaustive.
+
+
+[#kernel-parameter-changes-current-sp]
+=== During {this-version}
+
+These Linux kernel parameters have been changed during {producta} {this-version}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Package | More details
+// bsc#1195107
+|`sysctl_net_ipv6_conf_lo_accept_redirects` | 0 | 1 | `wicked-0.6.68-150300.4.5.1` | https://bugzilla.suse.com/show_bug.cgi?id=1181163[Bug 1181163]
+// bsc#1195107
+|`sysctl_net_ipv6_conf_lo_use_tempaddr` | 1 | -1 | `wicked-0.6.68-150300.4.5.1` | https://bugzilla.suse.com/show_bug.cgi?id=1181163[Bug 1181163]
+|==========
+
+
+[#kernel-parameter-changes-last-sp]
+===  Since {this-ga}{nbsp}{previous-sp}
+
+These Linux kernel parameters have been changed since {producta} {this-ga}{nbsp}{previous-sp}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Package | More details
+|`sysctl_fs_file-max` | 490215 | 9223372036854775807 | | https://bugzilla.suse.com/show_bug.cgi?id=1180823[Bug 1180823]
+|`sysctl_fs_suid_dumpable` | 0 | 2 | systemd 246 | https://bugzilla.suse.com/show_bug.cgi?id=1183339[Bug 1183339]
+|`sysctl_kernel_cap_last_cap` | 37 | 39 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c18[Bug 1183339]
+|`sysctl_kernel_core_pattern` | \|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e | \|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h | | https://bugzilla.suse.com/show_bug.cgi?id=1183450[Bug 1183450]
+|`sysctl_kernel_core_pipe_limit` | 0 | 16 | | https://bugzilla.suse.com/show_bug.cgi?id=1183450[Bug 1183450]
+|`sysctl_kernel_printk_devkmsg` | ratelimit | on | systemd 248 | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c21[Bug 1183339]
+|`sysctl_kernel_suid_dumpable` | 0 | 2 | systemd 246 | https://bugzilla.suse.com/show_bug.cgi?id=1183450#c1[Bug 1183450]
+|`sysctl_kernel_usermodehelper_bset` | 63 | 255 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c18[Bug 1183339]
+|`sysctl_kernel_usermodehelper_inheritable` | 63 | 255 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c18[Bug 1183339]
+|`sysctl_net_core_bpf_jit_kallsyms` | 0 | 1 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c9[Bug 1183339]
+// sysctl_net_ipv4_ping_group_range: see bsc#1193054
+|`sysctl_net_ipv4_ping_group_range` | 1 0 | 0 2147483647 footnote:ping_group_range[Also see <<bsc-1193054>>.] | |
+|`sysctl_net_ipv4_tcp_available_ulp` | '' | espintcp | | https://bugzilla.suse.com/show_bug.cgi?id=1181745[Bug 1181745]
+|`sysctl_net_ipv4_tcp_mem` | 22689 30255 45378 | 22683 30246 45366 footnote:sysctl[All `sysctl` parameters based on the total amount of memory or available memory can vary between service packs or even maintenance updates. Small variations are to be expected. Either the accounting might have changed for the former, or more early allocations are necessary for the latter.] | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_net_ipv4_udp_mem` | 45381 60510 90762 | 45369 60492 90738 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_fs_epoll_max_user_watches` | 410398 | 410275 footnote:sysctl[] | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_kernel_threads-max` | 15650 | 15655 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_cgroup_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_ipc_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_mnt_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_net_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_pid_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_time_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_user_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_user_max_uts_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|==========

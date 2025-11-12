@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent">
+  %myents;
+]>
+<section id="sec.removed-deprecated">
+ <title>Removed and Deprecated Features and Packages</title>
+
+ <para>
+  This section lists features and packages that were removed from &product; or
+  will be removed in upcoming versions.
+ </para>
+
+ <section>
+  <title>Removed Features and Packages</title>
+  <para>
+   The following features and packages have been removed in this release.
+  </para>
+
+  <section role="notoc" id="jsc-docteam-862">
+    <title><literal>pssh</literal> has been removed</title>
+    <para>
+      Use <literal>crm cluster run</literal> instead.
+    </para>
+   </section>
+
+
+ </section>
+
+ <section>
+  <title>Deprecated Features and Packages</title>
+  <para>
+   The following features and packages are deprecated and will be removed
+   with a future service pack of &product;.
+  </para>
+
+  <!--https://bugzilla.suse.com/show_bug.cgi?id=1158626-->
+  <variablelist>
+   <varlistentry>
+    <term>Options for Order Constraints</term>
+    <listitem>
+      <para>
+       Starting with &product; 15 SP1, support for using scores to enforce
+       ordering constraints is deprecated. Use the  <literal>kind</literal>
+       option instead. For more information, see the guide
+       <ulink url="https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.0/html/Pacemaker_Explained/s-resource-ordering.html"><citetitle>Pacemaker
+       2. 0 Configuration Explained</citetitle></ulink> by the upstream
+       Pacemaker project.
+      </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </section>
+</section>

@@ -1,0 +1,15 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#about]
+== About the Release Notes
+
+The most recent version of these {rnotes} is available online at {rn-url}.
+
+These {rnotes} are designed to be read in addition to those of {sles} {this-version} at {rn-url}/x86_64/SUSE-SLES/15-SP2.
+
+Entries can be listed multiple times if they are important and belong to multiple sections.
+Release notes only list changes that happened between two subsequent releases.
+Always review all release notes documents that apply in your upgrade scenario.
+

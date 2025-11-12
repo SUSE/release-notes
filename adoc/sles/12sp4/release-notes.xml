@@ -1,0 +1,4000 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Server 12 SP4"
+   component="Release Notes"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname><phrase os="sles">SUSE Linux Enterprise Server</phrase></productname>
+  <productnumber>12 SP4</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+<!-- msvec and marketing, 2013-05-13 -->
+<!-- new initial para -->
+   <para>
+    This document provides guidance and an overview to high level general
+    features and updates for SUSE Linux Enterprise Server 12 SP4. Besides
+    architecture or product-specific information, it also describes the
+    capabilities and limitations of SUSE Linux Enterprise Server 12 SP4.
+   </para>
+
+   <para>
+    General documentation can be found at:
+    <ulink url="https://documentation.suse.com/sles/12-SP4/"/>.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="rn.about">
+  <title>About the Release Notes</title>
+  <para>
+   These Release Notes are identical across all architectures, and the most
+   recent version is always available online at
+   <ulink url="http://www.suse.com/releasenotes/"/>.
+  </para>
+<!-- partly: msvec and marketing, 2013-05-13 -->
+<!-- moved from the abstract to before 'mustread' section... -->
+<!-- moved to beginning of document again, because we now have an
+  explanatory section. - sknorr-l, 2017-05-18 -->
+  <para>
+   Some entries may be listed twice, if they are important and belong to
+   more than one section.
+  </para>
+  <para>
+   Release notes usually only list changes that happened between two
+   subsequent releases. Certain important entries from the release notes
+   documents of previous product versions are repeated. To make these
+   entries easier to identify, they contain a note to that effect.
+  </para>
+  <para>
+   However, repeated entries are provided as a courtesy only. Therefore, if
+   you are skipping one or more service packs, check the release notes of
+   the skipped service packs as well. If you are only reading the release
+   notes of the current release, you could miss important changes.
+  </para>
+ </section>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Server</title>
+  <remark> SLE definition: general information </remark>
+<!-- Marketing, Kerry Kim, 2009-02-09 -->
+<!-- Changed by MgE, 2012-02-02 -->
+<!-- Feedback by Robert, 2012-02-27 -->
+  <para>
+   SUSE Linux Enterprise Server is a highly reliable, scalable, and secure
+   server operating system, built to power mission-critical workloads in
+   both physical and virtual environments. It is an affordable,
+   interoperable, and manageable open source foundation. With it,
+   enterprises can cost-effectively deliver core business services, enable
+   secure networks, and simplify the management of their heterogeneous IT
+   infrastructure, maximizing efficiency and value.
+  </para>
+  <para>
+   The only enterprise Linux recommended by Microsoft and SAP, SUSE Linux
+   Enterprise Server is optimized to deliver high-performance
+   mission-critical services, as well as edge of network, and web
+   infrastructure workloads.
+  </para>
+  <section id="Intro.Interoperability">
+   <title>Interoperability and Hardware Support</title>
+   <para>
+    Designed for interoperability, SUSE Linux Enterprise Server integrates
+    into classical Unix as well as Windows environments, supports open
+    standard interfaces for systems management, and has been certified for
+    IPv6 compatibility.
+   </para>
+   <para>
+    This modular, general purpose operating system runs on four processor
+    architectures and is available with optional extensions that provide
+    advanced capabilities for tasks such as real time computing and high
+    availability clustering.
+   </para>
+   <para>
+    SUSE Linux Enterprise Server is optimized to run as a high performing
+    guest on leading hypervisors and supports an unlimited number of virtual
+    machines per physical system with a single subscription, making it the
+    perfect guest operating system for virtual computing.
+   </para>
+  </section>
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+   <para>
+    SUSE Linux Enterprise Server is backed by award-winning support from
+    SUSE, an established technology leader with a proven history of
+    delivering enterprise-quality support services.
+   </para>
+<!-- bnc#821338, bnc#828478, bnc#882262 -->
+   <para>
+    SUSE Linux Enterprise Server 12 has a 13-year life cycle, with 10 years
+    of General Support and 3 years of Extended Support. The current version
+    (SP4) will be fully maintained and supported until 6 months after the
+    release of SUSE Linux Enterprise Server 12 SP5.
+   </para>
+   <para>
+    If you need additional time to design, validate and test your upgrade
+    plans, Long Term Service Pack Support can extend the support you get an
+    additional 12 to 36 months in twelve month increments, providing a total
+    of 3 to 5 years of support on any given service pack.
+   </para>
+   <para>
+    For more information, check our Support Policy page
+    <ulink url="https://www.suse.com/support/policy.html"/> or the Long Term
+    Service Pack Support Page
+    <ulink url="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>.
+   </para>
+  </section>
+  <section id="Intro.New" remap="Intro:New">
+   <title>What Is New?</title>
+   <remark> Marketing POV. </remark>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on.
+    BNC#898123
+   </remark>
+   <para>
+    SUSE Linux Enterprise Server 12 introduces many innovative changes
+    compared to SUSE Linux Enterprise Server 11. Here are some of the
+    highlights:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Robustness on administrative errors and improved management
+      capabilities with full system rollback based on Btrfs as the default
+      file system for the operating system partition and the Snapper
+      technology of SUSE.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      An overhaul of the installer introduces a new workflow that allows you
+      to register your system and receive all available maintenance updates
+      as part of the installation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server Modules offer a choice of supplemental
+      packages, ranging from tools for Web Development and Scripting,
+      through a Cloud Management module, all the way to a sneak preview of
+      upcoming management tooling called Advanced Systems Management.
+      Modules are part of your SUSE Linux Enterprise Server subscription,
+      are technically delivered as online repositories, and differ from the
+      base of SUSE Linux Enterprise Server only by their life cycle. For
+      more information about modules, see <xref linkend="Intro.Module"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New core technologies like systemd (replacing the time-honored System
+      V-based init process) and Wicked (introducing a modern, dynamic
+      network configuration infrastructure).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The open-source database system MariaDB is fully supported now.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for open-vm-tools together with VMware for better integration
+      into VMware-based hypervisor environments.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Linux Containers are integrated into the virtualization management
+      infrastructure (libvirt). Docker is provided as a fully supported
+      technology. For more details, see
+      <ulink url="https://www.suse.com/promo/sle/docker/"/>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the AArch64 architecture (64-bit ARMv8) and the 64-bit
+      Little-Endian variant of the IBM POWER architecture. Additionally, we
+      continue to support the Intel 64/AMD64 and IBM Z architectures.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      GNOME 3.20 gives users a modern desktop environment with a choice of
+      several different look and feel options, including a special
+      <emphasis>SUSE Linux Enterprise Classic</emphasis> mode for easier
+      migration from earlier SUSE Linux Enterprise Desktop environments.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      For users wishing to use the full range of productivity applications
+      of a Desktop with their SUSE Linux Enterprise Server, we are now
+      offering SUSE Linux Enterprise Workstation Extension (requires a SUSE
+      Linux Enterprise Desktop subscription).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Integration with the new SUSE Customer Center, the new central web
+      portal from SUSE to manage Subscriptions, Entitlements, and provide
+      access to Support.
+     </para>
+    </listitem>
+   </itemizedlist>
+<!-- FATE#312947 -->
+   <remark> This is Read Me First information. </remark>
+   <para>
+    If you are upgrading from a previous SUSE Linux Enterprise Server
+    release, you should review at least the following sections:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326969" remap="Intro:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326969" -->
+    <title>NV-DIMM Support</title>
+    <para>
+     SLES 12-SP4 / SLES15 supports persistent memory (NV-DIMM) technologies,
+     such as Intel AEP, on certified hardware and for certified ISV
+     applications, specifically in memory databases, in cooperation with
+     SUSE's hardware and software partners.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Read the READMEs on the media.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed change log information about a particular package
+       from the RPM (where <filename>&lt;FILENAME&gt;.rpm</filename> is the
+       name of the RPM):
+      </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>
+       Check the <filename>ChangeLog</filename> file in the top level of the
+       media for a chronological log of all changes made to the updated
+       packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find more information in the <filename>docu</filename> directory of
+       the media of SUSE Linux Enterprise Server 12 SP4. This directory
+       includes PDF versions of the SUSE Linux Enterprise Server 12 SP4
+       Installation Quick Start and Deployment Guides. Documentation (if
+       installed) is available below the
+       <filename>/usr/share/doc/</filename> directory of an installed
+       system.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section>
+    <title>Externally Provided Documentation</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <ulink url="https://documentation.suse.com/sles/12-SP4/"/> contains
+       additional or updated documentation for SUSE Linux Enterprise
+       Server 12 SP4.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find a collection of White Papers in the SUSE Linux Enterprise Server
+       Resource Library at
+       <ulink url="https://www.suse.com/products/server/resource-library"/>.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first section -->
+   <para>
+    This SUSE product includes materials licensed to SUSE under the GNU
+    General Public License (GPL). The GPL requires SUSE to provide the
+    source code that corresponds to the GPL-licensed material. The source
+    code is available for download at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>.
+    Also, for up to three years after distribution of the SUSE product, upon
+    request, SUSE will mail a copy of the source code. Requests should be
+    sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or
+    as otherwise instructed at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+    may charge a reasonable fee to recover distribution costs.
+   </para>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Server</title>
+   <para>
+    To receive support, you need an appropriate subscription with SUSE. For
+    more information, see
+    <ulink url="http://www.suse.com/products/server/services-and-support/"/>.
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <variablelist>
+<!-- Now using http://support.novell.com/products/server/supported_packages/
+  -->
+    <varlistentry>
+     <term>L1</term>
+     <listitem>
+      <para>
+       Problem determination, which means technical support designed to
+       provide compatibility information, usage support, ongoing
+       maintenance, information gathering and basic troubleshooting using
+       available documentation.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L2</term>
+     <listitem>
+      <para>
+       Problem isolation, which means technical support designed to analyze
+       data, reproduce customer problems, isolate problem area and provide a
+       resolution for problems not resolved by Level 1 or alternatively
+       prepare for Level 3.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L3</term>
+     <listitem>
+      <para>
+       Problem resolution, which means technical support designed to resolve
+       problems by engaging engineering to resolve product defects which
+       have been identified by Level 2 Support.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <para>
+    For contracted customers and partners, SUSE Linux Enterprise Server 12
+    SP4 and its Modules are delivered with L3 support for all packages,
+    except the following:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Technology Previews
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      sound, graphics, fonts and artwork
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      packages that require an additional customer contract, see
+      <xref linkend="Intro.Support.External"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      packages provided as part of the Software Development Kit (SDK)
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original (that is, unchanged and
+    un-recompiled) packages.
+   </para>
+  </section>
+  <section id="Intro.Support.General">
+   <title>General Support</title>
+   <para>
+    To learn about supported kernel, virtualization, and file system
+    features, as well as supported Java versions, see
+    <xref linkend="TechInfo"/>.
+   </para>
+  </section>
+<!-- see fate#316990 -->
+  <section id="Intro.Support.External" remap="Intro:Support:External">
+   <title>Software Requiring Specific Contracts</title>
+<!--v Items below imported from FATE-->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316990" -->
+<!-- title>[NOTITLE]Software Requiring Specific Contracts</title -->
+   <para>
+    The following packages require additional support contracts to be
+    obtained by the customer in order to receive full support:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      PostgreSQL Database
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      LibreOffice
+     </para>
+    </listitem>
+   </itemizedlist>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Intro.Support.Techpreviews.Overview">
+   <title>Technology Previews</title>
+   <remark> ** clear statement of TP (no support) ** Title of the TP ** full description of the TP
+    ** link to official documentation (external) ** link to SUSE's documentation </remark>
+<!-- bnc#662712 -->
+   <para>
+    Technology previews are packages, stacks, or features delivered by SUSE
+    which are not supported. They may be functionally incomplete, unstable
+    or in other ways not suitable for production use. They are included for
+    your convenience and give you a chance to test new technologies within
+    an enterprise environment.
+   </para>
+   <para>
+    Whether a technology preview becomes a fully supported technology later
+    depends on customer and market feedback. Technology previews can be
+    dropped at any time and SUSE does not commit to providing a supported
+    version of such technologies in the future.
+   </para>
+   <para>
+    Give your SUSE representative feedback, including your experience and
+    use case.
+   </para>
+   <section id="Intro.Support.Techpreviews.x86_64" remap="Intro:Support:Techpreviews:x86_64">
+    <title>Technology Previews for AMD64/Intel 64 64-Bit (x86_64)</title>
+    <para/>
+    <section role="notoc" id="jsc-SLE-11270">
+     <title>KVM Nested Virtualization</title>
+     <para>
+      KVM Nested Virtualization is available in SLE 12 SP4 as a technology
+      preview. For more information, see
+      <ulink
+      url="https://www.kernel.org/doc/html/latest/virt/kvm/nested-vmx.html">the
+      Linux kernel documentation</ulink>.
+     </para>
+    </section>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-325555" remap="Intro:Support:Techpreviews:x86_64">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325555" -->
+     <title>Support for AMD Secure Encrypted Virtualization</title>
+     <para>
+      As a technology preview, SLE 12 SP4 now supports AMD Secure Encrypted
+      Virtualization (SEV). SEV integrates main memory encryption
+      capabilities (SME) with the existing AMD-V virtualization architecture
+      to support encrypted virtual machines. Encrypting virtual machines
+      helps protect them from physical threats and other virtual machines or
+      even the hypervisor itself. SEV represents a new approach to security
+      that is particularly suited to cloud computing where virtual machines
+      need not fully trust the hypervisor and administrator of their host
+      system. As with SME, no application software modifications are
+      required to support SEV.
+     </para>
+     <para>
+      See also <xref linkend="fate-325554"/>
+<!--the note about SME-->
+      .
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+  <section id="Intro.ModuleExtensionRelated">
+   <title>Modules, Extensions, and Related Products</title>
+   <para>
+    This section comprises information about modules and extensions for SUSE
+    Linux Enterprise Server 12 SP4. Modules and extensions add parts or
+    functionality to the system.
+   </para>
+   <section id="Intro.Module">
+    <title>Available Modules</title>
+    <para>
+     Modules are fully supported parts of SUSE Linux Enterprise Server with
+     a different life cycle and update timeline. They are a set of packages,
+     have a clearly defined scope and are delivered via an online channel
+     only. Release notes for modules are contained in this document.
+    </para>
+    <para>
+     The following modules are available for SUSE Linux Enterprise Server 12
+     SP4:
+    </para>
+    <informaltable>
+     <tgroup cols="3">
+      <colspec colnum="1" colname="name" colwidth="40*"/>
+      <colspec colnum="2" colname="content" colwidth="50*"/>
+      <colspec colnum="3" colname="cycle" colwidth="25*"/>
+      <thead>
+       <row>
+        <entry>Name</entry>
+        <entry>Content</entry>
+        <entry>Life Cycle</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry>Advanced Systems Management Module</entry>
+        <entry>CFEngine, Puppet, Salt and the Machinery tool</entry>
+        <entry>Frequent releases</entry>
+       </row>
+       <row>
+        <entry>Containers Module</entry>
+        <entry>Docker, tools, prepackaged images</entry>
+        <entry>Frequent releases</entry>
+       </row>
+       <row>
+        <entry>HPC Module</entry>
+        <entry>Tools and libraries related to High Performance Computing (HPC)</entry>
+        <entry>Frequent releases</entry>
+       </row>
+       <row>
+        <entry>Legacy Module<emphasis role="bold">*</emphasis>
+        </entry>
+        <entry><literal>ksh</literal>
+        </entry>
+        <entry>No updates, supported through March 2022</entry>
+       </row>
+       <row>
+        <entry>Public Cloud Module</entry>
+        <entry>Public cloud initialization code and tools</entry>
+        <entry>Frequent releases</entry>
+       </row>
+       <row>
+        <entry>SUSE Cloud Application Platform Tools</entry>
+        <entry>Tools to interact with the SUSE Cloud Application Platform 1.0 </entry>
+        <entry>Frequent releases</entry>
+       </row>
+       <row>
+        <entry>Toolchain Module</entry>
+        <entry>GNU Compiler Collection (GCC)</entry>
+        <entry>Yearly delivery</entry>
+       </row>
+       <row>
+        <entry>Web and Scripting Module</entry>
+        <entry>PHP, Python, Ruby on Rails</entry>
+        <entry>3 years, ~18 months overlap</entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </informaltable>
+    <para>
+     <emphasis role="bold">*</emphasis> Module is not available for the
+     AArch64 architecture.
+    </para>
+    <para>
+     For more information about the life cycle of packages contained in
+     modules, see
+     <ulink url="https://scc.suse.com/docs/lifecycle/sle/12/modules"/>.
+    </para>
+   </section>
+   <section id="Intro.Extension">
+    <title>Available Extensions</title>
+    <para>
+     Extensions add extra functionality to the system and require their own
+     registration key, usually at additional cost. Extensions are delivered
+     via an online channel or physical media. In many cases, extensions have
+     their own release notes documents that are available from
+     <ulink url="https://www.suse.com/releasenotes/"/>.
+    </para>
+    <para>
+     The following extensions are available for SUSE Linux Enterprise Server
+     12 SP4:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Live Patching:
+       <ulink url="https://www.suse.com/products/live-patching"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise High Availability Extension:
+       <ulink url="https://www.suse.com/products/highavailability"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Geo Clustering for SUSE Linux Enterprise High Availability Extension:
+       <ulink url="https://www.suse.com/products/highavailability/geo-clustering"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Real Time:
+       <ulink url="https://www.suse.com/products/realtime"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Workstation Extension:
+       <ulink url="https://www.suse.com/products/workstation-extension"/>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     Additionally, there are the following extensions which are not covered
+     by SUSE support agreements, available at no additional cost and without
+     an extra registration key:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Software Development Kit
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Intro.Derived_Products">
+    <title>Derived and Related Products</title>
+    <remark> Marketing POV. </remark>
+    <para>
+     This sections lists derived and related products. In many cases, these
+     products have their own release notes documents that are available from
+     <ulink url="https://www.suse.com/releasenotes/"/>.
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       SUSE Enterprise Storage:
+       <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Desktop:
+       <ulink url="https://www.suse.com/products/desktop"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Linux Enterprise Server for SAP Applications:
+       <ulink url="https://www.suse.com/products/sles-for-sap"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE Manager:
+       <ulink url="https://www.suse.com/products/suse-manager"/>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SUSE OpenStack Cloud:
+       <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Intro.Certification">
+   <title>Security, Standards, and Certification</title>
+   <para>
+    SUSE Linux Enterprise Server 12 SP4 has been submitted to the
+    certification bodies for:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <ulink url="http://www.commoncriteriaportal.org/">Common Criteria
+      Certification</ulink>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      FIPS 140-2 validation, see:
+      <ulink url="http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information about certification, see
+    <ulink url="https://www.suse.com/security/certificates.html"/>.
+   </para>
+  </section>
+ </section>
+<!-- ============================================================== -->
+<!-- =============== Technical Part Starts Here =================== -->
+<!-- ============================================================== -->
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>
+   SUSE Linux Enterprise Server can be deployed in several ways:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Physical machine
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Virtual host
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Virtual machine
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     System containers
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Application containers
+    </para>
+   </listitem>
+  </itemizedlist>
+  <section id="InstUpgrade.Upgrade" remap="InstUpgrade:Upgrade">
+   <title>Upgrade-Related Notes</title>
+   <para>
+    This section includes upgrade-related information for SUSE Linux
+    Enterprise Server 12 SP4. For information about general preparations and
+    supported upgrade methods and paths, see the documentation at
+    <ulink url="https://documentation.suse.com/sles/12-SP4/html/SLES-all/cha-update-sle.html"/>.
+   </para>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326970" remap="InstUpgrade:Upgrade">
+<!-- sort_key="1"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326970" -->
+    <title>Upgrading to PostgreSQL 10</title>
+    <para>
+     If you are using PostgreSQL, make sure to upgrade to PostgreSQL 10
+     before upgrading to SLES 12 SP4. For more information, see
+     <xref linkend="fate-325659"/>
+<!--the section about PostgreSQL-->
+     .
+    </para>
+   </section>
+   <section role="notoc" id="fate-326567" remap="InstUpgrade:Upgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326567" -->
+    <title>Product Registration Changes for HPC Customers</title>
+    <para>
+     <emphasis>For SUSE Linux Enterprise 12, there was a High Performance
+     Computing subscription named "SUSE Linux Enterprise Server for HPC"
+     (SLES for HPC). With SLE 15, this subscription does not exist anymore
+     and has been replaced. The equivalent subscription is named "SUSE Linux
+     Enterprise High Performance Computing" (SLE-HPC) and requires a
+     different license key. Because of this requirement, a SLES for HPC 12
+     system will by default upgrade to a regular "SUSE Linux Enterprise
+     Server".</emphasis>
+    </para>
+    <para>
+     To properly upgrade a SLES for HPC system to a SLE-HPC, the system
+     needs to be converted to SLE-HPC first. SUSE provides a tool to
+     simplify this conversion by performing the product conversion and
+     switch to the SLE-HPC subscription. However, the tool does not perform
+     the upgrade itself.
+    </para>
+    <para>
+     When run without extra parameters, the script assumes that the SLES for
+     HPC subscription is valid and not expired. If the subscription has
+     expired, you need to provide a valid registration key for SLE-HPC.
+    </para>
+    <para>
+     The script reads the current set of registered modules and extensions
+     and after the system has been converted to SLE-HPC, it tries to add
+     them again.
+    </para>
+    <important>
+     <title>Providing a Registration Key to the Conversion Script</title>
+     <para>
+      The script cannot restore the previous registration state if the
+      supplied registration key is incorrect or invalid.
+     </para>
+    </important>
+    <orderedlist>
+     <listitem>
+      <para>
+       To install the script, run <literal>zypper in
+       switch_sles_sle-hpc</literal>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Execute the script from the command line as <literal>root</literal>:
+      </para>
+<screen>switch_sles_sle-hpc -e &lt;REGISTRATION_EMAIL&gt; -r &lt;NEW_REGISTRATION_KEY&gt;</screen>
+      <para>
+       The parameters <literal>-e</literal> and <literal>-r</literal> are
+       only required if the previous registration has expired, otherwise
+       they are optional. To run the script in batch mode, add the option
+       <literal>-y</literal>. It answers all questions with
+       <emphasis>yes</emphasis>.
+      </para>
+     </listitem>
+    </orderedlist>
+    <para>
+     For more information, see the man page
+     <literal>switch_sles_sle-hpc(8)</literal> and
+     <literal>README.SUSE</literal>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section>
+   <title>For More Information</title>
+   <para>
+    For more information, see
+    <xref linkend="InfraPackArch.ArchIndependent"/> and the sections
+    relating to your respective hardware architecture.
+   </para>
+  </section>
+ </section>
+<!-- Arch Independent -->
+ <section id="InfraPackArch.ArchIndependent">
+  <title>Architecture Independent Information</title>
+  <remark> This is highly technical * Know issues categorized ** full description of the problem **
+   how to reproduce the issue ** link to Bugzilla number ** command line change/configuration change
+   ** work around if available
+  </remark>
+  <para>
+   Information in this section pertains to all architectures supported by
+   SUSE Linux Enterprise Server 12 SP4.
+  </para>
+  <section id="InfraPackArch.ArchIndependent.Development">
+   <title>Development</title>
+   <section role="notoc" id="fate-326788">
+    <title><package>librdkafka</package> Has Been Added</title>
+    <para>
+     <package>librdkafka</package> version 0.11.6 has been added.
+     <package>librdkafka</package> is a C library implementation of the Apache
+     Kafka protocol, providing Producer, Consumer and Admin clients. It was
+     designed with message delivery reliability and high performance in mind.
+     For more information, see <ulink
+     url="https://github.com/edenhill/librdkafka"/>.
+    </para>
+   </section>
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Kernel" remap="InfraPackArch:ArchIndependent:Kernel">
+   <title>Kernel</title>
+   <para/>
+   <section role="notoc" id="jsc-SLE-22593">
+    <title>Unprivileged eBPF usage has been disabled</title>
+    <para>
+      A large amount of security issues was found and fixed in the Extended
+      Berkeley Packet Filter (eBPF) code. To reduce the attack surface, its
+      usage has been restricted to privileged users only.
+    </para>
+    <para>
+     Privileged users include <literal>root</literal>. Programs with the
+     <literal>CAP_BPF</literal> capability in the newer versions of the Linux
+     kernel can still use eBPF as-is.
+    </para>
+    <para>
+     To check the privileged state, you can check the value of the
+     <literal>/proc/sys/kernel/unprivileged_bpf_disabled</literal>
+     parameter. Value of 0 means "unprivileged enable", and value of 2 means
+     "only privileged users enabled".
+    </para>
+    <para>
+     This setting can be changed by the <literal>root</literal> user:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       to enable it temporarily for all users by running the command
+       <literal>sysctl kernel.unprivileged_bpf_disabled=0</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       to enable it permanently by adding
+       <literal>kernel.unprivileged_bpf_disabled=0</literal>
+       to the
+       <literal>/etc/sysctl.conf</literal>
+       file.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325647" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325647" -->
+    <title>Support for SAP HANA Workloads on Intel Optane DC Memory</title>
+    <para>
+     SUSE Linux Enterprise Server 12 SP4 and SUSE Linux Enterprise Server
+     for SAP Applications 12 SP4 add support for Intel Optane DC memory.
+     This enables SAP workloads, such as SAP HANA to benefit from persistent
+     memory in the future to shorten start times of the system and provide
+     better overall system stability. Currently, configurations up to 12 TB
+     of NVDIMMs plus 3 TB of regular DIMMS of supported memory and 4 socket
+     machines have been tested. Additional configurations will be tested
+     over time.
+    </para>
+    <para>
+     From a file system perspective, the XFS file system is supported for
+     the NVDIMMs, with SAP HANA running in DAX mode. SUSE intends to keep
+     the leading position as technology provider, working closely with SAP
+     on future developments.
+    </para>
+    <para>
+     If there are <literal>pmem</literal> namespaces, these need to be
+     destroyed before the installation. To mount persistent memory directly
+     on boot, we recommend adding the <literal>nofail</literal> mount option
+     in <literal>/etc/fstab</literal> as it can take a long time for the
+     <literal>/dev/pmem</literal> devices to become usable.
+    </para>
+    <para>
+     For example:
+    </para>
+<screen>/dev/pmem0    /mnt/pmem0    xfs    dax,nofail    0  0
+/dev/pmem1    /mnt/pmem1    xfs    dax,nofail    0  0</screen>
+    <para>
+     Namespaces need to be created individually. That means, you need to
+     execute the following command for each namespace you want to create:
+    </para>
+<screen>ndctl create-namespace --mode=fsdax --map=dev</screen>
+   </section>
+   <section role="notoc" id="fate-325368" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325368" -->
+    <title>Device Error Prevention Enabled (CONFIG_IO_STRICT_DEVMEM)</title>
+    <para>
+     The kernel build option <literal>CONFIG_IO_STRICT_DEVMEM</literal> has
+     been enabled in the SLE kernel to prevent device errors. This option
+     disables tampering with device state while a kernel driver is using the
+     device.
+    </para>
+    <para>
+     Unfortunately, some vendor tools currently use such functionality. If
+     you depend on such a tool, make sure to set the kernel boot parameter
+     <literal>iomem=relaxed</literal>. Among others, this affects several
+     firmware flash tools for POWER9 machines.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Security" remap="InfraPackArch:ArchIndependent:Security">
+   <title>Security</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326412" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326412" -->
+    <title>Support for YubiKey and Nitrokey using the U2F frameworks.</title>
+    <para>
+     <emphasis>Some applications require stronger authentication methods,
+     including second factor authentication using physical
+     tokens.</emphasis>
+    </para>
+    <para>
+     Support for YubiKey and Nitrokey is now shipped in the form of
+     libraries, PAM modules and CLI and UI utilities.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325802" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325802" -->
+    <title>su Does Not Preserve the Value of PATH</title>
+    <para>
+     For security reasons, the <literal>su</literal> command does not
+     preserve the value of the environment variable <literal>PATH</literal>
+     any more by default. To return to the behavior from SLE 12, open the
+     file <literal>/etc/default/su</literal> and change the option
+     <literal>ALWAYS_SET_PATH</literal> to <literal>no</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325336" remap="InfraPackArch:ArchIndependent:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325336" -->
+    <title>Support for TLS 1.3 in OpenSSL 1.1.1</title>
+    <para>
+     <emphasis>TLS 1.3 is a new version of the Transport Layer Security
+     protocol with some major differences and improvements over the
+     established TLS 1.2. This new protocol version is only available in
+     OpenSSL 1.1.1 or later. This new version is not binary-compatible with
+     the default version of OpenSSL in SLE 12 SP4 (OpenSSL 1.0), and has
+     known differences in the API that require making adjustments before
+     applications can benefit from the changes.</emphasis>
+    </para>
+    <para>
+     OpenSSL 1.1.1 with support for TLSv1.3 is shipped as an option. In SLE
+     12 SP4, the libraries can be loaded into the same binary image along
+     with OpenSSL 1.0 with symbol versioning enabled. To take advantage of
+     this new protocol option, applications need to be built with OpenSSL
+     1.1.1 explicitly.
+    </para>
+    <para>
+     OpenSSL 1.0 remains the default for system libraries, services and
+     tools.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+   <title>Networking</title>
+   <para/>
+   <section role="notoc" id="fate-325525">
+    <title>NFS Client Support For NFSv4.2 Has Been Enabled</title>
+    <para>
+     The <literal>CONFIG_NFS_V4_2</literal> configuration option has been enabled.
+     This option enables support for minor version 2 of the NFSv4 protocol in the kernel's NFS client.
+    </para>
+   </section>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326795" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326795" -->
+    <title>Intel* Omni-Path Architecture (OPA) host software</title>
+    <para>
+     Intel Omni-Path Architecture (OPA) host software is fully supported in
+     SUSE Linux Enterprise Server 12 SP4. Intel OPA provides Host Fabric
+     Interface (HFI) hardware with initialization and setup for high
+     performance data transfers (high bandwidth, high message rate, low
+     latency) between compute and I/O nodes in a clustered environment.
+    </para>
+    <para>
+     For information about installing Intel Omni-Path Architecture
+     documentation, see the documentation from Intel at
+     <ulink url="https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/Intel_OP_Software_SLES_12_4_RN_K34561.pdf"/>
+     (link may not yet be active during the prerelease phase of SLES 12
+     SP4).
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+
+   <section role="notoc" id="jsc-SLE-11183">
+    <title>New GeoIP Database Sources</title>
+    <para>
+     The GeoIP databases allow approximately geo-locating users by their IP
+     address.
+     In the past, the company MaxMind made such data available for free in
+     its GeoLite Legacy databases.
+     On January 2, 2019, MaxMind discontinued the GeoLite Legacy databases,
+     now offering only the newer GeoLite2 databases for download.
+     To comply with new data protection regulation, since December 30, 2019,
+     GeoLite2 database users are required to comply with an additional usage
+     license.
+     This change means users now need to register for a MaxMind account and
+     obtain a license key to download GeoLite2 databases.
+     For more information about these changes, see the
+     <ulink url="https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/">MaxMind blog</ulink>.
+    </para>
+    <para>
+     SLES includes the <package>GeoIP</package> package of tools that are only compatible with
+     GeoLite Legacy databases.
+     As an update for SLES 12 SP4, we introduce the following new
+     packages to deal with the changes to the GeoLite service:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <command>geoipupdate</command>:
+       The official Maxmind tool for downloading GeoLite2 databases.
+       To use this tool, set up the configuration file with your MaxMind
+       account details.
+       This configuration file can also be generated on the Maxmind web page.
+       For more information, see
+       <ulink url="https://dev.maxmind.com/geoip/geoip2/geolite2/"/>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <command>geolite2legacy</command>:
+       A script for converting GeoLite2 CSV data to the GeoLite Legacy format.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <command>geoipupdate-legacy</command>:
+       A convenience script that downloads GeoLite2 data, converts it to the
+       GeoLite Legacy format, and stores it in <filename>/var/lib/GeoIP</filename>.
+       With this script, applications developed for use with the legacy
+       <command>geoip-fetch</command> tool will continue to work.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+  </section>
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+   <title>Systems Management</title>
+   <para/>
+   <section role="notoc" id="jsc-SLE-12830">
+    <title>Salt Has Been Updated to Version 3000</title>
+    <para>
+     Salt has been upgraded to upstream version 3000, plus a number of
+     patches, backports and enhancements by SUSE. In particular,
+     CVE-2020-11651 and CVE-2020-11652 fixes are included in our release.
+    </para>
+    <para>
+     As part of this upgrade, cryptography is now managed by the
+     Python-M2Crypto library (which is itself based on the well-known OpenSSL
+     library).
+    </para>
+    <para>
+     We intend to regularly upgrade Salt to more recent versions.
+    </para>
+    <para>
+     For more details about changes in your manually-created Salt states, see
+     the <ulink url="https://docs.saltstack.com/en/latest/topics/releases/3000.html">Salt 3000 upstream release notes</ulink>.
+    </para>
+    <para>
+     Salt 3000 is the last version of Salt which will support the old syntax
+     of the <literal>cmd.run</literal> module.
+    </para>
+   </section>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-323175" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323175" -->
+    <title>The YaST Module for SSH Server Configuration Has Been Removed</title>
+    <para>
+     <emphasis>The YaST module for configuring an SSH server which was
+     present in SLE 11, is not a part of SLE 12. It does not have any direct
+     successor.</emphasis>
+    </para>
+    <para>
+     The module <emphasis>SSH Server</emphasis> only supported configuring a
+     small subset of all SSH server capabilities. Therefore, the
+     functionality of the module can be replaced by using a combination of 2
+     YaST modules: The <emphasis>/etc/sysconfig Editor</emphasis> and the
+     <emphasis>Services Manager</emphasis>. This also applies to system
+     configuration via AutoYaST.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Storage" remap="InfraPackArch:ArchIndependent:Storage">
+   <title>Storage</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-327156" remap="InfraPackArch:ArchIndependent:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327156" -->
+    <title>NVMe Multipath Handling</title>
+    <para>
+     <emphasis>The default state for multipath of NVMe differs for SUSE
+     Linux Enterprise 12 and 15.</emphasis>
+    </para>
+    <para>
+     <emphasis>In SUSE Linux Enterprise 12, multipath is off by default. In
+     SUSE Linux Enterprise 15, multipath is on by default.</emphasis>
+    </para>
+    <para>
+     If the new default behavior does not work in your case, you can
+     override it with the kernel command-line option
+     <literal>LIBSTORAGE_MULTIPATH_AUTOSTART=ON</literal>.
+    </para>
+    <para>
+     With multipath activated, the device numbering is independent of
+     physical slots.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+</section>
+<section id="InfraPackArch.ArchIndependent.Misc">
+<title>Miscellaneous</title>
+<section role="notoc" id="jsc-SLE-24988" remap="InfraPackArch:ArchIndependent:Misc">
+ <title>Enriched system visibility in the SUSE Customer Center (SCC)</title>
+ <para>
+  SUSE is committed to helping provide better insights into the consumption
+  of SUSE subscriptions regardless of where they are running or how they
+  are managed; physical or virtual, on-prem or in the cloud, connected to SCC
+  or Repository Mirroring Tool (RMT), or managed by SUSE Manager. To help you identify or filter out
+  systems in SCC that are no longer running or decommissioned, SUSEConnect
+  now features a daily “ping”, which will update system information
+  automatically.
+ </para>
+ <para>
+  For more details see the documentation at <ulink url="https://susedoc.github.io/doc-unversioned/main/single-html/SLE-suseconnect-tracking/" />.
+ </para>
+</section>
+</section>
+ </section>
+ <section id="InfraPackArch.x86_64" remap="InfraPackArch:x86_64">
+  <title>AMD64/Intel 64 (x86_64) Specific Information</title>
+  <para>
+   Information in this section pertains to the version of SUSE Linux
+   Enterprise Server 12 SP4 for the AMD64/Intel 64 architectures.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325554" remap="InfraPackArch:x86_64">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325554" -->
+   <title>Support for AMD Memory Encryption</title>
+   <para>
+    To provide protection against physical attacks on a system, AMD SME can
+    provide full or partial memory encryption depending on the use case, on
+    AMD family 17h CPU processors. Full memory encryption means all DRAM
+    contents are encrypted using random keys. This provides strong
+    protection against cold boot, DRAM interface snooping and similar types
+    of attacks. This technology is especially prominent for systems equipped
+    with NVDIMMs whose contents remain intact after powering down the
+    system.
+   </para>
+   <para>
+    Memory encryption support is present in SLE 15 kernels but not enabled
+    by default. To enable it on compatible hardware (AMD family 17h CPU,
+    with proper BIOS/UEFI support), supply the boot option
+    <literal>mem_encrypt=on</literal>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section id="InfraPackArch.x86_64.System" remap="InfraPackArch:x86_64:System">
+   <title>System and Vendor Specific Information</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-327794" remap="InfraPackArch:x86_64:System">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327794" -->
+    <title>Intel Optane DC Persistent Memory Operating Modes</title>
+    <para>
+     With SLE 15 SP1, Intel Optane DIMMs can be used in different modes on
+     YES-certified platforms:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       In App Direct Mode, the Intel Optane memory is used as fast
+       persistent storage, an alternative to SSDs and NVMe devices. Data is
+       persistent: It is kept when the system is powered off.
+      </para>
+      <para>
+       App Direct Mode has been supported since SLE 12 SP4.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       In Memory Mode, the Intel Optane memory serves as a cost-effective,
+       high-capacity alternative to DRAM. In this mode, separate DRAM DIMMs
+       act as a cache for the most frequently-accessed data while the Optane
+       DIMMs memory provide large memory capacity. However, compared with
+       DRAM-only systems, this mode is slower under random access workloads.
+       If you run applications without Optane-specific enhancements that
+       take advantage of this mode, memory performance may decrease. Data is
+       <emphasis>not</emphasis> persistent: It is lost when the system is
+       powered off.
+      </para>
+      <para>
+       Memory Mode has been supported since SLE 15 SP1
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       In Mixed Mode, the Intel Optane memory is partitioned, so it can
+       serve in both modes simultaneously.
+      </para>
+      <para>
+       Mixed Mode has been supported since SLE 15 SP1.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <emphasis>Not all certified platforms support all modes mentioned
+     above.</emphasis> Direct hardware-related questions at your hardware
+     partner. SUSE works with all major hardware vendors to make use of
+     Intel Optane a perfect experience on the OS- and open-source
+     infrastructure level.
+    </para>
+   </section>
+   <section role="notoc" id="fate-324726" remap="InfraPackArch:x86_64:System">
+<!-- sort_key="None"; non-rn-fate-cats="TPM/TCG"; -->
+<!-- href="https://fate.novell.com/324726" -->
+    <title>TPM 2.0 Software Stack Has Been Updated</title>
+    <para>
+     <emphasis>The upstream projects for Intel's TPM 2.0 Software Stack have
+     introduced major changes to the project structure. Notably, the
+     resource manager daemon has been replaced by a new implementation that
+     fixes stability and security issues.</emphasis>
+    </para>
+    <para>
+     The packaging has been adjusted to the upstream changes. The previous
+     resource manager daemon, <literal>resourcemgr</literal>, which was
+     previously part of the <literal>tpm2-0-tss</literal> package has been
+     dropped. The new package <literal>tpm2.0-abrmd</literal> provides the
+     new resource manager implementation (<literal>tpm2-abrmd</literal> /
+     <literal>tabrmd</literal>).
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InfraPackArch.Power" remap="InfraPackArch:Power">
+  <title>POWER (ppc64le) Specific Information</title>
+  <para>
+   Information in this section pertains to the version of SUSE Linux
+   Enterprise Server 12 SP4 for the POWER architecture.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-327576" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327576" -->
+   <title>Support for ibmvnic Networking Driver</title>
+   <para>
+    The kernel device driver <literal>ibmvnic</literal> provides support for
+    vNIC (virtual Network Interface Controller) which is a PowerVM virtual
+    networking technology that delivers enterprise capabilities and
+    simplifies network management on IBM POWER systems. It is an efficient
+    high-performance technology.
+   </para>
+   <para>
+    When combined with SR-IOV NIC, it provides bandwidth control Quality of
+    Service (QoS) capabilities at the virtual NIC level. vNIC significantly
+    reduces virtualization overhead resulting in lower latencies and fewer
+    server resources (CPU, memory) required for network virtualization.
+   </para>
+   <para>
+    For a detailed support statement of ibmvnic in SLES, see
+    <ulink url="https://www.suse.com/support/kb/doc/?id=7023703"/>.
+   </para>
+  </section>
+  <section role="notoc" id="fate-325306" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325306" -->
+   <title>Reduced Memory Usage When Booting FADump Capture Kernel</title>
+   <para>
+    One of the primary issues with Firmware Assisted Dump (FADump) on IBM
+    POWER systems is that it needs a large amount of memory to be reserved.
+    On large systems with terabytes of memory, this reservation can be
+    significant.
+   </para>
+   <para>
+    Normally, the preserved memory is filtered to extract only relevant
+    areas using the <literal>makedumpfile</literal> tool. While the tool
+    allows determining what needs to be part of the dump and what memory to
+    filter out, the default is to capture only kernel data and exclude
+    everything else.
+   </para>
+   <para>
+    We take advantage of this default and the Linux kernel's Contiguous
+    Memory Allocator (CMA) to fundamentally change the memory reservation
+    model for FADump: Instead of setting aside a significant chunk of memory
+    that cannot otherwise be used, the feature uses CMA instead. It reserves
+    a significant chunk of memory that the kernel is prevented from using
+    (due to <literal>MIGRATE_CMA</literal>), but applications are free to
+    use it. With this, FADump will still be able to accurately capture all
+    of the kernel memory and most of the user-space memory except for the
+    user pages that are part of the CMA region reserved for FADump.
+   </para>
+   <para>
+    To disable this feature, pass the kernel parameter
+    <literal>fadump=nocma</literal> instead of <literal>fadump=on</literal>. This ensures that the memory reserved for FADump is not used by
+    applications. This option may be useful in scenarios where you prefer to
+    also capture application data in the dump file.
+   </para>
+  </section>
+  <section role="notoc" id="fate-325177" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325177" -->
+   <title>SDT Markers in Select Applications and Libraries</title>
+   <para>
+    <emphasis> SDT markers are static tracepoints included in the source
+    code that expose certain information deemed useful by the
+    application/library developers for various purposes including debugging
+    and performance monitoring. Tools such as
+    </emphasis><literal>perf</literal><emphasis> and
+    </emphasis><literal>systemtap</literal><emphasis> can be used to record
+    data provided at these tracepoints, and for subsequent processing.
+    </emphasis>
+   </para>
+   <para>
+    In SLES 12 SP4, certain userspace applications and libraries (for
+    example, <literal>glibc</literal>) are built with SDT markers enabled.
+    This enhances the serviceability tooling.
+   </para>
+  </section>
+  <section role="notoc" id="fate-324950" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324950" -->
+   <title>Support for POWER9 PMU Events Has Been Added to the perf Tool</title>
+   <para>
+    When executed on a POWER9 system, the <literal>perf</literal> tool now
+    supports listing or specifying POWER9 PMU events by name.
+   </para>
+  </section>
+  <section role="notoc" id="fate-324949" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324949" -->
+   <title>Support for POWER9 24x7 Counters Has Been Added</title>
+   <para>
+    SLES 12 SP4 adds support for the new version of the hypervisor API which
+    is used to access 24x7 performance counters on POWER9 systems.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321458" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321458" -->
+   <title>OProfile Support for POWER9</title>
+   <para>
+    The OProfile package has been updated to include support for POWER9
+    processors.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321457" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321457" -->
+   <title>Support for POWER9 Has Been Added to LibPFM</title>
+   <para>
+    The LibPFM package has been updated to include support for POWER9
+    processors.
+   </para>
+  </section>
+  <section role="notoc" id="fate-321456" remap="InfraPackArch:Power">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321456" -->
+   <title>Support for POWER9 Has Been Added to PAPI</title>
+   <para>
+    PAPI package updated to include support for POWER9 processors.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section role="notoc" id="bsc-1136157">
+   <title>Speed of <literal>ibmveth</literal> Interface Not Reported Accurately</title>
+   <para>
+    The <literal>ibmveth</literal> interface is a paravirtualized interface.
+    When communicating between LPARs within the same system, the interface's
+    speed is limited only by the system's CPU and memory bandwidth.
+    When the virtual Ethernet is bridged to a physical network, the
+    interface's speed is limited by the speed of that physical network.
+   </para>
+   <para>
+    Unfortunately, the <literal>ibmveth</literal> driver has no way of
+    determining automatically whether it is bridged to a physical network
+    and what the speed of that link is.
+    <literal>ibmveth</literal> therefore reports its speed as a fixed value
+    of 1 Gb/s which in many cases will be inaccurate.
+    To determine the actual speed of the interface, use a benchmark.
+    Using <command>ethtool</command>, you can then set a more accurate
+    displayed speed.
+   </para>
+  </section>
+ </section>
+ <section id="InfraPackArch.SystemZ">
+  <title>IBM Z (s390x) Specific Information</title>
+  <para>
+   Information in this section pertains to the version of SUSE Linux
+   Enterprise Server 12 SP4 for the IBM Z architecture. For more
+   information, see
+   <ulink url="https://www.ibm.com/developerworks/linux/linux390/documentation_suse.html"/>.
+  </para>
+  <para>
+   IBM zEnterprise 196 (z196) and IBM zEnterprise 114 (z114) are in the
+   following referred to as z196 and z114.
+  </para>
+  <section id="InfraPackArch.SystemZ.Hardware" remap="InfraPackArch:SystemZ:Hardware">
+   <title>Hardware</title>
+<!--v Items below imported from FATE-->
+<!-- sort_key="1"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324089" -->
+<!-- title>[NOTITLE]IBM z14 and Additional z13 Hardware Instructions in GLIBC</title -->
+   <itemizedlist>
+    <listitem>
+     <para>
+      The addition of IBM z14 hardware instructions and an expanded set of
+      IBM z13 hardware instructions in glibc enables improved performance
+      and hardware support.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The LLVM compiler supports IBM z14 instructions for improved
+      performance.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      OpenSSL (1.1), <literal>ibmca</literal>, and
+      <literal>libica</literal> support IBM z14 instructions for
+      AES-GCM-based encryption of data in flight.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      KVM guests can now use CPU features, including CPACF functions, that
+      were introduced with IBM z14.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      With z14, the hardware provides an indication of the configuration
+      level of SIE, for example LPAR or KVM. IBM z14 sample configurations
+      help to analyze and optimize KVM performance.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>libica</literal> supports hardware acceleration for the SHA3
+      algorithm (CPACF MSA6) using CPACF hardware in IBM z14 machines.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      CPU-MF Hardware Counters are added for IBM z13 and z13s. You can now
+      access counters from the MT-diagnostic counter set that is available
+      with IBM z13. You can also specify z13 specific counters using their
+      symbolic event names and obtain counter descriptions with the lscpumf
+      utility.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Support for the True Random Number Generator (TRNG, CPACF MSA7) in IBM
+      z14 machines via CPACF. This improves the availability of random data
+      in the kernel entropy pool.
+     </para>
+    </listitem>
+   </itemizedlist>
+<!-- sort_key="2"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325014" -->
+<!-- title>[NOTITLE]Support for IBM z14 Instructions in LLVM</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325018" -->
+<!-- title>[NOTITLE]AES_GCM Encryption Enhancements in openssl, ibmca and libica</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325013" -->
+<!-- title>[NOTITLE]CPU Model for IBM z14</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325011" -->
+<!-- title>[NOTITLE]CPUMF Basic Sample Configuration Level Indication</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324999" -->
+<!-- title>[NOTITLE]Support for SHA3 Algorithm Hardware Acceleration in libica</title -->
+<!-- sort_key="None"; non-rn-fate-cats="Linux Kernel"; -->
+<!-- href="https://fate.novell.com/324995" -->
+<!-- title>[NOTITLE]Add CPU_MF Hardware Counters for IBM z13/z13s</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324104" -->
+<!-- title>[NOTITLE]Support for True Random Number Generator (TRNG)</title -->
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.Virtualization" remap="InfraPackArch:SystemZ:Virtualization">
+   <title>Virtualization</title>
+<!--v Items below imported from FATE-->
+<!-- sort_key="1"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325874" -->
+<!-- title>[NOTITLE]KVM: CPU Model z14 ZR1</title -->
+   <itemizedlist>
+    <listitem>
+     <para>
+      KVM guests can exploit the new hardware features of the new CPU model
+      IBM z14 ZR1.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Machine checks caused by failing KVM guests are now targeted at the
+      KVM virtual server instead of the KVM hypervisor, thus making the
+      hypervisor more resilient.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      TLB Purge Enhancements are supported under KVM. This improves
+      performance for KVM guests, in particular when subject to memory
+      pressure.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Store Hypervisor Information (STHYI) from LPAR is available in KVM.
+      Non-privileged user-space applications running on KVM can retrieve
+      hypervisor capacity data through the LPAR if not provided by the Linux
+      kernel.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Guarded Storage Facility is supported for improved performance of all
+      Java workloads on KVM virtual servers.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Standard network boot setups can be used to deploy KVM guests.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The script <literal>kvm_stat</literal> was formerly a part of QEMU.
+      However, it moved into the kernel tree upstream. To account for the
+      change in the upstream project, in SLES 12 SP4, the script is now
+      available from the new package <literal>kvm_stat</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>LOADPARM</literal> and <literal>BOOTPROG</literal> are fully
+      supported. A boot menu selection is available during IPL, for example,
+      to recover from a defective KVM guest operating system.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Keyless Guests are supported for performance gains through improved
+      memory handling for workloads running on Linux.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The IBM Call Home feature is enabled for KVM.
+     </para>
+    </listitem>
+   </itemizedlist>
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325734" -->
+<!-- title>[NOTITLE]Robust Machine Check Handling</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325309" -->
+<!-- title>[NOTITLE]Support for TLB Purge Enhancements</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325038" -->
+<!-- title>[NOTITLE]Store Hypervisor Information (STHYI) for LPAR</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325027" -->
+<!-- title>[NOTITLE]Support for Guarded Storage Facility</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325026" -->
+<!-- title>[NOTITLE]Network Boot Base Enablement</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325017" -->
+<!-- title>[NOTITLE]New kvm_stat Package from Kernel Tree</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325016" -->
+<!-- title>[NOTITLE]Full LOADPARM/BOOTPROG Support</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325015" -->
+<!-- title>[NOTITLE]Keyless Guest Support</title -->
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323774" -->
+<!-- title>[NOTITLE]Report Distro KVM Using Call Home</title -->
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.Network" remap="InfraPackArch:SystemZ:Network">
+   <title>Network</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325041" remap="InfraPackArch:SystemZ:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325041" -->
+    <title>Shared Memory Communications - Direct (SMC-Direct)</title>
+    <para>
+     SMC-direct can be used via a new socket family and the existing tooling
+     via TCP handshake. A preload library can be used to enable applications
+     to use the new socket family transparently.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325008" remap="InfraPackArch:SystemZ:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325008" -->
+    <title>Exploitation of Shared Memory Communications (SMC-R) is now Supported</title>
+    <para>
+     The technology preview flag is removed for SMC-R, that enables
+     RDMA-capable network interface cards (RNICs) to offer RDMA over
+     Converged Ethernet (RoCE).
+    </para>
+    <para>
+     Its usage is enabled by a collection of tools (smc-tools).
+    </para>
+   </section>
+   <section role="notoc" id="fate-325006" remap="InfraPackArch:SystemZ:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325006" -->
+    <title>Support for SET VNIC_CHARS in qeth</title>
+    <para>
+     qeth now supports <literal>SET VNIC_CHARS</literal>. You can configure
+     MAC address flooding, learning, forwarding, and takeover behavior for
+     HiperSockets devices.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.Security" remap="InfraPackArch:SystemZ:Security">
+   <title>Security</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326343" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326343" -->
+    <title>dm-crypt with Protected Keys - Change Master Key Tool</title>
+    <para>
+     Manage LUKS2 encryption keys for protected key cryptography if the
+     master key of the associated Crypto Express adapter is changed.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325632" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325632" -->
+    <title>Support Architectural Limit of Crypto Adapters in zcrypt Device Driver</title>
+    <para>
+     The crypto device driver now supports the theoretical maximum of 255
+     adapters.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325173" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325173" -->
+    <title>Protected Key dm-crypt Key Management Tool</title>
+    <para>
+     Protected key crypto for dm-crypt disks in plain format can be used
+     without a dependency on cryptsetup support for LUKS(2) with protected
+     keys. A key management tool as part of the s390-tools enables to manage
+     a key repository allowing to associate secure keys with disk partitions
+     or logical volumes.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325028" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325028" -->
+    <title>libica: Use TRNG to Seed DRBG (Crypto)</title>
+    <para>
+     Improved generation of high (pseudo) quality random numbers via
+     <literal>libica</literal> DRBG especially to generate safe random keys
+     by use of the PRNO-TRNG instruction.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325020" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325020" -->
+    <title>Elliptic Curve Support for Crypto</title>
+    <para>
+     The strategic elliptic curve asymmetric cryptography that provides
+     strong security with shorter keys is now supported by Crypto Express
+     function offloads with <literal>opencryptoki</literal>,
+     <literal>libica</literal>, <literal>icatoken</literal> and
+     <literal>openssl-ibmca</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-324997" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324997" -->
+    <title>Support for the CEX6S Crypto Card</title>
+    <para>
+     The CEX6S crypto card is fully supported.
+    </para>
+   </section>
+   <section role="notoc" id="fate-324080" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324080" -->
+    <title>In-Kernel Cryptography: GCM Enhancements</title>
+    <para>
+     Kernel services like IPSec now exploit IBM z14 cryptography hardware
+     for the AES-GCM cipher.
+    </para>
+   </section>
+   <section role="notoc" id="fate-322024" remap="InfraPackArch:SystemZ:Security">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322024" -->
+    <title>Enhanced OpenSSL Support for PKCS#11 Engine</title>
+    <para>
+     With the version update to 1.0.2, the PKCS#11 can also be linked as a
+     module.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.RAS" remap="InfraPackArch:SystemZ:RAS">
+   <title>Reliability, Availability, Serviceability (RAS)</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325002" remap="InfraPackArch:SystemZ:RAS">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325002" -->
+    <title>Support for DASD Block Layer Discard</title>
+    <para>
+     SLES 12 SP4 includes support for the Linux discard function that
+     releases unused space on z/VM VDISKs.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.Performance" remap="InfraPackArch:SystemZ:Performance">
+   <title>Performance</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326341" remap="InfraPackArch:SystemZ:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326341" -->
+    <title>Performance Counters for IBM z14 (CPUMF)</title>
+    <para>
+     The performance counters of the IBM z14 are supported and can be
+     handled and displayed with the perf tool for optimized performance
+     tuning.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325005" remap="InfraPackArch:SystemZ:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325005" -->
+    <title>Guest Kernel Support to Avoid Unnecessary TLB Purges</title>
+    <para>
+     The Linux kernel now tags pages that are not used as part of a page
+     table, so that the hypervisor can avoid unnecessary purging of guest
+     TLB (translation lookaside buffer) entries.
+    </para>
+   </section>
+   <section role="notoc" id="fate-324086" remap="InfraPackArch:SystemZ:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324086" -->
+    <title>Kernel Interface for the Guarded Storage Facility Added to Improve Java Performance</title>
+    <para>
+     Optimized Java processes improve performance for many Java
+     applications.
+    </para>
+   </section>
+   <section role="notoc" id="fate-324085" remap="InfraPackArch:SystemZ:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324085" -->
+    <title>Single Increment Assignment of Memory</title>
+    <para>
+     A new option for the “Attach Storage Element” SCLP command to speed
+     up memory hotplug is available.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.SystemZ.Misc">
+<!-- entries from SP1 RNs -->
+   <title>Miscellaneous</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-319951" remap="InfraPackArch:SystemZ:Misc">
+<!-- sort_key="None"; non-rn-fate-cats="zSeries"; -->
+<!-- href="https://fate.novell.com/319951" -->
+    <title>Deprecated DMSVSMA Functionality Has Been Removed from snIPL</title>
+    <para>
+     <emphasis>The DMSVSMA RPC protocol was only used to remote access
+     machines running z/VM versions that are now out of maintenance. snIPL's
+     support for this protocol was deprecated beginning with SLES 12
+     SP1.</emphasis>
+    </para>
+    <para>
+     snIPL's support for remote access to z/VM hosts via the DMSVSMA RPC
+     protocol has now been removed.
+    </para>
+    <para>
+     We recommend using SMAPI to remotely access z/VM hosts instead which is
+     provided by supported z/VM 5.4, and z/VM 6.x versions. For information
+     about setting up your z/VM system for API access, see <emphasis>z/VM
+     Systems Management Application Programming, SC24-6234</emphasis>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InfraPackArch.AArch64" remap="InfraPackArch:AArch64">
+  <title>ARM 64-Bit (AArch64) Specific Information</title>
+  <para>
+   Information in this section pertains to the version of SUSE Linux
+   Enterprise Server 12 SP4 for the AArch64 architecture.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325653" remap="InfraPackArch:AArch64">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325653" -->
+   <title>Boot and Driver Enablement for Raspberry Pi</title>
+   <para>
+    Bootloaders and a supported microSD card image of SUSE Linux Enterprise
+    Server for ARM 12 SP4 for the Raspberry Pi are available. The template
+    of the SUSE Linux image is available as profile "RaspberryPi" in the
+    package <literal>kiwi-templates-SLES12-JeOS</literal> to derive custom
+    appliances.
+   </para>
+   <bridgehead renderas="sect5">Expansion Boards</bridgehead>
+   <para>
+    The Raspberry Pi 3 Model B/B+ offers a 40-pin General Purpose I/O
+    connector, with multiple software-configurable functions such as UART,
+    I²C and SPI. This pin mux configuration along with any external devices
+    attached to the pins is defined in the Device Tree which is passed by
+    the bootloader to the kernel.
+   </para>
+   <para>
+    SUSE does not currently provide support for any particular HATs or other
+    expansion boards attached to the 40-pin GPIO connector. However, insofar
+    as drivers for pin functions and for attached chipsets are included in
+    SUSE Linux Enterprise, they can be used. SUSE does not provide support
+    for making changes to the Device Tree, but successful changes will not
+    affect the support status of the operating system itself. Be aware that
+    errors in the Device Tree can stop the system from booting successfully
+    or can even damage the hardware.
+   </para>
+   <para>
+    The bootloader and firmware in SUSE Linux Enterprise Server 12 SP4 now
+    support Device Tree Overlays. The new recommended way of configuring
+    GPIO pins is to create a file <literal>extraconfig.txt</literal> on the
+    FAT volume (<literal>/boot/efi/extraconfig.txt</literal> in the SUSE
+    image) with a line <literal>dtoverlay=filename-without-.dtbo</literal>
+    per Overlay. For more information about the syntax, see the
+    documentation by the Raspberry Pi Foundation.
+   </para>
+   <para>
+    As a side effect, no separate <literal>/boot</literal> partition is
+    needed anymore. This allows booting Btrfs snapshots in the SUSE image.
+   </para>
+   <para>
+    If not already shipped in the <literal>/boot/efi/overlays/</literal>
+    directory (<literal>raspberrypi-firmware-dt</literal> package),
+    <literal>.dtbo</literal> files can be obtained from the manufacturer of
+    the HAT or compiled from self-authored sources.
+   </para>
+   <bridgehead renderas="sect5">For More Information</bridgehead>
+   <para>
+    For more information, see the SUSE Best Practices documentation for the
+    Raspberry Pi at
+    <ulink url="https://documentation.suse.com/sbp/all/html/SLES12SP3-rpiquick/index.html"/>.
+   </para>
+  </section>
+  <section role="notoc" id="fate-320679" remap="InfraPackArch:AArch64">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320679" -->
+   <title>Toolchain Module Enabled in Default Installation</title>
+   <tip role="compact">
+    <para>
+     This entry has appeared in a previous release notes document.
+    </para>
+   </tip>
+   <para>
+    <emphasis> The system compiler (</emphasis><literal>gcc4.8</literal><emphasis>) is not supported on the
+    AArch64 architecture. To work around this issue, you previously had to
+    enable the Toolchain module manually and use the GCC version from that
+    module. </emphasis>
+   </para>
+   <para>
+    On AArch64, the Toolchain Module is now automatically pre-selected after
+    registering SLES during installation. This makes the latest SLE
+    compilers available on all installations. You now only need to make sure
+    to also use that compiler.
+   </para>
+   <important>
+    <title>When Using AutoYaST, Make Sure to Enable Toolchain Module</title>
+    <para>
+     Be aware that when using AutoYaST to install, you have to explicitly
+     add the Toolchain module into the XML installation profile.
+    </para>
+   </important>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <para>
+   This section comprises changes to packages, such as additions, updates,
+   removals and changes to the package layout of software. It also contains
+   information about modules available for SUSE Linux Enterprise Server. For
+   information about changes to package management tools, such as Zypper or
+   RPM, see
+   <xref linkend="InfraPackArch.ArchIndependent.SystemsManagement"/>.
+  </para>
+  <section id="Packages.Update" remap="Packages:Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+
+   <section id="jsc-SLE-11159">
+    <title>Xorg Server Has Been Updated to Version 1.19.6-4.3.1</title>
+    <para>
+    SLES 12 SP4 now includes version 1.19.6-4.3.1 of these two
+    packages:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>xorg-x11-server</para>
+     </listitem>
+     <listitem>
+      <para>xorg-x11-server-extra</para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     The previous version was 7.6_1.15.2-36.21.
+    </para>
+   </section>
+   <section id="jsc-SLE-11177">
+    <title>Git Has Been Updated to Version 2.26.2</title>
+    <para>
+     SLES 12 SP4 now includes version 2.26.2 of the version control
+     Git. This version of Git supports the SHA256 cipher.
+    </para>
+    <para>
+     Refer to the
+     <ulink url="https://github.com/git/git/blob/master/Documentation/RelNotes/2.26.0.txt">git Release Notes</ulink> for more detailed information.
+    </para>
+    <para>
+     This update fixes the following security vulnerabilities:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2017-15298" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2018-11233" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2018-11235" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2018-17456" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1348" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1349" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1350" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1351" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1352" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1353" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1354" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-1387" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2019-19604" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2020-11008" />
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <ulink url="https://www.suse.com/security/cve/CVE-2020-5260" />
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-327121" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327121" -->
+    <title>LibreOffice Has Been Updated to Version 6.4.4.2</title>
+    <para>
+     LibreOffice has been updated to version 6.4.4.2. For
+     information about major changes, see the LibreOffice 6.4.4.2 release notes
+     at <ulink url="https://wiki.documentfoundation.org/ReleaseNotes/6.4"/>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325757" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325757" -->
+    <title>KIWI Has Been Updated to 9.15.3</title>
+    <para>
+     <emphasis>There was a widening gap between the KIWI version shipped in
+     previous SLE 12 service packs and the upstream version of
+     KIWI.</emphasis>
+    </para>
+    <para>
+     In SLE 12 SP4, KIWI has been updated to version 9.15.3, the same
+     version that was also shipped in SLE 15 GA. Version 9 of KIWI is a
+     complete rewrite of the software that, while keeping general
+     compatibility, also includes many new features. This update also fixes
+     several bugs related to building JeOS. Given the newer codestream, this
+     update also simplifies support of the tool.
+    </para>
+    <para>
+     For a comparison between KIWI 7 and KIWI 9, see
+     <ulink url="https://opensource.suse.com/kiwi/overview/legacy_kiwi.html"/>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-325659" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325659" -->
+    <title>PostgreSQL Has Been Upgraded to Version 10</title>
+    <para>
+     <emphasis>SLES 12 SP4 and SLES 15 ship with PostgreSQL 10 by default.
+     To enable an upgrade path for customers, SLE 12 SP3 now includes
+     PostgreSQL 10 in addition to PostgreSQL 9.6 (the version that was
+     originally shipped).</emphasis>
+    </para>
+    <para>
+     <emphasis>To upgrade a PostgreSQL server installation from an older
+     version, the database files need to be converted to the new
+     version.</emphasis>
+    </para>
+    <important>
+     <title>PostgreSQL Upgrade Needs to Be Performed Before Upgrade to New SLES Version</title>
+     <para>
+      Neither SLES 12 SP4 nor SLES 15 include PostgreSQL 9.6. However,
+      availability of PostgreSQL 9.6 is a requirement for performing the
+      database upgrade to the PostgreSQL 10 format. Therefore, you must
+      upgrade the database to the PostgreSQL 10 format before upgrading to
+      the desired new SLES version.
+     </para>
+    </important>
+    <bridgehead renderas="sect5">Major New Features</bridgehead>
+    <para>
+     The following major new features are included in PostgreSQL 10:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Logical replication: a publish/subscribe framework for distributing
+       data
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Declarative table partitioning: convenience in dividing your data
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improved query parallelism: speed up analyses
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Quorum commit for synchronous replication: distribute data with
+       confidence
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SCRAM-SHA-256 authentication: more secure data access
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     PostgreSQL 10 also brings an important change to the versioning scheme
+     that is used for PostgreSQL: It now follows the format
+     <emphasis>major.minor</emphasis>. This means that minor releases of
+     PostgreSQL 10 are for example 10.1, 10.2, ... and the next major
+     release will be 11. Previously, both the parts of the version number
+     were significant for the major version. For example, PostgreSQL 9.3 and
+     PostgreSQL 9.4 were different major versions.
+    </para>
+    <para>
+     For the full PostgreSQL 10 release notes, see
+     <ulink url="https://www.postgresql.org/docs/10/release-10.html">https://www.postgresql.org/docs/10/release-10.html</ulink>.
+    </para>
+    <bridgehead renderas="sect5">Upgrading</bridgehead>
+    <para>
+     Before starting the migration, make sure the following preconditions
+     are fulfilled:
+    </para>
+    <orderedlist>
+     <listitem>
+      <para>
+       The packages of your current PostgreSQL version must have been
+       upgraded to their latest maintenance update.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The packages of the new PostgreSQL major version need to be
+       installed. For SLE 12, this means installing
+       <literal>postgresql10-server</literal> and all the packages it
+       depends on. Because <literal>pg_upgrade</literal> is contained in the
+       package <literal>postgresql10-contrib</literal>, this package must
+       be installed as well, at least until the migration is done.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Unless <literal>pg_upgrade</literal> is used in link mode, the server
+       must have enough free disk space to temporarily hold a copy of the
+       database files. If the database instance was installed in the default
+       location, the needed space in megabytes can be determined by running
+       the following command as <literal>root</literal>: <literal>du -hs
+       /var/lib/pgsql/data</literal>. If there is little disk space
+       available, run the command <literal>VACUUM FULL</literal> SQL command
+       on each database in the PostgreSQL instance that you want to migrate.
+       This command can take very long.
+      </para>
+     </listitem>
+    </orderedlist>
+    <para>
+     Upstream documentation about <literal>pg_upgrade</literal> including
+     step-by-step instructions for performing a database migration can be
+     found locally at
+     <literal>file:///usr/share/doc/packages/postgresql10/html/pgupgrade.html</literal>
+     (if the <literal>postgresql10-docs</literal> package is installed), or
+     online at
+     <ulink url="https://www.postgresql.org/docs/10/pgupgrade.html">https://www.postgresql.org/docs/10/pgupgrade.html</ulink>. The online documentation explains how you can install PostgreSQL from
+     the upstream sources (which is not necessary on SLE) and also uses
+     other directory names (<literal>/usr/local</literal> instead of the
+     <literal>update-alternatives</literal> based path as described above).
+    </para>
+   </section>
+   <section role="notoc" id="fate-323756" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323756" -->
+    <title>MariaDB Has Been Upgraded to 10.2</title>
+    <para>
+     The MariaDB packages have been upgraded to the 10.2 series that brings
+     many new features and bug fixes.
+    </para>
+    <para>
+     The list of major changes for 10.2 series can be found at
+     <ulink url="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-102/"/>. The update to the new MariaDB version generally does not cause
+     issues. However, there are the following notable incompatible changes:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       InnoDB is now the default storage engine.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Some options have updated default values.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Some options have been removed/renamed.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     For more information about upgrading, see the upgrade notes at
+     <ulink url="https://mariadb.com/kb/en/library/upgrading-from-mariadb-100-to-mariadb-101/"/>
+     and
+     <ulink url="https://mariadb.com/kb/en/library/upgrading-from-mariadb-101-to-mariadb-102/"/>.
+    </para>
+    <para>
+     Apart from the changes in MariaDB Server itself, there are also
+     packaging changes:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       All configuration snippets placed in <literal>my.cnf.d</literal> were
+       merged to <literal>my.cnf</literal> file (omit
+       <literal>default_plugins.cnf</literal> as all configuration here was
+       commented out).
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       By default, MariaDB will not listen for TCP/IP connections.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The list of binaries was changed:
+       <itemizedlist>
+        <listitem>
+         <para>
+          The <literal>mytop</literal> utility was removed and it is
+          packaged separately
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          The following binaries were added: <literal>mariabackup</literal>, <literal>mbstream</literal>,
+          <literal>myrocks_hotbackup</literal>, <literal>sst_dump</literal>, <literal>mysql_ldb</literal>, etc.
+         </para>
+        </listitem>
+       </itemizedlist>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       systemd services were renamed from <literal>mysql.service</literal>
+       to <literal>mariadb.service</literal>. A <literal>mysql</literal>
+       alias is still provided for the backward compatibility.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Deprecated" remap="Packages:Deprecated">
+   <title>Removed and Deprecated Functionality</title>
+   <remark>
+    ** Why this choice?
+    ** How to handle this deprecation in your system
+    ** specific case (LTSS etc.)
+   </remark>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-323093" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323093" -->
+    <title>libcgroup1 Removed From SLE 12 SP4 and Later</title>
+    <para>
+     <emphasis> Most functionality of
+     </emphasis><literal>libcgroup1</literal><emphasis> is also provided by
+     systemd. In fact, the cgroup handling of
+     </emphasis><literal>libcgroup1</literal><emphasis> can conflict with
+     that of systemd. </emphasis>
+    </para>
+    <para>
+     Starting with SLE 12 SP4, <literal>libcgroup1</literal> has been
+     removed. Migrate to the equivalent functionality in systemd.
+    </para>
+    <para>
+     For more information, see
+     <ulink url="https://www.suse.com/support/kb/doc/?id=7018741"/>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Packaging" remap="Packages:Packaging">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-326857" remap="Packages:Packaging">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326857" -->
+    <title>MPI Implementations Identify in mpi-selector's list Command By Name Only</title>
+    <para>
+     <emphasis> Previously, the MPI implementations
+     </emphasis><literal>openmpi</literal><emphasis>,
+     </emphasis><literal>mvapich2</literal><emphasis>, and
+     </emphasis><literal>mpich</literal><emphasis> (and their variants) were
+     configured to identify themselves with their name and exact version in
+     </emphasis><literal>mpi-selector --list</literal><emphasis>. However,
+     this behavior created a package upgrade issue where newly updated MPI
+     packages would not be registered automatically. </emphasis>
+    </para>
+    <para>
+     As part of a maintenance update to SLE, the registration issue was
+     fixed by making the packages identify only by their name but not their
+     exact version number in <literal>mpi-selector --list</literal>. As
+     this functionality was never meant as a way to support multiple
+     versions of the same MPI implementation side by side, this should not
+     cause practical issues.
+    </para>
+    <para>
+     Note that as an exception from the rule, it continues to be possible to
+     install all available major versions of openMPI side by side (those can
+     be, depending on the operating system version and installed extensions,
+     <literal>openmpi</literal>, <literal>openmpi2</literal>, and
+     <literal>openmpi3</literal>).
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+
+   <section role="notoc" id="bsc-1143465">
+    <title>Kernel Firmware Only Shipped as Part of the <package>kernel-firmware</package> Package</title>
+    <para>
+     In past releases, the <package>kernel-default</package> package used to
+     contain firmware for in-kernel drivers.
+    </para>
+    <para>
+     Starting with SLES 12 SP3, such firmware is now delivered as part of the
+     package <package>kernel-firmware</package>.
+    </para>
+   </section>
+
+  </section>
+ </section>
+ <section id="TechInfo">
+  <title>Technical Information</title>
+  <para>
+   This section contains information about system limits, a number of
+   technical changes and enhancements for the experienced user.
+  </para>
+<!-- bnc#483250 -->
+  <para>
+   When talking about CPUs, we use the following terminology:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term>CPU Socket</term>
+    <listitem>
+     <para>
+      The visible physical entity, as it is typically mounted to a
+      motherboard or an equivalent.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>CPU Core</term>
+    <listitem>
+     <para>
+      The (usually not visible) physical entity as reported by the CPU
+      vendor.
+     </para>
+     <para>
+      On IBM Z, this is equivalent to an IFL.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Logical CPU</term>
+    <listitem>
+     <para>
+      This is what the Linux Kernel recognizes as a "CPU".
+     </para>
+     <para>
+      We avoid the word "thread" (which is sometimes used), as the word
+      "thread" would also become ambiguous subsequently.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Virtual CPU</term>
+    <listitem>
+     <para>
+      A logical CPU as seen from within a Virtual Machine.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <section id="TechInfo.Kernel">
+   <title>Kernel Limits</title>
+   <para>
+    This table summarizes the various limits which exist in our recent
+    kernels and utilities (if related) for SUSE Linux Enterprise Server 12
+    SP4.
+   </para>
+   <informaltable frame="all">
+    <tgroup cols="5">
+     <colspec colnum="1" colname="feature"/>
+     <colspec colnum="2" colname="x86-64"/>
+     <colspec colnum="3" colname="z"/>
+     <colspec colnum="4" colname="power"/>
+     <colspec colnum="5" colname="aarch64"/>
+     <thead>
+      <row>
+       <entry><emphasis>SLES 12 SP4 (Linux 4.12)</emphasis>
+       </entry>
+       <entry>AMD64/Intel 64 (x86_64)</entry>
+       <entry>IBM Z (s390x)</entry>
+       <entry>POWER (ppc64le)</entry>
+<!-- AArch64 for SLES 12 SP2 values per bsc#988955. -->
+       <entry>AArch64 (ARMv8)</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>
+        <para>
+         CPU bits
+        </para>
+       </entry>
+       <entry>
+        <para>
+         64
+        </para>
+       </entry>
+       <entry>
+        <para>
+         64
+        </para>
+       </entry>
+       <entry>
+        <para>
+         64
+        </para>
+       </entry>
+       <entry>
+        <para>
+         64
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum number of logical CPUs
+        </para>
+       </entry>
+<!-- FATE#316883 -->
+       <entry>
+        <para>
+         8192
+        </para>
+       </entry>
+       <entry>
+        <para>
+         256
+        </para>
+       </entry>
+<!-- FATE#315438 -->
+       <entry>
+        <para>
+         2048
+        </para>
+       </entry>
+       <entry>
+        <para>
+         128
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum amount of RAM (theoretical/certified)
+        </para>
+       </entry>
+       <entry>
+        <para>
+         &gt; 1 PiB/64 TiB
+        </para>
+       </entry>
+       <entry>
+        <para>
+         10 TiB/256 GiB
+        </para>
+       </entry>
+<!-- FATE#315439 -->
+       <entry>
+        <para>
+         1 PiB/64 TiB
+        </para>
+       </entry>
+       <entry>
+        <para>
+         256 TiB/n.a.
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum amount of user space/kernel space
+        </para>
+       </entry>
+       <entry>
+        <para>
+         128 TiB/128 TiB
+        </para>
+       </entry>
+       <entry>
+        <para>
+         n.a.
+        </para>
+       </entry>
+       <entry>
+        <para>
+         512 TiB <superscript>1</superscript>/2 EiB
+        </para>
+       </entry>
+       <entry>
+        <para>
+         256 TiB/128 TiB
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+<!-- bnc#708969 -->
+        <para>
+         Maximum amount of swap space
+        </para>
+       </entry>
+       <entry namest="x86-64" nameend="aarch64">
+        <para>
+         Up to 29 * 64 GB (x86_64) or 30 * 64 GB (other architectures)
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum number of processes
+        </para>
+       </entry>
+       <entry namest="x86-64" nameend="aarch64">
+        <para>
+         1048576
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum number of threads per process
+        </para>
+       </entry>
+       <entry namest="x86-64" nameend="aarch64">
+        <para>
+         Upper limit depends on memory and other parameters (tested with
+         more than 120,000)<superscript>2</superscript>
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum size per block device
+        </para>
+       </entry>
+       <entry namest="x86-64" nameend="aarch64">
+        <para>
+         Up to 8 EiB
+        </para>
+       </entry>
+      </row>
+      <row>
+<!-- bnc#550958 -->
+       <entry>
+        <para>
+         FD_SETSIZE
+        </para>
+       </entry>
+       <entry namest="x86-64" nameend="aarch64">
+        <para>
+         1024
+        </para>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <para>
+    <emphasis role="bold"><superscript>1</superscript></emphasis> By
+    default, the userspace memory limit on the POWER architecture is
+    128 TiB. However, you can explicitly request mmaps up to 512 TiB.
+   </para>
+   <para>
+    <emphasis role="bold"><superscript>2</superscript></emphasis> The total
+    number of all processes and all threads on a system may not be higher
+    than the <quote>maximum number of processes</quote>.
+   </para>
+  </section>
+  <section id="TechInfo.KVM">
+   <title>KVM Limits</title>
+   <informaltable frame="all">
+    <tgroup cols="2">
+     <colspec colnum="1" colname="c1"/>
+     <colspec colnum="2" colname="c2"/>
+     <thead>
+      <row>
+       <entry><emphasis>SLES 12 SP4 Virtual Machine (VM)</emphasis>
+       </entry>
+       <entry>Limits</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>
+        <para>
+         Maximum VMs per host
+        </para>
+       </entry>
+       <entry>
+        <para>
+         Unlimited (total number of virtual CPUs in all guests being no
+         greater than 8 times the number of CPU cores in the host)
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum Virtual CPUs per VM
+        </para>
+       </entry>
+       <entry>
+        <para>
+         288
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum Memory per VM
+        </para>
+       </entry>
+       <entry>
+        <para>
+         4 TiB
+        </para>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <para>
+    Virtual Host Server (VHS) limits are identical to those of SUSE Linux
+    Enterprise Server.
+   </para>
+  </section>
+  <section id="TechInfo.XEN">
+   <title>Xen Limits</title>
+   <para>
+    Since SUSE Linux Enterprise Server 11 SP2, we removed the 32-bit
+    hypervisor as a virtualization host. 32-bit virtual guests are not
+    affected and are fully supported with the provided 64-bit hypervisor.
+   </para>
+<!-- bnc#732995 -->
+   <informaltable frame="all">
+    <tgroup cols="2">
+     <colspec colnum="1" colname="c1"/>
+     <colspec colnum="2" colname="c2"/>
+     <thead>
+      <row>
+       <entry><emphasis>SLES 12 SP4 Virtual Machine (VM)</emphasis>
+       </entry>
+       <entry>Limits</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>
+        <para>
+         Maximum number of virtual CPUs per VM
+        </para>
+       </entry>
+       <entry>
+        <para>
+         FV: 128; PV: 512
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum amount of memory per VM
+        </para>
+       </entry>
+       <entry>
+        <para>
+         x86-64: 2 TiB; x86: 16 GiB
+        </para>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <informaltable frame="all">
+    <tgroup cols="2">
+     <colspec colnum="1" colname="c1"/>
+     <colspec colnum="2" colname="c2"/>
+     <thead>
+      <row>
+       <entry><emphasis>SLES 12 SP4 Virtual Host Server (VHS)</emphasis>
+       </entry>
+       <entry>Limits</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>
+        <para>
+         Maximum number of physical CPUs
+        </para>
+       </entry>
+       <entry>
+        <para>
+         1024
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum number of virtual CPUs
+        </para>
+       </entry>
+       <entry>
+        <para>
+         Unlimited (total number of virtual CPUs in all guests must be no
+         greater than 8 times the number of CPU cores in the host)
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum amount of physical memory
+        </para>
+       </entry>
+       <entry>
+        <para>
+         16 TiB
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum amount of Dom0 physical memory
+        </para>
+       </entry>
+       <entry>
+        <para>
+         500 GiB
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>
+        <para>
+         Maximum number of block devices
+        </para>
+       </entry>
+       <entry>
+        <para>
+         12,000 SCSI logical units
+        </para>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+<!-- FIXME: The legends we use across these tables are very differently
+ formatted. Unify. - sknorr, 2016-07-14 -->
+   <itemizedlist>
+    <listitem>
+     <formalpara>
+      <title>PV:</title>
+      <para>
+       Paravirtualization
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>FV:</title>
+      <para>
+       Full virtualization
+      </para>
+     </formalpara>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For more information about acronyms, see the virtualization
+    documentation provided at
+    <ulink url="https://documentation.suse.com/sles/12-SP4/"/>.
+   </para>
+   <para>
+<!-- bsc#1135799 -->
+    AMD Rome-based CPUs are not supported by Xen on SLES 12 SP4. These CPUs
+    are only supported by SLES 12 SP5 and higher.
+   </para>
+  </section>
+  <section id="TechInfo.Filesystems">
+   <title>File Systems</title>
+   <section id="TechInfo.Filesystems.Comparison">
+    <title>Comparison of Supported File Systems</title>
+    <para>
+     SUSE Linux Enterprise was the first enterprise Linux distribution to
+     support journaling file systems and logical volume managers back in
+     2000. Later, we introduced XFS to Linux, which today is seen as the
+     primary work horse for large-scale file systems, systems with heavy
+     load and multiple parallel reading and writing operations. With SUSE
+     Linux Enterprise 12, we went the next step of innovation and started
+     using the copy-on-write file system Btrfs as the default for the
+     operating system, to support system snapshots and rollback.
+    </para>
+    <para>
+<!-- bnc#903673: use ascii symbols -->
+     <simplelist>
+      <member><emphasis role="bold">+</emphasis> supported</member>
+      <member><emphasis role="bold">–</emphasis> unsupported</member>
+     </simplelist>
+    </para>
+    <informaltable frame="all">
+     <tgroup cols="6">
+      <colspec colnum="1" colname="c1" colwidth="28*"/>
+      <colspec colnum="2" colname="c2" colwidth="18*"/>
+      <colspec colnum="3" colname="c3" colwidth="18*"/>
+      <colspec colnum="4" colname="c4" colwidth="18*"/>
+      <colspec colnum="5" colname="c5" colwidth="18*"/>
+      <colspec colnum="6" colname="c6" colwidth="18*"/>
+      <thead>
+       <row>
+        <entry>Feature</entry>
+        <entry>Btrfs</entry>
+        <entry>XFS</entry>
+        <entry>Ext4</entry>
+        <entry>OCFS 2 <superscript>1</superscript>
+        </entry>
+        <entry>ReiserFS <superscript>2</superscript>
+        </entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry>
+         <para>
+          Support in products
+         </para>
+        </entry>
+        <entry>
+         <para>
+          SLE
+         </para>
+        </entry>
+        <entry>
+         <para>
+          SLE
+         </para>
+        </entry>
+        <entry>
+         <para>
+          SLE
+         </para>
+        </entry>
+        <entry>
+         <para>
+          SLE HA
+         </para>
+        </entry>
+        <entry>
+         <para>
+          SLE
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Data/metadata journaling
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A <superscript>3</superscript>
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Journal internal/external
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A <superscript>3</superscript>
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Journal checksumming
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A <superscript>3</superscript>
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Subvolumes
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Offline extend/shrink
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / – <superscript>4</superscript>
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Online extend/shrink
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Inode allocation map
+         </para>
+        </entry>
+        <entry>
+         <para>
+          B-tree
+         </para>
+        </entry>
+        <entry>
+         <para>
+          B+-tree
+         </para>
+        </entry>
+        <entry>
+         <para>
+          table
+         </para>
+        </entry>
+        <entry>
+         <para>
+          B-tree
+         </para>
+        </entry>
+        <entry>
+         <para>
+          u. B*-tree
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Sparse files
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Tail packing
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Small files stored inline
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + (in metadata)
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + (in inode)
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + (in inode)
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + (in metadata)
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Defragmentation
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+<!-- FIXME: Plans to add defragmentation for OCFS 2, ask again. -
+         sknorr, 2017-10-27 -->
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Extended file attributes/ACLs
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          User/group quotas
+         </para>
+        </entry>
+        <entry>
+         <para>
+          – / –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          + / +
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Project quotas
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Subvolume quotas
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A
+         </para>
+        </entry>
+        <entry>
+         <para>
+          N/A
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+<!-- All fs's can dump/restore metadata, but not all can
+         dump/restore actual data (via Goldwyn Rodrigues). - sknorr,
+         2017-10-26 -->
+         <para>
+          Data dump/restore
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          +
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+        <entry>
+         <para>
+          –
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Block size default
+         </para>
+        </entry>
+        <entry namest="c2" nameend="c6">
+         <para>
+          4 KiB <superscript>5</superscript>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Maximum file system size
+         </para>
+        </entry>
+        <entry>
+         <para>
+          16 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          8 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          1 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          4 PiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          16 TiB
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry>
+         <para>
+          Maximum file size
+         </para>
+        </entry>
+        <entry>
+         <para>
+          16 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          8 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          1 EiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          4 PiB
+         </para>
+        </entry>
+        <entry>
+         <para>
+          1 EiB
+         </para>
+        </entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </informaltable>
+<!-- FIXME: Better make these footnotes? Need to check compatibility of the
+ yast XSL stylesheet first. - sknorr, 2016-07-14 -->
+    <para>
+     <emphasis role="bold"><superscript>1</superscript></emphasis> OCFS 2 is
+     fully supported as part of the SUSE Linux Enterprise High Availability
+     Extension.
+    </para>
+    <para>
+     <emphasis role="bold"><superscript>2</superscript></emphasis> ReiserFS
+     is supported for existing file systems. The creation of new ReiserFS
+     file systems is discouraged.
+    </para>
+    <para>
+     <emphasis role="bold"><superscript>3</superscript></emphasis> Btrfs is
+     a copy-on-write file system. Instead of journaling changes before
+     writing them in-place, it writes them to a new location and then links
+     the new location in. Until the last write, the changes are not
+     <quote>committed</quote>. Because of the nature of the file system,
+     quotas are implemented based on subvolumes
+     (<literal>qgroups</literal>).
+    </para>
+    <para>
+     <emphasis role="bold"><superscript>4</superscript></emphasis> To extend
+     an OCFS 2 file system, the cluster must be online but the file system
+     itself must be unmounted.
+    </para>
+    <para>
+     <emphasis role="bold"><superscript>5</superscript></emphasis> The block
+     size default varies with different host architectures. 64 KiB is used
+     on POWER, 4 KiB on other systems. The actual size used can be checked
+     with the command <command>getconf
+     <replaceable>PAGE_SIZE</replaceable></command>.
+    </para>
+    <bridgehead renderas="sect5">Additional Notes</bridgehead>
+    <para>
+     Maximum file size above can be larger than the file system's actual
+     size because of the use of sparse blocks. All standard file systems on
+     SUSE Linux Enterprise Server have LFS, which gives a maximum file size
+     of 2<superscript>63</superscript> bytes in theory.
+    </para>
+    <para>
+     The numbers in the above table assume that the file systems are using a
+     4 KiB block size which is the most common standard. When using
+     different block sizes, the results are different.
+    </para>
+    <para>
+     In this document: 1024 Bytes = 1 KiB; 1024 KiB = 1 MiB; 1024 MiB =
+     1 GiB; 1024 GiB = 1 TiB; 1024 TiB = 1 PiB; 1024 PiB = 1 EiB. See
+     also <ulink url="http://physics.nist.gov/cuu/Units/binary.html"/>.
+    </para>
+    <para>
+<!-- bnc#608543 and bnc#574572 -->
+     NFSv4 with IPv6 is only supported for the client side. An NFSv4 server
+     with IPv6 is not supported.
+    </para>
+    <para>
+<!-- bnc#606288 -->
+     The version of Samba shipped with SUSE Linux Enterprise Server 12 SP4
+     delivers integration with Windows Active Directory domains. In
+     addition, we provide the clustered version of Samba as part of SUSE
+     Linux Enterprise High Availability Extension 12 SP4.
+    </para>
+    <para>
+<!-- bsc#1073261 -->
+     Some file system features are available in SUSE Linux Enterprise Server
+     12 SP4 but are not supported by SUSE. By default, the file system
+     drivers in SUSE Linux Enterprise Server 12 SP4 will refuse mounting
+     file systems that use unsupported features (in particular, in
+     read-write mode). To enable unsupported features, set the module
+     parameter <literal>allow_unsupported=1</literal> in
+     <filename>/etc/modprobe.d</filename> or write the value
+     <literal>1</literal> to
+     <filename>/sys/module/<replaceable>MODULE_NAME</replaceable>/parameters/allow_unsupported</filename>.
+     However, note that setting this option will render your kernel and thus
+     your system unsupported.
+    </para>
+   </section>
+   <section id="TechInfo.Filesystems.Btrfs">
+    <title>Supported Btrfs Features</title>
+    <para>
+     The following table lists supported and unsupported Btrfs features
+     across multiple SLES versions.
+    </para>
+    <para>
+     <simplelist>
+      <member><emphasis role="bold">+</emphasis> supported</member>
+      <member><emphasis role="bold">–</emphasis> unsupported</member>
+     </simplelist>
+    </para>
+<!-- Table according to bsc#979501, this attachment:
+  https://bugzilla.suse.com/attachment.cgi?id=687340 -->
+    <informaltable>
+     <tgroup cols="5">
+      <colspec colnum="1" colname="feature" colwidth="6.5cm"/>
+      <colspec colnum="2" colname="11SP4" colwidth="*"/>
+      <colspec colnum="3" colname="12SP3" colwidth="*"/>
+      <colspec colnum="4" colname="12SP4" colwidth="*"/>
+      <colspec colnum="5" colname="15GA" colwidth="*"/>
+      <thead>
+       <row>
+<!-- Remove unsupported OS's. -->
+        <entry>Feature</entry>
+        <entry>SLES 11 SP4</entry>
+        <entry>SLES 12 SP3</entry>
+        <entry>SLES 12 SP4</entry>
+        <entry>SLES 15 GA</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry>Copy on Write</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Snapshots/Subvolumes</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Metadata Integrity</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Data Integrity</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Online Metadata Scrubbing</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Automatic Defragmentation</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Manual Defragmentation</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>In-band Deduplication</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Out-of-band Deduplication</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Quota Groups</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Metadata Duplication</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Multiple Devices</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>RAID 0</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>RAID 1</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>RAID 10</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>RAID 5</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>RAID 6</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Hot Add/Remove</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Device Replace</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Seeding Devices</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Compression</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Big Metadata Blocks</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Skinny Metadata</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Send Without File Data</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Send/Receive</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+       <row>
+        <entry>Inode Cache</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+        <entry>–</entry>
+       </row>
+       <row>
+        <entry>Fallocate with Hole Punch</entry>
+        <entry>–</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+        <entry>+</entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </informaltable>
+   </section>
+  </section>
+  <section id="TechInfo.Java">
+   <title>Supported Java Versions</title>
+   <para>
+    The following table lists Java implementations available in SUSE Linux
+    Enterprise Server 12 SP4:
+   </para>
+   <informaltable>
+    <tgroup cols="4">
+     <colspec colnum="1" colname="c1"/>
+     <colspec colnum="2" colname="c2"/>
+     <colspec colnum="3" colname="c3"/>
+     <colspec colnum="4" colname="c4"/>
+     <thead>
+      <row>
+       <entry>Name (Package Name)</entry>
+       <entry>Version</entry>
+       <entry>Part of SUSE Linux Enterprise Server</entry>
+       <entry>Support</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>OpenJDK (<package>java-1_8_0-openjdk</package>)</entry>
+       <entry>1.8.0</entry>
+       <entry>SLES</entry>
+       <entry>SUSE, L3</entry>
+      </row>
+      <row>
+       <entry>OpenJDK (<package>java-1_7_0-openjdk</package>)</entry>
+       <entry>1.7.0</entry>
+       <entry>SLES</entry>
+       <entry>SUSE, L3</entry>
+      </row>
+      <row>
+       <entry>IBM Java (<package>java-1_8_0-ibm</package>)</entry>
+       <entry>1.8.0</entry>
+       <entry>SLES</entry>
+       <entry>External only</entry>
+      </row>
+      <row>
+       <entry>IBM Java (<package>java-1_7_1-ibm</package>)</entry>
+       <entry>1.7.1</entry>
+       <entry>SLES</entry>
+       <entry>External only</entry>
+      </row>
+      <row>
+       <entry>IBM Java (<package>java-1_6_0-ibm</package>)</entry>
+       <entry>1.6.0</entry>
+       <entry>Legacy Module</entry>
+       <entry>External only</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </section>
+ </section>
+<!-- Legal notice copied from SLED release notes, mge@novell.com, 2010-05-07 -->
+<!-- Legal notice updated, to smell more like SUSE -->
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with respect to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with respect to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="http://www.suse.com/company/legal/"/> for more information on
+   exporting SUSE software. SUSE assumes no responsibility for your failure
+   to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative
+   Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <ulink url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="http://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="http://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

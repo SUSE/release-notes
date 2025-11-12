@@ -1,0 +1,1366 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+   product="SUSE Linux Enterprise Desktop 12 SP2"
+   component="Release Notes"
+   assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Desktop</productname>
+  <productnumber>12 SP2</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    These release notes are generic for all SUSE Linux Enterprise
+    Desktop 12 SP2 based products. Some parts may not apply to particular
+    architectures or products. Where this is not the case, the respective
+    architecture is listed explicitly. General documentation may be found
+    at: <ulink url="http://www.suse.com/documentation/sled-12/"/>
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Desktop</title>
+  <remark> SLE definition: general information </remark>
+  <para>
+   SUSE Linux Enterprise Desktop is the market's only enterprise-quality
+   Linux desktop ready for routine business use. Developed and backed by
+   SUSE, SUSE Linux Enterprise Desktop provides market-leading usability,
+   seamless interoperability with existing IT systems, and dozens of
+   essential applications—all at a fraction of the price of proprietary
+   operating systems.
+  </para>
+  <section id="Intro.Interoperability">
+   <title>Interoperability and Hardware Support</title>
+<!-- Novell Teaming is now Micro Focus Vibe. Not sure we still integrate
+  with it. - sknorr, 2016-10-21 -->
+   <para>
+    It comes bundled with the latest versions of leading applications such
+    as LibreOffice office productivity suite, Mozilla Firefox web browser,
+    and Evolution e-mail and calendar suite. In addition, it integrates with
+    Microsoft SharePoint
+<!--and
+   Novell Teaming -->
+    for group collaboration and supports a wide range of multimedia file
+    formats, wireless and networking standards, and plug-and-play devices.
+   </para>
+   <para>
+    Through the latest enhancements in power management and security, SUSE
+    Linux Enterprise Desktop also provides an environmentally friendly IT
+    experience (Green IT) and an error-proof desktop. Finally, SUSE Linux
+    Enterprise Desktop offers unparalleled flexibility. You can deploy it on
+    a wide range of thick client devices (including desktops, notebooks,
+    netbooks, and workstations), on thin client devices, or as a virtual
+    desktop. By leveraging the power of SUSE Linux Enterprise Desktop, your
+    business can dramatically reduce costs, improve end user security and
+    increase workforce productivity.
+   </para>
+  </section>
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+<!-- bsc#882262, bsc#999197 -->
+   <para>
+    SUSE Linux Enterprise Desktop 12 has a 7 year life cycle. The current
+    version (SP2) will be fully maintained and supported until 6 months
+    after the release of SUSE Linux Enterprise 12 SP3.
+   </para>
+  </section>
+  <section id="intro.new">
+   <title>What Is New?</title>
+   <remark> Marketing POV. </remark>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on </remark>
+   <para>
+    SUSE Linux Enterprise Desktop 12 introduces a number of innovative
+    changes. Here are some of the highlights:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Robustness on administrative errors and improved management
+      capabilities with full system rollback based on Btrfs as the default
+      file system for the operating system partition and snapper technology
+      from SUSE.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      An overhaul of the installer introduces a new workflow that allows you
+      to register your system and receive all available maintenance updates
+      as part of the installation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New core technologies like systemd, replacing the time honored System
+      V based init process.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      GNOME 3.20 gives users a modern desktop environment with a choice of
+      several different look and feel options, including a special SUSE
+      Linux Enterprise Classic mode for easier migration from earlier SUSE
+      Linux Enterprise Desktop environments.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      For users wishing to use the full range of productivity applications
+      of a Desktop with SUSE Linux Enterprise Server, we are now offering
+      the SUSE Linux Enterprise Workstation Extension
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Integration with the new SUSE Customer Center, the central web portal
+      from SUSE to manage subscriptions, entitlements, and provide access to
+      support.
+     </para>
+    </listitem>
+   </itemizedlist>
+<!-- Commented for the moment: only intro.support has content and thus this
+   section looks a bit pathetic. - sknorr, 2016-08-04 -->
+<!-- <remark> This is Read Me First information. </remark> -->
+<!-- <para> For users upgrading from a previous &sled; release it is recommended to review: </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>-->
+  </section>
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Read the READMEs on the media.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Get the detailed changelog information about a particular package
+       from the RPM (<replaceable>FILENAME</replaceable> is the name of the
+       RPM):
+      </para>
+<screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+     </listitem>
+     <listitem>
+      <para>
+       Check the <filename>ChangeLog</filename> file in the top level of the
+       media for a chronological log of all changes made to the updated
+       packages.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find more information in the <filename>docu</filename> directory of
+       the media of SUSE Linux Enterprise Desktop 12 SP2. This directory
+       includes PDF versions of the SUSE Linux Enterprise Desktop 12 SP2
+       Installation Quick Start and Deployment Guides. Documentation (if
+       installed) is available below the
+       <filename>/usr/share/doc/</filename> directory of an installed
+       system.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The up-to-date version of these release notes is available online
+       from <ulink url="http://www.suse.com/releasenotes/"/>.
+      </para>
+      <para>
+       Release notes usually only list changes that happened between two
+       subsequent releases. Therefore, if you are skipping one or more
+       service packs, check the release notes of the skipped service packs
+       as well.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section>
+    <title>Additional or Updated Documentation</title>
+    <para>
+     For SUSE Linux Enterprise Desktop 12 documentation, see
+     <ulink url="http://www.suse.com/documentation/sled-12/"/>, where you
+     can download PDF documents. For installation with YaST software
+     management or with zypper, packages are available on the product media.
+     Some of these packages are installed by default. These are the package
+     names:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <systemitem>sled-installquick_en-pdf</systemitem>: SLED 12 SP2
+       Installation Quick Start
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-gnomeuser_en-pdf</systemitem>: SLED 12 SP2 GNOME
+       User Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-admin_en-pdf</systemitem>: SLED 12 SP2
+       Administration Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-deployment_en-pdf</systemitem>: SLED 12 SP2
+       Deployment Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-security_en-pdf</systemitem>: SLED 12 SP2 Security
+       Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-tuning_en-pdf</systemitem>: SLED 12 SP2 Tuning
+       Guide
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <systemitem>sled-manuals_en</systemitem>: the set of all SLED books
+       in HTML format
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first section -->
+   <para>
+    This SUSE product includes materials licensed to SUSE under the GNU
+    General Public License (GPL). The GPL requires SUSE to provide the
+    source code that corresponds to the GPL-licensed material. The source
+    code is available for download at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>.
+    Also, for up to three years after distribution of the SUSE product, upon
+    request, SUSE will mail a copy of the source code. Requests should be
+    sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or
+    as otherwise instructed at
+    <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+    may charge a reasonable fee to recover distribution costs.
+   </para>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Desktop</title>
+   <para>
+    To learn how to obtain support, see
+    <ulink url="http://www.suse.com/products/desktop/"/>.
+   </para>
+   <section id="Intro.Support.Techpreviews" remap="Intro:Support:Techpreviews">
+    <title>Technology Previews</title>
+    <para>
+     Technology Preview features are either not supported or supported in a
+     limited fashion. These features are mainly included for customer
+     convenience and may be functionally incomplete, unstable or in other
+     ways not suitable for production use.
+    </para>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-320388" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320388" -->
+     <title>Support for Current AMD Radeon GPUs</title>
+     <para>
+      <emphasis> As a technical preview, SUSE Linux Enterprise ships the
+      graphics driver
+      </emphasis><literal>xf86-video-amdgpu</literal><emphasis> for current
+      AMD Radeon GPUs. </emphasis>
+     </para>
+     <para>
+      <emphasis>Since this driver is still in an experimental state, it is
+      not installed by default. By default, it is only enabled for one GPU
+      on which it was tested successfully.</emphasis>
+     </para>
+     <para>
+      <emphasis role="bold">Important:</emphasis> At this stage, this driver
+      is not supported.
+     </para>
+     <para>
+      To be able to use the driver, first install the package
+      <literal>xf86-video-amd</literal>. Then, enable it for your GPU by
+      editing <literal>/etc/X11/xorg_pci_ids</literal>.
+     </para>
+     <para>
+      The required format is:
+      <literal>\&lt;VendorID\&gt;\&lt;DeviceID\&gt;</literal>. It is also
+      described in the configuration file itself.
+     </para>
+     <para>
+      To find vendor ID and device ID, use the command:
+     </para>
+<screen>lspci -n | grep 0300</screen>
+     <para>
+      All supported vendor IDs/device IDs are already in the file but are
+      commented out. For your vendor ID/device ID combination, remove the
+      comment character <literal>#</literal> from the beginning of the line.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+  <section id="Intro.Derived_Products">
+   <title>Related Products</title>
+   <para>
+    This sections lists related products. In many cases, these products have
+    own release notes documents that are available from
+    <ulink url="https://www.suse.com/releasenotes/"/>.
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Enterprise Storage:
+      <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server:
+      <ulink url="https://www.suse.com/products/server"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Server for SAP Applications:
+      <ulink url="https://www.suse.com/products/sles-for-sap"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Manager:
+      <ulink url="https://www.suse.com/products/suse-manager"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE OpenStack Cloud:
+      <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Additionally, there are the following extensions which are not covered
+    by SUSE support agreements, available at no additional cost and without
+    an extra registration key:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      SUSE Linux Enterprise Software Development Kit
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+ </section>
+ <section id="InstUpgrade" remap="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para>
+   This section includes information related to the initial installation of
+   SUSE Linux Enterprise Desktop 12 SP2. For information about installing,
+   see <citetitle>Deployment Guide</citetitle> at
+   <ulink url="https://www.suse.com/documentation/sled-12/book_sle_deployment/data/book_sle_deployment.html"/>.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-319716" remap="InstUpgrade">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319716" -->
+   <title>Updating the Installer at the Beginning of the Installation or Upgrade</title>
+   <para>
+    <emphasis>Until SLES 12 SP1, the only method of updating the installer
+    was through the use of a driver update disk. This required manual work
+    such as downloading the driver update and explicitly pointing the
+    installer at it.</emphasis>
+   </para>
+   <para>
+    Starting with the SLES 12 SP2 installer, at the beginning of the
+    installation or upgrade, the installer can contact the update server to
+    find out whether updates for the installer are available. If there are,
+    they are automatically applied and YaST is restarted. The installer is
+    able to download the updates from the regular update server, a local SMT
+    server, or a custom URL.
+   </para>
+   <para>
+    By default, this functionality is off. Enable this feature using the
+    boot option <literal>self_update=1</literal>.
+   </para>
+   <para>
+    For more information, see the documentation at
+    <ulink url="https://github.com/yast/yast-installation/blob/SLE-12-SP2/doc/SELF_UPDATE.md">https://github.com/yast/yast-installation/blob/SLE-12-SP2/doc/SELF_UPDATE.md</ulink>.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section id="InstUpgrade.Installation" remap="InstUpgrade:Installation">
+   <title>Installation</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-322147" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322147" -->
+    <title>Installer Crashes When Set to Mount by Label by Default</title>
+    <para>
+     <emphasis> When setting the default mount value to </emphasis>By
+     Label<emphasis> during partitioning, the installer will report an error
+     and crash. </emphasis>
+    </para>
+    <para>
+     As a workaround, use another option for installation. If needed, switch
+     back to <emphasis>By Label</emphasis> on the running system.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320494" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320494" -->
+    <title>Media-based Sources Are Disabled After Installation If They Are Not Needed</title>
+    <para>
+     <emphasis>Previously, when installing from local media, like a CD/DVD
+     or USB drive, these sources remained enabled after the
+     installation.</emphasis>
+    </para>
+    <para>
+     <emphasis>This could cause problems during software installation,
+     upgrade or migration because an old or obsolete installation source
+     remained there. Additionally, if the source was physically removed (for
+     instance, by ejecting the CD/DVD), Zypper would complain about the
+     source not being available.</emphasis>
+    </para>
+    <para>
+     After the installation, YaST will now check every local source to
+     determine if the product they provide is also available through a
+     remote repository. In that case, the local source will be disabled.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320111" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320111" -->
+    <title>Partitioning Proposal: "Flexible Partitioning" Feature Has Been Removed</title>
+    <para>
+     <emphasis>YaST is a highly configurable installer that allows setting
+     very different behaviors for each product using it (SUSE Enterprise
+     Linux, openSUSE, etc.). In previous versions of YaST, it was possible
+     to use a feature called "Flexible Partitioning". This feature has
+     become obsolete, as the more standard proposal mechanism has been used
+     by SLE and openSUSE in all recent releases.</emphasis>
+    </para>
+    <para>
+     The new version of YaST detects when a (modified) installer tries to
+     use the obsolete "Flexible Partitioning" feature, alerts the user and
+     falls back to the standard proposal mechanism automatically.
+    </para>
+   </section>
+   <section role="notoc" id="fate-317970" remap="InstUpgrade:Installation">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/317970" -->
+    <title>Option to Create AutoYaST Profile During Installation Has Been Removed</title>
+    <para>
+     <emphasis>In earlier versions of SUSE Linux Enterprise, you could clone
+     the system configuration as an AutoYaST profile during installation.
+     However, many services and system parameters can only be configured
+     after the installation process has completed and the system is up and
+     running. This can result in an AutoYaST profile missing parts of the
+     desired configuration.</emphasis>
+    </para>
+    <para>
+     The option of creating an AutoYaST profile during installation has been
+     removed. However, you can still create an AutoYaST profile from the
+     running system, after you have made sure that the system configuration
+     fits your needs.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="InfraPackArch.ArchIndependent">
+  <title>Architecture Independent Information</title>
+  <section id="InfraPackArch.ArchIndependent.Kernel" remap="InfraPackArch:ArchIndependent:Kernel">
+   <title>Kernel</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-320305" remap="InfraPackArch:ArchIndependent:Kernel">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320305" -->
+    <title>Incompatible Changes in the New 4.4 Kernel</title>
+    <para>
+     The following minor changes have been identified in the 4.4 kernel:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Support for TCP Limited Slow Start (RFC3742) has been removed. This
+       feature had multiple drawbacks and questionable benefit. Its
+       implementation was inefficient and difficult to configure. The
+       problem that Limited Slow Start was trying to solve is now better
+       covered by the Hybrid Slow Start algorithm which is part of default
+       congestion control algorithm, CUBIC.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The <literal>kernel.blk_iopoll</literal> sysctl has been removed.
+       This setting allowed toggling some block device drivers between
+       iopoll and non-iopoll mode. This allowed for easier debugging of
+       these drivers during early development. Since using this toggle was
+       dangerous and the toggle is not needed for production setups, it has
+       been removed.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The <literal>cgroup.event_control</literal> file is only available in
+       cgroups with a memcg attached to it. There was no code using this
+       interface outside of memcg, so this change is considered harmless.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The <literal>vm.scan_unevictable_pages</literal> sysctl has been
+       removed because the functionality it was backing had been removed in
+       2011. Any usage of the file has been reported to the kernel log with
+       an explanation that the file has no effect. There were no reports
+       about a use case requiring this functionality.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The
+       <literal>/sys/devices/system/memory/memory%d/end_phys_index</literal>
+       file has been removed, because the information it exposed is
+       considered internal to the kernel and an implementation detail. This
+       information is not required for the memory hotplug functionality.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+   <title>Systems Management</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-321157" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321157" -->
+    <title>SASL Integration in sudo</title>
+    <para>
+     <emphasis> When SUSE Linux Enterprise 12 was first released, the
+     </emphasis><literal>sudo</literal><emphasis> binary did not correctly
+     support SASL authentication for LDAP because the package was built
+     without a build dependency on the package
+     </emphasis><literal>cyrus-sasl-devel</literal><emphasis>. </emphasis>
+    </para>
+    <para>
+     To be able to use <literal>sudo</literal> with SASL, update to the
+     latest version of the package <literal>sudo</literal>. For information
+     about enabling SASL authentication for <literal>sudo</literal>, see
+     <literal>man 5 sudoers.ldap</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320973" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320973" -->
+    <title>systemd: Support for System V and LSB Init Scripts Has Been Moved Out of Core Daemon</title>
+    <para>
+     <emphasis> To ease future maintenance, in SLE 12 SP2, systemd was
+     updated to version 228. This version does not support using System V
+     and LSB init scripts from the
+     </emphasis><literal>systemd</literal><emphasis> daemon itself any more.
+     </emphasis>
+    </para>
+    <para>
+     This functionality is now implemented as a generator that creates
+     systemd unit files from System V/LSB init scripts. These unit files are
+     generated at boot or when systemd is reloaded. Therefore, to have
+     changed System V init scripts recognized by systemd, run
+     <literal>systemctl daemon-reload</literal> or reboot the machine.
+    </para>
+    <para>
+     For more information, see the man page of
+     <literal>systemd-sysv-generator</literal> (<literal>man
+     systemd-sysv-generator</literal>).
+    </para>
+    <para>
+     If you are packaging software that ships System V init scripts, use the
+     RPM macros documented at
+     <ulink url="https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Register_services_in_install_scripts">https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines</ulink>
+     (Section "Register Services in Install Scripts").
+    </para>
+   </section>
+   <section role="notoc" id="fate-320958" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320958" -->
+    <title>AutoYaST: Applying the First-Stage Network Configuration to the Installed System</title>
+    <para>
+     <emphasis> Due to a problem in the AutoYaST version shipped with SLE 12
+     SP1, the network configuration used during the first stage was always
+     copied to the installed system. This happened regardless of the value
+     of </emphasis><literal>keep_install_network</literal><emphasis> in the
+     AutoYaST profile. </emphasis>
+    </para>
+    <para>
+     SLE 12 SP2 behaves as expected and
+     <literal>keep_install_network</literal> will be set to
+     <literal>true</literal> by default.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320392" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320392" -->
+    <title>ntp 4.2.8</title>
+    <para>
+     <emphasis>ntp was updated to version 4.2.8.</emphasis>
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <emphasis> The ntp server ntpd does not synchronize with its peers
+       anymore and the peers are specified by their host name in
+       </emphasis><literal>/etc/ntp.conf</literal><emphasis>. </emphasis>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <emphasis> The output of </emphasis><literal>ntpq
+       --peers</literal><emphasis> lists IP numbers of the remote servers
+       instead of their host names. </emphasis>
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     <emphasis>Name resolution for the affected hosts works
+     otherwise.</emphasis>
+    </para>
+    <para>
+     <emphasis role="bold">Parameter changes</emphasis>
+    </para>
+    <para>
+     The meaning of some parameters for the sntp command-line tool have
+     changed or have been dropped, for example <literal>sntp -s</literal> is
+     now <literal>sntp -S</literal>. Please review any
+     <literal>sntp</literal> usage in your own scripts for required changes.
+    </para>
+    <para>
+     After having been deprecated for several years, ntpdc is now disabled
+     by default for security reasons. It can be re-enabled by adding the
+     line <literal>enable mode7</literal> to
+     <literal>/etc/ntp.conf</literal>, but preferably
+     <literal>ntpq</literal> should be used instead.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+   <title>Networking</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-322007" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/322007" -->
+    <title>Improved Bridge Handling in YaST</title>
+    <para>
+     <emphasis>The configuration UI for bridges in YaST did not always show
+     all information and did not always convert parameters properly when
+     editing older configurations.</emphasis>
+    </para>
+    <para>
+     In SLE 12 SP2, this behavior has been improved upon:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       The information about bridge ports and bridges is shown for each
+       interface.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       In the case of old configuration, upon reading the configuration, the
+       bootproto <literal>static</literal> will be converted to
+       <literal>none</literal> and the parameter <literal>zero
+       IPADDR</literal> will be removed.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     Additionally, to improve the user experience, the management of bridges
+     and bonding has been unified and the interface is now updated after any
+     change.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320709" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320709" -->
+    <title>No Support for Samba as Active Directory-Style Domain Controller</title>
+    <para>
+     The version of Samba shipped with SLE 12 GA and newer does not include
+     support to operate as an Active Directory-style domain controller. This
+     functionality is currently disabled, as it lacks integration with
+     system-wide MIT Kerberos.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization">
+   <title>Virtualization</title>
+   <para/>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.Other" remap="InfraPackArch:ArchIndependent:Virtualization:Other">
+    <title>Others</title>
+    <para/>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-318990" remap="InfraPackArch:ArchIndependent:Virtualization:Other">
+<!-- sort_key="None"; non-rn-fate-cats="Interoperability,Virtualization"; -->
+<!-- href="https://fate.novell.com/318990" -->
+     <title>Support for 3D Graphics in VMware Guest</title>
+     <para>
+      The <literal>vmwgfx</literal> driver supports 3D with VMware hardware
+      version 11.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+  <section id="Packages.New" remap="Packages:New">
+   <title>New Packages</title>
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-320751" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320751" -->
+    <title>Mutt Has Been Updated to 1.6.0</title>
+    <para>
+     Mutt has been updated to version 1.6.0. This version has the following
+     new features:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Better internationalization support: UTF-8 mailbox support for IMAP
+       and improved support for internationalized email and SMTPUTF8
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>$use_idn</literal> has been renamed to
+       <literal>$idn_decode</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Expandos for comma-separated lists of To (<literal>%r</literal>)
+       and CC recipients (<literal>%R</literal>).
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improved handling of drafts: <literal>-E</literal> command-line
+       argument for edit draft or include files,
+       <literal>$resume_draft_files</literal> and
+       <literal>$resume_edited_draft_files</literal> to control processing
+       of draft files, and support for multipart draft files
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>$reflow_space_quotes</literal> allows
+       <literal>format=flowed</literal> email quotes to be displayed with
+       spacing between them.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The S/MIME message digest algorithm is now specified using the option
+       <literal>$smime_sign_digest_alg</literal>.
+       <literal>$smime_sign_command</literal> should be modified to include
+       <literal>-md %d</literal>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For classic GPG mode, set <literal>$pgp_decryption_okay</literal> to
+       verify that multipart/encrypted mails are actually encrypted.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       By default, mailto URL header parameters are restricted to
+       <literal>body</literal> and <literal>subject</literal>. To add or
+       remove allowed mailto URL header parameters, use
+       <literal>mailto_allow</literal> and <literal>unmailto_allow</literal>.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>$hostname</literal> is set differently: the domain will now
+       be determined using DNS calls
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section role="notoc" id="fate-320018" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320018" -->
+    <title>Devilspie 2 Has Been Added</title>
+    <para>
+     <emphasis>Desktop users often want the size and position of windows to
+     remain the same, even across application restarts. Such functionality
+     usually has to be implemented at the application level but not all
+     applications do so.</emphasis>
+    </para>
+    <para>
+     In SUSE Linux Enterprise 12 SP2, Devilspie 2 (package
+     <literal>devilspie2</literal>) has been added. Desvilspie 2 is a
+     window matching utility that allow you to script actions on windows as
+     they are created, such as maximizing windows or setting their size and
+     position.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319461" remap="Packages:New">
+<!-- sort_key="None"; non-rn-fate-cats="LDAP Service,Security"; -->
+<!-- href="https://fate.novell.com/319461" -->
+    <title>openldap2-ppolicy-check-password Has Been Added: OpenLDAP Password Strength Policy Enforcer</title>
+    <para>
+     To allow evaluating and enforcing password strength in an OpenLDAP
+     deployment, the package
+     <literal>openldap2-ppolicy-check-password</literal> has been added. It
+     is an OpenLDAP password policy plugin which evaluates and enforces
+     strength in new user passwords, and denies weak passwords in password
+     change operations. Configuration options of the plugin allow system
+     administrators to adjust password strength requirements.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="Packages.Update" remap="Packages:Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-320541" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320541" -->
+    <title>lsof Has Been Updated to Version 4.89</title>
+    <para>
+     lsof has been updated from version 4.84 to 4.89. The changelog can be
+     found in the file <literal>/usr/share/doc/packages/lsof/DIST</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320330" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320330" -->
+    <title>Qt 5 Has Been Updated to 5.6.1</title>
+    <para>
+     The Qt 5 libraries were updated to 5.6.1, a Qt 5.6 LTS based release.
+     Qt 5.6.1 includes new features and security fixes for known
+     vulnerabilities over Qt 5.5.1 (the version shipped in an upgrade to
+     SP1).
+    </para>
+    <para>
+     This release includes many bug fixes and changes that improve
+     performance and reduce memory consumption.
+    </para>
+    <para>
+     For security reasons, the MNG and JPEG2000 image format plugins are not
+     shipped anymore, because the underlying MNG and JPEG2000 libraries have
+     known security issues.
+    </para>
+    <para>
+     New features include:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Better support for high-DPI screens
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Update of QtWebEngine which updates the included Chromium snapshot to
+       version 45 and now uses many of the system libraries instead of
+       bundled ones
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New Qt WebEngineCore module for new low-level APIs
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The Qt Location module is not fully supported.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improved compatibility with C++11 and the STL
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New QVersionNumber class
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Added support for HTTP redirection in QNetworkAccessManager
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improved support for OpenGL ES 3
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Qt Multimedia got a new PlayList QML type and an audio role API for
+       the media player
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Qt Canvas 3D now supports Qt Quick Items as textures and can directly
+       render to the QML scenes foreground or background
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Qt 3D has received many improvements and new functionality
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Many other features and bugfixes
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     As part of this update, Qt Creator has been updated to 4.0.1 (from Qt
+     Creator 3.5.1 shipped as an update to SP1).
+    </para>
+    <para>
+     New features of Qt Creator include:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Clang static analyzer integration, extended QML profiler features,
+       path editor of Qt Quick Designer and auto test integration
+       (experimental) are now available
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The Clang code model is now automatically used if the (experimental)
+       plugin is turned on
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Improved workflow for CMake-based projects
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       The Analyze mode was merged with Debug mode, so that the new unified
+       Debug mode includes the Debugger, Clang Static Analyzer, Memcheck,
+       Callgrind and QML Profiler tools
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Many other features and bugfixes
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section role="notoc" id="fate-320001" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320001" -->
+    <title>More IBus Engines Available</title>
+    <para>
+     To improve Asian language support, there are now more IBus engines
+     available:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <literal>ibus-rime</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-skk</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-kkc</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-table</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-chewing</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-libzhuyin</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-sunpinyin</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>ibus-mozc</literal>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       various <literal>ibus-table-*</literal> engines
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     As a result of this, some components, such as openCC, were updated to
+     more recent versions. <literal>libopencc1</literal> package is no
+     longer provided and has been replaced by <literal>libopencc2</literal>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-319675" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319675" -->
+    <title>OpenSSH Has Been Updated to Version 7.2</title>
+    <para>
+     OpenSSH received numerous changes and improvements in the last years.
+     To ease further maintenance, OpenSSH was upgraded to a more current
+     release.
+    </para>
+    <para>
+     Note that the SSHv1 protocol is no longer supported.
+    </para>
+   </section>
+   <section role="notoc" id="fate-317043" remap="Packages:Update">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/317043" -->
+    <title>openSSL Has Been Updated to Version 1.0.2</title>
+    <para>
+     <emphasis>openSSL has been updated from version 1.0.1 to 1.0.2 which is
+     a compatible minor version update. This will help future maintenance,
+     and also brings many bug fixes.</emphasis>
+    </para>
+    <para>
+     The update to openSSL 1.0.2 should be transparent to existing programs.
+    </para>
+    <para>
+     However, there were some functional changes were done: SSL 2 support is
+     now fully disabled and certain weak ciphers are no longer built in.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GCC 4.8
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       glibc 2.22
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Linux kernel 4.4
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       GNOME 3.20
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       X.org 7.6
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Features.Other">
+    <title>Other Changes and Version Updates</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Samba 4.4.2
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       UEFI Enablement on AMD64/Intel 64
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       SWAP over NFS
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Python 2.7.9 and Python 3.4.1
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Perl 5.18.2
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Ruby 2.1
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Packages.Deprecated" remap="Packages:Deprecated">
+   <title>Deprecated Functionality</title>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-321164" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321164" -->
+    <title>SLED Installation Media Without SLED Images</title>
+    <para>
+     SLED images are no longer shipped on the SLED installation media.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320900" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320900" -->
+    <title>librpcsecgss3 Has Been Removed</title>
+    <para>
+     <literal>librpcsecgss</literal> (packages:
+     <literal>librpcsecgss3</literal>,
+     <literal>librpcsecgss-devel</literal>) has been removed. With the
+     release of <literal>libtirpc</literal>, the development of libsecgss
+     stopped and it fell out of use. We recommend using
+     <literal>libtirpc</literal> instead.
+    </para>
+   </section>
+   <section role="notoc" id="fate-320654" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/320654" -->
+    <title>python-tornado Has Been Removed</title>
+    <para>
+     The package <literal>python-tornado</literal> is no longer provided, as
+     it was not required by any packages on SLED 12 SP2.
+    </para>
+   </section>
+   <section role="notoc" id="fate-316813" remap="Packages:Deprecated">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/316813" -->
+    <title>Flash Player Has Been Removed</title>
+    <para>
+     <emphasis>Starting with SLE 12 SP2, the Adobe Flash Player plugin for
+     the Firefox browser is no longer provided by SUSE.</emphasis>
+    </para>
+    <para>
+     Adobe provides a third-party RPM repository which can be used to
+     install Flash Player. To install Flash Player from this repository, do
+     the following:
+    </para>
+    <para>
+     To add this repository to your system, in a terminal, run:
+    </para>
+<screen>sudo zypper ar --check --refresh http://linuxdownload.adobe.com/linux/x86_64/ adobe</screen>
+    <para>
+     To see the packages provided by this repo, use:
+    </para>
+<screen>sudo zypper se -s -r adobe</screen>
+    <para>
+     There are two packages: the Flash Player plugin itself and a package
+     named <literal>adobe-release-x86_64</literal>. First install this
+     additional package and add the repository key that it contains:
+    </para>
+<screen>sudo zypper in adobe-release-x86_64
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux</screen>
+    <para>
+     Then, to install the Adobe Flash Player RPM package, run:
+    </para>
+<screen>zypper in flash-plugin</screen>
+    <para>
+     To make Mozilla Firefox detect the Flash plugin, restart Mozilla
+     Firefox.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+   <section id="Packages.Deprecated.Future" remap="Packages:Deprecated:Future">
+    <title>Packages and Features to Be Removed in the Future</title>
+    <para>
+     The following packages are deprecated and will be removed with SUSE
+     Linux Enterprise Desktop 13.
+    </para>
+<!--v Items below imported from FATE-->
+    <section role="notoc" id="fate-319095" remap="Packages:Deprecated:Future">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319095" -->
+     <title>fcitx Is Deprecated and Will Be Replaced with the IBus Input Method</title>
+     <para>
+      With SLE 12 SP1, the fcitx input method is deprecated. Starting with
+      SLE 12 SP2, it will no longer be supported nor shipped. You can switch
+      to the IBus input method.
+     </para>
+    </section>
+    <section role="notoc" id="fate-318930" remap="Packages:Deprecated:Future">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318930" -->
+     <title>Xemacs Has Been Removed</title>
+     <para>
+      Xemacs has been removed in favor of GNU Emacs. Starting with SLE 12
+      SP2, it will no longer be provided or supported. We suggest switching
+      to GNU Emacs which is fully supported.
+     </para>
+    </section>
+<!--^ End of Items imported from FATE-->
+   </section>
+  </section>
+  <section id="Packages.Packaging" remap="Packages:Packaging">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-321179" remap="Packages:Packaging">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/321179" -->
+    <title>GNOME Desktop: Clicking "Open in Terminal" on the Desktop Now Opens the Home Directory</title>
+    <para>
+     <emphasis> When right-clicking the GNOME desktop and selecting
+     </emphasis>Open in Terminal<emphasis>, GNOME Terminal will now open
+     with the working directory set to the home directory (</emphasis><literal>~</literal><emphasis>) and not set to the Desktop
+     directory (</emphasis>~/Desktop<emphasis>). This happens because the
+     package
+     </emphasis><literal>nautilus-extension-terminal</literal><emphasis> is
+     now installed by default. </emphasis>
+    </para>
+    <para>
+     To switch to the former behavior, first uninstall
+     <literal>nautilus-extension-terminal</literal> and then install
+     <literal>nautilus-open-terminal</literal>. However, note that the
+     package <literal>nautilus-open-terminal</literal> may not be provided
+     in future service packs.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section>
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with respect to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with respect to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="http://www.suse.com/company/legal/"/> for more information on
+   exporting SUSE software. SUSE assumes no responsibility for your failure
+   to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC. This release notes document is licensed under a Creative
+   Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
+   <ulink url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>.
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="http://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="http://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

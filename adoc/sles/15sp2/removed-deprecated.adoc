@@ -1,0 +1,96 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that were removed from {product} or will be removed in upcoming versions.
+
+
+[#removed-deprecated-removed]
+=== Removed Features and Packages
+
+The following features and packages have been removed in this release.
+
+
+////
+// jsc#EX-0000
+* Example package is deprecated and will be removed in {product} 15{nbsp}SP4.
+For more information, see <<#jsc-EX#000>>.
+////
+
+// jsc#SLE-7041
+* The legacy microcode loading interface (`/dev/cpu/microcode`) has been removed.
+For more information, see <<#jsc-SLE-7041>>.
+
+// jsc#SLE-941
+* Support for squashfs 3.x file systems has been removed from the kernel.
+For more information, see <<#jsc-SLE-9416>>.
+
+// bsc#1166474
+* The `XEN` {jeos} image has been removed.
+For more information, see <<#bsc-1166474>>.
+
+// jsc#SLE-12191
+* Berkeley DB, used as a database in certain packages, is dual-licensed under GNU AGPLv3/Sleepycat licenses.
+Service vendors that redistribute our packages could find packages with these licenses potentially detrimental to their solutions.
+For this reason, we have decided to remove Berkeley DB as a dependency from `rpm`.
+
+
+[#removed-deprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+////
+// jsc#EX-0000
+* Example package has been removed from {product} 15{nbsp}SP4.
+For more information, see <<#jsc-EX#000>>.
+////
+
+Also see the following release notes:
+
+* <<jsc-SLE-22662>>
+
+
+// removal planned for 15 SP3 (next SP)
+
+// jsc#SLE-10978
+* NodeJS 8 is deprecated and will be removed with {producta} 15{nbsp}SP3.
+
+* The PulseAudio back-end of spice-gtk is deprecated and will be removed with {producta} 15{nbsp}SP3.
+For more information, see <<#virtualization-libvirt-spicegtk>>.
+
+
+// removal planned for 15 SP4/SP5 (later SPs)
+
+// jsc#PED-8166
+* PHP 7.4 will be removed in {producta} 15 SP7.
+
+* The OpenLDAP server is deprecated and will be removed with {producta} 15{nbsp}SP4.
+It will no longer be available from the __Legacy__ {slea} module.
+For more information, see <<#jsc-SLE-16552>>.
+
+//jsc#SLE-16745
+* Python 2 is deprecated and will be removed with {producta} 15{nbsp}SP4
+It will no longer be available via the __Python 2__ {slea} module.
+For more information, see <<#fate-327577>>.
+
+//jsc#SLE-9294 / FATE#323868 [removal info in FATE is incorrect]
+* TLS 1.0 and 1.1 are deprecated and will be removed in a future service pack of {producta} 15.
+For more information, see <<jsc-SLE-9294>>.
+
+
+// removal planned for 16 GA or later (next major)
+
+// jsc#SLE-7690, jsc#SLE-7192, jsc#SLE-10912, jsc#SLE-9004
+* Support for System V `init.d` scripts is deprecated and will be removed with the next major version of {producta}.
+In consequence, the `/etc/init.d/halt.local` initscript, `rc__SERVICE__` controls, and `insserv.conf` are also deprecated.
+For more information, see <<jsc-SLE-7690>>.
+
+
+// removal plan unclear
+
+// jsc#SLE-16660
+* System containers using LXC have been deprecated and will be removed in {producta} 15 SP4.
+For more information, see <<#jsc-SLE-16660>>.

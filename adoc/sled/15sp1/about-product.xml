@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section id="Intro">
+ <title>&product;</title>
+
+ <para>
+  &product; is the market's only enterprise-quality Linux desktop ready for
+  routine business use. Developed and backed by &suse;, &product; provides
+  market-leading usability, seamless interoperability with existing IT
+  systems, and dozens of essential applications—all at a fraction of the
+  price of proprietary operating systems.
+ </para>
+
+ <section id="Intro.Interoperability">
+  <title>Interoperability and Hardware Support</title>
+  <!-- Novell Teaming is now Micro Focus Vibe. Not sure we still integrate
+  with it. - sknorr, 2016-10-21 -->
+  <para>
+   &product; comes bundled with the latest versions of leading applications
+   such as LibreOffice office productivity suite, Mozilla Firefox Web
+   browser, and Evolution e-mail and calendar suite. In addition, it
+   integrates with Microsoft SharePoint <!--and Novell Teaming --> for group
+   collaboration and supports a wide range of multimedia file formats,
+   wireless and networking standards, and plug-and-play devices.
+  </para>
+  <para>
+   Through the latest enhancements in power management and security, &product;
+   also provides an environmentally friendly IT experience (Green IT) and an
+   error-proof desktop. Finally, &product; offers unparalleled flexibility. You
+   can deploy it on a wide range of thick client devices (including desktops,
+   notebooks, netbooks, and workstations), on thin client devices, or as a
+   virtual desktop. By leveraging the power of &product;, your business can
+   dramatically reduce costs, improve end user security and increase
+   workforce productivity.
+  </para>
+ </section>
+
+ <section id="Intro.New">
+  <title>What Is New?</title>
+
+  <para>
+   &product; &this-ga; introduces many innovative changes compared to
+   &product; &previous-ga;.
+   <!--The most important changes are listed below: -->
+  </para>
+  <!-- FIXME: Find out highlights of SLED 15 - sknorr, 2017-08-18 -->
+  <!--<itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Feature 1:</title>
+     <para>
+      It exists!
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Feature 2:</title>
+     <para>
+      It is great!
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist> -->
+ </section>
+
+ <!-- <section id="Intro.Certification" role="remove-empty">
+   <title>Security, Standards, and Certification</title>
+   <para/>
+  </section>
+ </section> -->
+
+ <section id="Intro.Important">
+  <title>Important Sections of This Document</title>
+
+  <para>
+   If you are upgrading from a previous &product; release, you should review at
+   least the following sections:
+  </para>
+
+  <itemizedlist>
+   <listitem role="check-xref">
+    <para>
+     <xref linkend="Intro.Support"/>
+    </para>
+   </listitem>
+   <listitem role="check-xref">
+    <para>
+     <xref linkend="InstUpgrade.Upgrade"/>
+    </para>
+   </listitem>
+   <listitem role="check-xref">
+    <para>
+     <xref linkend="TechInfo"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section id="Intro.Lifecycle">
+  <title>Support and Life Cycle</title>
+  <para>
+   &product; is backed by award-winning support from &suse;, an established
+   technology leader with a proven history of delivering enterprise-quality
+   support services.
+  </para>
+  <!-- bsc#882262, bsc#999197 -->
+  <para>
+   <!-- FIXME: Is 10 years correct for SLED 15? - sknorr, 2017-10-20 -->
+   &product; &this-ga; has a 10-year life cycle. The
+   current version (&this-version;) will be fully maintained and
+   supported until 6 months after the release of &sle; &next-version;.
+  </para>
+  <para>
+   &suse; does not support skipping Service Packs of &product; when upgrading.
+  </para>
+
+  <para>
+   For more information, see:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     The support policy at
+     <ulink url="https://www.suse.com/support/policy.html"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="support-statement.xml"/>
+
+ <section id="Intro.Support.General" role="remove-empty">
+  <title>General Support</title>
+  <para/>
+ </section>
+
+ <section id="Intro.Support.External" role="remove-empty">
+  <title>Software Requiring Specific Contracts</title>
+  <para/>
+ </section>
+
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="documentation.xml"/>
+
+</section>

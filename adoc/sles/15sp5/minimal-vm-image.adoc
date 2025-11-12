@@ -1,0 +1,69 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#install-upgrade-minimal-vm-image]
+=== {minvm} and {minimg}
+
+{sles} {minvm} and {minimg} is a slimmed-down form factor of {sles} that is ready to run in virtualization environments and the cloud.
+With {sles} {minvm} and {minimg}, you can choose the right-sized {sles} option to fit your needs.
+
+{suse} provides virtual disk images for {minvm} and {minimg} in the file formats `.qcow2`, `.vhdx`, and `.vmdk`, compatible with KVM, Xen, OpenStack, Hyper-V, and VMware environments.
+All {minvm} and {minimg} images set up the same disk size (24{nbsp}GB) for the system.
+Due to the properties of different file formats, the size of {minvm} and {minimg} image downloads differs between formats.
+
+[#jsc-SLE-21531]
+=== {jeos} renamed {minvm} and {minimg}
+
+We have received feedback from users confused by the name {jeos}, as a matter of fact the acronym {jeos}, which meant Just enough Operating System, was not well understood and could be confused with other images provided by {suse} or {opensuse}.
+
+We have decided to go with simplicity and rename {jeos} by "{minvm}" for all our Virtual Machine Images and "{minimg}" for the {rpi} Image.
+We have also removed a few other characters, in the full images name to make it more simple and clear:
+
+* `SLES15-SP4-Minimal-VM.x86_64-kvm-and-xen-GM.qcow2`
+* `SLES15-SP4-Minimal-VM.x86_64-OpenStack-Cloud-GM.qcow2`
+* `SLES15-SP4-Minimal-VM.x86_64-MS-HyperV-GM.vhdx.xz`
+* `SLES15-SP4-Minimal-VM.x86_64-VMware-GM.vmdk.xz`
+* `SLES15-SP4-Minimal-VM.aarch64-kvm-GM.qcow2`
+* `SLES15-SP4-Minimal-Image.aarch64-RaspberryPi-GM.raw.xz`
+
+[#jsc-PED-1911]
+=== New {minvm} and {minimg} for {ibmz} (s390x)
+
+Per request, we have built and released new {slesa} {minvm} and {minimg} for {ibmz} (s390x architecture).
+
+Our {minvm} and {minimg} are supported on the 3 different type of storage used by {ibmz}:
+
+- DASDs (Direct Access Storage Devices) which works for z/VM guests and LPARs,
+- FBA (Fixed-Block Architecture) which works for z/VM guests,
+- and the regular qcow2 for KVM.
+
+And to provide deployment choice, we have made 2 flavours for each type of storage, one with the regular `jeos-firstboot`, one with `cloud-init`.
+
+So in total we have 6 new images:
+
+KVM:
+
+- `SLES15-SP5-Minimal-VM.s390x-kvm-GM.qcow2`
+- `SLES15-SP5-Minimal-VM.s390x-Cloud-GM.qcow2`
+
+DASD:
+
+- `SLES15-SP5-Minimal-Image.s390x-dasd-GM.raw.xz`
+- `SLES15-SP5-Minimal-Image.s390x-dasd-Cloud-GM.raw.xz`
+
+FBA:
+
+- `SLES15-SP5-Minimal-Image.s390x-fba-GM.raw.xz`
+- `SLES15-SP5-Minimal-Image.s390x-fba-Cloud-GM.raw.xz`
+
+Note that our regular images uses `jeos-firstboot` and Btrfs as the root filesystem by default, while our Cloud images use XFS as it's usually recommended in cloud environment.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

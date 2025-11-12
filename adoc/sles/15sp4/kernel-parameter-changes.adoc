@@ -1,0 +1,39 @@
+// jsc-SLE-11213
+
+[#kernel-parameter-changes]
+== Kernel parameter changes
+
+[WARNING]
+This list of changes may not be exhaustive.
+
+
+// [#kernel-parameter-changes-current-sp]
+// === During {this-sp}
+
+// These Linux kernel parameters have been changed during {productnameshort} {this-version}.
+
+// [cols="40%,10%,10%,20%,20%", options="header"]
+// |==========
+// |Setting | Previous value | New value | Package | More details
+// |||||
+// |==========
+
+
+[#kernel-parameter-changes-last-sp]
+===  Changes from {previous-sp} to {this-sp}
+
+These Linux kernel parameters have been changed since {productnameshort} {this-ga}{nbsp}{previous-sp}.
+
+[cols="40%,10%,10%,20%,20%", options="header"]
+|==========
+|Setting | Previous value | New value | Caused by package | More details
+|`sysctl_fs_epoll_max_user_watches`|400000:420000|443948||
+|`sysctl_kernel_cap_last_cap`|39|40||
+|`sysctl_kernel_usermodehelper_bset`|"4294967295 255"|"4294967295	511"||
+|`sysctl_kernel_usermodehelper_inheritable`|"4294967295 255"|"4294967295	511"||
+|`sysctl_net_core_somaxconn`|128|4096||
+|`sysctl_net_ipv4_tcp_fastopen_blackhole_timeout_sec`|3600|0||
+|`sysctl_vm_unprivileged_userfaultfd`|1|0||
+|`sysctl_kernel_unprivileged_bpf_disabled`|0|2||
+|`sysctl_net_core_bpf_jit_limit`|264241152|528482304|kernel|
+|==========

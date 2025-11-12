@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="installation-upgrade"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Installation and Upgrade</title>
+ <para>
+  &product; comes with a number of preconfigured system roles for HPC. These
+  roles provide a set of preselected packages typical for the specific role,
+  as well as an installation workflow that will configure the system to make
+  the best use of system resources based on the typical use case of a role.
+ </para>
+
+ <section xml:id="installation-upgrade-system-role">
+  <title>System Roles for &product; &this-version;</title>
+  <para>
+   With &product; &this-version;, it is possible to choose specific roles
+   for the system based on modules selected during the installation process.
+   When the HPC Module is enabled, these three roles are available:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term>HPC Management Server (Head Node)</term>
+    <listitem>
+     <para>
+      This role includes the following features:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        Uses Btrfs as the default root file system
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Includes HPC-enabled libraries
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Disables firewall and Kdump services
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Installs controller for the Slurm workload manager
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Mounts a large scratch partition to <filename>/var/tmp</filename>
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>HPC Compute Node</term>
+    <listitem>
+     <para>
+      This role includes the following features:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        Uses XFS as the default root file system
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Includes HPC-enabled libraries
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Disables firewall and Kdump services
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Based from minimal setup configuration
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Installs client for the Slurm workload manager
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Does not create a separate <filename>/home</filename> partition
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Mounts a large scratch partition to <filename>/var/tmp</filename>
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>HPC Development Node</term>
+    <listitem>
+     <para>
+      This role includes the following features:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        Includes HPC-enabled libraries
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Adds compilers and development toolchain
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   The scratch partition <literal>/var/tmp/</literal> will only be created if
+   there is sufficient space available on the installation medium (minimum
+   32 GB).
+  </para>
+  <para>
+   The Environment Module <literal>Lmod</literal> will be installed for all
+   roles. It is required at build time and run time of the system. For more
+   information, see <xref linkend="hpc-tool-lmod"/>.
+  </para>
+  <para>
+   All libraries specifically build for HPC will be installed under
+   <literal>/usr/lib/hpc</literal>. They are not part of the standard search
+   path, thus the <literal>Lmod</literal> environment module system is required.
+  </para>
+  <para>
+   <literal>munge</literal> authentication is installed for all roles. This
+   requires copying the same generated <literal>munge</literal> keys to all
+   nodes of a cluster.
+   For more information, see <xref linkend="hpc-tool-mrsh-mrlogin"/> and
+   <xref linkend="hpc-tool-munge"/>.
+  </para>
+  <para>
+   From the Ganglia monitoring system, the data collector
+   <package>ganglia-gmod</package> is installed for every role, while the
+   data aggregator <package>ganglia-gmetad</package> needs to be installed
+   manually on the system which is expected to collect the data. For more
+   information, see <xref linkend="hpc-tool-ganglia"/>.
+  </para>
+  <para>
+   The system roles are only available for new installations of &product;.
+  </para>
+ </section>
+ <!-- <section xml:id="installation">
+  <title>Installation</title>
+  <para>
+   This section includes information related to the initial installation of
+   the &product; &this-version;.
+   <!-/- FIXME: For the near future, there will not be documentation. -
+   sknorr, 2017-03-28 -/->
+   <!-/- For information about installing, see
+   <citetitle>Deployment Guide</citetitle> at
+   <link xlink:href="&doc-url;"/>. -/->
+  </para>
+ </section> -->
+ <section xml:id="upgrade">
+  <title>Upgrade-Related Notes</title>
+  <para>
+   This section includes upgrade-related information for the &product; &this-version;.
+   <!-- FIXME: For the near future, there will not be documentation. -
+   sknorr, 2017-03-28 -->
+   <!-- For information about general preparations and supported upgrade methods
+   and paths, see the documentation at
+   <link xlink:href="&doc-url;"/>. -->
+  </para>
+  <para>
+   You can upgrade to &product; &this-version; from &slsa; 12 SP3 or &slehpc;
+   12 SP3. When upgrading from &slsa; 12 SP3, the upgrade will only be
+   performed if the &slehpc; module has been registered prior to upgrading.
+   Otherwise, the system will instead be upgraded to &slsa; 15.
+  </para>
+  <para>
+   To upgrade from &slsa; 12 to &slsa; 15, make sure to deregister the
+   &slehpc; module prior to upgrading. To do so, open a root shell and
+   execute:
+  </para>
+  <screen>SUSEConnect -d -p sle-module-hpc/12/<replaceable>ARCH</replaceable></screen>
+  <para>
+   Replace <replaceable>ARCH</replaceable> with the architecture used
+   (<literal>x86_64</literal>, <literal>aarch64</literal>).
+  </para>
+  <para>
+   When migrating to &product; &this-version;, all modules not supported by
+   the migration target need to be deregistered. This can be done by
+   executing:
+  </para>
+  <screen>SUSEConnect -d -p sle-module-<replaceable>MODULE_NAME</replaceable>/12/<replaceable>ARCH</replaceable></screen>
+  <para>
+   Replace <replaceable>MODULE_NAME</replaceable> by the name of the module
+   and <replaceable>ARCH</replaceable> with the architecture used
+   (<literal>x86_64</literal>, <literal>aarch64</literal>).
+  </para>
+  <para>
+   When migrating from &product; 15 GA to &product; &this-version;, make sure
+   to remove the Legacy Module if it is installed. Otherwise, the migration
+   will fail with the error message <literal>No migration product
+   found</literal>. To remove the legacy module, execute:
+  </para>
+  <screen>SUSEConnect -d -p sle-module-legacy/15/<replaceable>ARCH</replaceable></screen>
+  <para>
+   Replace <replaceable>ARCH</replaceable> with the architecture used.
+  </para>
+  <para>
+   &sle; &this-ga; uses Python 3 by default. Starting with &slea; 15 SP1,
+   the Python 2 runtime and modules have been moved to the
+   <emphasis>Python 2</emphasis> module. As &product; &this-version; uses
+   Python 2, you need to enable this module when upgrading from earlier versions.
+  </para>
+ </section>
+</section>

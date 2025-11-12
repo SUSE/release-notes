@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % myents SYSTEM "release-notes.ent">
+<!ENTITY rnotes "Release Notes">
+<!ENTITY rversion "@VERSION@">
+<!ENTITY yast "YaST">
+<!ENTITY autoyast "AutoYaST">
+<!ENTITY suse "SUSE">
+<!ENTITY suse-version "12">
+<!ENTITY spversion "1">
+<!ENTITY opensuse "open&suse;">
+<!ENTITY suselinux "&suse; Linux">
+<!ENTITY sle "&suse; Linux Enterprise">
+<!ENTITY sled "&sle; Desktop">
+<!ENTITY sles "&sle; Server">
+<!ENTITY sleha "&suselinux; Enterprise High Availability Extension">
+<!ENTITY slehag "Geo Clustering for &suselinux; Enterprise High Availability">
+<!ENTITY ha-guide "High Availability Guide">
+<!ENTITY sdk "Software Development Kit">
+<!ENTITY slesdk "&suselinux; Enterprise &sdk;">
+]>
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise High Availability Extension</productname>
+  <productnumber>12 SP1</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise High Availability Extension is a suite of
+    clustering technologies that enable enterprises to implement highly
+    available Linux clusters and eliminate single points of failure. This
+    document gives an overview of features of SUSE Linux Enterprise High
+    Availability Extension and their limitations. Some sections do not apply
+    to a particular architecture or product, this is explicitly marked.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media, or in the directory
+    <filename>/usr/share/doc/</filename> on the installed system (if
+    installed).
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise High Availability Extension</title>
+  <para>
+   SUSE Linux Enterprise High Availability Extension is an affordable,
+   integrated suite of robust open source clustering technologies that
+   enable enterprises to implement highly available Linux clusters and
+   eliminate single points of failure.
+  </para>
+  <para>
+   Used with SUSE Linux Enterprise Server, it helps firms maintain business
+   continuity, protect data integrity, and reduce unplanned downtime for
+   their mission-critical Linux workloads.
+  </para>
+  <para>
+   SUSE Linux Enterprise High Availability Extension provides all of the
+   essential monitoring, messaging, and cluster resource management
+   functionality of proprietary third-party solutions, but at a more
+   affordable price, making it accessible to a wider range of enterprises.
+  </para>
+  <para>
+   It is optimized to work with SUSE Linux Enterprise Server, and its tight
+   integration ensures customers have the most robust, secure, and up to
+   date high availability solution. Based on an innovative, highly flexible
+   policy engine, it supports a wide range of clustering scenarios.
+  </para>
+  <para>
+   With static or stateless content, the High Availability cluster can be
+   used without a cluster file system. This includes web-services with
+   static content as well as printing systems or communication systems like
+   proxies that do not need to recover data.
+  </para>
+  <para>
+   Finally, its open source license minimizes the risk of vendor lock-in,
+   and it's adherence to open standards encourages interoperability with
+   industry standard tools and technologies.
+  </para>
+ </section>
+ <section id="Intro.New">
+  <title>What's New?</title>
+  <variablelist>
+   <varlistentry>
+    <term>
+    Cluster File System
+     </term>
+    <listitem>
+     <para>
+      GFS2 cluster file system with read/write support, to complement the
+      SUSE recommended OCFS2 cluster file system.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      Load balancer
+     </term>
+    <listitem>
+     <para>
+      HAProxy as layer 4 load balancer added, to complement the Linux
+      virtual server load balancer.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      History Explorer
+     </term>
+    <listitem>
+     <para>
+      HAWK history explorer now includes off-line analysis capabilities.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+     Resource Agents
+     </term>
+    <listitem>
+     <para>
+      Resource agents got multiple updates, including a resource agent to
+      handle SCSI reservations
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   See
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP1-GEO/">https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP1-GEO/</ulink>
+   for what is new in the Geo clustering option for the SUSE Linux
+   Enterprise High Availability Extension 12 SP1.
+  </para>
+ </section>
+ <section id="Features">
+  <title>Features and Versions</title>
+  <para>
+   This section includes an overview of some of the major features and new
+   functionality provided by SUSE Linux Enterprise High Availability
+   Extension 12 SP1.
+  </para>
+ </section>
+ <section id="InfraPackArch.ArchIndependent" remap="InfraPackArch:ArchIndependent">
+  <title>New Features and Known Issues</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-318281" remap="InfraPackArch:ArchIndependent">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318281" -->
+   <title>New User Interface for Hawk</title>
+   <para>
+    Hawk has been redesigned to be more intuitive and easier to use.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+  <section id="InfraPackArch.ArchIndependent.Kernel_Modules" remap="InfraPackArch:ArchIndependent:Kernel_Modules">
+   <title>Kernel Modules</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-318321" remap="InfraPackArch:ArchIndependent:Kernel_Modules">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318321" -->
+    <title>IPVS Support for iptables -m</title>
+    <para>
+     <emphasis> Setting up Linux Virtual Server (LVS) in combination with
+     SMTP did not work due to missing </emphasis><literal>iptables -m
+     ipvs</literal><emphasis> support. IPVS (IP Virtual Server) is used for
+     Linux Virtual Server. </emphasis>
+    </para>
+    <para>
+     The <literal>iptables</literal> package has been updated to a higher
+     version and now includes the match support of iptables. To make it
+     work, you need the probe kernel module <literal>xt_ipvs</literal>. It
+     is provided by the respective <literal>cluster-network-*</literal>
+     package.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+   <title>Systems Management</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-318483" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318483" -->
+    <title>Hawk now validates parameter values as they are entered in wizards.</title>
+    <para>
+     <emphasis>The wizards could be difficult to fill in as they provided
+     minimal information about valid parameter values.</emphasis>
+    </para>
+    <para>
+     Wizards now validate parameter values on the fly. They also display
+     extended documentation about all parameters which includes showing the
+     default value for the parameter (if any).
+    </para>
+   </section>
+   <section role="notoc" id="fate-318482" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318482" -->
+    <title>Wizards in crmsh and Hawk Are More Powerful</title>
+    <para>
+     <emphasis>The wizards in Hawk were able to make cluster configuration
+     changes, but not configure the resources themselves.</emphasis>
+    </para>
+    <para>
+     In the new Hawk (package <literal>hawk2</literal> ), the wizards
+     include steps to install packages, set up default configuration files
+     and ensure that requirements are met as part of applying the cluster
+     configuration changes.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318319" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318319" -->
+    <title>Resource Tags Can Now Be Edited with Hawk</title>
+    <para>
+     <emphasis>Tagging resources is a new feature in Pacemaker. Editing and
+     viewing them has been possible using the command line, but not from the
+     Hawk UI.</emphasis>
+    </para>
+    <para>
+     The new Hawk (package <literal>hawk2</literal> ) enables creating and
+     editing resource tags.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318291" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318291" -->
+    <title>Improved History Explorer in Hawk</title>
+    <para>
+     <emphasis>The history explorer is a very powerful feature, but the user
+     interface needed improvement.</emphasis>
+    </para>
+    <para>
+     Reports now have a description page showing a list of important node
+     events and resource events, making it easy to see what has happened at
+     a glance. The interface has been redesigned to provide more feedback as
+     to which transition is being viewed. Navigation is simplified by the
+     buttons <emphasis>Previous Transition</emphasis> and <emphasis>Next
+     Transition</emphasis>.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318290" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318290" -->
+    <title>Log of Commands in Hawk</title>
+    <para>
+     <emphasis>The step from using Hawk to using the command line tools can
+     be a challenge.</emphasis>
+    </para>
+    <para>
+     In Hawk, there is now a screen <emphasis>Command Log</emphasis> that
+     displays all the corresponding <literal>crm</literal> commands that
+     Hawk runs behind the scene. This makes it easy to see the corresponding
+     <literal>crm</literal> command to an action in the user interface.
+    </para>
+   </section>
+   <section role="notoc" id="fate-318211" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/318211" -->
+    <title>New and Improved Cluster Configuration Wizards in crmsh and Hawk</title>
+    <para>
+     <emphasis> The wizards in Hawk were not usable from the command line,
+     and </emphasis><literal>crmsh</literal><emphasis> had its own form of
+     wizards that were implemented differently than in Hawk. </emphasis>
+    </para>
+    <para>
+     The wizards are now shared between <literal>crmsh</literal> and Hawk.
+     <literal>crmsh</literal> is able to apply the old XML wizards for Hawk,
+     and Hawk is able to run the new configuration script style wizards the
+     same as <literal>crmsh</literal>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+  <section id="InfraPackArch.ArchIndependent.Performance" remap="InfraPackArch:ArchIndependent:Performance">
+   <title>Performance Related Information</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-317940" remap="InfraPackArch:ArchIndependent:Performance">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/317940" -->
+    <title>DRBD Initial Synchronization Is Now Faster</title>
+    <para>
+     <emphasis> With huge devices, the initial full synchronization took a
+     lot of time even if no real data has to be synchronized. Most of the
+     time, the command </emphasis><literal>drbdadm new-current-uuid
+     --clear-bitmap &lt;resource&gt;</literal><emphasis> can be used to
+     simply skip it, then make sure the data is consistent on file system
+     level. </emphasis>
+    </para>
+    <para>
+     <emphasis>For some corner cases, users still need to do a full
+     synchronization. This will take a long time, especially in an
+     environment with low network bandwidth.</emphasis>
+    </para>
+    <para>
+     We now supply another method to zero out devices on both sides instead
+     of doing a full synchronization from one node to the other. This helps
+     when the network speed becomes the bottleneck of the synchronization.
+     After the exchange of packets to the other node, the device on both
+     sides will start to zero out locally.
+    </para>
+    <para>
+     For more information, see the documentation at
+     <ulink url="https://www.suse.com/documentation/sle-ha-12/book_sleha/data/sec_ha_drbd_configure.html#sec_ha_drbd_configure_init">https://www.suse.com/documentation/sle-ha-12/book_sleha/data/sec_ha_drbd_configure.html#sec_ha_drbd_configure_init</ulink>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Support">
+  <title>Support Statement for SUSE Linux Enterprise High Availability Extension 12 SP1</title>
+  <para>
+   Support requires an appropriate subscription from Novell; for more
+   information, see <ulink url="http://www.suse.com/products/server/"/>.
+  </para>
+  <para>
+   A Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription is needed to receive support and maintenance to run
+   geographical clustering scenarios, including manual and automated setups.
+  </para>
+  <para>
+   Support for the DRBD storage replication is independent of the cluster
+   scenario and included as part of the SUSE Linux Enterprise High
+   Availability Extension product and does not require the addition of a Geo
+   Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.
+  </para>
+  <para>
+   General Support Statement
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     L1: Installation and problem determination - technical support designed
+     to provide compatibility information, installation and configuration
+     assistance, usage support, on-going maintenance and basic
+     troubleshooting. Level 1 Support is not intended to correct product
+     defect errors.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L2: Reproduction of problem isolation - technical support designed to
+     duplicate customer problems, isolate problem areas and potential
+     issues, and provide resolution for problems not resolved by Level 1
+     Support.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L3: Code Debugging and problem resolution - technical support designed
+     to resolve complex problems by engaging engineering in patch provision,
+     resolution of product defects which have been identified by Level 2
+     Support.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Novell will only support the usage of original (unchanged or not
+   recompiled) packages.
+  </para>
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+<!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the CDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM:
+    </para>
+<screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+    <para>
+     &lt;FILENAME&gt;. is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1
+     for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of CD1
+     of the SUSE Linux Enterprise High Availability Extension CDs. This
+     directory includes a PDF version of the High Availability Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/"/> contains additional
+     or updated documentation for SUSE Linux Enterprise High Availability
+     Extension 12 SP1.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="http://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2015 SUSE LLC.
+  </para>
+  <para>
+   Thanks for using SUSE Linux Enterprise High Availability Extension in
+   your business.
+  </para>
+  <para>
+   The SUSE Linux Enterprise High Availability Extension Team.
+  </para>
+ </section>
+</article>

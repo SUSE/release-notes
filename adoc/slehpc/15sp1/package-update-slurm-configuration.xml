@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="package-slurm-configuration-change"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Important Slurm Configuration Changes</title>
+ <bridgehead renderas="sect4">Version 17.11</bridgehead>
+ <itemizedlist>
+  <listitem>
+   <para>
+    <literal>slurm.conf</literal>:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Added <literal>SchedulerParameters</literal> configuration option
+      <literal>disable_hetero_steps</literal> to disable job steps that span
+      multiple components of a heterogeneous job.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added <literal>SchedulerParameters</literal> configuration option
+      <literal>enable_hetero_steps</literal> to enable job steps that span
+      multiple components of a heterogeneous job.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added <literal>PrivateData=events</literal> configuration parameter.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Added <literal>SlurmctldSyslogDebug</literal> and
+      <literal>SlurmdSyslogDebug</literal> to control which messages from the
+      slurmctld and slurmd daemons get written to syslog.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>slurmdbd.conf</literal>: Added <literal>DebugLevelSyslog</literal>
+    to control which <literal>slurmdbd</literal> messages get written to
+    syslog.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>cgroup.conf</literal>: Added <literal>MemorySwappiness</literal>
+    value.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>cgroup.conf</literal>: Added <literal>MemorySwappiness</literal>
+    value.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Plugins: Removed obsolete MPI plugins, checkpoint/poe plugin.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>srun</literal>: remove <literal>--mpi-combine</literal> option.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>scontrol</literal>: <command>top</command> disabled for
+    regular user.
+    Set <literal>SchedulerParameters=enable_user_top</literal> to override.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>scancel</literal>: Added <literal>--hurry</literal> option to avoid
+    staging out any burst buffer data.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>squeue</literal>: Added <literal>--local</literal> and
+    <literal>--sibling</literal> options to modify filtering of jobs on
+    federated clusters.
+   </para>
+  </listitem>
+ </itemizedlist>
+ <bridgehead renderas="sect4">Version 18.08</bridgehead>
+ <itemizedlist>
+  <listitem>
+   <para>
+    <literal>slurm.conf</literal>:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <!-- This sounds illogical. The configuration value was removed
+      because the behavior is now the default but you can return to the
+      old default by setting the old configuration value again? - sknorr,
+      2020-12-16 -->
+      Removed <literal>NoOverMemoryKill</literal> from
+      <literal>JobAcctGatherParams</literal>, as this is now the default. To
+      change this to the old default, set
+      <literal>JobAcctGatherParams</literal>
+      <literal>NoOverMemoryKill</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>ControlMachine</literal>, <literal>ControlAddr</literal>,
+      <literal>BackupAddr</literal>, <literal>BackupController</literal> These
+      options have been deprecated and replaced by
+      <literal>SlurmctldHost</literal>. You can configure multiple
+      <literal>SlurmctldHost</literal>s. The first one will be the
+      used as master controller, subsequent ones are used as fallbacks in
+      the order specified. <literal>ControlAddr</literal> and
+      <literal>BackupAddr</literal> can be specified enclosed in parentheses
+      after the host name.
+      For details, see <literal>slurm.conf</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>SelectType</literal>: The argument
+      <literal>CR_ALLOCATE_FULL_SOCKET</literal> is now the default for
+      <literal>CR_SOCKET*</literal>. It should be removed.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>
+    Deprecated arguments to utilities:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>srun</literal>, <literal>sbatch</literal>,
+      <literal>salloc</literal>:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        The option <literal>-P</literal> has been deprecated, use
+        <literal>-d</literal> instead
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        The option <literal>--minicores</literal> has been deprecated, use
+        <literal>--cores-per-socket</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        The option <literal>--minisockets</literal> has been deprecated, use
+        <literal>--sockets-per-node</literal>
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        The option <literal>--minthreads</literal> has been deprecated, use
+        <literal>--threads-per-core</literal>
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>salloc</literal>: The option <literal>-W</literal> has been
+      deprecated, use <literal>--immediate</literal> instead
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>sacct</literal>: The option <literal>-C</literal> has been
+      deprecated, use <literal>-M</literal> instead
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>slurmctld</literal>: The option <literal>-t</literal> has been
+      removed, use <literal>-X</literal> instead.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+ </itemizedlist>
+ <bridgehead renderas="sect4">Version 19.05</bridgehead>
+ <itemizedlist>
+  <listitem>
+   <para>
+    <literal>slurm.conf</literal>:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      The parameter <literal>FastSchedule</literal> has been deprecated.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The parameter <literal>MemLimitEnforce</literal> has been removed.
+      Functionality has been moved into
+      <literal>JobAcctGatherParam=OverMemoryKill</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      The option <literal>CryptoType</literal> has been changed to
+      <literal>CredType</literal>, <literal>crypto/munge</literal> plugin has
+      been renamed to <literal>cred/munge</literal>.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>
+    Deprecated arguments to utilities:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>sreport</literal>: Default behavior of
+      <literal>SizesByAccount</literal> and
+      <literal>SizesByAccountAndWckey</literal> has been changed, a new
+      <literal>AcctAsParent</literal> option has been added.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>gres.conf</literal>: <literal>CPUs</literal> parameter is
+      deprecated, use <literal>Cores</literal> instead.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>srun</literal>, <literal>sbatch</literal>:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        The <literal>Slurm_NPROCS</literal> environment variable has been
+        deprecated, use <literal>Slurm_NTASKS</literal> instead.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>salloc</literal>, <literal>sbatch</literal>,
+      <literal>srun</literal>:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        The argument <literal>-U</literal> has been removed&mdash;it was
+        deprecated when <literal>-A</literal> was made the single character
+        option before the Slurm 2.1 release&mdash;as an alternative to
+        <literal>--account</literal>
+       </para>
+      </listitem>
+     </itemizedlist>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+ </itemizedlist>
+ <bridgehead renderas="sect4">Version 20.02</bridgehead>
+ <itemizedlist>
+  <listitem>
+   <para>
+    <literal>slurm.conf</literal>:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>slurmctld</literal> will terminate with a fatal error if
+      compute nodes are configured with <literal>CPUs</literal> ==
+      <literal>#Sockets</literal>. CPUs has to be either the total number of
+      cores or threads.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Option <literal>FastSchedule</literal> has been removed.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New parameter <literal>AccountingStorageExternalHost</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Option <literal>kill_invalid_depend</literal> and
+      <literal>max_depend_depth</literal> have been moved to the new
+      <literal>DependencyParameters</literal> option. Use in
+      <literal>SchedulerParameters</literal> is now deprecated.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Removed deprecated <literal>max_job_bf SchedulerParameters</literal> and
+      replaced it with <literal>bf_max_job_test</literal>.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>MaxDBDMsgs</literal> allows to specify how many messages will
+      be stored in <literal>slurmctld</literal> when
+      <literal>slurmdbd</literal> is down.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      New <literal>NodeSet</literal> configuration option to simplify
+      partition configuration sections for heterogeneous/condo-style
+      clusters.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>smap</literal>: <literal>smap</literal> has been removed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>sbatch</literal>, <literal>salloc</literal>,
+    <literal>srun</literal>: <literal>--reboot</literal> disabled for
+    non-admins.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>sbcast</literal>: Allow alternative path for
+    <literal>sbcast</literal> traffic using the <literal>BcastAddr</literal>
+    option to <literal>NodeName</literal> lines to allow
+    <literal>sbcast</literal> traffic.
+   </para>
+  </listitem>
+ </itemizedlist>
+ <!-- FIXME: no ids on those brideheads -->
+ <bridgehead renderas="sect4">Version 20.11</bridgehead>
+ <itemizedlist>
+  <listitem>
+   <para>
+    The option <literal>cpusets</literal> has been removed from
+    TaskPluginParam.
+    Use task/cgroup.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The <filename>slurm.conf</filename> setting
+    <literal>MsgAggregationParams</literal> has been removed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Layouts have been removed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The plug-in <literal>switch/generic</literal> has been removed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The <literal>JobCompLoc</literal> URL endpoint when the
+    <literal>JobCompType=jobcomp/elasticsearch</literal>
+    plugin is enabled is now fully configurable and the plugin no longer
+    appends a hardcoded <literal>/slurm/jobcomp</literal> index and type
+    suffix to it.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Support for the option <literal>default_gbytes</literal> in
+    <literal>SchedulerParameters</literal> has been removed.
+   </para>
+  </listitem>
+ </itemizedlist>
+</section>

@@ -1,0 +1,31 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#database]
+=== Databases
+
+// Release notes for databases:
+//    PostgreSQL, MariaDB, ...
+
+[#jsc-PED-7803]
+==== Full support for PostgreSQL
+
+The PostgreSQL database is now fully supported by {suse}. You no longer need an external support contract.
+
+[#jsc-PED-8160]
+==== pgAdmin has been updated
+
+The `pgadmin4` package has been updated to version 8.5.
+It is now part of the _Python 3 Module_.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+

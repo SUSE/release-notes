@@ -1,0 +1,18 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#authentication]
+=== Authentication
+
+// Release notes for authentication tools:
+//   Active Directory, LDAP, Kerberos, Samba, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

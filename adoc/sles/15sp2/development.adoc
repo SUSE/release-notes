@@ -1,0 +1,169 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#development]
+=== Development
+
+// Release Notes for Development tool/library features:
+//   JVM, Python, GCC, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-18756]
+==== `python3-jsonschema` has been updated
+
+The `python3-jsonschema` has been updated to version 3.2.0.
+See the https://github.com/python-jsonschema/jsonschema/blob/main/CHANGELOG.rst#v320[full changelog] for more information.
+
+
+[#jsc-SLE-11316]
+==== `pytest` has been updated
+
+Several different versions of `pytest` have been added or updated:
+
+* python2-pytest4/python3-pytest4 - version 4.6.9, the last version with Python 2 support
+* python2-pytest/python3-pytest - version 3.10.1
+* python3-pytest5 - version 5.3.5, the latest Pytest version
+
+
+[#jsc-SLE-17159]
+==== `python-kubernetes` has been added
+
+The `python-kubernetes` package has been added.
+It is the official Python client library for Kubernetes.
+
+
+[#jsc-SLE-10669]
+==== `python-apache-libcloud` Has Been Updated to Version 2.8.0
+
+The package `python-apache-libcloud` has been updated to version 2.8.0.
+This release contains important fixes and enhancements over 2.0.0, especially for new APIs related to Microsoft Azure, and Amazon EC2 zones.
+For more information about the changes in this release, see http://libcloud.apache.org/blog/2020/01/02/libcloud-2-8-0-released.html.
+
+
+[#jsc-SLE-12475]
+==== `golang-packaging` Has Been Updated to Version 15.0.12
+
+The package `golang-packaging` has been updated to version 15.0.12.
+This release improves compatibility with Go 1.10 and Bazel.
+
+
+[#jsc-SLE-12396]
+==== Git Has Been Updated to Version 2.26.2
+
+{product} now includes version 2.26.2 of the version control Git.
+This version of Git supports the SHA-256 cipher.
+
+For more informationm, see the link:https://github.com/git/git/blob/main/Documentation/RelNotes/2.26.0.txt[Git Release Notes].
+
+This update fixes the following security vulnerabilities:
+
+* https://www.suse.com/security/cve/CVE-2017-15298
+* https://www.suse.com/security/cve/CVE-2018-11233
+* https://www.suse.com/security/cve/CVE-2018-11235
+* https://www.suse.com/security/cve/CVE-2018-17456
+* https://www.suse.com/security/cve/CVE-2019-1348
+* https://www.suse.com/security/cve/CVE-2019-1349
+* https://www.suse.com/security/cve/CVE-2019-1350
+* https://www.suse.com/security/cve/CVE-2019-1351
+* https://www.suse.com/security/cve/CVE-2019-1352
+* https://www.suse.com/security/cve/CVE-2019-1353
+* https://www.suse.com/security/cve/CVE-2019-1354
+* https://www.suse.com/security/cve/CVE-2019-1387
+* https://www.suse.com/security/cve/CVE-2019-19604
+* https://www.suse.com/security/cve/CVE-2020-11008
+* https://www.suse.com/security/cve/CVE-2020-5260
+
+
+[#jsc-SLE-12188]
+==== `jq` Has Been Updated to Version 1.6
+
+{product} 15 SP2 now includes the JSON query tool `jq` in version 1.6.
+For more information about this release, see link:https://github.com/stedolan/jq/releases/tag/jq-1.6[the upstream release notes].
+
+
+[#development-java-versions]
+==== Supported Java Versions
+
+The following Java implementations are available in {product} {this-version}:
+
+// relevant source: https://confluence.suse.com/display/SLEPM/openJDK+lifecycle
+//             and: bsc#1171541
+
+[cols="33%,17%,17%,33%" options="header"]
+|===
+|Name (Package Name)
+|Version
+|Module
+|Support
+
+|OpenJDK +
+(`java-11-openjdk`)
+|11
+|Base System
+|SUSE, L3, until 2026-12-31
+
+|OpenJDK +
+(`java-17-openjdk`)
+|17
+|Base System
+|SUSE, L3, until 2027-12-31
+
+|OpenJDK +
+(`java-1_8_0-openjdk`)
+|1.8.0
+|Legacy
+|SUSE, L3, until 2026-12-31
+
+|IBM Java +
+(`java-1_8_0-ibm`)
+|1.8.0
+|Legacy
+|External, until 2025-04-30
+|===
+
+
+[#jsc-SLE-7400]
+==== LLVM Has Been Updated to Version 9
+
+We have updated LLVM to version 9 to support new hardware.
+For more information, see the link:https://releases.llvm.org/9.0.0/docs/ReleaseNotes.html[release notes of LLVM 9].
+
+
+[#jsc-SLE-12482]
+==== PHP Has Been Updated to Version 7.4
+
+We upgraded PHP to version 7.4 to provide you with the latest release.
+To learn more about PHP version 7.4, we recommend reading the link:https://www.php.net/releases/7_4_0.php[PHP release announcement] and the link:https://www.php.net/manual/en/migration74.php[7.3.x to 7.4.x migration guide].
+
+
+// Repeated from 15 SP1 release notes, cf. also jsc#SLE-16745
+[#fate-327577]
+==== Python 2 Is Deprecated
+
+The `python` executable is only provided via the __Python 2__ module, not via the default repositories.
+
+With {product} 15 SP1, {suse} has started to phase out support for Python 2 in {slea}.
+Within the standard distribution, only Python 3 (executable name `python3`) is available.
+Python 2 (executable names `python2` and `python`) is only provided via the __Python 2__ {slea} module.
+This module is disabled by default and will be removed entirely starting with {slea} 15 SP4.
+
+Python scripts usually expect the `python` executable (without a version number) to refer to the Python 2.x interpreter.
+If the Python 3 interpreter is started instead, this can lead to misbehaving applications.
+For this reason, SUSE has decided to _not_ ship a symbolic link `/usr/bin/python` pointing to the Python 3 executable.
+
+To run Python 2 scripts, make sure to enable the Python 2 module and install the package `python`.
+
+
+[#jsc-SLE-12199]
+==== SCons Has Been Updated to Version 3.1.2
+
+The SCons build tool is now available in version 3.1.2.
+For more information about the new version, see the link:https://raw.githubusercontent.com/SCons/scons/rel_3.1.2/src/CHANGES.txt[upstream change log].

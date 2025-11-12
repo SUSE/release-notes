@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+
+<section id="InfraPackArch.ArchIndependent">
+ <title>Architecture Independent Information</title>
+
+ <section id="InfraPackArch.ArchIndependent.Kernel">
+  <title>Kernel</title>
+  <para/>
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Kernel_Modules">
+  <title>Kernel Modules</title>
+  <!-- 2014-03-19, ke: bnc#869159 -->
+  <!-- 2014-04-29, ke: find the same text in the SLED RN -->
+  <para>
+   An important requirement for every Enterprise operating system is the
+   level of support a customer receives for his environment.  Kernel
+   modules are the most relevant connector between hardware
+   ("controllers") and the operating system.
+  </para>
+
+  <para>
+   <!--  bnc#869159 -->
+   For more information about the handling of kernel modules, see the
+   &sle; Administration Guide.
+  </para>
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent.Security">
+  <title>Security</title>
+
+  <para/>
+   <!-- bnc#734148 -->
+   <!-- now see fate#317116 -->
+   <!-- <title>SELinux Enablement</title> -->
+
+  <!-- now see fate#317117 -->
+  <!-- <title>Enablement for TPM/Trusted Computing</title> -->
+
+  <!-- now fate#317023 -->
+  <!-- <section> -->
+  <!--  <title>Linux File System Capabilities</title> -->
+
+  <!-- https://bugzilla.novell.com/show_bug.cgi?id=448734#c27 -->
+  <!-- bnc#870103 -->
+  <!-- <section> -->
+  <!--  <title>Removable Media</title> -->
+
+   <!-- https://bugzilla.novell.com/show_bug.cgi?id=448734#c29  -->
+   <!-- <section> -->
+   <!--  <title>Verbose Audit Records for System User Management Tools</title> -->
+ </section>
+
+ <section id="InfraPackArch.ArchIndependent.Network">
+  <title>Networking</title>
+
+  <para/>
+
+ <!-- For the moment, track version info here -->
+ <!-- stop including unchecked entries
+ <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="features-network.xml"/>
+ -->
+
+   <!-- <title>Bind Update to Version 9.9</title> -->
+   <!-- href="https://fate.novell.com/308859" -->
+   <!-- bnc#831891 -->
+
+   <!-- https://bugzilla.novell.com/show_bug.cgi?id=832264 -->
+   <!-- <title>Enabling NFS 4.1 for nfsd</title> -->
+
+  <!-- https://bugzilla.novell.com/show_bug.cgi?id=778116 -->
+  <!-- https://bugzilla.novell.com/show_bug.cgi?id=870129 -->
+  <!--
+  <section>
+   <title>Mounting NFS Volumes Locally on the Exporting Server</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    Mounting NFS volumes locally on the exporting server is not
+    supported on SUSE Linux Enterprise systems, as it is the case on all
+    Enterprise class Linux systems.
+   </para>
+  </section>
+  -->
+<!-- 
+  <section>
+   <!-\- bnc#810756, ke 2013-03-21 -\->
+   <!-\- commented, will come thru fate, 2013-03-25 -\->
+   <title>Broadcom bnx2x Driver Limitation</title>
+   <para>
+    Only the initial SR-IOV Linux support is available. SR-IOV is
+    planned to be supported in future SLES releases and with PLDP
+    drivers.
+   </para>
+  </section>
+-->
+
+  <!-- https://bugzilla.novell.com/show_bug.cgi?id=725246 -->
+  <!-- fate#315946 -->
+   <!-- <title>Loading the mlx4_en Adapter Driver with the Mellanox ConnectX2 Ethernet Adapter</title> -->
+
+
+   <!--  https://bugzilla.novell.com/show_bug.cgi?id=448734#c28 -->
+   <!-- bnc#870132, waiting for feedback -->
+   <!--
+   <section>
+    <title>Using the System as a Router</title>
+    <para>CHECKIT:SLE11.3</para>
+    <para>
+     As long as the firewall is active, the option
+     <filename>ip_forwarding</filename> will be reset by the firewall
+     module. To activate the system as a router, the variable
+     <filename>FW_ROUTE</filename> has to be set, too. This can be done
+     through <command>yast2 firewall</command> or manually.
+    </para>
+   </section>
+   -->
+ </section>
+
+ <!-- <section id="InfraPackArch.ArchIndependent.Cross"> -->
+ <!--  <title>Cross Architecture Information</title> -->
+
+ <!--  <para/> -->
+  <!-- 2013-12-03: fate#316761
+  <section>
+   <title>Myricom 10-Gigabit Ethernet Driver and Firmware</title>
+   <!-\- https://bugzilla.novell.com/show_bug.cgi?id=448734#c47  -\->
+   <!-\- https://bugzilla.novell.com/show_bug.cgi?id=736148 -\->
+   <para>
+    &sle; 11 (x86, x86_64 and IA64) is using the Myri10GE driver from
+    mainline Linux kernel. The driver requires a firmware file to be
+    present, which is not being delivered with &sle; 11.
+   </para>
+   <para>
+    Download the required firmware at <ulink url="http://www.myricom.com"/>.
+   </para>
+  </section>
+  -->
+ <!-- </section> -->
+</section>

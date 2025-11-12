@@ -1,0 +1,49 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-databases]
+=== Databases
+
+// Release notes for Database features:
+//    PostgreSQL, MariaDB, ...
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-SLE-20553]
+==== `unixODBC` package drivers not for production
+
+Drivers in the `unixODBC` package are not suitable for production use.
+The drivers are provided for test purposes only.
+We have added a reference to the package's README file with information about third-party `unixODBC` drivers that are suitable for production use (http://www.unixodbc.org/drivers.html).
+
+
+// jsc#SLE-13589
+[#jsc-SLE-11413]
+==== `psqlODBC` Has Been Added
+
+The `psqlODBC` package version `12.01.0000` has been added.
+
+[#jsc-SLE-11078]
+==== PostgreSQL 12 Has Been Added
+
+PostgreSQL 12 has been added to {product}.
+PostgreSQL 10 remains available in {product} 12{nbsp}SP5.
+
+For information about changes between PostgreSQL 10 and 12, see the upstream release notes:
+
+* https://www.postgresql.org/docs/11/release-11.html
+* https://www.postgresql.org/docs/12/release-12.html
+
+With PostgreSQL 12, there are the following packaging changes:
+
+* Functionality that was available in the package `postgresql10-devel` is now split into `postgresql12-devel` (for building database clients) and `postgresql12-server-devel` (for building server extensions).
+* There is a new optional package called `postgresql12-llvmjit`.
+
+All new packages have an accompanying `noarch` package without a version number in its name, such as `postgresql-server-devel` and `postgresql-llvmjit`.

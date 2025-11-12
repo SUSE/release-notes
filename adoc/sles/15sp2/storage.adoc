@@ -1,0 +1,76 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#storage]
+=== Storage
+
+// Release Notes for Storage tool/library features:
+//   Snapper, ntfs-3g, ceph, ... (not: kernel features)
+
+This section comprises notes related to storage software that is not delivered as part of the Linux kernel.
+For features integrated into the kernel, see <<kernel>>.
+
+
+////
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1192592]
+==== Software RAID auto assembly disabled
+
+Starting in {this-version}, MD/RAID auto-assembly is disabled by default.
+To enable it again, use the `autoassembly=1` boot option.
+
+
+[#jsc-SLE-17090]
+==== Support for NVMe over Fabrics (NVMe-oF) in `dracut` Has Been Added
+
+A module has been added to `dracut` to support installation and booting to NVMe-oF-based storage.
+
+
+[#jsc-SLE-10853]
+==== Legacy Block Layer Has Been Removed
+
+In {producta} {this-version}, there is no legacy block layer anymore.
+All the devices are handled by the `blk-mq` framework.
+
+For more information, see the __System Analysis and Tuning Guide__ at {doc-url}/html/SLES-all/cha-tuning-io.html
+
+
+[#jsc-SLE-7682]
+==== Additional `libstoragemgmt` Plugins
+
+Plugins for HP (hpsa) and LSI (megaraid) hardware are now available for the `libstoragemgmt` package.
+
+
+[#jsc-SLE-7687]
+==== Boot Will Succeed Even If Encrypted Network Devices Are Unavailable
+
+In previous versions of {product}, when a file system relied on an encrypted network block device (such as iSCSI), systemd would wait for the network block device before setting up networking.
+If the cryptsetup device could not be initialized, the boot process could fail, leaving you in emergency mode.
+This happened because there was no way to indicate in `/etc/crypttab` that a cryptsetup device requires network.
+
+To prevent this scenario from happening, the new option `_netdev` has been introduced in `/etc/crypttab`.
+It can be used to mark cryptsetup devices as requiring network.
+Such devices will only be initialized after networking is available, similarly to `/etc/fstab` entries marked with `_netdev`.
+New versions of the {yast} installer are aware of this option and will use it accordingly.
+
+If your system was installed with an older version of the {yast} installer, the option might be missing.
+In this case, add the option manually to relevant entries of your `/etc/crypttab` file.
+
+
+// related: jsc#SLE-5498
+[#bsc-1170209]
+==== LVM2 Has Been Updated to 2.03.05
+
+LVM2 has been updated to version 2.03.05.
+To simplify the design, `lvmetad` was removed.
+Its functionality was consolidated into the improved LVM2 operations.
+
+During boot, `pvscan` is now fast enough to handle a large number of disks without `lvmetad`.
+Native disk scanning is both reduced and synchronous (parallelized), which makes it comparable in performance (and often faster) when compared to LVM using `lvmetad`.

@@ -1,0 +1,17 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#resources]
+== Resources and Resource Agents
+
+This section lists information related to resources and resource agents in {product}{nbsp}{this-version}.
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

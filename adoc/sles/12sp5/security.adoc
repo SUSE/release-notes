@@ -1,0 +1,103 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-security]
+=== Security
+
+// Release Notes for Security tool/library features:
+//    new TLS standards in OpenSSL, new nmap feature, ...
+//    (not: security bugs/fixes in applications)
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#jsc-PED-8000]
+==== New 4096-bit signing key
+
+{sle} 15 product family switched over from a RSA 2048-bit signing key to a new RSA 4096-bit key.
+This change covers RPM packages, package repositories and ISO signatures.
+For more information see https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-update-preparation.html#sec-update-preparation-update
+
+
+[#bsc-1222298]
+==== openSSH 8.4
+
+A parallel, installable version of the `openssh` package is now available.
+The default `openssh` version is kept due to incompatibility.
+Transition to `openssh` 8.4 needs to be started manually by doing:
+
+```bash
+zypper in openssh8.4-server
+zypper in openssh8.4-clients
+```
+
+When `zypper` prompts you, select de-installation of the regular `openssh` and
+installation of the new `openssh8.4` packages.
+
+After doing this review if the service starts or if it needs configuration
+adjustments.
+
+For more information see https://lists.suse.com/pipermail/sle-updates/2024-March/034754.html.
+
+
+[#jsc-SLE-22569]
+==== Restricting privilege listing with `sudo`
+
+Previously, user with `ALL` commands allowed in the `/etc/sudoers` file could list other users' (including root's) privileges using the `-U` and `-l` options.
+
+This has been restricted only to users which have `ALL` privileges specified in the `/etc/sudoers` file.
+
+
+// text comes from SLE-17083
+[#jsc-SLE-7186]
+==== `sudo` has been updated
+
+The `sudo` package has been updated to the version 1.8.27.
+Among others, there are the following notable changes:
+
+* PAM account management modules and BSD authentication approval modules are now run even when no password is required.
+* The LDAP and SSS back-ends now use the same rule evaluation code as the `sudoers` file backend.
+* On systems using PAM, `sudo` now ignores the `PAM_NEW_AUTHTOK_REQD` and `PAM_AUTHTOK_EXPIRED` errors from PAM account management if authentication is disabled for the user.
+
+
+[#jsc-SLE-12751]
+==== Upgraded `mod_nss` to Enable TLS 1.3
+
+The Network Security Services module for the Apache2 server (`apache2-mod_nss`) was updated to version 1.0.17.
+This enables the server to handle connections via the more secure TLS 1.3 protocol.
+
+[#kernel-parameter-fs-protected-hardlinks]
+==== Kernel Parameter `fs.protected_hardlinks`
+
+The kernel parameter `fs.protected_hardlinks` is active by default in {suse} products.
+Deactivating it introduces additional vectors for malicious local users to escalate their privileges.
+If you need to deactivate it please refer to this https://www.suse.com/support/kb/doc/?id=7024245[knowledge base article] for additional information.
+
+
+[#jsc-SLE-5502]
+==== Added SELinux Policy Core Utilities
+
+The Package `policycoreutils` contains utilities required for the basic operation of a SELinux system.
+These utilities include `load_policy` to load policies, `setfiles` to label filesystems, `newrole` to switch roles, and `run_init` to run `/etc/init.d` scripts in the proper context.
+
+
+[#jsc-SLE-9180]
+==== `ibmtss` Update Changes Path to Binaries
+
+IBM's TPM 2.0 TSS implementation has been updated upstream.
+The update now allows to install binaries in `/usr/bin/` rather than having to copy them manually into a custom directory.
+As a consquence, the binaries had to be renamed in order to not conflict with other programs of the same name.
+All binaries shipped with the `ibmtss` package are now prefixed with `tss`.
+So `/usr/lib/ibmtss/hash` for example, is now available as `/usr/bin/tsshash`.
+
+
+==== Notable Updates
+
+//jsc-SLE-6951
+* `gssproxy`: Added support for Kerberos authentication on NFSv4.

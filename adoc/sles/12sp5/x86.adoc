@@ -1,0 +1,117 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#x86-64]
+== AMD64/Intel 64-Specific Features & Fixes (x86_64)
+
+Information in this section applies to the version of {product} {this-version} for the AMD64/Intel 64 architectures.
+
+// X86_64-specific release notes go here (see below for Kernel modules)
+
+////
+=== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+[#bsc-1181589]
+=== Running 32-bit applications
+
+{suse} does not support 32-bit development on {slea} {this-version}.
+32-bit runtime environments are available with {slea} {this-version}.
+If there is a need to develop 32-bit applications to run in the {slea} {this-version} 32-bit runtime environment, use the {slea} 11 32-bit development tools to create these applications.
+
+
+=== Notable Updates
+
+[#x86-64-virtualization]
+==== Virtualization
+
+* Subpage protechtion
+* Support for new Tremont AiA instructions
+* Model-specific Split Lock Disable support
+//[jsc-SLE-4771]
+* new CLDEMOT instructions (SnowRidge)
+// [jsc-SLE-4930]
+* PT v4 (Intel  Processor Trace buffer) for SnowRidge,
+* enable ICX NIs for XEN
+
+
+[#x86-64-driver]
+==== Driver Updates
+
+* e1000e
+* fm10k
+* i40e
+* i40iw
+* iavf (i40evf)
+* ice
+* icrdma
+* igb
+* igbvf
+* igc
+* ixgbe
+* ixgbevf
+
+
+[#x86-64-packages]
+==== Package Updates
+
+* ipmctl
+* ledmon
+* mdadm
+
+[#x86-64-hardware]
+==== Hardware
+
+* Extened Crystal Ridge support
+* Extended Intel omni-path architecture support
+* Extended Jacobsville support for
+** SPI-NOR
+** GPIO
+** new enumeration of #AC for split lock
+* Whitley/Icelake-SP Platform patches adding enhancements like `rep mov` for memcpy_mcsafe
+
+[#jsc-SLE-7166]
+=== Intel Optane DC Persistent Memory Operating Modes
+
+Intel Optane DC Persistent Memory has two operating modes, AppDirect mode and Memory Mode.
+
+In Memory Mode, the Optane DIMMs serve as cost-effective DRAM replacement.
+To applications the Optane memory is presented as volatile memory (that is, not persistent), just like on DRAM-only systems.
+In reality this is a combination of Optane and DRAM, where DRAM acts as a cache for the most frequently-accessed data, while the Optane persistent memory provides large memory capacity.
+The setup is slower with random access workloads than on DRAM-only systems, but allows for higher capacity memory and is more cost-effective.
+In this mode, data is not persistent, which means it is lost when the system is powered off.
+
+Intel Optane running in memory mode is supported with SUSE Linux Enterprise Server running on certified platforms.
+Users running applications that take advantage of this mode must understand that without specific enhancements performance may decrease.
+
+Direct any hardware related questions at your hardware partner.
+SUSE works with all major hardware vendors to make the use of Intel Optane a perfect user experience on the operating system level and open-source infrastructure level.
+
+[#bsc-1158191]
+=== Intel Omni-Path Architecture (OPA) Host Software
+
+Intel Omni-Path Architecture (OPA) host software is fully supported in {product} {this-version}.
+
+Intel OPA provides Host Fabric Interface (HFI) hardware with initialization and setup for high performance data transfers (high bandwidth, high message rate, low latency) between compute and I/O nodes in a clustered environment.
+
+For instructions on installing Intel Omni-Path Architecture documentation, see https://cdrdv2.intel.com/v1/dl/getContent/617176.
+
+
+[#jsc-SLE-4787]
+=== sysfs Support for Dirty Shutdown Count
+
+ACPI 6.3 introduces an a unlatched shutdown count. This will be supported by adding a static attribute to nmemX/nfit/.
+On machines that do not have ACPI 6.3, a fallback (NVDIMM_FAMILY_INTEL) is provided.
+
+=== Miscellaneous
+
+//[jsc-SLE-7196]
+* VMA based swap readahead
+
+
+
+

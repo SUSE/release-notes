@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi" product="Beta SUSE Linux Enterprise Desktop 15 SP1" component="Maintenance" assignee="lukas.kucharczyk@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</productname>
+  <productnumber>15 SP1</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+<!-- msvec and marketing, 2013-05-13 -->
+   <para>
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension is an enterprise-quality Linux desktop with market-leading
+    usability and interoperability. This document provides an overview of
+    high-level general features, capabilities, and limitations of SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 15 SP1
+    and important product updates.
+   </para>
+
+   <para condition="beta;pre">
+    This product will be released in June 2019. The latest version of these
+    release notes is always available at
+    <ulink url="https://www.suse.com/releasenotes"/>. Drafts of the general
+    documentation can be found at
+    <ulink url="https://susedoc.github.io/#sled"/>.
+   </para>
+
+   <para condition="maintained">
+    These release notes are updated periodically. The latest version is
+    always available at <ulink url="https://www.suse.com/releasenotes"/>.
+    General documentation can be found at:
+    <ulink url="https://www.suse.com/documentation/documentation/sled-15"/>.
+   </para>
+
+   <para condition="unmaintained">
+    The support period for SUSE Linux Enterprise Desktop/SUSE Linux
+    Enterprise Workstation Extension 15 SP1 has ended. To keep systems
+    secure and supported, upgrade to a current SUSE Linux Enterprise
+    Desktop/SUSE Linux Enterprise Workstation Extension version. Before
+    starting the upgrade, make sure to apply all maintenance updates.
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="rn.about">
+  <title>About the Release Notes</title>
+  <para>
+   The most recent version of the Release Notes is available online at
+   <ulink url="https://www.suse.com/releasenotes"/>.
+  </para>
+  <para>
+   Entries can be listed multiple times if they are important and belong to
+   multiple sections.
+  </para>
+  <para>
+   Release notes only list changes that happened between two subsequent
+   releases. Always review all release notes documents that apply in your
+   upgrade scenario.
+  </para>
+ </section>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</title>
+  <para>
+   SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension
+   is the market's only enterprise-quality Linux desktop ready for routine
+   business use. Developed and backed by SUSE, SUSE Linux Enterprise
+   Desktop/SUSE Linux Enterprise Workstation Extension provides
+   market-leading usability, seamless interoperability with existing IT
+   systems, and dozens of essential applications—all at a fraction of the
+   price of proprietary operating systems.
+  </para>
+  <section id="Intro.Interoperability">
+   <title>Interoperability and Hardware Support</title>
+<!-- Novell Teaming is now Micro Focus Vibe. Not sure we still integrate
+  with it. - sknorr, 2016-10-21 -->
+   <para>
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension comes bundled with the latest versions of leading applications
+    such as LibreOffice office productivity suite, Mozilla Firefox Web
+    browser, and Evolution e-mail and calendar suite. In addition, it
+    integrates with Microsoft SharePoint
+<!--and Novell Teaming -->
+    for group collaboration and supports a wide range of multimedia file
+    formats, wireless and networking standards, and plug-and-play devices.
+   </para>
+   <para>
+    Through the latest enhancements in power management and security, SUSE
+    Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension
+    also provides an environmentally friendly IT experience (Green IT) and
+    an error-proof desktop. Finally, SUSE Linux Enterprise Desktop/SUSE
+    Linux Enterprise Workstation Extension offers unparalleled flexibility.
+    You can deploy it on a wide range of thick client devices (including
+    desktops, notebooks, netbooks, and workstations), on thin client
+    devices, or as a virtual desktop. By leveraging the power of SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension, your
+    business can dramatically reduce costs, improve end user security and
+    increase workforce productivity.
+   </para>
+  </section>
+  <section id="Intro.New">
+   <title>What Is New?</title>
+   <para>
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension 15 introduces many innovative changes compared to SUSE Linux
+    Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 12.
+<!--The most important changes are listed below: -->
+   </para>
+<!-- FIXME: Find out highlights of SLED 15 - sknorr, 2017-08-18 -->
+<!--<itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Feature 1:</title>
+     <para>
+      It exists!
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Feature 2:</title>
+     <para>
+      It is great!
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist> -->
+  </section>
+<!-- <section id="Intro.Certification" role="remove-empty">
+   <title>Security, Standards, and Certification</title>
+   <para/>
+  </section>
+ </section> -->
+  <section id="Intro.Important">
+   <title>Important Sections of This Document</title>
+   <para>
+    If you are upgrading from a previous SUSE Linux Enterprise Desktop/SUSE
+    Linux Enterprise Workstation Extension release, you should review at
+    least the following sections:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section id="Intro.Lifecycle">
+   <title>Support and Life Cycle</title>
+   <para>
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension is backed by award-winning support from SUSE, an established
+    technology leader with a proven history of delivering enterprise-quality
+    support services.
+   </para>
+<!-- bsc#882262, bsc#999197 -->
+   <para>
+<!-- FIXME: Is 10 years correct for SLED 15? - sknorr, 2017-10-20 -->
+    SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation
+    Extension 15 has a 10-year life cycle. The current version (15 SP1) will
+    be fully maintained and supported until 6 months after the release of
+    SUSE Linux Enterprise 15 SP2.
+   </para>
+   <para>
+    SUSE does not support skipping Service Packs of SUSE Linux Enterprise
+    Desktop/SUSE Linux Enterprise Workstation Extension when upgrading.
+   </para>
+   <para>
+    For more information, see:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      The support policy at
+      <ulink url="https://www.suse.com/support/policy.html"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section id="Intro.Support">
+   <title>Support Statement for SUSE Linux Enterprise Desktop/SUSE Linux Enterprise Workstation Extension</title>
+   <para>
+    To receive support, you need an appropriate subscription with SUSE. For
+    more information, see
+    <ulink url="https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Desktop"/>.
+   </para>
+   <para>
+    The following definitions apply:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term>L1</term>
+     <listitem>
+      <para>
+       Problem determination, which means technical support designed to
+       provide compatibility information, usage support, ongoing
+       maintenance, information gathering and basic troubleshooting using
+       available documentation.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L2</term>
+     <listitem>
+      <para>
+       Problem isolation, which means technical support designed to analyze
+       data, reproduce customer problems, isolate problem area and provide a
+       resolution for problems not resolved by Level 1 or prepare for
+       Level 3.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>L3</term>
+     <listitem>
+      <para>
+       Problem resolution, which means technical support designed to resolve
+       problems by engaging engineering to resolve product defects which
+       have been identified by Level 2 Support.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <para>
+    For contracted customers and partners, SUSE Linux Enterprise
+    Desktop/SUSE Linux Enterprise Workstation Extension 15 SP1 is delivered
+    with L3 support for all packages, except for the following:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Technology Previews
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Sound, graphics, fonts and artwork
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Packages that require an additional customer contract
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    SUSE will only support the usage of original packages. That is, packages
+    that are unchanged and not recompiled.
+   </para>
+  </section>
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+   <para/>
+   <section id="Intro.Documentation.Media">
+    <title>On the Product Medium</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       For general product information, see the file
+       <filename>README</filename> <phrase condition="beta">and the file
+       <filename>README.BETA</filename></phrase> in the top level of the
+       product medium.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For a chronological log of all changes made to updated packages, see
+       the file <filename>ChangeLog</filename> in the top level of the
+       product medium.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Detailed change log information about a particular package is
+       available using RPM:
+      </para>
+<screen>rpm --changelog -qp <replaceable>FILE_NAME.rpm</replaceable></screen>
+      <para>
+       (Replace <replaceable>FILE_NAME.rpm</replaceable> with the name of
+       the RPM.)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For more information, see the directory <filename>docu</filename> of
+       the product medium of SUSE Linux Enterprise Desktop/SUSE Linux
+       Enterprise Workstation Extension 15 SP1.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+   <section id="Intro.Documentation.External">
+    <title>Externally Provided Documentation</title>
+    <itemizedlist>
+     <listitem>
+      <para>
+       <phrase condition="beta;pre"><ulink url="https://susedoc.github.io/#sled"/></phrase>
+       <phrase condition="maintained;unmaintained"><ulink url="https://www.suse.com/documentation/documentation/sled-15"/></phrase>
+       contains additional or updated documentation for SUSE Linux
+       Enterprise Desktop/SUSE Linux Enterprise Workstation Extension 15
+       SP1.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Find a collection of White Papers in the SUSE Linux Enterprise
+       Desktop/SUSE Linux Enterprise Workstation Extension Resource Library
+       at <ulink url="https://www.suse.com/products/desktop/#resources"/>.
+      </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+  </section>
+ </section>
+ <section id="Intro.Derived_Products">
+  <title>Related Products</title>
+  <para>
+   This section lists related products. These products have own release
+   notes documents that are available from
+   <ulink url="https://www.suse.com/releasenotes"/>.
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     SUSE Enterprise Storage:
+     <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     SUSE Linux Enterprise Server:
+     <ulink url="https://www.suse.com/products/server"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     SUSE Linux Enterprise Server for SAP Applications:
+     <ulink url="https://www.suse.com/products/sles-for-sap"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     SUSE OpenStack Cloud:
+     <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     SUSE Manager: <ulink url="https://www.suse.com/products/suse-manager"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+<!-- FIXME: List with one entry ahead. - sknorr, 2017-10-20 -->
+   Additionally, there is the following extension which is not covered by
+   SUSE support agreements, available at no additional cost and without an
+   extra registration key:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+  <title>Systems Management</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-319428" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/319428" -->
+   <title>Support for Socket-Based Services Activation</title>
+   <para>
+    <emphasis>Systemd allows for new ways of starting services, such as the
+    so-called socket-based activation. Services which are configured to be
+    started on demand will not run until it is needed, for example, when a
+    new request comes in.</emphasis>
+   </para>
+   <para>
+    The YaST Services Manager has been extended to allow setting services to
+    be started on-demand. Currently, only a subset of services supports this
+    configuration. The current start mode is displayed in the column
+    <emphasis>Start</emphasis> of the YaST Services Manager. In the
+    drop-down box <emphasis>Start Mode</emphasis> of the YaST Services
+    Manager, the mode <emphasis>On-demand</emphasis> will only be shown when
+    it is available for the selected service.
+   </para>
+   <para>
+    Additionally, the table column <emphasis>Active</emphasis> has been
+    adapted to show the correct value provided by Systemd.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Storage" remap="InfraPackArch:ArchIndependent:Storage">
+  <title>Storage</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-323843" remap="InfraPackArch:ArchIndependent:Storage">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/323843" -->
+   <title>Displaying Disk Space Used by Snapper Snapshots</title>
+   <para>
+    <emphasis>Previously, it was hard to calculate the disk space
+    consumption of an individual Btrfs snapshot when the qgroups (quota
+    groups) feature was enabled.</emphasis>
+   </para>
+   <para>
+    Starting with SLE 15 SP1, Snapper shows the disk space used by
+    individual snapshots when running <literal>snapper list</literal> even
+    if Btrfs quotas are enabled.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+  <title>Networking</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-325872" remap="InfraPackArch:ArchIndependent:Network">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325872" -->
+   <title>resolv.conf Is Now Located in /run</title>
+   <para>
+    Starting with SLE 15 SP1, both Wicked and NetworkManager will write the
+    file <literal>resolv.conf</literal> into the <literal>/run</literal>
+    directory instead of in <literal>/etc</literal>.
+    <literal>/etc/resolv.conf</literal> will still exist as a symbolic link.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.Misc">
+  <title>Miscellaneous</title>
+  <para/>
+  <section role="notoc" id="jsc-SLE-24988" remap="InfraPackArch:ArchIndependent:Misc">
+    <title>Enriched system visibility in the SUSE Customer Center (SCC)</title>
+    <para>
+     SUSE is committed to helping provide better insights into the consumption
+     of SUSE subscriptions regardless of where they are running or how they
+     are managed; physical or virtual, on-prem or in the cloud, connected to SCC
+     or Repository Mirroring Tool (RMT), or managed by SUSE Manager. To help you identify or filter out
+     systems in SCC that are no longer running or decommissioned, SUSEConnect
+     now features a daily “ping”, which will update system information
+     automatically.
+    </para>
+    <para>
+     For more details see the documentation at <ulink url="https://susedoc.github.io/doc-unversioned/main/single-html/SLE-suseconnect-tracking/" />.
+    </para>
+   </section>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-326682" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326682" -->
+   <title>HiDPI support in GNOME</title>
+   <para>
+    Starting with SLE 15 SP1, there are several improvements to HiDPI
+    support. If the DPI of your display is greater than 144, GNOME will
+    scale the Session to a 2:1 ratio automatically and deliver you a crisp
+    and sharp user experience. You can adjust the scaling-factor value
+    manually under GNOME Control Center's display panel.
+   </para>
+   <para>
+    However, there are limitations to this support:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Fractional scaling is still considered experimental in GNOME 3.26.2,
+      so you can only set the scaling factor to a whole number.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      X11 apps may appear blury under a HiDPI Wayland session (via
+      XWayland), as per-display scaling is not supported on X11.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Using multiple monitors with different DPI is not supported,
+      scale-monitor-framebuffer is still an immature feature so you cannot
+      set per-monitor scales in GNOME Control Center.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section role="notoc" id="fate-325763" remap="InfraPackArch:ArchIndependent:Misc">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325763" -->
+   <title>GNOME Initial Setup (gnome-initial-setup) Provides User Configuration</title>
+   <para>
+    SLED 15 SP1 now uses the upstream GNOME Initial Setup tool (<literal>gnome-initial-setup</literal>) the first time a user logs in.
+    However, as many settings for user are already made by the system
+    installation (that is by YaST or autoyast), GNOME Initial Setup will
+    only configure keyboard layout/IBus input methods.
+   </para>
+   <para>
+    Other screens of the tool have been disabled. GNOME Initial Setup will
+    also not run prior to the initial login of the first user.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+
+  <section role="notoc" id="bsc-1163166">
+   <!-- originally reported for openSUSE at boo#1091021 -->
+   <title>Use <command>update-alternatives</command> to Set Display Manager and Desktop Session</title>
+   <para>
+    In SLE 12 SP5 and earlier, you could use
+    <filename>/etc/sysconfig</filename> or the YaST module
+    <guimenu>/etc/sysconfig Editor</guimenu> to define the display
+    manager (also called the login manager) and desktop session.
+    Starting with SLE 15 GA, the values are not defined using
+    <filename>/etc/sysconfig</filename> anymore but with the alternatives
+    system.
+   </para>
+   <para>
+    To change the defaults, use the following alternatives:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Display manager: <literal>default-displaymanager</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Wayland session: <literal>default-waylandsession.desktop</literal>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      X desktop session: <literal>default-xsession.desktop</literal>
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For example, to check the value of
+    <literal>default-displaymanager</literal>, use:
+   </para>
+<screen><command>sudo update-alternatives --display default-displaymanager</command></screen>
+   <para>
+    To switch the <literal>default-displaymanager</literal> to
+    <command>xdm</command>, use:
+   </para>
+<screen><command>sudo update-alternatives --set default-displaymanager \
+  /usr/lib/X11/displaymanagers/xdm</command></screen>
+   <para>
+    To enable graphical management of alternatives, use the YaST module
+    <guimenu>Alternatives</guimenu> that can be installed from the package
+    <package>yast2-alternatives</package>.
+   </para>
+  </section>
+
+ </section>
+ <section id="Sourcecode">
+  <title>Obtaining Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material.
+   The source code is available for download at
+   <ulink url="https://www.suse.com/download/sled/"/> on Medium 2.
+   For up to three years after distribution of the SUSE product, upon request,
+   SUSE will mail a copy of the source code.
+   Send requests by e-mail to <ulink url="mailto:sle_source_request@suse.com"/>.
+   SUSE may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Legal">
+  <title>Legal Notices</title>
+  <para>
+   SUSE makes no representations or warranties with regard to the contents
+   or use of this documentation, and specifically disclaims any express or
+   implied warranties of merchantability or fitness for any particular
+   purpose. Further, SUSE reserves the right to revise this publication and
+   to make changes to its content, at any time, without the obligation to
+   notify any person or entity of such revisions or changes.
+  </para>
+  <para>
+   Further, SUSE makes no representations or warranties with regard to any
+   software, and specifically disclaims any express or implied warranties of
+   merchantability or fitness for any particular purpose. Further, SUSE
+   reserves the right to make changes to any and all parts of SUSE software,
+   at any time, without any obligation to notify any person or entity of
+   such changes.
+  </para>
+  <para>
+   Any products or technical information provided under this Agreement may
+   be subject to U.S. export controls and the trade laws of other countries.
+   You agree to comply with all export control regulations and to obtain any
+   required licenses or classifications to export, re-export, or import
+   deliverables. You agree not to export or re-export to entities on the
+   current U.S. export exclusion lists or to any embargoed or terrorist
+   countries as specified in U.S. export laws. You agree to not use
+   deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Refer to
+   <ulink url="https://www.suse.com/company/legal/"/> for more information
+   on exporting SUSE software. SUSE assumes no responsibility for your
+   failure to obtain any necessary export approvals.
+  </para>
+  <para>
+   Copyright © 2010-<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+  <para>
+   This release notes document is licensed under a Creative Commons
+   Attribution-NoDerivatives 4.0 International License (CC-BY-ND-4.0). You
+   should have received a copy of the license along with this document. If
+   not, see <ulink url="https://creativecommons.org/licenses/by-nd/4.0/"/>.
+  </para>
+  <para>
+   SUSE has intellectual property rights relating to technology embodied in
+   the product that is described in this document. In particular, and
+   without limitation, these intellectual property rights may include one or
+   more of the U.S. patents listed at
+   <ulink url="https://www.suse.com/company/legal/"/> and one or more
+   additional patents or pending patent applications in the U.S. and other
+   countries.
+  </para>
+  <para>
+   For SUSE trademarks, see SUSE Trademark and Service Mark list
+   (<ulink url="https://www.suse.com/company/legal/"/>). All third-party
+   trademarks are the property of their respective owners.
+  </para>
+ </section>
+</article>

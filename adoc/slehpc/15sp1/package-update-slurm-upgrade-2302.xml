@@ -1,0 +1,545 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section [
+  <!ENTITY % myents SYSTEM "generic-rn.ent">
+  %myents;
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xl="http://www.w3.org/1999/xlink" xml:id="package-slurm-upgrade-2302">
+  <title>Slurm version 23.02</title>
+  <section>
+    <title>Important Notes on Upgrading Slurm from a Previous Version</title>
+    <para>If using the <literal>slurmdbd</literal> (Slurm DataBase Daemon) you must update this
+      first.</para>
+    <para>If using a backup DBD you must start the primary first to do any
+      database conversion, the backup will not start until this has happened.</para>
+    <para>The 23.02 <literal>slurmdbd</literal> will work with Slurm daemons of version 21.08 and
+      above. You will not need to update all clusters at the same time, but it is very important to
+      update <literal>slurmdbd</literal> first and having it running before updating any other
+      clusters making use of it.</para>
+    <para>Slurm can be upgraded from version 22.05 to version 23.02 without loss
+      of jobs or other state information. Upgrading directly from an earlier version
+      of Slurm will result in loss of state information.</para>
+    <para>All <literal>SPANK</literal> plugins must be recompiled when upgrading from any Slurm
+      version prior to 23.02.</para>
+    <note>
+      <para>PMIx v1.x is no longer supported.</para>
+    </note>
+  </section>
+  <section>
+    <title>Highlights</title>
+    <itemizedlist>
+      <listitem>
+        <para><literal>slurmctld</literal> - Add new RPC rate limiting feature. This is enabled
+          through <literal>SlurmctldParameters=rl_enable</literal>, otherwise disabled by default.</para>
+      </listitem>
+      <listitem>
+        <para>Make <literal>scontrol</literal> reconfigure and sending a <literal>SIGHUP</literal>
+          to the <literal>slurmctld</literal> behave the same. If you were using <literal>
+            SIGHUP</literal> as a 'lighter' scontrol reconfigure to rotate logs please update your
+          scripts to use SIGUSR2 instead.</para>
+      </listitem>
+      <listitem>
+        <para>Change cloud nodes to show by default. <literal>PrivateData=cloud</literal> is no
+          longer needed.</para>
+      </listitem>
+      <listitem>
+        <para><literal>sreport</literal> - Count planned (FKA reserved) time for jobs running in <literal>
+          IGNORE_JOBS</literal> reservations. Previously was lumped into <literal>IDLE</literal>
+          time.</para>
+      </listitem>
+      <listitem>
+        <para><literal>job_container/tmpfs</literal> - Support running with an arbitrary list of
+          private mount points (<literal>/tmp</literal> and <literal>/dev/shm</literal> are the
+          default, but not required).</para>
+      </listitem>
+      <listitem>
+        <para><literal>job_container/tmpfs</literal> - Set more environment variables in <literal>
+          InitScript</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Make all cgroup directories created by Slurm owned by root. This was the
+          behavior in cgroup/v2 but not in cgroup/v1 where by default the step
+          directories ownership were set to the user and group of the job.</para>
+      </listitem>
+      <listitem>
+        <para><literal>accounting_storage/mysql</literal> - change purge/archive to calculate record
+          ages based on end time, rather than start or submission times.</para>
+      </listitem>
+      <listitem>
+        <para><literal>job_submit/lua</literal> - add support for <literal>log_user()</literal> from <literal>
+          slurm_job_modify()</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Run the following scripts in slurmscriptd instead of <literal>slurmctld</literal> : <literal>
+          ResumeProgram</literal>, <literal>ResumeFailProgram</literal>, <literal>
+            SuspendProgram</literal>, <literal>ResvProlog</literal>, <literal>ResvEpilog</literal>,
+          and <literal>RebootProgram</literal> (only with <literal>
+          SlurmctldParameters=reboot_from_controller</literal>).</para>
+      </listitem>
+      <listitem>
+        <para>Only permit changing log levels with <literal>srun --slurmd-debug</literal> by root or <literal>
+          SlurmUser</literal>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>slurmctld</literal> will <literal>fatal()</literal> when reconfiguring the <literal>
+          job_submit</literal> plugin fails.</para>
+      </listitem>
+      <listitem>
+        <para>Add PowerDownOnIdle partition option to power down nodes after nodes become
+          idle.</para>
+      </listitem>
+      <listitem>
+        <para>Add <quote>[jobid.stepid]</quote> prefix from <literal>slurmstepd</literal> and <quote>
+          slurmscriptd</quote> prefix from <literal>slurmcriptd</literal> to Syslog logging.
+          Previously was only happening when logging to a file.</para>
+      </listitem>
+      <listitem>
+        <para>Add purge and archive functionality for job environment and job batch script
+          records.</para>
+      </listitem>
+      <listitem>
+        <para>Extend support for Include files to all "configless" client commands.</para>
+      </listitem>
+      <listitem>
+        <para>Make node weight usable for powered down and rebooting nodes.</para>
+      </listitem>
+      <listitem>
+        <para>Removed <quote>launch</quote> plugin.</para>
+      </listitem>
+      <listitem>
+        <para>Add <quote>Extra</quote> field to job to store extra information other than a comment.</para>
+      </listitem>
+      <listitem>
+        <para>Add usage gathering for AMD (requires ROCM 5.5+) and NVIDIA gpus.</para>
+      </listitem>
+      <listitem>
+        <para>Add job&#8217;s allocated nodes, features, oversubscribe, partition, and reservation
+          to <literal>SLURM_RESUME_FILE</literal> output for power saving.</para>
+      </listitem>
+      <listitem>
+        <para>Automatically create directories for stdout/stderr output files. Paths may use <literal>
+          %j</literal> and related substitution characters as well.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>--tres-per-task</literal> to <literal>salloc</literal>/<literal>
+            sbatch</literal>/<literal>srun</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Allow <literal>nodefeatures</literal> plugin features to work with cloud nodes. e.g. -
+          Powered down nodes have no active changeable features.</para>
+        <itemizedlist>
+          <listitem>
+            <para>Nodes can&#8217;t be changed to other active features until powered
+              down.</para>
+          </listitem>
+          <listitem>
+            <para>Active changeable features are reset/cleared on power down.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>Make <literal>slurmstepd</literal> cgroups constrained by total configured memory from <literal>
+          slurm.conf</literal> (<literal>NodeName=&lt;&gt;
+            RealMemory=#</literal>) instead of total physical memory.</para>
+      </listitem>
+      <listitem>
+        <para><literal>node_features/helpers</literal> - add support for the OR and parentheses
+          operators in a <literal>--constraint</literal> expression.</para>
+      </listitem>
+      <listitem>
+        <para><literal>slurmctld</literal> will <literal>fatal()</literal> when
+          [Prolog|Epilog]Slurmctld are defined but are not executable.</para>
+      </listitem>
+      <listitem>
+        <para>Validate node registered active features are a super set of node&#8217;s
+          currently active changeable features.</para>
+      </listitem>
+      <listitem>
+        <para>On clusters without any <literal>PrologFlags</literal> options, batch jobs with failed
+          prologs nolonger generate an output file.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>SLURM_JOB_START_TIME</literal> and <literal>SLURM_JOB_END_TIME</literal>
+          environment variables.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>SuspendExcStates</literal> option to <literal>slurm.conf</literal> to
+          avoid suspending/powering down specific node states.</para>
+      </listitem>
+      <listitem>
+        <para>Add support for DCMI power readings in IPMI plugin.</para>
+      </listitem>
+      <listitem>
+        <para><literal>slurmrestd</literal> served <literal>/slurm/v0.0.39</literal> and <literal>
+          /slurmdb/v0.0.39</literal> endpoints had major changes from prior versions. Almost all
+          schemas have been renamed and modified. Sites using OpenAPI Generator clients are highly
+          suggested to upgrade to to using atleast version 6.x due to limitations with prior
+          versions.</para>
+      </listitem>
+      <listitem>
+        <para>Allow for <literal>--nodelist</literal> to contain more nodes than required by <literal>
+          --nodes</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Rename <quote>nodes</quote> to <quote>nodes_resume</quote> in <literal>
+          SLURM_RESUME_FILE</literal> job output.</para>
+      </listitem>
+      <listitem>
+        <para>Rename <quote>all_nodes</quote> to <quote>all_nodes_resume</quote> in <literal>
+          SLURM_RESUME_FILE</literal> output.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>jobcomp/kafka</literal> plugin.</para>
+      </listitem>
+      <listitem>
+        <para>Add new <literal>PreemptParameters=reclaim_licenses</literal> option which will allow
+          higher priority jobs to preempt jobs to free up used licenses. (This is only enabled for
+          with <literal>PreemptModes</literal> of <literal>CANCEL</literal> and <literal>REQUEUE</literal>,
+          as Slurm cannot guarantee suspended jobs will release licenses correctly.)</para>
+      </listitem>
+      <listitem>
+        <para><literal>hpe/slingshot</literal> - add support for the instant-on feature.</para>
+      </listitem>
+      <listitem>
+        <para>Add ability to update <literal>SuspendExc*</literal> parameters with <literal>
+            scontrol</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Add ability to restore <literal>SuspendExc*</literal> parameters on restart with <literal>slurmctld
+          -R</literal> option.</para>
+      </listitem>
+      <listitem>
+        <para>Add ability to clear a GRES specification by setting it to "0" via <quote>scontrol
+          update job</quote>.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>SLURM_JOB_OVERSUBSCRIBE</literal> environment variable for <literal>
+          Epilog</literal>, <literal>Prolog</literal>, <literal>EpilogSlurmctld</literal>, <literal>
+          PrologSlurmctld</literal>, and mail ouput.</para>
+      </listitem>
+      <listitem>
+        <para>System node down reasons are appended to existing reasons, separated by ':'.</para>
+      </listitem>
+      <listitem>
+        <para>New command scrun has been added. scrun acts as an Open Container Initiative
+          (OCI) runtime proxy to run containers seamlessly via Slurm.</para>
+      </listitem>
+      <listitem>
+        <para>Fixed <literal>GpuFreqDef</literal> option. When set in <literal>slurm.conf</literal>,
+          it will be used if <literal>--gpu-freq</literal> was not explicitly set by the job step.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>Configuration File Changes (see appropriate man page for details)</title>
+    <itemizedlist>
+      <listitem>
+        <para><literal>job_container.conf</literal> - Added <quote>Dirs</quote> option to list
+          desired private mount points.</para>
+      </listitem>
+      <listitem>
+        <para><literal>node_features</literal> plugins - invalid users specified for <literal>
+          AllowUserBoot</literal> will now result in <literal>fatal()</literal> rather than just an
+          error.</para>
+      </listitem>
+      <listitem>
+        <para>Deprecate <literal>AllowedKmemSpace</literal>, <literal>ConstrainKmemSpace</literal> , <literal>
+          MaxKmemPercent</literal>, and <literal>MinKmemSpace</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Allow jobs to queue even if the user is not in <literal>AllowGroups</literal> when <literal>
+          EnforcePartLimits=no</literal> is set. This ensures consistency for all the Partition
+          access controls, and matches the documented behavior for <literal>
+            EnforcePartLimits</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>InfluxDBTimeout</literal> parameter to <literal>acct_gather.conf</literal>
+          .</para>
+      </listitem>
+      <listitem>
+        <para><literal>job_container/tmpfs</literal> - add support for expanding <literal>%h</literal>
+          and <literal>%n</literal> in <literal>BasePath</literal>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>slurm.conf</literal> - Removed <literal>SlurmctldPlugstack</literal> option.</para>
+      </listitem>
+      <listitem>
+        <para>Add new <literal>SlurmctldParameters=validate_nodeaddr_threads=&lt;number&gt;</literal>
+          option to allow concurrent hostname resolution at <literal>slurmctld</literal> startup.</para>
+      </listitem>
+      <listitem>
+        <para>Add new <literal>AccountingStoreFlags=job_extra</literal> option to store a
+          job&#8217;s extra field in the database.</para>
+      </listitem>
+      <listitem>
+        <para>Add new <quote>defer_batch</quote> option to <literal>SchedulerParameters</literal> to
+          only defer scheduling for batch jobs.</para>
+      </listitem>
+      <listitem>
+        <para>Add new <literal>DebugFlags</literal> option <quote>JobComp</quote> to replace <quote>
+          Elasticsearch</quote>.</para>
+      </listitem>
+      <listitem>
+        <para>Add configurable job requeue limit parameter - <literal>MaxBatchRequeue</literal> - in <literal>
+          slurm.conf</literal> to permit changes from the old hard-coded value of 5.</para>
+      </listitem>
+      <listitem>
+        <para><literal>helpers.conf</literal> - Allow specification of node specific features.</para>
+      </listitem>
+      <listitem>
+        <para><literal>helpers.conf</literal> - Allow many features to one helper script.</para>
+      </listitem>
+      <listitem>
+        <para><literal>job_container/tmpfs</literal> - Add <quote>Shared</quote> option to support
+          shared namespaces. This allows autofs to work with the <literal>
+            job_container/tmpfs</literal> plugin when enabled.</para>
+      </listitem>
+      <listitem>
+        <para><literal>acct_gather.conf</literal> - Added <literal>
+            EnergyIPMIPowerSensors=Node=DCMI</literal> and <literal>Node=DCMI_ENHANCED</literal> .</para>
+      </listitem>
+      <listitem>
+        <para>Add new <quote>getnameinfo_cache_timeout=&lt;number&gt;</quote> option to
+          CommunicationParameters to adjust or disable caching the results of <literal>
+            getnameinfo()</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Add new PrologFlags=ForceRequeueOnFail option to automatically requeue
+          batch jobs on Prolog failures regardless of the job --requeue setting.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>HealthCheckNodeState=NONDRAINED_IDLE</literal> option.</para>
+      </listitem>
+      <listitem>
+        <para>Add <quote>explicit</quote> to Flags in <literal>gres.conf</literal>. This makes it so
+          the gres is not automatically added to a job&#8217;s allocation when <literal>
+            --exclusive</literal> is used. Note that this is a per-node flag.</para>
+      </listitem>
+      <listitem>
+        <para>Moved the <quote>preempt_</quote> options from <literal>SchedulerParameters</literal>
+          to <literal>PreemptParameters</literal>, and dropped the prefix from the option names.
+          (The old options will still be parsed for backwards compatibility, but are now
+          undocumented.)</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>LaunchParameters=ulimit_pam_adopt</literal>, which enables setting <literal>
+          RLIMIT_RSS</literal> in adopted processes.</para>
+      </listitem>
+      <listitem>
+        <para>Update SwitchParameters=job_vni to enable/disable creating job VNIs for all
+          jobs, or when a user requests them.</para>
+      </listitem>
+      <listitem>
+        <para>Update <literal>SwitchParameters=single_node_vni</literal> to enable/disable creating
+          single node VNIs for all jobs, or when a user requests them.</para>
+      </listitem>
+      <listitem>
+        <para>Add ability to preserve <literal>SuspendExc*</literal> parameters on reconfig with <literal>
+          ReconfigFlags=KeepPowerSaveSettings</literal>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>slurmdbd.conf</literal> - Add new <literal>AllResourcesAbsolute</literal> to
+          force all new resources to be created with the <literal>Absolute</literal> flag.</para>
+      </listitem>
+      <listitem>
+        <para><literal>topology/tree</literal> - Add new <literal>
+            TopologyParam=SwitchAsNodeRank</literal> option to reorder nodes based on switch layout.
+          This can be useful if the naming convention for the nodes does not natually map to the
+          network topology.</para>
+      </listitem>
+      <listitem>
+        <para>Removed the default setting for <literal>GpuFreqDef</literal>. If unset, no attempt to
+          change the GPU frequency will be made if <literal>--gpu-freq</literal> is not set for the
+          step.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>Command Changes (see man pages for details)</title>
+    <itemizedlist>
+      <listitem>
+        <para><literal>sacctmgr</literal> - no longer force updates to the <literal>
+            AdminComment</literal>, <literal>Comment</literal>, or <literal>SystemComment</literal>
+          to lower-case.</para>
+      </listitem>
+      <listitem>
+        <para><literal>sinfo</literal> - Add <literal>-F/--future</literal> option to sinfo to
+          display future nodes.</para>
+      </listitem>
+      <listitem>
+        <para><literal>sacct</literal> - Rename <quote>Reserved</quote> field to <quote>
+            Planned</quote> to match sreport and the nomenclature of the 'Planned' node.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - advanced reservation flag <literal>MAINT</literal> will
+          no longer replace nodes, similar to <literal>STATIC_ALLOC</literal></para>
+      </listitem>
+      <listitem>
+        <para><literal>sbatch</literal> - add parsing for <literal>#PBS -d</literal> and <literal>#PBS
+          -w</literal>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> show <literal>assoc_mgr</literal> will show username(uid)
+          instead of uid in QoS section.</para>
+      </listitem>
+      <listitem>
+        <para>Add <literal>strigger --draining</literal> and <literal>-R</literal>/<literal>
+            --resume</literal> options.</para>
+      </listitem>
+      <listitem>
+        <para>Change <literal>--oversubscribe</literal> and <literal>--exclusive</literal> to be
+          mutually exclusive for job submission. Job submission commands will now fatal if both are
+          set. Previously, these options would override each other, with the last one in the job
+          submission command taking effect.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - Requested <literal>TRES</literal> and allocated <literal>
+          TRES</literal> will now always be printed when showing jobs, instead of one <literal>
+            TRES</literal> output that was either the requested or allocated.</para>
+      </listitem>
+      <listitem>
+        <para><literal>srun --ntasks-per-core</literal> now applies to job and step allocations.
+          Now, use of <literal>--ntasks-per-core=1</literal> implies <literal>
+            --cpu-bind=cores</literal> and <literal>--ntasks-per-core&gt;1</literal> implies <literal>
+          --cpu-bind=threads</literal>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>salloc</literal>/<literal>sbatch</literal>/<literal>srun</literal> - Check
+          and abort if ntasks-per-core &gt; threads-per-core.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - Add <literal>ResumeAfter=&lt;secs&gt;</literal> option
+          to <quote>scontrol update nodename=</quote>.</para>
+      </listitem>
+      <listitem>
+        <para>Add a new <quote>nodes=</quote> argument to <literal>scontrol setdebug</literal> to
+          allow the debug level on the <literal>slurmd</literal> processes to be temporarily
+          altered.</para>
+      </listitem>
+      <listitem>
+        <para>Add a new <quote>nodes=</quote> argument to <quote>scontrol setdebugflags</quote> as
+          well.</para>
+      </listitem>
+      <listitem>
+        <para>Make it so <literal>scrontab</literal> prints client-side the <literal>
+            job_submit()</literal> error messsage (which can be set i.e. by using the <literal>
+          log_user()</literal> function for the lua plugin).</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - Reservations will not be allowed to have <literal>
+          STATIC_ALLOC</literal> or <literal>MAINT</literal> flags and <literal>
+            REPLACE[_DOWN]</literal> flags simultaneously.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - Reservations will only accept one reoccurring flag when
+          being created or updated.</para>
+      </listitem>
+      <listitem>
+        <para><literal>scontrol</literal> - A reservation cannot be updated to be reoccurring if it
+          is already a floating reservation.</para>
+      </listitem>
+      <listitem>
+        <para><literal>squeue</literal> - removed unused <quote>%s</quote> and <quote>
+            SelectJobInfo</quote> formats.</para>
+      </listitem>
+      <listitem>
+        <para><literal>squeue</literal> - align print format for exit and derived codes with that of
+          other components (<literal>&lt;exit_status&gt;:&lt;signal_number&gt;</literal> ).</para>
+      </listitem>
+      <listitem>
+        <para><literal>sacct</literal> - Add <literal>--array</literal> option to expand job arrays
+          and display array tasks on separate lines.</para>
+      </listitem>
+      <listitem>
+        <para>Partial support for <quote>--json</quote> and <quote>--yaml</quote> formated outputs
+          have been implemented for <literal>sacctmgr</literal>, <literal>sdiag</literal> , <literal>
+          sinfo</literal>, <literal>squeue</literal>, and <literal>scontrol</literal>. The resultant
+          data ouput will be filtered by normal command arguments. Formatting arguments will
+          continue to be ignored.</para>
+      </listitem>
+      <listitem>
+        <para><literal>salloc</literal>/<literal>sbatch</literal>/<literal>srun</literal> - extended
+          the <literal>--nodes</literal> syntax to allow for a list of valid node counts to be
+          allocated to the job. This also supports a "step count" value (e.g., <literal>
+          --nodes=20-100:20</literal> is equivalent to <literal>
+            --nodes=20,40,60,80,100</literal>) which can simplify the syntax when the job needs to
+          scale by a certain "chunk" size.</para>
+      </listitem>
+      <listitem>
+        <para><literal>srun</literal> - add user requestible vnis with <quote>
+            --network=job_vni</quote> option.</para>
+      </listitem>
+      <listitem>
+        <para><literal>srun</literal> - add user requestible single node VNIs with the <quote>
+          --network=single_node_vni</quote> option.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>API Changes</title>
+    <itemizedlist>
+      <listitem>
+        <para><literal>job_container</literal> plugins - <literal>container_p_stepd_create()</literal>
+          function signature replaced <literal>uint32_t</literal> uid with <literal>
+          stepd_step_rec_t*</literal> step.</para>
+      </listitem>
+      <listitem>
+        <para><literal>gres</literal> plugins - <literal>gres_g_get_devices()</literal> function
+          signature replaced <literal>pid_t</literal> pid with <literal>
+            stepd_step_rec_t*</literal> step.</para>
+      </listitem>
+      <listitem>
+        <para><literal>cgroup</literal> plugins - <literal>task_cgroup_devices_constrain()</literal>
+          function signature removed <literal>pid_t</literal> pid.</para>
+      </listitem>
+      <listitem>
+        <para><literal>task</literal> plugins - replace <literal>task_p_pre_set_affinity()</literal>
+          , <literal>task_p_set_affinity()</literal>, and <literal>
+            task_p_post_set_affinity()</literal> with <literal>task_p_pre_launch_priv()</literal>
+          like it was back in slurm 20.11.</para>
+      </listitem>
+      <listitem>
+        <para>Allow for concurrent processing of <literal>job_submit_g_submit()</literal> and <literal>
+          job_submit_g_modify()</literal> calls. If your plugin is not capable of concurrent
+          operation you must add additional locking within your plugin.</para>
+      </listitem>
+      <listitem>
+        <para>Removed return value from <literal>slurm_list_append()</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>The <literal>List</literal> and <literal>ListIterator</literal> types have been
+          removed in favor of <literal>list_t</literal> and <literal>list_itr_t</literal>
+          respectively.</para>
+      </listitem>
+      <listitem>
+        <para><literal>burst buffer</literal> plugins - add <literal>
+            bb_g_build_het_job_script()</literal>. <literal>bb_g_get_status()</literal> - added
+          authenticated UID and GID. <literal>bb_g_run_script()</literal> - added <literal>
+            job_info</literal> argument.</para>
+      </listitem>
+      <listitem>
+        <para><literal>burst_buffer.lua</literal> - Pass UID and GID to most hooks. Pass <literal>
+          job_info</literal> (detailed job information) to many hooks. See <literal>
+          etc/burst_buffer.lua.example</literal> for a complete list of changes. WARNING: Backwards
+          compatibility is broken for <literal>slurm_bb_get_status</literal>: UID and GID are passed
+          before the variadic arguments. If UID and GID are not explicitly listed as arguments to <literal>
+          slurm_bb_get_status()</literal>, then they will be included in the variadic arguments.
+          Backwards compatibility is maintained for all other hooks because the new arguments are
+          passed after the existing arguments.</para>
+      </listitem>
+      <listitem>
+        <para><literal>node_features</literal> plugins - <literal>
+            node_features_p_reboot_weight()</literal> function removed. <literal>
+          node_features_p_job_valid()</literal> - added parameter <literal>feature_list</literal> . <literal>
+          node_features_p_job_xlate()</literal> - added parameters <literal>
+            feature_list</literal> and <literal>job_node_bitmap</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>New <literal>data_parser</literal> interface with v0.0.39 plugin.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

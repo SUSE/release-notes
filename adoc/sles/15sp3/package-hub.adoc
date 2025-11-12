@@ -1,0 +1,76 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#package-hub]
+=== {ph}
+
+// Release notes for Package Hub
+
+{ph} brings open-source software packages from {opensuse} to {sles} and {sled}.
+
+Usage of software from {ph} is not covered by {suse} support agreements.
+At the same time, usage of software from {ph} does not affect the support status of your {sle} systems.
+{ph} is available at no additional cost and without an extra registration key.
+
+[#bsc-1117531]
+[NOTE]
+.Package dependencies on additional {slea} modules
+====
+When installing packages from {ph}, you may need to activate additional {slea} modules to solve dependency issues.
+====
+
+Also see the following notes elsewhere:
+
+* <<jsc-SLE-22844>>
+
+
+[#jsc-SLE-16783]
+==== {nvidia} Compute module
+
+The repositories for {nvidiareg} {cudareg} are available as the __{nvidia} Compute__ module for x86-64 and AArch64.
+These repositories are provided by {nvidia} and the software in them is not supported by {suse}.
+All software in these repositories is licensed under the third-party link:https://docs.nvidia.com/cuda/eula/index.html[{nvidia} {cuda} EULA].
+
+The __{nvidia} Compute__ module is not enabled by default when installing {product}.
+During installation, the module can be selected from the __Extension and Module Selection__ screen in {yast}.
+Within an installed system, you can add it as follows:
+Run `yast registration` from a shell as root, select __Select Extensions__, search for __NVIDIA Compute Module__ and continue with __Next__.
+Verify and accept the {nvidia} repository GPG key.
+
+
+[IMPORTANT]
+.Do not use the `SUSEConnect` tool to add this repository
+====
+Do not try to add this module with the `SUSEConnect` CLI tool.
+`SUSEConnect` is not yet capable of handling third-party repositories.
+====
+
+[IMPORTANT]
+.Combining __Workstation Extension__ and __{nvidia} Compute__ module is unsupported
+====
+The __Workstation Extension__ module includes some of the same drivers for {nvidia} graphics cards as the __{nvidia} Compute__ module.
+However, their package versions may differ.
+As {suse} package management installs the latest package versions by default, enabling both modules at the same time can lead to a system with a mixture of packages from both modules.
+
+Such a setup can result in drivers not working as expected and is not supported by {suse}.
+====
+
+
+[#package-hub-added-package]
+==== Important package additions to {ph}
+
+Among others, the following packages have been added to {ph}:
+
+//jsc#SLE-16925
+`python-anymarkup`::
+Parse or serialize different markup formats.
+Currently supports INI, JSON, JSON5, TOML, XML and YAML.
+
+//jsc#SLE-12557
+`pgaudit`::
+An auditing module for PostgreSQL that collects audit events from various sources and logs them in CSV format.
+The generated logs include a timestamp, user information, details of objects affected (if any), and the fully-qualified command text (whenever available).
+
+//jsc#SLE-13565
+`rshim`::
+Access the serial console of an {nvidiareg} {bluefieldreg} or {bluefield2} Data Processing Unit (DPU) over PCIe or USB.

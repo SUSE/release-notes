@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>Release Notes</title>
+ <articleinfo>
+<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
+    product="Beta SUSE Linux Enterprise High Availability 12 SP4"
+    component="Release Notes"
+    assignee="sknorr@suse.com" ?>
+  <releaseinfo>@VERSION@</releaseinfo><productname>SUSE Linux Enterprise High Availability Extension</productname>
+  <productnumber>12 SP4</productnumber><date>
+<?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    SUSE Linux Enterprise High Availability Extension is a suite of
+    clustering technologies that enable enterprises to implement highly
+    available Linux clusters and eliminate single points of failure. This
+    document gives an overview of features of SUSE Linux Enterprise High
+    Availability Extension and their limitations. Some sections do not apply
+    to a particular architecture or product, this is explicitly marked.
+   </para>
+
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of the
+    installation media, or in the directory
+    <filename>/usr/share/doc/</filename> on the installed system (if
+    installed).
+   </para>
+  </abstract>
+ </articleinfo>
+ <section id="Intro">
+  <title>SUSE Linux Enterprise High Availability Extension</title>
+  <para>
+   SUSE Linux Enterprise High Availability Extension is an affordable,
+   integrated suite of robust open source clustering technologies that
+   enable enterprises to implement highly available Linux clusters and
+   eliminate single points of failure.
+  </para>
+  <para>
+   Used with SUSE Linux Enterprise Server, it helps firms maintain business
+   continuity, protect data integrity, and reduce unplanned downtime for
+   their mission-critical Linux workloads.
+  </para>
+  <para>
+   SUSE Linux Enterprise High Availability Extension provides all of the
+   essential monitoring, messaging, and cluster resource management
+   functionality of proprietary third-party solutions, but at a more
+   affordable price, making it accessible to a wider range of enterprises.
+  </para>
+  <para>
+   It is optimized to work with SUSE Linux Enterprise Server, and its tight
+   integration ensures customers have the most robust, secure, and up to
+   date high availability solution. Based on an innovative, highly flexible
+   policy engine, it supports a wide range of clustering scenarios.
+  </para>
+  <para>
+   With static or stateless content, the High Availability cluster can be
+   used without a cluster file system. This includes web-services with
+   static content as well as printing systems or communication systems like
+   proxies that do not need to recover data.
+  </para>
+  <para>
+   Finally, its open source license minimizes the risk of vendor lock-in,
+   and its adherence to open standards encourages interoperability with
+   industry standard tools and technologies.
+  </para>
+ </section>
+ <section id="Intro.New">
+  <title>What Is New?</title>
+  <variablelist>
+   <varlistentry>
+    <term>
+    Cluster File System
+     </term>
+    <listitem>
+     <para>
+      GFS2 cluster file system with read/write support, to complement the
+      SUSE recommended OCFS2 cluster file system.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      Load balancer
+     </term>
+    <listitem>
+     <para>
+      HAProxy as layer 4 load balancer added, to complement the Linux
+      virtual server load balancer.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+      History Explorer
+     </term>
+    <listitem>
+     <para>
+      Hawk history explorer now includes off-line analysis capabilities.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>
+     Resource Agents
+     </term>
+    <listitem>
+     <para>
+      Resource agents got multiple updates, including a resource agent to
+      handle SCSI reservations
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   Make sure to also review the release notes for the base product, SUSE
+   Linux Enterprise Server 12 SP4 which are published at
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP4/"/>.
+  </para>
+  <para>
+   To find out what is new in the Geo clustering option for the SUSE Linux
+   Enterprise High Availability Extension 12 SP4, see
+   <ulink url="https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP4-GEO/"/>.
+  </para>
+ </section>
+ <section id="Support">
+  <title>Support Statement for SUSE Linux Enterprise High Availability Extension 12 SP4</title>
+  <para>
+   Support requires an appropriate subscription from SUSE. For more
+   information, see <ulink url="http://www.suse.com/products/server/"/>.
+  </para>
+  <para>
+   A Geo Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription is needed to receive support and maintenance to run
+   geographical clustering scenarios, including manual and automated setups.
+  </para>
+  <para>
+   Support for the DRBD storage replication is independent of the cluster
+   scenario and included as part of the SUSE Linux Enterprise High
+   Availability Extension product and does not require the addition of a Geo
+   Clustering for SUSE Linux Enterprise High Availability Extension
+   subscription.
+  </para>
+  <para>
+   General Support Statement
+  </para>
+  <para>
+   The following definitions apply:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     L1: Installation and problem determination - technical support designed
+     to provide compatibility information, installation and configuration
+     assistance, usage support, on-going maintenance and basic
+     troubleshooting. Level 1 Support is not intended to correct product
+     defect errors.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L2: Reproduction of problem isolation - technical support designed to
+     duplicate customer problems, isolate problem areas and potential
+     issues, and provide resolution for problems not resolved by Level 1
+     Support.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     L3: Code Debugging and problem resolution - technical support designed
+     to resolve complex problems by engaging engineering in patch provision,
+     resolution of product defects which have been identified by Level 2
+     Support.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   SUSE will only support the usage of original (unchanged or not
+   recompiled) packages.
+  </para>
+  <section id="Intro.Support.General" remap="Intro:Support:General">
+   <title>Support Information for Specific Packages</title>
+   <para/>
+<!--v Items below imported from FATE-->
+   <section role="notoc" id="fate-325726" remap="Intro:Support:General">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/325726" -->
+    <title>softdog Is Now Supported as a Watchdog Service</title>
+    <para>
+     In the past, <literal>softdog</literal> was not supported as a watchdog
+     service because it is a software-based watchdog, however, it has proved
+     to be reliable and usable in mission-critical HA deployments.
+    </para>
+    <para>
+     In SLE HA 12 SP4, <literal>softdog</literal> is supported by SUSE for
+     HA deployments. However, it is important to notice that some
+     limitations still apply. For more information, see the documentation at
+     <ulink url="https://www.suse.com/documentation/sle-ha-12/singlehtml/install-quick/install-quick.html#sec.ha.inst.quick.sbd.setup"/>.
+    </para>
+   </section>
+<!--^ End of Items imported from FATE-->
+  </section>
+ </section>
+ <section id="Intro.Support.Techpreviews" remap="Intro:Support:Techpreviews">
+  <title>Technology Previews</title>
+  <para>
+   Technology previews are packages, stacks, or features delivered by SUSE
+   which are not supported. They may be functionally incomplete, unstable or
+   in other ways not suitable for production use. They are included for your
+   convenience and give you a chance to test new technologies within an
+   enterprise environment.
+  </para>
+  <para>
+   Whether a technology preview becomes a fully supported technology later
+   depends on customer and market feedback. Technology previews can be
+   dropped at any time and SUSE does not commit to providing a supported
+   version of such technologies in the future.
+  </para>
+  <para>
+   Give your SUSE representative feedback, including your experience and use
+   case.
+  </para>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-324044" remap="Intro:Support:Techpreviews">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/324044" -->
+   <title>SCSI Locking on Multipath With mpathpersist Resource Agent</title>
+   <para>
+    In previous versions, the <literal>sg_persist</literal> resource agent
+    only deals with the SCSI device directly and could not handle multipath
+    devices.
+   </para>
+   <para>
+    As a technology preview, the <literal>mpathpersist</literal> resource
+    agent now has a new functionality that allows for HA clusters that have
+    a SCSI locking mechanism on top of multipath.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="InfraPackArch.ArchIndependent.HA.Resources" remap="InfraPackArch:ArchIndependent:HA:Resources">
+  <title>Resources and Resource Agents</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-326697" remap="InfraPackArch:ArchIndependent:HA:Resources">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/326697" -->
+   <title>The aws-vpc-ip-move Resource Agent is now available upstream and is provided by the resource-agents package</title>
+   <para>
+    The <literal>aws-vpc-ip-move</literal> resource agent was originally
+    created by SUSE and has been maintained internally while we worked to
+    integrate it into the ClusterLabs project. As ClusterLabs has accepted
+    the contribution, SUSE will maintain and ship the upstream version.
+   </para>
+   <para>
+    The contents of the package <literal>aws-vpc-ip-move</literal> were
+    merged into the <literal>resource-agents</literal> packages, and a
+    symbolic link was provided for the old SUSE-specific resource agent
+    location to guarantee backward compatibility. During upgrade, the
+    <literal>aws-vpc-ip-move</literal> package will be uninstalled and the
+    <literal>resource-agents</literal> package will be installed to provide
+    the latest version of the same resource agent.
+   </para>
+   <para>
+    In the new version of the <literal>aws-vpc-ip-move</literal> resource
+    agent, the parameter <literal>address</literal> has been renamed to
+    <literal>ip</literal>. For compatibility, the parameter
+    <literal>address</literal> is still available but deprecated. Therefore,
+    we recommend adjusting your configuration to use the new parameter name
+    <literal>ip</literal>.
+   </para>
+  </section>
+ </section>
+ <section id="Miscellaneous">
+  <title>Miscellaneous</title>
+  <para/>
+<!--v Items below imported from FATE-->
+  <section role="notoc" id="fate-327929" remap="Miscellaneous">
+<!-- sort_key="None"; non-rn-fate-cats=""; -->
+<!-- href="https://fate.novell.com/327929" -->
+   <title>fence_vmware_soap has been replaced with fence_vmware_rest</title>
+   <para>
+    The fence agent for VMWare over SOAP API (<literal>fence_vmware_soap</literal>) is no longer available in SLE HA.
+    Use the fence agent for VMware REST API (<literal>fence_vmware_rest</literal>) instead.
+   </para>
+  </section>
+<!--^ End of Items imported from FATE-->
+ </section>
+ <section id="Sourcecode">
+  <title>How to Obtain Source Code</title>
+<!-- msvec and legal (ciaran), 2013-05-13 -->
+<!-- moved from the abstract to this location as the first chapter -->
+  <para>
+   This SUSE product includes materials licensed to SUSE under the GNU
+   General Public License (GPL). The GPL requires SUSE to provide the source
+   code that corresponds to the GPL-licensed material. The source code is
+   available for download at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+   for up to three years after distribution of the SUSE product, upon
+   request, SUSE will mail a copy of the source code. Requests should be
+   sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or as
+   otherwise instructed at
+   <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+   may charge a reasonable fee to recover distribution costs.
+  </para>
+ </section>
+ <section id="Feedback">
+<!-- bnc#826887 -->
+  <title>More Information and Feedback</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the CDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get detailed changelog information about a particular package from the
+     RPM (where <replaceable>FILENAME</replaceable> is the name of the RPM):
+    </para>
+<screen>rpm --changelog -qp <replaceable>FILENAME</replaceable>.rpm</screen>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1
+     for a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of
+     first medium of the SUSE Linux Enterprise High Availability Extension
+     media. This directory includes a PDF version of the High Availability
+     Guide.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <ulink url="http://www.suse.com/documentation/"/> contains additional
+     or updated documentation for SUSE Linux Enterprise High Availability
+     Extension 12 SP4.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Visit <ulink url="http://www.suse.com/products/"/> for the latest
+     product news from SUSE and
+     <ulink url="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Copyright © 2010-
+<?dbtimestamp format="Y" ?>
+   SUSE LLC.
+  </para>
+ </section>
+</article>

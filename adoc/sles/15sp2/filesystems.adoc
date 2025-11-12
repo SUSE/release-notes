@@ -1,0 +1,497 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#filesystems]
+=== File Systems
+
+// Release notes for file systems:
+//   Btrfs, CFS, ext3, ... (not: kernel features)
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#filesystems-comparison]
+==== Comparison of Supported File Systems
+
+{sle} was the first enterprise Linux distribution to support journaling file systems and logical volume managers back in 2000.
+Later, we introduced XFS to Linux, which today is seen as the primary work horse for large-scale file systems, systems with heavy load and multiple parallel reading and writing operations.
+With {sle} 12, we went the next step of innovation and started using the copy-on-write file system Btrfs as the default for the operating system, to support system snapshots and rollback.
+
+*y* supported
+
+*n* unsupported
+
+[cols="25,^15,^15,^15,^15" options="header"]
+|===
+|Feature
+|Btrfs
+|XFS
+|Ext4
+|OCFS 2^1^
+
+|Supported in product
+|{slea}
+|{slea}
+|{slea}
+|{haa}
+
+|Data/metadata journaling
+|N/A^2^
+|n / y
+|y / y
+|n / y
+
+
+|Journal internal/external
+|N/A^2^
+|y / y
+|y / y
+|y / n
+
+|Journal checksumming
+|N/A^2^
+|y
+|y
+|y
+
+|Subvolumes
+|y
+|n
+|n
+|n
+
+|Offline extend/shrink
+|y / y
+|n / n
+|y / y
+|y / n^3^
+
+|Inode allocation map
+|B-tree
+|B+-tree
+|Table
+|B-tree
+
+|Sparse files
+|y
+|y
+|y
+|y
+
+|Tail packing
+|n
+|n
+|n
+|n
+
+|Small files stored inline
+|y (in metadata)
+|n
+|y (in inode)
+|y (in inode)
+
+|Defragmentation
+|y
+|y
+|y
+|n
+
+|Extended file attributes/ACLs
+|y / y
+|y / y
+|y / y
+|y / y
+
+|User/group quotas
+|n / n
+|y / y
+|y / y
+|y / y
+
+|Project quotas
+|n
+|y
+|y
+|n
+
+|Subvolume quotas
+|y
+|N/A
+|N/A
+|N/A
+
+|Data dump/restore
+|n
+|y
+|n
+|n
+
+|Block size default
+4+|4{nbsp}KiB^4^
+
+|Maximum file system size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+
+|Maximum file size
+|16{nbsp}EiB
+|8{nbsp}EiB
+|1{nbsp}EiB
+|4{nbsp}PiB
+|===
+
+
+^1^ OCFS 2 is fully supported as part of the {sleha}.
+
+^2^ Btrfs is a copy-on-write file system.
+Instead of journaling changes before writing them in-place, it writes them to a new location and then links the new location in.
+Until the last write, the changes are not "committed".
+Because of the nature of the file system, quotas are implemented based on subvolumes (`qgroups`).
+
+^3^ To extend an OCFS 2 file system, the cluster must be online but the file system itself must be unmounted.
+
+^4^ The block size default varies with different host architectures.
+64{nbsp}KiB is used on POWER, 4{nbsp}KiB on other systems.
+The actual size used can be checked with the command `getconf _PAGE_SIZE_`.
+
+*Additional Notes*
+
+Maximum file size above can be larger than the file system's actual size because of the use of sparse blocks.
+All standard file systems on {sles} have LFS, which gives a maximum file size of 2^63^{nbsp}bytes in theory.
+
+The numbers in the table above assume that the file systems are using a 4{nbsp}KiB block size which is the most common standard.
+When using different block sizes, the results are different.
+
+In this document:
+
+* 1024{nbsp}Bytes = 1{nbsp}KiB
+* 1024{nbsp}KiB = 1{nbsp}MiB;
+* 1024{nbsp}MiB = 1{nbsp}GiB
+* 1024{nbsp}GiB = 1{nbsp}TiB
+* 1024{nbsp}TiB = 1{nbsp}PiB
+* 1024{nbsp}PiB = 1{nbsp}EiB.
+
+See also http://physics.nist.gov/cuu/Units/binary.html.
+
+// bsc-1073261
+Some file system features are available in {sles} {this-version} but are not supported by {suse}.
+By default, the file system drivers in {sles} {this-version} will refuse mounting file systems that use unsupported features (in particular, in read-write mode).
+To enable unsupported features, set the module parameter `allow_unsupported=1` in `/etc/modprobe.d` or write the value `1` to `/sys/module/_MODULE_NAME_/parameters/allow_unsupported`.
+However, note that setting this option will render your kernel and thus your system unsupported.
+
+[#filesystems-btrfs]
+==== Supported Btrfs Features
+
+The following table lists supported and unsupported Btrfs features across multiple {slsa} versions.
+
+*y* supported
+
+*n* unsupported
+
+// Table according to bsc-979501, this attachment: https://bugzilla.suse.com/attachment.cgi?id=687340
+[cols="22,^13,^13,^13,^13,^13,^13,^13" options="header"]
+|===
+|Feature
+|{slsa} 11 SP4
+|{slsa} 12 SP3
+|{slsa} 12 SP4
+|{slsa} 12 SP5
+|{slsa} 15 GA
+|{slsa} 15 SP1
+|{slsa} 15 SP2
+
+|Copy on Write
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Free Space Tree (Free Space Cache v2)
+|n
+|n
+|n
+|n
+|n
+|y
+|y
+
+|Snapshots/Subvolumes
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Swap Files
+|n
+|n
+|n
+|
+|n
+|y
+|y
+
+|Metadata Integrity
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Data Integrity
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Online Metadata Scrubbing
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Automatic Defragmentation
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|Manual Defragmentation
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|In-band Deduplication
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|Out-of-band Deduplication
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Quota Groups
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Metadata Duplication
+|y
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Changing Metadata UUID
+|n
+|n
+|n
+|
+|n
+|y
+|y
+
+|Multiple Devices
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|RAID 0
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|RAID 1
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|RAID 5
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|RAID 6
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|RAID 10
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Hot Add/Remove
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Device Replace
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|Seeding Devices
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|Compression
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Big Metadata Blocks
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Skinny Metadata
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Send Without File Data
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Send/Receive
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+
+|Inode Cache
+|n
+|n
+|n
+|n
+|n
+|n
+|n
+
+|Fallocate with Hole Punch
+|n
+|y
+|y
+|y
+|y
+|y
+|y
+|===
+
+[#jsc-SLE-22662]
+==== XFS V4 format file systems have been deprecated
+
+Customers who have created XFS file system on {slea} 11 or prior will see the following message:
+```
+Deprecated V4 format (crc=0) will not be supported after September 2030
+```
+
+While the file system will work and be supported until the date mentioned, it is best to re-create the file system:
+
+1. Backup all the data to another drive or partition
+2. Create the file system on the device
+3. Restore the data from the backup
+

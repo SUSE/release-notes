@@ -1,0 +1,16 @@
+:docinfo:
+// Doctype should always be article
+:doctype: article
+
+// Formatting in Gitlab
+:toc:
+:toc-placement: auto
+:toc-title: Table of Contents
+:icons:
+:lang: en
+:numbered:
+:show-link-uri:
+
+// Conditionals
+// lifecycle: beta|maintained|unmaintained
+:lifecycle: maintained

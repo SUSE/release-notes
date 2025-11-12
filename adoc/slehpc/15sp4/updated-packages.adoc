@@ -1,0 +1,56 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[IMPORTANT]
+====
+These release notes only document changes in {product} compared to the immediate previous service pack of {product}.
+The full changes and fixes can be found on the respective web site of the packages.
+====
+
+// SLE-17777
+=== `dolly`
+
+`dolly` has been updated to version 0.63.6.
+It includes some fixes for hostname resolution, a better documentation and now provides a default configuration for firewall.
+
+=== `memkind`
+
+`memkind` has been updated to version 1.12.0.
+The full list of changes is available at http://memkind.github.io/memkind/.
+
+=== `openblas`
+
+`openblas` has been updated to version 0.3.17.
+It contains performance regression fixes and optimization.
+For more information see https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.17.
+
+[#jsc-PED-2803]
+=== `spack`
+
+include::spack0191.asciidoc[]
+
+
+// SLE-21335
+=== `mpich`
+
+`mpich` has been updated to version 3.4.2.
+For more information see https://www.mpich.org/2021/05/28/mpich-3-4-2-released/.
+
+[#jsc-SLE-12352]
+
+
+=== Slurm
+
+include::slurm-deprecation.adoc[leveloffset=+2]
+include::slurm22_05.adoc[]
+
+=== Creating containers from current HPC environment
+
+Usually users use environment modules to adjust their environment (that is, environment variables like `PATH`, `LD_LIBRARY_PATH`, `MANPATH` etc.) to pick exactly the tools and libraries they need for their work.
+The same can be achieved with containers by including only those components in a container that are part of this environment.
+This functionality is now provided using the `spack` and `singularity` applications.
+
+[#jsc-PED-2802]
+=== Slurm 23.02
+
+include::slurm2302.adoc[]

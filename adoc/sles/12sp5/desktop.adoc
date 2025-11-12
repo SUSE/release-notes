@@ -1,0 +1,80 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#all-architecture-desktop]
+=== Desktop
+
+// Release Notes for Desktop application features:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+[#jsc-SLE-11176]
+==== LibreOffice Has Been Updated to Version 7.3
+
+LibreOffice has been updated to version 7.3.
+For information about major changes, see the LibreOffice 7.3 release notes at https://wiki.documentfoundation.org/ReleaseNotes/7.3.
+
+[#jsc-SLE-4998]
+==== Reduce Information on Logged Users During Logout
+
+When trying to restart or poweroff a system from GNOME or GDM, a list of other  users currently logged in could be viewed by any non-privileged user.
+
+This is no longer the case with SUSE Linux Enterprise 12 SP5.
+
+[#jsc-SLE-7023]
+==== Flatpak Available as Technology Preview
+
+Flatpak (1.4.x) is now available on SUSE Linux Enterprise 12 SP5, as Technology Preview.
+
+Only command-line tools to install and run flatpaks are available.
+
+[#jsc-SLE-5550]
+==== Proper Unmount Notification in Nautilus
+
+When unmounting devices from the Nautilus file viewer, a notification confirming success was not properly displayed.
+
+This issue is fixed in SUSE Linux Enterprise Server 12 SP5.
+
+[#jsc-SLE-4833-SLE-4835]
+==== Mesa Update
+
+Mesa was updated to version 18.3.2, providing many bug fixes and support for Comet Lake U and Amber Lake Y chipsets.
+
+[#jsc-SLE-4816]
+==== Intel Graphics Memory Management Libray
+
+The Intel® Graphics Memory Management Library (gmmlib) provides device specific and buffer management for the Intel® Graphics Compute Runtime for OpenCL(TM) and the Intel® Media Driver for VAAPI.
+
+gmmlib is available in SUSE Linux Enterprise Server 12 SP5 and the SDK.
+
+
+[#jsc-SLE-4819]
+==== intel-vaapi Driver Update
+
+The Intel® VAAPI driver (providing video acceleration for VA-API) was updated to version 2.2.0, providing support on Gemini Lake, Coffee Lake, Cannon Lake for many codecs (encoding and decoding).
+
+[#jsc-SLE-4817]
+==== Intel Media Driver for VAAPI
+
+The Intel® Media Driver for VAAPI is a new VA-API (Video Acceleration API) user mode driver supporting hardware accelerated decoding, encoding, and video post processing for GEN based graphics hardware.
+
+The `intel-media-driver` is available in SUSE Linux Enterprise Server 12 SP5.
+
+[#jsc-SLE-4810]
+==== Intel Media SDK
+
+The Intel® Media SDK provides a plain C API to access hardware-accelerated video decoding, encoding and filtering on Intel® Gen graphics hardware platforms. the implementation is written in C++ 11 with parts in C-for-Media (CM).
+
+* Supported video encoders: HEVC, AVC, MPEG-2, JPEG, VP9
+* Supported video decoders: HEVC, AVC, VP8, VP9, MPEG-2, VC1, JPEG
+* Supported video pre-processing filters: Color Conversion, Deinterlace, Denoise, Resize, Rotate, Composition
+
+The Intel Media SDK is available in SUSE Linux Enterprise Server 12 SP5 and SDK.
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

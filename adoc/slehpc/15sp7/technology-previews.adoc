@@ -1,0 +1,78 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#intro-techpreview]
+== Technology previews
+
+Technology previews are packages, stacks, or features delivered by {suse} which are not supported.
+They may be functionally incomplete, unstable or in other ways not suitable for production use.
+They are included for your convenience and give you a chance to test new technologies within an enterprise environment.
+
+Whether a technology preview becomes a fully supported technology later depends on customer and market feedback.
+Technology previews can be dropped at any time and {suse} does not commit to providing a supported version of such technologies in the future.
+
+Give your {suse} representative feedback about technology previews, including your experience and use case.
+
+[#jsc-SLE-15406]
+=== 64K page size kernel flavor has been added
+
+{arm-product} 12{nbsp}SP2 and later kernels have used a page size of 4K.
+This offers the widest compatibility also for small systems with little RAM,
+allowing to use Transparent Huge Pages (THP) where large pages make sense.
+
+As a technology preview, {arm-product} {this-version} adds a kernel flavor
+`64kb`, offering a page size of 64{nbsp}KiB and physical/virtual address size
+of 52 bits.
+Same as the `default` kernel flavor, it does not use preemption.
+
+Main purpose at this time is to allow for side-by-side benchmarking for
+High Performance Computing, Machine Learning and other Big Data use cases.
+Contact your {suse} representative if you notice performance gains
+for your specific workloads.
+
+[IMPORTANT]
+.Swap needs to be re-initialized
+====
+After booting the 64K kernel, any swap partitions need to re-initialized to be usable.
+To do this, run the `swapon` command with the `--fixpgsz` parameter on the swap partition.
+Note that this process deletes data present in the swap partition (for example, suspend data).
+In this example, the swap partition is on `/dev/sdc1`:
+[source,bash]
+swapon --fixpgsz /dev/sdc1
+====
+
+// jsc#SLE-13577
+[IMPORTANT]
+.Btrfs file system uses page size as block size
+====
+It is currently not possible to use Btrfs file systems across page sizes.
+Block sizes below page size are not yet supported and block sizes above
+page size might never be supported.
+
+During installation, change the default partitioning proposal and choose
+another file system, such as Ext4 or XFS, to allow rebooting from the
+default 4K page size kernel of the Installer into `kernel-64kb` and back.
+
+See the __Storage Guide__ for a discussion of supported file systems.
+====
+
+// jsc#SLE-14841
+[WARNING]
+.RAID{nbsp}5 uses page size as stripe size
+====
+It is currently not yet possible to configure stripe size on volume creation.
+This will lead to sub-optimal performance if page size and block size differ.
+
+Avoid RAID{nbsp}5 volumes when benchmarking 64K vs. 4K page size kernels.
+
+See the __Storage Guide__ for more information on software RAID.
+====
+
+[NOTE]
+.Cross-architecture compatibility considerations
+====
+The {product} {this-version} kernels on x86-64 use 4K page size.
+
+The {power-product} {this-version} kernel uses 64K page size.
+====

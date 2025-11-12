@@ -1,0 +1,117 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#security]
+=== Security
+
+// Release notes for security tool/library features:
+//    new TLS standards in OpenSSL, new nmap feature, ...
+//    (not: security bugs/fixes in applications)
+
+[#jsc-PED-8000]
+==== New 4096-bit signing key
+
+{sle} 15 product family switched over from a RSA 2048-bit signing key to a new RSA 4096-bit key.
+This change covers RPM packages, package repositories and ISO signatures.
+For more information see https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-update-preparation.html#sec-update-preparation-update
+
+
+[#bsc-1222831]
+==== OpenSSH and crypto policies update
+
+The `openssh` package has been updated to version 9.6p1, aligning with system crypto policies from the `crypto-policies` package.
+This update excludes insecure cryptographic algorithms, notably disallowing RSA keys under 2048 bits.
+This change may affect users with RSA host keys under 2048 bits for server connections.
+
+To check for affected keys:
+
+[source,shell]
+----
+grep ssh-rsa ~/.ssh/known_hosts | ssh-keygen -lf -
+----
+
+The output lists key sizes and associated hostnames/IPs.
+After upgrade, connections to hosts with 1024 bit keys will fail if no alternative valid key exists.
+
+[NOTE]
+.Troubleshooting
+====
+*Before upgrade*
+[loweralpha]
+. Either update openssh to version 8.4p1, which enables `UpdateHostkeys` by default, allowing ssh to update `known_hosts` with all server's host keys.
+Users must connect to the host with a 1024-bit RSA key after updating to this version and before upgrading to SP6.
+. Or, manually add host keys:
++
+[source,shell]
+----
+ssh-keyscan hostname >> ~/.ssh/known_hosts
+----
++
+
+Note that this method adds keys without verification; use only if manual host verification is possible.
+
+*After upgrade*
+
+[loweralpha]
+. Either temporarily use insecure algorithms by setting the crypto policy to LEGACY:
++
+[source,shell]
+----
+sudo update-crypto-policies --set LEGACY
+----
++
+Then, revert to the default secure policy after connecting:
++
+[source,shell]
+----
+sudo update-crypto-policies --set DEFAULT
+----
+. Or, remove the invalid host key from `known_hosts` and reconnect, manually verifying the new host key.
+====
+
+
+[#bsc-1217940]
+==== Automatic CPU mitigations and how to change them
+
+By default, the CPU mitigations setting to prevent CPU side-channel attacks is set to `Auto`.
+However, the kernel boot parameters included in the `Auto` option may change from one Service Pack to the next due to the necessity of applying new security patches.
+This may result in performance loss in some scenarios.
+You might want to change these to achieve a different tradeoff between performance and security.
+
+For more information on how to configure these settings, see {doc-url-auto}/single-html/SLES-administration/#vle-grub2-yast2-cpu-mitigations.
+
+
+// also jsc-PED-8205
+[#bsc-1220091]
+==== OpenSSL 3.2.3 is now default
+
+In {productnameshort} {this-version}, OpenSSL has been updated to version 3.2.3, replacing OpenSSL 1.1.1.
+
+Because the development packages of different versions are mutually exclusive and automatic conflict resolution is not performed during updates, `libopenssl1_1-devel` should be manually selected for de-installation.
+
+
+// !STICKY
+// related: FATE#323868 [removal info in FATE is incorrect, correction via mail from meissner, 2020-06-05]
+[#jsc-SLE-9294]
+==== TLS 1.1 and 1.0 are no longer recommended for use
+
+The TLS 1.0 and 1.1 standards have been superseded by TLS 1.2 and TLS 1.3.
+TLS 1.2 has been available for considerable time now.
+
+{productname} packages using OpenSSL, GnuTLS, or Mozilla NSS already support TLS 1.3.
+We recommend no longer using TLS 1.0 and TLS 1.1, as {suse} plans to disable these protocols in a future service pack.
+However, not all packages, for example, Python, are TLS 1.3-enabled yet as this is an ongoing process.
+
+[#bsc-1232762]
+=== Non-unified OVMF images for SEV
+Non-unified OVMF images for SEV (ovmf-x86_64-sev-{code,vars}.bin) has been removed because it presents a security risk
+due to the non-measured variable store. For enhanced security with SEV, we recommended to use the unified image (ovmf-x86_64-sev.bin).
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////

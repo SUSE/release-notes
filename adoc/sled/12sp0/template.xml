@@ -1,0 +1,824 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook44-profile.xsl"
+                 type="text/xml"
+                 title="Profiling step"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % myents SYSTEM "release-notes.ent" >
+  %myents;
+]>
+
+<article lang="en" id="rnotes">
+ <title>&rnotes;</title>
+ <articleinfo>
+  <releaseinfo>&rversion;</releaseinfo>
+  <productname>&sled;</productname>
+  <productnumber>12</productnumber>
+  <date><?dbtimestamp format="Y-m-d"?></date>
+  <abstract>
+   <para>
+    These release notes are generic for all &sled; 12 based
+    products. Some parts may not apply to particular architectures or
+    products. Where this is not the case, the respective architecture is
+    listed explicitly.
+   </para>
+   <para>
+    Manuals can be found in the <filename>docu</filename> directory of
+    the installation media, or in the directory
+    <filename>/usr/share/doc/</filename> on the installed system (if
+    installed).
+   </para>
+  </abstract>
+ </articleinfo>
+
+ <section id="Intro">
+  <title>&sled;</title>
+  <remark> SLE definition: general information </remark>
+  <para> &sled; is the market's only enterprise-quality Linux desktop ready for routine business
+   use. Developed and backed by SUSE, &sled; provides market-leading usability, seamless
+   interoperability with existing IT systems, and dozens of essential applications—all at a fraction
+   of the price of proprietary operating systems. It comes bundled with the latest versions of
+   leading applications such as LibreOffice office productivity suite, Mozilla Firefox web browser,
+   and Evolution e-mail and calendar suite. In addition, it integrates with Microsoft SharePoint and
+   Novell Teaming for group collaboration and supports a wide range of multimedia file formats,
+   wireless and networking standards, and plug-and-play devices. </para>
+
+  <para> Through the latest enhancements in power management and security, &sled; also provides
+   an environmentally friendly IT experience (Green IT) and an error-proof desktop. Finally,
+   &sled; offers unparalleled flexibility. You can deploy it on a wide range of thick client
+   devices (including desktops, notebooks, netbooks, and workstations), on thin client devices, or
+   as a virtual desktop. By leveraging the power of &sled;, your business can dramatically
+   reduce costs, improve end user security and increase workforce productivity. </para>
+    <!-- bnc#882262 -->
+    <!-- bnc#923961 -->
+    <para>
+     SUSE Linux Enterprise Desktop 12 has a life cycle of about 6
+     years. The current version will be fully maintained and supported
+     until 6 months after the release of SUSE Linux Enterprise 13 SP1.
+    </para>
+
+  <section id="intro.new">
+   <title>What's New?</title>
+
+   <remark> Marketing POV. </remark>
+   <para/>
+   <remark> ** Update information : link to severity ratings documentation ** Installation : change,
+    new kernel, compatibility ** features : features description (not technical) ** System update :
+    link to the documentation (not just the tittle) ** Update related notes : specific change to
+    focus on </remark>
+   <!-- bnc#900057 -->
+   <note>
+    <title>Fix Status of the GNU Bourne Again Shell (bash)</title>
+   <para>
+    Given the proximity of the &sle; 12 release to the publication of
+    the <quote>shellshock</quote> series of vulnerabilities in the GNU
+    Bourne Again Shell (bash), we want to provide customers with
+    information on the fix status of the bash version shipped in the
+    SLE 12 GA release:
+   </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+CVE-2014-6271 (original shellshock)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+CVE-2014-7169 (taviso bug)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+CVE-2014-7186 (redir_stack bug)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+CVE-2014-7187
+and
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+non-exploitable CVE-2014-6277 
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+non-exploitable CVE-2014-6278
+<!-- (see https://www.suse.com/support/kb/doc.php?id=7015714 )-->
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    Up-to-date information is available online: <ulink
+    url="https://www.suse.com/support/shellshock/">https://www.suse.com/support/shellshock/</ulink>.
+   </para>
+   </note>
+
+    <para>
+     SUSE Linux Enterprise Desktop 12 introduces a number of innovative
+     changes. Here are some of the highlights:
+    </para>
+
+    <itemizedlist>
+     <listitem>
+      <para>
+       Robustness on administrative errors and improved management
+       capabilities with full system rollback based on btrfs as the
+       default file system for the operating system partition and SUSE's
+       snapper technology.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       An overhaul of the installer introduces a new workflow that allows you
+       to register your system and receive all available maintenance updates
+       as part of the installation.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       New core technologies like systemd, replacing the time honored
+       System V based init process.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       GNOME 3.10, giving users a modern desktop environment with a
+       choice of several different look and feel options, including a
+       special SLE Classic mode for easier migration from earlier SUSE
+       Linux Enterprise desktop environments
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       For users wishing to use the full range of productivity
+       applications of a Desktop with SUSE Linux Enterprise Server, we
+       are now offering the SUSE Linux Enterprise Workstation Extension
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Integration with the new SUSE Customer Center, SUSE's central web
+       portal to manage Subscriptions, Entitlements, and provide access
+       to Support.
+      </para>
+     </listitem>
+    </itemizedlist>
+
+   <!--
+ <section id='mustread'>
+  <!-\- FATE#312947 -\->
+  <title>Important Upgrade Information</title>
+  -->
+   <remark> This is Read Me First information. </remark>
+
+   <para> For users upgrading from a previous &sled; release it is recommended to review: </para>
+
+   <itemizedlist>
+    <listitem>
+     <para>
+      <xref linkend="Intro.Support"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="InstUpgrade.Upgrade"/>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <xref linkend="TechInfo"/>
+     </para>
+    </listitem>
+   </itemizedlist>
+
+   <!--
+-->
+  </section>
+
+  <section id="Intro.Documentation">
+   <title>Documentation and Other Information</title>
+
+   <section>
+    <title>Available on the Product Media</title>
+    <itemizedlist>
+     <listitem>
+      <para> Read the READMEs on the media. </para>
+     </listitem>
+     <listitem>
+      <para> Get the detailed changelog information about a particular package from the RPM: </para>
+      <screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+      <para> &lt;FILENAME&gt;. is the name of the RPM. </para>
+     </listitem>
+     <listitem>
+      <para> Check the <filename>ChangeLog</filename> file in the top level of the media for a
+       chronological log of all changes made to the updated packages. </para>
+     </listitem>
+     <listitem>
+      <para> Find more information in the <filename>docu</filename> directory of the media of
+       &sled; 12 CDs. This directory includes PDF versions of the &sled; 12 Installation
+       Quick Start and Deployment Guides. Documentation (if installed) is available below the
+        <filename>/usr/share/doc/</filename> directory of an installed system. </para>
+     </listitem>
+     <listitem>
+      <para> These &rnotes; are identical across all architectures, and the most recent version
+       is always available online at <ulink url="http://www.suse.com/releasenotes/"/>. </para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+   <section>
+    <title>Additional or Updated Documentation</title>
+    <para>
+     For &sled; &suse-version; documentation, see <ulink
+     url="http://www.suse.com/documentation/sled-12/"/>, where you can
+     download PDF documents. For installation with YaST software
+     management or with zypper, packages are available on the product
+     media. Some of these packages are installed by default. These are
+     the package names:
+    </para>
+
+    <itemizedlist>
+     <listitem>
+      <para><systemitem>sled-installquick_en-pdf</systemitem>: SLED 12 Installation Quick
+       Start</para>
+     </listitem>
+
+     <listitem>
+      <para><systemitem>sled-gnomeuser_en-pdf</systemitem>: SLED 12 GNOME User Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-admin_en-pdf</systemitem>: SLED 12 Administration Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-deployment_en-pdf</systemitem>: SLED 12 Deployment Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-security_en-pdf</systemitem>: SLED 12 Security Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-tuning_en-pdf</systemitem>: SLED 12 Tuning Guide</para>
+     </listitem>
+     <listitem>
+      <para><systemitem>sled-manuals_en</systemitem>: the set of all SLED books in HTML
+       format</para>
+     </listitem>
+    </itemizedlist>
+   </section>
+
+  </section>
+
+  <section id="Intro.Sourcecode">
+   <title>How to Obtain Source Code</title>
+   <!-- msvec and legal (ciaran), 2013-05-13 -->
+   <!-- moved from the abstract to this location as the first section -->
+   <para>
+    This SUSE product includes materials licensed to SUSE under the GNU
+    General Public License (GPL). The GPL requires SUSE to provide the
+    source code that corresponds to the GPL-licensed material. The
+    source code is available for download at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>. Also,
+    for up to three years after distribution of the SUSE product, upon
+    request, SUSE will mail a copy of the source code.  Requests should
+    be sent by e-mail to <ulink
+    url="mailto:sle_source_request@novell.com"/> or as otherwise
+    instructed at <ulink
+    url="http://www.suse.com/download-linux/source-code.html"/>.  SUSE
+    may charge a reasonable fee to recover distribution costs. </para>
+  </section>
+
+  <section id="Intro.Support">
+   <title>Support Statement for &sled;</title>
+   <para>
+   To receive support, see <ulink
+   url="http://www.suse.com/products/desktop/"/>.
+   </para>
+  <section id="Intro.Support.General">
+   <title>General Support Statement</title>
+   <para/>
+  </section>
+   <section id="Intro.Support.TechPreviews">
+    <title>Technology Previews</title>
+    <para>
+     Technology Preview features are either not supported or supported
+     in a limited fashion.  These features are mainly included for
+     customer convenience and may be functionally incomplete, unstable
+     or in other ways not suitable for production use.
+    </para>
+
+    <!-- now fate#316732: Read-Only Root File System -->
+    <!-- <section> -->
+    <!--  <title>Read-Only Root Filesystem</title> -->
+    <!--  <para>CHECKIT:SLE11.3</para> -->
+
+    <!-- to be provided via fate#317023 now
+  <section>
+    <title>Linux Filesystem Capabilities</title>
+   <para>CHECKIT:SLE11.3</para>
+    <para>
+      Our kernel is compiled with support for Linux Filesystem Capabilities.
+      It is disabled by default.  Enable it by adding
+      <option>file_caps=1</option> as a kernel boot option.
+    </para>
+  </section>
+  -->
+   </section>
+   <section id="Intro.Support.Software">
+    <title>Software Requiring Specific Contracts</title>
+    <para> The following packages require additional support contracts to be obtained by the
+     customer in order to receive full support: </para>
+   </section>
+  </section>
+  <section id="Intro.Derived_Products">
+   <title>Derived and Related Products</title>
+   <para/>
+  </section>
+  <section id="Intro.Certification">
+   <title>Security, Standards, and Certification</title>
+   <para/>
+  </section>
+ </section>
+
+ <!-- newcat:  -->
+ <section id="InstUpgrade">
+  <title>Installation and Upgrade</title>
+  <para> This section includes installation related information for this release. </para>
+
+  <section id="InstUpgrade.Installation">
+   <title>Installation</title>
+   <para/>
+  </section>
+
+  <!-- newcat:  -->
+  <section id="InstUpgrade.Upgrade">
+   <title>Update-Related Notes</title>
+   <para> This section includes update-related information for this release. </para>
+   <!--
+ <section id="Update.General">
+  <title>General Update Notes</title>
+  -->
+   <!-- this snippet is also used in the SLES release notes -->
+   <!-- bnc#827325 -->
+   <!-- fcrozat: not valid for SLE 12, major codestream change
+ <section>
+  <title>Lower Version Numbers in SUSE Linux Enterprise 11 SP3 than in
+SP2</title>
+
+   <para>CHECKIT:SLE11.3 see SLES RN!</para>
+<para>
+When upgrading from SUSE Linux Enterprise Server or Desktop 11 SP2 to
+SP3, you may encounter a version downgrade of specific software
+packages, including the Linux Kernel.
+</para>
+
+<para>
+SLE 11 SP3 has all its software
+packages and updates in the SP3 repositories. No packages
+from SP2 repositories are needed for installation or
+upgrade, not even from the SP2 update repositories.
+</para>
+<note>
+<para>
+It is important to remember that the version number is not sufficient
+to determine which bugfixes are applied to a software
+package.
+</para>
+</note>
+<para>
+In case you add SP2 update repositories, be aware
+of one characteristic of the repository concept: Version
+numbers in the SP2 update repository can be higher than
+those in the SP3 repository. Thus, if you update with
+the SP2 repositories enabled, you may get the SP2 version of
+a package instead of the SP3 version. This is admittedly
+unfortunate.
+</para>
+<para>
+It is recommended to avoid using the version from a lower
+SP, because using the SP2 package instead of the SP3 package can
+result in unexpected side effects.  Thus we advise to switch
+off all the SP2 repositories, if you do not really need them.
+Keep old repositories only, if your system depends on
+a specific older package version.
+
+If you need a package from a lower SP though, and thus
+have SP2 repositories enabled, make sure that the
+packages you intended to upgrade have actually been upgraded.
+</para>
+<para>
+Summarizing: If you have an SP2 installation with all patches and
+updates applied, and then migrate off-line to SP3 GA, you will
+see a downgrade of some packages.  This is expected
+behavior.
+</para>
+ </section>
+-->
+
+   <!-- bnc#731924 -->
+   <!-- reuse http://www.novell.com/support/dynamickc.do?cmd=show&forward=nonthreadedKC&docType=kc&externalId=7010200_draft&sliceId=1 -->
+   <!-- this snippet is also used in the SLES release notes,
+       WITH SMALL DIFFERENCES, THOUGH (see Extra channel issue) -->
+   <!-- Rephrasing for better readability; bnc#838463 -->
+   <!-- fcrozat:  not valid for SLE12, we don't support migration using
+  zypper
+  <section>
+   
+  <title>Migrating to SLE 11 SP3 Using Zypper</title>
+   <para>CHECKIT:SLE11.3</para>
+-->
+
+   <!-- fcrozat: non KMS is not supported in SLE12, drop the section
+  <section id="sp1-kms">
+    <!-\- bnc#571859 -\->
+    <title>Graphics Drivers Using KMS</title>
+   <para>CHECKIT:SLE11.3</para>
+  -->
+
+   <!-- <section> -->
+   <!--  <title>GroupWise 8 Client</title> -->
+
+   <!-- <section id="apparmor" status="2011-10-14"> -->
+   <!--  <title>AppArmor</title> -->
+
+
+   <!-- <section id="firewall-settings" status="2008-12-02"> -->
+   <!--  <title> Fine-Tuning Firewall Settings </title> -->
+  </section>
+  <!-- <section id='Update.SP2ToSP3'> -->
+  <!--  <title>Update from &sled; 11 SP2</title> -->
+  <!--  <para/> -->
+  <!-- </section> -->
+
+  <!-- bnc#449095 bnc#484634 -->
+  <!-- aligned with SLES version, 2011-12-01 -->
+  <!-- eventually via fate#317085 -->
+  <!--
+  <section id="Installation.CJK">
+  <title>CJK Languages Support in Text-mode Installation</title>
+  -->
+
+  <!-- bnc#436939 -->
+  <!-- <section id="lid-closed" status="2008-10-21"> -->
+  <!--  <title>Unable to Detect Display with Lid Closed</title> -->
+
+  <!-- bnc#426161 -->
+  <!-- <section id="packages-to-sdk" status="2008-10-23"> -->
+  <!--  <title>Development Packages Moved to the SDK</title> -->
+
+  <!-- <section id="persistent-devices" status="2008-11-02"> -->
+  <!-- align with sles version 2011-12-01 -->
+  <!-- <title>Installation Using Persistent Device Names</title> -->
+  <!-- <para>CHECKIT:SLE11.3</para> -->
+
+  <!-- <section id="iscsi" status="2008-12-02"> -->
+  <!--   <title>MD Devices on Top of iSCSI Not Supported</title> -->
+
+  <!-- bnc#459762 -->
+  <!-- <section id="nm-and-dhcp" status="2009-02-11"> -->
+  <!--  <title>Using NetworkManager and DHCP</title> -->
+
+ </section>
+
+ <section id="InfraPackArch">
+  <title>Infrastructure, Package and Architecture Specific Information</title>
+  <section id="InfraPackArch.ArchIndependent">
+   <title>Architecture Independent Information</title>
+   <section id="InfraPackArch.ArchIndependent.Kernel">
+    <title>Kernel</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Kernel_Modules">
+    <title>Kernel Modules</title>
+    <!-- 2014-03-19, ke: bnc#869159 -->
+    <para> An important requirement for every Enterprise operating system is the level of support a
+     customer receives for his environment. Kernel modules are the most relevant connector between
+     hardware ("controllers") and the operating system. </para>
+
+    <para>
+     <!--  bnc#869159 --> For more information about the handling of kernel modules, see the
+     &sle; Administration Guide. </para>
+   </section>
+
+   <section id="InfraPackArch.ArchIndependent.SystemsManagement">
+    <title>Systems Management</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Storage">
+    <title>Storage</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Security">
+    <title>Security</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Network">
+    <title>Networking</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Performance">
+    <title>Performance</title>
+    <para/>
+   </section>
+  <section id="InfraPackArch.ArchIndependent.Virtualization">
+   <title>Virtualization</title>
+   <para/>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.KVM">
+    <title>KVM</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.XEN">
+    <title>XEN</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.Containers">
+    <title>Containers</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.libvirt">
+    <title>libvirt</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.ArchIndependent.Virtualization.Other">
+    <title>Others</title>
+    <para/>
+   </section>
+  </section>
+  </section>
+  <section id="InfraPackArch.x86_64">
+   <title>AMD64/Intel64 64-Bit (x86_64) Specific Information</title>
+   <para/>
+   <section id="InfraPackArch.x86_64.System">
+    <title>System and Vendor Specific Information</title>
+    <para/>
+   </section>
+   <section id="InfraPackArch.x86_64.Virtualization">
+    <title>Virtualization</title>
+    <para/>
+   </section>
+  </section>
+  <!-- <section id='TechInfo.Other'> -->
+  <!--  <title>Other Technical Information</title> -->
+  <!-- <para/> -->
+  <!-- relnotes.g.realtime -->
+  <!-- <listitem> -->
+  <!--   <para> -->
+  <!--     Realtime Applications -->
+  <!--   </para> -->
+
+
+  <!-- relnotes.t.nonexecuteable_stack-->
+  <!-- <listitem> -->
+  <!--   <para> -->
+  <!--     Nonexecutable Stack -->
+  <!--   </para> -->
+
+  <!-- bnc#604766 -->
+  <!-- <section id="booting-2tib"> -->
+  <!--  <title>Boot Device Larger Than 2 TiB</title> -->
+
+
+  <!-- bnc#439133 -->
+  <!-- <section id="levono-thinkpads" status="2008-11-12"> -->
+  <!--  <title>Detecting Lenovo ThinkPad Laptops</title> -->
+
+  <!-- </section> -->
+
+  <!-- <title>Known Issues</title> -->
+
+  <!-- bnc#479546 -->
+  <!-- <section id="update-network-issues" status="2009-03-10"> -->
+  <!--  <title>Network Issues After Updating</title> -->
+
+
+  <!-- <title>Hardware Related Issues</title> -->
+
+  <!-- bug 357037 -->
+  <!-- 2014-03-19, ke: bug  869128 -->
+  <!-- <section> -->
+  <!--  <title>Limited Graphics Support on IBM SurePOS 700 4800-7X3 during Installation</title> -->
+
+
+  <!-- bug 358875 -->
+  <!-- <section> -->
+  <!--  <title>Graphical Distortions on the FIC GE2 Plattform (Transtec -->
+  <!--  SENYO600)</title> -->
+
+ </section>
+
+ <section id="Driver_Updates">
+  <title>Driver Updates</title>
+  <remark>** list of update by category ** version comparison table from previous SP/Product </remark>
+
+  <section id="Driver_Updates.Storage">
+   <title>Storage Drivers</title>
+   <para/>
+  </section>
+  <section id="Driver_Updates.Network" remap="Driver_Updates:Network">
+   <title>Network Drivers</title>
+   <para/>
+  </section>
+ </section>
+ <section id="Packages">
+  <title>Packages and Functionality Changes</title>
+
+  <section id="Packages.New">
+   <title>New Packages</title>
+
+   <remark> *** Description of the new package with direct link to the official website (need the
+    URL tag) *** Version and release of the package *** Why this new package: enhancements request
+    *** link to the official documentation *** link to the SUSE's documentation *** Dependencies and
+    Build requires </remark>
+   <para/>
+  </section>
+  <section id="Packages.Update">
+   <title>Updated Packages</title>
+   <remark> *** Description of the new package with direct link to the official website *** version
+    comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
+    Bugzilla) *** Enhancements request (link to Fate number) *** link to the official documentation
+    *** link to the SUSE's documentation *** Security fixes (link to CVE or SUSE's security web
+    site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
+   <para/>
+   <section id="Features.Kernel">
+    <title>Kernel and Toolchain</title>
+    <itemizedlist>
+     <listitem>
+      <para> GCC 4.8 </para>
+     </listitem>
+
+     <listitem>
+      <para> glibc 2.19 </para>
+     </listitem>
+
+     <listitem>
+      <para> Linux kernel 3.12 </para>
+     </listitem>
+
+
+    </itemizedlist>
+   </section>
+   <section id="Features.Desktop">
+    <title>Desktop</title>
+    <itemizedlist>
+     <listitem>
+      <para> GNOME 3.10 </para>
+     </listitem>
+
+     <listitem>
+      <para> X.org 7.7 </para>
+     </listitem>
+
+    </itemizedlist>
+
+   </section>
+   <section id="Features.Other">
+    <title>Other Changes and Version Updates</title>
+    <itemizedlist>
+
+     <!-- via fate#316637
+     <listitem>
+      <para>
+       Default Filesystem
+      </para>
+      <para>
+       With &sled; 12, the default file system in new installations was
+       changed from ext3 to btrfs for system, and to XFS for home and
+       data partitions.
+       </para>
+      </listitem>
+     -->
+     <listitem>
+      <para> Samba 4.1.3 </para>
+     </listitem>
+
+     <listitem>
+      <para> UEFI Enablement on AMD64 </para>
+     </listitem>
+
+     <listitem>
+      <para> SWAP over NFS </para>
+     </listitem>
+
+     <listitem>
+      <para> Python 2.7 </para>
+     </listitem>
+
+     <listitem>
+      <para> Perl 5.18.2 </para>
+     </listitem>
+
+     <listitem>
+      <para> Ruby 2.0 </para>
+     </listitem>
+
+    </itemizedlist>
+   </section>
+  </section>
+  <section id="Packages.Modules">
+   <title>Modules</title>
+   <para/>
+  </section>
+  <section id="Packages.Deprecated">
+   <title>Deprecated Functionality</title>
+
+   <section id="Packages.Deprecated.rm_with_12">
+    <title>Packages Removed with &sled; 12</title>
+    <para> The following packages were removed with the major release of &sled; 12: </para>
+
+   </section>
+
+   <section id="Packages.Deprecated.Future">
+    <title>Packages and Features to Be Removed in the Future</title>
+
+    <para> The following packages are deprecated and will be removed with &sled; 13.</para>
+   </section>
+
+  </section>
+  <!-- was: InfraPackArch.ArchIndependent.Package -->
+  <section id="Packages.Packaging" remap="Packages:Packaging">
+   <title>Changes in Packaging and Delivery</title>
+   <para/>
+  </section>
+ </section>
+
+ <section id="TechInfo">
+  <title>Technical Information</title>
+  <para> This section contains a number of technical changes and enhancements for the experienced
+   user. </para>
+
+  <section id="TechInfo.Kernel">
+   <title>Kernel Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Xen">
+   <title>Xen Limits</title>
+   <para/>
+  </section>
+  <section id="TechInfo.Filesystems">
+   <title>File Systems</title>
+   <para/>
+  </section>
+
+  <!-- 
+  <section id="TechInfo.IPv6">
+   <title>IPv6 Implementation and Compliance</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para> &sled; 11 is compliant to IPv6 Logo Phase 2. However, when running the respective
+    tests, you may see some tests failing. For various reasons, we cannot enable all the
+    configuration options by default, which are necessary to pass all the tests. </para>
+  </section>
+  -->
+ </section>
+
+
+ <!-- START-FATE-RN -->
+ <section id="Miscellaneous">
+  <title>Miscellaneous</title>
+  <para/>
+ </section>
+ <!-- END-FATE-RN -->
+
+ <section>
+  <title>Legal Notices</title>
+
+  <para>SUSE makes no representations or warranties with respect to the contents or use of this
+   documentation, and specifically disclaims any express or implied warranties of merchantability or
+   fitness for any particular purpose. Further, SUSE reserves the right to revise this publication
+   and to make changes to its content, at any time, without the obligation to notify any person or
+   entity of such revisions or changes.</para>
+
+  <para>Further, SUSE makes no representations or warranties with respect to any software, and
+   specifically disclaims any express or implied warranties of merchantability or fitness for any
+   particular purpose. Further, SUSE reserves the right to make changes to any and all parts of SUSE
+   software, at any time, without any obligation to notify any person or entity of such
+   changes.</para>
+
+  <para>Any products or technical information provided under this Agreement may be subject to U.S.
+   export controls and the trade laws of other countries. You agree to comply with all export
+   control regulations and to obtain any required licenses or classifications to export, re-export,
+   or import deliverables. You agree not to export or re-export to entities on the current U.S.
+   export exclusion lists or to any embargoed or terrorist countries as specified in U.S. export
+   laws. You agree to not use deliverables for prohibited nuclear, missile, or chemical/biological
+   weaponry end uses. Please refer to <ulink url="http://www.suse.com/company/legal/"/> for more
+   information on exporting SUSE software. SUSE assumes no responsibility for your failure to obtain
+   any necessary export approvals.</para>
+
+  <para>Copyright © 2010, 2011, 2012, 2013, 2014 SUSE LLC. This release notes document is licensed
+   under a Creative Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US, <ulink
+    url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>. </para>
+
+  <para>SUSE has intellectual property rights relating to technology embodied in the product that is
+   described in this document. In particular, and without limitation, these intellectual property
+   rights may include one or more of the U.S. patents listed at <ulink
+    url="http://www.suse.com/company/legal/"/> and one or more additional patents or pending patent
+   applications in the U.S. and other countries.</para>
+
+  <para>For SUSE trademarks, see SUSE Trademark and Service Mark list (<ulink
+    url="http://www.suse.com/company/legal/"/>). All third-party trademarks are the property of
+   their respective owners.</para>
+
+ </section>
+</article>

@@ -1,0 +1,59 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#removed-deprecated]
+== Removed and Deprecated Features and Packages
+
+This section lists features and packages that got removed from {product} or
+will be removed in upcoming versions.
+
+[#removed-deprecated-removed]
+=== Removed Features and Packages
+
+The following packages have been removed in this release.
+
+* `libibmad-devel`
+* `libipmctl2`
+* `libqpdf13`
+* `libreoffice-base-drivers-mysql`
+* `libsmbldap0`
+* `libsmbldap0-32bit`
+* `openscap-extra-probes`
+* `opensm-libs3`
+* `opensm-libs3-32bit`
+* `postgresql96`
+* `postgresql96-contrib`
+* `postgresql96-devel`
+* `postgresql96-docs`
+* `postgresql96-server`
+* `vaapi-intel-driver`
+* `xmlsec1-libgcrypt-devel`
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////
+
+[#removed-deprecated-deprecated]
+=== Deprecated Features and Packages
+
+The following features and packages are deprecated and will be removed with a future service pack of {product}.
+
+Also see the following release notes:
+
+* <<jsc-SLE-22661>>
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Text
+////
+[#jsc-SLE-4731]
+====  Chelsio T3 Driver (`cxgbe3`) Is Deprecated
+
+The driver for Chelsio T3 networking equipment (`cxgbe3`) is now deprecated and may become unsupported in a future Service Pack of {product} {this-ga}.
+

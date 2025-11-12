@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE section
+[
+  <!ENTITY % myents SYSTEM "generic-rn.ent" >
+  %myents;
+]>
+<section xml:id="package-slurm-upgrade-2011"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>An Upgrade of Slurm to version 20.11 is available</title>
+ <para>
+  A Slurm version upgrade to version 20.11 is available. This upgrade is
+  available for customers who wish to upgrade to the new version to take
+  advantage of the functionality provided. The version of Slurm that
+  has been shipped with this service pack will remain supported.
+ </para>
+ <para>
+  To upgrade to this version of Slurm, make sure to follow the procedure in
+  <xref linkend="hpc-tool-slurm-upgrade"/>.
+ </para>
+ <para>
+  The following changes have been made in 20.11:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+    <literal>slurmctld</literal> is now set to fatal in case of computing node configured with
+    <literal>CPUs == #Sockets</literal>. CPUs has to be either total number
+    of cores or threads.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The FastSchedule option has been removed. The
+    <literal>FastSchedule=2</literal> functionality
+    (used for testing and development) is available as the new
+    <literal>SlurmdParameters=config_overrides</literal> option.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    <literal>slurmdbd</literal> is now set to fatal if the <literal>slurmdbd.conf</literal>
+    file is not owned by <literal>SlurmUser</literal> or its mode is
+    not set to <literal>0600</literal>.
+   </para>
+  </listitem>
+ </itemizedlist>
+ <section xml:id="package-slurm-2011-highlight">
+  <title>Highlights of version 20.11</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+    Log messages enabled by the various DebugFlags have been overhauled, and
+    will all print at the <literal>verbose()</literal> level, and prepend the
+    flag name that is associated with a given log message.
+   </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>accounting_storage/filetxt</literal> has been removed as an
+     option. Consider using <literal>accounting_storage</literal>/<literal>slurmdbd</literal> as an alternative.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Setting of number of Sockets per node was standardized for configuration
+     line with and without <literal>Boards=</literal>. Specifically in case
+     of <literal>Boards=1</literal> and #CPUs given the default value of
+     Sockets will be set to #CPUs / #Cores / #Threads.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Dynamic Future Nodes: <command>slurmds</command> started with
+     <literal>-F[&lt;feature&gt;]</literal> will be associated with a node name
+     in Slurm that matches the same hardware configuration.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>SlurmctldParameters=cloud_reg_addrsa</literal>: Cloud nodes
+     automatically get <literal>NodeAddr</literal> and
+     <literal>NodeHostname</literal> set from <literal>slurmd</literal>
+     registration.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>SlurmctldParameters=power_save[_min]_interval</literal>:
+     Configure how often the power save module looks to do work.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     By default, a step started with srun will be granted exclusive (or non-
+     overlapping) access to the resources assigned to that step. No other
+     parallel step will be allowed to run on the same resources at the same
+     time. This replaces one facet of the <literal>--exclusive</literal>
+     option's behavior, but does not imply the <literal>--exact</literal>
+     option described below. To get the previous default behavior - which
+     allowed parallel steps to share all resources - use the new srun
+     <literal>--overlap</literal> option.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     In conjunction to this non-overlapping step allocation behavior being the
+     new default, there is an additional new option for step management
+     <literal>--exact</literal>, which will allow a step access to only those
+     resources requested by the step.
+     This is the second half of the <literal>--exclusive</literal> behavior.
+     Otherwise, by default all non-gres resources on each node in the allocation
+     will be used by the step, making it so no other parallel step will have
+     access to those resources unless <literal>--overlap</literal> is specified
+     for both steps.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The option <literal>--threads-per-core</literal> now influences task
+     layout/binding, not just allocation.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>AutoDetect</literal> in <literal>gres.conf</literal> can now
+     be specified for some nodes while not for others via the
+     <literal>NodeName</literal> option.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <filename>gres.conf</filename>: Add new <literal>MultipleFiles</literal>
+     configuration entry to allow a single GRES to manage multiple device files
+     simultaneously.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The option <literal>SallocDefaultCommand</literal> has been removed.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Support for an "Interactive Step" has been added, designed to be used
+     with <command>salloc</command> to launch a terminal on an allocated compute
+     node automatically.
+     Enable this by setting <literal>use_interactive_step</literal>
+     as part of <literal>LaunchParameters</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     IPv6 support has been added. This must be explicitly enabled with
+     <literal>EnableIPv6</literal> in <literal>CommunicationParameters</literal>.
+     IPv4 support can be disabled with <literal>DisableIPv4</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Allow use of a target directory with <command>srun --bcast</command>, and
+     change the default file name to include the node name as well.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The new option <literal>--mail-type=INVALID_DEPEND</literal> has been added
+     to <command>salloc</command>, <command>sbatch</command>, and
+     <command>srun</command>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Differences between hardware (memory size, number of CPUs) discovered on
+     node vs configured in slurm.conf will now throw an error only when the node
+     state is set to drain. Previously it was done on every node registration,
+     those messages were demoted to debug level.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The command <command>scrontab</command> has been added. It permits
+     <filename>crontab</filename>-compatible job scripts to be defined.
+     These scripts will recur automatically (at most) on the intervals described.
+    </para>
+   </listitem>
+   <listitem>
+    <!-- Not even sure how to correctly format this, I definitely don't
+    understand it. -->
+    <para>
+     Enable the -lnodes=#:gpus=# in #PBS/qsub -l nodes syntax.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Any user with <literal>AdminLevel</literal> equal or higher than
+     <literal>Operator</literal> can see any hidden partition by default, as
+     <literal>SlurmUser</literal> or root already did.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>select/linear</literal> will now allocate up to nodes
+     <literal>RealMemory</literal> as spedified in
+     <literal>surm.conf</literal> when configured with
+     <literal>SelectTypeParameters=CR_Memory</literal> and
+     <literal>--mem=0</literal> specified. Previous behavior was
+     no memory accouted and no memory limits implied to job.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>slurmrestd</literal>, an API to interface with
+     <literal>slurmdbd</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The option <literal>--ntasks-per-gpu</literal> has been added to
+     <literal>sbatch</literal> and <literal>srun</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The <literal>--gpu-bind=single</literal> option has been added to
+     <literal>sbatch</literal> and <literal>srun</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Fix: <literal>scontrol takeover [backup]</literal> hangs when
+     specifying a backup &gt; 1 have been fixed. All slurmctlds below
+     the "backup" will be shutdown.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section xml:id="package-slurm-2011-command">
+  <title>Version 20.11 Command Changes</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <emphasis>sacct</emphasis>: get the UID from database instead of from the
+     user name and a system call.
+     Add <literal>--use-local-uid</literal> option to sacct to use the previous
+     behavior.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>sbatch</emphasis>: the <literal>%s</literal> format in
+     <literal>-e</literal>/<literal>-i</literal>/<literal>-o</literal> options
+     will expand to <literal>batch</literal> rather than
+     <literal>4294967294</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>squeue</emphasis>: added <literal>pendingtime</literal> as a option for
+     <literal>--Format</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>sacct</emphasis>: <literal>AllocGres</literal> and
+     <literal>ReqGres</literal> were removed. <literal>Alloc/ReqTres</literal>
+     should be used instead.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>scontrol</emphasis>: added the "Reserved" license count to
+     <literal>scontrol show licenses</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>squeue</emphasis>: put sorted start times of
+     <literal>N/A</literal> or <literal>0</literal> at the end of the list.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>scontrol</emphasis>: Change <literal>scontrol reboot ASAP</literal> to use
+     <literal>next_state=resume</literal> logic.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>scontrol</emphasis>: added an admin-settable "Comment" field to each Node.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>squeue</emphasis> and <emphasis>sinfo</emphasis>:
+     <literal>-O</literal> no longer repeat the last suffix specified.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <emphasis>salloc</emphasis>: wait for <literal>PrologSlurmctld</literal> to
+     finish before entering the shell.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Add time specification: <literal>now-<replaceable>X</replaceable></literal>
+     (that is, subtract <replaceable>X</replaceable> <!-- time units? --> from
+     the present)
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section xml:id="package-slurm-2011-api">
+  <title>Version 20.11 API Changes</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <literal>slurm_ctl_conf_t</literal> has been renamed to
+     <literal>slurm_conf_t</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>slurm_free_kvs_comm_set()</literal> has been renamed to
+     <literal>slurm_pmi_free_kvs_comm_set()</literal>,
+     <literal>slurm_get_kvs_comm_set()</literal> has been renamed to
+     <literal>slurm_pmi_get_kvs_comm_set()</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>slurm_job_step_layout_get()</literal> parameters has changed
+     to use <literal>slurm_step_id_t</literal> see slurm.h for new
+     implementation.  If not running hetsteps just put
+     <literal>NO_VAL</literal> as the value for <literal>step_het_comp</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>slurm_job_step_stat()</literal> parameters has changed to
+     use <literal>slurm_step_id_t</literal>
+     see slurm.h for new implementation.  If not running hetsteps just put
+     <literal>NO_VAL</literal> as the value for <literal>step_het_comp</literal>.
+    </para>
+   </listitem>
+   <listitem>
+   <para>
+     <literal>slurm_job_step_get_pids()</literal> parameters has changed to
+     use <literal>slurm_step_id_t</literal> see slurm.h for new
+     implementation.  If not running hetsteps just put
+     <literal>NO_VAL</literal> as the value for <literal>step_het_comp</literal>.
+   </para>
+   </listitem>
+   <listitem>
+    <para>
+      <literal>slurm_job_step_get_pids()</literal> parameters has changed to
+      use <literal>slurm_step_id_t</literal> see slurm.h for new
+      implementation. If you are not running hetsteps, use
+      <literal>NO_VAL</literal> as the value for <literal>step_het_comp</literal>.
+    </para>
+   </listitem>
+  <listitem>
+   <para>
+     <literal>slurmdb_selected_step_t</literal> has been renamed
+     <literal>slurm_selected_step_t</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <literal>slurm_sbcast_lookup()</literal> arguments have changed.
+     It now takes a populated <literal>slurm_selected_step_t</literal>
+     instead of <literal>job_id</literal>, <literal>het_job_offset</literal>,
+     <literal>step_id</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Due to internal restructuring ahead of the 20.11 release, applications
+     calling libslurm must call <literal>slurm_init(NULL)</literal> before
+     any API calls. Otherwise the API call is likely to fail due to
+     libslurm's internal configuration not being available.
+    </para>
+   </listitem>
+   </itemizedlist>
+ </section>
+</section>

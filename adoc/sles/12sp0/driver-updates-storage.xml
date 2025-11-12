@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<!-- newcat: Driver_Updates.Storage -->
+<section id='Drivers.Storage'>
+
+ <title>Storage Drivers</title>
+ <para>CHECKIT:SLE11.3</para>
+ <itemizedlist>
+
+  <!-- FATE#307126/bnc#560415 -->
+  <!-- bnc#832630 -->
+    <listitem>
+      <para>
+        Updated qla2xxx to version 8.04.00.13.11.3-k
+      </para>
+    </listitem>
+
+  <!-- bnc#818162 -->
+    <listitem>
+      <para>
+        Updated qla4xxx to version v5.03.00.06.11.3-k0
+      </para>
+    </listitem>
+
+  <!-- FATE#XXX -->
+    <listitem>
+      <para>
+        Updated megaraid_mbox driver to version 2.20.5.1
+      </para>
+    </listitem>
+
+  <!-- FATE#XXX -->
+    <listitem>
+      <para>
+        Updated megaraid_sas to version 4.27
+      </para>
+    </listitem>
+
+  <!-- bnc#556587 -->
+    <listitem>
+      <para>
+        Updated MPT Fusion to version 4.22.00.00
+      </para>
+    </listitem>
+
+  <!-- bnc#566013 -->
+    <listitem>
+      <para>
+        Updated mpt2sas driver to version 04.100.01.02
+      </para>
+    </listitem>
+
+  <!-- bnc#572427 -->
+    <listitem>
+      <para>
+        Updated lpfc driver to version 8.3.5.7
+      </para>
+    </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Added bnx2i driver for Broadcom NetXtreme II in version 2.1.1
+    </para>
+  </listitem>
+
+  <!-- FATE#XXX -->
+    <listitem>
+      <para>
+        Updated bfa driver to version 2.1.2.1
+      </para>
+    </listitem>
+
+  <!-- bnc#664906 -->
+  <listitem>
+   <para>The enic driver was updated to version 1.4.2 to support newer Cisco
+UCS systems. This update also replaces LRO (Large Receive Offload) to GRO
+(Generic Receive Offload).</para>
+  </listitem>
+
+  </itemizedlist>
+
+  <!-- bnc#726754 -->
+  <!-- bnc#869191; now fate#317114 -->
+  <!-- <section> -->
+  <!--  <title>Brocade FCoE Switch Does Not Accept Fabric Logins from Initiator</title> -->
+
+</section>

@@ -1,0 +1,284 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#kernel]
+=== Kernel
+
+// Release notes for kernel and kernel module features
+// including hardware drivers, excluding file system modules
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+Also see the following notes:
+
+* <<jsc-SLE-18818>>
+* <<bsc-1216929>>
+
+[#jsc-SLE-23823]
+==== IO scheduler algorithms
+
+The Linux kernel provides multiple IO scheduler algorithms to optimize IO performance for different hardware and workloads.
+As no algorithm works perfectly for every workload and every storage device, systems need to be tuned for optimal results.
+On {product}, the default selection of the IO scheduler is governed by `/usr/lib/udev/rules.d/60-io-scheduler.rules`.
+This file contains a number of udev rules with explanatory comments.
+By default, only one rule is enabled: The `BFQ` IO scheduler is used for rotating hard disks (HDDs) connected to IO controllers with just a single hardware queue, and the `mq-deadline` IO scheduler for other hardware configurations (in particular SSDs).
+This differs from {productnameshort} SP3, where the `BFQ` scheduler was chosen for all rotating disks, regardless of the IO controller.
+The change was necessary in {this-version} to improve performance for multi-disk storage arrays, which are usually connected through high-performance controllers featuring multiple hardware queues.
+The defaults work well for many workloads, but there will be exceptions.
+Users are encouraged to make copy of the original file (mentioned above) to `/etc/udev/rules.d/60-io-scheduler.rules` and edit the copy to suit their needs.
+Usually it will be sufficient to select one of the rules provided in the file.
+In general, `BFQ` is recommended for complex workloads with several processes competing for IO bandwidth, where scheduling fairness is important, and in cases where the storage is a single rotating disk.
+For workloads with just a single IO-intensive process, or with very fast hardware, `mq-deadline` is expected to perform better.
+
+
+[#jsc-SLE-21491]
+==== Advanced Matrix Extensions (AMX) instruction support
+
+{productnameshort} {this-version} now enabled support for Intel's AMX in their new Sapphire Rapids line of CPUs.
+
+The main use cases for AMX is deep learning inference and training (CNN, DNN), and other data analytics and machine learning applications.
+In practical terms, AMX can be more than 3x as performant as VNNI/AVX-512 using MKL-DNN and similar low-level libraries.
+
+
+[#bsc-1202115]
+==== Tomoyo is not supported
+
+The Tomoyo kernel module is not supported.
+The primary confinement technology is AppArmor.
+For more information about the module see
+https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/tomoyo.html.
+
+
+[#jsc-SLE-20693]
+==== New functionality in the {suse} kernel module tools package
+
+The {suse} kernel module tools have been updated to better comply with the file system hierarchy standards and also clearly indicate that certain kernel modules will be disabled in a future {sle} release.
+
+Distribution-provided configuration files previously placed in the `/etc` directory are now located in the `/lib` directory.
+The tools continue to recognize the user-supplied configuration files in the `/etc` directory.
+The `modprobe(8)` tool now presents an interactive dialog in case the user attempts to load one of the obsolete kernel modules.
+The dialog offers to abort the load operation, load the kernel module once, or override the blacklisting status.
+
+See the package documentation in `/usr/share/doc/packages/suse-module-tools/README.md` for more information.
+
+
+[#jsc-SLE-21256]
+==== `zstd` compression of kernel modules
+
+The `zstd` algorithm achieves much higher compression and decompression speed compared to `xz`, at the cost of somewhat lesser compression ratio.
+As a result, some reading operations during boot and installation are much faster.
+The module file extension has changed from `.ko.xz` to `.ko.zst` and the content is `zstd`-compressed.
+All {slea} components that manipulate the kernel modules have been adapted.
+Third-party software that does in-depth examination of kernel modules may require adjustments.
+
+
+[#jsc-SLE-20926]
+==== Unified cgroups hierarchy support
+
+The kernel cgroups API comes in two variants: v1 and v2.
+Additionally, there can be multiple cgroups hierarchies, exposing different APIs.
+The main two that are relevant in this case are:
+
+- hybrid: v2 hierarchy without controllers, controllers on v1 hierarchies
+- unified: v2 hierarchy with controllers
+
+The kernel cgroups v2 is now supported in unified mode.
+However, the default is still hybrid mode.
+
+See the https://man7.org/linux/man-pages/man7/cgroups.7.html[kernel documentation] for more information about cgroups.
+
+[#jsc-SLE-22831]
+==== SEV instance live migration in GCE
+
+Support for live migration in SEV-based Confidential VM images on Google Compute Engine is now supported.
+
+
+[#jsc-SLE-18857]
+==== The `kernel-preempt` kernel variant has been replaced with a boot-time option
+
+In {slea}{nbsp}SP2 we have introduced the `kernel-preempt` package for latency-sensitive workloads on {x64} and {aarch64} hardware architectures.
+The settings of `kernel-preempt` support timely reaction to external events and precise timing at the cost of overall system throughput.
+
+In {slea} {this-version}, the functionality embedded in the `kernel-preempt` package can be activated by adding the boot-time `preempt=full` parameter to the default {slea} kernel.
+The specialized `kernel-preempt` package has been consequently removed from the distribution.
+
+
+[#bsc-1179916]
+==== Loading `lpfc` driver in INTx mode
+
+Due to limitations in legacy interrupt routing setup by the firmware/hardware and a change in the kernel, loading the `lpfc` driver in INTx mode does not work.
+
+As a workaround, use the kernel parameter `pci=noioapicquirk` to successfully boot the `lpfc` driver in INTx mode.
+
+For more information see the relevant https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b88bf6c3b6ff77948c153cac4e564642b0b90632[kernel commit] and the https://www.kernel.org/doc/html/latest/PCI/boot-interrupts.html#boot-interrupts[kernel documentation on boot interrupts].
+
+
+[#jsc-SLE-18768]
+==== `zstd` compression of `initramfs`
+
+`dracut` supports compression of the `initramfs` image file with `zstd`.
+`zstd` is superior to `xz` both in terms of speed and compression ration.
+However, the kernel did not support decompressing a `zstd`-compressed `initramfs` image before.
+
+The feature has now been enabled in the kernel but the default compression of `dracut` is still `xz` for now.
+
+
+[#jsc-SLE-19648]
+==== Kernel firmware files are now compressed
+
+In addition to the firmware files being compressed, the packaging scheme has also been changed.
+Previously, all firmware files were shipped in the `kernel-firmware` package.
+Now, the files are split into sub-packages, and the `kernel-firmware-all` package will pull all the sub-packages into the system using the `kernel-firmware` `provides` symbol.
+
+
+[#jsc-SLE-18805]
+==== BTF has been enabled
+
+BTF (BPF Type Format) has been enabled in the kernel in {productnameshort} {this-version}.
+
+It has not been enabled for kernel modules (`DEBUG_INFO_BTF_MODULES=n`).
+This is because it introduced a new kind of binary compatibility check, which is currently not compatible with the kernel in {this-version}.
+It may also prevent loading modules in unexpected ways.
+However, we still keep BTF of `vmlinux` (`DEBUG_INFO_BTF=y`).
+This way there will be no BTF information on the modules but the Compile-Once-Run-Everywhere feature is still available to BPF programs that only trace kernel functions found within `vmlinux`.
+
+
+[#jsc-SLE-17674]
+==== Btrfs sub-page block size support
+
+In previous {productnameshort} versions, the Btrfs file system implementation could not work with file systems formatted with a block size smaller than the configured kernel page size.
+That means a file system formatted with 4-kilobyte block size could be mounted by the kernel using 4-kilobyte page size but not on another system that uses 64-kilobyte pages.
+
+Starting with {productnameshort} {this-version}, kernel with 64-kilobyte page size can use Btrfs file systems formatted with the smaller block size smaller than the kernel page size.
+
+However, writing to compressed files on such a volume is not yet supported.
+
+
+[#jsc-SLE-22170]
+==== BPF tooling has been updated
+In {productnameshort} {this-version} the (e)BPF tooling has been updated to the latest version.
+
+`bpftrace` is a high-level tracing language for Linux enhanced Berkeley Packet Filter (eBPF) available in the Linux kernel.
+`bpftrace` uses LLVM as a backend to compile scripts to BPF bytecode and makes use of BCC for interacting with the Linux BPF system, as well as existing Linux tracing capabilities: kernel dynamic tracing (`kprobes`), user-level dynamic tracing (`uprobes`), and tracepoints.
+
+The exisiting packages (`libbpf`, `bcc`, and `bpftrace`) have been updated and a new package (`cereal`, the build-time dependency of `bpftrace`) has been added.
+
+
+[#jsc-SLE-18497]
+==== BlueZ has been updated to version 5.62
+In {productnameshort} {this-version}, BlueZ has been upgraded from version 5.55 to version 5.62.
+
+In 5.62 some of the changes were the following:
+
+* API to add new properties for GATT and Adapter.
+* For MESH, it updates the configuration client and adds a new API to export the keys.
+
+For the full changelog, see https://github.com/bluez/bluez/blob/master/ChangeLog.
+
+
+[#jsc-SLE-22593]
+==== Unprivileged eBPF usage has been disabled
+
+A large amount of security issues was found and fixed in the Extended Berkeley Packet Filter (eBPF) code.
+To reduce the attack surface, its usage has been restricted to privileged users only.
+
+Privileged users include `root`.
+Programs with the `CAP_BPF` capability in the newer versions of the Linux kernel can still use eBPF as-is.
+
+To check the privileged state, you can check the value of the `/proc/sys/kernel/unprivileged_bpf_disabled` parameter.
+Value of 0 means "unprivileged enable", and value of 2 means "only privileged users enabled".
+
+This setting can be changed by the `root` user:
+
+* to enable it temporarily for all users by running the command `sysctl kernel.unprivileged_bpf_disabled=0`
+* to enable it permanently by adding `kernel.unprivileged_bpf_disabled=0` to the `/etc/sysctl.conf` file.
+
+
+// !STICKY
+[#kernel-limits]
+==== Kernel limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {sles} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|ARMv8 (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|256
+|2048
+|768
+
+|Maximum amount of RAM (theoretical/certified)
+|>1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|10{nbsp}TiB/{zwsp}256{nbsp}GiB
+|1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|256{nbsp}TiB/{zwsp}n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/{zwsp}128{nbsp}TiB
+|n.a.
+|4{nbsp}PiB^1^/{zwsp}2{nbsp}EiB
+|256{nbsp}TiB/{zwsp}256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1,048,576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 4{nbsp}PiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".
+
+[#jsc-SLE-19923]
+==== AMD SEV-ES host support
+With QEMU 6.1, the Linux kernel in {productnameshort} {this-version} now provides SEV-ES (Secure Encrypted Virtualization Encrypted State) host support on {amd} EPYC processors.
+SEV-ES builds off the base AMD SEV to also encrypt CPU register contents when exiting a virtual machine to ensure there is no register information leakage to the hypervisor.
+In addition, SEV-ES can detect malicious modifications to the CPU register state.
+
+[#jsc-SLE-20403]
+==== `tmon` has been updated
+`tmon` is a monitoring and testing tool for the Linux kernel thermal subsystem.
+Although the version number is still the same in {productnameshort} {this-version}, there have been added some patches.
+
+[#jsc-SLE-17310]
+==== Shared Virtual Addressing support
+The Linux kernel of {productnameshort} {this-version} now supports Shared Virtual Addressing (SVA), also knowns as Shared Virtual Memory (SVM).
+This feature allows sharing of CPU address spaces with devices, and simplifies I/O memory management for device drivers and userspace processes.
+
+Sharing address spaces of processes with devices makes it possible to rely on core kernel memory management for DMA, removing some complexity from application and device drivers.
+After binding to a device, applications can instruct it to perform DMA on buffers obtained with `malloc`.
+
+SVA mostly aims at simplifying DMA management but also improves security by isolating address spaces in devices.

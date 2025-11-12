@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % myents SYSTEM "release-notes.ent" >
+%myents;
+]>
+
+<section id="InfraPackArch.ArchIndependent.Storage">
+ <title>Storage</title>
+
+ <!-- bnc#828888 -->
+ <!-- 2013-12-03: mail mge/behlert -->
+ <!--
+ <section>
+  <title>Multipath Configuration Change</title>
+<para>CHECKIT:SLE11.3</para>
+  <para>
+   With the update to version 0.4.9 on SLES 11 SP2,
+   <literal>rr_min_io</literal> is replaced by
+   <literal>rr_min_io_rq</literal> in
+   <filename>multipath.conf</filename>.  The old option is now ignored.
+   Check this setting, if you encounter performance issues.
+  </para>
+  <para>
+   For more information, see the <quote>Storage Administration
+   Guide</quote> shipped with SLES 11 SP3.
+  </para>
+ </section>
+ -->
+  <!-- bnc#827016 -->
+  <!--
+  <section>
+   <title>Capturing kdump on a Target using Devicemapper
+   (Incl. Multipath)</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    If the root device is <emphasis>not</emphasis> using devicemapper
+    (multipath), as a workaround add additional parameters to
+    <literal>KDUMP_COMMANDLINE_APPEND</literal> in
+    <filename>/etc/sysconfig/kdump</filename>, to capture kdump on a
+    target that is using devicemapper (multipath):
+   </para>
+   <screen>KDUMP_COMMANDLINE_APPEND="root_no_dm=1 root_no_mpath=1"</screen>
+   <para>
+    Then start the kdump service.
+   </para>
+
+   <para>
+    If you use multipath for both root and kdump, these options must not
+    be added.
+   </para>
+
+   <para>
+    An example use case with System z could be a kdump target on
+    multipath zfcp-attached SCSI devices and a root file system on DASD.
+   </para>
+
+  </section>
+  -->
+
+ <!-- bnc#778116 -->
+ <!--
+ <section>
+  <title>Loop-mounting NFS Shares</title>
+
+  <para>
+   Loop-mounting NFS shares is supported only in SAP environments,
+   and only within the strict limits described in the Whitepaper at
+   /URL/.  This support is valid for SLES and SLES for SAP
+   Applications.
+  </para>
+ </section>
+ -->
+
+  <!-- bnc#475565 -->
+  <!-- 2013-12-03
+  <section>
+   <title>Multipathing: SCSI Hardware Handler</title>
+
+   <para>
+    Some storage devices, e.g. IBM DS4K, require special handling for
+    path failover and failback. In &sles; 10 SP2, dm layer served as
+    hardware handler.
+   </para>
+   <para>
+    One drawback of this implementation was that the underlying SCSI
+    layer did not know about the existence of the hardware
+    handler. Hence, during device probing, SCSI would send I/O on the
+    passive path, which would fail after a timeout and also print
+    extraneous error messages in the console.
+   </para>
+   <para>
+    In &sles; 11, this problem is resolved by moving the hardware
+    handler to the SCSI layer, hence the term SCSI Hardware
+    Handler. These handlers are modules created under the SCSI directory
+    in the Linux Kernel.
+   </para>
+   <para>
+    In &sles; 11, there are four SCSI Hardware Handlers:
+    <literal>scsi_dh_alua</literal>, <literal>scsi_dh_rdac</literal>,
+    <literal>scsi_dh_hp_sw</literal>, <literal>scsi_dh_emc</literal>.
+   </para>
+   <para>
+    These modules need to be included in the initrd image so that SCSI
+    knows about the special handling during probe time itself.
+   </para>
+   <para>
+    To do so, carry out the following steps:
+   </para>
+   <itemizedlist>
+    <listitem><para>Add the device handler modules to the
+    <literal>INITRD_MODULES</literal> variable in
+    <filename>/etc/sysconfig/kernel</filename></para></listitem>
+    <listitem><para>Create a new initrd with:</para>
+    <screen>mkinitrd -k /boot/vmlinux-&lt;flavour&gt; \
+-i /boot/initrd-&lt;flavour&gt;-scsi_dh \
+-M /boot/System.map-&lt;flavour&gt;</screen>
+    </listitem>
+    <listitem><para>Update the <filename>grub.conf/lilo.conf/yaboot.conf</filename> file with the newly built initrd.</para></listitem>
+    <listitem><para>Reboot.</para></listitem>
+   </itemizedlist>
+  </section>
+  -->
+
+
+  <!-- relnotes.i.iSCSI-OCFS2 -->
+  <!--
+  <section>
+   <title>Local Mounts of iSCSI Shares</title>
+   <para>CHECKIT:SLE11.3</para>
+   <para>
+    An iSCSI shared device should never be mounted directly on the local
+    machine. In an OCFS2 environment, doing so causes all hardware to
+    hard hang.
+   </para>
+  </section>
+  -->
+</section>

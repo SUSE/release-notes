@@ -1,0 +1,118 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#release-2025-10-31]
+=== 2025-10-31
+
+==== New
+
+* <<jsc-PED-6787>> ({jira-url}PED-6787[Jira])
+* <<jsc-PED-7684>> ({jira-url}PED-7684[Jira])
+
+
+[#release-2023-06-13]
+=== 2023-06-13
+
+==== New
+
+* Mention deprecation of `dapl`, `rds-tools`, `imgen`, and `openmpi` (versions 2 and 3) in <<removed-deprecated>> ({jira-url}PED-2184[Jira])
+
+
+[#release-2023-05-10]
+=== 2023-05-10
+
+==== New
+
+* <<jsc-PED-2790>> ({jira-url}PED-2790[Jira])
+* Added <<slurm-known-issues>> ({jira-url}PED-2984[Jira])
+* Added `cpuid`, `lmod`, and `PAPI` sections to <<all-architecture>> ({jira-url}PED-2804[Jira])
+
+[#release-2023-04-12]
+=== 2023-04-12
+
+==== New
+
+* Added <<jsc-PED-2803>> ({jira-url}PED-2803[Jira])
+* Added <<jsc-PED-2802>> ({jira-url}PED-2802[Jira])
+
+[#release-2023-03-01]
+=== 2023-03-01
+
+==== New
+
+* Added `clustduct` deprecation note in <<deprecated>> ({jira-url}PED-2798[Jira])
+* Added <<jsc-PED-2804>> ({jira-url}PED-2804[Jira])
+* Added <<jsc-PED-2798>> ({jira-url}PED-2798[Jira])
+
+==== Updated
+
+* Updated package information ({jira-url}PED-3010[Jira])
+
+[#release-2022-11-30]
+=== 2022-11-30
+
+==== New
+
+- Fix product version
+
+
+// === Pre-release
+
+// ==== New
+
+// * note
+
+
+// ==== Updated
+
+// * note
+
+[#release-2022-10-18]
+=== 2022-10-18
+
+==== New
+
+* Added <<jsc-SLE-24988>> ({jira-url}SLE-24988[Jira])
+
+
+[#release-2022-08-31]
+=== 2022-08-31
+
+==== New
+
+* Added <<jsc-SLE-22743>> ({jira-url}SLE-22743[Jira])
+
+[#release-2022-05-11]
+=== 2022-05-11
+
+==== New
+
+* Added this changelog
+
+[#release-2022-03-23]
+=== 2022-03-23
+
+==== New
+
+* Added <<jsc-SLE-12352>> ({jira-url}SLE-12352[Jira])
+* Added notes about `dolly`, `memkind`, `openblas`, `spack`, and `mpich` in <<all-architecture>>
+* Added note about Ganglia being unsupported in <<removed-deprecated>> ({jira-url}SLE-17777[Jira])
+* Added note about removal of Python 2 bindings for `genders` ({jira-url}SLE-23359[Jira])
+
+==== Updates
+
+* Added a note about building libraries using `spack` in <<removed-deprecated>> ({jira-url}SLE-17776[Jira])
+* Added `adios` and `superlu` to the list of removed libraries in <<removed-deprecated>>
+
+[#release-2021-11-03]
+=== 2021-11-03
+
+* Initial {this-sp} release
+

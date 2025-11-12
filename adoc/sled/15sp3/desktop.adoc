@@ -1,0 +1,59 @@
+
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#desktop]
+=== Desktop
+
+// Release Notes for Desktop application features:
+//   X11, GNOME, IceWM, Firefox, LibreOffice, ...
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example Entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+
+[#jsc-SLE-11520]
+==== The `laptop` RPM pattern has been renamed to `mobile`
+
+The RPM pattern `laptop` which was used to install laptop-relevant packages has been renamed to `mobile`.
+
+If you are using an {autoyast} profile, it may have to be updated after this change.
+The `mobile` pattern has also been cleaned up to remove duplicated and obsolete requirements.
+
+[#jsc-SLE-17238]
+==== Flatpak has been updated to version 1.10
+
+Flatpak has been updated to version 1.10.1.
+This update allows installing Chromium-based web browsers and adds support for new repository format, that enables faster updates and downloads less data.
+
+[#jsc-SLE-5556]
+==== Support for StrongSwan in NetworkManager has been added
+
+Support for StrongSwan (IPSec VPN) is now available when using NetworkManager. You need to install the `NetworkManager-strongswan` package, and `NetworkManager-strongswan-gnome` if using the GNOME desktop. Then to set up the VPN, use the NetworManager configuration tool.
+
+[#jsc-SLE-16217]
+==== Remmina has been updated to version 1.4.8
+
+The Remmina remote desktop client has been updated to version 1.4.8.
+This version provides UDP RDP support, among many new features and bug fixes.
+Freerdp was updated to version 2.1.2.
+
+[#jsc-SLE-14992]
+==== Support for WPA3 Personal WiFi has been added
+
+The `wpa_supplicant` package has been updated to version 2.9 and now supports WPA3 Personal authentication.
+`gnome-control-center` can now also configure WPA3 Personal WiFi connections.
+
+[#jsc-SLE-15561]
+==== Improved scanner support
+
+The `sane-backends` has been updated to version 1.0.32.
+This version provides a new backend (escl) for Airprint* compatible scanner.
+It enables support for new scanner models.

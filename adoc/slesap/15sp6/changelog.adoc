@@ -1,0 +1,54 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+:jira-url: https://jira.suse.com/browse/
+:bugzilla-url: https://bugzilla.suse.com/show_bug.cgi?id=
+:gitlab-url: https://gitlab.suse.de/documentation/release-notes-sles/-/commit/
+
+[#changelog]
+== Changelog for {this-version}
+
+[#release-2024-08-05]
+=== 2024-08-05
+
+==== New
+
+* <<jsc-PED-7207>> ({jira-url}PED-7207[Jira])
+** Also add the package to the list in <<intro-support-external>>
+
+==== Updated
+
+* <<intro-new>> has been split into Codestream- and SP-specific changes ({bugzilla-url}1222555[Bugzilla])
+
+
+[#release-2024-05-15]
+=== 2024-05-15
+
+==== Updated
+
+* Changed <<intro-certification>> to say that {this-version} *will be* submitted for certification
+
+
+[#release-2024-04-17]
+=== 2024-04-17
+
+==== Updated
+
+* Changed the wording of the support statement in <<intro-lifecycle>>:
+** Removed the erroneous phrase "full support"
+** Clarified the total of 3.5 years
+* Changed kernel version to 6.4 throughout the document ({bugzilla-url}1222673[Bugzilla])
+
+==== Removed
+
+* Removed erroneous listing of Common Criteria from <<intro-certification>>
+
+[#release-2023-10-19]
+=== 2023-10-19
+
+==== New
+
+* Initial {this-version} release
+
+
+

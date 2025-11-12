@@ -1,0 +1,138 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#kernel]
+=== Kernel
+
+// Release notes for kernel and kernel module features
+// including hardware drivers, excluding file system modules
+
+// jsc#PED-11946
+* Allow enabling `CONFIG_RT_GROUP_SCHED` at boot time using the `rt_group_sched` kernel cmdline parameter
+
+[#jsc-PED-12711]
+==== `smc` driver has been updated
+
+The `smc` (Shared Memory Communication) kernel driver has been updated to the latest upstream version.
+
+Note that currently using the `smc` driver can cause the system to freeze.
+This will be fixed in a future release.
+
+[#jsc-PED-11935]
+==== cgroupv2 CPU load-balancing
+
+The cgroups-v2 CPU load-balancing feature has been backported to the {this-version} kernel.
+
+
+[#jsc-PED-8462]
+==== Externally supported flag change
+
+The externally supported flag is no longer stored as a taint flag now.
+This means that the kernel is no longer tainted after an externally-supported module is inserted.
+
+
+[#jsc-PED-12170]
+==== Userspace live patching
+
+Currently, `libpulp` supports {ulp} of `glibc` and `openssl` binaries on the following architectures:
+
+* {x64}
+* {ppc64le}
+
+For more information see https://documentation.suse.com/sles/15-SP7/html/SLES-all/cha-ulp.html
+
+
+[#jsc-PED-7600]
+==== `CONFIG_HZ` value changes
+
+The {sles} {previous-version} kernels diverged from latest `CONFIG_HZ`
+default settings for multiple architectures.
+
+The  {arm-product} {this-version} kernel changed the `CONFIG_HZ` value
+(<<jsc-PED-7600-arm64>>):
+{x64} and {armreg} architectures now use the same value of 250{nbsp}Hz.
+
+{ppc} and {ibmz} architectures continue to share a value of 100{nbsp}Hz.
+
+// Note: openSUSE Tumbleweed uses diverging values of 300 across architectures.
+
+These configuration values cannot be overridden from the kernel command line.
+If your applications run into issues, contact your SUSE representative.
+
+
+////
+[#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
+==== Example entry
+
+Challenge (regular paragraph)
+
+Resolution (regular paragraph)
+////
+
+// !STICKY
+[#kernel-limits]
+==== Kernel limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {sles} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|{armv8} (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|256
+|2048
+|768
+
+|Maximum amount of RAM (theoretical/certified)
+|>1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|10{nbsp}TiB/{zwsp}256{nbsp}GiB
+|1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|256{nbsp}TiB/{zwsp}n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/{zwsp}128{nbsp}TiB
+|n.a.
+|4{nbsp}PiB^1^/{zwsp}2{nbsp}EiB
+|256{nbsp}TiB/{zwsp}256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1,048,576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 4{nbsp}PiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".
+
+[#jsc-PED-63]
+==== Restoring default Btrfs file compression
+
+Previously in kernel 5.14, it was possible to disable compression by passing an empty string instead of explicitly mentioning `none` or `no`.
+
+In {productnameshort} {this-version}, this behavior is changed to the more expected one.
+From kernel 5.14 onwards, empty string will reset the default setting instead of disabling compression.
