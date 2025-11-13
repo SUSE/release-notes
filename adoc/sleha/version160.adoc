@@ -23,7 +23,7 @@ include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
 
 Previously, creating a Home directory for an user when using the `useradd` command required the `-m` argument.
 
-In {this-version}, this has been changed and the Home directory is created by default without using any additionalk arguments.
+In {this-version}, this has been changed and the Home directory is created by default without using any additional arguments.
 
 // simplified sbd management
 include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
