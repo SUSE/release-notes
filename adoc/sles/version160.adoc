@@ -7,6 +7,9 @@
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
 // ifeval::["{lifecycle}" == "maintained"]
 :url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
 :url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
@@ -632,7 +635,7 @@ With the AMD P-State driver, it enables the use of the Energy Performance Prefer
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
 
-Information in this section applies to {z-productname} {this-version}.
+Information in this section applies to {z-productname}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 === Hardware
@@ -826,7 +829,7 @@ live.password=linux rd.zdev=dasd,0.0.0160
 [#power]
 == POWER-specific changes (ppc64le)
 
-Information in this section applies to {power-productname} {this-version}.
+Information in this section applies to {power-productname}.
 
 [#jsc-PED-12179]
 === KVM guests in LPAR

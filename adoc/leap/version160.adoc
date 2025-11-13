@@ -4,30 +4,33 @@ include::attributes.adoc[]
 :previous-version: 15.6
 :major-version: 16
 
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
 == openSUSE Leap Community Additions
 
 === Lifecycle
 
-Each {productname} minor release is published once every 12 months.  
+Each {productname} minor release is published once every 12 months.
 {productname} {major-version} provides maintenance updates over two minor releases, giving each release a full 24 months of community support.
 
 Unless there is a change in release strategy, the final {productname} version (16.6) will be released in fall 2031 and will continue receiving updates until the release of {productname} 17.1 two years later.
 
 For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 
-For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.  
+For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.
 See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
 
 === Migration from Leap 15.6
 
-The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.  
-Users migrating from older releases can run the tool from https://github.com/openSUSE/opensuse-migration-tool[Git repository].  
+The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.
+Users migrating from older releases can run the tool from https://github.com/openSUSE/opensuse-migration-tool[Git repository].
 
 For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
 
 === Installer and Desktop Environments
 
-* {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.  
+* {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.
 
 ==== NVIDIA and Graphics Issues with the Installation Image
 
@@ -58,22 +61,22 @@ To create a custom appliance without a welcome application, or to deploy a syste
 
 === Automated NVIDIA Driver and Repository Setup
 
-On supported GPUs, NVIDIA's open driver is installed by default along with the NVIDIA graphics driver repository.  
+On supported GPUs, NVIDIA's open driver is installed by default along with the NVIDIA graphics driver repository.
 In {productname} {major-version}, user-space drivers are also automatically installed, enabling graphical acceleration out of the box.
 
 === Security
 
 ==== AppArmor
 
-AppArmor has been updated from version 3.1 to 4.1.  
+AppArmor has been updated from version 3.1 to 4.1.
 
-* Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1[4.0] introduced fine-grained network rules (limitable by IP/port), but kernel support is not upstream yet.  
+* Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1[4.0] introduced fine-grained network rules (limitable by IP/port), but kernel support is not upstream yet.
 * Version https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.0[4.1] introduced the `priority=<number>` rule prefix, which allows overriding rules.
 
 ==== AppArmor not available by default on new installations
 
 [WARNING]
-AppArmor is no longer available in SUSE Linux Enterprise 16.0. Leap users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.  
+AppArmor is no longer available in SUSE Linux Enterprise 16.0. Leap users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.
 AppArmor can still be enabled post-installation. For instructions, refer to https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[AppArmor wiki page].
 
 Users migrating manually from 15.6 will retain AppArmor by default. Users migrating with https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] will be prompted to either switch to SELinux or preserve AppArmor during post-migration.
@@ -81,15 +84,15 @@ Users migrating manually from 15.6 will retain AppArmor by default. Users migrat
 === Steam
 
 [WARNING]
-The `Steam` package has been removed from the https://en.opensuse.org/Package_repositories#Non-OSS[Non-OSS repository] due to limited 32-bit library support.  
-Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpak].  
+The `Steam` package has been removed from the https://en.opensuse.org/Package_repositories#Non-OSS[Non-OSS repository] due to limited 32-bit library support.
+Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpak].
 
-* 32-bit execution requires installing `grub2-compat-ia32` and rebooting.  
+* 32-bit execution requires installing `grub2-compat-ia32` and rebooting.
 * SELinux users may also need `selinux-policy-targeted-gaming`. For details, refer to https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proton,_Bottles,_WINE,_Lutris,_not_working[SELinux wiki page].
 
 === Wine
 
-{productname} includes `wine` 10.10, available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor.  
+{productname} includes `wine` 10.10, available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor.
 Users requiring 32-bit binary execution should consider using the Flatpak version or a similar solution.
 
 === Networking
@@ -97,7 +100,7 @@ Users requiring 32-bit binary execution should consider using the Flatpak versio
 ==== Broken libvirt networking when using Docker
 
 [WARNING]
-If networking inside libvirt-managed virtual machines fails while Docker is running, it is likely due to Docker not supporting `nftables`.  
+If networking inside libvirt-managed virtual machines fails while Docker is running, it is likely due to Docker not supporting `nftables`.
 
 To fix the issue:
 
@@ -127,21 +130,21 @@ This restores networking for libvirt VMs while Docker is active.
 
 === GNU Health
 
-https://www.gnuhealth.org/[GNU Health] has been updated to major release 5.0.2.  
+https://www.gnuhealth.org/[GNU Health] has been updated to major release 5.0.2.
 The underlying ERP framework, Tryton, has been updated to LTS version 7.0. Functional improvements include enhanced medical image workflows and better integration with Orthanc 1.12.9 (PACS server).
 
 
 === PipeWire replaces PulseAudio
 
-{productname} {this-version} uses PipeWire by default.  
-Users upgrading from previous releases should be automatically migrated from PulseAudio.  
+{productname} {this-version} uses PipeWire by default.
+Users upgrading from previous releases should be automatically migrated from PulseAudio.
 `opensuse-migration-tool` provides a post-migration script if migration does not occur automatically.
 
 If experiencing audio issues, ensure you are not using the `wireplumber-video-only-profile`. For details, refer to https://en.opensuse.org/openSUSE:Pipewire#Installation[PipeWire#Installation] for details.
 
 === Hexchat drop
 
-Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[upstream project] is archived. 
+Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[upstream project] is archived.
 Alternatives include https://software.opensuse.org/package/polari[Polari] or the Flatpak version: https://flathub.org/en/apps/io.github.Hexchat[Flatpak].
 
 ==== Configuring boot entry with serial console

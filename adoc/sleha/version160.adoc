@@ -2,6 +2,10 @@
 :idprefix: v160_
 :doc-url: https://documentation.suse.com/sle-ha/16.0
 
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
+
 == {productname} Version {this-version}
 
 These release notes apply to {productname} {this-version}.

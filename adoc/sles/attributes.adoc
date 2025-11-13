@@ -2,9 +2,6 @@
 :productnameshort: SLES
 :rel-date: TBD
 
-:power-productname: {productname} for POWER
-:z-productname: {productname} for {ibmz}
-
 :doc-url: https://documentation.suse.com
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
 :doc-url-source: https://www.suse.com/download/sles/
