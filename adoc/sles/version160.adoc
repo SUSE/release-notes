@@ -166,6 +166,14 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#bsc-1241668]
+=== Network card unable to obtain IPv4 address via Cockpit
+
+A SRV-IO virtual function from a network card attached to a VM via Cockpit using direct attachment cannot obtain IPv4 address.
+
+The workaround is to use passthrough mode or hostdev device definition, or hostdev in case of SR-IOV.
+
+
 [#jsc-PED-4977]
 === SELinux enabled by default
 
