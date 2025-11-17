@@ -21,10 +21,10 @@ end::jscped12374[]
 
 tag::jscped-11998[]
 [#jsc-PED-11970]
-= Added `tuned`
+= `tuned` now installed by default
 
-The `tuned` package contains a daemon that tunes system settings dynamically.
-end::jscped-11998[]
+The `tuned` package is now installed by default.
+It contains a daemon that tunes system settings dynamically.
 
 tag::jscped-12210[]
 [#jsc-PED-12210]
