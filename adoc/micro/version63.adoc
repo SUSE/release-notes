@@ -13,6 +13,6 @@ These release notes apply to {productname} {this-version}.
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
 
-include::../shared.adoc[tags=jscped-11998,leveloffset=+3]
+include::../shared.adoc[tags=jscped-11970,leveloffset=+3]
 
 include::shared.adoc[tags=63,leveloffset=+3]

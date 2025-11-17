@@ -234,7 +234,7 @@ include::../shared.adoc[tags=jscped-12860,leveloffset=+2]
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+2]
 
-include::../shared.adoc[tag=jscped-11998,leveloffset=+2]
+include::../shared.adoc[tag=jscped-11970,leveloffset=+2]
 
 
 [#jsc-PED-11998]
