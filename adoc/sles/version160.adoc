@@ -91,9 +91,7 @@ sections in this document:
 Certain software delivered as part of {productname} may require an external contract.
 Check the support status of individual packages using the RPM metadata that can be viewed with `rpm`, `zypper`, or {yast}.
 
-Major packages and groups of packages affected by this are:
-
-* PostgreSQL (all versions, including all subpackages)
+Currently, there are no major packages and groups of packages affected by this.
 
 
 // see jsc#SLE-7191
