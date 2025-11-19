@@ -1,0 +1,7 @@
+MAIN=adoc/sles/9sp4/release-notes-sles-9sp4.xml
+
+STYLEROOT=/usr/share/xml/docbook/stylesheet/suse2022-ns
+
+XSLTPARAM="--stringparam "homepage=https://documentation.suse.com""
+XSLTPARAM+="--stringparam "overview-page=https://documentation.suse.com/releasenotes/""
+XSLTPARAM+="--stringparam "overview-page-title=SUSE\ Release\ Notes""
