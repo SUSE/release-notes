@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article [
+
+]>
+<article xmlns="http://docbook.org/ns/docbook"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="5.0" xml:id="rnotes" xml:lang="en">
+  <title>Release Notes for SUSE LINUX Enterprise Server 9</title>
+  <info>
+    <releaseinfo>Version 9.4, 14. November 2007</releaseinfo>
+    <date>2007-11-14</date>
+    <abstract>
+      <para>
+        These release notes are generic for all SUSE LINUX Enterprise Server 9 based products. Some
+        parts may not apply to a particular architecture/product. Where this is
+        not obvious, the respective architectures are listed explicitly. The
+        instructions for installing this Service Pack can be found in the
+        <filename>README</filename> file on CD1. There are also translations of
+        this file.
+      </para>
+      <para>
+        An 800+ page manual, numerous HOWTOs, and special hints for certain
+        hardware are found under the <filename>docu</filename> directory on the
+        media. Any documentation (if installed) can be found below
+        <filename>/usr/share/doc/</filename> in the installed system.
+      </para>
+    </abstract>
+  </info>
+
+
+ <section xml:id="rnotes-purpose"><title>Purpose</title><info/>
+
+  <para>
+   This SUSE LINUX Enterprise Server 9 Service Pack 4 serves several purposes:</para>
+   <itemizedlist>
+    <listitem>
+    <para>Provide enhancements to the SLES 9 code base (see <xref linkend="rnotes-feature-updates"/>).
+     </para>
+    </listitem>
+    <listitem>
+    <para>Provide all maintenance fixes (see <xref linkend="rnotes-driver-updates"/>) released since GA of
+     SLES 9.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide an easy update (see README) of your system or individual
+     packages to the latest Service Pack level. This is especially useful if you
+     cannot use online update mechanisms.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide an easy fresh install (see README) using the latest kernel,
+     drivers, and installer updates.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Include PTFs (special fixes for customers) which were folded back
+     into the SLES 9 common code base making them part of the maintained code
+     base.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide useful additional information and documentation
+     (see <xref linkend="rnotes-installation"/>).&gt;</para>
+    </listitem>
+      </itemizedlist>
+
+  <para>
+   Through joint testing and maximum care, we try hard not to break any ISV
+   certification with a Service Pack, but we recommend checking with your ISV about
+   your application's certification status.
+  </para>
+ </section>
+
+ <section xml:id="rnotes-feature-updates"><title>Feature Updates</title><info/>
+
+  <itemizedlist>
+  <listitem>
+   <para>
+    IBMJava5 was added in version 1.5.0 SR5 to all architectures except
+    Itanium.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    A runtime environment for C++ applications compiled with gcc 4.1 on
+    SLES 9 was added. For this the libstdc++-41 and libgcc-41 packages
+    needs to be installed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    suseRegister was added to manually register a SLES 9 with the Novell
+    Control Center (NCC).
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Paravirtual drivers (xen-kmp) for fully virtualized SLES 9 SP4 were added.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Support for configuration of Intel i945G chipsets (3D) was added to
+    YaST/sax2.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Support for paravirtualized SLES 9 SP4 guests on top of SLES 10 SP1 host
+    systems
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Add mechanism to set network interface speed, etc. at boot time with
+    ethtool
+   </para>
+  </listitem>
+</itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-driver-updates"><title>Driver Updates</title><info/>
+
+  <section xml:id="driver-updates-network">
+<title>Network Drivers</title>
+  <itemizedlist>
+    <listitem>
+      <para>
+      Added qla3xxx driver in version 2.03.00-k4
+      </para>
+  </listitem>
+  <listitem>
+    <para>
+      Updated bnx2 driver to version 1.6.3c
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Updated tg3 to version 3.79b
+          to support Broadcom 5714s chipsets and other
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Updated Intel e1000 driver to version 7.6.5-NAPI - The behavior
+      of this driver under load has changed, if you run into performance
+      issues, please look at the "Known Issues" section.
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Added NetXen driver in version 3.4.2
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Added Intel igb driver in version 1.0.1
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Updated Neterion s2io driver to version 2.0.23.1
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+      Updated Myricom myri10ge to version 1.3.1
+    </para>
+  </listitem>
+</itemizedlist>
+</section>
+  <section xml:id="driver-updates-storage">
+<title>Storage Drivers</title>
+  <itemizedlist>
+    <listitem>
+      <para>
+        Updated aic79xx to version 1.3.11-suse01
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+         Updated aic7xxx to version 6.3.11
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Update 3w-9xxx to version 2.26.02.008
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated qla2xxx to version 8.01.07.15
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated qla4xxx to version 5.00.07
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Added support for Intel ICH8/ICH9 SATA
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Added ATAPI support to the libata module
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Added SATA cdrom support
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+ Added mptsas driver in version 3.12.12.00
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated mptfusion driver to version 3.12.12.00
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated aacraid driver to version 1.1.5.2434
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated adp94xx driver to version 1.0.8-11
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated cciss driver to version 2.6.18sp4
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated IBM ServeRAID ips driver to version 7.12.05
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated Emules lpfc driver to version 8.0.16.34
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+  <section xml:id="driver-updates-other">
+<title>Other Drivers</title>
+  <itemizedlist>
+    <listitem>
+      <para>
+Updated CIFS to version 1.50a
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated OCFS2 to version 1.2.5-6
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated dell_rbu driver to version 3.4.2
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Updated Dell Systems Management Base Driver dcdbas driver
+  to version 5.6.0-3.2
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+Added support for Intel 7221 to XFree86
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+XFS: support growfs with amounts greater than 2TB
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+ </section>
+
+ <section xml:id="rnotes-other-updates"><title>Other Updates</title><info/>
+
+  <itemizedlist>
+  <listitem>
+    <para>
+Updated heartbeat to version 1.2.5
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated OCFS2 module from Oracle to version 1.2.5
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated OCFS2 tools to version 1.2.1
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated multipath-tools to 0.4.7 to fix several bugs and improve
+  support for SUN CSM200, CCISS, HP HSV200, HP HSV110
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+ Updated cpio to version 2.6 (including large file support)
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated gdb to version 6.6
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated IBMJava2 to version 1.4.2 SR9
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated ipmitool to version 1.8.9
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated iprutils to version 2.2.6
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated microcode_ctl to version 1.17
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated mpt-status to version 1.2.0
+  - now with 64bit support
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated openhpi to version 2.6.3
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated OpenIPMI to version 1.4.28
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+    Updated samba to version 3.0.26a - more detailed information on
+    changes/fixes comes with the samba-doc package in
+    /usr/share/doc/packages/samba/WHATSNEW.txt
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated smartmontools to version 5.37
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated spamassassin to version 3.1.9
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+Updated SUN Java to version 1.4.2_15
+    </para>
+  </listitem>
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-installation"><title>Installation-Related Notes</title><info/>
+
+  <para>
+   This section includes installation-related information for this
+   Service Pack.
+  </para>
+  <itemizedlist>
+  <listitem>
+   <para>
+    On S/390, zSeries an x86-64 more than 256 MB are needed for installation
+    and update.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.default -->
+  <listitem>
+   <para>
+    Some systems might not install with the default settings
+   </para>
+   <para>
+    Try the "Installation - ACPI Disabled" option, and if that does not work,
+    choose the "Installation - Safe Settings" option.
+   </para>
+   <para>
+    Please report any of these failed instalaltions via
+    <link xlink:href="http://bugzilla.suse.com/"/>.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp1.ppc-boot-and-hw -->
+  <listitem>
+   <para>
+    Booting from SLES 9 Service Pack 4 CD 1 on IBM iSeries systems
+   </para>
+   <para>
+    To boot from SLES 9 Service Pack 4 CD 1 on IBM iSeries systems, set the
+    "IPL stream file" parameter in the Network Server Description to:
+   </para>
+   <programlisting>
+    '/QOPT/SU90SP4.P01/ISERIES64'
+   </programlisting>
+   <para>
+    The <filename>SU90SP4.P01</filename> part of the path is the disk label of
+    CD 1.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.storage -->
+  <listitem>
+   <para>
+    Adding storage drivers after initial installation needs manual
+    intervention
+   </para>
+   <para>
+    During installation, all block-device drivers for storage controllers are
+    added to an "initial ramdisk". This makes sure that attached
+    storage can be accessed at all times.
+   </para>
+   <para>
+    Adding such a controller (with attached storage) at a later point in time
+    will initially work as expected (as a side-effect of the new hot/coldplug
+    capabilities), but later (e.g. after creating a LV on those disks) it may
+    not work.
+   </para>
+   <para>
+    To ensure system integrity at all times, we recommend to follow YaST
+    standards and add the appropriate module to
+    <literal>INITRD_MODULES</literal> in
+    <filename>/etc/sysconfig/kernel</filename>, and then run
+    <filename>/sbin/mkinitrd</filename> again.
+   </para>
+  </listitem>
+
+  <!-- relnotes.i.wireless -->
+  <listitem>
+   <para>Wireless LAN cards</para>
+   <para>
+    Some wireless LAN cards (PrismGT, Centrino, Atmel, ACX100) need firmware
+    to operate. Due to licensing issues we cannot ship these firmware
+    binaries. Read
+    <filename>/usr/share/doc/packages/wireless-tools/README.firmware</filename>
+    for information on how to obtain and install the firmware.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.xhost -->
+  <listitem>
+   <para>
+    Problems with "xhost +" to display remote X sessions on your local screen
+   </para>
+   <para>
+    This is only relevant if you control an installation over a network and
+    want to display a remote X or YaST session on a local display. On
+    some Linux/Unix-Systems it is no longer sufficient to enter the command
+    "xhost +" to grant access to the local X server. For security reasons the
+    X-Server no longer listens on port 6000. To verify whether the X server
+    still listens on port 6000, enter the command:
+   </para>
+   <screen>netstat -an | grep 6000</screen>
+   <para>
+    If the line
+   </para>
+   <screen>tcp    0      0 0.0.0.0:6000     0.0.0.0:*   LISTEN</screen>
+   <para>
+    does not show up, the server is not listening. In this case, either enable
+    port 6000 or use the command
+   </para>
+   <screen>ssh -X "Address of the system be installed"</screen>
+   <para>
+    which will always work.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.dasd -->
+  <listitem>
+   <para>DASD load order in SLES9 (S/390, zSeries)</para>
+   <para>
+    When specifying DASDs in the DASD configuration menu which are not in a
+    numerically ascending order (e.g. dasda = 0.0.1090, dasdb = 0.0.0150), the
+    system reloads the driver and the DASDs are now in numerically ascending
+    order. Proceed as follows to avoid this behaviour:
+   </para>
+   <para>
+    Before you hit the "Next" button in the DASD configuration screen, open an
+    ssh session to the system you install and issue the following command:
+   </para>
+   <screen>echo "exit 0" &gt; /sbin/dasd_reload</screen>
+   <para>Now the DASDs will stay in the sequence specified.</para>
+   <warning>
+   <para>If the sequence of DASDs is not a continuous one (e.g. the
+    first DASD is dasdb and dasda does not exist at all) the
+    installation/update will fail.
+   </para>
+   </warning>
+  </listitem>
+
+  <!-- relnotes.i.dasd -->
+  <listitem>
+   <para>Using unformatted DASD for installation (S/390, zSeries)</para>
+   <para>
+    During the initial installation workflow, you are be guided to a panel
+    where the DASD are set online/offline. If unformatted DASD are used during
+    installation, they should be formated at this point in time.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp2.emulex -->
+  <listitem>
+   <para>Emulex Controller</para>
+   <para>
+    Use the following minimum firmware revisions on Emulex hardware:
+   </para>
+   <screen>LP10000, LP10000DC, LP10000ExDC                 1.90a4
+LP1050, LP1050DC, LP1050Ex                      1.80a1
+LP982, LP9802                                   1.81x1
+LP9000, LP9002C, LP9002DC, LP9002L, LP9402DC    3.90a7 (3.92a2 for LP9002)
+LP8000, LP8000DC, LP850                         3.90a7 (Dragonfly &gt;= 2.00),
+    3.30a7 (Dragonfly &lt; 2.00)
+LP952L                                          3.92a2
+LP101                                           1.90a4
+LP1005DC-CM2                                    1.90a5</screen>
+ <!--  <para>
+    To update the firmware of your Emulex hardware, install the Emulex
+    Applications kit from <link xlink:href="http://www.emulex.com/ts/index.html"/>.
+   </para>
+   <para>
+    Either use the lputil (text menu) or HBanywhere (gui) tools. Also check
+    the OEM page for information about your specific OEM adapter under <link xlink:href="http://www.emulex.com/ts/docoem/framibm.htm"/>.
+   </para> -->
+  </listitem>
+
+  <!-- relnotes.t.server -->
+  <listitem>
+   <para>Setting up an installation server for network installations</para>
+   <para>
+    If you have installed an instance of SLES9, use the YaST installation
+    server module to create a network install source. It can be found under
+    <guimenu>Misc - Installation Server</guimenu> in the YaST control center.
+   </para>
+   <note>
+    <para>The SLES9 GA version of the YaST installation server module cannot
+     integrate iso images of a SLES9 Service Pack iso. This bug has been fixed in
+     SLES9 SP1. Upgrade the server to the version from SP1 or newer.
+   </para></note>
+   <para>
+    Every new service pack CD provides an updated rescue system on
+    <filename>CD1/boot/rescue</filename>. To use this new rescue system on a
+    YaST-generated installation source, remove the
+    '<filename>boot</filename>' symlink in the top level directory:
+   </para>
+   <screen>rm boot
+mkdir boot
+cp SUSE-SLES-Version-9/CD1/boot/root ./boot/root
+cp SUSE-SLES-9-Service-Pack-Version-4/boot/rescue ./boot/rescue</screen>
+   <para>
+    To manually set up an installation server for installations via
+    NFS/FTP/HTTP, copy the CDs into a special directory structure.
+   </para>
+   <para>
+    Go to a directory of your choice and execute the following commands:
+   </para>
+   <screen>mkdir -p installroot/sles9/CD1
+# now copy the contents of SLES 9 CD1 into this directory
+mkdir -p installroot/core9/CD1
+# now copy the contents of SLES 9 CD2 into this directory
+mkdir -p installroot/core9/CD2
+# now copy the contents of SLES 9 CD3 into this directory
+mkdir -p installroot/core9/CD3
+# now copy the contents of SLES 9 CD4 into this directory
+mkdir -p installroot/core9/CD4
+# now copy the contents of SLES 9 CD5 into this directory
+mkdir -p installroot/core9/CD5
+# now copy the contents of SLES 9 CD6 into this directory
+mkdir -p installroot/sp4/CD1
+# now copy the contents of SLES 9 SP4 CD1 into this directory
+mkdir -p installroot/sp4/CD2
+# now copy the contents of SLES 9 SP4 CD2 into this directory
+mkdir -p installroot/sp4/CD3
+# now copy the contents of SLES 9 SP4 CD3 into this directory
+mkdir -p installroot/sp4/CD4
+# now copy the contents of SLES 9 SP4 CD4 into this directory
+cd installroot
+mkdir boot
+ln -s ../sles9/CD1/boot/root boot/root
+ln -s ../sp4/CD1/boot/rescue boot/rescue
+ln -s sp4/CD1/driverupdate driverupdate
+ln -s sp4/CD1/linux linux
+ln -s sles9/CD1/content content
+ln -s sles9/CD1/control.xml control.xml
+ln -s sles9/CD1/media.1 media.1
+mkdir yast
+echo "/sp4/CD1" &gt; yast/instorder
+echo "/sles9/CD1" &gt;&gt; yast/instorder
+echo "/core9/CD1" &gt;&gt; yast/instorder
+echo "/sp4/CD1 /sp4/CD1" &gt; yast/order
+echo "/sles9/CD1 /sles9/CD1" &gt;&gt; yast/order
+echo "/core9/CD1 /core9/CD1" &gt;&gt; yast/order</screen>
+   <para>
+    When asked for the installation directory, just specify
+    '<filename>installroot</filename>'.
+   </para>
+   <para>
+    If you use a SAMBA Server as an installation server, simply use the
+    commands mentioned above to create the appropriate structure. Use the
+    <filename>instorder</filename> and <filename>order</filename> files from
+    <filename>dosutils/install</filename> and replace the
+    <literal>UserAccount</literal>, <literal>PASSword</literal> and
+    <literal>IP-Number</literal> variables with the respective values. The
+    following shares need to be exported:
+   </para>
+   <screen>installroot (the directory installroot)
+sles9-CD1   (the directory installroot/sles9/CD1)
+core9-CD1   (the directory installroot/core9/CD1)
+core9-CD2   (the directory installroot/core9/CD2)
+core9-CD3   (the directory installroot/core9/CD3)
+core9-CD4   (the directory installroot/core9/CD4)
+core9-CD5   (the directory installroot/core9/CD5)
+sp4-CD1     (the directory installroot/sp4/CD1)
+sp4-CD2     (the directory installroot/sp4/CD2)
+sp4-CD3     (the directory installroot/sp4/CD3)
+sp4-CD4     (the directory installroot/sp4/CD4)</screen>
+  </listitem>
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-update"><title>Update-Related Notes</title><info/>
+
+  <para>
+   This section includes update-related information for this Service Pack.
+  </para>
+  <itemizedlist>
+  <listitem>
+    <para>
+      SPident reports an old Service Pack level
+    </para>
+    <para>
+    SPident is a tool to identify the Service Pack level of the current installation.
+    It may report that the system has not reached the level of this Service Pack. This
+    happens, when <emphasis>optional</emphasis> updates that are not
+    automatically installed by YOU are not manually selected during update. If
+    you use or need any packages which have optional updates, select these in
+    order to reach the current Service Pack level.
+    </para>
+  </listitem>
+  <listitem>
+    <para>
+    On S/390, zSeries, and x86-64 more than 256 MB are required for
+    installation and update.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.cd -->
+  <listitem>
+    <para>The same CD is requested twice</para>
+    <para>
+    Depending on the selection you made, some CDs may have to be inserted
+    twice during the installation process. This is a known issue, but it
+    cannot always be avoided due to dependencies. As a workaround, install
+    via network or hard disk instead of installing from the CDs.
+    </para>
+  </listitem>
+
+  <!-- kukuk, 2007-09-18, FATE #300653 -->
+  <listitem>
+    <para>Unsupported kernel modules are no longer loaded</para>
+    <para>
+    Each kernel module carries a 'supported' flag. If this flag is not set,
+    loading this module will taint your kernel. Tainted kernels are not
+    supported. To avoid tainting the kernel, unsupported modules will no
+    longer be loaded  automatically via udev/hotplug since SLES 9 SP4.
+    </para>
+    <para>This behavior is controlled by the
+    <literal>LOAD_UNSUPPORTED_MODULES_AUTOMATICALLY</literal> variable in
+    <filename>/etc/sysconfig/hardware/config</filename>. If necessary, switch
+    the value back to <literal>yes</literal>.
+    </para>
+  </listitem>
+
+
+  <listitem>
+    <para>
+      During an update there may be some conflicts requiring manual
+      intervention. Known issues are:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          horde requires either apache2-mod_php4 or apache-mod_php4
+        </para>
+        <para>
+          In this case, either uninstall horde (if you do not need it),
+          or select the mod_php4 package belonging to the Apache version
+          you want to use.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          dprobes conflicts with oprofile (over libbfd)
+        </para>
+        <para>
+          In this case, choose to uninstall the dprobes package.
+          dprobes is not provided with SLES 9.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+   <para>
+    For Intel x86 and x86-64 CPUs
+   </para>
+   <para>
+    Prior to SP2, the microcode update init script was disabled by default;
+    normally the script should be enabled to allow for fixes to be applied to
+    the microcode of Intel x86 and x86-64 CPUs.
+   </para>
+   <para>
+    The default has been changed with SP2 already, so updating of the
+    microcode will be enabled on new installations. However, on old
+    installations where SP2, SP3 or SP4 is applied as an update, the script
+    will not be enabled if it had been disabled before. We recommend to enable
+    it by issuing the command "insserv microcode" on the command line of a
+    root shell or by enabling it in the YaST runlevel editor.
+   </para>
+  </listitem>
+  <listitem>
+    <para>
+    Files on file systems created by SLES 8 and older distributions (when not
+    set otherwise) use non-UTF-8 encoding. If file names contain non-ASCII
+    characters, they will be garbled on SLES 9 and later versions. One fix is
+    to use the convmv script which changes the file encoding to UTF-8.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.prom -->
+  <listitem>
+   <para>SGI Altix and Silicon Graphics Prism systems</para>
+   <para>
+    SGI recommends PROM 4.30 or subsequent versions for all SGI Altix and
+    Silicon Graphics Prism systems running SLES9 SP2 or later. The updated
+    PROM contains key bug fixes, along with support for new kernel features,
+    such as memory error recovery.  <!--The latest PROM firmware can be obtained
+    from SGI Supportfolio(TM): <link xlink:href="http://support.sgi.com"/>.-->
+   </para>
+   <para>
+    Caveat: PROM 4.30 and subsequent versions are not compatible with SLES9
+    SP1 or earlier kernels.  If you want to switch between SLES9 SP1 and
+    SLES9 SP2 kernels, DO NOT upgrade the PROM on your system.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp2.ia64-fdisk -->
+  <listitem>
+    <para>Fdisk and Intel(R) Itanium(R) Systems</para>
+    <para>
+    <filename>fdisk</filename> was removed with SLES 9 SP2 for Intel(R)
+    Itanium(R) Processor Family because of its potential to cause data loss in
+    some situations. Please use the parted tool for disk partitioning. Note
+    that the <filename>parted</filename> tool now has a command
+    <command>mkpartsect</command> that allows the creation of partitions by
+    specifing exact sector numbers.
+   </para>
+  </listitem>
+ </itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-techpreview"><title>Technology Previews</title><info/>
+
+  <para>
+   Technology Preview features are not supported or only supported limitedly.
+   These features are mainly included for customer convenience and may not be
+   funtionally complete, instable or in other ways not suitable for
+   production use.
+  </para>
+  <itemizedlist>
+  <listitem>
+   <para>
+    Included support for Oracle Cluster Filesystem 2 (ocfs2) for limited use
+    cases
+   </para>
+   <para>
+    At the time of creation of these Release Notes, OCFS2 support is tied to the
+    following conditions:</para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       You are usingx86, AMD64 &amp; Intel EM64T, Itanium, IBM POWER hardware
+       platform.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       You have a valid support agreement with Novell and Oracle.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       You use as a home for Oracle RAC (<literal>${ORACLE_HOME}</literal>, no
+       general purpose use).
+      </para>
+     </listitem>
+      </itemizedlist>
+   <para>
+    Support conditions may be extended over time. Contact your Novell
+    sales or support representative about the current status.
+   </para>
+  </listitem>
+
+  <!-- relnotes.g.cifs -->
+  <listitem>
+   <para>Common Internet File System (CIFS)</para>
+   <para>
+    The Common Internet File System (CIFS) which is shipped together with the
+    kernel is currently not supported.  The current implementation is not
+    stable enough to work in a production environment.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp3.nss -->
+  <listitem>
+   <para>NSS Kernel Modules</para>
+   <para>
+    Although the NSS kernel modules are included in SLES 9, they are not
+    usable without OES, because NSS is a unique file system that is tightly
+    integrated with identity management. The root user is the only local user
+    who can see NSS volumes on a Linux server. NSS needs Linux User Management
+    (LUM) and Novell eDirectory to establish non-root connections to the
+    volume. It is OES that provides LUM, eDirectory, NCP Server, and volume
+    and user space management tools that make NSS volumes usable on an OES
+    Linux server.
+   </para>
+  </listitem>
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-resolved"><title>Resolved Issues</title><info/>
+
+  <itemizedlist>
+   <listitem>
+    <para>Bugfixes</para>
+    <para>
+     This Service Pack contains all the latest bugfixes for each package
+     released via the maintenance Web since the GA version.
+    </para>
+   </listitem>
+   <listitem>
+    <para>Security Fixes</para>
+    <para>
+     This Service Pack contains all the latest security fixes for each package
+     released via the maintenance Web since the GA version.
+    </para>
+   </listitem>
+   <listitem>
+    <para>Program Temporary Fixes</para>
+    <para>
+     This Service Pack contains all the PTFs (Program Temporary Fix) for each
+     package released via the maintenance Web since the GA version which were
+     suitable for integration into the maintained common codebase.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-known-issues"><title>Known Issues</title><info/>
+
+  <itemizedlist>
+
+  <!-- Bugzilla 332250 - Performance degraded with e1000 driver -->
+  <listitem>
+    <para>
+      Performance issues with e1000 network driver
+    </para>
+    <para>
+      With SLES 9 SP4 the Automatic Interrupt Moderation (AIM) feature
+      was added to the driver. For some benchmarks and normal server
+      activity this works very well, for other benchmarks the performance
+      will drop. If you run into an issue, use
+      <literal>InterruptThrottleRate=8000</literal> as an option.
+    </para>
+  </listitem>
+
+  <!-- Bugzilla 326768 - ide-generic and libata drivers may collide -->
+  <listitem>
+    <para>
+      IDE/SATA driver collision
+    </para>
+    <para>
+      SLES 9 SP4 has ide drivers (driver/ide/*) built into the kernel
+      while libata drivers (drivers/ata/*) are built as modules. This
+      means that IDE drivers always have higher priority than libata
+      drivers - if a controller can be driven by both an IDE and a
+      libata driver, the IDE one will always be selected.
+    </para>
+    <para>
+      If there's a specific IDE driver for a controller, everything is
+      okay whether there's a libata one or not. When there isn't a specific
+      IDE driver, the generic IDE driver is used. It can only use PIO transfers
+      which is slow and consumes a lot of CPU cycles.
+    </para>
+    <para>
+      To maintain backward compatibility with previous releases, the IDE
+      generic driver needs to be given higher priority than all libata
+      drivers; otherwise, upgrading to SP4 can change device naming, so this
+      can't be worked around automatically by the kernel. If a user wants to
+      use libata driver instead of ide generic, generic IDE driver should be
+      disabled with "<literal>ide_disable_generic</literal>" kernel parameter.
+      This will allow the libata driver to attach to the controller.
+    </para>
+  </listitem>
+
+  <listitem>
+   <para>
+    For x260 with Radeon RV100 QY
+   </para>
+   <para>
+    Sometimes the power management does not enable the video output again.
+    Disable the framebuffer or DPMS with <command>xset -dpms</command>.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    For x86 and x86-64 with PDC20621
+   </para>
+   <para>
+    The Promise SX4 controller was supported by the sata_promise driver in
+    SLES 9 SP2.  In later versions, this support was moved to the sata_sx4
+    driver.  If sata_promise was being used in an initrd to support this card,
+    it needs to be changed to sata_sx4. Replace "sata_promise" with "sata_sx4"
+    from <literal>INITRD_MODULES</literal> in
+    <filename>/etc/sysconfig/kernel</filename> and run
+    <command>mkinitrd</command>.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Some disk drives need boot option to prevent hangups
+   </para>
+   <para>
+    Some hard drives do not support barrier mode correctly and cause the
+    system to hang in some situations, for example during mounting and
+    formatting. In these cases, boot the system with the
+    <literal>barrier=off</literal> boot option.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp1.ppc-boot-and-hw -->
+  <listitem>
+   <para>YaST expert partitioner and wrong /boot proposal (POWER)</para>
+   <para>
+    On IBM POWER systems, the YaST expert partitioner suggests creating a
+    partition for <filename>/boot</filename>. This partition is not needed on
+    POWER systems and should not be created, because it may confuse the boot
+    loader installation process and can result in an unbootable system.
+   </para>
+   <para>
+    Instead, a primary partition of type <filename>PReP boot</filename> (type
+    0x41) without a mount point and a recommended size of 17MB must be present.
+    YaST creates such a partition by default. The boot loader installation
+    process (the <filename>lilo</filename> script for POWER architectures)
+    takes care of reducing the size and changing the type of this partition to
+    meet the boot loader requirements according to the type of POWER system on
+    which the installation is run.
+   </para>
+  </listitem>
+
+  <!-- relnotes.sp1.ppc-boot-and-hw -->
+  <listitem>
+   <para>
+    Recognizing new virtual DASD devices (NWSSTG) from Linux running in an
+    LPAR(POWER)
+   </para>
+   <para>
+    On IBM POWER systems, new virtual DASD devices (NWSSTG) need user
+    intervention to be recognized by Linux running in an LPAR. After
+    creating and varying on a new NWSD and NWSSTG on the OS/400 side, the
+    following command will make the device visible in Linux (this applies only
+    to iSeries i5 Systems):
+   </para>
+   <screen>echo "scsi add-single-device x 0 y 0" &gt; /proc/scsi/scsi</screen>
+   <para>where</para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      x = host device or adapter (the number from "scsi#" from the output of
+      <filename>cat /proc/scsi/scsi</filename>)
+     </para>
+    </listitem>
+    <listitem><para>0 = bus</para></listitem>
+    <listitem><para>y = target (SCSI target ID)</para></listitem>
+    <listitem><para>0 = lun</para></listitem>
+   </itemizedlist>
+  </listitem>
+
+  <!-- relnotes.sp2.js20_logic_fibre_boot -->
+  <listitem>
+   <para>JS20 and Qlogic JS20 Fibre Channel card</para>
+   <para>
+    Support for two port Qlogic JS20 Fibre Channel Expansion Card (Part Number
+    73P6112) only includes boot support to storage on the first port. If you
+    try to install your boot loader to storage on the second port, you will
+    receive an error message like this at the end of the installation:
+   </para>
+   <programlisting>
+    Error occurred while installing yaboot. running on chrp boot target is
+    /dev/sda ERROR: show_of_path.sh returned error 1 while analyzing path
+    /dev/sda1 ERROR: Internal problem: Could not determine open firmware path
+    to '/dev/sda1'
+   </programlisting>
+   <para>
+    As a  workaround, select a boot partition on another disk.
+   </para>
+  </listitem>
+
+  <!-- Bug 340696 -->
+  <listitem>
+    <para>Layer 2 support for OSA (S/390, zSeries)</para>
+    <para>
+      Actually the Layer 2 support in YaST is not completely implemented.
+      A system can not be installed with an OSA adaptor in layer2 mode.
+      And you can't change from Layer 3 to Layer 2 via YaST.
+    </para>
+    <para>
+      If you need Layer 2 support, you have to change this manually in
+      two config files. In <filename>/etc/sysconfig/hardware/hwcfg-qeth-bus-ccw-&lt;busid&gt;</filename> set <literal>QETH_LAYER2_SUPPORT=1</literal> and
+      in <filename>/etc/sysconfig/network/ifcfg-qeth-bus-ccw-&lt;busid&gt;</filename> set <literal>LLADDR='02:63:15:04:76:00'</literal>.
+    </para>
+    <para>
+      If you want to switch back to Layer 3 support, you have to set in
+      <filename>/etc/sysconfig/hardware/hwcfg-qeth-bus-ccw-&lt;busid&gt;</filename>:
+      <literal>QETH_LAYER2_SUPPORT=0</literal> and in
+      <filename>/etc/sysconfig/network/ifcfg-qeth-bus-ccw-&lt;busid&gt;</filename>:
+      <literal>LLADDR=''</literal>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.sp2.vlan-zSeries -->
+  <listitem>
+   <para>Unconfiguring a VLAN device (S/390, zSeries)</para>
+   <para>
+    If a VLAN device should be unconfigured, it is important to remove the
+    VLAN-device correct. Use the following command sequence to
+    correctly unconfigure a VLAN device.
+   </para>
+   <para>
+    Add a network device
+   </para>
+   <screen>echo 0.0.f300,0.0.f301,0.0.f302 &gt; /sys/bus/ccwgroup/drivers/qeth/group
+echo 1 &gt; /sys/bus/ccwgroup/drivers/qeth/0.0.f300/layer2
+echo 1 &gt; /sys/bus/ccwgroup/drivers/qeth/0.0.f300/online
+   </screen>
+   <para>
+    Configure a network device
+   </para>
+   <screen>ifconfig eth1 hw ether 00:02:55:09:30:26
+ifconfig eth1 10.35.30.26 netmask 255.255.0.0 broadcast 10.35.255.255 up
+   </screen>
+   <para>
+    Add a VLAN device over an existing device
+   </para>
+   <screen>vconfig add eth1 35</screen>
+   <para>
+    Configure a VLAN device
+   </para>
+   <screen>ifconfig eth1.35 10.135.30.26 netmask 255.255.0.0 broadcast
+10.135.255.255 up</screen>
+   <para>Shut down the VLAN device</para>
+   <screen>ifconfig eth1.35 down</screen>
+   <para>Unconfigure the VLAN device</para>
+   <screen>vconfig rem eth1.35</screen>
+   <para>Shut down the network device</para>
+   <programlisting>
+    ifconfig eth1 down
+   </programlisting>
+   <para>Remove the network device</para>
+   <screen>echo 0 &gt; /sys/bus/ccwgroup/drivers/qeth/0.0.f300/online
+echo 1 &gt; /sys/bus/ccwgroup/drivers/qeth/0.0.f300/ungroup</screen>
+  </listitem>
+
+  <!-- relnotes.sp1.rescue-udev -->
+  <listitem>
+   <para>Rescue system and systems with many devices</para>
+   <para>
+    The rescue system contains device nodes for a limited number of devices.
+    If your system has more devices, use the <command>udevstart</command> on
+    the command line. This creates the missing device nodes in
+    <filename>/dev</filename> for all devices that are listed under
+    <filename>/sys</filename>.
+   </para>
+  </listitem>
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-feedback"><title>More Information and Feedback</title><info/>
+
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the CDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get the detailed changelog information about a particular
+     package from the RPM:
+    </para>
+    <screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+    <para>
+     &lt;FILENAME&gt;. is the name of the RPM.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of CD1 for
+     a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory of CD1
+     of the original SLES 9 GA (!) CDs. This directory includes PDF versions
+     of the SLES 9 installation and administration manuals, which explain many
+     other sophisticated methods to install and use SLES 9, for example using
+     AutoYaST or VNC.
+    </para>
+   </listitem>
+   <!--
+   <listitem>
+    <para>
+     Check <link xlink:href="http://portal.suse.com/sdb/en/2005/04/sles_multipathing.html"/> to
+     learn how to set up and use multipathing.
+    </para>
+    </listitem>
+    -->
+   <listitem>
+    <para>
+      Visit <link xlink:href="http://www.suse.com/products/"/> for the latest Linux
+     product news from SUSE and <link xlink:href="https://www.suse.com/source-code/"/> for additional information
+     on the source code of SUSE LINUX Enterprise products.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+</article>

@@ -1,0 +1,2370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+    type="text/xml"
+    title="Profiling step"
+?>
+<!DOCTYPE article [
+
+]>
+
+
+<article xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         version="5.0" xml:base="release-notes.xml" xml:id="rnotes"
+         xml:lang="en">
+  <title>Release Notes for SUSE Linux Enterprise Server 10 Service
+  Pack 4</title>
+  <info>
+    <releaseinfo>Version 10.4.15 (2016-09-07)</releaseinfo>
+    <date>2016-09-07</date>
+    <abstract>
+      <para>
+        These release notes are generic for all SUSE Linux Enterprise Server 10 based products. Some
+        parts may not apply to a particular architecture/product. Where this is
+        not obvious, the respective architectures are listed explicitly. The
+        instructions for installing this Service Pack can be found in the
+        <filename>README</filename> file on DVD1. There are also translations of
+        this file.
+      </para>
+      <para>
+        A startup and preparation guide are found under the
+        <filename>docu</filename> directory on the media. Any documentation
+        (if installed) can be found below <filename>/usr/share/doc/</filename>
+        in the installed system.
+      </para>
+      <para>
+        This SUSE product includes materials licensed to SUSE under the
+        GNU General Public License (GPL).  The GPL requires SUSE to provide the
+        source code that corresponds to the GPL-licensed
+        material. The source code is available for download at
+        <link xlink:href="http://www.suse.com/download-linux/source-code.html"/>. Also, for up to
+        three years after distribution of the SUSE product,
+        upon request Novell will mail a copy of the source code. Requests
+        should be sent by e-mail to
+        <link xlink:href="mailto:sle_source_request@novell.com"/> or as otherwise
+        instructed at <link xlink:href="http://www.suse.com/download-linux/source-code.html"/>.
+        Novell may charge a fee to recover its reasonable costs of distribution.
+      </para>
+    </abstract>
+  </info>
+
+
+ <section xml:id="rnotes-purpose"><title>Purpose</title><info/>
+
+  <para>
+   This SUSE Linux Enterprise Server 10 Service Pack 4 serves several purposes:</para>
+   <itemizedlist>
+    <!--listitem>
+    <para>Provide enhancements to the SLES 10 code base (see <xref
+      linkend="rnotes-feature-updates"/>).
+     </para>
+    </listitem-->
+    <listitem>
+    <para>Provide all maintenance fixes (see <xref linkend="rnotes-driver-updates"/>) released since GA of
+     SLES 10.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide an easy update (see README) of your system or individual
+     packages to the latest Service Pack level. This is especially useful if you
+     cannot use online update mechanisms.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide an easy fresh install (see README) using the latest kernel,
+     drivers, and installer updates.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Include PTFs (special fixes for customers) which were folded back
+     into the SLES 10 common code base making them part of the maintained code
+     base.
+     </para>
+    </listitem>
+    <listitem>
+     <para>Provide useful additional information and documentation
+     (see <xref linkend="rnotes-installation"/>).</para>
+    </listitem>
+      </itemizedlist>
+
+  <para>
+   Through joint testing and maximum care, we try hard not to break any ISV
+   certification with a Service Pack, but we recommend checking with your ISV about
+   your application's certification status.
+  </para>
+
+  <para>
+    With the release of SUSE Linux Enterprise Server 10 Service Pack 4, the now obsoleted Service Pack 3 enters
+    limited support status for the following 6 months, during which time
+    Novell will continue to provide security updates and L3 support to maintain
+    its customer's operations safe during the migration window. At the end of the
+    six-month parallel support period, on October, 12th 2011, support for
+    Service Pack 3 will be permanently discontinued.
+  </para>
+
+ </section>
+
+ <!--chapter id='rnotes-feature-updates'>
+  <title>New Features</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="features.xml"/>
+ </section -->
+
+ <section xml:id="rnotes-driver-updates"><title>Driver Updates</title><info/>
+
+  <section xml:id="driver-updates-network">
+<title>Network Drivers</title>
+  <itemizedlist>
+
+  <!-- bnc#643604 -->
+  <listitem>
+    <para>
+      Updated bnx2x driver to version 1.60.00
+    </para>
+  </listitem>
+
+  <!-- FATE#309997 -->
+  <listitem>
+    <para>
+      Added Chelsio T4 driver (cxgb4)
+    </para>
+  </listitem>
+
+  <!-- FATE #309932 -->
+  <listitem>
+    <para>
+      Updated tg3 driver to version 3.114b
+    </para>
+  </listitem>
+
+  <!-- FATE #XXX -->
+  <listitem>
+    <para>
+      Added ixgbevf driver in version 1.0.8
+    </para>
+  </listitem>
+
+  <!-- FATE #310000 -->
+  <listitem>
+    <para>
+      Added qlcnic driver in version 5.0.11
+    </para>
+  </listitem>
+
+  <!-- FATE #309937 -->
+  <listitem>
+    <para>
+      Updated benet driver to version 2.102.453s
+    </para>
+  </listitem>
+
+  <!-- FATE#309940 -->
+    <listitem>
+      <para>
+        Updated netxen driver to version 4.0.74
+      </para>
+    </listitem>
+
+  <!-- FATE 309943 -->
+  <listitem>
+    <para>
+      Updated Brocade 10G PCIe Ethernet (bna) driver to
+      version 2.3.2.1
+    </para>
+  </listitem>
+
+  <!-- FATE#309933-->
+  <listitem>
+    <para>
+      Updated bnx2 driver to version 2.0.17
+    </para>
+  </listitem>
+
+  <!-- FATE 309877 -->
+  <listitem>
+    <para>
+      Updated e1000e driver to version 1.2.17
+    </para>
+  </listitem>
+
+  <!-- bnc#654769 -->
+  <listitem>
+    <para>
+      Updated ixgbe driver to version 3.0.14
+    </para>
+  </listitem>
+
+  <!-- FATE#309875 -->
+  <listitem>
+    <para>
+      Updated igb driver to version 2.3.4
+    </para>
+  </listitem>
+
+  <!-- FATE#309804 -->
+  <listitem>
+    <para>
+      Add support for the Mellanox ConnectX QDR Infiniband
+      card (IBM POWER) to the mlx4 driver.
+    </para>
+  </listitem>
+
+  <!-- FATE#309753 -->
+  <listitem>
+    <para>
+      FCoCEE NPIV Support (excluded: boot support) for IBM POWER.
+    </para>
+  </listitem>
+
+  <!-- FATE#309789 -->
+  <listitem>
+    <para>
+      Optimized Latency Mode (OLM) toleration on IBM System z.
+If Linux and other OSes (like z/OS) use a shared OSA Express3 device in
+Optimized Latency Mode, only a limited number of stacks can actually use the
+device. This feature provides a new return code such that subsequent stacks
+will be rejected with a new return code. It allows the user a more
+diffentiated reaction to solve the situation
+    </para>
+  </listitem>
+
+  <!-- FATE#309788 -->
+  <listitem>
+    <para>
+      qeth supports new CHPIDs OSX and OSM introduced with z196 on
+      IBM System z.
+  OSM for connectivity to intranode management network (INMN) from z196 to
+Unified Resource Manager, OSX for connectivity and access control to the
+intraensemble data network (IEDN) from z196 to Unified Resource Manager
+functions. qeth now recognizes these CHPIDs and handles them appropriately.
+    </para>
+  </listitem>
+
+</itemizedlist>
+</section>
+  <section xml:id="driver-updates-storage">
+
+<title>Storage Drivers</title>
+  <itemizedlist>
+
+  <!-- FATE 309943 -->
+    <listitem>
+      <para>
+        Updated Brocade FC/FCoE driver (bfa) to version 2.3.2.1
+      </para>
+    </listitem>
+
+  <!-- FATE 309830 -->
+    <listitem>
+      <para>
+        Updated aacraid driver to version 26400
+      </para>
+    </listitem>
+
+  <!-- FATE#309947 -->
+    <listitem>
+      <para>
+        Added LSI MPT Fusion SAS 2.0 Device driver (mpt2sas) in version 6.103.00.00
+      </para>
+    </listitem>
+
+  <!-- FATE#309936 -->
+    <listitem>
+      <para>
+        Updated lpfc driver to version 8.2.0.92
+      </para>
+    </listitem>
+
+  <!-- FATE#309646 -->
+    <listitem>
+      <para>
+        Updated cciss driver to version 3.6.28
+      </para>
+    </listitem>
+
+  <!-- FATE#309945 -->
+    <listitem>
+      <para>
+        Updated megaraid_sas to version 4.37
+      </para>
+    </listitem>
+
+  <!-- FATE#309967 -->
+    <listitem>
+      <para>
+        Updated PMC-Sierra driver (pmcraid)
+      </para>
+    </listitem>
+
+  <!-- FATE#XXXXXX -->
+    <listitem>
+      <para>
+        Updated qla2xxx driver
+      </para>
+    </listitem>
+
+  <!-- FATE#309942 -->
+    <listitem>
+      <para>
+        Updated qla4xxx to version 5.02.03.00.10.4
+      </para>
+    </listitem>
+
+  <!-- FATE 309946 -->
+    <listitem>
+      <para>
+        Updated fusion driver to version 3.04.17
+      </para>
+    </listitem>
+
+  <!-- FATE#309848 -->
+  <listitem>
+    <para>
+       Update driver ipr for 64-bit PCI-E x8 Gen2 6Gb SAS adapters to version 2.3.0.0
+    </para>
+  </listitem>
+
+  <!-- FATE#309805 -->
+  <listitem>
+    <para>
+       FICON - HyperPAV support, a very flexible concept to massively
+       improve device performance by using a set of subchannels as an
+       ALIAS-pool, was added to IBM System z.
+    </para>
+  </listitem>
+
+  <!-- FATE#309741 -->
+  <listitem>
+    <para>
+      Power Virtual SCSI Next Generation (mulitpath-tools update)
+      was added to IBM POWER. This allows for system administrators
+      to more easily partition storage already allocated to them from
+      their storage administrators, yet still use dual VIOS and
+      dm-multipath for fault tolerance.
+    </para>
+  </listitem>
+
+
+  </itemizedlist>
+</section>
+  <section xml:id="driver-updates-other">
+<title>Other Drivers</title>
+  <itemizedlist>
+
+
+  <!-- FATE#309837 -->
+  <listitem>
+    <para>
+      IMMv2 management controller and integrated MatroxG200eR support
+    </para>
+  </listitem>
+
+  <!-- FATE#309848 -->
+  <listitem>
+    <para>
+      Add SR-IOV functionalty to IXGBEVF driver to run as KVM guest system.
+    </para>
+  </listitem>
+
+  </itemizedlist>
+</section>
+ </section>
+
+ <section xml:id="rnotes-other-updates"><title>Other Updates</title><info/>
+
+  <itemizedlist>
+
+ <listitem>
+  <!-- fate#320760 -->
+  <para>ntp was updated to version 4.2.8.</para>
+   <para>
+    <emphasis>In addition to xntp, ntp (version 4.2.8) is now also available
+    on the SLE 10 plattform.</emphasis>
+   </para>
+   <para>
+    <emphasis>In security critical environments, consider to remove xntp,
+    switch to ntp, and adjust your configuration.</emphasis>
+   </para>
+   <para>
+    These are the most important differences:
+   </para>
+   <para>
+    <emphasis>Parameter changes</emphasis>
+   </para>
+   <para>
+    The meaning of some parameters for the sntp commandline tool have
+    changed or have been dropped, for example <literal>sntp -s</literal> is
+    now <literal>sntp -S</literal>. Review any sntp usage in your own
+    scripts for required changes.
+   </para>
+   <para>
+    After having been deprecated for several years, ntpdc is now disabled by
+    default for security reasons. It can be re-enabled by adding the line
+    <literal>enable mode7</literal> to <literal>/etc/ntp.conf</literal>,
+    but preferably <literal>ntpq</literal> should be used instead.
+   </para>
+   <para>
+    With ntp on SLE 10 , do not use yast2-ntp-client for configuration.
+   </para>
+ </listitem>
+ <!-- ============================================================ -->
+ <listitem>
+        <!-- bnc#775009 -->
+   <para>
+    Performance Co-Pilot (package <literal>pcp</literal>) was updated to
+    version 3.6.10. This update obsoletes
+    <filename>libpcp.so.2</filename>.  As a result, any in-house or
+    third-party applications developed using
+    <filename>libpcp.so.2</filename> will need to be re-based against
+    <filename>libpcp.so.3</filename>.
+   </para>
+   <para>
+    The new library and corresponding development header files are
+    provided as part of the <filename>libpcp3-3.6.10</filename> and
+    <filename>pcp-devel-3.6.10</filename> packages.
+   </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      On SUSE Linux Enterprise Server 10 Service Pack 4 the packages coreutils, gdb and
+      nagios-plugins contain code which is licensed under the
+      GNU General Public License Version 3.
+    </para>
+  </listitem>
+
+  <!-- FATE#309745 -->
+  <listitem>
+    <para>
+      Added libservicelog and servicelog to provide support for
+      serviceability and server management tools. Customer can
+      query servicelog for events requiring attention like failing
+      PCI card (IBM POWER).
+    </para>
+  </listitem>
+
+  <!-- FATE#309747 -->
+  <listitem>
+    <para>
+      Added libvpd2.
+    </para>
+  </listitem>
+
+  <!-- FATE#309749 -->
+  <listitem>
+    <para>
+      Added ppc64-diag on POWER to provide an API and tools by which external serviceability and diagnostics can access Vital Product Data, consisting of hardware present on a system, the characteristics of that hardware, and hardware state.
+    </para>
+  </listitem>
+
+  <!-- FATE#303036 -->
+  <listitem>
+    <para>
+      Added vhostmd on i586 and x86-64.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Added mozilla-xulrunner192 for MozillaFirefox 3.6.
+    </para>
+  </listitem>
+
+  <!-- FATE#316623 -->
+  <listitem>
+    <para>Firefox was updated to version 24 ESR.</para>
+    <para>This update also brings updates of Mozilla NSPR and Mozilla NSS libraries. Mozilla NSS libraries contain cryptographic enhancements, including TLS 1.2 support.</para>
+    <para>It comes with PDF.js, which now replaces the Acroread PDF plugin.</para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Added openssl-certs, which contains additional
+      CA certificates for openssl.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Added sces-client, a client for the SUSE Cloud License Manager.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Added suse-ami-tools for running SUSE Linux Enterprise on Amazon EC2.
+    </para>
+  </listitem>
+
+  <!-- FATE#308859 -->
+  <listitem>
+    <para>
+      Updated bind to version 9.5.2-P4.
+    </para>
+  </listitem>
+
+  <!-- bnc#753983 -->
+  <listitem>
+    <para>
+      Updated samba to version 3.4.
+    </para>
+  </listitem>
+
+  <!-- bnc#588964 -->
+  <listitem>
+    <para>
+      Updated ia32el
+    </para>
+  </listitem>
+
+  <!-- bb#1909 -->
+  <listitem>
+    <para>
+      Updated clamav to version 0.96.1.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Updated gdb to version 7.1.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      Updated OFED tools to latest 1.4 and/or 1.5.2 release.
+    </para>
+  </listitem>
+
+  <!-- FATE#309797 -->
+  <listitem>
+    <para>
+      Updated iprutils to version 2.3.2 to support 6GB SAS RAID on Power7.
+    </para>
+  </listitem>
+
+   <!-- FATE#308239 and others -->
+  <listitem>
+    <para>
+      Updated openssh to version 5.1p1.
+    </para>
+  </listitem>
+
+  <!-- FATE#308859 -->
+  <listitem>
+    <para>
+      Updated IBM Javas to latest service releases.
+    </para>
+  </listitem>
+
+  <!-- FATE#309756 -->
+  <listitem>
+    <para>
+      Updated sblim-cim-client to version 1.3.9.1. Includes new support
+      for IPv6, TLS and DBCS authentication.
+    </para>
+  </listitem>
+
+  <!-- bnc#572945 -->
+  <listitem>
+    <para>
+      Ext2/Ext3 utilities were fixed for filesytems larger than 8TB.
+    </para>
+  </listitem>
+
+  <!-- FATE#309850 -->
+  <listitem>
+    <para>
+      Refreshed openssl-ibmca for hardware crypto 4K keys usage (IBM System z).
+    </para>
+  </listitem>
+
+  <!-- FATE#309795 -->
+  <listitem>
+    <para>
+      Additional 31bit compat library for c++ Boost to enable use of
+  TM1/Cognos OLAP (IBM System z).
+    </para>
+  </listitem>
+
+  <!-- FATE#309846 -->
+  <listitem>
+    <para>
+zipl integration of device mapper devices (IBM System z).
+    </para>
+    <para>
+  Allow installation of and booting from a boot record on logical devices, i.e. devices managed by device mapper or multipath devices. These setups must confirm to a set of rules: physical device is of type DASD or SCSI, all blocks on the logical device correspond to blocks on the same physical device, adjacent blocks on the logical device correspond to adjacent blocks on the physical device, access to block 0 of the physical device.
+    </para>
+  </listitem>
+
+  <!-- FATE#309791 -->
+  <listitem>
+    <para>
+snIPL enhancement to trigger SCSI dump on remote container (IBM System z)
+    </para>
+  </listitem>
+
+  <!-- FATE#309790 -->
+  <listitem>
+    <para>
+      Configurable dump and IPL parameters to prevent infinite panic-dump-ipl
+  loop (IBM System z)
+    </para>
+  </listitem>
+
+  <!-- FATE#309740 -->
+  <listitem>
+    <para>
+      Librtas was updated for new RTAS event fields on IBM POWER.
+      These updates allow customers that decipher RTAS events to properly see
+      this new information.
+    </para>
+  </listitem>
+
+  <!-- FATE#309740 -->
+  <listitem>
+    <para>
+      Power7 &amp; ISA 2.06 support on IBM POWER. Detect POWER7 as a platform for potential user space application acceleration.
+    </para>
+  </listitem>
+
+  <!-- FATE#309754 -->
+  <listitem>
+    <para>
+       powerpc-utils update for Power7 (IBM POWER).
+       Allows customers to tune application to exploit
+       simultaneous multithreading usage for the best performance.
+    </para>
+  </listitem>
+
+  <!-- FATE#309748 -->
+  <listitem>
+    <para>
+       Updated lsvpd to version 1.6.7.
+    </para>
+  </listitem>
+
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-installation"><title>Installation-Related Notes</title><info/>
+
+  <para>
+   This section includes installation-related information for this
+   Service Pack.
+  </para>
+  <itemizedlist>
+
+  <!-- relnotes.i.persistent-devices -->
+  <listitem>
+    <para>
+      Installation using Persistent Device names
+    </para>
+    <para>
+      If you plan to add additional storage devices to your
+      system after the OS installation, we strongly recommend to
+      use persistent device names for all storage devices during
+      installation. The installer by default uses the kernel device
+      names.
+    </para>
+    <para>
+      How to proceed:
+    </para>
+    <para>
+      During installation, enter the partitioner. For each partition,
+      select "Edit" and go to the "FStab Options" dialog. Any mount
+      option except "Device name" provide you persistent devicenames.
+    </para>
+    <para>
+      To switch an already installed system to using persistent
+      device names, proceed as described above for all existing
+      partitions. In addition, rerun the boot loader module in YaST
+      to switch the bootloader to using the persistent device name
+      also. Just start the module and select "Finish" to write the new
+      proposed configuration to disk. This needs to be done before
+      adding new storage devices.
+    </para>
+    <para>
+      For further information please look at
+      <link xlink:href="http://en.opensuse.org/SDB:Persistent_storage_device_names"/>.
+    </para>
+  </listitem>
+
+  <!-- Bug #557875 - Online Release Notes are missing documentation that is on the media -->
+  <listitem>
+    <para>
+      Network-based root file systems must not be accessed through a
+      bridge device.
+    </para>
+    <para>
+      Booting a network-based filesystem (e.g. iSCSI) that is accessed
+      through a bridge does not work. The workaround is to create a
+      networkpath that does not go through a bridge.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.md-iscsi -->
+  <listitem>
+    <para>
+      MD Devices on top of iSCSI not possible
+    </para>
+    <para>
+      iSCSI devices cannot be used for Linux Software RAID.
+      Using MD devices on top of iSCSI triggers a cyclic dependency
+      that leads to a crash.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.qla_xxx -->
+  <listitem>
+    <para>
+      Using qla3xxx and qla4xxx driver at the same time
+    </para>
+    <para>
+      QLogic iSCSI Expansion Card for IBM BladeCenter provides both
+      Ethernet and iSCSI functions. Some parts on the card are shared by
+      both functions. The current qla3xxx (ethernet) and qla4xxx (iSCSI)
+      drivers support Ethernet and iSCSI function individually. They do
+      not support using both functions at the same time. Using both
+      Ethernet and iSCSI functions at the same time may hang the
+      device and cause data lost and filesystem corruptions on iSCSI
+      devices or network disruptions on Ethernet.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.withiscsi -->
+  <listitem>
+    <para>
+      Using iSCSI Disks When Installing
+    </para>
+    <para>
+      To use iSCSI disks during installation it is necessary to
+      add the following parameter to the kernel parameter line:
+      <literal>withiscsi=1</literal>
+    </para>
+    <para>
+      During installation, an additional screen appears that provides
+      the possibility to attach iSCSI disks to the system and use them
+      in the installation process.
+    </para>
+    <para>
+      Since SUSE Linux Enterprise Server 10 SP1 booting from an iSCSI server on i386, x86_64 and ppc
+      is supported, when an iSCSI enabled firmware is used.
+    </para>
+    <para>
+      On ppc, a single bootfile (zImage.initrd) instead of yaboot is used.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.use_edd -->
+  <listitem>
+    <para>
+      Using EDD Information for Storage Device Identification
+    </para>
+    <para>
+      If you want to use EDD information
+      (<filename>/sys/firmware/edd/&lt;device&gt;</filename>) to
+      identify your storage devices, change the installer default
+      settings using an additional kernel parameter.
+    </para>
+    <para>Requirements:</para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          BIOS provides full EDD information (found in
+          <filename>/sys/firmware/edd/&lt;device&gt;</filename>)
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Disks are signed with a unique MBR signature (found in
+          <filename>/sys/firmware/edd/&lt;device&gt;/mbr_signature</filename>)
+         </para>
+       </listitem>
+    </itemizedlist>
+    <para>Procedure:</para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Add parameter <literal>use_edd=1</literal> to the kernel
+          parameters during initial installation.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The device-id list in the installer shows the EDD ID
+          (such as edd_dev80_part1) instead of the default device-id name.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Select those device IDs for installation and
+          runtime (for example, in <filename>/etc/fstab</filename> and
+          <literal>bootloader</literal>).
+        </para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+
+
+  <!-- relnotes.i.autoinstall -->
+  <listitem>
+    <para>
+      Automatic installation with Autoyast in an LPAR (System z)
+    </para>
+    <para>
+      For automatic installation with Autoyast in an LPAR, it is
+      required, that the parmfile used for such an installation has
+      blank characters at the beginning and the end of each line
+     (the first line need not to start with a blank). The number of
+      character in one line should not exceed 80 characters.
+    </para>
+  </listitem>
+
+  <!-- Bug 517763 - [NONCODE] [Release Notes] [Platform s390x] in LPAR instsys doesn't accept default for netmask -->
+  <listitem>
+    <para>
+      linuxrc doesn't accept its proposed default values in System z LPAR installation
+    </para>
+    <para>
+    Pressing "Send" (enter) in linuxrc to confirm the proposed default value leads
+to no input. This can cause "*** Invalid Input." errors.
+    </para>
+    <para>
+    Recommendation: When running linuxrc in a System z LPAR console, instead of
+pressing "Send" (enter) to take the proposed default value, enter the value
+explicitly.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.dasd -->
+  <listitem>
+    <para>
+      Adding DASD or zFCP disks during installation (System z)
+    </para>
+    <para>
+      The adding of DASD or zFCP disks is not only possible during
+      the installation workflow, but also when the installation proposal
+      is shown. To add disks at that stage please click on the "Expert"
+      tab and scroll down. There the DASD and/or zFCP entry is shown.
+      These added disks are not shown in the partitioner. To get the disks
+      into the partitioner, you have to click on the expert label and
+      select "reread partition table". This may reset any previously
+      entered information.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.lvm_evms -->
+  <listitem>
+    <para>
+      Creating LVM or EVMS Volumes with DASDs (System z)
+    </para>
+    <para>
+      If want to create a LVM or EVMS volume with DASDs that are not
+      formatted or partitioned this will fail. The DASDs can be formatted
+      in the DASD activation panel. Creating a partition can be done
+      in the partitioner by hitting the [create] button and specifying
+      "do not format" and removing any mountpoints indicated.
+    </para>
+  </listitem>
+
+  <!-- Bug 411635 -  Loop in installation prompts after error response. -->
+  <listitem>
+    <para>
+      Installation loops during network configuration if incorrect or incomplete
+parameters are entered. (System z)
+    </para>
+    <para>
+In case of an erroneous configuration of a (e.g. qeth) device, the device does
+not get ungrouped automatically.
+    </para>
+    <para>
+Perform the following steps to recover from a network device setup failure:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Enter "x" to get to the expert menu, then "3" to start a shell.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Enter "cd /sys/bus/ccwgroup/devices/&lt;read channel number&gt;" to get to the
+          sysfs directory of the network device.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Enter "echo 0 &gt;online" to put the device offline.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Enter "echo 1 &gt;ungroup" to ungroup the device's channels.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Enter "exit" to return to linuxrc.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Enter "0" to continue with the installation.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+        Now you are ready to retry the network setup.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      cxgb3 Adapter Support During Installation
+    </para>
+    <para>
+If support for the cxgb3 adapter is required during the installation phase
+already, please make sure to also select the packages "ofed-1.4.1" and
+"ofed-kmp-ppc64-1.3.1" in the package selection of the installer.
+    </para>
+  </listitem>
+
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-update"><title>Update-Related Notes</title><info/>
+
+  <para>
+   This section includes update-related information for this Service Pack.
+  </para>
+  <para>
+    Technical Instruction Document 7008357
+    (<link xlink:href="http://www.novell.com/support/documentLink.do?externalID=7008357"/>)
+    contains additional documentation for upgrading an installed system to SUSE Linux Enterprise Server 10 Service Pack 4;
+  </para>
+  <section xml:id="update-general">
+  <title>General Notes</title>
+
+  <itemizedlist>
+  <listitem>
+    <para>
+      SPident reports an old Service Pack level
+    </para>
+    <para>
+    SPident is a tool to identify the Service Pack level of the current installation.
+    It may report that the system has not reached the level of this Service Pack. This
+    happens, when <emphasis>optional</emphasis> updates that are not
+    automatically installed by YOU are not manually selected during update. If
+    you use or need any packages which have optional updates, select these in
+    order to reach the current Service Pack level.
+    </para>
+  </listitem>
+
+  <!-- NBZ #541871 -->
+  <listitem>
+    <para>
+      Registration at the Novell Customer Center (NCC) may fail at the frist try.
+    </para>
+    <para>
+        During the update an connection error while doing the registration for NCC
+        might happen due to a timing issue. Please go back and register again to solve
+        the timing issue.
+    </para>
+  </listitem>
+
+  <listitem>
+   <para>
+     Novell AppArmor
+   </para>
+   <para>
+     This release of SUSE Linux Enterprise Server ships with Novell AppArmor.
+     The AppArmor intrusion prevention framework builds a firewall around your
+     applications by limiting the access to files, directories, and POSIX
+     capabilities to the minimum required for normal operation. AppArmor
+     protection can be enabled via the AppArmor control panel, located
+     in YaST under Novell AppArmor. For detailed information about using Novell
+     AppArmor, see the documentation in
+     <filename>/usr/share/doc/packages/apparmor-docs</filename>.
+   </para>
+   <para>
+     The AppArmor profiles included with SUSE Linux have been developed with
+     our best efforts to reproduce how most users use their
+     software. The profiles provided work unmodified for many
+     users, but some users find our profiles too restrictive for their
+     environments.
+   </para>
+   <para>
+     If you discover that some of your applications do not function as you
+     expected, you may need to use the AppArmor Update Profile Wizard in
+     YaST (or use the aa-logprof(8) command line utility) to update your
+     AppArmor profiles. Place all your profiles into learning mode with the
+     following:
+     <command>aa-complain /etc/apparmor.d/*</command>
+   </para>
+   <para>
+     When a program generates many complaints, the system's performance is
+     degraded. To mitigate this, we recommend periodically running the Update
+     Profile Wizard (or aa-logprof(8)) to update your profiles even if you
+     choose to leave them in learning mode. This reduces the number of
+     learning events logged to disk, which improves the performance of
+      the system.
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.ld_assume_kernel -->
+  <listitem>
+    <para>
+      <literal>LD_ASSUME_KERNEL</literal> Environment Variable
+    </para>
+    <para>
+      Do not set the <literal>LD_ASSUME_KERNEL</literal> environment
+      variable any longer. In the past, it was possible to use it to
+      enforce LinuxThreads support, which was dropped. If you set
+      <literal>LD_ASSUME_KERNEL</literal> to a kernel version lower
+      than 2.6.5, everything breaks because <command>ld.so</command>
+      looks for libraries in a version that does not exist anymore.
+    </para>
+  </listitem>
+  </itemizedlist>
+</section>
+  <section xml:id="update-from-sles10sp3">
+<title>Update from SUSE Linux Enterprise Server 10 Service Pack 3</title>
+  <itemizedlist>
+
+  <listitem>
+    <para>
+      There are no known update problems
+    </para>
+  </listitem>
+
+  </itemizedlist>
+</section>
+  <section xml:id="update-from-sles10sp2">
+<title>Update from SUSE Linux Enterprise Server 10 Service Pack 2</title>
+  <itemizedlist>
+
+  <listitem>
+    <para>
+      New version of Tomcat
+    </para>
+    <para>
+      A version update of Tomcat was done, which requires more and
+      new RPMs.
+    </para>
+  </listitem>
+
+  </itemizedlist>
+</section>
+  <section xml:id="update-from-sles10sp1">
+<title>Update from SUSE Linux Enterprise Server 10 Service Pack 1</title>
+  <itemizedlist>
+
+  <!-- FATE#302804 Upgrade sysstat package to Version 7 or higher -->
+  <listitem>
+    <para>
+      New on disk format of new Sysstat package
+    </para>
+    <para>
+      The new features of the new Sysstat package needs a new on disk
+      format of the data files. After the update of the sysstat package
+      the old collected data can no longer be used.
+    </para>
+  </listitem>
+
+  <!-- bnc#354471 -->
+  <listitem>
+    <para>
+      Changed order of starting network interface
+    </para>
+    <para>
+      The order in which network interfaces will be started has changed.
+      The new order is now bond interfaces first, then vlan, dialup tunnel
+      and finally bridge interfaces.
+    </para>
+  </listitem>
+  </itemizedlist>
+</section>
+  <section xml:id="update-from-sles9">
+<title>Update from SUSE LINUX Enterprise Server 9</title>
+  <itemizedlist>
+
+  <!-- relnotes.t.su -->
+  <listitem>
+    <para>
+      Becoming Superuser Using <command>su</command>
+    </para>
+    <para>
+      By default, calling <command>su</command> to become root does
+      not set the PATH for root. Either call <command>su -</command> to
+      start a login shell with the complete environment for root
+      or set <literal>ALWAYS_SET_PATH</literal> to <literal>yes</literal> in
+      <filename>/etc/default/su</filename> if you want to change the default
+      behavior of <command>su</command>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.sux -->
+  <listitem>
+    <para>
+      Forwarding xauth keys between users with <command>sux</command>
+    </para>
+    <para>
+      The shell script <command>sux</command> was removed. The
+      functionality of forwarding xauth keys between users is now
+      handled by the <command>pam_xauth</command> module and
+      <command>su</command>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.ntp -->
+  <listitem>
+    <para>
+      NTP-Related Files Renamed
+    </para>
+    <para>
+      For reasons of compatibility with LSB (Linux Standard Base),
+      most configuration files and the init script were renamed from
+      <literal>xntp</literal> to <literal>ntp</literal>.
+    </para>
+  </listitem>
+
+
+  <!-- relnotes.u.tar -->
+  <listitem>
+    <para>
+      Changed tar behavior in SUSE Linux Enterprise Server 10
+    </para>
+    <para>
+      Under SUSE Linux Enterprise Server 9, when extracting a directory from a tar archive
+      that already existed as a symbolic link in the target directory,
+      tar would overwrite the symlink with an actual directory. Under
+      SUSE Linux Enterprise Server 10, tar leaves the symlink and places the contents of the
+      archive within it.
+    </para>
+    <para>
+      To enforce the old behavior please use the option
+      <literal>--no-overwrite-dir</literal> when extracting an archive.
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.ulimits -->
+  <listitem>
+    <para>
+      ulimits
+    </para>
+    <para>
+      SUSE Linux Enterprise Server 9 set up the user environment with an unlimited stack
+      size resource limit to work around restrictions in stack handling
+      of multithreaded applications. With SUSE Linux Enterprise Server 10, this is no longer
+      necessary and has been removed. The login environment now defaults
+      to the kernel default stack size limit. To restore the old behavior,
+      add <command>ulimit -Ss unlimited</command> to
+      <filename>/etc/profile.local</filename>. If you want an automatic
+      configuration of your resource limits suited to protect desktop
+      systems, you may want to install the <literal>ulimit</literal>
+      package.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.cryptoloop -->
+  <listitem>
+    <para>
+      Mounting Encrypted Partitions
+    </para>
+    <para>
+      With SUSE Linux Enterprise Server 10, we switched to "cryptoloop" as the default encryption
+      module. SUSE Linux Enterprise Server 9 used twofish256 using <literal>loop_fish2</literal>
+      with 256 bits. Now we are using twofish256 using
+      <literal>cryptoloop</literal> with 256 bits. The old twofish256
+      is available as <literal>twofishSL92</literal>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.snd-intel8x0 -->
+  <listitem>
+    <para>
+      Reconfiguring Intel and Nvidia Sound Drivers
+    </para>
+    <para>
+      When updating a system with the <literal>snd-intel8x0</literal>
+      module (for Intel, SIS, AMD, and Nvidia on-board chips), the
+      system might be unable to load the module at reboot, because the
+      module option <literal>joystick</literal> was removed from the
+      newer version. To fix the problem, reconfigure the sound system
+      using YaST.
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.mysql -->
+  <listitem>
+    <para>
+      Upgrading MySQL from SLES9 to SLES10
+    </para>
+    <para>
+      During the upgrade from SUSE Linux Enterprise Server9 to SUSE Linux Enterprise Server10 also MySQL
+      is upgraded from 4.x to 5.x.  To complete this migration
+      you have also to upgrade your data as described in the
+      MySQL documentation.
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.php -->
+  <listitem>
+    <para>
+      Migrating from PHP 4 to PHP 5
+    </para>
+    <para>
+      Although most existing PHP 4 code should work without changes,
+      there are a few backwards-incompatible changes. Find a list of
+      these changes at: <link xlink:href="http://www.zend.com/manual/migration5.incompatible.php"/>
+    </para>
+  </listitem>
+
+  <!-- relnotes.u.kerberos -->
+  <listitem>
+    <para>
+      Switching from Heimdal to MIT Kerberos
+    </para>
+    <para>
+      MIT Kerberos is now used instead of heimdal. Converting an
+      existing Heimdal configuration automatically is not always
+      possible. During a system update, backup copies of configuration
+      files are created in <filename>/etc</filename> with the suffix
+      <filename>.heimdal</filename>.  YaST-generated configuration
+      settings in <filename>/etc/krb5.conf</filename> are converted,
+      but check whether the results match your expectations.
+    </para>
+    <para>
+      Before starting the update, you should decrypt an existing
+      Heimdal database into a human-readable file with the command
+      <command>kadmin -l dump -d heimdal-db.txt</command>. This way,
+      you can create a list of available principals that you can
+      restore one-by-one using <command>kdc</command> from
+      MIT Kerberos.  Find more information about setting up a KDC
+      in the documentation in the "krb5-doc" package.
+    </para>
+    <para>
+      To configure a Kerberos client, start the YaST Kerberos Client
+      module and enter your values for "Standard Domain", "Standard Realm",
+      and "KDC Server Address".
+    </para>
+  </listitem>
+
+  <!-- 302337: Document mdns-".local"-trouble in release notes - was: DNS, .local domain name, and MDNS -->
+  <listitem>
+    <para>
+      MDNS and .local domain names
+    </para>
+    <para>
+      The .local top level domain is treated as link-local domain
+      by the resolver. DNS requests are send as multicast DNS requests
+      instead of normal DNS requests. If you already use the .local domain
+      in your nameserver configuration you will have to switch this option
+      off in /etc/host.conf. Please also read the host.conf manual page,
+      more information on multicast DNS can be found on
+      http://www.multicastdns.org.
+    </para>
+    <para>
+      MDNS can be disabled during installation by booting with the
+      <option>nomdns</option> option set.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.firewall -->
+  <listitem>
+    <para>
+      Fine-Tuning Firewall Settings
+    </para>
+    <para>
+      SuSEfirewall2 is enabled by default. That means that
+      by default you cannot log in from remote systems.  It also
+      interferes with network browsing and multicast applications,
+      such as SLP and Samba ("Network Neighborhood"). You can
+      fine-tune the firewall settings using YaST.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.ppc_libata -->
+  <listitem>
+    <para>
+      CD/DVD device name on pSeries changed
+    </para>
+    <para>
+      With SUSE Linux Enterprise Server 10 SP1, the built-in CD/DVD drive on POWER3/POWER4
+      pSeries models p610/p615/p630 will be accessed with the libata
+      kernel driver because it is more reliable. On all POWER5 models
+      the libata driver is used to allow DLPAR hotplug operations.
+    </para>
+    <para>
+      This changes the kernel device name from
+      <filename>/dev/hda</filename> to <filename>/dev/sr0</filename>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.vsftpd -->
+  <listitem>
+    <para>
+      vsftpd with xinetd
+    </para>
+    <para>
+      Starting with SUSE Linux Enterprise Server 10, vsftpd can be configured independently
+      or over the xinetd. The default is stand-alone. In previous
+      versions, the default was xinetd.
+    </para>
+    <para>
+      To run it over xinetd, make sure that the service is enabled in the
+      xinetd configuration (<filename>/etc/xinetd.d/vsftpd</filename>)
+      and set the following line in <filename>/etc/vsftpd.conf</filename>:
+    </para>
+    <screen>listen=NO</screen>
+  </listitem>
+
+  <!-- relnotes.t.dbus-xinitrc -->
+  <listitem>
+    <para>
+      Setting Up D-BUS for Interprocess Communication in .xinitrc
+    </para>
+    <para>
+      Many applications now rely on D-BUS for interprocess communication
+      (IPC). Calling <command>dbus-launch</command> starts
+      <command>dbus-daemon</command>. The systemwide
+      <filename>/etc/X11/xinit/xinitrc</filename> uses
+      <filename>dbus-launch</filename> to start the window manager.
+    </para>
+    <para>
+      If you have a local <filename>~/.xinitrc</filename> file, you
+      must change it accordingly. Otherwise applications might fail.
+      Save your old <filename>~/.xinitrc</filename>.
+      Then copy the new template file into your home directory with:
+      <command>cp /etc/skel/.xinitrc.template ~/.xinitrc</command>.
+      Finally, add your customizations from the saved
+      <filename>~/.xinitrc</filename>.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.modular-kdb -->
+  <listitem>
+    <para>
+      Modular KDB
+    </para>
+    <para>
+      KDB is no longer available as a loadable module on all architectures
+      except Itanium. KDB is only supported in the debug kernel.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.pcmcia -->
+  <listitem>
+    <para>
+      PCMCIA
+    </para>
+    <para>
+      <command>cardmgr</command> no longer manages PC cards. Instead,
+      as with Cardbus cards and other subsystems, a kernel module
+      manages them.  All necessary actions are executed by
+      <command>hotplug</command>. The <literal>pcmcia</literal> start script
+      has been removed and <command>cardctl</command> is replaced by
+      <command>pccardctl</command>.
+      For more information, see
+      <filename>/usr/share/doc/packages/pcmciautils/README.SUSE</filename>.
+    </para>
+  </listitem>
+
+  </itemizedlist>
+</section>
+ </section>
+
+ <section xml:id="rnotes-techpreview"><title>Technology Previews</title><info/>
+
+  <para>
+   Technology Preview features are not supported or only supported limitedly.
+   These features are mainly included for customer convenience and may not be
+   functionally complete, unstable or in other ways not suitable for
+   production use.
+  </para>
+  <itemizedlist>
+
+  <!-- relnotes.g.hotmem -->
+  <listitem>
+   <para>Hot-Add of Memory</para>
+   <para>
+     Hot-Add-memory is currently only supported on the following machines:
+   </para>
+   <itemizedlist>
+     <listitem><para>IBM xSeries x260</para></listitem>
+     <listitem><para>IBM xSeries single node x460</para></listitem>
+     <listitem><para>IBM xSeries x3800</para></listitem>
+     <listitem><para>IBM xSeries x3850</para></listitem>
+     <listitem><para>IBM xSeries single node x3950</para></listitem>
+   </itemizedlist>
+   <para>
+     If your machine is not listed, please call support, whether
+     the machine has been successfully tested. Else a maintenance update
+     will explicitly mention the general availability of this feature.
+   </para>
+  </listitem>
+
+  <!-- Bug #377163 -->
+  <listitem>
+   <para>Huge Page Memory support via HMC on POWER</para>
+   <para>
+     Huge Page Memory support (16GB pages, enabled via HMC) is not yet supported
+     under Linux. Problems occur if huge pages are assigned to a partition in
+     combination with eHEA / eHCA adapters.
+
+     eHEA: Network interfaces can't be setup if huge page memory is assigned to the
+     same partition.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.libhugetlbfs -->
+  <listitem>
+   <para>libhugetlbfs</para>
+   <para>
+     The libhugetlbfs project shipped with SUSE Linux Enterprise Server 10 is a preview of
+     application provision with transparent access to system huge pages.
+     While the library provides an application with easy access to huge
+     pages when sufficient huge pages have been previously allocated on
+     the system, additional development and testing is required to
+     provide a stable transition to normal pages in a production environment.
+   </para>
+  </listitem>
+
+  <!-- FATE XXX -->
+  <listitem>
+   <para>Read-Only Root Filesystem</para>
+   <para>
+     It is possible to run SUSE Linux Enterprise Server 10 from Service Pack 2 on on a read-only
+     root filesystem. Due to the huge number of possible configurations,
+     this is currently not a supported scenario.
+   </para>
+   <para>
+     The <filename>/tmp</filename> and <filename>/var/tmp</filename>
+     directories needs to be on a separate partition and cannot be
+     mounted read-only.
+   </para>
+   <para>
+    After the installation has finished and all services are configured,
+    login as <emphasis>root</emphasis> and do the following modifications:
+   </para>
+   <para>
+     Modify <filename>/etc/fstab</filename> and add "ro" to the mount
+     options of the root filesystem entry.
+   </para>
+   <programlisting>
+   rm /etc/mtab
+   ln -s /proc/mounts /etc/mtab
+   mkdir /var/lib/hwclock
+   mv /etc/adjtime /var/lib/hwclock
+   ln -s /var/lib/hwclock/adjtime /etc/adjtime
+   # the following two steps are only necessary if you use dhcp:
+   mv /etc/resolv.conf /var/lib/misc/
+   ln -s /var/lib/misc/resolv.conf /etc/resolv.conf
+   # Now mount root filesystem read-only and reboot
+   mount -o remount,ro /
+   reboot
+   </programlisting>
+  </listitem>
+
+
+</itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-deprecated"><title>Deprecated Functionality</title><info/>
+
+  <para>
+    The following list of current functionality is deprecated
+    and will be removed with the next Service Pack or major SUSE Linux Enterprise Server
+    release.
+  </para>
+  <itemizedlist>
+
+  <!-- relnotes.t.jfs_not_supported -->
+  <listitem>
+    <para>
+      The JFS filesystem is no longer supported for new installations.
+      The kernel file system driver is still there, but YaST does not
+      offer partitioning with JFS.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+       For the future strategy and development with respect to
+       volume- and storage-management on SUSE Linux Enterprise System,
+       please see:
+       <link xlink:href="http://www.novell.com/linux/volumemanagement/strategy.html"/>
+    </para>
+  </listitem>
+
+
+  <listitem>
+    <para>
+      The <command>ippl</command> package is deprecated and will be
+      removed with SUSE Linux Enterprise Server 11.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      <command>powertweak</command> package is deprecated and will be
+      removed with SUSE Linux Enterprise Server 11.
+    </para>
+  </listitem>
+
+  <listitem>
+    <para>
+      CTC, ESCON, and IUCV IP interfaces are no longer officially
+      supported. For compatibility reasons, they are still usable,
+      but with the next release of SUSE Linux Enterprise Server, the support of these
+      interfaces will be dropped completely.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.mapped-base -->
+  <listitem>
+    <para>
+      For reasons of compatibility with SUSE Linux Enterprise Server 9, the mapped-base
+      functionality is present in SUSE Linux Enterprise Server 10. This functionality is used
+      by 32-Bit applications that need a larger dynamic data space
+      (such as database management systems).
+    </para>
+    <para>
+      With SUSE Linux Enterprise Server 10, a similar functionality called flexmap
+      is available. Because this is now the preferred way,
+      mapped-base is deprecated and will vanish in future releases.
+    </para>
+  </listitem>
+
+</itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-known-issues"><title>Known Issues</title><info/>
+
+  <itemizedlist>
+
+<!-- role="notoc" id="fate-312611"
+remap="InfraPackArch:SystemManagement,OtherUpdates" -->
+<listitem>
+<para>Individual Timeout Value for Each Direct AutoFS Mount</para><!-- href="https://fate.novell.com/312611" -->
+
+<para>If there were two direct mounts with different timeouts configured, the second one was ignored and the first timeout value was used for both mount points.</para>
+<para>AutoFS was patched to support individual timeout values for each direct mount.</para>
+</listitem>
+
+ <listitem>
+  <!-- bnc#716670 -->
+  <para>
+   Boot Device Larger Than 2 TiB
+  </para>
+  <para>
+    Due to limitations in the legacy x86/x86_64 BIOS implementations booting
+    from devices larger than 2 TiB is technically not possible using legacy
+    partition tables (DOS MBR).
+  </para>
+  <para>
+   To boot such systems, configure a separate boot partition with the
+   YaST partitioner.
+  </para>
+ </listitem>
+
+  <listitem>
+    <para>
+      EVMS and /boot partition
+    </para>
+    <para>
+      In some cases it can happen, that the /boot partition
+      in an EVMS setup is no longer mountable after an update.
+      In this case please specify <literal>evms=partition</literal>
+      as kernel boot option.
+    </para>
+  </listitem>
+
+  <!-- bnc#415665 -->
+  <listitem>
+    <para>
+        Known issue with the 8Gb/s LPe1200x HBAs and firmware version 2.00a3.
+    </para>
+    <para>
+        It has been found that possible issues may be encountered when the SLES10-SP4
+        distribution kernel is used with the in-box LPFC driver, on a system
+        with 8Gb/s LPe1200x HBAs and firmware version 2.00a3.
+        These issues could be encountered during fabric faults with multipathing, and
+        visible symptoms include loss of LUNs and/or FC host hang.
+    </para>
+    <para>
+        If these issues are encountered it is recommended to do one of the following:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Downgrade the firmware revision of the 8Gb/s LPe1200x HBA to revision 1.11a5.
+<!--
+                <screen>
+                http://www.emulex.com/files/downloads/hardware/lpe1200x/prev_fw.html
+                </screen>
+-->
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Modify the LPFC drivers lpfc_enable_npiv module parameter to zero:
+          <command>lpfc_enable_npiv=0</command>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+        You can accomplish this by doing either of the following:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          When loading the LPFC driver from the initrd image (that is at system boot
+          time), add the following line in the /etc/modprobe.conf file:
+        </para>
+        <screen>options lpfc lpfc_enable_npiv=0</screen>
+        <para>
+          and then re-build the initrd image.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          When loading the LPFC driver dynamically, include the lpfc_enable_npiv=0
+          option in the insmod or modprobe command line.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      For additional information on how to set the LPFC driver module parameters,
+      refer to the Emulex Drivers for Linux User Manual.
+    </para>
+  </listitem>
+
+  <!-- bnc#661717 -->
+  <listitem>
+    <para>
+      Booting on machines with more than 480 GB RAM
+    </para>
+    <para>
+        64bit Machines with more than 480 GB RAM may refuse to boot with the following
+        error message:
+    </para>
+    <screen>(XEN)  ****************************************
+(XEN)  Panic on CPU 0:
+(XEN)  Not enough RAM for DOM0 reservation.
+(XEN)  ****************************************</screen>
+    <para>
+        To avoid this error, it is recommended to always specify the Domain 0 Memory
+        size with the boot parameter dom0_mem=VALUE on machine equipped with
+        large amounts of RAM. Set the VALUE at or below the boundary of 480 GB—the
+        difference is reserved for the hypervisor (to be used for guest VMs).
+    </para>
+    <para>
+        Permanently add this parameter to your boot loader configuration by adding
+        the parameter dom0_mem=VALUE to your Xen kernel boot configuration.
+        Either use YaST &gt; System &gt; Boot Loader or edit /boot/grub/menu.lst. See
+        Section 2.3, “Managing Domain 0 Memory” (page 11) for more information.
+    </para>
+  </listitem>
+
+  <!-- bnc#534236 -->
+  <listitem>
+    <para>
+      Direct Device Assingment in XEN in a System with a PCIe switch.
+    </para>
+    <para>
+        Configuring Xen or KVM to do direct device assignment
+        in a system that has a PCIe switch in the direct assignment path
+        may result in unpredictable system behavior.
+    </para>
+    <para>
+        An I/O device directly assigned to a domain that uses guest
+        physical addresses in upstream memory requests may conflict
+        with the host physical memory addresses configured in the PCIe
+        switch base address. When these I/O devices are connected
+        through such a PCIe switch, the switch may mis-route these
+        requests as peer-to-peer traffic. This could result in
+        unpredictable system behavior, which may include incorrect
+        data written into other unprotected devices or virtual machine.
+    </para>
+    <para>
+        Both systems and addin cards may contain a PCIe switch.  Customers
+        should check with their vendors to determine if a PCIe switch exists
+        on their platforms or any of their add in cards.  If there is such
+        a switch on the platform, then the customer should not assign a PCIe
+        device down stream from such a switch to a guest virtual machine.
+    </para>
+    <para>
+        As detailed in the following paragraph customers can use the output
+        of the command `lspci' and `lspci -t' to see if there is a PCIe
+        switch in their system and, if so, if any devices should not be
+        directly assgned because they are downstream from that switch.  Note that
+        if the output of `lspci' does not show the presence of a PCIe switch
+        then there is no danger in doing any direct assginment of PCI devices.
+    </para>
+    <para>
+        Consider the following synthetic example where the output of `lspci'
+        contains:
+    </para>
+    <screen>00:01.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 1 (rev 12)
+01:00.0 Ethernet controller: Intel Corporation 82576 Gigabit Network Connection (rev 01)
+0a:00.0 PCI bridge: PES4T4 PCI Express Switch
+0d:00.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5751 Gigabit Ethernet PCI Express (rev 01)</screen>
+        <para>
+          Since there is a switch (device 0a:00.0) on this system the output of `lspci -t' shows:
+        </para>
+        <screen>-[0000:00]-+-00.0
++-01.0-[0000:01-02]--+-00.0
+|
++-0a.0-[0000:0d-0e]--+-00.0</screen>
+    <para>
+        From this topology it can be seen that there are 2 PCIe devices that can
+        potentially be directly assigned, 01:00.0 and 0d:00.0.  Since the first
+        device, 01:00.0, is down stream from a bridge it is safe to directly
+        assign that device to a virtual machine.  The second device, 0d:00.0,
+        is down stream from a PCIe switch and should not be directly assigned.
+    </para>
+  </listitem>
+
+  <!-- bnc#415665 -->
+  <listitem>
+    <para>
+      Suspend Power Management Features
+    </para>
+    <para>
+      The suspend power management features (specifically
+      hibernate and sleep/standby) are not supported on servers
+      running SUSE Linux Enterprise Server 10.  These features may work on many systems,
+      but cannot be guaranteed.
+    </para>
+  </listitem>
+
+
+  <!-- relnotes.g.i386-memory -->
+  <listitem>
+    <para>
+      i586 and i686 Machine with more than 16 GB of Memory
+    </para>
+    <para>
+      Depending on the workload, i586 and i686 machines with 16GB-48GB of
+      memory can run into instabilities.  Machines with more than 48GB
+      of memory are not supported at all.  To run on such a machine,
+      lower the memory with the <literal>mem=</literal> kernel boot option.
+    </para>
+    <para>
+      On such memory scenarios we strongly recommend to use a x86-64
+      with 64-bit SUSE Linux Enterprise Server and run the x86 applications on it.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.mountby -->
+  <listitem>
+    <para>
+      Bootloader and mount by UUID or LABEL
+    </para>
+    <para>
+      When the way the root device is mounted (by UUID or by label) is
+      changed in YaST, the boot loader configuration needs to be saved
+      again to make the change effective for the boot loader.
+    </para>
+    <para>
+      The "mount by" setting displayed in the YaST2 boot loader module is the
+      setting that will be in effect after saving the configuration.
+    </para>
+  </listitem>
+
+  <!-- relnotes.i.evms -->
+  <listitem>
+    <para>
+      EVMS Volumes Might Not Appear When Using iSCSI
+    </para>
+    <para>
+      If you have installed and configured an iSCSI SAN and have
+      created and configured EVMS Disks or Volumes on that iSCSI SAN,
+      your EVMS volumes might not be visible or accessible. This
+      problem is caused by EVMS starting before the iSCSI service.
+      iSCSI must be started and running before any disks or volumes
+      on the iSCSI SAN can be accessed.
+    </para>
+    <para>
+      To resolve this problem, enter either
+      <command>chkconfig evms on</command> or
+      <command>chkconfig boot.evms on</command> at the Linux server
+      console of every server that is part of your iSCSI SAN. This
+      ensures that EVMS and iSCSI start in the proper order each
+      time your servers reboot.
+    </para>
+  </listitem>
+
+
+  <!-- Bug #416518 -->
+  <listitem>
+    <para>
+      Reset behavior of MAC addresses on POWER 6 eHEA Adapter
+    </para>
+    <para>
+        The reset behavior of the Power 6 eHEA (Host Ethernet Adapter)
+        depends on the firmware level and the way the Linux system
+        is restarted. The system can be restarted in one of the four ways:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+        Reboot triggered from within the LPAR
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+        Via HMC: Use "Restart" command
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+        Via HMC: Use "Shut Down" command. Then use "Activate" command.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+        Restart entire Machine, then activate the partition.
+         </para>
+       </listitem>
+    </itemizedlist>
+    <para>
+        The firmware behavior concerning MAC address resetting differs between the
+        methods described above and between different firmware revisions. The relevant firmware
+        version is encoded in the last 3 digits of the EC number shown in the update
+        menu of the HMC.
+    </para>
+    <para>
+        Value of 330 or bigger: Mac addresses are reset to default values for all four restart methods
+    </para>
+    <para>
+        Value smaller than 330:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+        Mac addresses are not reset for restart method 1, 2, 3.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+        Mac addresses are reset to default values for method 4.
+         </para>
+       </listitem>
+    </itemizedlist>
+  </listitem>
+
+  <!-- Bug #404115 -->
+  <listitem>
+    <para>
+      Setting up bonding on a POWER 6 eHEA Adapter
+    </para>
+    <para>
+        eHEA ethernet devices can be bound to a bonding device.
+        When removing the bonding device it is important to detach all ehea
+        ethernet devices from the bonding device before unloading the
+        bonding module. Otherwise the unload operation will hang.
+    </para>
+   <programlisting>
+        modprobe bonding mode=active-backup miimon=10
+        ifconfig bond0 A.B.C.D up
+        ifenslave bond0 eth0 [where eth0 is an ehea]
+        ....systemstart finished...
+
+        ....shutdown started...
+        ifenslave -d bond0 eth0   #&lt;--- this is important
+        rmmod bonding
+   </programlisting>
+  </listitem>
+
+  <!-- Bug #367575 -->
+  <listitem>
+    <para>
+      cpio and files larger 4GB
+    </para>
+    <para>
+      cpio is not able to add files larger than 4GB to an archive.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.kde_ipv6 -->
+  <listitem>
+    <para>
+      KDE and IPv6 Support
+    </para>
+    <para>
+      By default, IPv6 support is not enabled for KDE.  You can enable it
+      using the /etc/sysconfig editor of YaST.  This feature is disabled
+      because IPv6 addresses are not properly supported by all Internet service
+      providers and, as a consequence, would lead to error messages while
+      browsing the Web and delays while displaying Web pages.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.restrictions -->
+  <listitem>
+    <para>
+      Installing/Updating on IBM System z9
+    </para>
+    <para>
+      When installing SUSE Linux Enterprise Server 10 on a System z9, some restrictions apply
+      through hardware or software. Some of these restrictions are
+      part of these Release Notes.  For an updated list, refer to
+      <link xlink:href="http://www-128.ibm.com/developerworks/linux/linux390/october2005_restrictions.html"/>.
+    </para>
+    <!-- bnc#358828 -->
+    <para>
+      For IBM System z9 machines ensure to have MCF RJ9967101E or IBM
+      System z9 GA3 base driver installed. Otherwise Linux reboot will
+      not work.
+    </para>
+  </listitem>
+
+
+  <!-- relnotes.i.minidisk_by-id -->
+  <listitem>
+    <para>
+      Using Disks in z/VM (System z)
+    </para>
+    <para>
+      If SUSE Linux Enterprise Server 10 is installed on disks in z/VM, which reside on
+      the same physical disk, the created access path
+      (<filename>/dev/disk/by-id/</filename>) is not unique.
+      The ID of a disk is the ID of the underlying disk. So if two
+      or more disk are on the same physical disk, they all have the same ID.
+    </para>
+    <para>
+      To avoid this ambiguity, please use the access path by-path.
+      This can be specified during the installation when the mount
+      points are defined.
+    </para>
+    <para>
+    The above restriction does not apply for SLES10 SP2 (which has a fix
+      for Problem-ID 34345 and 43704), if you have the z/VM PTF for APAR
+      VM64273, with which z/VM provides a unique identifier that allows to
+      distinguish between virtual disks on the same real device. Udev rules
+      that provide both old and new /dev/disk/by-id paths are included. To
+      use the new IDs in your multipath setup, please replace the
+      getuid_callout "/sbin/dasdinfo -u -b %n" with "/sbin/dasdinfo -x -b
+      %n" in your multipath configuration for DASD devices. Please see the
+      man page for the dasdinfo tool for additional information.
+   </para>
+  </listitem>
+
+  <!-- relnotes.i.iSCSI-OCFS2 -->
+  <listitem>
+    <para>
+      Local Mounts of iSCSI Shares
+    </para>
+    <para>
+      An iSCSI shared device should never be mounted directly on
+      the local machine. In an OCFS2 environment, doing so causes
+      all hardware to hard hang.
+   </para>
+  </listitem>
+
+  <!-- relnotes.t.cpint -->
+  <listitem>
+    <para>
+      Restriction When Using cpint/hcp (System z)
+    </para>
+    <para>
+      When using the cpint/hcp interface with z/VM 5.1 or earlier,
+      the guest should not have more than 2 GByte of storage. If the
+      guest has more storage, the command may fail.
+   </para>
+  </listitem>
+
+  <!-- Bug #363989 -->
+  <listitem>
+    <para>
+      YaST2 CD-Creator and YUM installation sources
+    </para>
+    <para>
+      The YaST2 CD-Creator module does not support YUM installation
+      sources like our update server provides. For this reason, it
+      is not possible to create a medium with updates included.
+      If you want to create a medium with updates included, use
+      YaST2 Product-Creator.
+   </para>
+   <para>
+     YaST2 Product-Creator is a successor of YaST2 CD-Creator.
+     It includes a GUI for the kiwi imaging system. This way it is
+     also possible to create a Live-CD, XEN image, etc. from the
+     same configuration used in the CD Creator.  The Product-Creator
+     will get shipped together with the SDK.
+   </para>
+  </listitem>
+
+  <!-- Bug #534723 -->
+  <listitem>
+    <para>
+      Be aware that selecting all patterns will cause the VMI kernel
+      to be installed and set as the default boot kernel. VMI is
+      intended only for VMware guests and is not guaranteed to boot
+      on bare metal.
+    </para>
+    <para>
+      If you do not intend to install the VMI kernel, deselect the
+      package by choosing "Details", then search for VMI package and
+      clear the installation checkbox.
+    </para>
+  </listitem>
+
+  <!-- Bug #533730 -->
+  <listitem>
+    <para>
+      Firmware for Brocade FC adapter
+    </para>
+    <para>
+      If a Brocade FC adapter is installed after the installation of the OS,
+      please make sure to install the firmware via YaST Software Management
+      (package brocade-firmware) in addition. Otherwise the driver will fail
+      to support the new device.
+    </para>
+  </listitem>
+
+  <!-- Bug #510910 -->
+  <listitem>
+    <para>
+      Issues when trying to install with 128GB of physical memory
+    </para>
+    <para>
+      During the installation on the x86_64 platform you may encounter the
+      following error message when the system has 128 Gigabytes (GB) of
+      physical memory installed:
+    </para>
+    <para>
+      CI-Direct Memory Access (DMA): Using software bounce buffering for I/O
+      (SWIOTLB) low bootmem alloc of 67108864 bytes failed! Kernel panic -
+      not syscing: Out of low memory.
+    </para>
+    <para>
+      This can be solved by adding the parameter "swiotlb=512" to "Boot
+      Options" at the beginning of the installation screen.
+    </para>
+  </listitem>
+
+</itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-resolved"><title>Resolved Issues</title><info/>
+
+  <itemizedlist>
+   <listitem>
+    <para>Bugfixes</para>
+    <para>
+     This Service Pack contains all the latest bugfixes for each package
+     released via the maintenance Web since the GA version.
+    </para>
+   </listitem>
+   <listitem>
+    <para>Security Fixes</para>
+    <para>
+     This Service Pack contains all the latest security fixes for each package
+     released via the maintenance Web since the GA version.
+    </para>
+   </listitem>
+   <listitem>
+    <para>Program Temporary Fixes</para>
+    <para>
+     This Service Pack contains all the PTFs (Program Temporary Fix) for each
+     package released via the maintenance Web since the GA version which were
+     suitable for integration into the maintained common codebase.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+
+ <section xml:id="rnotes-technical"><title>Technical Information</title><info/>
+
+  <para>
+    This section contains a number of technical changes and enhancements
+    for the experienced user.
+  </para>
+  <itemizedlist>
+
+  <listitem>
+    <para>
+      OCFS2 options needed for SAP
+    </para>
+    <para>
+      As part of our collaboration with SAP, we have worked intensively on improving
+      the performance of our ocfs2 cluster filesystem to meet the high demands in the
+      SAP BIA/BWA environment. Some improvements (like the better handling of huge
+      numbers of locks) benefit all customers automatically, while some others need
+      specific mkfs and mount options. These will be shortly described here.
+      There are a few specific tradeoffs to be made:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          data consistency vs. write performance
+        </para>
+        <para>
+          data=journal/ordered/writeback
+        </para>
+        <para>
+          Sidenote: ocfs2 only supported writeback until SLES10SP1.
+        </para>
+        <para>
+          This puts constraints how the OS can optimize the ordering of writes
+          to storage. The journal option implements data journaling; this is the
+          mode safest against data loss by power loss or such, but will result in
+          all data being written to storage twice, thus having a serious impact
+          on write performance. The ordered option will write data just once and
+          will make sure that the metadata updates in the journal and the data
+          writes are ordered such that no stale data would be exposed. writeback
+          provides the best performance, but can result in lost writes in case of
+          power outage. For SAP BIA, this risk is uncritical (a table will need to
+          be rebuilt).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          sparse support vs. fragmentation
+        </para>
+        <para>
+          Sidenote: sparse files in ocfs2 are only supported since SP2.
+        </para>
+        <para>
+          The support for sparse files results in a higher tendency for the filesystem
+          to fragment. The old allocator that did not have to deal with sparse files
+          and which can be selected by the mount option legacy_prealloc (if the FS
+          is created without sparse support) does a decent job at avoiding
+          fragmentation at the expense of not being as space efficient.
+          Use mkfs --fs-features=nosparse and mount -o legacy_prealloc to use the
+          non-sparse allocator.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Other options: We additionally recommend a cluster size -C 64k (mkfs option)
+          and to use the mount option noatime for SAP BIA.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+
+  <!-- relnotes.t.i18n -->
+  <listitem>
+    <para>
+      Locale Settings in <filename>~/.i18n</filename>
+    </para>
+    <para>
+      If you are not satisfied with locale system defaults, change
+      the settings in <filename>~/.i18n</filename>. Entries in
+      <filename>~/.i18n</filename> override system defaults from
+      <filename>/etc/sysconfig/language</filename>.  Use the same
+      variable names but without the <literal>RC_</literal> namespace
+      prefixes, for example, use <literal>LANG</literal> instead of
+      <literal>RC_LANG</literal>. For information about locales in
+      general, see "Language and Country-Specific Settings" in the
+      Reference Manual.
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.kdump -->
+  <listitem>
+    <para>
+      Configuration of kdump
+    </para>
+    <para>
+      The kernel is crashing or otherwise misbehaving and a kernel
+      core dump needs to be captured for analysis.
+    </para>
+    <para>
+      A description on how to setup kdump can be found under the
+      following URL: <link xlink:href="http://www.novell.com/support/search.do?cmd=displayKC&amp;docType=kc&amp;externalId=3374462&amp;sliceId=SAL_Public"/>
+    </para>
+  </listitem>
+
+  <!-- relnotes.g.realtime -->
+  <listitem>
+    <para>
+      Realtime Applications
+    </para>
+    <para>
+      When running real-time applications on larger systems, lower
+      maximum latencies can be achieved by employing the new
+      <literal>disable_buffer_lru</literal> kernel command-line option.
+      This disables the per-CPU LRU in the buffer cache, and may thus
+      decrease overall filesystem performance.
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.jpackage -->
+  <listitem>
+    <para>
+      JPackage Standard for Java Packages
+    </para>
+    <para>
+      Java packages are changed to follow the JPackage Standard
+      (<link xlink:href="http://www.jpackage.org/"/>). Read the
+      documentation in
+      <filename>/usr/share/doc/packages/jpackage-utils/</filename>
+      for information.
+    </para>
+  </listitem>
+
+
+  <!-- relnotes.t.load_unsupported -->
+  <listitem>
+    <para>
+      Loading unsupported kernel drivers
+    </para>
+    <para>
+      To load unsupported kernel drivers automatically during boot,
+      set the sysconfig variable
+      <literal>LOAD_UNSUPPORTED_MODULES_AUTOMATICALLY</literal> in
+      <filename>/etc/sysconfig/hardware/config</filename> to "yes".
+    </para>
+  </listitem>
+
+  <!-- relnotes.t.nonexecuteable_stack-->
+  <listitem>
+    <para>
+      Nonexecutable Stack
+    </para>
+    <para>
+      Already introduced for SUSE Linux Enterprise Server 9 on the x86-64 (AMD64) architecture
+      with 64-bit kernels, the Linux kernel in SUSE Linux Enterprise Server also supports
+      nonexecutable stack (NX) on x86 for CPUs that support it
+      (Intel Prescott and AMD64) with 32-bit kernels. For this to work,
+      the kernel with PAE support, kernel-bigsmp, must be installed. Go
+      into YaST and install that kernel instead of your default kernel.
+      For 64-bit kernels, all kernels support NX.
+    </para>
+    <para>
+      The nonexecutable stack improves the security of your system.
+      Many security vulnerabilities are stack overflows, where an attacker
+      overwrites the stack of your program by feeding oversized data to the
+      application that fails to properly check the length.
+      Depending on the details of the program, with nonexecutable stack,
+      these vulnerabilities may either not be exploitable (and only
+      crash the program, resulting in a DoS) or at least be significantly
+      harder to exploit.
+    </para>
+    <para>
+      Some applications do require executable stacks. The compiler detects
+      this during compilation and marks the binaries accordingly. The kernel
+      enable an executable stack for them to allow them to work.
+    </para>
+    <para>
+      On x86-64, to provide a higher level of security, the user can
+      pass <literal>noexec=on</literal> on the kernel command line.
+      The kernel then uses a nonexecutable stack unconditionally and
+      also marks the data section of a program nonexecutable. This
+      provides a higher protection level than just the nonexecutable
+      stack, but potentially causes problems for some applications.
+      Novell has not found any problems during testing the most commonly
+      used applications and services. Because it is not the default,
+      this has not been tested as extensively as the stack protection
+      alone, so Novell only recommends this setup for servers after the
+      administrator has verified that all needed services continue
+      to function properly.
+    </para>
+  </listitem>
+
+  <!-- Bug #535577 -->
+  <listitem>
+    <para>
+      Start server with plain vga and displayed messages
+    </para>
+    <para>
+      In some cases, the usage of a special vga mode parameter
+      (e.g. "vga=0x317") might slow down the boot process of a SLES
+      server. The boot process can be quickened by setting the kernel
+      parameter "vga=normal" in /boot/grub/menu.lst instead of using a
+      special vga mode.
+    </para>
+    <para>
+      Moreover, to be able to see an occurring kernel oops or similar
+      on the console, it's useful to remove the kernel parameter
+      "splash=silent" from the respective entry in /boot/grub/menu.lst.
+    </para>
+  </listitem>
+
+
+  </itemizedlist>
+ </section>
+
+ <section xml:id="rnotes-feedback"><title>Documentation and other information</title><info/>
+
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     Read the READMEs on the DVDs.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Get the detailed changelog information about a particular
+     package from the RPM (with filename &lt;FILENAME&gt;):
+    </para>
+    <screen>rpm --changelog -qp &lt;FILENAME&gt;.rpm</screen>
+   </listitem>
+   <listitem>
+    <para>
+     Check the <filename>ChangeLog</filename> file in the top level of DVD1 for
+     a chronological log of all changes made to the updated packages.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Find more information in the <filename>docu</filename> directory
+     of DVD1 of the SUSE Linux Enterprise Server 10 DVDs. This directory includes PDF versions
+     of the SUSE Linux Enterprise Server 10 startup and preparation guides.
+    </para>
+   </listitem>
+   <listitem>
+     <para>
+       <link xlink:href="http://www.suse.com/documentation/sles10/"/> contains
+       additional or updated documentation for SUSE Linux Enterprise Server 10.
+     </para>
+   </listitem>
+   <listitem>
+     <para>
+       These Release Notes are identical across all architectures. The latest version is available online
+       at <link xlink:href="http://www.suse.com/releasenotes/x86_64/SUSE-SLES/10-SP4/"/>,
+       <link xlink:href="http://www.suse.com/releasenotes/s390x/SUSE-SLES/10-SP4/"/>, etc.
+       <!-- The URL-template ist
+         <filename>http://www.novell.com/linux/releasenotes/&lt;ARCH&gt;/&lt;PRODUCT&gt;//&lt;Version&gt;/</filename>.
+       -->
+     </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     Visit <link xlink:href="http://www.suse.com"/> for the latest Linux
+     product news from SUSE and <link xlink:href="http://www.suse.com/download-linux/source-code.html"/> for
+     additional information on the source code of SUSE Linux Enterprise
+     products.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section>
+   <title>Colophon</title>
+   <para>
+     Thanks for using SUSE Linux Enterprise Server in your business.
+   </para>
+   <!--
+       <para>
+       Novell wants to hear back from you!
+       Please send inquiries to <ulink url="feedback@novell.com"/>.
+       </para>
+   -->
+   <para>
+     The SUSE Linux Enterprise Server 10 Team.
+   </para>
+ </section>
+</article>
