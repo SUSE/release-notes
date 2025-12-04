@@ -1,11 +1,24 @@
-  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-   <dm:bugtracker>
-    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-    <dm:component>Release Notes</dm:component>
-    <dm:product>SUSE Linux Micro 6.2</dm:product>
-    <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
-   </dm:bugtracker>
-  </dm:docmanager>
-  <productname>SL Micro Release Notes</productname>
-  <productnumber>6.2</productnumber>
-  <date><?dbtimestamp format="Y-m-d"?></date>
+<dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+ <dm:bugtracker>
+   <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+   <dm:component>Release Notes</dm:component>
+   <dm:product>{productname} {this-version}</dm:product>
+   <dm:assignee>{maintainer}</dm:assignee>
+ </dm:bugtracker>
+</dm:docmanager>
+<productname>{productname}</productname>
+<productnumber>{this-version}</productnumber>
+<date>{revdate}</date>
+<revhistory>
+  <revision>
+    <date>{revdate}</date>
+  </revision>
+</revhistory>
+<meta name="series">Release Notes</meta>
+<meta name="maintainer" content="{maintainer}"/>
+<meta name="productname">
+ <productname version="{this-version}">{productname}</productname>
+</meta>
+<meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+<meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
+

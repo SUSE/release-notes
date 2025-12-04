@@ -2,6 +2,8 @@
 :productnameshort: {slm-short}
 :rel-date: TBD
 
+:maintainer: lukas.kucharczyk@suse.com 
+
 :power-product: {productname} for POWER
 
 :doc-url: https://documentation.suse.com
