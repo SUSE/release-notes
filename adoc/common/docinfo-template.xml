@@ -17,7 +17,7 @@
 <meta name="series">Release Notes</meta>
 <meta name="maintainer" content="{maintainer}"/>
 <meta name="productname">
- <productname version="{this-version}" os="sles">{productname}</productname>
+ <productname version="{this-version}">{productname}</productname>
 </meta>
 <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
 <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>

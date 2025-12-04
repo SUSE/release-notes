@@ -1,6 +1,8 @@
 include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
+:this-version: 6.0 
+
 = SL Micro Release Notes
 :revdate: 2024-11-27
 :page-revdate: {revdate}
