@@ -17,6 +17,18 @@
   Enterprise Server 11 Service Pack 3 for VMware</phrase></title>
   <info>
     <releaseinfo>Version 11.3.47 (2017-05-31)</releaseinfo>
+    <revhistory>
+      <revision>
+	<date>2017-05-3</date>
+      </revision>
+    </revhistory>
+    <meta name="series">Release Notes</meta>
+    <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
+    <meta name="productname">
+      <productname version="11 SP3">SUSE Linux Enterprise Server</productname>
+    </meta>
+    <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+    <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
     <abstract>
       <para>
         This document provides guidance and an overview to high level general
