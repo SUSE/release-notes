@@ -10,6 +10,18 @@
   <info>
     <releaseinfo>Version 9.4, 14. November 2007</releaseinfo>
     <date>2007-11-14</date>
+    <revhistory>
+      <revision>
+	<date>2007-11-14</date>
+      </revision>
+    </revhistory>
+    <meta name="series">Release Notes</meta>
+    <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
+    <meta name="productname">
+      <productname version="9">SUSE LINUX Enterprise Serve</productname>
+    </meta>
+    <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+    <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
     <abstract>
       <para>
         These release notes are generic for all SUSE LINUX Enterprise Server 9 based products. Some
