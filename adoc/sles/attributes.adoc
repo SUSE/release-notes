@@ -2,6 +2,9 @@
 :productnameshort: SLES
 :rel-date: TBD
 
+:this-version: 16.0
+:maintainer: lukas.kucharczyk@suse.com 
+
 :doc-url: https://documentation.suse.com
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
 :doc-url-source: https://www.suse.com/download/sles/
