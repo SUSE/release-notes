@@ -9,7 +9,7 @@
 :doc-url-beta: https://susedoc.github.io/doc-slesforsap/main
 :doc-url-source: https://www.suse.com/download/sle-sap/
 
-:support-url: https://example.com/support
+:support-url: https://www.suse.com/support/policy.html
 :rn-url: https://www.suse.com/releasenotes
 
 // conditionals-begin

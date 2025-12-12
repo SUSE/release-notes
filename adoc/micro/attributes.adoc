@@ -10,7 +10,7 @@
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
 :doc-url-source: https://www.suse.com/download/sle-micro/
 
-:support-url: https://example.com/support
+:support-url: https://www.suse.com/support/policy.html
 :rn-url: https://www.suse.com/releasenotes
 
 // conditionals-begin
