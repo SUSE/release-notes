@@ -151,6 +151,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 == Changes affecting all architectures
 
+// jsc#PED-12605
+* kdump is not enabled by default. This will be fixed in {productname} {next-version}.
 // jsc#PED-12797
 * RMT in {productname} 15 supports {this-version} clients.
 // jsc#PED-13138
