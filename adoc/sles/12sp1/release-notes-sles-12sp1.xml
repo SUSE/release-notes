@@ -4,30 +4,45 @@
 
 ]>
 
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en" xml:id="rnotes"><title>Release Notes</title><info><releaseinfo>@VERSION@</releaseinfo><productname><phrase os="sles">SUSE Linux Enterprise Server</phrase></productname><productnumber>12 SP1</productnumber><date>
-<?dbtimestamp format="Y-m-d"?></date><abstract>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en" xml:id="rnotes">
+  <title>Release Notes</title>
+  <info>
+    <releaseinfo>12.1.20170602</releaseinfo>
+    <productname><phrase os="sles">SUSE Linux Enterprise Server</phrase></productname><productnumber>12 SP1</productnumber>
+    <date>2017-01-12</date>
+    <revhistory>
+      <revision>
+        <date>2017-01-12</date>
+      </revision>
+    </revhistory>
+    <meta name="series">Release Notes</meta>
+    <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
+    <meta name="productname">
+      <productname version="12 SP1">SUSE Linux Enterprise Server</productname>
+    </meta>
+    <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+    <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
 
-
-   <para>
-    This document provides guidance and an overview to high level general
-    features and updates for SUSE Linux Enterprise Server 12 SP1. Besides
-    architecture or product-specific information, it also describes the
-    capabilities and limitations of SLES 12 SP1.
-   </para>
-
-   <para>
-    If you are skipping one or more service packs, check the release notes
-    of the skipped service packs as well. Release notes usually only list
-    changes that happened between two subsequent releases. If you are only
-    reading the release notes of the current release, you could miss
-    important changes.
-   </para>
-
-   <para>
-    General documentation can be found at:
-    <link xlink:href="https://documentation.suse.com/sles/12/"/>.
-   </para>
-  </abstract></info>
+    <abstract>
+      <para>
+	This document provides guidance and an overview to high level general
+	features and updates for SUSE Linux Enterprise Server 12 SP1. Besides
+	architecture or product-specific information, it also describes the
+	capabilities and limitations of SLES 12 SP1.
+      </para>
+      <para>
+	If you are skipping one or more service packs, check the release notes
+	of the skipped service packs as well. Release notes usually only list
+	changes that happened between two subsequent releases. If you are only
+	reading the release notes of the current release, you could miss
+	important changes.
+      </para>
+      <para>
+	General documentation can be found at:
+	<link xlink:href="https://documentation.suse.com/sles/12/"/>.
+      </para>
+    </abstract>
+  </info>
 
 
  <section xml:id="Intro">
@@ -4983,11 +4998,11 @@ rocommunity public monitoringnode3</screen>
     CPUs. The hypervisor itself, however, can access up to logical 256
     logical CPUs and schedule those for the VMs.
    </para>
-   <itemizedlist>
-    <para>
+   <para>
      For more information about acronyms please refer to the official
      Virtualization Documentation.
-    </para>
+   </para>
+   <itemizedlist>
     <listitem>
      <para>
       PV: Para Virtualization
