@@ -1,45 +1,63 @@
-<?xml version="1.0"?>
-<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
-                 type="text/xml"
-                 title="Profiling step"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<article lang="en" id="rnotes">
- <title>Release Notes</title>
- <articleinfo>
-<?dbsuse-bugtracker url="https://bugzilla.suse.com/enter_bug.cgi"
-   product="SUSE Linux Enterprise Server 12 SP4"
-   component="Release Notes"
-   assignee="sknorr@suse.com" ?>
-  <releaseinfo>@VERSION@</releaseinfo><productname><phrase os="sles">SUSE Linux Enterprise Server</phrase></productname>
-  <productnumber>12 SP4</productnumber><date>
-<?dbtimestamp format="Y-m-d"?></date>
-  <abstract>
-<!-- msvec and marketing, 2013-05-13 -->
-<!-- new initial para -->
-   <para>
-    This document provides guidance and an overview to high level general
-    features and updates for SUSE Linux Enterprise Server 12 SP4. Besides
-    architecture or product-specific information, it also describes the
-    capabilities and limitations of SUSE Linux Enterprise Server 12 SP4.
-   </para>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+    type="text/xml"
+    title="Profiling step"
+?>
+<!DOCTYPE article
+[
 
-   <para>
-    General documentation can be found at:
-    <ulink url="https://documentation.suse.com/sles/12-SP4/"/>.
-   </para>
-  </abstract>
- </articleinfo>
- <section id="rn.about">
+]>
+
+
+<article xmlns="http://docbook.org/ns/docbook"
+
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en"
+         xml:id="rnotes">
+  <title>Release Notes</title>
+  <info>
+    <releaseinfo>12.4.20211208</releaseinfo>
+    <productname><phrase os="sles">SUSE Linux Enterprise
+    Server</phrase></productname><productnumber>12 SP4</productnumber>
+    <date>2021-12-08</date>
+    <revhistory>
+      <revision>
+        <date>2021-12-08</date>
+      </revision>
+    </revhistory>
+    <meta name="series">Release Notes</meta>
+    <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
+    <meta name="productname">
+      <productname version="12 SP4">SUSE Linux Enterprise Server</productname>
+    </meta>
+    <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+    <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
+
+    <abstract>
+      <para>
+        This document provides guidance and an overview to high level general
+        features and updates for SUSE Linux Enterprise Server 12 SP4. Besides
+        architecture or product-specific information, it also describes the
+        capabilities and limitations of SUSE Linux Enterprise Server 12 SP4.
+      </para>
+
+      <para>
+        General documentation can be found at:
+        <link xlink:href="https://documentation.suse.com/sles/12-SP4/"/>.
+      </para>
+    </abstract>
+  </info>
+
+
+ <section xml:id="rn-about">
   <title>About the Release Notes</title>
   <para>
    These Release Notes are identical across all architectures, and the most
    recent version is always available online at
-   <ulink url="http://www.suse.com/releasenotes/"/>.
+   <link xlink:href="https://documentation.suse.com/releasenotes/"/>.
   </para>
-<!-- partly: msvec and marketing, 2013-05-13 -->
-<!-- moved from the abstract to before 'mustread' section... -->
-<!-- moved to beginning of document again, because we now have an
-  explanatory section. - sknorr-l, 2017-05-18 -->
+
+
   <para>
    Some entries may be listed twice, if they are important and belong to
    more than one section.
@@ -57,12 +75,12 @@
    notes of the current release, you could miss important changes.
   </para>
  </section>
- <section id="Intro">
+ <section xml:id="Intro">
   <title>SUSE Linux Enterprise Server</title>
   <remark> SLE definition: general information </remark>
-<!-- Marketing, Kerry Kim, 2009-02-09 -->
-<!-- Changed by MgE, 2012-02-02 -->
-<!-- Feedback by Robert, 2012-02-27 -->
+
+
+
   <para>
    SUSE Linux Enterprise Server is a highly reliable, scalable, and secure
    server operating system, built to power mission-critical workloads in
@@ -78,7 +96,7 @@
    mission-critical services, as well as edge of network, and web
    infrastructure workloads.
   </para>
-  <section id="Intro.Interoperability">
+  <section xml:id="Intro-Interoperability">
    <title>Interoperability and Hardware Support</title>
    <para>
     Designed for interoperability, SUSE Linux Enterprise Server integrates
@@ -99,14 +117,14 @@
     perfect guest operating system for virtual computing.
    </para>
   </section>
-  <section id="Intro.Lifecycle">
+  <section xml:id="Intro-Lifecycle">
    <title>Support and Life Cycle</title>
    <para>
     SUSE Linux Enterprise Server is backed by award-winning support from
     SUSE, an established technology leader with a proven history of
     delivering enterprise-quality support services.
    </para>
-<!-- bnc#821338, bnc#828478, bnc#882262 -->
+
    <para>
     SUSE Linux Enterprise Server 12 has a 13-year life cycle, with 10 years
     of General Support and 3 years of Extended Support. The current version
@@ -121,12 +139,12 @@
    </para>
    <para>
     For more information, check our Support Policy page
-    <ulink url="https://www.suse.com/support/policy.html"/> or the Long Term
+    <link xlink:href="https://www.suse.com/support/policy.html"/> or the Long Term
     Service Pack Support Page
-    <ulink url="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>.
+    <link xlink:href="https://www.suse.com/support/programs/long-term-service-pack-support.html"/>.
    </para>
   </section>
-  <section id="Intro.New" remap="Intro:New">
+  <section xml:id="Intro-New" remap="Intro:New">
    <title>What Is New?</title>
    <remark> Marketing POV. </remark>
    <remark> ** Update information : link to severity ratings documentation ** Installation : change,
@@ -165,7 +183,7 @@
       Modules are part of your SUSE Linux Enterprise Server subscription,
       are technically delivered as online repositories, and differ from the
       base of SUSE Linux Enterprise Server only by their life cycle. For
-      more information about modules, see <xref linkend="Intro.Module"/>.
+      more information about modules, see <xref linkend="Intro-Module"/>.
      </para>
     </listitem>
     <listitem>
@@ -191,7 +209,7 @@
       Linux Containers are integrated into the virtualization management
       infrastructure (libvirt). Docker is provided as a fully supported
       technology. For more details, see
-      <ulink url="https://www.suse.com/promo/sle/docker/"/>.
+      <link xlink:href="https://www.suse.com/promo/sle/docker/"/>.
      </para>
     </listitem>
     <listitem>
@@ -225,7 +243,7 @@
      </para>
     </listitem>
    </itemizedlist>
-<!-- FATE#312947 -->
+
    <remark> This is Read Me First information. </remark>
    <para>
     If you are upgrading from a previous SUSE Linux Enterprise Server
@@ -234,12 +252,12 @@
    <itemizedlist>
     <listitem>
      <para>
-      <xref linkend="Intro.Support"/>
+      <xref linkend="Intro-Support"/>
      </para>
     </listitem>
     <listitem>
      <para>
-      <xref linkend="InstUpgrade.Upgrade"/>
+      <xref linkend="InstUpgrade-Upgrade"/>
      </para>
     </listitem>
     <listitem>
@@ -248,10 +266,10 @@
      </para>
     </listitem>
    </itemizedlist>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326969" remap="Intro:New">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326969" -->
+
+   <section role="notoc" xml:id="fate-326969" remap="Intro:New">
+
+
     <title>NV-DIMM Support</title>
     <para>
      SLES 12-SP4 / SLES15 supports persistent memory (NV-DIMM) technologies,
@@ -260,9 +278,9 @@
      SUSE's hardware and software partners.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="Intro.Documentation">
+  <section xml:id="Intro-Documentation">
    <title>Documentation and Other Information</title>
    <para/>
    <section>
@@ -306,7 +324,7 @@
     <itemizedlist>
      <listitem>
       <para>
-       <ulink url="https://documentation.suse.com/sles/12-SP4/"/> contains
+       <link xlink:href="https://documentation.suse.com/sles/12-SP4/"/> contains
        additional or updated documentation for SUSE Linux Enterprise
        Server 12 SP4.
       </para>
@@ -315,43 +333,41 @@
       <para>
        Find a collection of White Papers in the SUSE Linux Enterprise Server
        Resource Library at
-       <ulink url="https://www.suse.com/products/server/resource-library"/>.
+       <link xlink:href="https://www.suse.com/products/server/resource-library"/>.
       </para>
      </listitem>
     </itemizedlist>
    </section>
   </section>
-  <section id="Intro.Sourcecode">
+  <section xml:id="Intro-Sourcecode">
    <title>How to Obtain Source Code</title>
-<!-- msvec and legal (ciaran), 2013-05-13 -->
-<!-- moved from the abstract to this location as the first section -->
+
+
    <para>
     This SUSE product includes materials licensed to SUSE under the GNU
     General Public License (GPL). The GPL requires SUSE to provide the
     source code that corresponds to the GPL-licensed material. The source
     code is available for download at
-    <ulink url="http://www.suse.com/download-linux/source-code.html"/>.
+    <link xlink:href="https://www.suse.com/source-code/"/>.
     Also, for up to three years after distribution of the SUSE product, upon
     request, SUSE will mail a copy of the source code. Requests should be
-    sent by e-mail to <ulink url="mailto:sle_source_request@suse.com"/> or
+    sent by e-mail to <link xlink:href="mailto:sle_source_request@suse.com"/> or
     as otherwise instructed at
-    <ulink url="http://www.suse.com/download-linux/source-code.html"/>. SUSE
+    <link xlink:href="https://www.suse.com/source-code/"/>. SUSE
     may charge a reasonable fee to recover distribution costs.
    </para>
   </section>
-  <section id="Intro.Support">
+  <section xml:id="Intro-Support">
    <title>Support Statement for SUSE Linux Enterprise Server</title>
    <para>
     To receive support, you need an appropriate subscription with SUSE. For
     more information, see
-    <ulink url="http://www.suse.com/products/server/services-and-support/"/>.
+    <link xlink:href="https://www.suse.com/support/"/>.
    </para>
    <para>
     The following definitions apply:
    </para>
    <variablelist>
-<!-- Now using http://support.novell.com/products/server/supported_packages/
-  -->
     <varlistentry>
      <term>L1</term>
      <listitem>
@@ -404,7 +420,7 @@
     <listitem>
      <para>
       packages that require an additional customer contract, see
-      <xref linkend="Intro.Support.External"/>
+      <xref linkend="Intro-Support-External"/>
      </para>
     </listitem>
     <listitem>
@@ -418,7 +434,7 @@
     un-recompiled) packages.
    </para>
   </section>
-  <section id="Intro.Support.General">
+  <section xml:id="Intro-Support-General">
    <title>General Support</title>
    <para>
     To learn about supported kernel, virtualization, and file system
@@ -426,13 +442,13 @@
     <xref linkend="TechInfo"/>.
    </para>
   </section>
-<!-- see fate#316990 -->
-  <section id="Intro.Support.External" remap="Intro:Support:External">
+
+  <section xml:id="Intro-Support-External" remap="Intro:Support:External">
    <title>Software Requiring Specific Contracts</title>
-<!--v Items below imported from FATE-->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/316990" -->
-<!-- title>[NOTITLE]Software Requiring Specific Contracts</title -->
+
+
+
+
    <para>
     The following packages require additional support contracts to be
     obtained by the customer in order to receive full support:
@@ -449,13 +465,13 @@
      </para>
     </listitem>
    </itemizedlist>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="Intro.Support.Techpreviews.Overview">
+  <section xml:id="Intro-Support-Techpreviews-Overview">
    <title>Technology Previews</title>
    <remark> ** clear statement of TP (no support) ** Title of the TP ** full description of the TP
     ** link to official documentation (external) ** link to SUSE's documentation </remark>
-<!-- bnc#662712 -->
+
    <para>
     Technology previews are packages, stacks, or features delivered by SUSE
     which are not supported. They may be functionally incomplete, unstable
@@ -473,23 +489,22 @@
     Give your SUSE representative feedback, including your experience and
     use case.
    </para>
-   <section id="Intro.Support.Techpreviews.x86_64" remap="Intro:Support:Techpreviews:x86_64">
+   <section xml:id="Intro-Support-Techpreviews-x86-64" remap="Intro:Support:Techpreviews:x86_64">
     <title>Technology Previews for AMD64/Intel 64 64-Bit (x86_64)</title>
     <para/>
-    <section role="notoc" id="jsc-SLE-11270">
+    <section role="notoc" xml:id="jsc-SLE-11270">
      <title>KVM Nested Virtualization</title>
      <para>
       KVM Nested Virtualization is available in SLE 12 SP4 as a technology
       preview. For more information, see
-      <ulink
-      url="https://www.kernel.org/doc/html/latest/virt/kvm/nested-vmx.html">the
-      Linux kernel documentation</ulink>.
+      <link xlink:href="https://www.kernel.org/doc/html/latest/virt/kvm/nested-vmx.html">the
+      Linux kernel documentation</link>.
      </para>
     </section>
-<!--v Items below imported from FATE-->
-    <section role="notoc" id="fate-325555" remap="Intro:Support:Techpreviews:x86_64">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325555" -->
+
+    <section role="notoc" xml:id="fate-325555" remap="Intro:Support:Techpreviews:x86_64">
+
+
      <title>Support for AMD Secure Encrypted Virtualization</title>
      <para>
       As a technology preview, SLE 12 SP4 now supports AMD Secure Encrypted
@@ -505,21 +520,21 @@
      </para>
      <para>
       See also <xref linkend="fate-325554"/>
-<!--the note about SME-->
+
       .
      </para>
     </section>
-<!--^ End of Items imported from FATE-->
+
    </section>
   </section>
-  <section id="Intro.ModuleExtensionRelated">
+  <section xml:id="Intro-ModuleExtensionRelated">
    <title>Modules, Extensions, and Related Products</title>
    <para>
     This section comprises information about modules and extensions for SUSE
     Linux Enterprise Server 12 SP4. Modules and extensions add parts or
     functionality to the system.
    </para>
-   <section id="Intro.Module">
+   <section xml:id="Intro-Module">
     <title>Available Modules</title>
     <para>
      Modules are fully supported parts of SUSE Linux Enterprise Server with
@@ -596,17 +611,17 @@
     <para>
      For more information about the life cycle of packages contained in
      modules, see
-     <ulink url="https://scc.suse.com/docs/lifecycle/sle/12/modules"/>.
+     <link xlink:href="https://scc.suse.com/docs/lifecycle/sle/12/modules"/>.
     </para>
    </section>
-   <section id="Intro.Extension">
+   <section xml:id="Intro-Extension">
     <title>Available Extensions</title>
     <para>
      Extensions add extra functionality to the system and require their own
      registration key, usually at additional cost. Extensions are delivered
      via an online channel or physical media. In many cases, extensions have
      their own release notes documents that are available from
-     <ulink url="https://www.suse.com/releasenotes/"/>.
+     <link xlink:href="https://www.suse.com/releasenotes/"/>.
     </para>
     <para>
      The following extensions are available for SUSE Linux Enterprise Server
@@ -616,31 +631,31 @@
      <listitem>
       <para>
        SUSE Linux Enterprise Live Patching:
-       <ulink url="https://www.suse.com/products/live-patching"/>
+       <link xlink:href="https://www.suse.com/products/live-patching"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Linux Enterprise High Availability Extension:
-       <ulink url="https://www.suse.com/products/highavailability"/>
+       <link xlink:href="https://www.suse.com/products/highavailability"/>
       </para>
      </listitem>
      <listitem>
       <para>
        Geo Clustering for SUSE Linux Enterprise High Availability Extension:
-       <ulink url="https://www.suse.com/products/highavailability/geo-clustering"/>
+       <link xlink:href="https://www.suse.com/products/highavailability/geo-clustering"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Linux Enterprise Real Time:
-       <ulink url="https://www.suse.com/products/realtime"/>
+       <link xlink:href="https://www.suse.com/products/realtime"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Linux Enterprise Workstation Extension:
-       <ulink url="https://www.suse.com/products/workstation-extension"/>
+       <link xlink:href="https://www.suse.com/products/workstation-extension"/>
       </para>
      </listitem>
     </itemizedlist>
@@ -652,7 +667,7 @@
     <itemizedlist>
      <listitem>
       <para>
-       SUSE Package Hub: <ulink url="https://packagehub.suse.com/"/>
+       SUSE Package Hub: <link xlink:href="https://packagehub.suse.com/"/>
       </para>
      </listitem>
      <listitem>
@@ -662,49 +677,49 @@
      </listitem>
     </itemizedlist>
    </section>
-   <section id="Intro.Derived_Products">
+   <section xml:id="Intro-Derived-Products">
     <title>Derived and Related Products</title>
     <remark> Marketing POV. </remark>
     <para>
      This sections lists derived and related products. In many cases, these
      products have their own release notes documents that are available from
-     <ulink url="https://www.suse.com/releasenotes/"/>.
+     <link xlink:href="https://www.suse.com/releasenotes/"/>.
     </para>
     <itemizedlist>
      <listitem>
       <para>
        SUSE Enterprise Storage:
-       <ulink url="https://www.suse.com/products/suse-enterprise-storage"/>
+       <link xlink:href="https://www.suse.com/products/suse-enterprise-storage"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Linux Enterprise Desktop:
-       <ulink url="https://www.suse.com/products/desktop"/>
+       <link xlink:href="https://www.suse.com/products/desktop"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Linux Enterprise Server for SAP Applications:
-       <ulink url="https://www.suse.com/products/sles-for-sap"/>
+       <link xlink:href="https://www.suse.com/products/sles-for-sap"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE Manager:
-       <ulink url="https://www.suse.com/products/suse-manager"/>
+       <link xlink:href="https://www.suse.com/products/suse-manager"/>
       </para>
      </listitem>
      <listitem>
       <para>
        SUSE OpenStack Cloud:
-       <ulink url="https://www.suse.com/products/suse-openstack-cloud"/>
+       <link xlink:href="https://www.suse.com/products/suse-openstack-cloud"/>
       </para>
      </listitem>
     </itemizedlist>
    </section>
   </section>
-  <section id="Intro.Certification">
+  <section xml:id="Intro-Certification">
    <title>Security, Standards, and Certification</title>
    <para>
     SUSE Linux Enterprise Server 12 SP4 has been submitted to the
@@ -713,27 +728,27 @@
    <itemizedlist>
     <listitem>
      <para>
-      <ulink url="http://www.commoncriteriaportal.org/">Common Criteria
-      Certification</ulink>
+      <link xlink:href="https://www.commoncriteriaportal.org/">Common Criteria
+      Certification</link>
      </para>
     </listitem>
     <listitem>
      <para>
       FIPS 140-2 validation, see:
-      <ulink url="http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf"/>
+      <link xlink:href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/modules-in-process/modules-in-process-list"/>
      </para>
     </listitem>
    </itemizedlist>
    <para>
     For more information about certification, see
-    <ulink url="https://www.suse.com/security/certificates.html"/>.
+    <link xlink:href="https://www.suse.com/support/security/certifications/"/>.
    </para>
   </section>
  </section>
-<!-- ============================================================== -->
-<!-- =============== Technical Part Starts Here =================== -->
-<!-- ============================================================== -->
- <section id="InstUpgrade">
+
+
+
+ <section xml:id="InstUpgrade">
   <title>Installation and Upgrade</title>
   <para>
    SUSE Linux Enterprise Server can be deployed in several ways:
@@ -765,30 +780,30 @@
     </para>
    </listitem>
   </itemizedlist>
-  <section id="InstUpgrade.Upgrade" remap="InstUpgrade:Upgrade">
+  <section xml:id="InstUpgrade-Upgrade" remap="InstUpgrade:Upgrade">
    <title>Upgrade-Related Notes</title>
    <para>
     This section includes upgrade-related information for SUSE Linux
     Enterprise Server 12 SP4. For information about general preparations and
     supported upgrade methods and paths, see the documentation at
-    <ulink url="https://documentation.suse.com/sles/12-SP4/html/SLES-all/cha-update-sle.html"/>.
+    <link xlink:href="https://documentation.suse.com/sles/12-SP4/html/SLES-all/cha-update-sle.html"/>.
    </para>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326970" remap="InstUpgrade:Upgrade">
-<!-- sort_key="1"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326970" -->
+
+   <section role="notoc" xml:id="fate-326970" remap="InstUpgrade:Upgrade">
+
+
     <title>Upgrading to PostgreSQL 10</title>
     <para>
      If you are using PostgreSQL, make sure to upgrade to PostgreSQL 10
      before upgrading to SLES 12 SP4. For more information, see
      <xref linkend="fate-325659"/>
-<!--the section about PostgreSQL-->
+
      .
     </para>
    </section>
-   <section role="notoc" id="fate-326567" remap="InstUpgrade:Upgrade">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326567" -->
+   <section role="notoc" xml:id="fate-326567" remap="InstUpgrade:Upgrade">
+
+
     <title>Product Registration Changes for HPC Customers</title>
     <para>
      <emphasis>For SUSE Linux Enterprise 12, there was a High Performance
@@ -851,19 +866,19 @@
      <literal>README.SUSE</literal>.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
   <section>
    <title>For More Information</title>
    <para>
     For more information, see
-    <xref linkend="InfraPackArch.ArchIndependent"/> and the sections
+    <xref linkend="InfraPackArch-ArchIndependent"/> and the sections
     relating to your respective hardware architecture.
    </para>
   </section>
  </section>
-<!-- Arch Independent -->
- <section id="InfraPackArch.ArchIndependent">
+
+ <section xml:id="InfraPackArch-ArchIndependent">
   <title>Architecture Independent Information</title>
   <remark> This is highly technical * Know issues categorized ** full description of the problem **
    how to reproduce the issue ** link to Bugzilla number ** command line change/configuration change
@@ -873,24 +888,23 @@
    Information in this section pertains to all architectures supported by
    SUSE Linux Enterprise Server 12 SP4.
   </para>
-  <section id="InfraPackArch.ArchIndependent.Development">
+  <section xml:id="InfraPackArch-ArchIndependent-Development">
    <title>Development</title>
-   <section role="notoc" id="fate-326788">
+   <section role="notoc" xml:id="fate-326788">
     <title><package>librdkafka</package> Has Been Added</title>
     <para>
      <package>librdkafka</package> version 0.11.6 has been added.
      <package>librdkafka</package> is a C library implementation of the Apache
      Kafka protocol, providing Producer, Consumer and Admin clients. It was
      designed with message delivery reliability and high performance in mind.
-     For more information, see <ulink
-     url="https://github.com/edenhill/librdkafka"/>.
+     For more information, see <link xlink:href="https://github.com/edenhill/librdkafka"/>.
     </para>
    </section>
   </section>
-  <section id="InfraPackArch.ArchIndependent.Kernel" remap="InfraPackArch:ArchIndependent:Kernel">
+  <section xml:id="InfraPackArch-ArchIndependent-Kernel" remap="InfraPackArch:ArchIndependent:Kernel">
    <title>Kernel</title>
    <para/>
-   <section role="notoc" id="jsc-SLE-22593">
+   <section role="notoc" xml:id="jsc-SLE-22593">
     <title>Unprivileged eBPF usage has been disabled</title>
     <para>
       A large amount of security issues was found and fixed in the Extended
@@ -929,10 +943,10 @@
      </listitem>
     </itemizedlist>
    </section>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-325647" remap="InfraPackArch:ArchIndependent:Kernel">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325647" -->
+
+   <section role="notoc" xml:id="fate-325647" remap="InfraPackArch:ArchIndependent:Kernel">
+
+
     <title>Support for SAP HANA Workloads on Intel Optane DC Memory</title>
     <para>
      SUSE Linux Enterprise Server 12 SP4 and SUSE Linux Enterprise Server
@@ -968,9 +982,9 @@
     </para>
 <screen>ndctl create-namespace --mode=fsdax --map=dev</screen>
    </section>
-   <section role="notoc" id="fate-325368" remap="InfraPackArch:ArchIndependent:Kernel">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325368" -->
+   <section role="notoc" xml:id="fate-325368" remap="InfraPackArch:ArchIndependent:Kernel">
+
+
     <title>Device Error Prevention Enabled (CONFIG_IO_STRICT_DEVMEM)</title>
     <para>
      The kernel build option <literal>CONFIG_IO_STRICT_DEVMEM</literal> has
@@ -985,15 +999,15 @@
      firmware flash tools for POWER9 machines.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.ArchIndependent.Security" remap="InfraPackArch:ArchIndependent:Security">
+  <section xml:id="InfraPackArch-ArchIndependent-Security" remap="InfraPackArch:ArchIndependent:Security">
    <title>Security</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326412" remap="InfraPackArch:ArchIndependent:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326412" -->
+
+   <section role="notoc" xml:id="fate-326412" remap="InfraPackArch:ArchIndependent:Security">
+
+
     <title>Support for YubiKey and Nitrokey using the U2F frameworks.</title>
     <para>
      <emphasis>Some applications require stronger authentication methods,
@@ -1005,9 +1019,9 @@
      libraries, PAM modules and CLI and UI utilities.
     </para>
    </section>
-   <section role="notoc" id="fate-325802" remap="InfraPackArch:ArchIndependent:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325802" -->
+   <section role="notoc" xml:id="fate-325802" remap="InfraPackArch:ArchIndependent:Security">
+
+
     <title>su Does Not Preserve the Value of PATH</title>
     <para>
      For security reasons, the <literal>su</literal> command does not
@@ -1017,9 +1031,9 @@
      <literal>ALWAYS_SET_PATH</literal> to <literal>no</literal>.
     </para>
    </section>
-   <section role="notoc" id="fate-325336" remap="InfraPackArch:ArchIndependent:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325336" -->
+   <section role="notoc" xml:id="fate-325336" remap="InfraPackArch:ArchIndependent:Security">
+
+
     <title>Support for TLS 1.3 in OpenSSL 1.1.1</title>
     <para>
      <emphasis>TLS 1.3 is a new version of the Transport Layer Security
@@ -1042,22 +1056,22 @@
      tools.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.ArchIndependent.Network" remap="InfraPackArch:ArchIndependent:Network">
+  <section xml:id="InfraPackArch-ArchIndependent-Network" remap="InfraPackArch:ArchIndependent:Network">
    <title>Networking</title>
    <para/>
-   <section role="notoc" id="fate-325525">
+   <section role="notoc" xml:id="fate-325525">
     <title>NFS Client Support For NFSv4.2 Has Been Enabled</title>
     <para>
      The <literal>CONFIG_NFS_V4_2</literal> configuration option has been enabled.
      This option enables support for minor version 2 of the NFSv4 protocol in the kernel's NFS client.
     </para>
    </section>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326795" remap="InfraPackArch:ArchIndependent:Network">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326795" -->
+
+   <section role="notoc" xml:id="fate-326795" remap="InfraPackArch:ArchIndependent:Network">
+
+
     <title>Intel* Omni-Path Architecture (OPA) host software</title>
     <para>
      Intel Omni-Path Architecture (OPA) host software is fully supported in
@@ -1069,14 +1083,14 @@
     <para>
      For information about installing Intel Omni-Path Architecture
      documentation, see the documentation from Intel at
-     <ulink url="https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/Intel_OP_Software_SLES_12_4_RN_K34561.pdf"/>
+     <link xlink:href="https://www.intel.com/content/dam/support/us/en/documents/network-and-i-o/fabric-products/Intel_OP_Software_SLES_12_4_RN_K34561.pdf"/>
      (link may not yet be active during the prerelease phase of SLES 12
      SP4).
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
 
-   <section role="notoc" id="jsc-SLE-11183">
+
+   <section role="notoc" xml:id="jsc-SLE-11183">
     <title>New GeoIP Database Sources</title>
     <para>
      The GeoIP databases allow approximately geo-locating users by their IP
@@ -1091,7 +1105,7 @@
      This change means users now need to register for a MaxMind account and
      obtain a license key to download GeoLite2 databases.
      For more information about these changes, see the
-     <ulink url="https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/">MaxMind blog</ulink>.
+     <link xlink:href="https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/">MaxMind blog</link>.
     </para>
     <para>
      SLES includes the <package>GeoIP</package> package of tools that are only compatible with
@@ -1108,7 +1122,7 @@
        account details.
        This configuration file can also be generated on the Maxmind web page.
        For more information, see
-       <ulink url="https://dev.maxmind.com/geoip/geoip2/geolite2/"/>.
+       <link xlink:href="https://dev.maxmind.com/geoip/geoip2/geolite2/"/>.
       </para>
      </listitem>
      <listitem>
@@ -1130,10 +1144,10 @@
    </section>
 
   </section>
-  <section id="InfraPackArch.ArchIndependent.SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+  <section xml:id="InfraPackArch-ArchIndependent-SystemsManagement" remap="InfraPackArch:ArchIndependent:SystemsManagement">
    <title>Systems Management</title>
    <para/>
-   <section role="notoc" id="jsc-SLE-12830">
+   <section role="notoc" xml:id="jsc-SLE-12830">
     <title>Salt Has Been Updated to Version 3000</title>
     <para>
      Salt has been upgraded to upstream version 3000, plus a number of
@@ -1150,17 +1164,17 @@
     </para>
     <para>
      For more details about changes in your manually-created Salt states, see
-     the <ulink url="https://docs.saltstack.com/en/latest/topics/releases/3000.html">Salt 3000 upstream release notes</ulink>.
+     the <link xlink:href="https://docs.saltstack.com/en/latest/topics/releases/3000.html">Salt 3000 upstream release notes</link>.
     </para>
     <para>
      Salt 3000 is the last version of Salt which will support the old syntax
      of the <literal>cmd.run</literal> module.
     </para>
    </section>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-323175" remap="InfraPackArch:ArchIndependent:SystemsManagement">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/323175" -->
+
+   <section role="notoc" xml:id="fate-323175" remap="InfraPackArch:ArchIndependent:SystemsManagement">
+
+
     <title>The YaST Module for SSH Server Configuration Has Been Removed</title>
     <para>
      <emphasis>The YaST module for configuring an SSH server which was
@@ -1176,15 +1190,15 @@
      configuration via AutoYaST.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.ArchIndependent.Storage" remap="InfraPackArch:ArchIndependent:Storage">
+  <section xml:id="InfraPackArch-ArchIndependent-Storage" remap="InfraPackArch:ArchIndependent:Storage">
    <title>Storage</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-327156" remap="InfraPackArch:ArchIndependent:Storage">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/327156" -->
+
+   <section role="notoc" xml:id="fate-327156" remap="InfraPackArch:ArchIndependent:Storage">
+
+
     <title>NVMe Multipath Handling</title>
     <para>
      <emphasis>The default state for multipath of NVMe differs for SUSE
@@ -1204,11 +1218,11 @@
      physical slots.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
 </section>
-<section id="InfraPackArch.ArchIndependent.Misc">
+<section xml:id="InfraPackArch-ArchIndependent-Misc">
 <title>Miscellaneous</title>
-<section role="notoc" id="jsc-SLE-24988" remap="InfraPackArch:ArchIndependent:Misc">
+<section role="notoc" xml:id="jsc-SLE-24988" remap="InfraPackArch:ArchIndependent:Misc">
  <title>Enriched system visibility in the SUSE Customer Center (SCC)</title>
  <para>
   SUSE is committed to helping provide better insights into the consumption
@@ -1220,21 +1234,21 @@
   automatically.
  </para>
  <para>
-  For more details see the documentation at <ulink url="https://susedoc.github.io/doc-unversioned/main/single-html/SLE-suseconnect-tracking/" />.
+  For more details see the documentation at <link xlink:href="https://susedoc.github.io/doc-unversioned/main/single-html/SLE-suseconnect-tracking/"/>.
  </para>
 </section>
 </section>
  </section>
- <section id="InfraPackArch.x86_64" remap="InfraPackArch:x86_64">
+ <section xml:id="InfraPackArch-x86-64" remap="InfraPackArch:x86_64">
   <title>AMD64/Intel 64 (x86_64) Specific Information</title>
   <para>
    Information in this section pertains to the version of SUSE Linux
    Enterprise Server 12 SP4 for the AMD64/Intel 64 architectures.
   </para>
-<!--v Items below imported from FATE-->
-  <section role="notoc" id="fate-325554" remap="InfraPackArch:x86_64">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325554" -->
+
+  <section role="notoc" xml:id="fate-325554" remap="InfraPackArch:x86_64">
+
+
    <title>Support for AMD Memory Encryption</title>
    <para>
     To provide protection against physical attacks on a system, AMD SME can
@@ -1253,14 +1267,14 @@
     <literal>mem_encrypt=on</literal>.
    </para>
   </section>
-<!--^ End of Items imported from FATE-->
-  <section id="InfraPackArch.x86_64.System" remap="InfraPackArch:x86_64:System">
+
+  <section xml:id="InfraPackArch-x86-64-System" remap="InfraPackArch:x86_64:System">
    <title>System and Vendor Specific Information</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-327794" remap="InfraPackArch:x86_64:System">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/327794" -->
+
+   <section role="notoc" xml:id="fate-327794" remap="InfraPackArch:x86_64:System">
+
+
     <title>Intel Optane DC Persistent Memory Operating Modes</title>
     <para>
      With SLE 15 SP1, Intel Optane DIMMs can be used in different modes on
@@ -1311,9 +1325,9 @@
      infrastructure level.
     </para>
    </section>
-   <section role="notoc" id="fate-324726" remap="InfraPackArch:x86_64:System">
-<!-- sort_key="None"; non-rn-fate-cats="TPM/TCG"; -->
-<!-- href="https://fate.novell.com/324726" -->
+   <section role="notoc" xml:id="fate-324726" remap="InfraPackArch:x86_64:System">
+
+
     <title>TPM 2.0 Software Stack Has Been Updated</title>
     <para>
      <emphasis>The upstream projects for Intel's TPM 2.0 Software Stack have
@@ -1330,19 +1344,19 @@
      <literal>tabrmd</literal>).
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
  </section>
- <section id="InfraPackArch.Power" remap="InfraPackArch:Power">
+ <section xml:id="InfraPackArch-Power" remap="InfraPackArch:Power">
   <title>POWER (ppc64le) Specific Information</title>
   <para>
    Information in this section pertains to the version of SUSE Linux
    Enterprise Server 12 SP4 for the POWER architecture.
   </para>
-<!--v Items below imported from FATE-->
-  <section role="notoc" id="fate-327576" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/327576" -->
+
+  <section role="notoc" xml:id="fate-327576" remap="InfraPackArch:Power">
+
+
    <title>Support for ibmvnic Networking Driver</title>
    <para>
     The kernel device driver <literal>ibmvnic</literal> provides support for
@@ -1359,12 +1373,12 @@
    </para>
    <para>
     For a detailed support statement of ibmvnic in SLES, see
-    <ulink url="https://www.suse.com/support/kb/doc/?id=7023703"/>.
+    <link xlink:href="https://www.suse.com/support/kb/doc/?id=7023703"/>.
    </para>
   </section>
-  <section role="notoc" id="fate-325306" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325306" -->
+  <section role="notoc" xml:id="fate-325306" remap="InfraPackArch:Power">
+
+
    <title>Reduced Memory Usage When Booting FADump Capture Kernel</title>
    <para>
     One of the primary issues with Firmware Assisted Dump (FADump) on IBM
@@ -1397,9 +1411,9 @@
     also capture application data in the dump file.
    </para>
   </section>
-  <section role="notoc" id="fate-325177" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325177" -->
+  <section role="notoc" xml:id="fate-325177" remap="InfraPackArch:Power">
+
+
    <title>SDT Markers in Select Applications and Libraries</title>
    <para>
     <emphasis> SDT markers are static tracepoints included in the source
@@ -1417,52 +1431,52 @@
     This enhances the serviceability tooling.
    </para>
   </section>
-  <section role="notoc" id="fate-324950" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324950" -->
+  <section role="notoc" xml:id="fate-324950" remap="InfraPackArch:Power">
+
+
    <title>Support for POWER9 PMU Events Has Been Added to the perf Tool</title>
    <para>
     When executed on a POWER9 system, the <literal>perf</literal> tool now
     supports listing or specifying POWER9 PMU events by name.
    </para>
   </section>
-  <section role="notoc" id="fate-324949" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324949" -->
+  <section role="notoc" xml:id="fate-324949" remap="InfraPackArch:Power">
+
+
    <title>Support for POWER9 24x7 Counters Has Been Added</title>
    <para>
     SLES 12 SP4 adds support for the new version of the hypervisor API which
     is used to access 24x7 performance counters on POWER9 systems.
    </para>
   </section>
-  <section role="notoc" id="fate-321458" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/321458" -->
+  <section role="notoc" xml:id="fate-321458" remap="InfraPackArch:Power">
+
+
    <title>OProfile Support for POWER9</title>
    <para>
     The OProfile package has been updated to include support for POWER9
     processors.
    </para>
   </section>
-  <section role="notoc" id="fate-321457" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/321457" -->
+  <section role="notoc" xml:id="fate-321457" remap="InfraPackArch:Power">
+
+
    <title>Support for POWER9 Has Been Added to LibPFM</title>
    <para>
     The LibPFM package has been updated to include support for POWER9
     processors.
    </para>
   </section>
-  <section role="notoc" id="fate-321456" remap="InfraPackArch:Power">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/321456" -->
+  <section role="notoc" xml:id="fate-321456" remap="InfraPackArch:Power">
+
+
    <title>Support for POWER9 Has Been Added to PAPI</title>
    <para>
     PAPI package updated to include support for POWER9 processors.
    </para>
   </section>
-<!--^ End of Items imported from FATE-->
-  <section role="notoc" id="bsc-1136157">
+
+  <section role="notoc" xml:id="bsc-1136157">
    <title>Speed of <literal>ibmveth</literal> Interface Not Reported Accurately</title>
    <para>
     The <literal>ibmveth</literal> interface is a paravirtualized interface.
@@ -1483,24 +1497,24 @@
    </para>
   </section>
  </section>
- <section id="InfraPackArch.SystemZ">
+ <section xml:id="InfraPackArch-SystemZ">
   <title>IBM Z (s390x) Specific Information</title>
   <para>
    Information in this section pertains to the version of SUSE Linux
    Enterprise Server 12 SP4 for the IBM Z architecture. For more
    information, see
-   <ulink url="https://www.ibm.com/developerworks/linux/linux390/documentation_suse.html"/>.
+   <link xlink:href="https://www.ibm.com/developerworks/linux/linux390/documentation_suse.html"/>.
   </para>
   <para>
    IBM zEnterprise 196 (z196) and IBM zEnterprise 114 (z114) are in the
    following referred to as z196 and z114.
   </para>
-  <section id="InfraPackArch.SystemZ.Hardware" remap="InfraPackArch:SystemZ:Hardware">
+  <section xml:id="InfraPackArch-SystemZ-Hardware" remap="InfraPackArch:SystemZ:Hardware">
    <title>Hardware</title>
-<!--v Items below imported from FATE-->
-<!-- sort_key="1"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324089" -->
-<!-- title>[NOTITLE]IBM z14 and Additional z13 Hardware Instructions in GLIBC</title -->
+
+
+
+
    <itemizedlist>
     <listitem>
      <para>
@@ -1558,35 +1572,35 @@
      </para>
     </listitem>
    </itemizedlist>
-<!-- sort_key="2"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325014" -->
-<!-- title>[NOTITLE]Support for IBM z14 Instructions in LLVM</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325018" -->
-<!-- title>[NOTITLE]AES_GCM Encryption Enhancements in openssl, ibmca and libica</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325013" -->
-<!-- title>[NOTITLE]CPU Model for IBM z14</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325011" -->
-<!-- title>[NOTITLE]CPUMF Basic Sample Configuration Level Indication</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324999" -->
-<!-- title>[NOTITLE]Support for SHA3 Algorithm Hardware Acceleration in libica</title -->
-<!-- sort_key="None"; non-rn-fate-cats="Linux Kernel"; -->
-<!-- href="https://fate.novell.com/324995" -->
-<!-- title>[NOTITLE]Add CPU_MF Hardware Counters for IBM z13/z13s</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324104" -->
-<!-- title>[NOTITLE]Support for True Random Number Generator (TRNG)</title -->
-<!--^ End of Items imported from FATE-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </section>
-  <section id="InfraPackArch.SystemZ.Virtualization" remap="InfraPackArch:SystemZ:Virtualization">
+  <section xml:id="InfraPackArch-SystemZ-Virtualization" remap="InfraPackArch:SystemZ:Virtualization">
    <title>Virtualization</title>
-<!--v Items below imported from FATE-->
-<!-- sort_key="1"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325874" -->
-<!-- title>[NOTITLE]KVM: CPU Model z14 ZR1</title -->
+
+
+
+
    <itemizedlist>
     <listitem>
      <para>
@@ -1654,42 +1668,42 @@
      </para>
     </listitem>
    </itemizedlist>
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325734" -->
-<!-- title>[NOTITLE]Robust Machine Check Handling</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325309" -->
-<!-- title>[NOTITLE]Support for TLB Purge Enhancements</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325038" -->
-<!-- title>[NOTITLE]Store Hypervisor Information (STHYI) for LPAR</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325027" -->
-<!-- title>[NOTITLE]Support for Guarded Storage Facility</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325026" -->
-<!-- title>[NOTITLE]Network Boot Base Enablement</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325017" -->
-<!-- title>[NOTITLE]New kvm_stat Package from Kernel Tree</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325016" -->
-<!-- title>[NOTITLE]Full LOADPARM/BOOTPROG Support</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325015" -->
-<!-- title>[NOTITLE]Keyless Guest Support</title -->
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/323774" -->
-<!-- title>[NOTITLE]Report Distro KVM Using Call Home</title -->
-<!--^ End of Items imported from FATE-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </section>
-  <section id="InfraPackArch.SystemZ.Network" remap="InfraPackArch:SystemZ:Network">
+  <section xml:id="InfraPackArch-SystemZ-Network" remap="InfraPackArch:SystemZ:Network">
    <title>Network</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-325041" remap="InfraPackArch:SystemZ:Network">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325041" -->
+
+   <section role="notoc" xml:id="fate-325041" remap="InfraPackArch:SystemZ:Network">
+
+
     <title>Shared Memory Communications - Direct (SMC-Direct)</title>
     <para>
      SMC-direct can be used via a new socket family and the existing tooling
@@ -1697,9 +1711,9 @@
      to use the new socket family transparently.
     </para>
    </section>
-   <section role="notoc" id="fate-325008" remap="InfraPackArch:SystemZ:Network">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325008" -->
+   <section role="notoc" xml:id="fate-325008" remap="InfraPackArch:SystemZ:Network">
+
+
     <title>Exploitation of Shared Memory Communications (SMC-R) is now Supported</title>
     <para>
      The technology preview flag is removed for SMC-R, that enables
@@ -1710,9 +1724,9 @@
      Its usage is enabled by a collection of tools (smc-tools).
     </para>
    </section>
-   <section role="notoc" id="fate-325006" remap="InfraPackArch:SystemZ:Network">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325006" -->
+   <section role="notoc" xml:id="fate-325006" remap="InfraPackArch:SystemZ:Network">
+
+
     <title>Support for SET VNIC_CHARS in qeth</title>
     <para>
      qeth now supports <literal>SET VNIC_CHARS</literal>. You can configure
@@ -1720,33 +1734,33 @@
      HiperSockets devices.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.SystemZ.Security" remap="InfraPackArch:SystemZ:Security">
+  <section xml:id="InfraPackArch-SystemZ-Security" remap="InfraPackArch:SystemZ:Security">
    <title>Security</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326343" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326343" -->
+
+   <section role="notoc" xml:id="fate-326343" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>dm-crypt with Protected Keys - Change Master Key Tool</title>
     <para>
      Manage LUKS2 encryption keys for protected key cryptography if the
      master key of the associated Crypto Express adapter is changed.
     </para>
    </section>
-   <section role="notoc" id="fate-325632" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325632" -->
+   <section role="notoc" xml:id="fate-325632" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>Support Architectural Limit of Crypto Adapters in zcrypt Device Driver</title>
     <para>
      The crypto device driver now supports the theoretical maximum of 255
      adapters.
     </para>
    </section>
-   <section role="notoc" id="fate-325173" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325173" -->
+   <section role="notoc" xml:id="fate-325173" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>Protected Key dm-crypt Key Management Tool</title>
     <para>
      Protected key crypto for dm-crypt disks in plain format can be used
@@ -1756,9 +1770,9 @@
      or logical volumes.
     </para>
    </section>
-   <section role="notoc" id="fate-325028" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325028" -->
+   <section role="notoc" xml:id="fate-325028" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>libica: Use TRNG to Seed DRBG (Crypto)</title>
     <para>
      Improved generation of high (pseudo) quality random numbers via
@@ -1766,9 +1780,9 @@
      by use of the PRNO-TRNG instruction.
     </para>
    </section>
-   <section role="notoc" id="fate-325020" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325020" -->
+   <section role="notoc" xml:id="fate-325020" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>Elliptic Curve Support for Crypto</title>
     <para>
      The strategic elliptic curve asymmetric cryptography that provides
@@ -1778,56 +1792,56 @@
      <literal>openssl-ibmca</literal>.
     </para>
    </section>
-   <section role="notoc" id="fate-324997" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324997" -->
+   <section role="notoc" xml:id="fate-324997" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>Support for the CEX6S Crypto Card</title>
     <para>
      The CEX6S crypto card is fully supported.
     </para>
    </section>
-   <section role="notoc" id="fate-324080" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324080" -->
+   <section role="notoc" xml:id="fate-324080" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>In-Kernel Cryptography: GCM Enhancements</title>
     <para>
      Kernel services like IPSec now exploit IBM z14 cryptography hardware
      for the AES-GCM cipher.
     </para>
    </section>
-   <section role="notoc" id="fate-322024" remap="InfraPackArch:SystemZ:Security">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/322024" -->
+   <section role="notoc" xml:id="fate-322024" remap="InfraPackArch:SystemZ:Security">
+
+
     <title>Enhanced OpenSSL Support for PKCS#11 Engine</title>
     <para>
      With the version update to 1.0.2, the PKCS#11 can also be linked as a
      module.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.SystemZ.RAS" remap="InfraPackArch:SystemZ:RAS">
+  <section xml:id="InfraPackArch-SystemZ-RAS" remap="InfraPackArch:SystemZ:RAS">
    <title>Reliability, Availability, Serviceability (RAS)</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-325002" remap="InfraPackArch:SystemZ:RAS">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325002" -->
+
+   <section role="notoc" xml:id="fate-325002" remap="InfraPackArch:SystemZ:RAS">
+
+
     <title>Support for DASD Block Layer Discard</title>
     <para>
      SLES 12 SP4 includes support for the Linux discard function that
      releases unused space on z/VM VDISKs.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.SystemZ.Performance" remap="InfraPackArch:SystemZ:Performance">
+  <section xml:id="InfraPackArch-SystemZ-Performance" remap="InfraPackArch:SystemZ:Performance">
    <title>Performance</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326341" remap="InfraPackArch:SystemZ:Performance">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326341" -->
+
+   <section role="notoc" xml:id="fate-326341" remap="InfraPackArch:SystemZ:Performance">
+
+
     <title>Performance Counters for IBM z14 (CPUMF)</title>
     <para>
      The performance counters of the IBM z14 are supported and can be
@@ -1835,9 +1849,9 @@
      tuning.
     </para>
    </section>
-   <section role="notoc" id="fate-325005" remap="InfraPackArch:SystemZ:Performance">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325005" -->
+   <section role="notoc" xml:id="fate-325005" remap="InfraPackArch:SystemZ:Performance">
+
+
     <title>Guest Kernel Support to Avoid Unnecessary TLB Purges</title>
     <para>
      The Linux kernel now tags pages that are not used as part of a page
@@ -1845,34 +1859,34 @@
      TLB (translation lookaside buffer) entries.
     </para>
    </section>
-   <section role="notoc" id="fate-324086" remap="InfraPackArch:SystemZ:Performance">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324086" -->
+   <section role="notoc" xml:id="fate-324086" remap="InfraPackArch:SystemZ:Performance">
+
+
     <title>Kernel Interface for the Guarded Storage Facility Added to Improve Java Performance</title>
     <para>
      Optimized Java processes improve performance for many Java
      applications.
     </para>
    </section>
-   <section role="notoc" id="fate-324085" remap="InfraPackArch:SystemZ:Performance">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/324085" -->
+   <section role="notoc" xml:id="fate-324085" remap="InfraPackArch:SystemZ:Performance">
+
+
     <title>Single Increment Assignment of Memory</title>
     <para>
      A new option for the “Attach Storage Element” SCLP command to speed
      up memory hotplug is available.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="InfraPackArch.SystemZ.Misc">
-<!-- entries from SP1 RNs -->
+  <section xml:id="InfraPackArch-SystemZ-Misc">
+
    <title>Miscellaneous</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-319951" remap="InfraPackArch:SystemZ:Misc">
-<!-- sort_key="None"; non-rn-fate-cats="zSeries"; -->
-<!-- href="https://fate.novell.com/319951" -->
+
+   <section role="notoc" xml:id="fate-319951" remap="InfraPackArch:SystemZ:Misc">
+
+
     <title>Deprecated DMSVSMA Functionality Has Been Removed from snIPL</title>
     <para>
      <emphasis>The DMSVSMA RPC protocol was only used to remote access
@@ -1891,19 +1905,19 @@
      Systems Management Application Programming, SC24-6234</emphasis>.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
  </section>
- <section id="InfraPackArch.AArch64" remap="InfraPackArch:AArch64">
+ <section xml:id="InfraPackArch-AArch64" remap="InfraPackArch:AArch64">
   <title>ARM 64-Bit (AArch64) Specific Information</title>
   <para>
    Information in this section pertains to the version of SUSE Linux
    Enterprise Server 12 SP4 for the AArch64 architecture.
   </para>
-<!--v Items below imported from FATE-->
-  <section role="notoc" id="fate-325653" remap="InfraPackArch:AArch64">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325653" -->
+
+  <section role="notoc" xml:id="fate-325653" remap="InfraPackArch:AArch64">
+
+
    <title>Boot and Driver Enablement for Raspberry Pi</title>
    <para>
     Bootloaders and a supported microSD card image of SUSE Linux Enterprise
@@ -1953,12 +1967,12 @@
    <para>
     For more information, see the SUSE Best Practices documentation for the
     Raspberry Pi at
-    <ulink url="https://documentation.suse.com/sbp/all/html/SLES12SP3-rpiquick/index.html"/>.
+    <link xlink:href="https://documentation.suse.com/sbp/all/html/SLES12SP3-rpiquick/index.html"/>.
    </para>
   </section>
-  <section role="notoc" id="fate-320679" remap="InfraPackArch:AArch64">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/320679" -->
+  <section role="notoc" xml:id="fate-320679" remap="InfraPackArch:AArch64">
+
+
    <title>Toolchain Module Enabled in Default Installation</title>
    <tip role="compact">
     <para>
@@ -1985,9 +1999,9 @@
     </para>
    </important>
   </section>
-<!--^ End of Items imported from FATE-->
+
  </section>
- <section id="Packages">
+ <section xml:id="Packages">
   <title>Packages and Functionality Changes</title>
   <para>
    This section comprises changes to packages, such as additions, updates,
@@ -1995,9 +2009,9 @@
    information about modules available for SUSE Linux Enterprise Server. For
    information about changes to package management tools, such as Zypper or
    RPM, see
-   <xref linkend="InfraPackArch.ArchIndependent.SystemsManagement"/>.
+   <xref linkend="InfraPackArch-ArchIndependent-SystemsManagement"/>.
   </para>
-  <section id="Packages.Update" remap="Packages:Update">
+  <section xml:id="Packages-Update" remap="Packages:Update">
    <title>Updated Packages</title>
    <remark> *** Description of the new package with direct link to the official website *** version
     comparison table from previous SP/product *** Bugs fixed since previous SP/Product (link to
@@ -2006,7 +2020,7 @@
     site), link to PIF *** Changelog diff (all other information non relative to security/fate/bugs) </remark>
    <para/>
 
-   <section id="jsc-SLE-11159">
+   <section xml:id="jsc-SLE-11159">
     <title>Xorg Server Has Been Updated to Version 1.19.6-4.3.1</title>
     <para>
     SLES 12 SP4 now includes version 1.19.6-4.3.1 of these two
@@ -2024,7 +2038,7 @@
      The previous version was 7.6_1.15.2-36.21.
     </para>
    </section>
-   <section id="jsc-SLE-11177">
+   <section xml:id="jsc-SLE-11177">
     <title>Git Has Been Updated to Version 2.26.2</title>
     <para>
      SLES 12 SP4 now includes version 2.26.2 of the version control
@@ -2032,7 +2046,7 @@
     </para>
     <para>
      Refer to the
-     <ulink url="https://github.com/git/git/blob/master/Documentation/RelNotes/2.26.0.txt">git Release Notes</ulink> for more detailed information.
+     <link xlink:href="https://github.com/git/git/blob/master/Documentation/RelNotes/2.26.0.txt">git Release Notes</link> for more detailed information.
     </para>
     <para>
      This update fixes the following security vulnerabilities:
@@ -2040,95 +2054,95 @@
     <itemizedlist>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2017-15298" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2017-15298"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2018-11233" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2018-11233"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2018-11235" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2018-11235"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2018-17456" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2018-17456"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1348" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1348"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1349" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1349"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1350" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1350"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1351" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1351"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1352" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1352"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1353" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1353"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1354" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1354"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-1387" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-1387"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2019-19604" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2019-19604"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2020-11008" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2020-11008"/>
       </para>
      </listitem>
      <listitem>
       <para>
-       <ulink url="https://www.suse.com/security/cve/CVE-2020-5260" />
+       <link xlink:href="https://www.suse.com/security/cve/CVE-2020-5260"/>
       </para>
      </listitem>
     </itemizedlist>
    </section>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-327121" remap="Packages:Update">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/327121" -->
+
+   <section role="notoc" xml:id="fate-327121" remap="Packages:Update">
+
+
     <title>LibreOffice Has Been Updated to Version 6.4.4.2</title>
     <para>
      LibreOffice has been updated to version 6.4.4.2. For
      information about major changes, see the LibreOffice 6.4.4.2 release notes
-     at <ulink url="https://wiki.documentfoundation.org/ReleaseNotes/6.4"/>.
+     at <link xlink:href="https://wiki.documentfoundation.org/ReleaseNotes/6.4"/>.
     </para>
    </section>
-   <section role="notoc" id="fate-325757" remap="Packages:Update">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325757" -->
+   <section role="notoc" xml:id="fate-325757" remap="Packages:Update">
+
+
     <title>KIWI Has Been Updated to 9.15.3</title>
     <para>
      <emphasis>There was a widening gap between the KIWI version shipped in
@@ -2145,12 +2159,12 @@
     </para>
     <para>
      For a comparison between KIWI 7 and KIWI 9, see
-     <ulink url="https://opensource.suse.com/kiwi/overview/legacy_kiwi.html"/>.
+     <link xlink:href="https://opensource.suse.com/kiwi/overview/legacy_kiwi.html"/>.
     </para>
    </section>
-   <section role="notoc" id="fate-325659" remap="Packages:Update">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/325659" -->
+   <section role="notoc" xml:id="fate-325659" remap="Packages:Update">
+
+
     <title>PostgreSQL Has Been Upgraded to Version 10</title>
     <para>
      <emphasis>SLES 12 SP4 and SLES 15 ship with PostgreSQL 10 by default.
@@ -2217,7 +2231,7 @@
     </para>
     <para>
      For the full PostgreSQL 10 release notes, see
-     <ulink url="https://www.postgresql.org/docs/10/release-10.html">https://www.postgresql.org/docs/10/release-10.html</ulink>.
+     <link xlink:href="https://www.postgresql.org/docs/10/release-10.html">https://www.postgresql.org/docs/10/release-10.html</link>.
     </para>
     <bridgehead renderas="sect5">Upgrading</bridgehead>
     <para>
@@ -2262,15 +2276,15 @@
      <literal>file:///usr/share/doc/packages/postgresql10/html/pgupgrade.html</literal>
      (if the <literal>postgresql10-docs</literal> package is installed), or
      online at
-     <ulink url="https://www.postgresql.org/docs/10/pgupgrade.html">https://www.postgresql.org/docs/10/pgupgrade.html</ulink>. The online documentation explains how you can install PostgreSQL from
+     <link xlink:href="https://www.postgresql.org/docs/10/pgupgrade.html">https://www.postgresql.org/docs/10/pgupgrade.html</link>. The online documentation explains how you can install PostgreSQL from
      the upstream sources (which is not necessary on SLE) and also uses
      other directory names (<literal>/usr/local</literal> instead of the
      <literal>update-alternatives</literal> based path as described above).
     </para>
    </section>
-   <section role="notoc" id="fate-323756" remap="Packages:Update">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/323756" -->
+   <section role="notoc" xml:id="fate-323756" remap="Packages:Update">
+
+
     <title>MariaDB Has Been Upgraded to 10.2</title>
     <para>
      The MariaDB packages have been upgraded to the 10.2 series that brings
@@ -2278,7 +2292,7 @@
     </para>
     <para>
      The list of major changes for 10.2 series can be found at
-     <ulink url="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-102/"/>. The update to the new MariaDB version generally does not cause
+     <link xlink:href="https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-102/"/>. The update to the new MariaDB version generally does not cause
      issues. However, there are the following notable incompatible changes:
     </para>
     <itemizedlist>
@@ -2300,9 +2314,9 @@
     </itemizedlist>
     <para>
      For more information about upgrading, see the upgrade notes at
-     <ulink url="https://mariadb.com/kb/en/library/upgrading-from-mariadb-100-to-mariadb-101/"/>
+     <link xlink:href="https://mariadb.com/kb/en/library/upgrading-from-mariadb-100-to-mariadb-101/"/>
      and
-     <ulink url="https://mariadb.com/kb/en/library/upgrading-from-mariadb-101-to-mariadb-102/"/>.
+     <link xlink:href="https://mariadb.com/kb/en/library/upgrading-from-mariadb-101-to-mariadb-102/"/>.
     </para>
     <para>
      Apart from the changes in MariaDB Server itself, there are also
@@ -2325,6 +2339,7 @@
      <listitem>
       <para>
        The list of binaries was changed:
+      </para>
        <itemizedlist>
         <listitem>
          <para>
@@ -2339,7 +2354,6 @@
          </para>
         </listitem>
        </itemizedlist>
-      </para>
      </listitem>
      <listitem>
       <para>
@@ -2350,19 +2364,19 @@
      </listitem>
     </itemizedlist>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="Packages.Deprecated" remap="Packages:Deprecated">
+  <section xml:id="Packages-Deprecated" remap="Packages:Deprecated">
    <title>Removed and Deprecated Functionality</title>
    <remark>
     ** Why this choice?
     ** How to handle this deprecation in your system
     ** specific case (LTSS etc.)
    </remark>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-323093" remap="Packages:Deprecated">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/323093" -->
+
+   <section role="notoc" xml:id="fate-323093" remap="Packages:Deprecated">
+
+
     <title>libcgroup1 Removed From SLE 12 SP4 and Later</title>
     <para>
      <emphasis> Most functionality of
@@ -2377,18 +2391,18 @@
     </para>
     <para>
      For more information, see
-     <ulink url="https://www.suse.com/support/kb/doc/?id=7018741"/>.
+     <link xlink:href="https://www.suse.com/support/kb/doc/?id=7018741"/>.
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
+
   </section>
-  <section id="Packages.Packaging" remap="Packages:Packaging">
+  <section xml:id="Packages-Packaging" remap="Packages:Packaging">
    <title>Changes in Packaging and Delivery</title>
    <para/>
-<!--v Items below imported from FATE-->
-   <section role="notoc" id="fate-326857" remap="Packages:Packaging">
-<!-- sort_key="None"; non-rn-fate-cats=""; -->
-<!-- href="https://fate.novell.com/326857" -->
+
+   <section role="notoc" xml:id="fate-326857" remap="Packages:Packaging">
+
+
     <title>MPI Implementations Identify in mpi-selector's list Command By Name Only</title>
     <para>
      <emphasis> Previously, the MPI implementations
@@ -2416,9 +2430,9 @@
      <literal>openmpi3</literal>).
     </para>
    </section>
-<!--^ End of Items imported from FATE-->
 
-   <section role="notoc" id="bsc-1143465">
+
+   <section role="notoc" xml:id="bsc-1143465">
     <title>Kernel Firmware Only Shipped as Part of the <package>kernel-firmware</package> Package</title>
     <para>
      In past releases, the <package>kernel-default</package> package used to
@@ -2432,13 +2446,13 @@
 
   </section>
  </section>
- <section id="TechInfo">
+ <section xml:id="TechInfo">
   <title>Technical Information</title>
   <para>
    This section contains information about system limits, a number of
    technical changes and enhancements for the experienced user.
   </para>
-<!-- bnc#483250 -->
+
   <para>
    When talking about CPUs, we use the following terminology:
   </para>
@@ -2485,7 +2499,7 @@
     </listitem>
    </varlistentry>
   </variablelist>
-  <section id="TechInfo.Kernel">
+  <section xml:id="TechInfo-Kernel">
    <title>Kernel Limits</title>
    <para>
     This table summarizes the various limits which exist in our recent
@@ -2506,7 +2520,7 @@
        <entry>AMD64/Intel 64 (x86_64)</entry>
        <entry>IBM Z (s390x)</entry>
        <entry>POWER (ppc64le)</entry>
-<!-- AArch64 for SLES 12 SP2 values per bsc#988955. -->
+
        <entry>AArch64 (ARMv8)</entry>
       </row>
      </thead>
@@ -2544,7 +2558,7 @@
          Maximum number of logical CPUs
         </para>
        </entry>
-<!-- FATE#316883 -->
+
        <entry>
         <para>
          8192
@@ -2555,7 +2569,7 @@
          256
         </para>
        </entry>
-<!-- FATE#315438 -->
+
        <entry>
         <para>
          2048
@@ -2583,7 +2597,7 @@
          10 TiB/256 GiB
         </para>
        </entry>
-<!-- FATE#315439 -->
+
        <entry>
         <para>
          1 PiB/64 TiB
@@ -2624,7 +2638,7 @@
       </row>
       <row>
        <entry>
-<!-- bnc#708969 -->
+
         <para>
          Maximum amount of swap space
         </para>
@@ -2673,7 +2687,7 @@
        </entry>
       </row>
       <row>
-<!-- bnc#550958 -->
+
        <entry>
         <para>
          FD_SETSIZE
@@ -2699,7 +2713,7 @@
     than the <quote>maximum number of processes</quote>.
    </para>
   </section>
-  <section id="TechInfo.KVM">
+  <section xml:id="TechInfo-KVM">
    <title>KVM Limits</title>
    <informaltable frame="all">
     <tgroup cols="2">
@@ -2758,14 +2772,14 @@
     Enterprise Server.
    </para>
   </section>
-  <section id="TechInfo.XEN">
+  <section xml:id="TechInfo-XEN">
    <title>Xen Limits</title>
    <para>
     Since SUSE Linux Enterprise Server 11 SP2, we removed the 32-bit
     hypervisor as a virtualization host. 32-bit virtual guests are not
     affected and are fully supported with the provided 64-bit hypervisor.
    </para>
-<!-- bnc#732995 -->
+
    <informaltable frame="all">
     <tgroup cols="2">
      <colspec colnum="1" colname="c1"/>
@@ -2881,8 +2895,6 @@
      </tbody>
     </tgroup>
    </informaltable>
-<!-- FIXME: The legends we use across these tables are very differently
- formatted. Unify. - sknorr, 2016-07-14 -->
    <itemizedlist>
     <listitem>
      <formalpara>
@@ -2904,17 +2916,17 @@
    <para>
     For more information about acronyms, see the virtualization
     documentation provided at
-    <ulink url="https://documentation.suse.com/sles/12-SP4/"/>.
+    <link xlink:href="https://documentation.suse.com/sles/12-SP4/"/>.
    </para>
    <para>
-<!-- bsc#1135799 -->
+
     AMD Rome-based CPUs are not supported by Xen on SLES 12 SP4. These CPUs
     are only supported by SLES 12 SP5 and higher.
    </para>
   </section>
-  <section id="TechInfo.Filesystems">
+  <section xml:id="TechInfo-Filesystems">
    <title>File Systems</title>
-   <section id="TechInfo.Filesystems.Comparison">
+   <section xml:id="TechInfo-Filesystems-Comparison">
     <title>Comparison of Supported File Systems</title>
     <para>
      SUSE Linux Enterprise was the first enterprise Linux distribution to
@@ -2926,13 +2938,10 @@
      using the copy-on-write file system Btrfs as the default for the
      operating system, to support system snapshots and rollback.
     </para>
-    <para>
-<!-- bnc#903673: use ascii symbols -->
-     <simplelist>
+    <simplelist type="vert">
       <member><emphasis role="bold">+</emphasis> supported</member>
       <member><emphasis role="bold">–</emphasis> unsupported</member>
-     </simplelist>
-    </para>
+    </simplelist>
     <informaltable frame="all">
      <tgroup cols="6">
       <colspec colnum="1" colname="c1" colwidth="28*"/>
@@ -3328,8 +3337,6 @@
          </para>
         </entry>
         <entry>
-<!-- FIXME: Plans to add defragmentation for OCFS 2, ask again. -
-         sknorr, 2017-10-27 -->
          <para>
           –
          </para>
@@ -3612,8 +3619,7 @@
      <emphasis role="bold"><superscript>5</superscript></emphasis> The block
      size default varies with different host architectures. 64 KiB is used
      on POWER, 4 KiB on other systems. The actual size used can be checked
-     with the command <command>getconf
-     <replaceable>PAGE_SIZE</replaceable></command>.
+     with the command <command>getconf</command> <replaceable>PAGE_SIZE</replaceable>.
     </para>
     <bridgehead renderas="sect5">Additional Notes</bridgehead>
     <para>
@@ -3630,22 +3636,22 @@
     <para>
      In this document: 1024 Bytes = 1 KiB; 1024 KiB = 1 MiB; 1024 MiB =
      1 GiB; 1024 GiB = 1 TiB; 1024 TiB = 1 PiB; 1024 PiB = 1 EiB. See
-     also <ulink url="http://physics.nist.gov/cuu/Units/binary.html"/>.
+     also <link xlink:href="https://physics.nist.gov/cuu/Units/binary.html"/>.
     </para>
     <para>
-<!-- bnc#608543 and bnc#574572 -->
+
      NFSv4 with IPv6 is only supported for the client side. An NFSv4 server
      with IPv6 is not supported.
     </para>
     <para>
-<!-- bnc#606288 -->
+
      The version of Samba shipped with SUSE Linux Enterprise Server 12 SP4
      delivers integration with Windows Active Directory domains. In
      addition, we provide the clustered version of Samba as part of SUSE
      Linux Enterprise High Availability Extension 12 SP4.
     </para>
     <para>
-<!-- bsc#1073261 -->
+
      Some file system features are available in SUSE Linux Enterprise Server
      12 SP4 but are not supported by SUSE. By default, the file system
      drivers in SUSE Linux Enterprise Server 12 SP4 will refuse mounting
@@ -3659,20 +3665,16 @@
      your system unsupported.
     </para>
    </section>
-   <section id="TechInfo.Filesystems.Btrfs">
+   <section xml:id="TechInfo-Filesystems-Btrfs">
     <title>Supported Btrfs Features</title>
     <para>
      The following table lists supported and unsupported Btrfs features
      across multiple SLES versions.
     </para>
-    <para>
-     <simplelist>
+    <simplelist>
       <member><emphasis role="bold">+</emphasis> supported</member>
       <member><emphasis role="bold">–</emphasis> unsupported</member>
-     </simplelist>
-    </para>
-<!-- Table according to bsc#979501, this attachment:
-  https://bugzilla.suse.com/attachment.cgi?id=687340 -->
+    </simplelist>
     <informaltable>
      <tgroup cols="5">
       <colspec colnum="1" colname="feature" colwidth="6.5cm"/>
@@ -3682,7 +3684,7 @@
       <colspec colnum="5" colname="15GA" colwidth="*"/>
       <thead>
        <row>
-<!-- Remove unsupported OS's. -->
+
         <entry>Feature</entry>
         <entry>SLES 11 SP4</entry>
         <entry>SLES 12 SP3</entry>
@@ -3885,7 +3887,7 @@
     </informaltable>
    </section>
   </section>
-  <section id="TechInfo.Java">
+  <section xml:id="TechInfo-Java">
    <title>Supported Java Versions</title>
    <para>
     The following table lists Java implementations available in SUSE Linux
@@ -3941,9 +3943,9 @@
    </informaltable>
   </section>
  </section>
-<!-- Legal notice copied from SLED release notes, mge@novell.com, 2010-05-07 -->
-<!-- Legal notice updated, to smell more like SUSE -->
- <section id="Legal">
+
+
+ <section xml:id="Legal">
   <title>Legal Notices</title>
   <para>
    SUSE makes no representations or warranties with respect to the contents
@@ -3971,7 +3973,7 @@
    countries as specified in U.S. export laws. You agree to not use
    deliverables for prohibited nuclear, missile, or chemical/biological
    weaponry end uses. Refer to
-   <ulink url="http://www.suse.com/company/legal/"/> for more information on
+   <link xlink:href="https://www.suse.com/company/legal/"/> for more information on
    exporting SUSE software. SUSE assumes no responsibility for your failure
    to obtain any necessary export approvals.
   </para>
@@ -3980,20 +3982,20 @@
 <?dbtimestamp format="Y" ?>
    SUSE LLC. This release notes document is licensed under a Creative
    Commons Attribution-NoDerivs 3.0 United States License (CC-BY-ND-3.0 US,
-   <ulink url="http://creativecommons.org/licenses/by-nd/3.0/us/"/>).
+   <link xlink:href="https://creativecommons.org/licenses/by-nd/3.0/us/"/>).
   </para>
   <para>
    SUSE has intellectual property rights relating to technology embodied in
    the product that is described in this document. In particular, and
    without limitation, these intellectual property rights may include one or
    more of the U.S. patents listed at
-   <ulink url="http://www.suse.com/company/legal/"/> and one or more
+   <link xlink:href="https://www.suse.com/company/legal/"/> and one or more
    additional patents or pending patent applications in the U.S. and other
    countries.
   </para>
   <para>
    For SUSE trademarks, see SUSE Trademark and Service Mark list
-   (<ulink url="http://www.suse.com/company/legal/"/>). All third-party
+   (<link xlink:href="https://www.suse.com/company/legal/"/>). All third-party
    trademarks are the property of their respective owners.
   </para>
  </section>
