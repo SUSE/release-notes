@@ -5,7 +5,7 @@
 ?>
 <!DOCTYPE article
 [
-   
+
 ]>
 
 
@@ -24,27 +24,27 @@
     <meta name="series">Release Notes</meta>
     <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
     <meta name="productname">
-      <productname version="12 GA">SUSE Linux Enterprise Server</productname>
+      <productname version="12 SP3">SUSE Linux Enterprise Server</productname>
     </meta>
     <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
     <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
 
     <abstract>
       <para>
-	This document provides guidance and an overview to high level general
-	features and updates for SUSE Linux Enterprise Server 12 SP3. Besides
-	architecture or product-specific information, it also describes the
-	capabilities and limitations of SUSE Linux Enterprise Server 12 SP3.
+        This document provides guidance and an overview to high level general
+        features and updates for SUSE Linux Enterprise Server 12 SP3. Besides
+        architecture or product-specific information, it also describes the
+        capabilities and limitations of SUSE Linux Enterprise Server 12 SP3.
       </para>
-      
+
       <para>
-	General documentation can be found at:
-	<link xlink:href="https://documentation.suse.com/sles/12-SP3/"/>.
+        General documentation can be found at:
+        <link xlink:href="https://documentation.suse.com/sles/12-SP3/"/>.
       </para>
     </abstract>
   </info>
- 
- 
+
+
  <section xml:id="rn-about">
   <title>About the Release Notes</title>
   <para>
