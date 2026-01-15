@@ -171,7 +171,7 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 Previously, if a FQDN was stored in `/etc/hostname`, the domain part would be stripped off silently.
 
-Starting with {productnameshort} 16, the name defined in `/etc/hostname` will be accepted and applied as-is.
+Starting with {productnameshort} {this-version}, the name defined in `/etc/hostname` will be accepted and applied as-is.
 
 By default, `/etc/hostname` should contain the host's unqualified hostname, that is without any domain name part.
 Putting a FQDN into this file is discouraged, because it does not conform to RFCs and may cause some applications to behave unexpectedly.
