@@ -1000,6 +1000,8 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// bsc#1254327
+* The filesystem based HA solution for ENSA1/2 central services is not supported. See https://www.suse.com/releasenotes/x86_64/SLE-SAP/15-SP7/index.html#jsc-PED-11566 for more information.
 // jsc#SLE-24335
 // bsc#1253376
 * NIS has been removed.
