@@ -301,13 +301,14 @@ It supports Linux authentication to Microsoft Azure Entra ID via PAM and NSS mod
 For more information see https://github.com/himmelblau-idm/himmelblau.
 
 
+// also bsc#1254989
 [#jsc-PED-12206]
 === Legacy BIOS support
 
-Legacy BIOS is still supported in {productname} {this-version}.
-However, some features are not available when using it (for example, full-disk encryption with TPM).
-Finally, support for legacy BIOS will be discontinued in the future.
-For that reason we recommend switching to UEFI at the nearest opportunity.
+Legacy BIOS is deprecated.
+See the __Do you still support legacy BIOS on AMD64/Intel 64?__ section in
+https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/index.html#sle16-differences-faq-basesystem-bios[Key Technical Differences Between SLE 15 and SUSE Linux 16] for more information.
+
 
 === `/tmp` not persistent
 
