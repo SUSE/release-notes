@@ -400,69 +400,11 @@ SysV init.d scripts have been https://www.suse.com/releasenotes/x86_64/SUSE-SLES
 In {productnameshort} {this-version}, support of SysV init.d scripts has been removed.
 
 
-== Changes affecting all architectures (RC1)
-
-This section contains information specific to RC1.
-We are working on fixing the problems mentioned here.
-The content of this section will be removed for the final released product.
-
 [#jsc-PED-12189]
 === `/etc/services` removal
 
 The `/etc/services` file is just a dummy file that will be removed in the future.
 Software that appends to it without creating it should have its behavior changed.
-
-
-== Changes affecting all architectures (Beta4)
-
-This section contains information specific to Beta4.
-We are working on fixing the problems mentioned here.
-The content of this section will be removed for the final released product.
-
-[#jsc-DOCTEAM-1848]
-=== Configuring network interfaces during installation
-
-Currently, the installer does not allow for setting up network interfaces using the UI.
-However, in the meantime you can use dracut-like command-line options, for example:
-
-[source]
-ifname=<interface>:<MAC>
-ip=<interface>:dhcp
-
-Additionally, the `inst.copy_network` is not available in Beta4.
-
-// also bsc#12244703
-[#jsc-DOCTEAM-1829]
-=== {sap} workloads on {productnameshort} {this-version}
-
-For running {sap} workloads on {productname} {this-version}, do the following:
-
-1. Unpack the {sap} installer.
-2. Run the following commands to change policies:
-[source,bash]
-semanage boolean -m --on selinuxuser_execmod
-semanage boolean -m --on unconfined_service_transition_to_unconfined_user
-semanage permissive -a snapper_grub_plugin_t
-restorecon -R /
-3. Run the following commands to lable all files:
-[source,bash]
-test -d ./snapshots && restorecon -R / -e /.snapshots
-test -d ./snapshots || restorecon R /
-4. Install {sap} workload or {hana}
-5. Label all files again:
-[source,bash]
-test -d /.snapshots && restorecon -R / -e /.snapshots
-test -d /.snapshots || restorecon -R /
-
-=== FIPS 140-3 not working properly
-
-FIPS 140-3 installation has not been fully validated and may cause unexpected software failure or crashes. Therefore, we discourage you from using it on Beta4.
-
-== Changes affecting all architectures (Beta3)
-
-This section contains information specific to Beta3.
-We are working on fixing the problems mentioned here.
-The content of this section will be removed for the final released product.
 
 [#bsc-1240945]
 === Kernel crash in QEMU
@@ -472,6 +414,7 @@ Due to this, running a {productnameshort} image using QEMU currently results in 
 
 As a workaround you can run QEMU with the `-cpu host` argument.
 
+If you run a virtual environment, configure it properly to use the mentioned architecture levels.
 
 [#jsc-DOCTEAM-1849]
 === Missing `libnsl.so.1` library
@@ -480,6 +423,7 @@ The `libnsl.so.1` library has been deprecated in {slesa} 15 and finally removed 
 
 As a workaround for applications that cannot be installed without it (but presumaly do not use it for anything), we provide the `libnsl-stub1` package that includes ABI-compatible but otherwise function-less stub of the library file.
 
+A future {productname} 16 release will remove this package again.
 
 [#jsc-DOCTEAM-1767]
 === `firewalld` not usable with many interfaces
@@ -494,43 +438,6 @@ Possible causes include: the remote application did not send a reply, the messag
 See https://github.com/firewalld/firewalld/issues/1399 for more information.
 
 
-== Changes affecting all architectures (Beta2)
-
-This section contains information specific to Beta2.
-We are working on fixing the problems mentioned here.
-The content of this section will be removed for the final released product.
-
-[#bsc-1237605]
-=== Switch from YaST to Cockpit
-
-{productname} {this-version} has switched from {yast} to Cockpit for manual system administration.
-We have enhanced Cockpit with new modules with the intention to upstream them later.
-Despite being functional, bugs might appear and features might be missing.
-
-*New modules*
-
-* `cockpit-subscriptions`: register, de-register and view {sle} registrations.
-Does not work for unprivileged users yet.
-* `cockpit-repositories`: add, remove, view repositories, change settings and refresh them.
-Does not work for unprivileged users yet.
-* `cockpit-packages`: show installed packages, search available repositories, install and uninstall packages.
-Requires administrative access.
-Be aware that there are no safety measures implemented as far as system usability goes.
-
-*Enhanced modules*
-
-* `cockpit-packagekit`: update packages from available repositories.
-The module now allows to individually select packages to update.
-
-*Upstream modules*
-
-`cockpit`, `cockpit-bridge`, `cockpit-kdump`, `cockpit-machines`, `cockpit-networkmanager`, `cockpit-podman`, `cockpit-selinux`, `cockpit-storaged`, `cockpit-system`, `cockpit-ws`: these modules are updated to the recent stable base version 332 (or their respective).
-
-*Default selection*
-
-Installation of the pattern `cockpit` will pull in the following modules: `cockpit`, `cockpit-bridge`, `cockpit-networkmanager`, `cockpit-packagekit`, `cockpit-packages`, `cockpit-repos`, `cockpit-selinux`, `cockpit-storaged`, `cockpit-subscriptions`, `cockpit-system`, `cockpit-ws`.
-
-
 [#jsc-DOCTEAM-1714]
 === `dovecot` 2.4 configuration upgrade
 
@@ -539,6 +446,26 @@ The configuration of this version is incompatible with the previous versions.
 
 Configuration has to be updated manually.
 For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-to-2.4.html.
+
+[#jsc-PED-6311]
+=== systemd uses cgroup v2 by default
+
+{productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
+If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
+
+[#bsc-1254298]
+=== FIPS Mode available but not certified yet
+
+{productname} {this-version} is prepared for FIPS 140-3 certification and as long as the certification is not done, FIPS 140-3 validity and compliance for this product is not available.
+Be aware that FIPS 140-3 mode disables certain cryptographic algorithms and that might lead to unexpected or unknown behaviour.
+
+
+[#jsc-DOCTEAM-1848]
+=== Configuring network interfaces during installation
+
+The UI only allows to configure existing NetworkManager connections.
+As a result there isn't a list of unconfigured devices which you can connect and configure.
+With the Agama command line and configuration files, you can also configure new connections.
 
 
 == Changes affecting all architectures (Beta1)
@@ -615,30 +542,6 @@ ifeval::[{omit_sles_specific} == "true"]
 - `SLES-SAP-Packages-16.0-x86_64-Beta1-Source.iso`
 endif::[]
 
-[#bsc-1235855]
-=== Disk configuration UI during installation
-
-Currently, choosing disk configurations other than "An existing disk" (installation to a single disk) suffer from poor usability.
-This is expected to change in a future update.
-
-
-[#bsc-1236813]
-=== Non-functioning `zypper` after installation
-
-There is currently a known issue that adds a non-functioning `zypper` repository which prevents `zypper` from working correctly.
-
-To fix this issue, remove the repository in question and add the installation medium repository manually:
-
-1. Remove repository with `zypper rr`. To remove the first repository, for example, run: `zypper rr 1`.
-2. Add the installation medium as repository by running `zypper ar hd:/install?device=/dev/disk/by-label/agama-installer  medium` (the `medium` at the end is a name you want to give the repository).
-3. Run `zypper refresh` to refresh the added repository.
-
-
-[#jsc-PED-6311]
-=== systemd uses cgroup v2 by default
-
-{productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
-If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
 
 == {x64}-specific changes
 
