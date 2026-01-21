@@ -1,4 +1,4 @@
 == SUSE Linux Enterprise Core
 
-:omit_sles_specific: true
+:omit-sles-specific: true
 include::../sles/version160.adoc[leveloffset=+1]

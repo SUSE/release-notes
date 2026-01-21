@@ -20,12 +20,6 @@ ifeval::["{lifecycle}" == "beta"]
 :url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
 endif::[]
 
-ifeval::[{omit_sles_specific} == "true"]
-== {productname} Version {this-version}
-
-These release notes apply to {productname} {this-version}.
-endif::[]
-
 == What's new?
 
 === Comparison with {productname} {previous-version}
@@ -474,7 +468,7 @@ This section contains information specific to Beta1.
 We are working on fixing the problems mentioned here.
 The content of this section will be removed for the final released product.
 
-ifeval::[{omit_sles_specific} == "true"]
+ifndef::omit-sles-specific[]
 [#jsc-DOCTEAM-1700]
 === What images are part of Beta1
 

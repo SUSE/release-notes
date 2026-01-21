@@ -19,6 +19,10 @@ include::version160.adoc[]
 
 // include all SLES release notes as well
 // include SLES attributes to properly resolve product names
+== {sles} Version {this-version}
+
+These {sles} {this-version} release notes apply to {productname} {this-version} as well.
+
 include::../sles/attributes.adoc[]
 include::../sles/version160.adoc[]
 
