@@ -2,7 +2,7 @@ include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
 = SUSE Linux Enterprise Server Release Notes
-:revdate: 2026-01-20
+:revdate: 2026-01-21
 :page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.

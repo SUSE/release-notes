@@ -913,7 +913,7 @@ This includes packages implementing NIS like `ypserv`, NIS code in {suse} tools,
 * Xorg server has been removed. Only Wayland is supported for graphical display. X11 applications compatibility is provided via XWayland. For setting up GNOME Remote Desktop on Wayland see {url-gnome-remote-desktop}.
 // the following 4 items are from jsc#PED-11207
 * `sapconf` has been removed. See <<jsc-PED-13396>> for more info.
-* {yast} has been removed. See <<bsc-1237605>> for more info.
+* {yast} has been removed.
 * WSL1 is not supported anymore
 // bsc-1248445
 * The Xen hypervisor was removed in favor of KVM. You no longer run {slea} 16 as Xen host or as paravirtualized guest (PV).
