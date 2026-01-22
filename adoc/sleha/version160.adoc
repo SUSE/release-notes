@@ -16,8 +16,24 @@ These release notes apply to {productname} {this-version}.
 * The `fence-agents` package has been split into separate packages. This has been done to allow installation of only the required agents instead of all of them.
 // jsc#PED-12353
 * `corosync` has been updated to version 3.1.9. For more information see https://github.com/corosync/corosync/releases/tag/v3.1.9[the full changelog].
+
 // jsc#PED-12356
-* `pacemaker` has been updated to version 3.0. For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
+[#bsc-1254242]
+==== Pacemaker has been updated to version 3.0
+
+* OCF 1.1 full support: CLI/logs/CIB embrace the OCF 1.1 role names, `Promoted` and `Unpromoted`
+* Most of CLIs support `--output-as xml`
+* `crm_attributes -L cluster` unifies Pacemaker daemon metadata.
+That deprecates the various older, individual commands.
+* Drop Master-slave clones
+** This means no official support, even though Pacemaker can technically load master-slave clones if they are migrated from SLE15
+** crmsh no longer provides the UI to provision master-slave clones
+** Either convert them to the promotable clones before migration, or run `crm configure upgrade force` in {productnameshort} {this-version} running cluster
+* Drop legacies, for example,  RA class types:
+** lsb, nagios, service
+
+For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
+
 
 // removed resource agents
 include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
