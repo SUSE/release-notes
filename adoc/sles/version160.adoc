@@ -83,7 +83,7 @@ sections in this document:
 ==== Software requiring specific contracts
 
 Certain software delivered as part of {productname} may require an external contract.
-Check the support status of individual packages using the RPM metadata that can be viewed with `rpm`, `zypper`, or {yast}.
+Check the support status of individual packages using the RPM metadata that can be viewed with `rpm` or `zypper`.
 
 Currently, there are no major packages and groups of packages affected by this.
 
