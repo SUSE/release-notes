@@ -444,8 +444,8 @@ For more information see https://doc.dovecot.org/2.4.0/installation/upgrade/2.3-
 [#jsc-PED-6311]
 === systemd uses cgroup v2 by default
 
-{productname} {this-version} uses cgroup v2 by default and v1 is unsupported.
-If you need to use cgroup v1, {slesa} 15 SP6 can be switched to hybrid mode using a boot parameter.
+{productname} {this-version} uses and supports only cgroups v2.
+
 
 [#bsc-1254298]
 === FIPS Mode available but not certified yet
