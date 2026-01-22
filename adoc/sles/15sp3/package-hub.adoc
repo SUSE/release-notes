@@ -29,7 +29,7 @@ Also see the following notes elsewhere:
 
 The repositories for {nvidiareg} {cudareg} are available as the __{nvidia} Compute__ module for x86-64 and AArch64.
 These repositories are provided by {nvidia} and the software in them is not supported by {suse}.
-All software in these repositories is licensed under the third-party link:https://docs.nvidia.com/cuda/eula/index.html[{nvidia} {cuda} EULA].
+All software in these repositories is licensed under the third-party https://docs.nvidia.com/cuda/eula/index.html[{nvidia} {cuda} EULA].
 
 The __{nvidia} Compute__ module is not enabled by default when installing {product}.
 During installation, the module can be selected from the __Extension and Module Selection__ screen in {yast}.

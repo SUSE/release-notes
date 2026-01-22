@@ -45,7 +45,7 @@ These Linux kernel parameters have been changed since {producta} {this-ga}{nbsp}
 |`sysctl_net_ipv4_tcp_available_ulp` | '' | espintcp | | https://bugzilla.suse.com/show_bug.cgi?id=1181745[Bug 1181745]
 |`sysctl_net_ipv4_tcp_mem` | 22689 30255 45378 | 22683 30246 45366 footnote:sysctl[All `sysctl` parameters based on the total amount of memory or available memory can vary between service packs or even maintenance updates. Small variations are to be expected. Either the accounting might have changed for the former, or more early allocations are necessary for the latter.] | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
 |`sysctl_net_ipv4_udp_mem` | 45381 60510 90762 | 45369 60492 90738 | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
-|`sysctl_fs_epoll_max_user_watches` | 410398 | 410275 footnote:sysctl[] | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
+|`sysctl_fs_epoll_max_user_watches` | 410398 | 410275 (sysctl[]) | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
 |`sysctl_kernel_threads-max` | 15650 | 15655 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
 |`sysctl_user_max_cgroup_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]
 |`sysctl_user_max_ipc_namespaces` | 7827 | 7825 ^[b]^ | | https://bugzilla.suse.com/show_bug.cgi?id=1183339#c11[Bug 1183339]

@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -13,7 +14,6 @@ include::attributes-product.adoc[]
 
 {sle} 15 product family switched over from a RSA 2048-bit signing key to a new RSA 4096-bit key.
 This change covers RPM packages, package repositories and ISO signatures.
-For more information see https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-update-preparation.html#sec-update-preparation-update
 
 
 [#jsc-SLE-20292]

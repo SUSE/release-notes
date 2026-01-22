@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -32,4 +33,4 @@ In {product} {this-version}, its default shell is now set to `/bin/false`.
 
 The Bash is now available at both of the following paths: `/usr/bin/bash` and `/bin/bash`.
 This is part of the `/usr` merge initiative and provides compatibility with {tw}.
-For more information, see the link:https://en.opensuse.org/openSUSE:Usr_merge[the {opensuse} wiki].
+For more information, see the https://en.opensuse.org/openSUSE:Usr_merge[the {opensuse} wiki].

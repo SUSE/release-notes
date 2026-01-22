@@ -89,7 +89,7 @@ To use it:
 
 * On the physical host, the QEMU commands that starts the virtual machine has to contain the parameter `-cpu host,kvm-hint-dedicated=on`.
   `virsh` allows specifying this parameter using `<hint-dedicated state='on'/>` and `<cpu mode='host-passthrough' check='none'/>`.
-  For more information, see the link:https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
+  For more information, see the https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
 * Load the driver in the virtual host: `modprobe cpuidle-haltpoll`.
   If it cannot be loaded, check `journalctl -k`.
   If something went wrong, you may see an `-ENODEV` error.
@@ -105,7 +105,7 @@ There are two complimentary ways of checking whether the parameter is successful
 [#virtualization-qemu-update]
 ===== QEMU has been updated to version 5.2
 
-QEMU has been updated to link:https://wiki.qemu.org/ChangeLog/5.2[version 5.2].
+QEMU has been updated toversion 5.2.
 
 In an effort to bridge the gap between {leap} and {slea}, we have removed uses of the `is_opensuse` macro from the RPM spec file.
 This means that the packages built for {slea} can be reused for {leap}.
@@ -113,7 +113,6 @@ Some subpackages which are included for {leap} will not be included with {slea}.
 Such packages will be provided in {ph} for {slea} users as unsupported packages (see also https://packagehub.suse.com/).
 // add explanation how to add them and use them?
 
-Also review upstream link:https://wiki.qemu.org/Features/RemovedFeatures[feature removals].
 
 [#jsc-SLE-11629]
 ===== Fixed UIDs and GIDs for the `kvm`, `qemu`, and `libvirt` groups
@@ -155,7 +154,7 @@ Resolution (regular paragraph)
   * Automatic generation of Go language bindings
   * The debugging tool for Windows guests, KDD, now supports Windows 7, 8.x, and 10
 
-For more information, see the link:https://wiki.xenproject.org/wiki/Xen_Project_4.14_Feature_List[upstream Xen release notes].
+For more information, see the https://wiki.xenproject.org/wiki/Xen_Project_4.14_Feature_List[upstream Xen release notes].
 
 
 [#virtualization-libvirt]
@@ -168,14 +167,12 @@ Major new features are:
 * QEMU: Tolerate non-existent files such as `/dev/kvm` when populating domain private namespace
 * Add all new APIs and constants in libvirt 7.0.0
 
-For more information, see the link:https://libvirt.org/news.html[upstream libvirt release notes].
+For more information, see the https://libvirt.org/news.html[upstream libvirt release notes].
 
 [#jsc-SLE-15935]
 ===== KubeVirt
 
 KubeVirt is a technology which enables container-native virtualization.
-A specific documentation about KubeVirt can be found at:
-https://documentation.suse.com/en-us/sbp/all/html/SBP-KubeVirt-SLES15SP3/
 
 
 [#bsc-1187693]
@@ -208,7 +205,7 @@ The version has been updated to 0.14.3:
 * Updated `VD_AGENT_*` capabilities
 * Deprecated CELT support
 
-For more information, see the link:https://gitlab.freedesktop.org/spice/spice-protocol/-/blob/master/CHANGELOG.md[upstream change log].
+For more information, see the https://gitlab.freedesktop.org/spice/spice-protocol/-/blob/master/CHANGELOG.md[upstream change log].
 
 
 [#virtualization-libvirt-spicegtk]
@@ -227,7 +224,7 @@ Major changes since the version included with the previous service pack of {prod
 * Support for `virt-install –cloud-init`.
 * The `virt-convert` tool has been removed. Use `virt-v2v` instead.
 * A handful of UI XML configuration options have been removed.
-The XML editor can be used instead. For a larger discussion, see https://www.redhat.com/archives/virt-tools-list/2019-June/msg00117.html.
+The XML editor can be used instead.
 * The __New VM__ UI now has a __Manual Install__ option which creates a VM without any required install media.
 * In the __New VM__ UI, the network/PXE install option has been removed.
 If you need network boot, choose __Manual Install__ and set the boot device after initial VM creation.
@@ -344,7 +341,7 @@ The support does NOT include {nvidia} vGPU live migration support.
 * {azure}: Support for hibernation of Linux VMs on {azure} has been added.
 * The `os-dbinfo` database has been updated to version 20201218.
 * `open-vm-tools` has been updated to version 11.2.5.
-For more information, see the link:https://github.com/vmware/open-vm-tools/blob/stable-11.2.5/open-vm-tools/ChangeLog[upstream change log].
+For more information, see the https://github.com/vmware/open-vm-tools/blob/stable-11.2.5/open-vm-tools/ChangeLog[upstream change log].
 * `vm-install`: Modified the PV PXE booting feature to only allow a PXE server address to be passed on command line.
 The use of `udhcp` to look up PXE servers has been removed.
 

@@ -20,7 +20,7 @@ Due to the properties of different file formats, the size of {jeos} image downlo
 With {slsa} {jeos} 15{nbsp}SP1, the dialog for choosing the system locale was replaced by a warning dialog.
 It explained about `en_US` being the only locale available and provided instructions on how to change the locale after the first boot.
 On {slsa} {jeos} 15{nbsp}SP3, this dialog has been removed.
-Instructions on how to change the locale are provided by the link:https://documentation.suse.com/sles-15/html/SLES-all/article-jeos.html[{jeos} Quick Start Guide].
+Instructions on how to change the locale are provided by the {jeos} Quick Start Guide.
 
 
 [#jsc-SLE-13849]

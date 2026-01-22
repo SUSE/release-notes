@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -21,4 +22,3 @@ Resolution (regular paragraph)
 ==== Realtek RTL8821CE support
 
 Support for the Realtek RTL8821CE WiFi chip has been added.
-For more information, see https://www.realtek.com/en/products/communications-network-ics/item/rtl8821ce.

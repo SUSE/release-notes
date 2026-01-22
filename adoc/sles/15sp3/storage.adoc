@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -258,7 +259,7 @@ In this document:
 * 1024{nbsp}TiB = 1{nbsp}PiB
 * 1024{nbsp}PiB = 1{nbsp}EiB.
 
-See also http://physics.nist.gov/cuu/Units/binary.html.
+See also https://physics.nist.gov/cuu/Units/binary.html.
 
 // bsc#1073261
 Some file system features are available in {sles} {this-version} but are not supported by {suse}.
@@ -420,7 +421,7 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup}
 |{sup}
 |{sup}
-|{sup} footnote:[See <<bsc-1198083>>.]
+|{sup} (See <<bsc-1198083>>)
 
 |RAID 5
 |{uns}

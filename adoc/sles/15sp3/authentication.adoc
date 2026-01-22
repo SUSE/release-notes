@@ -30,4 +30,4 @@ To replace OpenLDAP server, {producta} includes 389 Directory Server.
 389 Directory Server (package `389-ds`) is a fully-featured LDAPv3-compliant server suited for modern environments and for very large LDAP deployments.
 389 Directory Server also comes with command-line tools of its own.
 
-For information about setting up and upgrading to 389 Directory Server, see the link:https://documentation.suse.com/sles-15/html/SLES-all/cha-security-ldap.html[SLES 15 SP3 Security Guide, chapter LDAP{mdash}A Directory Service].
+For information about setting up and upgrading to 389 Directory Server, see the SLES 15 SP3 Security Guide, chapter LDAP{mdash}A Directory Service.

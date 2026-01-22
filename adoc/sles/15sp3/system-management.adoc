@@ -40,7 +40,7 @@ The `wsmancli` package has been moved from _Package Hub_ to the {producta} _Base
 
 Support for `KillMode=none` is deprecated and will be eventually removed in a future {slea} version.
 However, the obsolete feature will be kept long enough to give customers time to migrate to another `KillMode` value.
-Please see the SUSE TID at https://www.suse.com/support/kb/doc/?id=000020394 for more information.
+Please see the SUSE TID at https://support.scc.suse.com/s/kb/systemd-KillMode-none for more information.
 
 
 [#jsc-SLE-17233]

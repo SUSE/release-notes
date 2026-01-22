@@ -22,11 +22,11 @@
 :z-product: {product} for IBM Z and LinuxONE
 :power-product: {product} for POWER
 
-:doc-url: https://documentation.suse.com/sles/15-SP3
-:doc-url-beta: https://susedoc.github.io/doc-sle/main
-:doc-url-source: https://www.suse.com/products/server/download/
+:doc-url: https://documentation.suse.com/sles/15-SP3/
+:doc-url-beta: https://susedoc.github.io/doc-sle/main/
+:doc-url-source: https://www.suse.com/download/sles/
 :support-url: https://www.suse.com/support/?id=SUSE_Linux_Enterprise_Server
-:rn-url: https://www.suse.com/releasenotes
+:rn-url: https://documentation.suse.com/releasenotes/
 
 // conditionals-begin
 // lifecycle: beta|maintained|unmaintained
