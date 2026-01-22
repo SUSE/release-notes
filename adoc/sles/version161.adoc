@@ -176,6 +176,8 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc#PED-15392
+* `nodejs22` has been removed.
 // jsc-PED-12744
 * The 2MB OVMF image has been removed in {productname} 16.1.
 
