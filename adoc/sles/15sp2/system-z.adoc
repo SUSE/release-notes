@@ -150,7 +150,6 @@ The installer has been enhanced to support `dm-crypt` to use protected keys to e
 ==== Support for Secure Execution
 
 {product} 15{nbsp}SP2 supports the IBM Secure Execution for Linux technology introduced with IBM z15 and LinuxONE III.
-For more information, see https://www.ibm.com/support/knowledgecenter/linuxonibm/com.ibm.linux.z.lxse/lxse_t_secureexecution.html.
 
 
 [#jsc-SLE-7482]

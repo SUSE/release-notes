@@ -38,9 +38,9 @@ If you are upgrading from a previous {product} release, you should review at lea
 {product}{nbsp}{this-version} has been submitted to the certification bodies for:
 
 * Common Criteria Certification, see https://www.commoncriteriaportal.org/
-* FIPS 140-2 validation, see http://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf
+* FIPS 140-2 validation, see https://csrc.nist.gov/groups/STM/cmvp/documents/140-1/140InProcess.pdf
 
-For more information about certification, see https://www.suse.com/security/certificates.html.
+For more information about certification, see https://www.suse.com/support/security/certifications/.
 
 
 include::about-documentation.adoc[]
@@ -58,7 +58,7 @@ If you need additional time to design, validate and test your upgrade plans, Lon
 You can buy an additional 12 to 36 months in twelve month increments.
 This means, you receive a total of 3 to 5 years of support per Service Pack.
 
-For more information, check our Support Policy page https://www.suse.com/support/policy.html or the Long Term Service Pack Support Page https://www.suse.com/support/programs/long-term-service-pack-support.html.
+For more information, check our Support Policy page https://www.suse.com/support/policy-products/ or the Long Term Service Pack Support Page https://www.suse.com/products/long-term-service-pack-support/.
 
 
 [#intro-support]

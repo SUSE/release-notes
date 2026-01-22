@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -24,7 +25,8 @@ Now these new properties have been added:
 Entries specified in `/etc/fstab` that use `systemd` for mounting can now specify setting a timeout.
 To specify a timeout for an entry, add the `x-systemd.mount-timeout` option.
 
-See the https://www.freedesktop.org/software/systemd/man/systemd.mount.html#x-systemd.mount-timeout=[documentation] for more information.
+See the
+https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html[man page] for more information.
 
 
 // jsc#DOCTEAM-174
@@ -114,13 +116,13 @@ These default settings could be a security risk.
 In {slea}{nbsp}{this-version}, {autoyast} uses stricter signature handling settings by default.
 If needed, adjust those settings manually.
 
-For more information, see the link:{doc-url}/single-html/SLES-autoyast/#CreateProfile-General-signature[{autoyast} Guide].
+For more information, see the {autoyast} Guide.
 
 
 [#jsc-SLE-7743]
 ==== Support for IP Filtering in systemd
 
-Support for IP filtering, as described in http://0pointer.net/blog/ip-accounting-and-access-lists-with-systemd.html is now available in systemd on {product} {this-version}.
+Support for IP filtering, as described in https://0pointer.net/blog/ip-accounting-and-access-lists-with-systemd.html is now available in systemd on {product} {this-version}.
 
 
 [#jsc-SLE-10123]
@@ -138,8 +140,6 @@ In particular, CVE-2020-11651 and CVE-2020-11652 fixes are included in our relea
 As part of this upgrade, cryptography is now managed by the Python-M2Crypto library (which is itself based on the well-known OpenSSL library).
 
 We intend to regularly upgrade Salt to more recent versions.
-
-For more details about changes in your manually-created Salt states, see the link:https://docs.saltstack.com/en/latest/topics/releases/3000.html[Salt 3000 upstream release notes].
 
 Salt 3000 is the last version of Salt which will support the old syntax of the `cmd.run` module.
 

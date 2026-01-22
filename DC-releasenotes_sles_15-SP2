@@ -1,0 +1,8 @@
+MAIN=adoc/sles/15sp2/release-notes.adoc
+ADOC_POST=yes
+ADOC_TYPE=article
+ADOC_POST_STYLE=adoc_postprocess.xsl
+STYLEROOT=/usr/share/xml/docbook/stylesheet/suse2022-ns
+XSLTPARAM="--stringparam "homepage=https://documentation.suse.com/""
+XSLTPARAM+="--stringparam "overview-page=https://documentation.suse.com/releasenotes/""
+XSLTPARAM+="--stringparam "overview-page-title=Back\ to\ Release\ Notes\ for\ SUSE\ products""

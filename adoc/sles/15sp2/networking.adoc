@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -119,7 +120,7 @@ In the past, the company MaxMind made such data available for free in its GeoLit
 On January 2, 2019, MaxMind discontinued the GeoLite Legacy databases, now offering only the newer GeoLite2 databases for download.
 To comply with new data protection regulation, since December 30, 2019, GeoLite2 database users are required to comply with an additional usage license.
 This change means users now need to register for a MaxMind account and obtain a license key to download GeoLite2 databases.
-For more information about these changes, see the link:https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/[MaxMind blog].
+For more information about these changes, see the https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/[MaxMind blog].
 
 Previous versions of {product} included the `GeoIP` package of tools that are only compatible with GeoLite Legacy databases.
 With {product} 15 SP2, we introduce the following new packages to deal with the changes to the GeoLite service:
@@ -148,7 +149,6 @@ The following {product} packages use GeoIP data in the GeoLite2 format:
 
 Intel Omni-Path Architecture (OPA) host software is fully supported in {product} {this-version}.
 Intel OPA provides Host Fabric Interface (HFI) hardware with initialization and setup for high performance data transfers (high bandwidth, high message rate, low latency) between compute and I/O nodes in clustered environments.
-For documentation about installing Intel Omni-Path Architecture, see: https://cdrdv2.intel.com/v1/dl/getContent/627110.
 
 
 [#jsc-SLE-11632]

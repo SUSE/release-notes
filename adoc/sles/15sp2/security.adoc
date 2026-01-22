@@ -45,7 +45,7 @@ The strongSwan package included in {producta} {this-version} has been compiled w
 AppArmor has been updated to version 2.13.
 The main new feature is a boot speed-up enabled by using precompiled profiles and caching.
 
-For information about changes in AppArmor 2.13, see the link:https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13[AppArmor release notes]
+For information about changes in AppArmor 2.13, see the https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13[AppArmor release notes]
 
 
 [#bsc-1174679]
@@ -54,7 +54,6 @@ For information about changes in AppArmor 2.13, see the link:https://gitlab.com/
 Until {product} 15{nbsp}GA, `seccheck` scripts were run automatically using `cron`.
 
 Starting with {product} 15{nbsp}SP1, `seccheck` scripts are run automatically using systemd timers.
-For more information, see the link:https://documentation.suse.com/sles/15-SP2/html/SLES-all/sec-sec-prot-general-seccheck.html[`seccheck` documentation].
 
 
 [#jsc-SLE-11473]
@@ -69,4 +68,3 @@ When using remote servers serviced by a third party, it is necessary to balance 
 In the past, `cryptctl` was shipped as part of {slessapa} only.
 With {slea} {this-version}, it is now available directly as part of {product}.
 
-For more information, see the link:https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-configure-cryptctl.html[`cryptctl` documentation].
