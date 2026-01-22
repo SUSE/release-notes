@@ -1,0 +1,20 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+
+= SUSE Linux Enterprise Server Release Notes
+:revdate: 2026-01-22
+:page-revdate: {revdate}
+
+:abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
+
+{productname} is a modern, modular operating system for both multimodal and traditional IT. This document provides a high-level overview of features, capabilities and limitations, and highlights important product updates.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::version161.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]

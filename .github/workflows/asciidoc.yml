@@ -51,6 +51,7 @@ jobs:
         run: |
           mkdir -p publish/sl-micro{_60,_61,_62}/html/release-notes
           mkdir -p publish/sles-16.0/html/release-notes
+          mkdir -p publish/sles-16.1/html/release-notes
           mkdir -p publish/sleha-16.0/html/release-notes
           mkdir -p publish/slesap-16.0/html/release-notes
           mkdir -p publish/sles-16_SP0/html/release-notes
@@ -62,6 +63,7 @@ jobs:
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.1"/* publish/sl-micro_61/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.2"/* publish/sl-micro_62/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sles_16.0"/* publish/sles-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles_16.1"/* publish/sles-16.1/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.0"/* publish/slesap-16.0/html/release-notes
           echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/sles-16.0/html/release-notes/">' > publish/sles-16_SP0/html/release-notes/index.html
           rm -rf artifact-dir

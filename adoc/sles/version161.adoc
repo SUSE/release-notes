@@ -1,0 +1,182 @@
+:this-version: 16.1
+:previous-version: 16.0
+:next-version: 16.2
+:kernel-version: 6.12
+:idprefix: v161_
+:doc-url: https://documentation.suse.com/sles/16-GA
+
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
+// ifeval::["{lifecycle}" == "maintained"]
+:url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
+// endif::[]
+
+ifeval::["{lifecycle}" == "beta"]
+:url-sle-comparison: https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
+endif::[]
+
+== What's new?
+
+=== Comparison with {productname} {previous-version}
+
+To read more about the differences and high-level changes between {productname} 16.0 and {productname} 15 SP7, see these documents:
+
+* https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/
+* https://documentation.suse.com/sles/16.0/html/SLE-comparison/
+
+
+== Support and lifecycle
+
+{productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
+
+The current version ({this-version}) will be fully maintained and supported until 31 Jul 2034.
+
+If you need additional time to design, validate and test your upgrade plans, Long Term Service Pack Support can extend the support duration.
+You can buy an additional 12 to 36 months in twelve month increments.
+This means that you can receive support up to Dec 2037.
+
+For more information, see the pages link:https://www.suse.com/support/policy.html[Support Policy], link:https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support], and link:https://documentation.suse.com/sles/16.0/html/SLE-packages-lifecycle/index.html[Lifecycles of SUSE Linux Enterprise Components
+].
+
+
+=== Support statement for {productname}
+
+To receive support, you need an appropriate subscription with {suse}.
+For more information, see {support-url}.
+
+The following definitions apply:
+
+L1::
+Problem determination, which means technical support designed to provide compatibility information, usage support, ongoing maintenance, information gathering, and basic troubleshooting using the documentation.
+L2::
+Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate the problem area, and provide a resolution for problems not resolved by Level{nbsp}1 or prepare for Level{nbsp}3.
+L3::
+Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level{nbsp}2 Support.
+
+For contracted customers and partners, {productname} is delivered with L3 support for all packages, except for the following:
+
+* Technology Previews, see <<technology-preview>>
+* Sound, graphics, fonts and artwork
+* Packages that require an additional customer contract, see <<intro-support-external>>
+* Some packages shipped as part of the module _Workstation Extension_ are L2-supported only
+* Packages with names ending in `-devel` (containing header files and similar developer resources) will only be supported together with their main packages.
+
+{suse} will only support the usage of original packages. That is, packages that are unchanged and not recompiled.
+
+=== General support
+
+To learn about supported features and limitations, refer to the following
+sections in this document:
+
+// * <<kernel>>
+// * <<storage>>
+// * <<virtualization>>
+* <<removed-deprecated>>
+
+[#intro-support-external]
+// see fate#316990, bsc#1161529
+==== Software requiring specific contracts
+
+Certain software delivered as part of {productname} may require an external contract.
+Check the support status of individual packages using the RPM metadata that can be viewed with `rpm` or `zypper`.
+
+Currently, there are no major packages and groups of packages affected by this.
+
+
+// see jsc#SLE-7191
+==== Software under GNU AGPL
+
+////
+How to create a list:
+1. Go to https://scc.suse.com/packages
+2. Choose product, version, pick x86_64 architecture, click Search
+3. Download as CSV
+4. Open in LibreOffice
+5. Select entire table, Data > Pivot Table > Insert or Edit, click OK
+6. Drag all column headers to Row Fields, OK
+7. In License header, search for "agpl", pick all of those; in Module header, select everything but Package Hub
+////
+
+{productname} {this-version} (and the {sle} modules) includes the following software that is shipped __only__ under a GNU AGPL software license:
+
+* Ghostscript (including subpackages)
+* `velociraptor` and `velociraptor-client`
+* `zypp-boot-plugin`
+
+{productname} {this-version} (and the {sle} modules) includes the following software that is shipped under multiple licenses that include a GNU AGPL software license:
+
+* MySpell dictionaries and LightProof
+* ArgyllCMS
+
+[#technology-preview]
+=== Technology previews
+
+Technology previews are packages, stacks, or features delivered by SUSE to provide glimpses into upcoming innovations. Technology previews are included for your convenience to give you a chance to test new technologies within your environment. We would appreciate your feedback! If you test a technology preview, contact your SUSE representative and let them know about your experience and use cases. Your input is helpful for future development.
+
+Technology previews come with the following limitations:
+
+* Technology previews are still in development. Therefore, they may be functionally incomplete, unstable, or in other ways not suitable for production use.
+* Technology previews are not supported.
+* Technology previews may only be available for specific hardware architectures. Details and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
+* Technology previews can be removed from a product at any time. This may be the case, for example, if SUSE discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
+
+There are no technology previews at this time.
+
+
+// == Changes affecting all architectures
+
+
+// == {x64}-specific changes
+
+// Information in this section applies to the {x64} architecture.
+
+
+// [#ibm-z]
+// == {ibmz}-specific changes (s390x)
+
+// Information in this section applies to {z-productname}.
+// For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
+
+// == POWER-specific changes (ppc64le)
+
+// Information in this section applies to {power-productname}.
+
+// == {arm}-specific changes ({aarch64})
+
+// include::../kernel-160-aarch64.adoc[leveloffset=+2]
+
+[#removed-deprecated]
+== Removed and deprecated features and packages
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+
+// [NOTE]
+// .Package and module changes in {this-version}
+// For more information about all package and module changes since the last version, see <<intro-package-changes>>.
+
+
+// [#removed]
+// === Removed features and packages
+
+// The following features and packages have been removed in this release.
+
+
+[#deprecated]
+=== Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// jsc-PED-12744
+* The 2MB OVMF image has been removed in {productname} 16.1.
+
+// ===================================================================
