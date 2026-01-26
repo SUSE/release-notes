@@ -9,7 +9,7 @@ This is due to `USERGROUPS_ENAB` being enabled in `/usr/etc/login.defs`.
 This change affects all new installations and upgraded systems that did not change the default `/etc/login.defs`.
 This has several consequences:
 
-* files created by new users are not group-readable by default
+* files created by new users are technically group-readable but because each user has its own group, they are not visible to other users by default
 * configurations that used the primary `users` group as a condition do not work anymore
 * configurations that used the primary or secondary `users` group as a condition need to have the `users` group manually added to these user accounts in order to continue to work, for example, to for `@users` in the sudoers file
 * home directories inherited from a previous system need to standardize the GID of the files by running: `find "$HOME" -group users -exec chgrp myuser {} \;`, or `chgrp -R myuser "$HOME"` if you did not use any GID other than `users`
