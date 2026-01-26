@@ -58,7 +58,7 @@ This will destroy the marker, all of the images, all of the networks, and all of
 Before testing Podman 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
 You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are  available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
 
-Last but not least CNI will be deprecated from upstream at a future date: https://github.com/containers/podman/tree/main/cni
+Last but not least CNI will be deprecated from upstream at a future date.
 
 For a complete overview of the changes, please check out the upstream https://github.com/containers/podman/releases/tag/v4.0.0[4.0.0] but also https://github.com/containers/podman/releases/tag/v4.1.1[4.1.1], https://github.com/containers/podman/releases/tag/v4.2.0[4.2.0] and https://github.com/containers/podman/releases/tag/v4.3.0[4.3.0] to be informed about all the new features and changes.
 
@@ -109,7 +109,7 @@ See the https://registry.suse.com/[SUSE registry] for more information.
 By default, Podman requires root privileges.
 
 You can use Podman without root privileges for enhanced security.
-For more information, see https://susedoc.github.io/doc-sle/main/single-html/SLES-container/#cha-podman-install.
+For more information, see https://documentation.suse.com/container/all/html/Container-guide/index.html#sec-podman-rootless-containers-tricks.
 
 
 [#jsc-SLE-17280]

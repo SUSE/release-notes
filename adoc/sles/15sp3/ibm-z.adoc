@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -5,7 +6,7 @@ include::attributes-product.adoc[]
 == {ibmz}-specific changes (s390x)
 
 Information in this section applies to {z-product} {this-version}.
-For more information, see https://www.ibm.com/support/knowledgecenter/en/linuxonibm/liaaf/lnz_r_suse.html
+For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 [#ibm-z-hardware]
 === Hardware
@@ -23,7 +24,7 @@ Resolution (regular paragraph)
 There were the following hardware-related changes:
 
 * support has been added for IPL and re-IPL from local PCI NVMe storage
-** currently a workaround is required for installation, see https://www.suse.com/support/kb/doc/?id=000020258
+** currently a workaround is required for installation, see https://support.scc.suse.com/s/kb/chreipl-aborts-Installation-workaround-for-NVMe-IPL
 * support has been added for IBM z14 instructions in Valgrind
 * the following new commands have been added to the the `qclib` package:
 ** `zhypinfo` - displays the virtualization stack

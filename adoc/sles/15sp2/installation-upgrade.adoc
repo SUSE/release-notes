@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -148,7 +149,9 @@ Otherwise you need to first upgrade to {previous-sp} before upgrading to {this-s
 ==== Differences Between {autoyast} Profiles in {producta} 12 and 15
 
 Significant changes in {producta} 15 required changes in AutoYaST.
-If you want to reuse existing {producta} 12 profiles with {producta} 15, you need to adjust them as documented in https://documentation.suse.com/sles/15-SP2/html/SLES-all/appendix-ay-12vs15.html.
+If you want to reuse existing {producta} 12 profiles with {producta}
+15, you need to adjust them as documented in Differences between
+AutoYaST profiles in SLE 12 and 15 in the AutoYaST guide.
 
 
 // JeOS-specific content is in a separate file

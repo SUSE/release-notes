@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -40,7 +41,7 @@ This package contains configuration files and scripts that are needed for runnin
 
 Drivers in the `unixODBC` package are not suitable for production use.
 The drivers are provided for test purposes only.
-We have added a reference to the package's README file with information about third-party `unixODBC` drivers that are suitable for production use (http://www.unixodbc.org/drivers.html).
+We have added a reference to the package's README file with information about third-party `unixODBC` drivers that are suitable for production use (https://www.unixodbc.org/drivers.html).
 
 
 [#jsc-SLE-17703]
@@ -61,7 +62,7 @@ For information about changes between PostgreSQL 13 and 12, see the upstream rel
 [WARNING]
 .REINDEX is required
 ====
-If you migrate a PostgreSQL server to {producta} {this-version}, a REINDEX is required before using the database productively again to avoid database corruptions. See https://www.suse.com/support/kb/doc/?id=000020305 for details.
+If you migrate a PostgreSQL server to {producta} {this-version}, a REINDEX is required before using the database productively again to avoid database corruptions. See https://support.scc.suse.com/s/kb/After-upgrading-a-PostgreSQL-server-to-SLES-15-SP3-a-REINDEX-is-required for details.
 ====
 
 //jsc#SLE-15782

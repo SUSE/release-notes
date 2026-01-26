@@ -401,7 +401,7 @@ To use it:
 
 * On the physical host, the QEMU commands that starts the virtual machine has to contain the parameter `-cpu host,kvm-hint-dedicated=on`.
   `virsh` allows specifying this parameter using `<hint-dedicated state='on'/>` and `<cpu mode='host-passthrough' check='none'/>`.
-  For more information, see the link:https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
+  For more information, see the https://libvirt.org/formatdomain.html#elementsFeatures[libvirt Documentation].
 * Load the driver in the virtual host: `modprobe cpuidle-haltpoll`.
   If it cannot be loaded, check `journalctl -k`.
   If something went wrong, you may see an `-ENODEV` error.
@@ -423,9 +423,6 @@ Nested virtualization has advantages in scenarios such as the following:
 * For managing own virtual machines directly with your hypervisor of choice in cloud environments.
 * For enabling the live migration of hypervisors and their guest virtual machines as a single entity.
 * For software development and testing.
-
-For more information, see https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-vt-installation.html#sec-vt-installation-nested-vms.
-
 
 ////
 [#intro-techpreview-S390]

@@ -35,9 +35,9 @@ Most extensions have their own release notes documents that are available from {
 
 The following extensions are available for {product} {this-version}:
 
-* {sle} Live Patching: https://www.suse.com/products/live-patching
-* {sleha}: https://www.suse.com/products/highavailability
-* {slewe}: https://www.suse.com/products/workstation-extension
+* {sle} Live Patching: https://www.suse.com/products/live-patching/
+* {sleha}: https://www.suse.com/products/highavailability/
+* {slewe}: https://www.suse.com/products/workstation-extension/
 
 The following extension is not covered by {suse} support agreements, available at no additional cost and without an extra registration key:
 
@@ -49,9 +49,9 @@ The following extension is not covered by {suse} support agreements, available a
 This sections lists derived and related products.
 Usually, these products have their own release notes documents that are available from {rn-url}.
 
-* {sle} JeOS: https://www.suse.com/products/server/jeos
-* {sled}: https://www.suse.com/products/desktop
-* {suse} Linux Enterprise Server for SAP Applications: https://www.suse.com/products/sles-for-sap
-* {slehpc}: https://www.suse.com/products/server/hpc
-* {slert}: https://www.suse.com/products/realtime
-* {suse} Manager: https://www.suse.com/products/suse-manager
+* {sle} JeOS
+* {sled}: https://www.suse.com/products/desktop/
+* {suse} Linux Enterprise Server for SAP Applications: https://www.suse.com/products/sles-for-sap/
+* {slehpc}: https://www.suse.com/products/server/hpc/
+* {slert}: https://www.suse.com/products/realtime/
+* {suse} Manager: https://www.suse.com/products/multi-linux-manager/

@@ -22,10 +22,10 @@
 
 :doc-url: https://documentation.suse.com/sles/15-SP2
 :doc-url-beta: https://susedoc.github.io/doc-sle/main
-:doc-url-source: https://www.suse.com/products/server/download/
+:doc-url-source: https://www.suse.com/download/sles/
 
-:support-url: https://www.suse.com/support/programs/subscriptions/?id=SUSE_Linux_Enterprise_Server
-:rn-url: https://www.suse.com/releasenotes
+:support-url: https://www.suse.com/support/?id=SUSE_Linux_Enterprise_Server
+:rn-url: https://documentation.suse.com/releasenotes
 
 :resource-library-url: https://www.suse.com/products/server#resources
 

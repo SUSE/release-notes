@@ -1,3 +1,4 @@
+
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
@@ -98,7 +99,7 @@ and will thereby not boot the {arm-product} {this-version} installation media
 (compare <<#arm64-soc>>).
 
 For more information, see the __{nvidia} {jetson} Linux Developer Guide__,
-section link:https://docs.nvidia.com/jetson/l4t/#page/Tegra%20Linux%20Driver%20Package%20Development%20Guide/bootflow_jetson_xavier.html%23wwpID0E0FB0HA["Jetson Xavier NX and Jetson AGX Xavier Series Boot Flow"].
+section https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/index.html["Jetson Xavier NX and Jetson AGX Xavier Series Boot Flow"].
 
 {nvidia} offers an alternative bootloader firmware for the
 {nvidia} {jetsonagxxavier} and {jetson} {xavier}{nbsp}NX Developer Kits:
@@ -121,9 +122,8 @@ Its virtual guest bootloader _OSLoader_, as of {nvidiadrive}{nbsp}OS version
 5.2, does not implement UEFI but a custom guest partition image format.
 
 For more information, see the __{nvidiadrive}{nbsp}OS Linux SDK Developer Guide__
-chapter __Bootloader Programming__, sections
-link:https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootflow.html%23wwpID0ETHA[Understanding the Boot Flow: OSLoader]
-and link:https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Bootloader/bootloader_bootburn.html%23wwpID0EVHA[Flashing with Bootburn: Virtualization Behavior].
+chapter __Bootloader Programming__, sections Understanding the Boot
+Flow and Flashing with Bootburn at https://docs.nvidia.com/drive/drive-os-5.2.3.0L/drive-os/index.html.
 
 Contact {nvidia} to discuss how to use {arm-product} {this-version} on
 {nvidiadrive}{nbsp}AGX platforms.

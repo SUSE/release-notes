@@ -114,7 +114,7 @@ The following host operating system combinations are fully supported (L3 in acco
 {suse} strives to support live migration of virtual machines from a host running a service pack supported under LTSS to a host running a newer service pack of the same major version of {product}. {suse} only performs minimal testing of such LTSS migration scenarios and recommends thorough on-site testing before migrating critical virtual machines.
 
 Live migration of Xen-based virtual machines from SLE 11 to SLE 12 is not supported because of the different toolstacks.
-For details, see the https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/#fate-317306[{slsa} 12 release notes].
+For details, see the https://documentation.suse.com/releasenotes/sles/12/#fate-317306[{slsa} 12 release notes].
 
 
 [#jsc-SLE-4591]
@@ -122,7 +122,7 @@ For details, see the https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/#fate
 
 On {product} 15{nbsp}SP1 and higher, if the YaST installer detects that it is running within a KVM or Xen virtual machine, the package `qemu-guest-agent` is automatically installed.
 The guest agent allows management applications running on the host OS to communicate with {product} running inside the virtual machine.
-For more information about using the guest agent, see the Virtualization Guide at https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-qemu-ga.html.
+For more information about using the guest agent, see the Virtualization Guide.
 
 
 [#virtualization-kvm]
@@ -138,7 +138,7 @@ For more information about using the guest agent, see the Virtualization Guide a
 * Stop using system memory barriers as this is a blocker for using QEMU in the context of containers.
   ({suse} now builds the package with `--disable-membarrier`.)
 * Support for SDL is dropped, add obsoletes directive for `qemu-audio-sdl` and `qemu-ui-sdl`.
-* QEMU updated to 4.2 version (http://wiki.qemu.org/ChangeLog/4.2).
+* QEMU updated to 4.2 version.
 
 ////
 [#<UNIQUEID e.g. bsc-1111 or jsc-SLE-111>]
@@ -162,7 +162,7 @@ For other operating systems, refer to the specific vendor.
 * Suspend and hibernate modes and not supported.
 
 .Host Limits
-* Maximum total virtual CPUs per host: See https://documentation.suse.com/sles/15-SP2/html/SLES-all/article-vt-best-practices.html#sec-vt-best-perf-cpu-assign[recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs].
+* Maximum total virtual CPUs per host: See the recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs.
   The total number of virtual CPUs should be proportional to the number of available physical CPUs.
 * Other limits are identical to those of {sles}.
 
@@ -192,9 +192,9 @@ Among others, this update contains the following new features:
 // jsc#SLE-10172, bsc#1055731
 * Handle degraded raid for xendomains, add helper script and systemd service
   with new package `xen-tools-xendomains-wait-disk`. See the included README for usage instructions (`/usr/share/doc/packages/xen-tools-xendomains-wait-disk/xendomains-wait-disks.README.md`)
-* Added controls for the use of Transactional Synchronization eXtensions (http://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#tsx)
+* Added controls for the use of Transactional Synchronization eXtensions (https://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#tsx)
 * The `exec-sp` Boolean controls whether EPT superpages with execute permissions are permitted.
-  In general, this improves performance (http://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#ept).
+  In general, this improves performance (https://xenbits.xen.org/docs/unstable/misc/xen-command-line.html#ept).
 // jsc#SLE-3026
 * Core scheduling (contributed by {suse})
 * Branch hardening to mitigate against Spectre v1 (contributed by Citrix)
@@ -224,7 +224,7 @@ With {sles} 11 SP2, we removed the 32-bit hypervisor as a virtualization host.
 
 .Host Limits
 * Maximum total physical CPUs: 1024
-* Maximum total virtual CPUs per host: See https://documentation.suse.com/sles-15/html/SLES-all/article-vt-best-practices.html#sec-vt-best-perf-cpu-assign[recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs].
+* Maximum total virtual CPUs per host: See the recommendations in the Virtualization Best Practices Guide regarding over-commitment of physical CPUs.
   The total number of virtual CPUs should be proportional to the number of available physical CPUs.
 * Maximum physical memory: 16{nbsp}TB
 
@@ -233,7 +233,7 @@ With {sles} 11 SP2, we removed the 32-bit hypervisor as a virtualization host.
 ==== libvirt
 
 // libvirt virtualization-related release notes go here
-Libvirt has been updated to version 6.0.x (https://www.libvirt.org/news.htm).
+Libvirt has been updated to version 6.0.x.
 
 [#virtualization-libvirt-changes]
 ===== Important Changes
@@ -282,7 +282,7 @@ Resolution (regular paragraph)
 Starting with {product} {this-version}, we are providing official Vagrant Boxes for {sles} and {sled} for x86_64 and AArch64 using the VirtualBox and `libvirt` providers.
 These boxes come with the bare minimum of packages to reduce their size and are not registered, thus users need to register the boxes prior to further provisioning.
 
-These boxes are only available for direct download from https://download.suse.com.
+These boxes are only available for direct download from https://download.suse.com/.
 Therefore, downloaded boxes must be registered manually with Vagrant as follows:
 
 [source,bash]
@@ -329,7 +329,7 @@ In case the box fails to start with a `libvirt` error message, add the following
 [#jsc-SLE-10111]
 ==== AMD SEV tools
 
-{suse} has worked with AMD to improve the AMD SEV Tool (https://github.com/AMDESE/sev-tool).
+{suse} has worked with AMD to improve the AMD SEV Tool (https://github.com/AMDESE/sev-tool/).
 
 [#virtualization-other]
 ==== Others
@@ -351,7 +351,7 @@ This means the initial setup now has the {suse} look and feel.
 ==== `open-vm-tools` Has Been Updated to 11.1.x
 
 Version 11.1.x of `open-vm-tools` has a new subpackage for a Service Discovery Plugin called `open-vm-tools-sdmp`.
-For more information, see the link:https://github.com/vmware/open-vm-tools/blob/stable-11.1.x/ReleaseNotes.md[upstream release notes].
+For more information, see the https://github.com/vmware/open-vm-tools/blob/stable-11.1.x/ReleaseNotes.md[upstream release notes].
 
 
 // Other virtualization-related release notes go here

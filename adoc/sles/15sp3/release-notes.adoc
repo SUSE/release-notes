@@ -3,6 +3,9 @@ include::attributes-product.adoc[]
 
 [#rnotes]
 = {rnotes}
+:revdate: 2025-10-31
+:page-revdate: {revdate}
+
 
 include::abstract.adoc[]
 

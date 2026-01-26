@@ -338,9 +338,6 @@ The {arm-product} {this-version} kernel does not include any quirks to handle
 these errata, leading to bus faults when enumerating the PCIe root complex.
 Installation from {arm-product} {this-version} media is therefore not possible.
 
-For more information, see
-https://git.linaro.org/landing-teams/working/arm/arm-reference-platforms.git/about/docs/n1sdp/pcie-support.rst.
-
 Note that this is _not_ an issue with the {neoverse}{nbsp}N1 CPU core itself
 (<<jsc-SLE-10258>>).
 Other {neoverse}{nbsp}N1 based System-on-Chip chipsets are not affected

@@ -6,7 +6,19 @@
     <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
    </dm:bugtracker>
   </dm:docmanager>
-  <releaseinfo>@VERSION@</releaseinfo>
-  <productname>SUSE Linux Enterprise Server</productname>
-  <productnumber>15 SP3</productnumber>
-  <date><?dbtimestamp format="Y-m-d"?></date>
+  <releaseinfo>15.3.20251031</releaseinfo>
+  <productname>{product}</productname>
+  <productnumber>{this-version}</productnumber>
+  <date>{revdate}</date>
+  <revhistory>
+    <revision>
+      <date>{revdate}</date>
+    </revision>
+  </revhistory>
+  <meta name="series">Release Notes</meta>
+  <meta name="maintainer" content="lukas.kucharczyk@suse.com"/>
+  <meta name="productname">
+    <productname version="{this-version}">{product}</productname>
+  </meta>
+  <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+  <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
