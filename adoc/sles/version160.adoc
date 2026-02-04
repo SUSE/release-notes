@@ -161,6 +161,31 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
 // !STICKY
+[#development-java-versions]
+=== Supported Java Versions
+
+The following table lists Java implementations available in {sles} {this-version}:
+
+[cols="40%,20%,20%" options="header"]
+|===
+|Package Name
+|Version
+|Support
+
+|`java-17-openjdk`
+|17
+|SUSE, L3, until 2027-10-31
+
+|`java-21-openjdk`
+|21
+|SUSE, L3, until 2031-10-31
+
+|`java-25-openjdk`
+|25
+|SUSE, L3, until 2033-10-31
+|===
+
+// !STICKY
 [#file-system-comparison]
 === Comparison of supported file systems
 
