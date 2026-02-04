@@ -162,7 +162,7 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 // !STICKY
 [#file-system-comparison]
-==== Comparison of supported file systems
+=== Comparison of supported file systems
 
 
 {sle} was the first enterprise Linux distribution to support journaling file systems and logical volume managers in 2000.
