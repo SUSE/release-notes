@@ -160,6 +160,66 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// bsc#1256789
+// !STICKY
+=== Kernel limits
+This table summarizes the various limits which exist in our recent kernels and utilities (if related) for {productnameshort} {this-version}.
+
+[cols="32%,17%,17%,17%,17%" options="header"]
+|===
+|{slsa} {this-version} (Linux {kernel-version})
+|AMD64/Intel 64 (x86_64)
+|{ibmz} (s390x)
+|POWER (ppc64le)
+|{armv8} (AArch64)
+
+|CPU bits
+|64
+|64
+|64
+|64
+
+|Maximum number of logical CPUs
+|8192
+|512
+|8192
+|768
+
+|Maximum amount of RAM (theoretical/certified)
+|>1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|10{nbsp}TiB/{zwsp}256{nbsp}GiB
+|1{nbsp}PiB/{zwsp}64{nbsp}TiB
+|256{nbsp}TiB/{zwsp}n.a.
+
+|Maximum amount of user space/kernel space
+|128{nbsp}TiB/{zwsp}128{nbsp}TiB
+|n.a.
+|4{nbsp}PiB^1^/{zwsp}2{nbsp}EiB
+|256{nbsp}TiB/{zwsp}256{nbsp}TiB
+
+|Maximum amount of swap space
+|Up to 29 * 64{nbsp}GB
+3+|Up to 30 * 64{nbsp}GB
+
+
+|Maximum number of processes
+4+|1,048,576
+
+|Maximum number of threads per process
+4+|Upper limit depends on memory and other parameters (tested with more than 120,000)^2^.
+
+|Maximum size per block device
+4+|Up to 8{nbsp}EiB on all 64-bit architectures
+
+|FD_SETSIZE
+4+|1024
+|===
+
+^1^ By default, the user space memory limit on the POWER architecture is 128{nbsp}TiB.
+However, you can explicitly request mmaps up to 4{nbsp}PiB.
+
+^2^ The total number of all processes and all threads on a system may not be higher than the "maximum number of processes".
+
 [#jsc-DOCTEAM-2070]
 === Changes to `/etc/hostname` handling
 
