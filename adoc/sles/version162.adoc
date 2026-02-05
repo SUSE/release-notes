@@ -1,8 +1,8 @@
-:this-version: 16.1
-:previous-version: 16.0
-:next-version: 16.2
+:this-version: 16.2
+:previous-version: 16.1
+:next-version: 16.3
 :kernel-version: 6.12
-:idprefix: v161_
+:idprefix: v162_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
 :power-productname: {productname} {this-version} for POWER
@@ -177,10 +177,6 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
 // jsc#PED-15579
-* The `opa-fmgui` package has been deprecated since 15 SP4 and will be removed in {productnameshort} {next-version}.
-// jsc#PED-15392
-* `nodejs22` has been removed.
-// jsc-PED-12744
-* The 2MB OVMF image has been removed in {productname} 16.1.
+* The `opa-fmgui` package has removed..
 
 // ===================================================================
