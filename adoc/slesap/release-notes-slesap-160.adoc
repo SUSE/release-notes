@@ -24,6 +24,7 @@ include::version160.adoc[]
 These {sles} {this-version} release notes apply to {productname} {this-version} as well.
 
 include::../sles/attributes.adoc[]
+include::../sles/attributes-version160.adoc[]
 include::../sles/version160.adoc[]
 
 include::../common/source-code.adoc[]
