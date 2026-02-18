@@ -148,13 +148,16 @@ Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[up
 Alternatives include https://software.opensuse.org/package/polari[Polari] or the Flatpak version: https://flathub.org/en/apps/io.github.Hexchat[Flatpak].
 
 === nmap moved to non-oss repository
+
 In {productname} {major-version} nmap was moved to the non-free repository due to its problematic licencing.
+To install it, first enable the non-free repository and then install the package:
+
 [source,bash]
 ----
-sudo zypper mr -e openSUSE:repo-non-oss
+sudo zypper modifyrepo --enable openSUSE:repo-non-oss
 Repository 'openSUSE:repo-non-free' has been successfully enabled.
-sudo zypper refs -r
-sudo zypper in nmap
+sudo zypper refresh-services --with-repos
+sudo zypper install nmap
 ----
 
 ==== Configuring boot entry with serial console
