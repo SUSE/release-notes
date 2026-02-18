@@ -9,6 +9,8 @@
 :support-url: https://forums.opensuse.org
 :rn-url: https://doc.opensuse.org
 
+:maintainer: lukas.kucharczyk@suse.com
+
 // conditionals-begin
 // lifecycle: beta|maintained|unmaintained
 // :lifecycle: beta

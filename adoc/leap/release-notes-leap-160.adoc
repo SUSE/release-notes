@@ -5,6 +5,8 @@ include::attributes.adoc[]
 :major-version: 16
 
 = openSUSE Leap Release Notes
+:revdate: 2026-02-18
+:page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level features, capabilities, limitations, and important updates in {productname}. {productname} {this-version} is built on top of binary RPM packages from SUSE Linux Enterprise, providing a stable enterprise-grade core while adding unique community-driven enhancements.
 
