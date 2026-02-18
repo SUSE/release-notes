@@ -142,6 +142,11 @@ Users upgrading from previous releases should be automatically migrated from Pul
 
 If experiencing audio issues, ensure you are not using the `wireplumber-video-only-profile`. For details, refer to https://en.opensuse.org/openSUSE:Pipewire#Installation[PipeWire#Installation] for details.
 
+=== Hexchat drop
+
+Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[upstream project] is archived.
+Alternatives include https://software.opensuse.org/package/polari[Polari] or the Flatpak version: https://flathub.org/en/apps/io.github.Hexchat[Flatpak].
+
 === nmap moved to non-oss repository
 In {productname} {major-version} nmap was moved to the non-free repository due to its problematic licencing.
 [source,bash]
@@ -151,11 +156,6 @@ Repository 'openSUSE:repo-non-free' has been successfully enabled.
 sudo zypper refs -r
 sudo zypper in nmap
 ----
-
-=== Hexchat drop
-
-Hexchat IRC client has been dropped as the https://github.com/hexchat/hexchat[upstream project] is archived.
-Alternatives include https://software.opensuse.org/package/polari[Polari] or the Flatpak version: https://flathub.org/en/apps/io.github.Hexchat[Flatpak].
 
 ==== Configuring boot entry with serial console
 
