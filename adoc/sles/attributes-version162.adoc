@@ -1,0 +1,19 @@
+:this-version: 16.2
+:previous-version: 16.1
+:next-version: 16.3
+:kernel-version: 6.12
+:idprefix: v162_
+:doc-url: https://documentation.suse.com/sles/16-GA
+
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
+// ifeval::["{lifecycle}" == "maintained"]
+:url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
+// endif::[]
+
+ifeval::["{lifecycle}" == "beta"]
+:url-sle-comparison: https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html
+:url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
+endif::[]
