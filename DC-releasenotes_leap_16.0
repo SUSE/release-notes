@@ -2,7 +2,8 @@ MAIN=adoc/leap/release-notes-leap-160.adoc
 ADOC_POST=yes
 ADOC_TYPE=article
 ADOC_POST_STYLE=adoc_postprocess.xsl
-STYLEROOT=adoc/leap/stylesheet-logo-override.xsl
+STYLEROOT=adoc/leap/
+
 XSLTPARAM="--stringparam "homepage=https://www.opensuse.org""
 XSLTPARAM+="--stringparam "overview-page=https://doc.opensuse.org""
 XSLTPARAM+="--stringparam "overview-page-title=Back\ to\ Release\ Notes\ for\ openSUSE\ distributions""
