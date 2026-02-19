@@ -54,7 +54,7 @@ include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 GFS2 (Global File System 2) is a native, shared-disk cluster filesystem for Linux, allowing multiple servers to concurrently read and write to the same block storage.
 It uses a Distributed Lock Manager (DLM), typically integrated with Corosync and Pacemaker, to coordinate metadata access and prevent data corruption.
 
-At the same time, the the support for OCFS2 has been removed.
+At the same time, the support for OCFS2 has been removed.
 
 
 === Changes affecting all architectures (Beta2)
