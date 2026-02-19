@@ -9,11 +9,18 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
-    <date>{revdate}</date>
+   <date>2026-02-19</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Add GFS2 to <link xlink:href="index.html#file-system-comparison">file system comparison table</link> (<link xlink:href="https://bugzilla.suse.com/show_bug.cgi?id=1257500">bsc#1257500</link>)</para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
   </revision>
-</revhistory>
+ </revhistory>
 <meta name="series">Release Notes</meta>
 <meta name="maintainer" content="{maintainer}"/>
 <meta name="productname">
@@ -21,4 +28,3 @@
 </meta>
 <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
 <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
-

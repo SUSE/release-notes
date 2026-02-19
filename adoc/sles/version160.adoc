@@ -176,24 +176,27 @@ The following table lists the file systems supported by {sle}.
 
 __Support status:__ {sup} supported / {uns} unsupported
 
-[cols="25,^15,^15,^15,^15" options="header"]
+[cols="25,^15,^15,^15,^15,^15" options="header"]
 |===
 |Feature
 |Btrfs
 |XFS
 |Ext4
 |OCFS 2^1^
+|GFS2
 
 |Supported in product
 |{slea}
 |{slea}
 |{slea}
 |{haa}
+|{slea}
 
 |Data/metadata journaling
 |N/A^2^
 |{uns} / {sup}
 |{sup} / {sup}
+|{uns} / {sup}
 |{uns} / {sup}
 
 
@@ -202,9 +205,11 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {uns}
+|{sup} / {uns}
 
 |Journal checksumming
 |N/A^2^
+|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -214,20 +219,24 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{uns}
 |{uns}
 |{uns}
+|{uns}
 
 |Offline extend/shrink
 |{sup} / {sup}
 |{uns} / {uns}
 |{sup} / {sup}
 |{sup} / {uns}^3^
+|{sup} / {uns}^5^
 
 |Inode allocation map
 |B-tree
 |B+-tree
 |Table
 |B-tree
+|B-tree
 
 |Sparse files
+|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -238,14 +247,17 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{uns}
 |{uns}
 |{uns}
+|{uns}
 
 |Small files stored inline
 |{sup} (in metadata)
 |{uns}
 |{sup} (in inode)
 |{sup} (in inode)
+|{sup} (in inode)
 
 |Defragmentation
+|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -256,9 +268,11 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
+|{sup} / {sup}
 
 |User/group quotas
 |{uns} / {uns}
+|{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
@@ -268,9 +282,11 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup}
 |{sup}
 |{uns}
+|{uns}
 
 |Subvolume quotas
 |{sup}
+|N/A
 |N/A
 |N/A
 |N/A
@@ -280,21 +296,24 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup}
 |{uns}
 |{uns}
+|{uns}
 
 |Block size default
-4+|4{nbsp}KiB^4^
+5+|4{nbsp}KiB^4^
 
 |Maximum file system size
 |16{nbsp}EiB
 |8{nbsp}EiB
 |1{nbsp}EiB
 |4{nbsp}PiB
+|8{nbsp}EiB
 
 |Maximum file size
 |16{nbsp}EiB
 |8{nbsp}EiB
 |1{nbsp}EiB
 |4{nbsp}PiB
+|8{nbsp}EiB
 |===
 
 
@@ -310,6 +329,8 @@ Because of the nature of the file system, quotas are implemented based on subvol
 ^4^ The block size default varies with different host architectures.
 64{nbsp}KiB is used on POWER, 4{nbsp}KiB on other systems.
 The actual size used can be checked with the command `getconf _PAGE_SIZE_`.
+
+^5^ See `gfs2_grow(8)`. It must be a mounted filesystem.
 
 *Additional notes*
 
