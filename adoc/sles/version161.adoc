@@ -106,7 +106,14 @@ Technology previews come with the following limitations:
 There are no technology previews at this time.
 
 
-// == Changes affecting all architectures
+== Changes affecting all architectures
+
+[#jsc-PED-14304]
+=== Consistent location for kernel and initramfs across architectures
+
+Previously, location of kernel or initrams would differ based on architecture.
+
+Now these are stored in the same location regardless of architecture: [path]``boot/$arch/loader/``
 
 
 // == {x64}-specific changes

@@ -11,7 +11,14 @@
 <date>{revdate}</date>
 <revhistory>
   <revision>
-    <date>{revdate}</date>
+    <date>2026-02-25</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Consistent location for kernel and initramfs across architectures (jsc#PED-14304)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
   </revision>
 </revhistory>
 <meta name="series">Release Notes</meta>
@@ -21,4 +28,3 @@
 </meta>
 <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
 <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
-
