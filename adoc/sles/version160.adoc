@@ -1012,7 +1012,7 @@ In {productname} {this-version} the kernel now incorporates the latest upstream 
 These patches are important for enabling the kernel to support creating and managing trust domains, which is a step towards enabling confidential computing environments on Intel TDX-enabled hardware.
 
 [NOTE]
-The full Intel TDX confidential computing experience also requires integrating QEMU and libvirt components, which will be part of a future update.
+The full Intel TDX confidential computing experience also requires integrating QEMU and libvirt components available through the update channel.
 
 ===== Enhanced VM Security with AMD SEV-SNP
 
