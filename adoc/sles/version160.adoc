@@ -1005,6 +1005,7 @@ Full list of changes is available at: https://github.com/virtee/snpguest/compare
 The `snphost` package version 0.6.0 has been added.
 
 //jsc#PED-5824
+[#intel-tdx-confidential-computing]
 ===== Intel TDX Confidential Computing
 
 In {productname} {this-version} the kernel now incorporates the latest upstream Intel Trust Domain Extensions (TDX) patches. This significant update prepares the virtualization toolstack for Intel TDX confidential computing capabilities.

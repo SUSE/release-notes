@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-02-25</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>libvirt and QEMU integration now available in <link xlink:href="index.html#intel-tdx-confidential-computing">Intel TDX Confidential Computing</link></para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-02-19</date>
    <revdescription>
     <itemizedlist>
