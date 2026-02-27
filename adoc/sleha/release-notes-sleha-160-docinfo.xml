@@ -9,9 +9,16 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xml:id="revhistory">
   <revision>
-    <date>{revdate}</date>
+    <date>2026-02-27</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Removed Beta2 section with outdated notes</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
   </revision>
 </revhistory>
 <meta name="series">Release Notes</meta>
