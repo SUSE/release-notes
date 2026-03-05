@@ -108,6 +108,19 @@ There are no technology previews at this time.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15636]
+=== Multiple LSMs enabled by default
+
+{selinux} is now used as the primary LSM (Linux Security Module) as compared to {apparmor} that was used previously.
+
+Apart from {selinux}, we have also enabled:
+
+* Yama - collects system-wide DAC security protections that are not handled by the core kernel itself
+* Landlock - scoped access-control (that is, sandboxing)
+* Lockdown - kernel image access prevention feature
+* other virtual ones like bpf, ima, evm, capability
+
+
 [#jsc-PED-14304]
 === Consistent location for kernel and initramfs across architectures
 
