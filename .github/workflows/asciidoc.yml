@@ -53,12 +53,14 @@ jobs:
           mkdir -p publish/sles-16.0/html/release-notes
           mkdir -p publish/sles-16.1/html/release-notes
           mkdir -p publish/sleha-16.0/html/release-notes
+          mkdir -p publish/sleha-16.1/html/release-notes
           mkdir -p publish/slesap-16.0/html/release-notes
           mkdir -p publish/sles-16_SP0/html/release-notes
           mkdir -p publish/leap-16.0/html/release-notes
           OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
           mv "$OUTPUT_DIR/html/releasenotes_leap_16.0"/* publish/leap-16.0/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-ha_16.0"/* publish/sleha-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-ha_16.1"/* publish/sleha-16.1/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.0"/* publish/sl-micro_60/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.1"/* publish/sl-micro_61/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.2"/* publish/sl-micro_62/html/release-notes

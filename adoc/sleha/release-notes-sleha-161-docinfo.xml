@@ -1,0 +1,30 @@
+<dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+ <dm:bugtracker>
+   <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+   <dm:component>Release Notes</dm:component>
+   <dm:product>{productname} {this-version}</dm:product>
+   <dm:assignee>{maintainer}</dm:assignee>
+ </dm:bugtracker>
+</dm:docmanager>
+<productname>{productname}</productname>
+<productnumber>{this-version}</productnumber>
+<date>{revdate}</date>
+<revhistory xml:id="revhistory">
+  <revision>
+    <date>2026-03-24</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Initial version</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+</revhistory>
+<meta name="series">Release Notes</meta>
+<meta name="maintainer" content="{maintainer}"/>
+<meta name="productname">
+ <productname version="{this-version}">{productname}</productname>
+</meta>
+<meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+<meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
