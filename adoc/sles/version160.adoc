@@ -440,7 +440,7 @@ The workaround is to use passthrough mode or hostdev device definition, or hostd
 [#jsc-PED-4977]
 === SELinux enabled by default
 
-SELinux replaces AppArmor, and is now set to enforcing by default.
+SELinux replaces AppArmor, and is now set to enforcing by default (permissive by default for {slessap}).
 For more information, see the _What is the status of SELinux?_ chapter of https://documentation.suse.com/sles/16.0//html/SLE-differences-faq/index.html#sle16-differences-faq-security-selinux[Key Technical Differences Between SLE 15 and SLE 16].
 
 
