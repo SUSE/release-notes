@@ -10,51 +10,8 @@
 
 These release notes apply to {productname} {this-version}.
 
-=== Changes affecting all architectures
+// === Changes affecting all architectures
 
-// jsc#PED-9950
-* The `fence-agents` package has been split into separate packages. This has been done to allow installation of only the required agents instead of all of them.
-// jsc#PED-12353
-* `corosync` has been updated to version 3.1.9. For more information see https://github.com/corosync/corosync/releases/tag/v3.1.9[the full changelog].
-
-// jsc#PED-12356
-[#bsc-1254242]
-==== Pacemaker has been updated to version 3.0
-
-* OCF 1.1 full support: CLI/logs/CIB embrace the OCF 1.1 role names, `Promoted` and `Unpromoted`
-* Most of CLIs support `--output-as xml`
-* `crm_attributes -L cluster` unifies Pacemaker daemon metadata.
-That deprecates the various older, individual commands.
-* Drop Master-slave clones
-** This means no official support, even though Pacemaker can technically load master-slave clones if they are migrated from SLE15
-** crmsh no longer provides the UI to provision master-slave clones
-** Either convert them to the promotable clones before migration, or run `crm configure upgrade force` in {productnameshort} {this-version} running cluster
-* Drop legacies, for example,  RA class types:
-** lsb, nagios, service
-
-For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
-
-
-// removed resource agents
-include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
-
-[#bsc-1243146]
-==== Changing when Home directory is created by default
-
-Previously, creating a Home directory for an user when using the `useradd` command required the `-m` argument.
-
-In {this-version}, this has been changed and the Home directory is created by default without using any additional arguments.
-
-// simplified sbd management
-include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
-
-[#jsc-PED-10881]
-==== GSF2 available, OCFS2 removed
-
-GFS2 (Global File System 2) is a native, shared-disk cluster filesystem for Linux, allowing multiple servers to concurrently read and write to the same block storage.
-It uses a Distributed Lock Manager (DLM), typically integrated with Corosync and Pacemaker, to coordinate metadata access and prevent data corruption.
-
-At the same time, the support for OCFS2 has been removed.
 
 
 [#removed-deprecated]
@@ -62,11 +19,4 @@ At the same time, the support for OCFS2 has been removed.
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
-// jsc#PED-12357
-* `cluster-glue` has been removed.
-// bsc-1252732
-* Geo Clustering is not part of {productname} {this-version}.
-Reach out to your sales contact to discuss your needs with the product team.
 *  `sctp` support has been deprecated in `kronosnet` and to be removed upstream in 2.x
-* <<jsc-PED-10881>>
-
