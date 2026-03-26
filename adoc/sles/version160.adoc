@@ -176,27 +176,24 @@ The following table lists the file systems supported by {sle}.
 
 __Support status:__ {sup} supported / {uns} unsupported
 
-[cols="25,^15,^15,^15,^15,^15" options="header"]
+[cols="25,^15,^15,^15,^15" options="header"]
 |===
 |Feature
 |Btrfs
 |XFS
 |Ext4
-|OCFS 2^1^
 |GFS2
 
 |Supported in product
 |{slea}
 |{slea}
 |{slea}
-|{haa}
 |{slea}
 
 |Data/metadata journaling
 |N/A^2^
 |{uns} / {sup}
 |{sup} / {sup}
-|{uns} / {sup}
 |{uns} / {sup}
 
 
@@ -205,11 +202,9 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {uns}
-|{sup} / {uns}
 
 |Journal checksumming
 |N/A^2^
-|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -219,13 +214,11 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{uns}
 |{uns}
 |{uns}
-|{uns}
 
 |Offline extend/shrink
 |{sup} / {sup}
 |{uns} / {uns}
 |{sup} / {sup}
-|{sup} / {uns}^3^
 |{sup} / {uns}^5^
 
 |Inode allocation map
@@ -233,10 +226,8 @@ __Support status:__ {sup} supported / {uns} unsupported
 |B+-tree
 |Table
 |B-tree
-|B-tree
 
 |Sparse files
-|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -247,17 +238,14 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{uns}
 |{uns}
 |{uns}
-|{uns}
 
 |Small files stored inline
 |{sup} (in metadata)
 |{uns}
 |{sup} (in inode)
 |{sup} (in inode)
-|{sup} (in inode)
 
 |Defragmentation
-|{sup}
 |{sup}
 |{sup}
 |{sup}
@@ -268,11 +256,9 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
-|{sup} / {sup}
 
 |User/group quotas
 |{uns} / {uns}
-|{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
 |{sup} / {sup}
@@ -282,11 +268,9 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup}
 |{sup}
 |{uns}
-|{uns}
 
 |Subvolume quotas
 |{sup}
-|N/A
 |N/A
 |N/A
 |N/A
@@ -296,35 +280,28 @@ __Support status:__ {sup} supported / {uns} unsupported
 |{sup}
 |{uns}
 |{uns}
-|{uns}
 
 |Block size default
-5+|4{nbsp}KiB^4^
+4+|4{nbsp}KiB^4^
 
 |Maximum file system size
 |16{nbsp}EiB
 |8{nbsp}EiB
 |1{nbsp}EiB
-|4{nbsp}PiB
 |8{nbsp}EiB
 
 |Maximum file size
 |16{nbsp}EiB
 |8{nbsp}EiB
 |1{nbsp}EiB
-|4{nbsp}PiB
 |8{nbsp}EiB
 |===
 
-
-^1^ OCFS 2 is fully supported as part of the {sleha}.
 
 ^2^ Btrfs is a copy-on-write file system.
 Instead of journaling changes before writing them in-place, it writes them to a new location and then links the new location in.
 Until the last write, the changes are not "committed".
 Because of the nature of the file system, quotas are implemented based on subvolumes (`qgroups`).
-
-^3^ To extend an OCFS 2 file system, the cluster must be online but the file system itself must be unmounted.
 
 ^4^ The block size default varies with different host architectures.
 64{nbsp}KiB is used on POWER, 4{nbsp}KiB on other systems.
