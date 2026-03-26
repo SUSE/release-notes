@@ -77,7 +77,7 @@ tag::jscped-12725[]
 [#jsc-PED-12725]
 = Switch to predictable network names
 
-The persistent network naming scheme used in {productnameshort} 15 became legacy with the switch to the systemd predictable network names.
+The persistent network naming scheme used previously became legacy with the switch to the systemd predictable network names.
 For complicated setups, we recommend using `systemd.link`.
 
 For more information, see:
