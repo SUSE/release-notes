@@ -9,9 +9,16 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
-    <date>{revdate}</date>
+    <date>2026-03-26</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Further clarify hostname behavior in <link xlink:href="index.html#jsc-DOCTEAM-1853">hostname command behavior</link></para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
   </revision>
 </revhistory>
 <meta name="series">Release Notes</meta>

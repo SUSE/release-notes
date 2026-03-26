@@ -28,15 +28,19 @@ include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
 The `saptune` package will enable base tuning upon installation.
 Base tuning only will be enabled if `saptune` was not configured before (no SAP Notes or Solutions selected).
 
-
+// also bsc#1259393
 [#jsc-DOCTEAM-1853]
-==== `hostname` command behavior difference
+==== `hostname` command behavior
 
-On {slesa} 15 SP6, the `hostname` command returns the short hostname by default.
-However, on {productname} {this-version}, the `hostname` command returns the fully qualified domain name by default.
+Previously, the `hostname` command would return the short hostname by default.
 
-This difference in default behavior might cause issues in installation scripts that rely on a specific output format of the hostname command without using options like `-s` or `-A`.
-Scripts should be reviewed to explicitly request the desired hostname format using hostname `-s` for the short hostname or hostname `-A` for the fully qualified domain name to ensure consistent behavior across different {productname} versions.
+However, on {productname} {this-version}, the `hostname` command without arguments returns the configured hostname.
+The configured hostname can be either a short hostname or a fully qualified domain name (FQDN) depending on the system configuration (e.g. `/etc/hostname` or DHCP).
+This means the output of the `hostname` command without arguments is not predictable.
+
+This unpredictable behavior might cause issues in cases that rely on a specific output format of the `hostname` command.
+To ensure consistent behavior, scripts should be reviewed to explicitly request the desired hostname format.
+Use `hostname -s` for the short hostname and `hostname -f` for the fully qualified domain name.
 
 
 === Removed and deprecated features and packages
