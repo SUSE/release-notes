@@ -47,7 +47,7 @@ tag::jscped-12860[]
 * For IBM* Z systems: z14 or higher.
 
 [NOTE]
-POWER9 systems may work with {productnameshort} {this-version} but are not supported by IBM, the hardware vendor.
+While {productnameshort} {this-version} can run on POWER9, this configuration is not supported.
 
 end::jscped-12860[]
 
