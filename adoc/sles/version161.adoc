@@ -182,5 +182,7 @@ The following features and packages are deprecated and will be removed in a futu
 * `nodejs22` has been removed.
 // jsc-PED-12744
 * The 2MB OVMF image has been removed in {productname} 16.1.
+// jsc#PED-15569
+* The `openmpi4` package has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
 
 // ===================================================================
