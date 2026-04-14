@@ -138,6 +138,16 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-15191]
+=== OpenLDAP 2.4 compatibility package
+
+{sap} systems using central user management with Microsoft Active Directory (as can be case for {nw} or for {hana}) require specific legacy library versions to function.
+These systems depend on the `libldap` and `liblber` interfaces from OpenLDAP 2.4, which are not natively present in the current release.
+
+{productnameshort} {this-version} includes shim libraries that provide `soname` and `soversion` that identifiy as OpenLDAP 2.4 while linking to OpenLDAP 2.6 libraries.
+These libraries are for compatibility only and require applications to use only the public OpenLDAP API and avoid the two GSSAPI functions removed in version 2.6.
+
+
 // !STICKY
 [#development-java-versions]
 === Supported Java Versions

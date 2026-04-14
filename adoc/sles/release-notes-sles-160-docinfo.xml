@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-04-14</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>OpenLDAP 2.4 compatibility package</para>
+      </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-03-26</date>
    <revdescription>
     <itemizedlist>
