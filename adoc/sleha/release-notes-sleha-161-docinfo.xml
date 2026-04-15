@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory">
   <revision>
+    <date>2026-04-15</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Add note about csync2 initialization</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-03-24</date>
     <revdescription>
      <itemizedlist>

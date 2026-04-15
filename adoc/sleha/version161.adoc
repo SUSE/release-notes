@@ -10,8 +10,12 @@
 
 These release notes apply to {productname} {this-version}.
 
-// === Changes affecting all architectures
+=== Changes affecting all architectures
 
+==== `csync2` requires separate initialization
+
+Previously, csync2 was configured automatically during initial cluster bootstrap.
+Customers who use csync2 can now run `crm cluster init csync2 -y` to set it up separately.
 
 
 [#removed-deprecated]
