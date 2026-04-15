@@ -184,5 +184,7 @@ The following features and packages are deprecated and will be removed in a futu
 * The 2MB OVMF image has been removed in {productname} 16.1.
 // jsc#PED-15569
 * The `openmpi4` package has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
+// jsc#PED-15546
+* The `mvapich2` package has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
 
 // ===================================================================
