@@ -6,7 +6,6 @@
     <dm:assignee>lukas.kucharczyk@suse.com</dm:assignee>
    </dm:bugtracker>
   </dm:docmanager>
-  <releaseinfo>15.3.20251031</releaseinfo>
   <productname>{product}</productname>
   <productnumber>{this-version}</productnumber>
   <date>{revdate}</date>
