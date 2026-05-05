@@ -12,7 +12,14 @@
   <date>{revdate}</date>
   <revhistory>
     <revision>
-      <date>{revdate}</date>
+      <date>2026-05-05</date>
+      <revdescription>
+       <itemizedlist>
+        <listitem>
+         <para>Fix broken PHP 7.4 link</para>
+        </listitem>
+       </itemizedlist>
+      </revdescription>
     </revision>
   </revhistory>
   <meta name="series">Release Notes</meta>

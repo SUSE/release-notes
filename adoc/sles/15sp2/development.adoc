@@ -139,7 +139,7 @@ For more information, see the https://releases.llvm.org/9.0.0/docs/ReleaseNotes.
 ==== PHP Has Been Updated to Version 7.4
 
 We upgraded PHP to version 7.4 to provide you with the latest release.
-To learn more about PHP version 7.4, we recommend reading the https://www.php.net/releases/7_4_0.php.php[PHP release announcement] and the https://www.php.net/manual/en/migration74.php[7.3.x to 7.4.x migration guide].
+To learn more about PHP version 7.4, we recommend reading the https://www.php.net/ChangeLog-7.php#7.4.0[PHP release announcement] and the https://www.php.net/manual/en/migration74.php[7.3.x to 7.4.x migration guide].
 
 
 // Repeated from 15 SP1 release notes, cf. also jsc#SLE-16745
