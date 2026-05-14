@@ -28,6 +28,19 @@ Key entry points:
 - **One commit per note** — each change should be its own commit referencing the issue
 - **Update revdate** — always update `:revdate:` in the master `.adoc` file (the `MAIN=` from the DC config file). Use today's date (`YYYY-MM-DD`)
 
+### Commit messages
+
+- **One-line subject** in imperative mood
+- **Product/version prefix** — always include the product and version (e.g., `SLES 16.1:`, `SLE HA 16.1:`)
+- **Issue reference** — always include `(jsc#XXXXX)` or `(bsc#XXXXX)` for single-issue commits; omit only if there is no associated issue
+- **PR reference** — include `(#NN)` if the commit was squashed from a PR
+- **Body** — typically unnecessary for single-note changes
+
+Example:
+```
+SLES 16.1: Add note about Boot Loader Specification support (jsc#PED-10703)
+```
+
 ## Building locally
 
 ```bash
