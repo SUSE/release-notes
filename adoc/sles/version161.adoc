@@ -103,7 +103,19 @@ Technology previews come with the following limitations:
 * Technology previews may only be available for specific hardware architectures. Details and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
 * Technology previews can be removed from a product at any time. This may be the case, for example, if SUSE discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
 
-There are no technology previews at this time.
+[#jsc-PED-10703]
+=== Boot Loader Specification (BLS) support with systemd-boot (technology preview)
+
+{productname} {this-version} includes systemd-boot as a technology preview for Boot Loader Specification (BLS) support on UEFI systems.
+
+The following limitations apply to this technology preview:
+
+* Available only for UEFI-based {x64} and {aarch64} architectures.
+* Not available for {ibmz}, POWER, or BIOS-based systems.
+* Switching from the traditional grub2 bootloader to systemd-boot is not supported during an upgrade.
+* A fresh installation is required to use systemd-boot.
+
+Full support is planned for a future release.
 
 
 == Changes affecting all architectures

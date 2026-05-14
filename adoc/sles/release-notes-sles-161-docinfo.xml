@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Boot Loader Specification (BLS) support with systemd-boot (<link xlink:href="index.html#jsc-PED-10703">jsc#PED-10703</link>)</para>
+      </listitem>
+      <listitem>
        <para>SSSD: support for running as unprivileged user (<link xlink:href="index.html#jsc-PED-11986">jsc#PED-11986</link>)</para>
       </listitem>
      </itemizedlist>
