@@ -108,6 +108,8 @@ There are no technology previews at this time.
 
 == Changes affecting all architectures
 
+include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
+
 [#jsc-PED-15636]
 === Multiple LSMs enabled by default
 

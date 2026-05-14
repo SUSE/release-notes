@@ -123,6 +123,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 == Changes affecting all architectures
 
+include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
+
 // jsc#PED-12605
 * kdump is not enabled by default. This will be fixed in {productname} {next-version}.
 // jsc#PED-12797

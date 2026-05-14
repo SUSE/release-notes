@@ -153,3 +153,45 @@ This means that statically-linked 32-bit binaries (or 31-bit binaries on {ibmz})
 On other architectures it's disabled without any option to enable it.
 end::jscped-12715[]
 
+
+tag::jscped-11986[]
+[#jsc-PED-11986]
+= SSSD: support for running as unprivileged user
+
+SSSD has been updated to version 2.10, which adds support for running as
+an unprivileged user instead of root. This allows containerized deployments
+to comply with security requirements that limit root privileges within
+containers.
+
+By default, SSSD runs as root with the `sssd` supplementary group, which
+provides access to SSSD-owned files. To switch to unprivileged mode, create
+a systemd service override:
+
+[source,shell]
+----
+sudo systemctl edit sssd.service
+----
+
+Add the following:
+
+[source,ini]
+----
+[Service]
+User=sssd
+Group=sssd
+SupplementaryGroups=
+----
+
+Then reload and restart the service:
+
+[source,shell]
+----
+sudo systemctl daemon-reload
+sudo systemctl restart sssd
+----
+
+Note that running as an unprivileged user requires filesystem support for
+POSIX capabilities. On filesystems that do not support capabilities
+(such as NFS), SSSD must continue to run as root.
+
+end::jscped-11986[]
