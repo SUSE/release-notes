@@ -31,7 +31,7 @@ Key entry points:
 ### Commit messages
 
 - **One-line subject** in imperative mood
-- **Product/version prefix** — always include the product and version (e.g., `SLES 16.1:`, `SLE HA 16.1:`)
+- **Product/version prefix** — always include the product and version (e.g., `SLES 16.1:`, `SLE HA 16.1:`). For notes spanning multiple products, list all of them separated by commas (e.g., `SLES 16.0, SLES for SAP 16.0:`)
 - **Issue reference** — always include `(jsc#XXXXX)` or `(bsc#XXXXX)` for single-issue commits; omit only if there is no associated issue
 - **PR reference** — include `(#NN)` if the commit was squashed from a PR
 - **Body** — typically unnecessary for single-note changes
