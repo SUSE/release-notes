@@ -123,8 +123,6 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 == Changes affecting all architectures
 
-include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
-
 // jsc#PED-12605
 * kdump is not enabled by default. This will be fixed in {productname} {next-version}.
 // jsc#PED-12797
@@ -139,6 +137,11 @@ include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
+
+// jsc#PED-13633
+include::../shared.adoc[tags=jscped-13633,leveloffset=+2]
+
+include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
 
 [#jsc-PED-15191]
 === OpenLDAP 2.4 compatibility package

@@ -11,6 +11,9 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#PED-13633
+* The migration tool fixes deprecated PAM configuration entries from older SAP Host Agent installations. See <<jsc-PED-13633>> in the {sles} release notes for details.
+
 // jsc#PED-12356
 * `pacemaker` has been updated to version 3.0. For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
 // jsc#PED-11656

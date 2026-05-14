@@ -154,6 +154,16 @@ On other architectures it's disabled without any option to enable it.
 end::jscped-12715[]
 
 
+tag::jscped-13633[]
+[#jsc-PED-13633]
+= SAP Host Agent PAM configuration fixed during migration
+
+Older SAP Host Agent installations may have written PAM configuration for `sapstartsrv` using compatibility links (`pam_unix_auth.so`, `pam_unix_acct.so`, `pam_unix_session.so`, `pam_unix_passwd.so`) that no longer exist in {productname} {this-version}.
+
+The migration tool replaces all occurrences of `pam_unix_{auth,acct,session,passwd}.so` with `pam_unix.so` in all files in `/etc/pam.d/` during migration from {productname} 15 to {productname} {this-version}.
+
+end::jscped-13633[]
+
 tag::jscped-11986[]
 [#jsc-PED-11986]
 = SSSD: support for running as unprivileged user

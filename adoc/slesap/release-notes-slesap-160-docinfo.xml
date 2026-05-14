@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-05-14</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>SAP Host Agent PAM configuration fixed during migration from SLE 15 (<link xlink:href="index.html#v160_jsc-PED-13633">jsc#PED-13633</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-03-26</date>
     <revdescription>
      <itemizedlist>
