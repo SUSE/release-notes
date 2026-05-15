@@ -205,3 +205,11 @@ POSIX capabilities. On filesystems that do not support capabilities
 (such as NFS), SSSD must continue to run as root.
 
 end::jscped-11986[]
+
+tag::jscPED-12283[]
+[#jsc-PED-12283]
+= Update rasdaemon
+
+* `rasdaemon` has been updated to version 0.8.4, which supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
+
+end::jscPED-12283[]
