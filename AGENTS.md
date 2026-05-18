@@ -41,6 +41,8 @@ Example:
 SLES 16.1: Add note about Boot Loader Specification support (jsc#PED-10703)
 ```
 
+**Shared notes:** when the commit touches `adoc/shared.adoc`, the prefix must list **all** products and versions that include the note (e.g. `SLES 16.0, SLES 16.1:`), not a generic component name.
+
 ## Building locally
 
 ```bash
@@ -90,6 +92,8 @@ end::TAGNAME[]
 
 Include with: `include::../shared.adoc[tags=TAGNAME,leveloffset=+2]`
 
+**`leveloffset` values:** match the section depth. Shared notes use `= Title` (single `=`). If the include is under `== Section`, use `leveloffset=+2`. If under `==== Subsection`, use `leveloffset=+4`.
+
 For product-specific shared notes (SLES 16.x), use `adoc/micro/shared.adoc` as reference for the tag pattern.
 
 ## Version structure
@@ -108,6 +112,7 @@ For product-specific shared notes (SLES 16.x), use `adoc/micro/shared.adoc` as r
 
 ## Gotchas
 
+- **Shared note commits always include all affected products in the prefix** — even though `adoc/shared.adoc` is a single file, the commit message must reflect every product/version that consumes the note.
 - **Don't edit `Makefile` or `adoc/common/` directly** — both are upstream-managed and may be overwritten. Changes to `adoc/common/` should go through the doc-kit upstream.
 - **`adoc_postprocess.xsl` is custom** — safe to edit locally; it's not upstream-managed.
 - **IDs can't contain underscores** — the XSLT handles this, but prefer hyphens in note IDs.
