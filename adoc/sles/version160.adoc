@@ -1050,6 +1050,8 @@ The `virtiofsd` has been updated to 1.12.0.
 `virt-manager` is now shipped in version 5.0.0. Its preferable to setup VNC for remote viewing and do all the XML editing using the `virsh` command.
 Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.0.0
 
+include::../shared.adoc[tags=jscped-15932,leveloffset=+4]
+
 ===== virt-bridge-setup
 
 virt-bridge-setup is a script designed to simplify network bridge creation on a specified interface using nmcli. It was developed as a replacement for the automatic "yast2 virtualization" bridge creation and is particularly useful for setting up virtualization environments.

@@ -218,3 +218,21 @@ POSIX capabilities. On filesystems that do not support capabilities
 (such as NFS), SSSD must continue to run as root.
 
 end::jscped-11986[]
+
+tag::jscped-15932[]
+[#jsc-PED-15932]
+= Kiwi KubeVirt containerdisk format
+
+Kiwi now supports a new `containerdisk` format for building KubeVirt-compatible
+container images from OEM disk builds.
+
+The new format combines qcow2 disk image creation with OCI container packaging
+in a single workflow.
+The resulting container image contains the disk image at `/disk` and includes
+the necessary KubeVirt metadata.
+
+The disk format (e.g. qcow2, raw, vmdk) and target container transport (e.g.
+docker://, oci://, obs://) are configurable via the format parameter.
+
+Example format syntax: `format="oci:qcow2:docker://registry.example.com/kubevirt-disk:latest"`
+end::jscped-15932[]

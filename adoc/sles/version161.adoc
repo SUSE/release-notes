@@ -120,6 +120,8 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+include::../shared.adoc[tags=jscped-15932,leveloffset=+2]
+
 include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
 
 [#jsc-PED-15636]

@@ -10,16 +10,19 @@
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <revision>
-    <date>2026-05-18</date>
-    <revdescription>
-     <itemizedlist>
-      <listitem>
-       <para>s390x secure boot support information (<link xlink:href="index.html#jsc-PED-15968">jsc-PED-15968</link>)</para>
-      </listitem>
-     </itemizedlist>
-    </revdescription>
-   </revision>
+    <revision>
+     <date>2026-05-18</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Kiwi: support for KubeVirt containerdisk format (<link xlink:href="index.html#jsc-PED-15932">jsc#PED-15932</link>)</para>
+       </listitem>
+       <listitem>
+        <para>s390x secure boot support information (<link xlink:href="index.html#jsc-PED-15968">jsc-PED-15968</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
    <revision>
     <date>2026-05-14</date>
     <revdescription>
