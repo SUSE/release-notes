@@ -17,13 +17,6 @@
       <listitem>
        <para>SAP Host Agent PAM configuration fixed during migration from SLE 15 (<link xlink:href="index.html#jsc-PED-13633">jsc#PED-13633</link>)</para>
       </listitem>
-     </itemizedlist>
-    </revdescription>
-   </revision>
-   <revision>
-    <date>2026-05-14</date>
-    <revdescription>
-     <itemizedlist>
       <listitem>
        <para>SSSD: support for running as unprivileged user (<link xlink:href="index.html#jsc-PED-11986">jsc#PED-11986</link>)</para>
       </listitem>
