@@ -138,6 +138,15 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#bsc-1261224]
+=== Boot parameter changes
+
+The `install=` boot parameter is no longer supported.
+Use `inst.install_url=` and `root=live:` instead.
+This change is especially important for netbooting, for example on {ppc64le} and {ibmz} systems.
+
+For more information, see https://documentation.suse.com/sles/16.0/html/SLES-PXE-server/index.html#sles-pxe-server-backward-compatibility-with-sle-15[Backward Compatibility with SLE 15].
+
 // jsc#PED-13633
 include::../shared.adoc[tags=jscped-13633,leveloffset=+2]
 
