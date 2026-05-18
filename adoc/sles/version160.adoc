@@ -767,6 +767,9 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 
 === Security
 
+include::../shared.adoc[tag=jscped-15968,leveloffset=+3]
+
+
 [#bsc-1253242]
 ==== Secure Boot
 

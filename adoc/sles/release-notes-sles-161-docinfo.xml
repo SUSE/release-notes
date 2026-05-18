@@ -11,6 +11,17 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
    <revision>
+    <date>2026-05-18</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>s390x secure boot support information (<link xlink:href="index.html#jsc-PED-15968">jsc-PED-15968</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+   </revision>
+   <revision>
+   <revision>
     <date>2026-05-14</date>
     <revdescription>
      <itemizedlist>

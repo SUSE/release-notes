@@ -1,3 +1,16 @@
+tag::jscped-15968[]
+[#jsc-PED-15968]
+= Secure Initial Program Load (IPL) support
+
+IPL has the following minimum system requirements, depending on the boot device to be IPLed:
+
+* NVMe disk: IBM LinuxONE III or newer.
+* FC-attached SCSI disk: IBM LinuxONE III, IBM z15 or newer.
+* ECKD DASD with CDL layout: IBM z16, LinuxONE 4 or newer.
+
+If these requirements are not met, the system can be IPLed in non-secure mode only.
+end::jscped-15968[]
+
 tag::bsc1240989[]
 [#bsc-1240989]
 = Default user group assignment changed
