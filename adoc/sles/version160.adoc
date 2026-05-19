@@ -782,7 +782,7 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+3]
 [#bsc-1253242]
 ==== Secure Boot
 
-If {productname} {this-version} has been installed, the configuration parameter `SECURE_BOOT` in `/etc/sysconfig/bootloader` is automatically set to `yes`, although the used hardware supports Secure Boot from ECKD DASD.
+If {productname} {this-version} has been installed, the configuration parameter `SECURE_BOOT` in `/etc/sysconfig/bootloader` is automatically set to `yes`.
 
 Please be aware that a combination of ECKD-DASD disk and Linux One III won't support Secure Boot.
 
