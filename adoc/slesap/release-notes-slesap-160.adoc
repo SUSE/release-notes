@@ -1,5 +1,6 @@
 include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
+include::attributes-version160.adoc[]
 
 = {productname} Release Notes
 :revdate: 2026-05-14
