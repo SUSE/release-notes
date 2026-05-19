@@ -9,7 +9,17 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
+  <revision>
+    <date>2026-06-19</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added dmraid removal notice <link xlink:href="index.html#deprecated">Deprecated features and packages</link></para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+   </revision>
   <revision>
     <date>{revdate}</date>
   </revision>
@@ -21,4 +31,3 @@
 </meta>
 <meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
 <meta name="social-descr">New and deprecated features, improvements, known-issues</meta>
-

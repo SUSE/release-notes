@@ -204,5 +204,7 @@ The following features and packages are deprecated and will be removed in a futu
 * The `openmpi4` package has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
 // jsc#PED-15546
 * The `mvapich2` package has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
-
+// jsc#PED-15368
+* The `dmraid` package (Device-Mapper Software RAID Support Tool) has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
+Use `mdadm` instead to manage and monitor software RAID devices.
 // ===================================================================

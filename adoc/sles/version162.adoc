@@ -157,5 +157,8 @@ The following features and packages are deprecated and will be removed in a futu
 
 // jsc#PED-15579
 * The `opa-fmgui` package has removed..
+// jsc#PED-15368
+* The `dmraid` package (Device-Mapper Software RAID Support Tool) has been removed.
+Use `mdadm` instead to manage and monitor software RAID devices.
 
 // ===================================================================
