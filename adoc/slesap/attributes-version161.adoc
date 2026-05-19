@@ -1,9 +1,4 @@
-:productname: SUSE Linux Enterprise Server for SAP applications
-:productnameshort: SLES for SAP
-:rel-date: TBD
-
 :this-version: 16.1
-:maintainer: lukas.kucharczyk@suse.com
 
 :doc-url: https://documentation.suse.com
 :doc-url-beta: https://susedoc.github.io/doc-slesforsap/main
