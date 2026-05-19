@@ -1,0 +1,70 @@
+:this-version: 16.1
+:idprefix: v161_
+:doc-url: https://documentation.suse.com/sles-sap/16.1
+
+:power-productname: {productname} {this-version} for POWER
+:z-productname: {productname} {this-version} for {ibmz}
+
+== {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+=== Changes affecting all architectures
+
+// jsc#PED-13633
+* The migration tool fixes deprecated PAM configuration entries from older SAP Host Agent installations. See <<jsc-PED-13633>> in the {sles} release notes for details.
+
+// jsc#PED-12356
+* `pacemaker` has been updated to version 3.0. For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
+// jsc#PED-11656
+* We now provide a unified image that can be used to install either {slesa} or {slessapa}
+
+// simplified sbd management
+include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
+
+// removed resource agents
+include::../shared.adoc[tags=jscped-12354,leveloffset=+3]
+
+[#jsc-PED-13396-1]
+==== `saptune` base tuning
+
+The `saptune` package will enable base tuning upon installation.
+Base tuning only will be enabled if `saptune` was not configured before (no SAP Notes or Solutions selected).
+
+// also bsc#1259393
+[#jsc-DOCTEAM-1853]
+==== `hostname` command behavior
+
+Previously, the `hostname` command would return the short hostname by default.
+
+However, on {productname} {this-version}, the `hostname` command without arguments returns the configured hostname.
+The configured hostname can be either a short hostname or a fully qualified domain name (FQDN) depending on the system configuration (e.g. `/etc/hostname` or DHCP).
+This means the output of the `hostname` command without arguments is not predictable.
+
+This unpredictable behavior might cause issues in cases that rely on a specific output format of the `hostname` command.
+To ensure consistent behavior, scripts should be reviewed to explicitly request the desired hostname format.
+Use `hostname -s` for the short hostname and `hostname -f` for the fully qualified domain name.
+
+
+=== Removed and deprecated features and packages
+
+This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
+
+==== Removed features and packages
+
+The following features and packages have been removed in this release.
+
+* `SAPHanaSR` and `SAPHanaSR-scaleout` have been removed. Use `SAPHanaSR-angi` instead.
+
+// [#deprecated]
+// === Deprecated features and packages
+
+////
+1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
+2. Deprecations that will be removed in the next SLE major version:
+3. Deprecations that will be removed later or where removal timing is unclear:
+////
+
+// The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+
