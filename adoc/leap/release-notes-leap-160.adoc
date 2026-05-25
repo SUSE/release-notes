@@ -22,9 +22,6 @@ This section describes community-driven enhancements, features, and updates that
 
 include::version160.adoc[]
 
-// SUSE Linux Enterprise Core
-This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
-
 include::sles-core.adoc[]
 
 include::../common/source-code.adoc[]
