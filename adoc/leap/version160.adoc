@@ -164,4 +164,11 @@ sudo zypper install nmap
 
 See https://en.opensuse.org/SDB:SerialConsole for guidance.
 
+=== Memory limits in Java containers
+
+Java containers using `-XX:MaxRAMPercentage` may not detect memory limits correctly on kernel 6.12 due to an upstream OpenJDK issue.
+
+As a workaround, use fixed `-Xmx` values instead.
+This issues is fixed in OpenJDK 25.
+
 
