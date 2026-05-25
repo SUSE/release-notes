@@ -160,6 +160,8 @@ sudo zypper refresh-services --with-repos
 sudo zypper install nmap
 ----
 
-==== Configuring boot entry with serial console
+=== Configuring boot entry with serial console
 
 See https://en.opensuse.org/SDB:SerialConsole for guidance.
+
+
