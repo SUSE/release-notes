@@ -1,0 +1,41 @@
+<dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+ <dm:bugtracker>
+   <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+   <dm:component>Release Notes</dm:component>
+   <dm:product>openSUSE Distribution</dm:product>
+   <dm:version>Leap {this-version}</dm:version>
+   <dm:assignee>{maintainer}</dm:assignee>
+ </dm:bugtracker>
+</dm:docmanager>
+<productname>{productname}</productname>
+<productnumber>{this-version}</productnumber>
+<date>{revdate}</date>
+<revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <revision>
+    <date>2026-05-25</date>
+    <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para><link xlink:href="index.html#id-memory-limits-in-java-containers">Added note about memory limits in Java containers</link></para>
+       </listitem>
+      </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
+    <date>2026-02-18</date>
+    <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para><link xlink:href="index.html#id-nmap-moved-to-non-oss-repository">Added note about nmap</link></para>
+       </listitem>
+      </itemizedlist>
+    </revdescription>
+  </revision>
+</revhistory>
+<meta name="series">Release Notes</meta>
+<meta name="maintainer" content="{maintainer}"/>
+<meta name="productname">
+ <productname version="{this-version}">{productname}</productname>
+</meta>
+<meta name="description">Latest information about new and deprecated features, improvements, and known-issues</meta>
+<meta name="social-descr">New and deprecated features, improvements, known-issues</meta>

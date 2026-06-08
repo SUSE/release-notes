@@ -1,0 +1,29 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+:this-version: 16.1
+:previous-version: 16.0
+:major-version: 16
+
+= openSUSE Leap Release Notes
+:revdate: 2026-05-25
+:page-revdate: {revdate}
+
+:abstract: This document provides an overview of high-level features, capabilities, limitations, and important updates in {productname}. {productname} {this-version} is built on top of binary RPM packages from SUSE Linux Enterprise, providing a stable enterprise-grade core while adding unique community-driven enhancements.
+
+{productname} is a modern, modular operating system suitable for both traditional IT and multimodal workloads. This document highlights major features, updates, and known limitations.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+// openSUSE Leap Community Additions
+
+This section describes community-driven enhancements, features, and updates that extend the SUSE Linux Enterprise core. These changes reflect the openSUSE project’s unique contributions, including desktop improvements, additional packages, and new workflows.
+
+include::version160.adoc[]
+
+include::sles-core.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::legal.adoc[]
