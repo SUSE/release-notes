@@ -12,21 +12,11 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
-    <date>2026-05-25</date>
+    <date>2026-06-09</date>
     <revdescription>
       <itemizedlist>
        <listitem>
-        <para><link xlink:href="index.html#id-memory-limits-in-java-containers">Added note about memory limits in Java containers</link></para>
-       </listitem>
-      </itemizedlist>
-    </revdescription>
-  </revision>
-  <revision>
-    <date>2026-02-18</date>
-    <revdescription>
-      <itemizedlist>
-       <listitem>
-        <para><link xlink:href="index.html#id-nmap-moved-to-non-oss-repository">Added note about nmap</link></para>
+        <para>Initial version</para>
        </listitem>
       </itemizedlist>
     </revdescription>
