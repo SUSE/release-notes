@@ -8,4 +8,5 @@
 build/
 .vscode/
 .idea/
+bugreports/
 *.code-workspace
