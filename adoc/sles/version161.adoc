@@ -120,6 +120,15 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#bsc-1261338]
+=== RAID configuration not supported in installer Web UI
+
+RAID configuration is currently not supported through the installer Web UI.
+As a workaround, you can configure RAID either manually via the command line or by using JSON or JSONNet storage profiles.
+For more information, see https://agama-project.github.io/docs/user/reference/profile/storage.
+RAID support in the installer Web UI is planned for a future release.
+
+
 include::../shared.adoc[tags=jscped-15932,leveloffset=+2]
 
 include::../shared.adoc[tags=jscped-11986,leveloffset=+2]

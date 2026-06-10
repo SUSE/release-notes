@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+      <date>2026-06-10</date>
+      <revdescription>
+       <itemizedlist>
+        <listitem>
+         <para>Installer: RAID configuration not supported in Web UI (<link xlink:href="index.html#bsc-1261338">bsc#1261338</link>)</para>
+        </listitem>
+       </itemizedlist>
+      </revdescription>
+     </revision>
+    <revision>
       <date>2026-06-19</date>
       <revdescription>
        <itemizedlist>
