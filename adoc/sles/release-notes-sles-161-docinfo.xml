@@ -15,6 +15,9 @@
       <revdescription>
        <itemizedlist>
         <listitem>
+         <para>Deprecated IA32 and AArch32 OVMF images (jsc#PED-13429)</para>
+        </listitem>
+        <listitem>
          <para>Kernel: switch to PREEMPT_LAZY model (<link xlink:href="index.html#jsc-PED-15924">jsc#PED-15924</link>)</para>
         </listitem>
        </itemizedlist>
