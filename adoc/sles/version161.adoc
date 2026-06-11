@@ -120,6 +120,16 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15924]
+=== Kernel switches to PREEMPT_LAZY preemption model
+
+The upstream kernel community has moved away from conservative scheduler preemption models (`PREEMPT_NONE` and `PREEMPT_VOLUNTARY`), and these models have been removed in kernel 7.0 for architectures that support `PREEMPT_LAZY`.
+To align with upstream changes, {productname} {this-version} switches the preemption model from `PREEMPT_VOLUNTARY` to `PREEMPT_LAZY` for all supported architectures, except for {ibmz} (`s390x`), which lacks architectural support.
+
+The `PREEMPT_LAZY` model provides a less conservative approach to preemption, while still being suitable for throughput-oriented workloads.
+If you experience performance issues with the new preemption model, you can optionally switch back to `PREEMPT_VOLUNTARY` by setting `preempt=voluntary` on the kernel command line.
+
+
 [#bsc-1261338]
 === RAID configuration not supported in installer Web UI
 

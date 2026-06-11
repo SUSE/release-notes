@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+      <date>2026-06-11</date>
+      <revdescription>
+       <itemizedlist>
+        <listitem>
+         <para>Kernel: switch to PREEMPT_LAZY model (<link xlink:href="index.html#jsc-PED-15924">jsc#PED-15924</link>)</para>
+        </listitem>
+       </itemizedlist>
+      </revdescription>
+     </revision>
+    <revision>
       <date>2026-06-10</date>
       <revdescription>
        <itemizedlist>
