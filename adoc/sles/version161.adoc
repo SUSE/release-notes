@@ -120,6 +120,12 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-16271]
+=== Agama live image includes Ignition and Combustion
+
+To facilitate pre-installation configuration before launching the Agama installer, the Ignition and Combustion tools are now included in the live installer image.
+This provides a convenient and reliable way to apply complex setups repeatedly without typing commands manually, which also covers advanced scenarios that standard graphical tools cannot handle.
+
 [#jsc-PED-15142]
 === NVMeoF boot: network interfaces maintain standard names
 
