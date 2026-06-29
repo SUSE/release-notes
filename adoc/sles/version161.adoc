@@ -120,6 +120,12 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-16106]
+=== `update-alternatives` no longer used for PostgreSQL
+
+To better support immutable systems and transactional updates, the `update-alternatives` mechanism is no longer used to set the default PostgreSQL version.
+For more details on how to set the default PostgreSQL version, refer to the `README.SUSE` file provided in the `postgresql` main package.
+
 [#jsc-PED-16271]
 === Agama live image includes Ignition and Combustion
 

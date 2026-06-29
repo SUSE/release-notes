@@ -20,6 +20,9 @@
         <listitem>
          <para>Network interfaces keep standard names on NVMeoF boot (<link xlink:href="index.html#jsc-PED-15142">jsc#PED-15142</link>)</para>
         </listitem>
+        <listitem>
+         <para>PostgreSQL: update-alternatives is no longer used (<link xlink:href="index.html#jsc-PED-16106">jsc#PED-16106</link>)</para>
+        </listitem>
        </itemizedlist>
       </revdescription>
      </revision>
