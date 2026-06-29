@@ -80,7 +80,11 @@ make serve
 
 `adoc/shared.adoc` holds notes shared across versions using AsciiDoc tags.
 
-**CRITICAL RULE:** Only place notes in `adoc/shared.adoc` if they are actually shared across multiple products or versions. If a note is specific to a single product/version (e.g., SLES 16.1 only), write it as an inline note directly within that product's spec file (e.g., `adoc/sles/version161.adoc`). Never use `shared.adoc` for single-product notes.
+**CRITICAL RULE — INLINE VS SHARED:** Only place notes in `adoc/shared.adoc` if they are shared across *independent codebases or different major version streams* (for example, a note that applies to SLES 15 SP6 AND SLES 16.0).
+
+* **NEVER use `shared.adoc` for notes specific to a single core baseline (e.g., SLES 16.1 only)**, even if the change applies to multiple derived products (like openSUSE Leap 16.1 or SLES for SAP 16.1).
+* **Why?** Derived products inherit the SLES core release notes (such as `adoc/sles/version161.adoc`) directly. Placing the note inline in the SLES spec file automatically shares it with all derived products without needing any `shared.adoc` tags.
+* If a note is specific to a single core/version, always write it as an inline note directly within that core's spec file.
 
 ```asciidoc
 tag::TAGNAME[]
