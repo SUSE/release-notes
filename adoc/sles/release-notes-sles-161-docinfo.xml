@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+      <date>2026-06-29</date>
+      <revdescription>
+       <itemizedlist>
+        <listitem>
+         <para>Network interfaces keep standard names on NVMeoF boot (<link xlink:href="index.html#jsc-PED-15142">jsc#PED-15142</link>)</para>
+        </listitem>
+       </itemizedlist>
+      </revdescription>
+     </revision>
+    <revision>
       <date>2026-06-11</date>
       <revdescription>
        <itemizedlist>

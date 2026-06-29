@@ -120,6 +120,13 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15142]
+=== NVMeoF boot: network interfaces maintain standard names
+
+For root-over-NVMeoF setups, in {productnameshort} 16.0 and prior releases, the network interfaces were renamed to `nbft0`, `nbft1`, and so on.
+In {productnameshort} {this-version}, on new installations, network interfaces keep their standard names.
+
+
 [#jsc-PED-15924]
 === Kernel switches to PREEMPT_LAZY preemption model
 
