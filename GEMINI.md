@@ -78,7 +78,9 @@ make serve
 
 ## Shared notes
 
-`adoc/shared.adoc` holds notes shared across versions using AsciiDoc tags:
+`adoc/shared.adoc` holds notes shared across versions using AsciiDoc tags.
+
+**CRITICAL RULE:** Only place notes in `adoc/shared.adoc` if they are actually shared across multiple products or versions. If a note is specific to a single product/version (e.g., SLES 16.1 only), write it as an inline note directly within that product's spec file (e.g., `adoc/sles/version161.adoc`). Never use `shared.adoc` for single-product notes.
 
 ```asciidoc
 tag::TAGNAME[]
