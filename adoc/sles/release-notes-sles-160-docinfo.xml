@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Support for MS SQL Server 2025 legacy hashing algorithms in OpenSSL 3 (<link xlink:href="index.html#jsc-PED-15721">jsc#PED-15721</link>)</para>
+       </listitem>
+       <listitem>
         <para>Support for NTP configuration in early boot and the Agama installer (<link xlink:href="index.html#jsc-PED-15457">jsc#PED-15457</link>)</para>
        </listitem>
        <listitem>

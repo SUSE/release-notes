@@ -799,6 +799,38 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 
 === Security
 
+[#jsc-PED-15721]
+==== Support for MS SQL Server 2025 legacy hashing algorithms in OpenSSL 3
+
+Microsoft SQL Server 2025 requires legacy hashing algorithms (such as MD2, MD4, and MD5) for functions like `HASHBYTE`.
+To support this, OpenSSL 3 in {productnameshort} is now compiled with the `enable-md2` option.
+Because these algorithms are disabled by default, the OpenSSL legacy provider must be explicitly enabled.
+
+To enable the legacy provider, make the following modifications to `/etc/ssl/openssl.cnf`:
+
+. In the `[provider_sect]` section, ensure that the `legacy` provider is defined:
++
+[source,ini]
+----
+[provider_sect]
+default = default_sect
+legacy = legacy_sect
+----
+
+. Ensure that both default and legacy sections are activated:
++
+[source,ini]
+----
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+----
+
+To verify the providers are active, run the `openssl list -providers` command.
+The output must display both `default` and `legacy` as active.
+
 include::../shared.adoc[tag=jscped-15968,leveloffset=+3]
 
 
