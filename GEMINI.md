@@ -22,6 +22,7 @@ Key entry points:
 ## Editing notes
 
 - **One sentence per line** — required by the style guide
+- **Avoid reader-specific words** — do not refer to specific roles or actors (such as "developers" or "users") as they add no technical value. Keep the text completely objective, high-signal, and focused purely on the technical change and the required action.
 - **Note IDs**: unique per document, format `[#jsc-SLE-1234]`, `[#bsc-00000]`, or `[#jsc-XXX-0000]`
 - **Non-titled notes**: use `// jsc#SLE-1234` comment as fallback
 - **Order within sections**: most important first; new notes go at the top of the section; additions before removals; minor changes and tables at bottom
