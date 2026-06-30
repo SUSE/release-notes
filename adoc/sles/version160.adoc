@@ -1087,6 +1087,11 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-15523
+[#jsc-PED-15523]
+* Prometheus has been removed.
+It was added by accident to {productname} 16.0, but it is unsupported as there is no maintainer and it does not fit the observability story to ship a server component.
+
 // bsc#1254327
 * The filesystem based HA solution for ENSA1/2 central services is not supported. See https://www.suse.com/releasenotes/x86_64/SLE-SAP/15-SP7/index.html#jsc-PED-11566 for more information.
 // jsc#SLE-24335
