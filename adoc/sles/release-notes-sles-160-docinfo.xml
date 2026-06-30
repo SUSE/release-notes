@@ -20,6 +20,9 @@
        <listitem>
         <para>Removal of unsupported Prometheus (<link xlink:href="index.html#jsc-PED-15523">jsc#PED-15523</link>)</para>
        </listitem>
+       <listitem>
+        <para>Network teaming (teamd) removed in favor of NetworkManager bonding (<link xlink:href="index.html#jsc-PED-13286">jsc#PED-13286</link>)</para>
+       </listitem>
       </itemizedlist>
      </revdescription>
     </revision>
