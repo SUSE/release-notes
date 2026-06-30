@@ -138,10 +138,20 @@ This section lists features and packages that were removed from {productname} or
 // For more information about all package and module changes since the last version, see <<intro-package-changes>>.
 
 
-// [#removed]
-// === Removed features and packages
+[#removed]
+=== Removed features and packages
 
-// The following features and packages have been removed in this release.
+The following features and packages have been removed in this release.
+
+// jsc#PED-15527
+* The `qib` driver has been removed.
+
+// jsc#PED-15579
+* The `opa-fmgui` package has been removed.
+
+// jsc#PED-15368
+* The `dmraid` package (Device-Mapper Software RAID Support Tool) has been removed.
+Use `mdadm` instead to manage and monitor software RAID devices.
 
 
 [#deprecated]
@@ -154,11 +164,5 @@ This section lists features and packages that were removed from {productname} or
 ////
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
-
-// jsc#PED-15579
-* The `opa-fmgui` package has removed..
-// jsc#PED-15368
-* The `dmraid` package (Device-Mapper Software RAID Support Tool) has been removed.
-Use `mdadm` instead to manage and monitor software RAID devices.
 
 // ===================================================================
