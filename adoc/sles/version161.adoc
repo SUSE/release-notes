@@ -273,4 +273,6 @@ This is because the `edk2` upstream community is ending support for IA-32 and AA
 // jsc#PED-15368
 * The `dmraid` package (Device-Mapper Software RAID Support Tool) has been deprecated in {productname} 16.1 and will be dropped in {productname} 16.2.
 Use `mdadm` instead to manage and monitor software RAID devices.
+// jsc#PED-15527
+* The `qib` driver has been deprecated in {productname} 16.1 and will be removed in {productname} 16.2.
 // ===================================================================
