@@ -25,7 +25,7 @@ This change may affect users with RSA host keys under 2048 bits for server conne
 
 To check for affected keys:
 
-[source,shell]
+[source,bash]
 ----
 grep ssh-rsa ~/.ssh/known_hosts | ssh-keygen -lf -
 ----
@@ -42,7 +42,7 @@ After upgrade, connections to hosts with 1024 bit keys will fail if no alternati
 Users must connect to the host with a 1024-bit RSA key after updating to this version and before upgrading to SP6.
 . Or, manually add host keys:
 +
-[source,shell]
+[source,bash]
 ----
 ssh-keyscan hostname >> ~/.ssh/known_hosts
 ----
@@ -55,14 +55,14 @@ Note that this method adds keys without verification; use only if manual host ve
 [loweralpha]
 . Either temporarily use insecure algorithms by setting the crypto policy to LEGACY:
 +
-[source,shell]
+[source,bash]
 ----
 sudo update-crypto-policies --set LEGACY
 ----
 +
 Then, revert to the default secure policy after connecting:
 +
-[source,shell]
+[source,bash]
 ----
 sudo update-crypto-policies --set DEFAULT
 ----

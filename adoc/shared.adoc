@@ -190,7 +190,7 @@ By default, SSSD runs as root with the `sssd` supplementary group, which
 provides access to SSSD-owned files. To switch to unprivileged mode, create
 a systemd service override:
 
-[source,shell]
+[source,bash]
 ----
 sudo systemctl edit sssd.service
 ----
@@ -207,7 +207,7 @@ SupplementaryGroups=
 
 Then reload and restart the service:
 
-[source,shell]
+[source,bash]
 ----
 sudo systemctl daemon-reload
 sudo systemctl restart sssd

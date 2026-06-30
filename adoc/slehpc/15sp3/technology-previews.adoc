@@ -38,7 +38,7 @@ After booting the 64K kernel, any swap partitions need to re-initialized to be u
 To do this, run the `swapon` command with the `--fixpgsz` parameter on the swap partition.
 Note that this process deletes data present in the swap partition (for example, suspend data).
 In this example, the swap partition is on `/dev/sdc1`:
-[source,shell]
+[source,bash]
 swapon --fixpgsz /dev/sdc1
 ====
 
