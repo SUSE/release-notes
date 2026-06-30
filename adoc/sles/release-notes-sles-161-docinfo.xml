@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14664">Immutable mode is unsupported for SAP workloads</link> (jsc#PED-14664)</para>
+      </listitem>
+      <listitem>
        <para>Added qib driver deprecation notice to <link xlink:href="index.html#deprecated">Deprecated features and packages</link> (jsc#PED-15527)</para>
       </listitem>
      </itemizedlist>

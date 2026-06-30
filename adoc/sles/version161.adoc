@@ -120,6 +120,19 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-14664]
+=== Immutable mode is unsupported for {sap} workloads
+
+Running of the {sap} software stack is not supported in immutable mode:
+
+* {sap}-specific packages including `saptune` and `Trento` are not supported in immutable mode.
+* {sap} patterns are not supported in immutable mode.
+* Ansible automation for {sap} is not supported in immutable mode.
+* Execution of {hana}, {s4hana} and {nw} is not supported in immutable mode.
+
+Note that this applies to traditional software.
+{sap} software running in containers (like {sap} Edge Integration Cell) is supported in immutable mode.
+
 [#jsc-PED-16106]
 === `update-alternatives` no longer used for PostgreSQL
 
