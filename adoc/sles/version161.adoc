@@ -182,10 +182,49 @@ include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
 
 Apart from {selinux}, we have also enabled:
 
-* Yama - collects system-wide DAC security protections that are not handled by the core kernel itself
-* Landlock - scoped access-control (that is, sandboxing)
-* Lockdown - kernel image access prevention feature
+* Yama
+* Landlock
+* Lockdown
 * other virtual ones like bpf, ima, evm, capability
+
+==== Yama
+
+Yama is a global framework that collects system-wide DAC security protections that are not handled by the core kernel itself.
+Individual processes can disable Yama for themselves.
+The enablement of Yama disables the `ptrace` mechanism of processes by default, except in the following cases:
+
+* Processes explicitly allow it themselves via `prctl(PR_SET_PTRACER)`.
+* The tracer is a parent of the traced process (for example, when running `gdb program`).
+
+Global control is managed via the `sysctl` parameter `/proc/sys/kernel/yama/ptrace_scope`, which sits on top of standard `ptrace` permissions.
+It supports the following levels:
+
+* `0`: Normal, classical `ptrace` is possible.
+* `1`: Only a parent process can be traced.
+* `2`: Only administrators with the `CAP_SYS_PTRACE` capability can use `ptrace`.
+* `3`: No processes may be traced with `ptrace`.
+Once this level is set, a system reboot is required to enable tracing again.
+
+To enable `ptrace` system-wide again after the next reboot, install the `aaa_base-yama-enable-ptrace` package.
+
+==== Landlock
+
+Landlock is a local security framework where processes can voluntarily confine their own actions.
+It provides scoped access-control (sandboxing) limited to file system and socket actions.
+Refer to the `landlock` manual pages for more details.
+
+==== Lockdown
+
+Lockdown is a kernel-based lockdown method.
+The kernel supports three lockdown states:
+
+* `none`
+* `integrity`: Maximum integrity protection, which avoids any kind of outside code injection into the kernel or physical RAM.
+* `confidentiality`: Same as `integrity`, but additionally prevents any extraction of information (even by the `root` user) from other processes or physical RAM.
+
+The lockdown level can be set during boot.
+By default, the level is set to `none`, but for Secure Boot, `integrity` is the lowest default level.
+During runtime, the lockdown level can only be increased, and cannot be decreased.
 
 
 [#jsc-PED-14304]

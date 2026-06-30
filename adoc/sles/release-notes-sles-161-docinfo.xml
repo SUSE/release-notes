@@ -20,6 +20,9 @@
       <listitem>
        <para>Added qib driver deprecation notice to <link xlink:href="index.html#deprecated">Deprecated features and packages</link> (jsc#PED-15527)</para>
       </listitem>
+      <listitem>
+       <para>Expanded details on <link xlink:href="index.html#jsc-PED-15636">Multiple LSMs enabled by default</link> (jsc#PED-15636)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
    </revision>
