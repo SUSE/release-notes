@@ -120,6 +120,13 @@ Full support is planned for a future release.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15600]
+=== New GCC warnings for Year 2038 (Y2K38) issues
+
+To help identify and mitigate Year 2038 (Y2K38) 32-bit `time_t` rollover issues, GCC now provides new compile-time warnings.
+These warnings highlight legacy 32-bit timestamp interactions in C/C++ code (such as file or network I/O using `int` types).
+It is recommended to review these warnings and update affected code to use 64-bit structures where necessary.
+
 [#jsc-PED-14664]
 === Immutable mode is unsupported for {sap} workloads
 
