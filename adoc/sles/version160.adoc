@@ -138,6 +138,19 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// jsc#PED-13286
+// bsc#1245474
+[#jsc-PED-13286]
+=== Network teaming (`teamd`) removed in favor of NetworkManager bonding
+
+Network teaming, provided by the `teamd`, `libteam-tools`, and `NetworkManager-team` packages, has been removed and is no longer supported.
+This change aligns with upstream trends, as the upstream `libteam` project has been inactive for several years.
+
+To configure link aggregation such as Link Aggregation Control Protocol (LACP/IEEE 802.3ad) in SLES 16, use NetworkManager's built-in bonding capabilities instead.
+NetworkManager bonding provides equivalent performance, load balancing, and failover capabilities.
+
+For more information and detailed configuration instructions, see the https://documentation.suse.com/sles/16.0/html/SLES-networkmanager-nmcli/index.html#migrate-teamd[NetworkManager Guide].
+
 [#bsc-1261224]
 === Boot parameter changes
 
@@ -1096,6 +1109,13 @@ This section lists features and packages that were removed from {productname} or
 === Removed features and packages
 
 The following features and packages have been removed in this release.
+
+// jsc#PED-13286
+// bsc#1245474
+* Network teaming has been removed.
+This includes the `teamd`, `libteam-tools`, and `NetworkManager-team` packages.
+Use NetworkManager's built-in bonding capabilities instead.
+For more information, see <<jsc-PED-13286>>.
 
 // jsc#PED-15523
 [#jsc-PED-15523]
