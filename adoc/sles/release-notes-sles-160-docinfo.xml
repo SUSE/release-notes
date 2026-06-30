@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Support for NTP configuration in early boot and the Agama installer (<link xlink:href="index.html#jsc-PED-15457">jsc#PED-15457</link>)</para>
+       </listitem>
+       <listitem>
         <para>Removal of unsupported Prometheus (<link xlink:href="index.html#jsc-PED-15523">jsc#PED-15523</link>)</para>
        </listitem>
       </itemizedlist>

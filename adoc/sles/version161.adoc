@@ -181,6 +181,16 @@ For more information, see https://agama-project.github.io/docs/user/reference/pr
 RAID support in the installer Web UI is planned for a future release.
 
 
+[#jsc-PED-15457]
+=== Support for NTP configuration in early boot and the Agama installer
+
+Network time synchronization is now supported during both the early boot phase and the installation process.
+Specifying an NTP server IP address or hostname using the new `rd.ntp=<server>` kernel command-line parameter enables time synchronization before the installer launches, ensuring accurate log timestamps and correct HTTPS certificate validation.
+The Agama installer supports NTP configuration through a dedicated `ntp` section in the installer profile or via input fields in the user interface.
+Legacy AutoYaST `ntp-client` configurations are automatically converted into the native `ntp` configuration block on profile import.
+The configured NTP settings are written to the target system to persist after installation.
+
+
 include::../shared.adoc[tags=jscped-15932,leveloffset=+2]
 
 include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
