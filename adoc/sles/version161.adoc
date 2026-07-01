@@ -117,6 +117,17 @@ The following limitations apply to this technology preview:
 
 Full support is planned for a future release.
 
+// jsc#PED-13609
+// jsc#PED-15556
+[#jsc-PED-15556]
+== Included packages and quarterly updates
+
+Both the online medium and the full medium are the same for all SUSE Linux {this-version} products and only need to be downloaded once.
+As the full medium includes all packages of the whole SUSE Linux {this-version} family, be aware that depending on your subscription the list of packages supported by {suse} varies.
+You can check packages included in products on https://scc.suse.com.
+
+Installation media, VM images and public cloud images are usually refreshed every 3 months (Quarterly Updates).
+
 
 == Changes affecting all architectures
 
