@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>New <literal>kdump</literal> configuration utility and options (<link xlink:href="index.html#jsc-PED-12454">jsc#PED-12454</link>)</para>
+       </listitem>
+       <listitem>
         <para>Removal of HPLIP (<link xlink:href="index.html#removed">jsc#PED-11281</link>)</para>
        </listitem>
        <listitem>

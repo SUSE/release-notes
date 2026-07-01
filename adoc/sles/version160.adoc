@@ -160,6 +160,25 @@ This change is especially important for netbooting, for example on {ppc64le} and
 
 For more information, see https://documentation.suse.com/sles/16.0/html/SLES-PXE-server/index.html#sles-pxe-server-backward-compatibility-with-sle-15[Backward Compatibility with SLE 15].
 
+
+[#jsc-PED-12454]
+=== New `kdump` configuration utility and options
+
+The `kdumptool` utility has been extended with the `commandline` subcommand to manage `kdump`-related kernel command line options (such as `crashkernel=` and `fadump=`).
+The subcommand accepts the following options:
+
+* `-c`: Check if the current options found in `/proc/cmdline` are equal to the expected values.
+* `-u`: Update the bootloader configuration with the expected values.
+* `-d`: Delete `kdump`-related options from the bootloader configuration.
+
+Additionally, two new configuration options are introduced in `/etc/sysconfig/kdump`:
+
+* `KDUMP_CRASHKERNEL`: Specifies the `crashkernel` values, defaulting to `auto` (which calculates the required reservation size automatically).
+* `KDUMP_UPDATE_BOOTLOADER`: Controls whether the bootloader configuration is updated automatically, defaulting to `true`.
+
+By default, enabling the `kdump` systemd service automatically updates the bootloader on the first boot, making `kdump` fully functional on the second boot.
+To enable `kdump` immediately on the next boot, manually execute `kdumptool commandline -u` after enabling the service.
+
 // jsc#PED-13633
 include::../shared.adoc[tags=jscped-13633,leveloffset=+2]
 
