@@ -1143,9 +1143,8 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages have been removed in this release.
 
 // jsc#PED-11281
-[#jsc-PED-11281]
 * The `hplip` package has been removed.
-The upstream project is no longer active.
+The upstream project is no longer active (jsc#PED-11281).
 
 // jsc#PED-13286
 // bsc#1245474
