@@ -744,6 +744,30 @@ Legacy AutoYaST `ntp-client` configurations are automatically converted into the
 The configured NTP settings are written to the target system to persist after installation.
 
 
+[#jsc-PED-12534]
+=== Simpler and more secure building of containers
+
+Previously, Podman and Docker on SUSE Linux Enterprise were configured and patched to automatically inject the `SCCcredentials` file from the host into containers at both build time and runtime.
+In {productname} {this-version}, this downstream-only patching has been removed.
+The upstream-documented method of injecting secrets at build time only is now required.
+This change also enables the shipping of the `buildx` backend for Docker.
+
+To inject secrets at build time, use a specific `RUN` statement in the Dockerfile:
+
+[source,dockerfile]
+----
+# Use the registration secret from the host to install a SLES-specific package
+RUN --mount=type=secret,id=SCCcredentials zypper -n install kernel-default
+----
+
+Pass the secret on the command line when building:
+
+[source,bash]
+----
+docker buildx build --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcredentials,type=file .
+----
+
+
 == {x64}-specific changes
 
 Information in this section applies to the {x64} architecture.

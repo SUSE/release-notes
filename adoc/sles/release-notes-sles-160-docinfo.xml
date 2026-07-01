@@ -17,6 +17,9 @@
        <listitem>
         <para>Removal of HPLIP (<link xlink:href="index.html#removed">jsc#PED-11281</link>)</para>
        </listitem>
+       <listitem>
+        <para>Simpler and more secure building of containers (<link xlink:href="index.html#jsc-PED-12534">jsc#PED-12534</link>)</para>
+       </listitem>
       </itemizedlist>
      </revdescription>
     </revision>
