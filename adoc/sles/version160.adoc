@@ -787,6 +787,13 @@ docker buildx build --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcr
 ----
 
 
+[#jsc-PED-13243]
+=== Secure Boot key size increased to 3072-bit RSA
+
+The Secure Boot key has been upgraded from a 2048-bit to a 3072-bit RSA key.
+This change ensures compliance with current Common Criteria (CC) and NIAP PP_OS requirements.
+
+
 == {x64}-specific changes
 
 Information in this section applies to the {x64} architecture.
