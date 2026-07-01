@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Removal of insecure NTLM authentication support (<link xlink:href="index.html#jsc-PED-12961">jsc#PED-12961</link>)</para>
+       </listitem>
+       <listitem>
         <para>Secure Boot key size increased to 3072-bit RSA (<link xlink:href="index.html#jsc-PED-13243">jsc#PED-13243</link>)</para>
        </listitem>
        <listitem>

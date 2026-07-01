@@ -849,6 +849,14 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 
 === Security
 
+[#jsc-PED-12961]
+==== Insecure NTLM authentication support removed
+
+NTLM is no longer a secure authentication protocol because it uses MD4 and single-DES.
+MD4 has been broken, and single-DES has too small a key size to be considered secure against brute-force attacks.
+Support for NTLM authentication has been disabled where possible.
+This change affects packages such as `libgsasl` and `curl` (except for `curl-mini`) (jsc#PED-12961).
+
 [#jsc-PED-15721]
 ==== Support for MS SQL Server 2025 legacy hashing algorithms in OpenSSL 3
 
@@ -1191,6 +1199,10 @@ This section lists features and packages that were removed from {productname} or
 === Removed features and packages
 
 The following features and packages have been removed in this release.
+
+See also:
+
+* <<jsc-PED-12961>>
 
 // jsc#PED-11281
 * The `hplip` package has been removed.
