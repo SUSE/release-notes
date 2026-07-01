@@ -23,8 +23,9 @@ Key entry points:
 
 - **One sentence per line** — required by the style guide
 - **Avoid reader-specific words** — do not refer to specific roles or actors (such as "developers" or "users") as they add no technical value. Keep the text completely objective, high-signal, and focused purely on the technical change and the required action.
-- **Note IDs**: unique per document, format `[#jsc-SLE-1234]`, `[#bsc-00000]`, or `[#jsc-XXX-0000]`
-- **Non-titled notes**: use `// jsc#SLE-1234` comment as fallback
+- **Note IDs**: unique per document, format `[#jsc-SLE-1234]`, `[#bsc-00000]`, or `[#jsc-XXX-0000]`. Only use `[#id]` tags (anchors) for titled sections. Do NOT use them on single lines or list items (like bullet points), as they do not generate a clickable anchor in the rendered output.
+- **Non-titled notes**: use the comment `// jsc#SLE-1234` above the note as a fallback, and append the issue identifier `(jsc#SLE-1234)` or `(bsc#1234567)` in parentheses to the end of the text.
+- **Multiple issue references**: since a section can only have a single `[#id]` tag, use one identifier for the section ID and append the additional identifiers inline in parentheses at the end of the text.
 - **Order within sections**: most important first; new notes go at the top of the section; additions before removals; minor changes and tables at bottom
 - **One commit per note** — each change should be its own commit referencing the issue
 - **Update revdate** — always update `:revdate:` in the master `.adoc` file (the `MAIN=` from the DC config file). Use today's date (`YYYY-MM-DD`)
