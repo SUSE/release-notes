@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Default log levels for <literal>dracut</literal> have changed (<link xlink:href="index.html#jsc-PED-12923">jsc#PED-12923</link>)</para>
+       </listitem>
+       <listitem>
         <para>Removal of insecure NTLM authentication support (<link xlink:href="index.html#jsc-PED-12961">jsc#PED-12961</link>)</para>
        </listitem>
        <listitem>

@@ -138,6 +138,8 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+include::../shared.adoc[tags=jscped-12923,leveloffset=+2]
+
 // jsc#PED-13286
 // bsc#1245474
 [#jsc-PED-13286]

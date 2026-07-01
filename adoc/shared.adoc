@@ -236,3 +236,15 @@ docker://, oci://, obs://) are configurable via the format parameter.
 
 Example format syntax: `format="oci:qcow2:docker://registry.example.com/kubevirt-disk:latest"`
 end::jscped-15932[]
+
+tag::jscped-12923[]
+[#jsc-PED-12923]
+= Default log levels for dracut have changed
+
+The default log levels for `dracut` have been adjusted to reduce console verbosity while maintaining full troubleshooting details in the system log.
+
+* Standard/console output log level has been reduced from `4` (info) to `3` (warnings).
+Standard boots and package operations (such as `zypper` updates) will now print only warnings and errors to the terminal.
+* Syslog/journal log level has been increased from `0` (suppress) to `4` (info).
+This ensures that detailed system initialization logs continue to be written to the system journal and remain fully accessible for diagnostics.
+end::jscped-12923[]
