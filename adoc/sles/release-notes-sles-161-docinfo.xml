@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-03</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>SAP patterns updated (<link xlink:href="index.html#jsc-PED-15282">jsc#PED-15282</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-01</date>
     <revdescription>
      <itemizedlist>

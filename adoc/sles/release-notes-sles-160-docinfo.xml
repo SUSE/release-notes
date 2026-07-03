@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>SAP patterns updated (<link xlink:href="index.html#jsc-PED-15282">jsc#PED-15282</link>)</para>
+       </listitem>
+       <listitem>
         <para>Centralized kernel hardening activation via <literal>tuned</literal> profile (<link xlink:href="index.html#jsc-PED-12110">jsc#PED-12110</link>)</para>
        </listitem>
       </itemizedlist>

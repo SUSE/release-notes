@@ -236,3 +236,14 @@ docker://, oci://, obs://) are configurable via the format parameter.
 
 Example format syntax: `format="oci:qcow2:docker://registry.example.com/kubevirt-disk:latest"`
 end::jscped-15932[]
+
+tag::jscped-15282[]
+[#jsc-PED-15282]
+= {sap} patterns updated
+
+{sap} installation patterns have been updated to optimize and simplify the installation process.
+
+* The `libldap-sap-compat` package is no longer included in any {sap} patterns, as it is no longer required by default.
+* The `libatomic` package has been added to the {sap} base pattern on {sles} to simplify the installation instructions for {hana}.
+end::jscped-15282[]
+

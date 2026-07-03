@@ -134,6 +134,9 @@ Installation media, VM images and public cloud images are usually refreshed ever
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
+// jsc#PED-15282
+include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
+
 [#jsc-PED-15600]
 === New GCC warnings for Year 2038 (Y2K38) issues
 
