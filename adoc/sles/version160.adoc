@@ -121,6 +121,48 @@ As technology preview, `lklfuse` is available in {productname} {this-version}.
 Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` currently only supports a single device per mount.
 
 
+[#upgrade-checklist]
+== Upgrade & Migration Quick Checklist
+
+Before upgrading to {productname} {this-version}, review the following checklist of potential migration issues and preparation steps.
+
+=== Before upgrading
+
+* *Network Teaming:* Network teaming (`teamd`) has been removed.
++
+Migrate configurations to NetworkManager bonding.
++
+See <<jsc-PED-13286>>.
+
+* *Boot Parameters:* The legacy `install=` boot parameter is no longer supported.
++
+See <<bsc-1261224>>.
+
+=== During upgrade
+
+* *Installer Requirements:* Running a virtual image on QEMU requires the `-cpu host` argument due to x86-64-v2 microarchitecture requirements.
++
+See <<bsc-1240945>>.
+
+=== After upgrading
+
+* *Root Login:* Remote password-based root login is disabled by default.
++
+Configure an SSH key for the root account during installation to enable the `sshd` service.
++
+See <<bsc-1240889>>.
+
+* *Service Configuration Upgrades:*
+  ** *Dovecot 2.4:* Dovecot has been upgraded to version 2.4.
++
+Review and update configurations manually.
++
+See <<jsc-DOCTEAM-1714>>.
+  ** *cgroup v2:* Only cgroups v2 are supported by default.
++
+See <<jsc-PED-6311>>.
+
+
 == Changes affecting all architectures
 
 // jsc#PED-12605

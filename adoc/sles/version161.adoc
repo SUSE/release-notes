@@ -128,6 +128,29 @@ You can check packages included in products on https://scc.suse.com.
 
 Installation media, VM images and public cloud images are usually refreshed every 3 months (Quarterly Updates).
 
+[#upgrade-checklist]
+== Upgrade & Migration Quick Checklist
+
+Before upgrading to {productname} {this-version}, review the following checklist of potential migration issues and preparation steps.
+
+=== Before upgrading
+
+* *Immutable Mode:* Immutable mode is unsupported for SAP workloads.
++
+See <<jsc-PED-14664>>.
+
+=== During upgrade
+
+* *Installer Configuration:* Ignition and Combustion tools are now included in the live installer image.
++
+See <<jsc-PED-16271>>.
+
+=== After upgrading
+
+* *Database Migration:* The `update-alternatives` mechanism is no longer used for PostgreSQL.
++
+See <<jsc-PED-16106>>.
+
 
 == Changes affecting all architectures
 
