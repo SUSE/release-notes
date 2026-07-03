@@ -151,6 +151,19 @@ NetworkManager bonding provides equivalent performance, load balancing, and fail
 
 For more information and detailed configuration instructions, see the https://documentation.suse.com/sles/16.0/html/SLES-networkmanager-nmcli/index.html#migrate-teamd[NetworkManager Guide].
 
+[#jsc-PED-12110]
+=== Centralized kernel hardening activation via `tuned` profile
+
+Kernel hardening configurations accessible through the kernel command line have been enabled.
+To mitigate the risk of performance degradation, their default state is disabled wherever feasible.
+This establishes a baseline performance level while providing an option to activate enhanced security measures.
+
+A dedicated `tuned-profiles-security` package provides a `tuned-hardening` profile.
+This profile serves as a centralized mechanism to enable all kernel hardening features simultaneously, eliminating the need to manually configure each option.
+It also simplifies testing and benchmarking of the performance impact of these hardening measures.
+
+Enabling this profile may result in performance degradation in certain use cases, such as network workloads.
+
 [#bsc-1261224]
 === Boot parameter changes
 

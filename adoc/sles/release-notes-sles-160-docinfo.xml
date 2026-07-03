@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-07-03</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Centralized kernel hardening activation via <literal>tuned</literal> profile (<link xlink:href="index.html#jsc-PED-12110">jsc#PED-12110</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-01</date>
      <revdescription>
       <itemizedlist>
