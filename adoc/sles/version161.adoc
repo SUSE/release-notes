@@ -160,6 +160,12 @@ See <<jsc-PED-16106>>.
 // jsc#PED-15282
 include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 
+// jsc#PED-15576
+[#jsc-PED-15576]
+=== IO scheduler distribution default changed
+
+The distribution default has changed for a certain set of block devices: rotating disks that have only a single I/O queue. On {productnameshort}, such devices would previously be driven by the `bfq` I/O scheduler by default. Now we are using the same default as the kernel, which is `mq-deadline` for most devices, and `none` for some.
+
 [#jsc-PED-15600]
 === New GCC warnings for Year 2038 (Y2K38) issues
 
