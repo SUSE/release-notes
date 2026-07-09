@@ -146,7 +146,22 @@ else
   exit
 fi
 
-$osc_command vc
+# Pre-fill the changelog entry from upnews (git-log based), then open the
+# editor to review/tweak it. Falls back to a blank entry if the source git
+# checkout or a changelog cannot be found.
+srcrepo="$PWD/$(grep 'url' _service | sed -r -e 's/^[^>]+>([^<]+)<.+$/\1/i' -e 's/^.*\///' -e 's/\.git$//')"
+pkgver="$(ls *.tar.{bz2,gz,xz,lzma} 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]{8}' | head -1)"
+vc_prefill="$(mktemp)"
+if [[ -d "$srcrepo/.git" ]]; then
+  ( cd "$srcrepo" && "$mydir/upnews" default changesonly "$pkgver" ) > "$vc_prefill" 2>/dev/null
+fi
+if [[ -s "$vc_prefill" ]]; then
+  $osc_command vc -F "$vc_prefill"
+  $osc_command vc -e
+else
+  $osc_command vc
+fi
+rm -f "$vc_prefill"
 
 echo -e "\nStatus:"
 $osc_command st

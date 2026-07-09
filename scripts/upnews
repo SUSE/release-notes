@@ -68,7 +68,16 @@ if [[ "$1" == 'noninteractive' ]]; then
   noninteractivebuild=1
 fi
 
-if [[ "$noninteractivebuild" -eq 0 ]]; then
+# changesonly: print the generated changelog section to stdout and exit,
+# without touching NEWS, the editor, or git. Optional 2nd arg overrides the
+# version string (e.g. to match an existing package/tarball version).
+changesonly=0
+if [[ "$1" == 'changesonly' ]]; then
+  changesonly=1
+  changesver="$2"
+fi
+
+if [[ "$noninteractivebuild" -eq 0 ]] && [[ "$changesonly" -eq 0 ]]; then
   [[ "$EDITOR" = '' ]] && { EDITOR='vi'; warn '$EDITOR is not defined, using vi out of pure spite.'; }
 
   if [[ $(git diff --shortstat 2> /dev/null | wc -l) -gt 0 ]] || \
@@ -131,7 +140,7 @@ fi
 newsmeta=
 news=
 
-newsmeta+="$versionprefix.$date"
+newsmeta+="${changesver:-$versionprefix.$date}"
 if [[ $bug == 'NORELEASE' ]]; then
   date=$(date '+%Y-%m-%d %H:%M %Z')
   newsmeta+=" (built at ${date}, as yet unreleased changes)"
@@ -172,6 +181,11 @@ news=$( \
   fold -w 71 -s | \
   sed -r -e 's/^([^- ])/  \1/g' -e 's/ +$//' \
   )
+
+if [[ $changesonly -eq 1 ]]; then
+  echo -e "- $newsmeta$news"
+  exit 0
+fi
 
 oldnews=$(cat NEWS)
 
