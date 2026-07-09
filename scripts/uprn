@@ -44,6 +44,34 @@ if [[ $1 == '--help' ]] || [[ $1 == '-h' ]] || [[ $1 == 'help' ]]; then
   exit
 fi
 
+# Optional: branch and check out the package first, then continue in its dir.
+#   uprn co <PROJECT> <PACKAGE> [pre] [noninteractive]
+if [[ $1 == 'co' ]]; then
+  coproject="$2"
+  copackage="$3"
+  if [[ -z "$coproject" || -z "$copackage" ]]; then
+    echo "Usage: uprn co <PROJECT> <PACKAGE> [pre] [noninteractive]"
+    exit 1
+  fi
+  shift 3
+  echo "Branching and checking out $copackage from $coproject ..."
+  bco_out="$($osc_command bco "$coproject" "$copackage" 2>&1)"
+  echo "$bco_out"
+  copath="$(echo "$bco_out" | grep -oP '^A\s+\K\S+/'"$copackage"'$' | head -1)"
+  if [[ -z "$copath" || ! -d "$copath" ]]; then
+    echo "(meh) Could not determine the checkout directory for $copackage."
+    exit 1
+  fi
+  cd "$copath" || exit 1
+  # Normalize the source URL in _service to an https:// gitlab URL (older,
+  # unsupported packages carry a protocol-less or ssh-style URL).
+  sed -i -E '/<param name="url">/{
+    s#git@([^:<]+):#https://\1/#;
+    s#(<param name="url">)ssh://(git@)?#\1https://#;
+    s#(<param name="url">)((www\.)?gitlab)#\1https://\2#;
+  }' _service
+fi
+
 if [[ $1 == 'pre' ]]; then
   pre=1
   shift
@@ -186,13 +214,32 @@ pkgdir=$(pwd)
 pkg=$(echo "$pkgdir" | grep -oP '[^/]+$')
 mybranch=$(echo "$pkgdir" | grep -oP '[^/]+/[^/]+$' | grep -oP '^[^/]+')
 upbranch=$(echo "$mybranch" | sed -r 's/home:[^:]+:branches://')
-reqline="$osc_command $req $mybranch $pkg $upbranch"
 
+# Submit the request. `osc sr` opens $EDITOR pre-filled with the changelog to
+# confirm; capture the created request id and append it to the day's log.
+submitlog="$(mktemp)"
 if [[ $noninteractivebuild -eq 1 ]]; then
-  $reqline
+  submitmsg="$(cat *.changes | head -4 | tail -1 | sed -r 's_^[- ]+__')"
+  $osc_command sr -m "$submitmsg" | tee "$submitlog"
+elif command -v script >/dev/null 2>&1; then
+  # Run in a pty so $EDITOR still works while we capture the output.
+  script -qefc "$osc_command sr" "$submitlog"
 else
-  echo -e "\n\nSuggested command line for OBS request:\n  ${reqline}"
+  $osc_command sr | tee "$submitlog"
 fi
+
+reqid="$(grep -oiP 'created request id \K[0-9]+' "$submitlog" | head -1)"
+rm -f "$submitlog"
+
+if [[ -n "$reqid" ]]; then
+  label="$(echo "$upbranch" | sed -r -e 's/^SUSE://' -e 's/:.*$//' -e 's/-/ /g')"
+  updatefile="$HOME/work/package-updates-$(date +%F).txt"
+  echo "$label:$reqid" >> "$updatefile"
+  echo -e "\n(hey) Recorded request $reqid as '$label' in $updatefile"
+else
+  echo -e "\n(aem) Could not capture a request id from 'osc sr' — record it manually." >&2
+fi
+
 # - According to the man page, `osc priorize -m 'Explanatory message'` is supported but I can't use it, so don't suggest it.
 # - Priorities that can be set are [low|moderate|important|critical], but "important" is the only one that is really relevant
-[[ $req == 'mr' ]] && echo -e "\nIf this is an important submission, prioritize it after making the request:\n  $osc_command rq priorize REQUEST_ID important"
+[[ -n "$reqid" ]] && echo -e "If this is an important submission, prioritize it:\n  $osc_command rq priorize $reqid important"
