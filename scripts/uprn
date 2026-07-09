@@ -1,0 +1,183 @@
+#!/bin/bash
+# Simplifies routine release notes package updates in OBS/IBS
+#
+# 1. Make sure we use the right version of osc/the right osc alias.
+#    The default is `osc`. If you are using, e.g. `iosc` instead, tell the
+#    tool with a config file:
+#      # echo 'osc_command=iosc' > /path/to/uprn-command/uprn.conf"
+#
+# 2. (optional) You can also use the config file to select a different set of
+#    sanity checks to run before continuing with the package:
+#      # echo 'enabled_checks="desktop-no-exist xsl-diff"' > \
+#        /path/to/uprn-command/uprn.conf"
+#
+# Usage:
+#   (1) uprn                          # Update repo, generate command for a maintenance request
+#                                       at the end
+#   (2) uprn pre                      # Update repo, generate command for a service request
+#                                       at the end
+#   (3) uprn (pre) noninteractive     # Update the repo, generate command for maintenance/service request,
+#                                       commit, send request
+#   (4) uprn --help                   # Help screen
+
+me="$(test -L $(realpath $0) && readlink $(realpath $0) || echo $(realpath $0))"
+mydir="$(dirname $me)"
+config="$mydir/uprn.conf"
+
+osc_command="osc"
+
+# possible values: desktop-no-exist xsl-diff recode service jobs
+enabled_checks="desktop-no-exist xsl-diff recode service cc4"
+
+# Allow using iosc, etc.
+test -s $config && . $config || true
+
+enabled_checks=" $enabled_checks "
+function check_enabled() {
+  if [[ $(echo "$enabled_checks" | grep -oP " $1 ") ]]; then
+    echo "yes"
+  fi
+}
+
+if [[ $1 == '--help' ]] || [[ $1 == '-h' ]] || [[ $1 == 'help' ]]; then
+  sed -rn '/#!/{n; p; :loop n; p; /^[ \t]*$/q; b loop}' $0 | sed -r 's/^# ?//'
+  exit
+fi
+
+if [[ $1 == 'pre' ]]; then
+  pre=1
+  shift
+fi
+
+noninteractivebuild=0
+if [[ "$1" == 'noninteractive' ]]; then
+  noninteractivebuild=1
+fi
+
+req='mr'
+if [[ $pre -eq 1 ]] || [[ $1 == 'init' ]]; then
+  req='sr'
+fi
+
+[[ ! -f '.osc/_package' ]] && { echo "This does not look like an OBS package directory."; exit 1; }
+
+# Checks to help do away with some legacy packaging issues.
+
+echo -e "Common packaging issues:\n"
+
+quitearly=0
+if [[ $(check_enabled 'cc4') ]] && [[ $(grep -P 'License[ \t]*:.*3.0.*' *.spec 2>/dev/null) ]] && [[ ! $(pwd | grep -oP '([-_:]1[12][-_:]|[-_:]15(-SP1)?:)') ]]; then
+  echo "+ License value is still a CC 3.0 license instead of a CC 4.0 license."
+  echo "  - Fix the spec file."
+  quitearly=1
+fi
+if [[ $(check_enabled 'desktop-no-exist') ]] && [[ $(ls *.desktop 2>/dev/null) ]] && [[ ! $(pwd | grep -oP '[-_:]1[12][-_:]') ]]; then
+  echo "+ There is a desktop file. Remove it."
+  echo "  - Fix the spec file."
+  quitearly=1
+fi
+if [[ $(check_enabled 'xsl-diff') ]] && ([[ -f 'yast.xsl' ]] || [[ -f 'tmp.diff' ]]); then
+  echo "+ There are unnecessary tmp.diff/yast.xsl files."
+  echo "  - Remove the files tmp.diff and yast.xsl."
+  echo "  - Fix the .spec file."
+  quitearly=1
+fi
+if [[ $(check_enabled 'recode') ]] && [[ $(grep -i '^ *buildrequires' *.spec | grep -i 'recode') ]] && [[ ! $(pwd | grep -oP '[-_:]11[-_:]') ]]; then
+  echo "+ Recode is required needlessly."
+  echo "  - Fix the .spec file."
+  quitearly=1
+fi
+if [[ $(check_enabled 'service') ]] && [[ ! $(pwd | grep '/Documentation:/?Auto/') ]] && [[ $(xmllint --xpath '//service/@mode[not(. = "disabled")]' _service 2> /dev/null) ]] ; then
+  echo "+ Service runs are not 'disabled'. This creates unnecessary requests when committing."
+  echo "  - Fix the _service file: Make sure <service>s are set to 'disabled'."
+  quitearly=1
+fi
+if [[ $(check_enabled 'jobs') ]] && [[ $(grep '^ *make' *.spec) ]] && [[ ! $(grep '^ *make' *.spec | grep -P -- '-j *[1-9]|_smp_mflags') ]] ; then
+  echo "+ Set number of jobs for 'make' using '-j[1-9]' or '%{?_smp_mflags}'."
+  echo "  - Fix the .spec file."
+  quitearly=1
+fi
+
+
+if [[ $quitearly == 1 ]]; then
+  echo "(meh) Shall not pass. Fix the issues above, then rerun uprn."
+  exit
+fi
+
+echo -e "  [PASS]\n\n"
+
+
+echo -e "Check that the following values are set correctly:\n"
+echo "  repo:                $(grep 'url' _service | sed -r -e 's/^[^>]+>([^<]+)<.+$/\1/i' -e 's/^.*\///')"
+echo "  branch:              $(grep 'revision' _service | sed -r 's/^[^>]+>([^<]+)<.+$/\1/i')"
+# FIXME: Oh gauche. This is complicated and finicky and really just a proxy for
+# what we might want. Would it be better just to check for "LIFECYCLE=..."?
+# Since that is the one variable we actually use.
+echo "  profiling:           $(grep -P '^make' *.spec | sed -r -n '/linguas/!p' | sed -r -e 's/(make( (-j|%.._smp_)[^ ]*| all)*|version *= *[^ ]+ *) *//ig' -e 's/^$/none/')"
+[[ ! $(pwd | grep -oP '([-_:]1[12][-_:]|[-_:]15(-SP1)?:)') ]] && \
+  echo "  lifecycle (15 SP2+): "$(grep -P '^%define lifecycle' *.spec | sed -r 's/%define lifecycle //')
+echo -e "\n"
+
+rm *.tar* 2> /dev/null
+# oS Tumbleweed RN now come with disabled service runs, all other release
+# notes use normal service runs (currently): hence, we need to use "runall"/
+# "ra")
+$osc_command service ra
+$osc_command ar
+$osc_command up
+
+# Try to catch some common mistakes
+if [[ $(ls *.tar.{bz2,gz,xz,lzma} 2>/dev/null) ]]; then
+  tardate=$(ls *.tar.{bz2,gz,xz,lzma} 2>/dev/null | grep -oP '[0123][0-9]{3}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])' | sed -r 's/([0-9]{4})([0-9]{2})([0-9]{2})/\1-\2-\3/')
+  today="$(date +%Y-%m-%d)"
+  if [[ ! "$tardate" == "$today" ]]; then
+    diff=$(( ($(date -d "$today" +%s) - $(date -d "$tardate" +%s)) / 86400 ))
+    echo -n "Tarball reeks, it is from $tardate ($diff days ago). Continue anyway? (y/[n]) "
+    read DECISION
+    if [[ ! $DECISION == 'y' ]] && [[ ! $DECISION == 'yes' ]]; then
+      echo "(meh) Exiting. Make sure to push to your changes to the source git."
+      exit
+    else
+      echo -e "Moving right along...\n"
+    fi
+  fi
+else
+  echo "There is no tarball. Does the remote repository exist?"
+  exit
+fi
+
+$osc_command vc
+
+echo -e "\nStatus:"
+$osc_command st
+sleep 5
+
+if [[ $noninteractivebuild -eq 0 ]]; then
+  echo -n "Build now or risk committing a broken package ([b]/r)? "
+  read DECISION
+  if [[ $DECISION != 'r' ]]; then
+    $osc_command build --clean
+    if [[ $? -ne 0 ]]; then
+      echo "(meh) This does not build."
+      exit
+    fi
+  fi
+  echo -n "Commit now (Return/^C)? "
+  read DECISION
+fi
+
+$osc_command commit -m "Update package to $(cat *.changes | head -4 | tail -1 | sed -r 's_^[- ]+__')"
+pkgdir=$(pwd)
+pkg=$(echo "$pkgdir" | grep -oP '[^/]+$')
+mybranch=$(echo "$pkgdir" | grep -oP '[^/]+/[^/]+$' | grep -oP '^[^/]+')
+upbranch=$(echo "$mybranch" | sed -r 's/home:[^:]+:branches://')
+reqline="$osc_command $req $mybranch $pkg $upbranch"
+
+if [[ $noninteractivebuild -eq 1 ]]; then
+  $reqline
+else
+  echo -e "\n\nSuggested command line for OBS request:\n  ${reqline}"
+fi
+# - According to the man page, `osc priorize -m 'Explanatory message'` is supported but I can't use it, so don't suggest it.
+# - Priorities that can be set are [low|moderate|important|critical], but "important" is the only one that is really relevant
+[[ $req == 'mr' ]] && echo -e "\nIf this is an important submission, prioritize it after making the request:\n  $osc_command rq priorize REQUEST_ID important"

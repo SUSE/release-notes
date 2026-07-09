@@ -1,0 +1,199 @@
+#!/bin/bash
+# Update NEWS file for RN packages semi-automatically (in Git repositories).
+# Uses the last change of the NEWS file as the base version for its diffs.
+#
+# Usage:
+#   (1) upnews 555555              # Update NEWS document, set tracker bug
+#                                    to bsc#555555
+#   (2) upnews default             # Update NEWS document, set tracker bug
+#                                    to the default bug, bsc#933411
+#   (2) upnews norelease           # Update NEWS, mention no release yet
+#   (3) upnews pre noninteractive  # Update NEWS, do not set a tracker bug,
+#                                    do not open the document in $EDITOR
+#                                    afterwards, commit, push
+#   (3) upnews help                # Help screen
+
+brexit() { # obviously for "break and exit", duh!
+  # $1 - error message to show
+
+  >&2 echo -e "(meh) $1"
+  exit 1
+}
+
+warn() {
+  # $1 - warning message to show
+
+  >&2 echo -e "(aem) $1"
+}
+
+inform() {
+  # $1 - information message to show
+
+  echo -e "(hey) $1"
+}
+
+
+if [[ ! $1 ]] || [[ $1 == '--help' ]] || [[ $1 == '-h' ]] || [[ $1 == 'help' ]]; then
+  sed -rn '/#!/{n; p; :loop n; p; /^[ \t]*$/q; b loop}' $0 | sed -r 's/^# ?//'
+  exit
+fi
+
+git rev-parse --git-dir > /dev/null 2>&1 || brexit "This does not appear to be a Git repository clone."
+
+me="$(test -L $(realpath $0) && readlink $(realpath $0) || echo $(realpath $0))"
+mydir="$(dirname $me)"
+
+
+bug=
+noninteractivebuild=0
+if [[ $(echo "$1" | grep -P '^((bsc|bnc|boo)#?|#)?[0-9]+$') ]]; then
+  bug=$(echo "$1" | grep -oP '[0-9]+$')
+  shift
+elif [[ "$1" == 'pre' ]] || [[ "$1" == '--pre' ]]; then
+  bug='NOBUG'
+  shift
+elif [[ "$1" == 'norelease' ]] || [[ "$1" == '--norelease' ]]; then
+  bug='NORELEASE'
+  shift
+elif [[ "$1" == 'default' ]] || [[ "$1" == '--default' ]]; then
+  bug='933411'
+  shift
+else
+  brexit "Need an argument: Give me a tracker bug number (just the number).\n\
+or: To use the default bug, use 'default'.\n\
+or: For release notes pertaining to pre-releases, use 'pre'."
+fi
+
+if [[ "$1" == 'noninteractive' ]]; then
+  noninteractivebuild=1
+fi
+
+if [[ "$noninteractivebuild" -eq 0 ]]; then
+  [[ "$EDITOR" = '' ]] && { EDITOR='vi'; warn '$EDITOR is not defined, using vi out of pure spite.'; }
+
+  if [[ $(git diff --shortstat 2> /dev/null | wc -l) -gt 0 ]] || \
+     [[ $(git diff --cached --shortstat 2> /dev/null | wc -l) -gt 0 ]]; then
+    brexit "There are uncommitted changes.\n\
+Commit, stash, or remove the uncommitted changes, then try again."
+  fi
+fi
+
+
+isopensuse=0
+[[ $(git remote -v | grep -oi 'opensuse') ]] && isopensuse=1
+
+
+# Stitch together a version number
+versionprefix=$(git rev-parse --abbrev-ref HEAD | sed -r -e 'si$i.0i' -e 'si([a-z]+[-_])?([0-9]+)[-_+.:;][a-z]*([0-9])+.*$i\2.\3ii')
+date=$(date --date='today' +%Y%m%d)
+
+# Check when NEWS file was last updated
+lastupdatehash="$(git log --pretty='%H' -1 NEWS)"
+lastupdatedate="$(git log --pretty='%ci' -1 NEWS | sed -r 's/^([0-9]+)-([0-9]+)-([0-9]+).*/\1\2\3/')"
+
+
+tempdir=$(mktemp -d /tmp/upnews-XXXXXXXX)
+mkdir -p $tempdir/xml
+
+# The --grep catches everything that matches common bug tracker references
+# of the scheme xyz#123 that is used at SUSE, and it also finds commits that
+# have an asterisk (*) standing
+# alone on a line in the commit message which can be used to catch
+# "significant commits," as designated by the commit author.
+# sed here tries to put things into past tense, so I don't have to. Might
+# be buggy.
+bugmentions=$(git log --format='%s' -E -i --grep='(bsc|boo|bnc|fate|jsc|jira)( *[#-] *| +)([A-Z]+-)?[0-9]+|^ *\* *$' ${lastupdatehash}..HEAD \
+  | sed -r -e 'sq\b(add|fix|remov|chang|updat|expand|re-?sort|improve)(es?|s)?\bq\1edqi' -e 'sq\b(clarif)(y|ies?)?\bq\1iedqi' -e 'sq\b(ma)kes?\bq\1deqi' -e 'su^u- u')
+
+bsc_str="bsc#"
+[[ $(git remote -v | grep -io -m1 release-notes-opensuse) ]] && bsc_str="boo#"
+jsc_str="jsc#"
+fate_str="FATE#"
+
+# Normalize bug mentions a little (definitely not foolproof)
+bugmentions=$(echo -e "$bugmentions" | \
+  sed -r \
+    -e 's/(bsc|boo|bnc)( *[#-] *| +)/'"$bsc_str"'/ig' \
+    -e 's/(jsc|jira)( *[#-] *| +)/'"$jsc_str"'/ig' \
+    -e 's/(fate)( *[#-] *| +)/'"$jsc_str"'/ig' \
+    -e 's/\(fix(e[ds])? ([a-z]+#)/(\2/ig' \
+  )
+
+
+if [[ po/* ]]; then
+  wlstring="Translated using Weblate"
+  translationchanges=$(git log --format='%s' --grep="^$wlstring" ${lastupdatehash}..HEAD | sed -r -e "s/^$wlstring \(//" -e 's/\)$//' | sort -u | tr '\n' ',' | sed -e 's/,$//' -e 's/,/, /g')
+fi
+
+
+# Now actually build a file from this ...
+
+newsmeta=
+news=
+
+newsmeta+="$versionprefix.$date"
+if [[ $bug == 'NORELEASE' ]]; then
+  date=$(date '+%Y-%m-%d %H:%M %Z')
+  newsmeta+=" (built at ${date}, as yet unreleased changes)"
+fi
+if [[ $bug != 'NOBUG' ]] && [[ $bug != 'NORELEASE' ]]; then
+  newsmeta+=" (tracked in ${bsc_str}${bug})"
+fi
+newsmeta+='\n'
+if [[ $(cat NEWS | head -2 | grep "$versionprefix.$date" ) ]]; then
+  newsmeta+="!!! WARNING: There already is at least one entry for $versionprefix.$date.\n"
+  newsmeta+="    Combine the entries.\n"
+fi
+
+if [[ $(git diff ${lastupdatehash}..HEAD -- po/* 2> /dev/null | wc -c) -gt 0 ]]; then
+  news+="- Updated translations"
+  if [[ $translationchanges ]]; then
+    news+=" ($translationchanges)\n"
+  else
+    news+="\n"
+  fi
+fi
+if ([[ $(echo "$bugmentions" | wc -c) -gt 2 ]]); then
+  news+="$bugmentions\n"
+fi
+
+if [[ ! "$news" ]]; then
+  news+='  - no changes found -\n\n'
+fi
+
+news+="\n\n"
+
+
+# 72 character maximum line length
+# Fix indentation (prone to issues on edge cases);
+news=$( \
+  echo -e "$news" | \
+  sed -r -e 's/ +$//' -e 's/\t/  /g' | \
+  fold -w 71 -s | \
+  sed -r -e 's/^([^- ])/  \1/g' -e 's/ +$//' \
+  )
+
+oldnews=$(cat NEWS)
+
+echo -e "$newsmeta$news\n\n\n$oldnews" > NEWS
+
+rm -r $tempdir
+
+FILES_TO_COMMIT=("NEWS")
+
+if [[ -f adoc/changelog.adoc ]]; then
+  ${mydir}/upchangelog release
+  FILES_TO_COMMIT+=("adoc/changelog.adoc")
+fi
+
+if [[ $noninteractivebuild -eq 0 ]]; then
+  $EDITOR NEWS
+  git commit -m'Update NEWS for '"$versionprefix.$date"' release' "${FILES_TO_COMMIT[@]}"
+  inform "We made a commit, check the diff with 'git show' before pushing!"
+  inform "Changes that we included (for double-checking): git diff ${lastupdatehash}..HEAD"
+fi
+
+if [[ $noninteractivebuild -eq 1 ]]; then
+  git commit -m'Update NEWS for '"$versionprefix.$date"' release' "${FILES_TO_COMMIT[@]}"
+  git push
+fi

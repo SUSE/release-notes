@@ -1,0 +1,130 @@
+#!/bin/bash
+# TODO: merge addBlock and addPrereleaseBlock
+# TODO: define prependBlock and appendBlock
+# TODO: check whether ID is already in changelog file
+set -euxo pipefail
+
+script="$(basename "$0")"
+
+usage="$(cat << EOF
+usage: $script release     replaces pre-release block with today's date block
+       $script prerelease  adds pre-release block
+       $script add [\$ID]     adds pre-relase block if missing, adds a new changelog entry
+       
+       \$ID can be found automatically if it's present in "git diff". Only 1 is supported at a time.
+       \$ID can be: jsc#[letters]-[numbers] or bsc#[numbers]
+EOF
+)"
+
+fail() {
+    echo "$1" >&2
+    exit 1
+}
+
+[ -z "${1:-}" ] && echo "$usage"
+
+CHANGELOGFILE="adoc/changelog.adoc"
+
+[ ! -f "$CHANGELOGFILE" ] && echo "File \"${CHANGELOGFILE}\" doesn't exist. Aborting." && exit 1
+
+addPrereleaseBlock () {
+    # match line, then append the following text
+    if ! has_prerelease_block; then
+        sed -re '/== Changelog for/a\
+\
+[#prerelease]\
+=== Pre-release\
+\
+==== New\
+\
+\
+==== Updated'\
+        -i "$CHANGELOGFILE"
+    echo "✔️ Added pre-release block."
+    fi
+}
+
+has_prerelease_block() {
+    RESULT="$(grep -E "\[#pre-?release\]" "$CHANGELOGFILE")"
+    if [[ -z "$RESULT" ]]
+    then
+        return 1
+    else
+        return 0
+    fi
+}
+
+addBlock () {
+    # usage: addBlock $BLOCK [$ADD_AFTER]
+    
+    # match line, then append the following text
+    TMPFILE=$(mktemp)
+    n=0
+    while read line; do
+        echo "$line"
+        if [[ "$line" =~ ${2:-==== New} && $n = 0 ]]; then
+            echo -ne "\n$1"
+            n=1
+        fi
+    done <$CHANGELOGFILE>$TMPFILE
+    mv $TMPFILE $CHANGELOGFILE
+}
+
+if [[ "${1:-}" == 'prerelease' ]]; then
+    addPrereleaseBlock
+fi
+
+if [[ "${1:-}" == 'add' ]]; then
+    # check if the prerelase block is not missing
+    addPrereleaseBlock
+    # check if the new block is not missing
+    NEWBLOCK=$(grep -Pazo "(?s)(?<=\[#prerelease\]).*?(?=\[#.*?\])" "$CHANGELOGFILE" | tr '\0' '\n' | grep "==== New") || true
+    if [[ -z "$NEWBLOCK" ]]; then
+        addBlock "==== New\n" "=== Pre-release"
+    fi
+    AUTOFIND=0
+    if [[ -z "${2:-}" ]]; then
+        MATCH="$(git --no-pager diff -U0 | grep -oP '(?<=\+\[#)(jsc-([A-Z]+-[0-9]+)|bsc-([0-9]+))(?=\])')"
+        if [[ "$MATCH" =~ ^(jsc-([A-Z]+-[0-9]+)|bsc-([0-9]+))$ ]]; then
+            AUTOFIND=1
+            ID="$MATCH"
+        else
+            echo "$usage"; fail "No \$ID found in 'git diff' and no \$ID provided. Aborting."
+        fi
+    else
+        ID=$2
+    fi
+    if [[ "$AUTOFIND" -eq 1 || $ID =~ ^(jsc\#([A-Z]+-[0-9]+)|bsc\#([0-9]+))$ ]]; then
+        URLID=$(echo "$ID" | sed -re "s/(jsc|bsc)[#-]//")
+        BLOCKID=$(echo "$ID" | tr -t "#" "-")
+        SERVICE=
+        SERVICEURL=
+        if [[ $ID =~ ^jsc ]]; then
+            SERVICE="Jira"
+            SERVICEURL="jira-url"
+        fi
+        if [[ $ID =~ ^bsc ]]; then
+            SERVICE="Bugzilla"
+            SERVICEURL="bugzilla-url"
+        fi
+        CHANGELOGGREP=$(grep -rniE "$BLOCKID" "$CHANGELOGFILE") || true
+        [[ -n "$CHANGELOGGREP" ]] && echo "❗ID already in changelog file:" && echo "$CHANGELOGGREP"
+        if [[ "$AUTOFIND" -eq 1 ]]; then
+            echo "✔️ ID "$ID" automatically found in the release notes."
+        else
+            ADOCGREP=$(grep -rniE "$ID|$BLOCKID|$URLID" --include "*.adoc" --exclude $(basename "$CHANGELOGFILE")) || true
+            [[ -n "$ADOCGREP" ]] && echo "✔️ ID found in the release notes:" && echo "$ADOCGREP"
+        fi
+        addBlock "* <<${BLOCKID}>> ({${SERVICEURL}}${URLID}[${SERVICE}])"
+        echo "✔️ Item added to the changelog."
+    else
+        echo "$usage"; fail "ID could not be parsed. Aborting."
+    fi
+fi
+
+if [[ "${1:-}" == 'release' ]]; then
+    TODAY=$(date --iso-8601)
+    sed -re "s/^\[#pre-?(re)?lease/\[#release-${TODAY}/" \
+        -e "s/^=== Pre-release/=== ${TODAY}/"  \
+        -i "$CHANGELOGFILE"
+fi
