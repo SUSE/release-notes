@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Simplifies routine release notes package updates in OBS/IBS
 #
 # 1. Make sure we use the right version of osc/the right osc alias.
@@ -18,7 +18,9 @@
 #                                       at the end
 #   (3) uprn (pre) noninteractive     # Update the repo, generate command for maintenance/service request,
 #                                       commit, send request
-#   (4) uprn --help                   # Help screen
+#   (4) uprn log [DATE|FILE]          # Print a submission summary (build.suse.de
+#                                       request links) from the request log
+#   (5) uprn --help                   # Help screen
 
 me="$(test -L $(realpath $0) && readlink $(realpath $0) || echo $(realpath $0))"
 mydir="$(dirname $me)"
@@ -44,6 +46,28 @@ if [[ $1 == '--help' ]] || [[ $1 == '-h' ]] || [[ $1 == 'help' ]]; then
   exit
 fi
 
+# Print a submission summary (product + build.suse.de request link) from a
+# request log. With no argument uses today's log in $package_updates_dir;
+# a YYYY-MM-DD picks that day's log; a path uses that file directly.
+if [[ $1 == 'log' ]]; then
+  if [[ -n "$2" && -f "$2" ]]; then
+    logfile="$2"
+  elif [[ -n "$package_updates_dir" ]]; then
+    logfile="$package_updates_dir/package-updates-${2:-$(date +%F)}.txt"
+  else
+    echo "Set package_updates_dir in uprn.conf, or pass a file: uprn log [DATE|FILE]"
+    exit 1
+  fi
+  [[ -f "$logfile" ]] || { echo "(meh) No update log at $logfile"; exit 1; }
+  echo "Package updates have been submitted for the following:"
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    # log lines are "<product> <SP>:<request id>"
+    echo "  * ${line%:*} (https://build.suse.de/request/show/${line##*:})"
+  done < "$logfile"
+  exit 0
+fi
+
 # Optional: branch and check out the package first, then continue in its dir.
 #   uprn co <PROJECT> <PACKAGE> [pre] [noninteractive]
 if [[ $1 == 'co' ]]; then
@@ -54,22 +78,37 @@ if [[ $1 == 'co' ]]; then
     exit 1
   fi
   shift 3
+  # bco checks out relative to $PWD; refuse to run from inside an existing
+  # checkout, else the new package nests under it.
+  if [[ -e '.osc' ]]; then
+    echo "(meh) You are inside an osc checkout. cd to your checkout base (e.g. ~/work/bs) first."
+    exit 1
+  fi
   echo "Branching and checking out $copackage from $coproject ..."
   bco_out="$($osc_command bco "$coproject" "$copackage" 2>&1)"
   echo "$bco_out"
+  # Fresh checkout prints "A <dir>"; an already-checked-out one only prints the
+  # branch project name -- derive the path from either.
   copath="$(echo "$bco_out" | grep -oP '^A\s+\K\S+/'"$copackage"'$' | head -1)"
+  if [[ -z "$copath" ]]; then
+    branchprj="$(echo "$bco_out" | grep -oP 'branch project:\s*\K\S+' | head -1)"
+    [[ -n "$branchprj" ]] && copath="$branchprj/$copackage"
+  fi
   if [[ -z "$copath" || ! -d "$copath" ]]; then
     echo "(meh) Could not determine the checkout directory for $copackage."
     exit 1
   fi
   cd "$copath" || exit 1
-  # Normalize the source URL in _service to an https:// gitlab URL (older,
-  # unsupported packages carry a protocol-less or ssh-style URL).
-  sed -i -E '/<param name="url">/{
-    s#git@([^:<]+):#https://\1/#;
-    s#(<param name="url">)ssh://(git@)?#\1https://#;
-    s#(<param name="url">)((www\.)?gitlab)#\1https://\2#;
-  }' _service
+  # Normalize the source URL in _service to a canonical https:// gitlab URL.
+  # Older/unsupported packages carry a protocol-less or scp/ssh-style URL;
+  # anchor on the host so any form (and any earlier bad rewrite) is repaired.
+  sed -i -E 's#(<param name="url">)[^<]*gitlab\.suse\.de[:/]+([^<]+)#\1https://gitlab.suse.de/\2#' _service
+
+  # The NEWS update happens after the first service run, using the fresh
+  # tar_scm checkout (see below). Just remember the branch and opt in here.
+  corev="$(grep 'revision' _service | sed -r 's/^[^>]+>([^<]+)<.+$/\1/i' | head -1)"
+  do_news=1
+  co_changelog=''
 fi
 
 if [[ $1 == 'pre' ]]; then
@@ -151,6 +190,35 @@ rm *.tar* 2> /dev/null
 # notes use normal service runs (currently): hence, we need to use "runall"/
 # "ra")
 $osc_command service ra
+
+# NEWS update via the fresh tar_scm checkout (uprn co only): commit the NEWS
+# entry, push it over ssh so the rebuilt tarball contains it, and reuse the
+# written section as the .changes entry. The ssh push URL is derived from the
+# _service https URL; the checkout's remote is only used here, not by the build.
+#   config (uprn.conf): news_ssh_key, news_ssh_user (default gitlab), news_bug (default 'default')
+srcrepo="$PWD/$(grep 'url' _service | sed -r -e 's/^[^>]+>([^<]+)<.+$/\1/i' -e 's/^.*\///' -e 's/\.git$//')"
+if [[ "${do_news:-0}" -eq 1 && -d "$srcrepo/.git" ]]; then
+  echo "Updating NEWS in the checkout $srcrepo (branch $corev) ..."
+  if ( cd "$srcrepo" && "$mydir/upnews" "${news_bug:-default}" ); then
+    co_changelog="$(mktemp)"
+    awk 'NR==1{print "- " $0; next} /^[[:space:]]*$/{exit} {print}' "$srcrepo/NEWS" > "$co_changelog"
+    push_url="$(git -C "$srcrepo" remote get-url origin | sed -r 's#^https?://([^/]+)/#'"${news_ssh_user:-gitlab}"'@\1:#')"
+    echo
+    echo -n "Push NEWS to $push_url ($corev)? Required so the build includes it. [Enter / Ctrl-C] "
+    read _
+    if [[ -n "$news_ssh_key" ]]; then
+      GIT_SSH_COMMAND="ssh -i $news_ssh_key -o IdentitiesOnly=yes" git -C "$srcrepo" push "$push_url" "HEAD:$corev"
+    else
+      git -C "$srcrepo" push "$push_url" "HEAD:$corev"
+    fi
+    # Rebuild the tarball now that NEWS is upstream.
+    rm *.tar* 2> /dev/null
+    $osc_command service ra
+  else
+    echo "(aem) NEWS update did not complete; continuing without it."
+  fi
+fi
+
 $osc_command ar
 $osc_command up
 
@@ -174,13 +242,15 @@ else
   exit
 fi
 
-# Pre-fill the changelog entry from upnews (git-log based), then open the
-# editor to review/tweak it. Falls back to a blank entry if the source git
-# checkout or a changelog cannot be found.
+# Pre-fill the changelog entry, then open the editor to review/tweak it.
+# `uprn co` already produced the section from the NEWS update it pushed; reuse
+# it. Otherwise (plain `uprn`) fall back to computing it from the source git.
 srcrepo="$PWD/$(grep 'url' _service | sed -r -e 's/^[^>]+>([^<]+)<.+$/\1/i' -e 's/^.*\///' -e 's/\.git$//')"
 pkgver="$(ls *.tar.{bz2,gz,xz,lzma} 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]{8}' | head -1)"
 vc_prefill="$(mktemp)"
-if [[ -d "$srcrepo/.git" ]]; then
+if [[ -n "$co_changelog" && -s "$co_changelog" ]]; then
+  cp "$co_changelog" "$vc_prefill"
+elif [[ -d "$srcrepo/.git" ]]; then
   ( cd "$srcrepo" && "$mydir/upnews" default changesonly "$pkgver" ) > "$vc_prefill" 2>/dev/null
 fi
 if [[ -s "$vc_prefill" ]]; then
@@ -189,7 +259,7 @@ if [[ -s "$vc_prefill" ]]; then
 else
   $osc_command vc
 fi
-rm -f "$vc_prefill"
+rm -f "$vc_prefill" "$co_changelog" 2>/dev/null
 
 echo -e "\nStatus:"
 $osc_command st
@@ -231,12 +301,24 @@ fi
 reqid="$(grep -oiP 'created request id \K[0-9]+' "$submitlog" | head -1)"
 rm -f "$submitlog"
 
-if [[ -n "$reqid" ]]; then
-  label="$(echo "$upbranch" | sed -r -e 's/^SUSE://' -e 's/:.*$//' -e 's/-/ /g')"
-  updatefile="$HOME/work/package-updates-$(date +%F).txt"
+if [[ -n "$reqid" ]] && [[ -n "$package_updates_dir" ]]; then
+  # Record "<product> <SP>:<request id>" in a per-day file. The product name
+  # comes from the OBS package (several products share one project), the SP
+  # from the project. Only runs when package_updates_dir is set in uprn.conf.
+  case "$pkg" in
+    release-notes-sles)         product='SLES' ;;
+    release-notes-sles-for-sap) product='SLES for SAP' ;;
+    release-notes-ha)           product='SLE HA' ;;
+    release-notes-sle_hpc)      product='SLE HPC' ;;
+    release-notes-sled)         product='SLED' ;;
+    *)                          product="${pkg#release-notes-}" ;;
+  esac
+  sp="$(echo "$upbranch" | sed -r -e 's/^SUSE:SLE-//' -e 's/:.*$//' -e 's/-/ /g')"
+  label="$product $sp"
+  updatefile="$package_updates_dir/package-updates-$(date +%F).txt"
   echo "$label:$reqid" >> "$updatefile"
   echo -e "\n(hey) Recorded request $reqid as '$label' in $updatefile"
-else
+elif [[ -z "$reqid" ]]; then
   echo -e "\n(aem) Could not capture a request id from 'osc sr' — record it manually." >&2
 fi
 

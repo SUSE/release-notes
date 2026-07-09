@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # TODO: merge addBlock and addPrereleaseBlock
 # TODO: define prependBlock and appendBlock
 # TODO: check whether ID is already in changelog file

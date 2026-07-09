@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Update NEWS file for RN packages semi-automatically (in Git repositories).
 # Uses the last change of the NEWS file as the base version for its diffs.
 #
@@ -104,14 +104,11 @@ lastupdatedate="$(git log --pretty='%ci' -1 NEWS | sed -r 's/^([0-9]+)-([0-9]+)-
 tempdir=$(mktemp -d /tmp/upnews-XXXXXXXX)
 mkdir -p $tempdir/xml
 
-# The --grep catches everything that matches common bug tracker references
-# of the scheme xyz#123 that is used at SUSE, and it also finds commits that
-# have an asterisk (*) standing
-# alone on a line in the commit message which can be used to catch
-# "significant commits," as designated by the commit author.
-# sed here tries to put things into past tense, so I don't have to. Might
-# be buggy.
-bugmentions=$(git log --format='%s' -E -i --grep='(bsc|boo|bnc|fate|jsc|jira)( *[#-] *| +)([A-Z]+-)?[0-9]+|^ *\* *$' ${lastupdatehash}..HEAD \
+# Include every commit since the last NEWS update, regardless of whether it
+# carries a bug tracker reference (bsc#/jsc#/...). Weblate translation commits
+# are excluded here (they are summarized separately below) and merge commits
+# are skipped. sed then tries to put subjects into past tense.
+bugmentions=$(git log --format='%s' -E -i --no-merges --invert-grep --grep='^Translated using Weblate' ${lastupdatehash}..HEAD \
   | sed -r -e 'sq\b(add|fix|remov|chang|updat|expand|re-?sort|improve)(es?|s)?\bq\1edqi' -e 'sq\b(clarif)(y|ies?)?\bq\1iedqi' -e 'sq\b(ma)kes?\bq\1deqi' -e 'su^u- u')
 
 bsc_str="bsc#"
