@@ -143,6 +143,9 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16439
+* Support for AF_ALG sockets (the `CONFIG_CRYPTO_USER_API` kernel configuration) has been removed.
+
 // jsc#PED-15527
 * The `qib` driver has been removed.
 

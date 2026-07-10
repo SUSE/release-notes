@@ -372,6 +372,9 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc#PED-16439
+* Support for AF_ALG sockets (the `CONFIG_CRYPTO_USER_API` kernel configuration) is deprecated in {productname} 16.1 and will be removed in {productname} 16.2.
+
 // jsc#PED-13429
 * The packages `qemu-ovmf-ia32` and `qemu-uefi-aarch32` have been deprecated in {productname} 16.1 and will be dropped in a future release.
 This is because the `edk2` upstream community is ending support for IA-32 and AArch32 OVMF.
