@@ -25,6 +25,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added a curated set of Ansible development and testing tools (<link xlink:href="index.html#jsc-PED-15693">jsc#PED-15693</link>)</para>
+      </listitem>
+      <listitem>
        <para>Deprecated support for AF_ALG sockets (<link xlink:href="index.html#deprecated">jsc#PED-16374</link>)</para>
       </listitem>
      </itemizedlist>

@@ -154,6 +154,24 @@ See <<jsc-PED-16106>>.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15693]
+=== Curated set of Ansible development and testing tools
+
+Currently, {productname} ships only the Ansible runtime (`ansible-core` and `ansible`).
+{productname} {this-version} introduces a curated set of Ansible development and testing tools.
+These tools enable testing, linting, and building Ansible content.
+
+The following packages are now included:
+
+* `ansible-lint`: Playbook and role linter.
+* `molecule`: Role and collection testing framework.
+* `molecule-plugins`: Test drivers (Podman, Docker, Vagrant).
+* `ansible-navigator`: TUI for playbook development and debugging.
+* `ansible-builder`: Execution environment (container image) builder.
+* `ansible-runner`: Ansible execution API (also a dependency of Navigator).
+* `ansible-creator`: Provides commands to scaffold new Ansible projects and content.
+
+
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
