@@ -1,3 +1,22 @@
+tag::bsc1271333[]
+[#bsc-1271333]
+= XFS log stripe unit alignment change
+
+`mkfs.xfs` now automatically aligns the log stripe unit (`lsunit`) to the
+hardware's reported minimum I/O size (such as a RAID controller's stripe
+unit) to optimize physical disk layout. While this prevents unaligned
+write cycles on write-through storage devices, it may impact performance
+for certain types of `fsync`-heavy workloads on systems equipped with
+battery-backed or non-volatile write-back caches.
+
+For those types of storage systems, performance can be optimized by
+manually setting the log stripe unit back to the block size during
+formatting (e.g., `mkfs.xfs -l sunit=8` for 4KB). Alternatively, for
+highly demanding transactional workloads, utilizing a dedicated external
+XFS log on a non-striped device is recommended in order to entirely
+bypass storage layout trade-offs.
+end::bsc1271333[]
+
 tag::jscped-15968[]
 [#jsc-PED-15968]
 = Secure Initial Program Load (IPL) support

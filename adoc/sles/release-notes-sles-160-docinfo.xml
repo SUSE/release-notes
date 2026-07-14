@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-07-14</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added note about XFS log stripe unit alignment change (<link xlink:href="index.html#bsc-1271333">bsc#1271333</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-03</date>
      <revdescription>
       <itemizedlist>

@@ -183,6 +183,9 @@ See <<jsc-PED-6311>>.
 // jsc#PED-15282
 include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 
+// bsc#1271333
+include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
+
 // jsc#PED-13286
 // bsc#1245474
 [#jsc-PED-13286]
