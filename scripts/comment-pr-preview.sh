@@ -15,7 +15,7 @@ fi
 # Find existing comment to avoid duplicate comments
 comment_id=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json comments --jq '.comments[] | select(.body | contains("Release Notes Preview is ready!")) | .url' | grep -oP '\d+$' | head -n1)
 
-body="🚀 **Release Notes Preview is ready!**
+body="🚀 **Preview is ready!**
 
 You can preview the built release notes here:
 - [SLES 16.1](https://susedoc.github.io/release-notes/refs,pull,${PR_NUMBER},merge/sles-16.1/html/release-notes/)
