@@ -140,7 +140,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Find existing comment to avoid duplicate comments
-          comment_id=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[] | select(.body | contains("Release Notes Preview is ready!")) | .id' | head -n1)
+          comment_id=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[] | select(.body | contains("Release Notes Preview is ready!")) | .url' | grep -oP '\d+$' | head -n1)
           
           body="🚀 **Release Notes Preview is ready!**
 
