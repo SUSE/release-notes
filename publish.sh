@@ -45,7 +45,7 @@ create_basic_index() {
 
   oview_selfname=$(echo -e "$1" | grep -oP '[^/]+/?$' | tr -d '/')
   oview_dirs=$(cd "$1" || return; ls -d -- */ | sed -r 's,/$,,' | sort -u)
-  [[ "$2" == 2 ]] && oview_dirs=$(cd "$1" || return; ls -d -- */*/ | sed -r 's,/$,,' | sort -u)
+  [[ "$2" == 2 ]] && oview_dirs=$(cd "$1" || return; find . -mindepth 2 -type f -name "index.html" | sed -r -e 's|^\./||' -e 's|/index.html$||' | sort -u)
 
   {
     echo "<!DOCTYPE html><head><meta charset='utf-8'><title>Index of $oview_selfname</title></head>"
