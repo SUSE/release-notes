@@ -5,6 +5,7 @@ on:
       - "adoc/**"
       - ".github/workflows/*"
   pull_request:
+    # Trigger run on workflow changes
     paths:
       - "DC-*"
       - "adoc/**"
