@@ -72,6 +72,10 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+      - name: Verify uv version in CI
+        run: uv --version
       - name: Downloading all build artifacts
         id: download-artifacts
         uses: actions/download-artifact@v4
