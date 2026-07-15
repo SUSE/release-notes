@@ -82,3 +82,83 @@ jobs:
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 35
           branchless: "true"
+
+  preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+      issues: write
+    needs: build
+    continue-on-error: true
+    steps:
+      - name: Downloading all build artifacts
+        id: download-artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifact-dir
+      - name: Create folder hierarchy for preview
+        run: |
+          mkdir -p publish/preview/sl-micro{_60,_61,_62}/html/release-notes
+          mkdir -p publish/preview/sles-16.0/html/release-notes
+          mkdir -p publish/preview/sles-16.1/html/release-notes
+          mkdir -p publish/preview/sleha-16.0/html/release-notes
+          mkdir -p publish/preview/sleha-16.1/html/release-notes
+          mkdir -p publish/preview/slesap-16.0/html/release-notes
+          mkdir -p publish/preview/slesap-16.1/html/release-notes
+          mkdir -p publish/preview/sles-16_SP0/html/release-notes
+          mkdir -p publish/preview/leap-16.0/html/release-notes
+          mkdir -p publish/preview/leap-16.1/html/release-notes
+          OUTPUT_DIR=$(find artifact-dir -mindepth 1 -maxdepth 1 -type d)
+          mv "$OUTPUT_DIR/html/releasenotes_leap_16.0"/* publish/preview/leap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_leap_16.1"/* publish/preview/leap-16.1/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-ha_16.0"/* publish/preview/sleha-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-ha_16.1"/* publish/preview/sleha-16.1/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.0"/* publish/preview/sl-micro_60/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.1"/* publish/preview/sl-micro_61/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sle-micro_6.2"/* publish/preview/sl-micro_62/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles_16.0"/* publish/preview/sles-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles_16.1"/* publish/preview/sles-16.1/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.0"/* publish/preview/slesap-16.0/html/release-notes
+          mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.1"/* publish/preview/slesap-16.1/html/release-notes
+          echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/">' > publish/preview/sles-16_SP0/html/release-notes/index.html
+          rm -rf artifact-dir
+          mv publish artifact-dir
+      - name: Publishing preview on susedoc.github.io
+        uses: SUSE/release-notes@gha-publish
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        with:
+          artifact-path:  artifact-dir
+          publish-repo: gh:SUSEdoc/release-notes.git
+          repo-reset-after: 0
+          branchless: "false"
+      - name: Comment on PR with preview link
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Find existing comment to avoid duplicate comments
+          comment_id=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[] | select(.body | contains("Release Notes Preview is ready!")) | .id' | head -n1)
+          
+          body="🚀 **Release Notes Preview is ready!**
+
+          You can preview the built release notes here:
+          - [SLES 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.1/html/release-notes/)
+          - [SLES 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/)
+          - [SLE HA 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.1/html/release-notes/)
+          - [SLE HA 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.0/html/release-notes/)
+          - [SLES for SAP 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.1/html/release-notes/)
+          - [SLES for SAP 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.0/html/release-notes/)
+          - [openSUSE Leap 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.1/html/release-notes/)
+          - [openSUSE Leap 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.0/html/release-notes/)
+          - [SLE Micro 6.2](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_62/html/release-notes/)
+          - [SLE Micro 6.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_61/html/release-notes/)
+          - [SLE Micro 6.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_60/html/release-notes/)
+
+          Directory Index: https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/"
+
+          if [ -n "$comment_id" ]; then
+            gh api -X PATCH "repos/${{ github.repository }}/issues/comments/$comment_id" -f body="$body"
+          else
+            gh pr comment ${{ github.event.pull_request.number }} --body "$body"
+          fi
