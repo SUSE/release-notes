@@ -121,16 +121,16 @@ jobs:
           mv "$OUTPUT_DIR/html/releasenotes_sles_16.1"/* publish/preview/sles-16.1/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.0"/* publish/preview/slesap-16.0/html/release-notes
           mv "$OUTPUT_DIR/html/releasenotes_sles-sap_16.1"/* publish/preview/slesap-16.1/html/release-notes
-          echo '<meta http-equiv="refresh" content="0;https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/">' > publish/preview/sles-16_SP0/html/release-notes/index.html
+          echo '<meta http-equiv="refresh" content="0;https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/">' > publish/preview/sles-16_SP0/html/release-notes/index.html
           rm -rf artifact-dir
           mv publish artifact-dir
-      - name: Publishing preview on susedoc.github.io
+      - name: Publishing preview on local github pages
         uses: SUSE/release-notes@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
           artifact-path:  artifact-dir
-          publish-repo: gh:SUSEdoc/release-notes.git
+          publish-repo: gh:${{ github.repository }}.git
           repo-reset-after: 0
           branchless: "false"
       - name: Comment on PR with preview link
@@ -143,19 +143,19 @@ jobs:
           body="🚀 **Release Notes Preview is ready!**
 
           You can preview the built release notes here:
-          - [SLES 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.1/html/release-notes/)
-          - [SLES 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/)
-          - [SLE HA 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.1/html/release-notes/)
-          - [SLE HA 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.0/html/release-notes/)
-          - [SLES for SAP 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.1/html/release-notes/)
-          - [SLES for SAP 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.0/html/release-notes/)
-          - [openSUSE Leap 16.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.1/html/release-notes/)
-          - [openSUSE Leap 16.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.0/html/release-notes/)
-          - [SLE Micro 6.2](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_62/html/release-notes/)
-          - [SLE Micro 6.1](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_61/html/release-notes/)
-          - [SLE Micro 6.0](https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_60/html/release-notes/)
+          - [SLES 16.1](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.1/html/release-notes/)
+          - [SLES 16.0](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sles-16.0/html/release-notes/)
+          - [SLE HA 16.1](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.1/html/release-notes/)
+          - [SLE HA 16.0](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sleha-16.0/html/release-notes/)
+          - [SLES for SAP 16.1](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.1/html/release-notes/)
+          - [SLES for SAP 16.0](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/slesap-16.0/html/release-notes/)
+          - [openSUSE Leap 16.1](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.1/html/release-notes/)
+          - [openSUSE Leap 16.0](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/leap-16.0/html/release-notes/)
+          - [SLE Micro 6.2](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_62/html/release-notes/)
+          - [SLE Micro 6.1](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_61/html/release-notes/)
+          - [SLE Micro 6.0](https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/sl-micro_60/html/release-notes/)
 
-          Directory Index: https://susedoc.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/"
+          Directory Index: https://suse.github.io/release-notes/refs,pull/${{ github.event.pull_request.number }}/merge/"
 
           if [ -n "$comment_id" ]; then
             gh api -X PATCH "repos/${{ github.repository }}/issues/comments/$comment_id" -f body="$body"
