@@ -52,14 +52,14 @@ jobs:
           chmod +x scripts/prepare-publish-hierarchy.sh
           ./scripts/prepare-publish-hierarchy.sh
       - name: Publishing builds on susedoc.github.io
-        uses: SUSE/release-notes@gha-publish
+        uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
           artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 35
-          branchless: "true"
+          publish-dir: "root"
 
   preview:
     runs-on: ubuntu-latest
@@ -81,14 +81,14 @@ jobs:
           chmod +x scripts/prepare-publish-hierarchy.sh
           ./scripts/prepare-publish-hierarchy.sh "preview" "https://susedoc.github.io/release-notes/refs,pull,${{ github.event.pull_request.number }},merge/sles-16.0/html/release-notes/"
       - name: Publishing preview on susedoc.github.io
-        uses: SUSE/release-notes@gha-publish
+        uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
           artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 0
-          branchless: "false"
+          publish-dir: "branch"
       - name: Comment on PR with preview link
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
