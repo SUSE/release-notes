@@ -90,7 +90,7 @@
       <revdescription>
        <itemizedlist>
         <listitem>
-         <para>Installer: Agama live image includes Ignition and Combustion (<link xlink:href="index.html#jsc-PED-16271">jsc#PED-16271</link>)</para>
+         <para>Installer: Agama live image includes Combustion (<link xlink:href="index.html#jsc-PED-16271">jsc#PED-16271</link>)</para>
         </listitem>
         <listitem>
          <para>Network interfaces keep standard names on NVMeoF boot (<link xlink:href="index.html#jsc-PED-15142">jsc#PED-15142</link>)</para>

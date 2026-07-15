@@ -141,7 +141,7 @@ See <<jsc-PED-14664>>.
 
 === During upgrade
 
-* *Installer Configuration:* Ignition and Combustion tools are now included in the live installer image.
+* *Installer Configuration:* Combustion tool is now included in the live installer image.
 +
 See <<jsc-PED-16271>>.
 
@@ -213,11 +213,16 @@ Note that this applies to traditional software.
 To better support immutable systems and transactional updates, the `update-alternatives` mechanism is no longer used to set the default PostgreSQL version.
 For more details on how to set the default PostgreSQL version, refer to the `README.SUSE` file provided in the `postgresql` main package.
 
+// bsc#1268779
 [#jsc-PED-16271]
-=== Agama live image includes Ignition and Combustion
+=== Agama live image includes Combustion
 
-To facilitate pre-installation configuration before launching the Agama installer, the Ignition and Combustion tools are now included in the live installer image.
+To facilitate pre-installation configuration before launching the Agama installer, the Combustion tool is now included in the live installer image.
 This provides a convenient and reliable way to apply complex setups repeatedly without typing commands manually, which also covers advanced scenarios that standard graphical tools cannot handle.
+
+Combustion does not run automatically by default.
+To run Combustion scripts, Combustion must be explicitly enabled by adding the `rd.systemd.wants=firstboot.target` boot option at the boot prompt.
+Ignition is not included because its configuration mechanism is unsuitable for live installer media, and Combustion is better suited for pre-installation scripting.
 
 [#jsc-PED-15142]
 === NVMeoF boot: network interfaces maintain standard names
