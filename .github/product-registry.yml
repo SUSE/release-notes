@@ -1,0 +1,85 @@
+# PRODUCT METADATA REGISTRY
+#
+# This file serves as the Single Source of Truth mapping DAPS DC-* files to their
+# taxonomic product attributes. This metadata is consumed by CI scripts to dynamically
+# orchestrate builds, prepare the directory hierarchies, and generate PR preview links.
+#
+# See ARCHITECTURE.md for details on why 'doc-name' and nesting is strictly required.
+
+DC-releasenotes_sles_16.0:
+  slug: "sles-16.0"
+  version: "16.0"
+  short-name: "SLES"
+  doc-name: "release-notes"
+
+DC-releasenotes_sles_16.1:
+  slug: "sles-16.1"
+  version: "16.1"
+  short-name: "SLES"
+  doc-name: "release-notes"
+
+DC-releasenotes_sles_16.2:
+  slug: "sles-16.2"
+  version: "16.2"
+  short-name: "SLES"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-ha_16.0:
+  slug: "sleha-16.0"
+  version: "16.0"
+  short-name: "SLE HA"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-ha_16.1:
+  slug: "sleha-16.1"
+  version: "16.1"
+  short-name: "SLE HA"
+  doc-name: "release-notes"
+
+DC-releasenotes_sles-sap_16.0:
+  slug: "slesap-16.0"
+  version: "16.0"
+  short-name: "SLES for SAP"
+  doc-name: "release-notes"
+
+DC-releasenotes_sles-sap_16.1:
+  slug: "slesap-16.1"
+  version: "16.1"
+  short-name: "SLES for SAP"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-micro_6.0:
+  slug: "sl-micro_60"
+  version: "6.0"
+  short-name: "SLE Micro"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-micro_6.1:
+  slug: "sl-micro_61"
+  version: "6.1"
+  short-name: "SLE Micro"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-micro_6.2:
+  slug: "sl-micro_62"
+  version: "6.2"
+  short-name: "SLE Micro"
+  doc-name: "release-notes"
+
+DC-releasenotes_sle-micro_6.3:
+  slug: "sl-micro_63"
+  version: "6.3"
+  short-name: "SLE Micro"
+  doc-name: "release-notes"
+
+DC-releasenotes_leap_16.0:
+  slug: "leap-16.0"
+  version: "16.0"
+  short-name: "openSUSE Leap"
+  doc-name: "release-notes"
+
+DC-releasenotes_leap_16.1:
+  slug: "leap-16.1"
+  version: "16.1"
+  short-name: "openSUSE Leap"
+  doc-name: "release-notes"

@@ -130,3 +130,9 @@ For product-specific shared notes (SLES 16.x), use `adoc/micro/shared.adoc` as r
 ## Development environment
 
 `.devcontainer/devcontainer.json` provides VSCode with the asciidoctor extension. Build deps (`daps`, `xsltproc`, doc-kit) are expected to be installed on the host.
+
+# AI Agent Knowledge: Static Portal Directory Constraints
+DO NOT flatten the directory structure of compiled release notes inside CI build or publish scripts.
+The static draft host `susedoc.github.io` relies on an XSLT script that strictly hardcodes links as `<family>-<version>/<format>/<doc-name>/`.
+If the directory layout is altered (e.g. flattening `/html/release-notes/`), it will break all index navigation on the draft portal.
+Use `.github/product-registry.yml` as the single source of truth for these paths.

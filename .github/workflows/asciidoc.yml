@@ -5,6 +5,7 @@ on:
       - "adoc/**"
       - ".github/workflows/*"
   pull_request:
+    types: [opened, synchronize, reopened, closed]
     paths:
       - "DC-*"
       - "adoc/**"
@@ -14,6 +15,7 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.action != 'closed'
     steps:
       - uses: actions/checkout@v4
       - uses: openSUSE/doc-ci@gha-validate
@@ -48,10 +50,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifact-dir
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
       - name: Create folder hierarchy for susedoc.github.io
-        run: |
-          chmod +x scripts/prepare-publish-hierarchy.sh
-          ./scripts/prepare-publish-hierarchy.sh
+        run: uv run --with pyyaml scripts/build-fleet.py
       - name: Publishing builds on susedoc.github.io
         uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
@@ -72,15 +74,15 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
       - name: Downloading all build artifacts
         id: download-artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifact-dir
       - name: Create folder hierarchy for preview
-        run: |
-          chmod +x scripts/prepare-publish-hierarchy.sh
-          ./scripts/prepare-publish-hierarchy.sh "preview" "https://susedoc.github.io/release-notes/refs,pull,${{ github.event.pull_request.number }},merge/sles-16.0/html/release-notes/"
+        run: uv run --with pyyaml scripts/build-fleet.py "preview" "https://susedoc.github.io/release-notes/pr-${{ github.event.pull_request.number }}/sles-16.0/html/release-notes/"
       - name: Publishing preview on susedoc.github.io
         uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
@@ -89,10 +91,38 @@ jobs:
           artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 0
-          publish-dir: "branch"
+          publish-dir: "pr-${{ github.event.pull_request.number }}"
       - name: Comment on PR with preview link
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run --with pyyaml scripts/comment-pr-preview.py "${{ github.event.pull_request.number }}" "${{ github.repository }}"
+
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    steps:
+      - name: Set up SSH
         run: |
-          chmod +x scripts/comment-pr-preview.sh
-          ./scripts/comment-pr-preview.sh "${{ github.event.pull_request.number }}" "${{ github.repository }}"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - name: Remove PR Preview Folder (Shallow Clone)
+        run: |
+          git config --global user.name "SUSE Docs Bot"
+          git config --global user.email "doc-team+docbot@suse.com"
+          
+          # Perform an extremely fast, shallow, single-branch clone of only the latest commit of gh-pages
+          git clone --branch gh-pages --single-branch --depth 1 git@github.com:SUSEdoc/release-notes.git local-gh-pages
+          
+          cd local-gh-pages
+          pr_dir="pr-${{ github.event.pull_request.number }}"
+          if [ -d "$pr_dir" ]; then
+            echo "Deleting preview directory: $pr_dir"
+            rm -rf "$pr_dir"
+            git add -A .
+            git commit -m "CI: Clean up preview directory for closed PR #${{ github.event.pull_request.number }}"
+            git push origin gh-pages
+          else
+            echo "No preview directory found for PR #${{ github.event.pull_request.number }}."
+          fi
