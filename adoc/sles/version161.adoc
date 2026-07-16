@@ -353,6 +353,11 @@ The following table lists Java implementations available in {sles} {this-version
 
 // Information in this section applies to the {x64} architecture.
 
+[#aarch64]
+== {arm}-specific changes ({aarch64})
+
+include::../kernel-161-aarch64.adoc[leveloffset=+2]
+
 
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
