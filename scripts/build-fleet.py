@@ -16,7 +16,7 @@ def main():
     # Determine preview folder prefix if passed (e.g. 'preview')
     subfolder = sys.argv[1] if len(sys.argv) > 1 else ""
     dest_base = os.path.join("publish", subfolder) if subfolder else "publish"
-    redirect_url = sys.argv[2] if len(sys.argv) > 2 else ""
+    redirect_url = sys.argv[2] if len(sys.argv) > 2 else "https://susedoc.github.io/release-notes/sles-16.0/html/release-notes/"
 
     print(f"Orchestrating folders. Target base: {dest_base}")
 
@@ -26,12 +26,12 @@ def main():
         print(f"Error: Base artifact directory {artifact_base} does not exist!", file=sys.stderr)
         sys.exit(1)
 
-    # Find the single subdirectory inside artifact-dir (e.g. builds-71fceb7f)
+    # Find the single subdirectory inside artifact-dir starting with "builds-"
     subdirs = [os.path.join(artifact_base, d) for d in os.listdir(artifact_base) 
-               if os.path.isdir(os.path.join(artifact_base, d))]
+               if os.path.isdir(os.path.join(artifact_base, d)) and d.startswith("builds-")]
     
-    if not subdirs:
-        print("Error: No unzipped build artifact subdirectory found inside artifact-dir!", file=sys.stderr)
+    if len(subdirs) != 1:
+        print(f"Error: Expected exactly one subdirectory starting with 'builds-' inside {artifact_base}, but found {len(subdirs)}.", file=sys.stderr)
         sys.exit(1)
     
     output_dir = subdirs[0]
@@ -42,6 +42,7 @@ def main():
         # TYPO PROTECTION: If a registered DC file is missing from the workspace, fail immediately.
         if not os.path.exists(dc_file):
             print(f"Error: Registered configuration file {dc_file} does not exist in workspace!", file=sys.stderr)
+            print("Hint: Please ensure that the product registry (.github/product-registry.yml) and the corresponding configuration file (DC-*) are committed atomically in the same commit.", file=sys.stderr)
             sys.exit(1)
 
         slug = meta["slug"]
