@@ -2,6 +2,7 @@
 import os
 import sys
 import json
+import re
 import yaml
 import subprocess
 
@@ -38,7 +39,9 @@ def main():
         short_name = meta["short-name"]
         doc_name = meta["doc-name"]
 
-        preview_path = os.path.join("artifact-dir", "preview", slug)
+        # CRITICAL FIX: Since the preview directory is renamed to 'artifact-dir',
+        # the product slugs reside directly under 'artifact-dir' (e.g. 'artifact-dir/sles-16.0').
+        preview_path = os.path.join("artifact-dir", slug)
 
         if os.path.exists(preview_path):
             url = f"https://susedoc.github.io/release-notes/refs,pull,{pr_number},merge/{slug}/html/{doc_name}/"
@@ -62,9 +65,11 @@ def main():
             comments_data = json.loads(comment_stdout)
             for comment in comments_data.get("comments", []):
                 if "Release Notes Preview is ready!" in comment.get("body", ""):
-                    # Parse the database ID from the URL (ends with #issuecomment-<id>)
+                    # ROBUST FIX: Extract the database ID securely using regular expressions
+                    # matching the trailing digits at the end of the comment URL.
                     url = comment.get("url", "")
-                    comment_id = url.split("-")[-1] if "-" in url else None
+                    match = re.search(r"\d+$", url)
+                    comment_id = match.group(0) if match else None
                     break
         except Exception as e:
             print(f"Warning: Failed to parse comments JSON: {e}", file=sys.stderr)
