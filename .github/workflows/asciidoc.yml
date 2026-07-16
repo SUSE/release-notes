@@ -93,6 +93,4 @@ jobs:
       - name: Comment on PR with preview link
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          chmod +x scripts/comment-pr-preview.sh
-          ./scripts/comment-pr-preview.sh "${{ github.event.pull_request.number }}" "${{ github.repository }}"
+        run: uv run --with pyyaml scripts/comment-pr-preview.py "${{ github.event.pull_request.number }}" "${{ github.repository }}"
