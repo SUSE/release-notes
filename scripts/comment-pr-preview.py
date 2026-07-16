@@ -7,6 +7,10 @@ import subprocess
 
 def run_command(cmd):
     res = subprocess.run(cmd, capture_output=True, text=True)
+    if res.returncode != 0:
+        print(f"Warning: Command {' '.join(cmd)} failed with exit code {res.returncode}.", file=sys.stderr)
+        if res.stderr:
+            print(res.stderr, file=sys.stderr)
     return res.stdout, res.returncode
 
 def main():
@@ -29,16 +33,15 @@ def main():
     # 2. Dynamically build the list of links based on built preview directories
     links = []
     for dc_file, meta in registry.items():
-        family = meta["family"]
+        slug = meta["slug"]
         version = meta["version"]
         short_name = meta["short-name"]
         doc_name = meta["doc-name"]
 
-        folder_name = f"{family}-{version}"
-        preview_path = os.path.join("artifact-dir", "preview", folder_name)
+        preview_path = os.path.join("artifact-dir", "preview", slug)
 
         if os.path.exists(preview_path):
-            url = f"https://susedoc.github.io/release-notes/refs,pull,{pr_number},merge/{folder_name}/html/{doc_name}/"
+            url = f"https://susedoc.github.io/release-notes/refs,pull,{pr_number},merge/{slug}/html/{doc_name}/"
             links.append(f"- [{short_name} {version}]({url})")
 
     if not links:

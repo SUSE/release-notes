@@ -3,15 +3,6 @@ import os
 import sys
 import yaml
 import shutil
-import subprocess
-
-def run_command(cmd):
-    print(f"Running: {' '.join(cmd)}")
-    res = subprocess.run(cmd, capture_output=True, text=True)
-    if res.returncode != 0:
-        print(res.stderr, file=sys.stderr)
-        sys.exit(res.returncode)
-    return res.stdout
 
 def main():
     registry_path = ".github/product-registry.yml"
@@ -27,43 +18,51 @@ def main():
     dest_base = os.path.join("publish", subfolder) if subfolder else "publish"
     redirect_url = sys.argv[2] if len(sys.argv) > 2 else ""
 
-    print(f"Orchestrating builds. Target base: {dest_base}")
+    print(f"Orchestrating folders. Target base: {dest_base}")
 
-    # OPTIMIZATION: Clean the build directory exactly ONCE at the start,
-    # allowing DAPS to reuse its shared includes compilation cache across products.
-    if os.path.exists("build"):
-        print("Cleaning previous builds...")
-        shutil.rmtree("build")
+    # Locate the single downloaded build artifact directory inside artifact-dir
+    artifact_base = "artifact-dir"
+    if not os.path.exists(artifact_base):
+        print(f"Error: Base artifact directory {artifact_base} does not exist!", file=sys.stderr)
+        sys.exit(1)
+
+    # Find the single subdirectory inside artifact-dir (e.g. builds-71fceb7f)
+    subdirs = [os.path.join(artifact_base, d) for d in os.listdir(artifact_base) 
+               if os.path.isdir(os.path.join(artifact_base, d))]
+    
+    if not subdirs:
+        print("Error: No unzipped build artifact subdirectory found inside artifact-dir!", file=sys.stderr)
+        sys.exit(1)
+    
+    output_dir = subdirs[0]
+    print(f"Found build artifact directory: {output_dir}")
 
     # Process each product in the registry
     for dc_file, meta in registry.items():
-        # TYPO PROTECTION: If a registered DC file is missing, fail immediately and abort.
+        # TYPO PROTECTION: If a registered DC file is missing from the workspace, fail immediately.
         if not os.path.exists(dc_file):
-            print(f"Error: Registered configuration file {dc_file} does not exist!", file=sys.stderr)
+            print(f"Error: Registered configuration file {dc_file} does not exist in workspace!", file=sys.stderr)
             sys.exit(1)
 
-        family = meta["family"]
-        version = meta["version"]
+        slug = meta["slug"]
         doc_name = meta["doc-name"]
 
-        # Compile via Makefile using PRODUCT_VERSION overrides
+        # Resolve built DAPS directories from the downloaded artifact
+        # Expected suffix: releasenotes_<suffix> (where suffix is the dc_file name minus DC-releasenotes_)
         prod_version = dc_file.replace("DC-releasenotes_", "")
-        run_command(["make", "html", f"PRODUCT_VERSION={prod_version}"])
-
-        # Resolve built DAPS directories
-        # Expected: build/releasenotes_<suffix>/html/releasenotes_<suffix>/
         built_base_name = f"releasenotes_{prod_version}"
-        src_dir = os.path.join("build", built_base_name, "html", built_base_name)
+        src_dir = os.path.join(output_dir, "html", built_base_name)
 
         if not os.path.exists(src_dir):
-            print(f"Error: Build output directory {src_dir} not found.", file=sys.stderr)
+            print(f"Error: Compiled DAPS output directory {src_dir} was not found inside the downloaded artifact!", file=sys.stderr)
             sys.exit(1)
 
-        # Construct target folder matching susedoc URL expectations
-        # Schema: <dest_base>/<family>-<version>/html/<doc_name>/
-        dest_dir = os.path.join(dest_base, f"{family}-{version}", "html", doc_name)
+        # Construct target folder matching static Pages URL expectations
+        # Schema: <dest_base>/<slug>/html/<doc_name>/
+        dest_dir = os.path.join(dest_base, slug, "html", doc_name)
         os.makedirs(dest_dir, exist_ok=True)
 
+        print(f"Organizing {dc_file} -> {dest_dir}")
         # Move compiled static files into target folder
         for item in os.listdir(src_dir):
             shutil.move(os.path.join(src_dir, item), os.path.join(dest_dir, item))
@@ -76,11 +75,10 @@ def main():
         with open(os.path.join(redirect_dir, "index.html"), "w") as f:
             f.write(meta_tag)
 
-    # Clean build folder and replace artifact-dir with publish
-    if os.path.exists("artifact-dir"):
-        shutil.rmtree("artifact-dir")
-    shutil.move("publish", "artifact-dir")
-    print("Orchestration successfully finished.")
+    # Clean the old artifact-dir and replace it with our structured publish folder
+    shutil.rmtree(artifact_base)
+    shutil.move(dest_base, artifact_base)
+    print("Folder orchestration successfully completed.")
 
 if __name__ == "__main__":
     main()
