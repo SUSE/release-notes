@@ -48,10 +48,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifact-dir
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
       - name: Create folder hierarchy for susedoc.github.io
-        run: |
-          chmod +x scripts/prepare-publish-hierarchy.sh
-          ./scripts/prepare-publish-hierarchy.sh
+        run: uv run --with pyyaml scripts/build-fleet.py
       - name: Publishing builds on susedoc.github.io
         uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
@@ -72,15 +72,15 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
       - name: Downloading all build artifacts
         id: download-artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifact-dir
       - name: Create folder hierarchy for preview
-        run: |
-          chmod +x scripts/prepare-publish-hierarchy.sh
-          ./scripts/prepare-publish-hierarchy.sh "preview" "https://susedoc.github.io/release-notes/refs,pull,${{ github.event.pull_request.number }},merge/sles-16.0/html/release-notes/"
+        run: uv run --with pyyaml scripts/build-fleet.py "preview" "https://susedoc.github.io/release-notes/refs,pull,${{ github.event.pull_request.number }},merge/sles-16.0/html/release-notes/"
       - name: Publishing preview on susedoc.github.io
         uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
