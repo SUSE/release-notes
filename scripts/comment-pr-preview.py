@@ -44,7 +44,7 @@ def main():
         preview_path = os.path.join("artifact-dir", slug)
 
         if os.path.exists(preview_path):
-            url = f"https://susedoc.github.io/release-notes/refs,pull,{pr_number},merge/{slug}/html/{doc_name}/"
+            url = f"https://susedoc.github.io/release-notes/pr-{pr_number}/{slug}/html/{doc_name}/"
             links.append(f"- [{short_name} {version}]({url})")
 
     if not links:
@@ -52,7 +52,7 @@ def main():
         sys.exit(0)
 
     links_block = "\n".join(links)
-    body = f"🚀 **Release Notes Preview is ready!**\n\nYou can preview the built release notes here:\n{links_block}\n\nDirectory Index: https://susedoc.github.io/release-notes/refs,pull,{pr_number},merge/"
+    body = f"🚀 **Release Notes Preview is ready!**\n\nYou can preview the built release notes here:\n{links_block}\n\nDirectory Index: https://susedoc.github.io/release-notes/pr-{pr_number}/"
 
     # 3. Query existing comments on the PR to avoid duplicate comment spam
     comment_stdout, _ = run_command([

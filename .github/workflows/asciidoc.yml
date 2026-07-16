@@ -80,7 +80,7 @@ jobs:
         with:
           path: artifact-dir
       - name: Create folder hierarchy for preview
-        run: uv run --with pyyaml scripts/build-fleet.py "preview" "https://susedoc.github.io/release-notes/refs,pull,${{ github.event.pull_request.number }},merge/sles-16.0/html/release-notes/"
+        run: uv run --with pyyaml scripts/build-fleet.py "preview" "https://susedoc.github.io/release-notes/pr-${{ github.event.pull_request.number }}/sles-16.0/html/release-notes/"
       - name: Publishing preview on susedoc.github.io
         uses: openSUSE/doc-ci@lukas-gha-publish-dir
         env:
@@ -89,7 +89,7 @@ jobs:
           artifact-path:  artifact-dir
           publish-repo: gh:SUSEdoc/release-notes.git
           repo-reset-after: 0
-          publish-dir: "branch"
+          publish-dir: "pr-${{ github.event.pull_request.number }}"
       - name: Comment on PR with preview link
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
