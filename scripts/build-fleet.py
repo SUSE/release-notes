@@ -78,6 +78,11 @@ def main():
     # Clean the old artifact-dir and replace it with our structured publish folder
     shutil.rmtree(artifact_base)
     shutil.move(dest_base, artifact_base)
+    
+    # Clean up empty parent publish directory if a subfolder was specified
+    if subfolder and os.path.exists("publish"):
+        os.rmdir("publish")
+        
     print("Folder orchestration successfully completed.")
 
 if __name__ == "__main__":
