@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-17</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added note about login hint when attempting root login to Cockpit (<link xlink:href="index.html#jsc-PED-15707">jsc#PED-15707</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-05-19</date>
     <revdescription>
      <itemizedlist>
