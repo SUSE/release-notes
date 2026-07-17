@@ -9,9 +9,16 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
-    <date>{revdate}</date>
+    <date>2026-07-17</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Security protection for regular files enabled by default (<link xlink:href="index.html#jsc-PED-12879">jsc#PED-12879</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
   </revision>
 </revhistory>
 <meta name="series">Release Notes</meta>

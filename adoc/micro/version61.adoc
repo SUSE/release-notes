@@ -11,6 +11,9 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#PED-12879
+include::../shared.adoc[tags=jscped-12879,leveloffset=+3]
+
 // Removal of 32-bit support
 include::../shared.adoc[tags=jscped-12715,leveloffset=+3]
 

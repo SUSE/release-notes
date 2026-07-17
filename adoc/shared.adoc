@@ -266,3 +266,12 @@ tag::jscped-15282[]
 * The `libatomic` package has been added to the {sap} base pattern on {sles} to simplify the installation instructions for {hana}.
 end::jscped-15282[]
 
+tag::jscped-12879[]
+[#jsc-PED-12879]
+= Security protection for regular files enabled by default
+
+The sysctl parameter `fs.protected_regular` is now set to `2` by default.
+This restricts opening regular files with `O_CREAT` in world-writable or group-writable sticky directories (such as `/tmp`) unless the file is owned by the creator or the directory owner.
+This setting prevents unauthorized file modifications.
+end::jscped-12879[]
+
