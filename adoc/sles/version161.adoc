@@ -154,6 +154,14 @@ See <<jsc-PED-16106>>.
 
 == Changes affecting all architectures
 
+[#jsc-PED-15707]
+=== Login hint when attempting root login to {cockpit}
+
+Direct root login to the {cockpit} web interface is disabled by default.
+A login hint is now displayed upon a failed root login attempt to clarify that root access is disabled.
+The hint also provides instructions on logging in with a regular account, elevating privileges, or enabling root access via `/etc/cockpit/disallowed-users`.
+
+
 [#jsc-PED-15693]
 === Curated set of Ansible development and testing tools
 
