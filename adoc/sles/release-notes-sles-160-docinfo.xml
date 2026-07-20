@@ -17,6 +17,9 @@
        <listitem>
         <para>Documented discontinued legacy packages from SLE 15 (<link xlink:href="index.html#removed">jsc#PED-11051</link>)</para>
        </listitem>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-15454">Automated generation and validation of Agama profiles</link> (jsc#PED-15454)</para>
+       </listitem>
       </itemizedlist>
      </revdescription>
     </revision>
