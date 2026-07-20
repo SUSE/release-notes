@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-07-20</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Documented discontinued legacy packages from SLE 15 (<link xlink:href="index.html#removed">jsc#PED-11051</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-17</date>
      <revdescription>
       <itemizedlist>
