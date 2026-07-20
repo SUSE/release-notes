@@ -383,6 +383,118 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 // include::../kernel-160-aarch64.adoc[leveloffset=+2]
 
+[#virtualization]
+== Virtualization
+
+// Release notes for virtualization:
+//    KVM, libvirt, ...
+
+// bsc#1245454
+* iSCSI boot support is disabled in OVMF images.
+
+
+[#virtualization-qemu]
+//jsc-PED-14599
+=== QEMU
+
+QEMU has been updated to version 11.0.0, full list of changes are available at https://wiki.qemu.org/ChangeLog/11.0
+
+Highlights include:
+* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+[#virtualization-libvirt]
+// jsc-PED-14623
+=== libvirt
+
+`libvirt` has been updated to version 12.3.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
+
+`libvirt` provides now a modular daemons.
+
+[#virtualization-vmware]
+=== VMware
+
+===== open-vm-tools
+
+`open-vm-tools` has been updated to version 13.1.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
+
+==== Confidential Computing
+
+===== `sevctl`
+
+The `sevctl` package has been updated to version 0.6.2.
+
+===== `snpguest`
+
+The `snpguest` package has been updated to version 0.10.0.
+Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0
+
+===== `snphost`
+
+The `snphost` package has been updated to version 0.7.0.
+
+//jsc#PED-15646
+[#intel-tdx-confidential-computing]
+==== Intel TDX Confidential Computing
+
+Intel TDX is supported in {productname} {this-version}.
+
+As technology preview, remote attestation is available via the following packages:
+
+* `confidential-computing.sgx`
+* `confidential-computing.tee.dcap.pccs`
+* `guest-components`
+* `suse-libsgx-prebuilt-signed`
+* `trustee`
+
+[#virtualization-other]
+//jsc-PED-14624
+=== Other tools
+
+===== numatop
+
+`numatop` is available in version 2.5, adding support for Intel GNR and SRF platforms.
+
+===== numactl
+
+`numactl` is shipped in version 2.0.19.
+Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
+
+===== libguestfs
+
+`libguestfs` has been updated to version 1.58.1.
+
+===== virt-v2v
+
+Update to version 2.10.0. While there are no dedicated release notes, you can review the code changes in Github: https://github.com/libguestfs/virt-v2v/tree/v2.10.0
+
+- Implement --parallel=N for parallel disk copies
+- Update Translations
+- Various fixes
+
+===== `virtiofsd`
+
+The `virtiofsd` has been updated to 1.12.0.
+
+===== `virt-manager`
+
+`virt-manager` is now shipped in version 5.1.0. Its preferable to setup VNC for remote viewing and do all the XML editing using the `virsh` command.
+Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.1.0
+
+include::../shared.adoc[tags=jscped-15932,leveloffset=+4]
+
+===== virt-bridge-setup
+
+virt-bridge-setup is a script designed to simplify network bridge creation on a specified interface using nmcli. It was developed as a replacement for the automatic "yast2 virtualization" bridge creation and is particularly useful for setting up virtualization environments.
+
+Important considerations:
+
+* It supports IPv4 only.
+* This is a simple script not intended for complex network scenarios (vlan, bonding, etc...); manual bridge setup is recommended for intricate configurations.
+* The script should be run locally (not remotely) immediately after installation and before any custom network configurations.
+
+
+
 [#removed-deprecated]
 == Removed and deprecated features and packages
 
