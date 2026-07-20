@@ -26,7 +26,7 @@ Key entry points:
 - **Note IDs**: unique per document, format `[#jsc-SLE-1234]`, `[#bsc-00000]`, or `[#jsc-XXX-0000]`. Only use `[#id]` tags (anchors) for titled sections. Do NOT use them on single lines or list items (like bullet points), as they do not generate a clickable anchor in the rendered output.
 - **Non-titled notes**: use the comment `// jsc#SLE-1234` above the note as a fallback, and append the issue identifier `(jsc#SLE-1234)` or `(bsc#1234567)` in parentheses to the end of the text.
 - **Multiple issue references**: since a section can only have a single `[#id]` tag, use one identifier for the section ID and append the additional identifiers inline in parentheses at the end of the text.
-- **Order within sections**: most important first; new notes go at the top of the section; additions before removals; minor changes and tables at bottom
+- **Order within sections**: most important first; new notes (including includes) go at the top of the section, right after the list of entries without titles; additions before removals; minor changes and tables at bottom
 - **One commit per note** — each change should be its own commit referencing the issue
 - **Update revdate** — always update `:revdate:` in the master `.adoc` file (the `MAIN=` from the DC config file). Use today's date (`YYYY-MM-DD`)
 
