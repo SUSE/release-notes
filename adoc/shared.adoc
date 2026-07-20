@@ -275,3 +275,16 @@ This restricts opening regular files with `O_CREAT` in world-writable or group-w
 This setting prevents unauthorized file modifications.
 end::jscped-12879[]
 
+tag::jscped-15454[]
+[#jsc-PED-15454]
+= Automated generation and validation of Agama profiles
+
+The Agama installer uses JSON or Jsonnet profiles for automated installations.
+The `agama config` subcommand provides actions to manage, convert, and validate these profiles.
+Export the current configuration into a JSON profile using `agama config show --output profile.json`.
+Convert AutoYaST XML, Jsonnet, or JSON templates into native JSON using `agama config generate <URL_OR_PATH>`.
+Validate generated profiles against the Agama JSON Schema using `agama config validate [--local] profile.json`.
+Load profiles into the installer service using `agama config load < profile.json` or by piping directly: `agama config generate <URL_OR_PATH> | agama config load`.
+end::jscped-15454[]
+
+

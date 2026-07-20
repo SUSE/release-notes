@@ -189,6 +189,9 @@ include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 // bsc#1271333
 include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 
+// jsc#PED-15454
+include::../shared.adoc[tags=jscped-15454,leveloffset=+2]
+
 // jsc#PED-15576
 [#jsc-PED-15576]
 === IO scheduler distribution default changed
