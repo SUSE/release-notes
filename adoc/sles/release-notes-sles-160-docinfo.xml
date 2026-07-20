@@ -20,6 +20,9 @@
        <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-15454">Automated generation and validation of Agama profiles</link> (jsc#PED-15454)</para>
        </listitem>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-15435">SSH public key support for all accounts created during installation</link> (jsc#PED-15435)</para>
+       </listitem>
       </itemizedlist>
      </revdescription>
     </revision>

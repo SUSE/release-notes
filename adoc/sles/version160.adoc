@@ -180,6 +180,9 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// jsc#PED-15435
+include::../shared.adoc[tags=jscped-15435,leveloffset=+2]
+
 // jsc#PED-15454
 include::../shared.adoc[tags=jscped-15454,leveloffset=+2]
 
