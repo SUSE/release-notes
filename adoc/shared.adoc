@@ -288,3 +288,11 @@ Load profiles into the installer service using `agama config load < profile.json
 end::jscped-15454[]
 
 
+
+tag::jscped-15435[]
+[#jsc-PED-15435]
+= SSH public key support for all accounts created during installation
+
+The Agama installer supports SSH public key authentication for all accounts created during installation, including the first non-root account.
+This eliminates the need for temporary passwords and improves post-installation security.
+end::jscped-15435[]
