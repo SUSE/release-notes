@@ -1209,6 +1209,38 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-11051
+* Support for several legacy packages previously available in {slesa} 15 has been discontinued.
+These packages have been removed from {productname} {this-version}.
+The removed packages include:
+** `bluez-firmware`, `atmel-firmware`, and `adaptec-firmware`
+** `CIM` infrastructure (including `openwsman` and `sblim-*`)
+** `cpuset`
+** `fbiterm`
+** `fwupdate` and `dbxtools` (functionality now part of `fwupd`)
+** `gamin`
+** `gconf2`
+** `gnustep-base`
+** `gtk-vnc2`
+** `haveged`
+** `hfsutils`
+** `iceauth`
+** `icmpinfo`
+** `ipsec-tools`
+** `ISC dhcp` (replaced by `kea`)
+** `iw`
+** `librdkafka`
+** `memkind`
+** `mpitests`
+** `netcontrol`
+** `openldap`
+** `pidentd`
+** `powerman`
+** `quagga` (superseded by `frr`)
+** `redis7`
+** `salt` and associated package components (including `python3-salt`, `salt-api`, `salt-master`, and `salt-minion`)
+** `vacation`
+
 // jsc#PED-11281
 * The `hplip` package has been removed.
 The upstream project is no longer active (jsc#PED-11281).
