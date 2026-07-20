@@ -154,6 +154,18 @@ See <<jsc-PED-16106>>.
 
 == Changes affecting all architectures
 
+// jsc#PED-12658
+* `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
+
+// jsc#PED-15454
+include::../shared.adoc[tags=jscped-15454,leveloffset=+2]
+
+// jsc#PED-15282
+include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
+
+// bsc#1271333
+include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
+
 [#jsc-PED-15707]
 === Login hint when attempting root login to {cockpit}
 
@@ -178,19 +190,6 @@ The following packages are now included:
 * `ansible-builder`: Execution environment (container image) builder.
 * `ansible-runner`: Ansible execution API (also a dependency of Navigator).
 * `ansible-creator`: Provides commands to scaffold new Ansible projects and content.
-
-
-// jsc#PED-12658
-* `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
-
-// jsc#PED-15454
-include::../shared.adoc[tags=jscped-15454,leveloffset=+2]
-
-// jsc#PED-15282
-include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
-
-// bsc#1271333
-include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 
 // jsc#PED-15576
 [#jsc-PED-15576]
