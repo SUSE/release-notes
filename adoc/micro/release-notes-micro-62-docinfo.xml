@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-21</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Post-quantum cryptography (PQC) key exchange enabled by default (<link xlink:href="index.html#jsc-PED-15713">jsc#PED-15713</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-17</date>
     <revdescription>
      <itemizedlist>

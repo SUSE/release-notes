@@ -319,3 +319,12 @@ tag::jscped-16001[]
 The `iptables` and `nftables` packages have been added to SLES Minimal Cloud and VMware VM images.
 This addition enables the successful provisioning of Rancher-deployed RKE2 and K3s clusters on SLES Minimal images without requiring manual package installation or Subscription Management (RMT) registration.
 end::jscped-16001[]
+
+tag::jscped-15713[]
+[#jsc-PED-15713]
+= Post-quantum cryptography (PQC) key exchange enabled by default
+
+By default, system-wide cryptographic policies now enable post-quantum cryptography (PQC) key exchange algorithms for SSH connections.
+This prevents connection warnings (such as `WARNING: connection is not using a post-quantum key exchange algorithm`) from modern external SSH clients that require post-quantum security by default.
+This support is provided by re-enabling the X25519 key exchange group in the default system-wide cryptographic policy, which allows secure post-quantum key exchange combinations such as `mlkem768x25519-sha256` and `sntrup761x25519-sha512` to be negotiated.
+end::jscped-15713[]

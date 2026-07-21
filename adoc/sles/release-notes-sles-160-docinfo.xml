@@ -23,6 +23,9 @@
        <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-15863">`erofs` removed from the kernel module blacklist</link> (jsc#PED-15863)</para>
        </listitem>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-15713">Post-quantum cryptography (PQC) key exchange enabled by default</link> (jsc#PED-15713)</para>
+       </listitem>
       </itemizedlist>
      </revdescription>
     </revision>
