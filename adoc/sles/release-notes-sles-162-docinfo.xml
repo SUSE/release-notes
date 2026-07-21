@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-21</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>SSSD: added removal notice for features and options removed in 16.2 (<link xlink:href="index.html#removed">jsc#PED-16257</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-10</date>
     <revdescription>
      <itemizedlist>
