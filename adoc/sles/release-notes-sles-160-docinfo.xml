@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-07-21</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-15863">`erofs` removed from the kernel module blacklist</link> (jsc#PED-15863)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-20</date>
      <revdescription>
       <itemizedlist>

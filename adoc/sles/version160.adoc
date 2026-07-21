@@ -180,6 +180,16 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-15863]
+=== `erofs` removed from the kernel module blacklist
+
+The `erofs` filesystem has been developed and maintained upstream.
+It has been removed from the kernel module blacklist in `suse-module-tools` and is now loaded automatically without explicit manual authorization.
+This prevents loading failures in container and automated environments.
+In `supported.conf`, `erofs` remains classified as unsupported (`-`) as it is not actively developed locally.
+As a result, the `erofs` module is packaged in `kernel-default-extra`.
+Security fixes are actively backported.
+
 // jsc#PED-15435
 include::../shared.adoc[tags=jscped-15435,leveloffset=+2]
 
