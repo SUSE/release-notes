@@ -296,3 +296,18 @@ tag::jscped-15435[]
 The Agama installer supports SSH public key authentication for all accounts created during installation, including the first non-root account.
 This eliminates the need for temporary passwords and improves post-installation security.
 end::jscped-15435[]
+
+tag::jscped-14688[]
+// jsc#PED-16212
+// jsc#PED-16211
+// jsc#PED-16210
+// jsc#PED-16209
+[#jsc-PED-14688]
+= Refactoring of clustering packages for Immutable Mode
+
+{productname} {this-version} introduces a transactional OS option.
+To support this option, clustering packages have been refactored to fully comply with Immutable Mode best practices.
+Specifically, the file placement and RPM scriptlets for `crmsh`, `corosync-qdevice`, `resource-agents`, and `corosync` have been updated.
+These packages can now be safely installed and updated via the `transactional-update` tool.
+This ensures they do not attempt to write to non-transactional or non-snapshotted areas (such as `/var`) during transactions.
+end::jscped-14688[]

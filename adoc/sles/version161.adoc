@@ -168,6 +168,9 @@ See <<jsc-PED-16106>>.
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
+// jsc#PED-14688
+include::../shared.adoc[tags=jscped-14688,leveloffset=+2]
+
 // jsc#PED-15435
 include::../shared.adoc[tags=jscped-15435,leveloffset=+2]
 

@@ -24,6 +24,9 @@ Installation media, VM images and public cloud images are usually refreshed ever
 
 === Changes affecting all architectures
 
+// jsc#PED-14688
+include::../shared.adoc[tags=jscped-14688,leveloffset=+3]
+
 ==== `csync2` requires separate initialization
 
 Previously, csync2 was configured automatically during initial cluster bootstrap.
