@@ -15,19 +15,19 @@
     <revdescription>
      <itemizedlist>
       <listitem>
-       <para>Added note about disabled iSCSI boot support in OVMF images (bsc#1245454)</para>
+       <para>Added note about disabled <link xlink:href="index.html#virtualization">iSCSI boot support in OVMF images</link> (bsc#1245454)</para>
       </listitem>
       <listitem>
-       <para>Documented QEMU version 11.0.0 update (jsc#PED-14599)</para>
+       <para>Documented <link xlink:href="index.html#jsc-PED-14599">QEMU version 11.0.0 update</link> (jsc#PED-14599)</para>
       </listitem>
       <listitem>
-       <para>Documented libvirt version 12.3.0 update and modular daemons (jsc#PED-14623)</para>
+       <para>Documented <link xlink:href="index.html#jsc-PED-14623">libvirt version 12.3.0 update and modular daemons</link> (jsc#PED-14623)</para>
       </listitem>
       <listitem>
-       <para>Added section about Intel TDX Confidential Computing (jsc#PED-15646)</para>
+       <para>Added section about <link xlink:href="index.html#jsc-PED-15646">Intel TDX Confidential Computing</link> and its <link xlink:href="index.html#jsc-PED-15646-tech-preview">remote attestation technology preview</link> (jsc#PED-15646)</para>
       </listitem>
       <listitem>
-       <para>Documented updates to other virtualization utilities including virt-bridge-setup (jsc#PED-14624)</para>
+       <para>Documented updates to <link xlink:href="index.html#jsc-PED-14624">other virtualization utilities</link> including virt-bridge-setup (jsc#PED-14624)</para>
       </listitem>
      </itemizedlist>
     </revdescription>
