@@ -53,7 +53,7 @@ sections in this document:
 
 // * <<kernel>>
 // * <<storage>>
-// * <<virtualization>>
+* <<virtualization>>
 * <<removed-deprecated>>
 
 [#intro-support-external]
@@ -116,6 +116,17 @@ The following limitations apply to this technology preview:
 * A fresh installation is required to use systemd-boot.
 
 Full support is planned for a future release.
+
+[#jsc-PED-15646-tech-preview]
+=== Intel TDX Remote Attestation (technology preview)
+
+As a technology preview, remote attestation is available via the following packages in {productname} {this-version}:
+
+* `confidential-computing.sgx`
+* `confidential-computing.tee.dcap.pccs`
+* `guest-components`
+* `suse-libsgx-prebuilt-signed`
+* `trustee`
 
 // jsc#PED-13609
 // jsc#PED-15556
@@ -398,105 +409,72 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 * iSCSI boot support is disabled in OVMF images.
 
 
-[#virtualization-qemu]
-//jsc-PED-14599
+[#jsc-PED-14599]
 === QEMU
 
-QEMU has been updated to version 11.0.0, full list of changes are available at https://wiki.qemu.org/ChangeLog/11.0
+QEMU has been updated to version 11.0.0.
+For changes, see https://wiki.qemu.org/ChangeLog/11.0.
+For removed or deprecated features, see https://qemu-project.gitlab.io/qemu/about/removed-features.html and https://qemu-project.gitlab.io/qemu/about/deprecated.html.
 
-Highlights include:
-* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
-* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
 
-[#virtualization-libvirt]
-// jsc-PED-14623
+[#jsc-PED-14623]
 === libvirt
 
-`libvirt` has been updated to version 12.3.0, this include many incremental improvements and bug fixes, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
+`libvirt` has been updated to version 12.3.0, introducing modular daemons.
+For details, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
 
-`libvirt` provides now a modular daemons.
 
 [#virtualization-vmware]
 === VMware
 
-===== open-vm-tools
+==== open-vm-tools
 
-`open-vm-tools` has been updated to version 13.1.0 that addresses a few critical problems and bug fixes. See https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
+`open-vm-tools` has been updated to version 13.1.0.
+For details, see https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
 
-==== Confidential Computing
 
-===== `sevctl`
+[#virtualization-confidential-computing]
+=== Confidential Computing
 
-The `sevctl` package has been updated to version 0.6.2.
+==== AMD SEV packages update
 
-===== `snpguest`
+The following AMD Secure Encrypted Virtualization (SEV) tools have been updated:
 
-The `snpguest` package has been updated to version 0.10.0.
-Full list of changes is available at: https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0
+* `sevctl` has been updated to version 0.6.2.
+* `snpguest` has been updated to version 0.10.0. For changes, see https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0.
+* `snphost` has been updated to version 0.7.0.
 
-===== `snphost`
 
-The `snphost` package has been updated to version 0.7.0.
-
-//jsc#PED-15646
-[#intel-tdx-confidential-computing]
+[#jsc-PED-15646]
 ==== Intel TDX Confidential Computing
 
 Intel TDX is supported in {productname} {this-version}.
+For details on Intel TDX remote attestation, see <<jsc-PED-15646-tech-preview>>.
 
-As technology preview, remote attestation is available via the following packages:
 
-* `confidential-computing.sgx`
-* `confidential-computing.tee.dcap.pccs`
-* `guest-components`
-* `suse-libsgx-prebuilt-signed`
-* `trustee`
-
-[#virtualization-other]
-//jsc-PED-14624
+[#jsc-PED-14624]
 === Other tools
 
-===== numatop
+The following virtualization utilities have been updated:
 
-`numatop` is available in version 2.5, adding support for Intel GNR and SRF platforms.
+* `numatop` has been updated to version 2.5, adding support for Intel GNR and SRF platforms.
+* `numactl` has been updated to version 2.0.19 (see https://github.com/numactl/numactl/releases/tag/v2.0.19).
+* `libguestfs` has been updated to version 1.58.1.
+* `virt-v2v` has been updated to version 2.10.0, introducing the `--parallel=N` parameter for parallel disk copies (see https://github.com/libguestfs/virt-v2v/tree/v2.10.0).
+* `virtiofsd` has been updated to version 1.12.0.
+* `virt-manager` has been updated to version 5.1.0. Direct XML editing via `virsh` and remote viewing via VNC are recommended (see https://github.com/virt-manager/virt-manager/releases/tag/v5.1.0).
 
-===== numactl
 
-`numactl` is shipped in version 2.0.19.
-Full changes at: https://github.com/numactl/numactl/releases/tag/v2.0.19
+==== `virt-bridge-setup`
 
-===== libguestfs
-
-`libguestfs` has been updated to version 1.58.1.
-
-===== virt-v2v
-
-Update to version 2.10.0. While there are no dedicated release notes, you can review the code changes in Github: https://github.com/libguestfs/virt-v2v/tree/v2.10.0
-
-- Implement --parallel=N for parallel disk copies
-- Update Translations
-- Various fixes
-
-===== `virtiofsd`
-
-The `virtiofsd` has been updated to 1.12.0.
-
-===== `virt-manager`
-
-`virt-manager` is now shipped in version 5.1.0. Its preferable to setup VNC for remote viewing and do all the XML editing using the `virsh` command.
-Full list of changes is available at https://github.com/virt-manager/virt-manager/releases/tag/v5.1.0
-
-include::../shared.adoc[tags=jscped-15932,leveloffset=+4]
-
-===== virt-bridge-setup
-
-virt-bridge-setup is a script designed to simplify network bridge creation on a specified interface using nmcli. It was developed as a replacement for the automatic "yast2 virtualization" bridge creation and is particularly useful for setting up virtualization environments.
+`virt-bridge-setup` is a new script designed to simplify network bridge creation on a specified interface using `nmcli`.
+It replaces the automatic bridge creation previously managed by `yast2 virtualization`.
 
 Important considerations:
 
 * It supports IPv4 only.
-* This is a simple script not intended for complex network scenarios (vlan, bonding, etc...); manual bridge setup is recommended for intricate configurations.
-* The script should be run locally (not remotely) immediately after installation and before any custom network configurations.
+* It is not intended for complex network configurations (such as VLANs or bonding); manual bridge setup is recommended for these scenarios.
+* The script must be run locally (not over a remote connection) immediately after installation and before applying any custom network configurations.
 
 
 
