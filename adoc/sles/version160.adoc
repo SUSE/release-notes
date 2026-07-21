@@ -180,6 +180,14 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-15471]
+=== Node.js 24 is now the default version
+
+The `nodejs24` package is included as the default Node.js version in {productname} {this-version}.
+The `nodejs-common` package has been configured so that the default `nodejs` and `npm` commands point to Node.js 24.
+Node.js 24 is an LTS version and is supported upstream until April 2028.
+
+
 // jsc#PED-15713
 include::../shared.adoc[tags=jscped-15713,leveloffset=+2]
 
