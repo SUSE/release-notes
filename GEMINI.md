@@ -28,7 +28,8 @@ Key entry points:
 - **Multiple issue references**: since a section can only have a single `[#id]` tag, use one identifier for the section ID and append the additional identifiers inline in parentheses at the end of the text.
 - **Order within sections**: most important first; new notes (including includes) go at the top of the section, right after the list of entries without titles; additions before removals; tables at bottom
 - **One commit per note** — each change should be its own commit referencing the issue
-- **Update revdate** — always update `:revdate:` in the master `.adoc` file (the `MAIN=` from the DC config file). Use today's date (`YYYY-MM-DD`)
+- **Update revdate** — always update `:revdate:` in the master `.adoc` file (the `MAIN=` from the DC config file) for **all modified versions** whenever any updates are made. Use today's date (`YYYY-MM-DD`)
+- **Deprecation and Removal Double Notice** — when documenting features that are deprecated in version `X.Y` and planned for removal in `X.Y+1`, always add the deprecation notice in version `X.Y` AND the corresponding removal notice in version `X.Y+1` simultaneously.
 
 ### Commit messages
 
