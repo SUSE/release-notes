@@ -395,7 +395,7 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 //    KVM, libvirt, ...
 
 // bsc#1245454
-* iSCSI boot support is disabled in OVMF images (bsc#1245454).
+* iSCSI boot support is disabled in OVMF images.
 
 
 [#jsc-PED-14599]
