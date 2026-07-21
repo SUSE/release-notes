@@ -168,6 +168,12 @@ See <<jsc-PED-16106>>.
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
+[#jsc-PED-16001]
+=== Added iptables and nftables to SLES Minimal images
+
+The `iptables` and `nftables` packages have been added to SLES Minimal Cloud and VMware VM images.
+This addition enables the successful provisioning of Rancher-deployed RKE2 and K3s clusters on SLES Minimal images without requiring manual package installation or Subscription Management (RMT) registration.
+
 // jsc#PED-14688
 include::../shared.adoc[tags=jscped-14688,leveloffset=+2]
 

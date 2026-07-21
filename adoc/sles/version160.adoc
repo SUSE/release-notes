@@ -180,6 +180,12 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-16001]
+=== Added iptables and nftables to SLES Minimal images
+
+The `iptables` and `nftables` packages have been added to SLES Minimal Cloud and VMware VM images.
+This addition enables the successful provisioning of Rancher-deployed RKE2 and K3s clusters on SLES Minimal images without requiring manual package installation or Subscription Management (RMT) registration.
+
 [#jsc-PED-15863]
 === `erofs` removed from the kernel module blacklist
 
