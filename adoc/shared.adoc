@@ -311,3 +311,11 @@ Specifically, the file placement and RPM scriptlets for `crmsh`, `corosync-qdevi
 These packages can now be safely installed and updated via the `transactional-update` tool.
 This ensures they do not attempt to write to non-transactional or non-snapshotted areas (such as `/var`) during transactions.
 end::jscped-14688[]
+
+tag::jscped-16001[]
+[#jsc-PED-16001]
+= Added iptables and nftables to SLES Minimal images
+
+The `iptables` and `nftables` packages have been added to SLES Minimal Cloud and VMware VM images.
+This addition enables the successful provisioning of Rancher-deployed RKE2 and K3s clusters on SLES Minimal images without requiring manual package installation or Subscription Management (RMT) registration.
+end::jscped-16001[]

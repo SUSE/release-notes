@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16001">Added iptables and nftables to SLES Minimal images</link> (jsc#PED-16001)</para>
+      </listitem>
+      <listitem>
        <para>Documented disabled UDP-Lite protocol (<link xlink:href="index.html#removed">jsc#PED-16118</link>)</para>
       </listitem>
       <listitem>

@@ -180,6 +180,9 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// jsc#PED-16001
+include::../shared.adoc[tags=jscped-16001,leveloffset=+2]
+
 [#jsc-PED-15863]
 === `erofs` removed from the kernel module blacklist
 
