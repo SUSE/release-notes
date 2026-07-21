@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added deprecation notice for DCCP protocol (<link xlink:href="index.html#deprecated">jsc#PED-16117</link>)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-15471">Node.js 24 is now the default version</link> (jsc#PED-15471)</para>
        </listitem>
        <listitem>

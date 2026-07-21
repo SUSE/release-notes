@@ -1323,6 +1323,10 @@ include::../shared.adoc[tags=jscped12374]
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc#PED-16117
+* The DCCP protocol is deprecated in {productname} 16.0 and will be disabled in {productname} 16.1.
+  This protocol is being dropped from the upstream Linux kernel.
+
 // jsc#PED-16118
 * The UDP-Lite protocol (RFC 3828) is deprecated in {productname} 16.0 and will be disabled in {productname} 16.1.
   This protocol is being dropped from the upstream Linux kernel.
