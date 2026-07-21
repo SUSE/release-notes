@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented refactored clustering packages for Immutable Mode (<link xlink:href="index.html#jsc-PED-14688">jsc#PED-14688</link>)</para>
+      </listitem>
+      <listitem>
        <para>Added note about disabled <link xlink:href="index.html#virtualization">iSCSI boot support in OVMF images</link> (bsc#1245454)</para>
       </listitem>
       <listitem>

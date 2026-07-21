@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-21</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented refactored clustering packages for Immutable Mode (<link xlink:href="index.html#jsc-PED-14688">jsc#PED-14688</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-01</date>
     <revdescription>
      <itemizedlist>
