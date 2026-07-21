@@ -53,7 +53,7 @@ sections in this document:
 
 // * <<kernel>>
 // * <<storage>>
-// * <<virtualization>>
+* <<virtualization>>
 * <<removed-deprecated>>
 
 [#intro-support-external]
