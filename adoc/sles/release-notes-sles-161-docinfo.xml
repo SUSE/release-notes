@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented disabled UDP-Lite protocol (<link xlink:href="index.html#removed">jsc#PED-16118</link>)</para>
+      </listitem>
+      <listitem>
        <para>SSSD: added deprecation notice for features and options planned for removal in 16.2 (<link xlink:href="index.html#deprecated">jsc#PED-16257</link>)</para>
       </listitem>
       <listitem>

@@ -492,10 +492,14 @@ This section lists features and packages that were removed from {productname} or
 // For more information about all package and module changes since the last version, see <<intro-package-changes>>.
 
 
-// [#removed]
-// === Removed features and packages
+[#removed]
+=== Removed features and packages
 
-// The following features and packages have been removed in this release.
+The following features and packages have been removed in this release.
+
+// jsc#PED-16118
+* The UDP-Lite protocol (RFC 3828) has been disabled in the {productname} 16.1 kernel.
+  This protocol has been dropped from the upstream Linux kernel.
 
 
 [#deprecated]
