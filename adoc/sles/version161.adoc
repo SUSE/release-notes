@@ -402,15 +402,15 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 === QEMU
 
 QEMU has been updated to version 11.0.0.
-For a full list of changes, see https://wiki.qemu.org/ChangeLog/11.0.
-For details on removed or deprecated features, see https://qemu-project.gitlab.io/qemu/about/removed-features.html and https://qemu-project.gitlab.io/qemu/about/deprecated.html.
+For changes, see https://wiki.qemu.org/ChangeLog/11.0.
+For removed or deprecated features, see https://qemu-project.gitlab.io/qemu/about/removed-features.html and https://qemu-project.gitlab.io/qemu/about/deprecated.html.
 
 
 [#jsc-PED-14623]
 === libvirt
 
 `libvirt` has been updated to version 12.3.0, introducing modular daemons.
-For a list of other improvements and bug fixes, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
+For details, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
 
 
 [#virtualization-vmware]
@@ -419,7 +419,7 @@ For a list of other improvements and bug fixes, see https://libvirt.org/news.htm
 ==== open-vm-tools
 
 `open-vm-tools` has been updated to version 13.1.0.
-For details on bug fixes and security updates, see the release notes at https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
+For details, see https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
 
 
 [#virtualization-confidential-computing]
@@ -430,7 +430,7 @@ For details on bug fixes and security updates, see the release notes at https://
 The following AMD Secure Encrypted Virtualization (SEV) tools have been updated:
 
 * `sevctl` has been updated to version 0.6.2.
-* `snpguest` has been updated to version 0.10.0. For a list of changes, see https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0.
+* `snpguest` has been updated to version 0.10.0. For changes, see https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0.
 * `snphost` has been updated to version 0.7.0.
 
 
