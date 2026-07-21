@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-15471">Node.js 24 is now the default version</link> (jsc#PED-15471)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-16001">Added iptables and nftables to SLES Minimal images</link> (jsc#PED-16001)</para>
        </listitem>
        <listitem>
