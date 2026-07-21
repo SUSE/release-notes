@@ -117,6 +117,18 @@ The following limitations apply to this technology preview:
 
 Full support is planned for a future release.
 
+// jsc#PED-15646
+[#jsc-PED-15646-tech-preview]
+=== Intel TDX Remote Attestation (technology preview)
+
+As a technology preview, remote attestation is available via the following packages in {productname} {this-version}:
+
+* `confidential-computing.sgx`
+* `confidential-computing.tee.dcap.pccs`
+* `guest-components`
+* `suse-libsgx-prebuilt-signed`
+* `trustee`
+
 // jsc#PED-13609
 // jsc#PED-15556
 [#jsc-PED-15556]
@@ -438,14 +450,7 @@ The following AMD Secure Encrypted Virtualization (SEV) tools have been updated:
 ==== Intel TDX Confidential Computing
 
 Intel TDX is supported in {productname} {this-version}.
-
-As a technology preview, remote attestation is available via the following packages:
-
-* `confidential-computing.sgx`
-* `confidential-computing.tee.dcap.pccs`
-* `guest-components`
-* `suse-libsgx-prebuilt-signed`
-* `trustee`
+For details on Intel TDX remote attestation, see <<jsc-PED-15646-tech-preview>>.
 
 
 [#jsc-PED-14624]
