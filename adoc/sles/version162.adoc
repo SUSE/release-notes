@@ -143,6 +143,14 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16257
+* The following SSSD features and options have been removed in {productname} 16.2:
+** The enumeration feature for the AD or IPA provider
+** The `sss_ssh_knownhostsproxy` tool
+** The `files` provider
+** The `ad_allow_remote_domain_local_groups` option
+** The `default_domain_suffix` option
+
 // jsc#PED-16439
 * Support for AF_ALG sockets (the `CONFIG_CRYPTO_USER_API` kernel configuration) has been removed.
 

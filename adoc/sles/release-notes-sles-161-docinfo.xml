@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>SSSD: added deprecation notice for features and options planned for removal in 16.2 (<link xlink:href="index.html#deprecated">jsc#PED-16257</link>)</para>
+      </listitem>
+      <listitem>
        <para>Documented refactored clustering packages for Immutable Mode (<link xlink:href="index.html#jsc-PED-14688">jsc#PED-14688</link>)</para>
       </listitem>
       <listitem>
