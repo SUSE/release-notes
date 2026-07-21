@@ -117,7 +117,6 @@ The following limitations apply to this technology preview:
 
 Full support is planned for a future release.
 
-// jsc#PED-15646
 [#jsc-PED-15646-tech-preview]
 === Intel TDX Remote Attestation (technology preview)
 
