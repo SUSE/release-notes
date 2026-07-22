@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-22</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added note about upcoming GNU patch update to version 2.8 in 16.2 (<link xlink:href="index.html#jsc-PED-16669-upcoming">jsc#PED-16669</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-21</date>
     <revdescription>
      <itemizedlist>
