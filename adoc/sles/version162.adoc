@@ -105,7 +105,16 @@ Technology previews come with the following limitations:
 There are no technology previews at this time.
 
 
-// == Changes affecting all architectures
+== Changes affecting all architectures
+
+[#jsc-PED-16669]
+=== GNU `patch` updated to version 2.8
+
+The GNU `patch` package has been updated to version 2.8 in {productname} 16.2.
+For a complete list of changes, see the link:https://savannah.gnu.org/news/?id=10741[GNU patch release announcement].
+
+GNU `patch` version 2.8 enforces stricter header parsing.
+Ensure patch-generating tools do not inject `NUL` bytes or raw control characters into header lines or diff directives, as they are no longer accepted.
 
 
 // == {x64}-specific changes
