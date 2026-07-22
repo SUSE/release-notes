@@ -186,6 +186,15 @@ include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 // bsc#1271333
 include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 
+[#jsc-PED-16669-upcoming]
+=== Upcoming update of GNU `patch` to version 2.8 in {productname} 16.2
+
+The GNU `patch` package will be updated to version 2.8 in {productname} 16.2.
+For a complete list of upcoming changes, see the link:https://savannah.gnu.org/news/?id=10741[GNU patch release announcement].
+
+GNU `patch` version 2.8 enforces stricter header parsing.
+Ensure patch-generating tools do not inject `NUL` bytes or raw control characters into header lines or diff directives, as they are no longer accepted in version 2.8.
+
 [#jsc-PED-15707]
 === Login hint when attempting root login to {cockpit}
 
