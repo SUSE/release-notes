@@ -1,3 +1,12 @@
+tag::jscped-4973[]
+[#jsc-PED-4973]
+= Firewalld default presets
+
+To ensure consistent security and management preset behavior, `firewalld` is now enabled by default.
+This unification aligns the default service states across standard and immutable operating modes on {productname} {this-version}.
+You can customize the firewalld presets or disable the service if necessary.
+end::jscped-4973[]
+
 tag::bsc1271333[]
 [#bsc-1271333]
 = XFS log stripe unit alignment change

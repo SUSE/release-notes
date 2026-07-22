@@ -15,6 +15,9 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11013
 * {ulp} is now supported with transactional updates
 
+// jsc#PED-4973
+include::../shared.adoc[tags=jscped-4973,leveloffset=+3]
+
 // Post-quantum cryptography enabled by default
 include::../shared.adoc[tags=jscped-15713,leveloffset=+3]
 
