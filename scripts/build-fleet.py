@@ -54,6 +54,10 @@ def main():
         built_base_name = f"releasenotes_{prod_version}"
         src_dir = os.path.join(output_dir, "html", built_base_name)
 
+        # Fallback to single-html if html (multi-page) directory is not found (common for DocBook/AsciiDoc articles)
+        if not os.path.exists(src_dir):
+            src_dir = os.path.join(output_dir, "single-html", built_base_name)
+
         if not os.path.exists(src_dir):
             print(f"Error: Compiled DAPS output directory {src_dir} was not found inside the downloaded artifact!", file=sys.stderr)
             sys.exit(1)
