@@ -10,6 +10,8 @@ These release notes apply to {productname} {this-version}.
 
 === Changes affecting all architectures
 
+// jsc#SMO-578
+* The `sensors` package has been added to the repositories, enabling the monitoring of hardware temperatures, voltage, and fan speeds.
 // jsc-SMO-573
 * Image re-encryption during the OS initialisation is now faster
 // jsc#PED-11013
