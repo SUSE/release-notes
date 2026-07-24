@@ -512,6 +512,9 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16555
+* The `perl-Test-Output` package has been removed from {productname} 16.1 due to its unmaintained status.
+
 // jsc#PED-16698
 * The `stress-ng` package has been relocated from {productname} back to {ph}.
   Consequently, it is no longer officially supported as part of the core product.
