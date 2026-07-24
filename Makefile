@@ -53,7 +53,7 @@ yast_html_result_dir := build/release-notes-$(PRODUCT_VERSION)/yast-html
 yast_html_result     := $(yast_html_result_dir)/release-notes.html
 
 
-.PHONY: all clean html pdf single-html text validate yast-html 
+.PHONY: all clean html pdf single-html text update-attributes validate yast-html 
 
 all: validate single-html yast-html pdf text html
 
@@ -103,6 +103,9 @@ $(yast_html_result): $(profile_result)
 
 $(profile_result): $(dc_file) $(src_files)
 	$(daps_command) -vv -d $< $(profile_params) profile
+
+update-attributes:
+	python3 scripts/update-attributes.py
 
 serve:
 # needs Python 3.7 for the --directory argument
