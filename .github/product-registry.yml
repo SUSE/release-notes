@@ -6,80 +6,208 @@
 #
 # See ARCHITECTURE.md for details on why 'doc-name' and nesting is strictly required.
 
-DC-releasenotes_sles_16.0:
-  slug: "sles-16.0"
-  version: "16.0"
-  short-name: "SLES"
-  doc-name: "release-notes"
-
-DC-releasenotes_sles_16.1:
-  slug: "sles-16.1"
-  version: "16.1"
-  short-name: "SLES"
-  doc-name: "release-notes"
-
-DC-releasenotes_sles_16.2:
-  slug: "sles-16.2"
-  version: "16.2"
-  short-name: "SLES"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-ha_16.0:
-  slug: "sleha-16.0"
-  version: "16.0"
-  short-name: "SLE HA"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-ha_16.1:
-  slug: "sleha-16.1"
-  version: "16.1"
-  short-name: "SLE HA"
-  doc-name: "release-notes"
-
-DC-releasenotes_sles-sap_16.0:
-  slug: "slesap-16.0"
-  version: "16.0"
-  short-name: "SLES for SAP"
-  doc-name: "release-notes"
-
-DC-releasenotes_sles-sap_16.1:
-  slug: "slesap-16.1"
-  version: "16.1"
-  short-name: "SLES for SAP"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-micro_6.0:
-  slug: "sl-micro_60"
-  version: "6.0"
-  short-name: "SLE Micro"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-micro_6.1:
-  slug: "sl-micro_61"
-  version: "6.1"
-  short-name: "SLE Micro"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-micro_6.2:
-  slug: "sl-micro_62"
-  version: "6.2"
-  short-name: "SLE Micro"
-  doc-name: "release-notes"
-
-DC-releasenotes_sle-micro_6.3:
-  slug: "sl-micro_63"
-  version: "6.3"
-  short-name: "SLE Micro"
-  doc-name: "release-notes"
-
 DC-releasenotes_leap_16.0:
-  slug: "leap-16.0"
-  version: "16.0"
-  short-name: "openSUSE Leap"
-  doc-name: "release-notes"
-
+  doc-name: release-notes
+  short-name: openSUSE Leap
+  slug: leap-16.0
+  version: '16.0'
 DC-releasenotes_leap_16.1:
-  slug: "leap-16.1"
-  version: "16.1"
-  short-name: "openSUSE Leap"
-  doc-name: "release-notes"
+  doc-name: release-notes
+  short-name: openSUSE Leap
+  slug: leap-16.1
+  version: '16.1'
+DC-releasenotes_sle-ha_15-SP3:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-15-sp3
+  version: 15 SP3
+DC-releasenotes_sle-ha_15-SP4:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-15-sp4
+  version: 15 SP4
+DC-releasenotes_sle-ha_15-SP5:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-15-sp5
+  version: 15 SP5
+DC-releasenotes_sle-ha_15-SP6:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-15-sp6
+  version: 15 SP6
+DC-releasenotes_sle-ha_15-SP7:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-15-sp7
+  version: 15 SP7
+DC-releasenotes_sle-ha_16.0:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-16.0
+  version: '16.0'
+DC-releasenotes_sle-ha_16.1:
+  doc-name: release-notes
+  short-name: SLE HA
+  slug: sleha-16.1
+  version: '16.1'
+DC-releasenotes_sle-hpc_15-SP3:
+  doc-name: release-notes
+  short-name: SLE HPC
+  slug: slehpc-15-sp3
+  version: 15 SP3
+DC-releasenotes_sle-hpc_15-SP4:
+  doc-name: release-notes
+  short-name: SLE HPC
+  slug: slehpc-15-sp4
+  version: 15 SP4
+DC-releasenotes_sle-hpc_15-SP5:
+  doc-name: release-notes
+  short-name: SLE HPC
+  slug: slehpc-15-sp5
+  version: 15 SP5
+DC-releasenotes_sle-hpc_15-SP6:
+  doc-name: release-notes
+  short-name: SLE HPC
+  slug: slehpc-15-sp6
+  version: 15 SP6
+DC-releasenotes_sle-hpc_15-SP7:
+  doc-name: release-notes
+  short-name: SLE HPC
+  slug: slehpc-15-sp7
+  version: 15 SP7
+DC-releasenotes_sle-micro_6.0:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sl-micro_60
+  version: '6.0'
+DC-releasenotes_sle-micro_6.1:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sl-micro_61
+  version: '6.1'
+DC-releasenotes_sle-micro_6.2:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sl-micro_62
+  version: '6.2'
+DC-releasenotes_sle-micro_6.3:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sl-micro_63
+  version: '6.3'
+DC-releasenotes_sled_15-SP2:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp2
+  version: 15 SP2
+DC-releasenotes_sled_15-SP3:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp3
+  version: 15 SP3
+DC-releasenotes_sled_15-SP4:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp4
+  version: 15 SP4
+DC-releasenotes_sled_15-SP5:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp5
+  version: 15 SP5
+DC-releasenotes_sled_15-SP6:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp6
+  version: 15 SP6
+DC-releasenotes_sled_15-SP7:
+  doc-name: release-notes
+  short-name: SLED
+  slug: sled-15-sp7
+  version: 15 SP7
+DC-releasenotes_sles-sap_15-SP3:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-15-sp3
+  version: 15 SP3
+DC-releasenotes_sles-sap_15-SP4:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-15-sp4
+  version: 15 SP4
+DC-releasenotes_sles-sap_15-SP5:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-15-sp5
+  version: 15 SP5
+DC-releasenotes_sles-sap_15-SP6:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-15-sp6
+  version: 15 SP6
+DC-releasenotes_sles-sap_15-SP7:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-15-sp7
+  version: 15 SP7
+DC-releasenotes_sles-sap_16.0:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-16.0
+  version: '16.0'
+DC-releasenotes_sles-sap_16.1:
+  doc-name: release-notes
+  short-name: SLES for SAP
+  slug: slesap-16.1
+  version: '16.1'
+DC-releasenotes_sles_12-SP5:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-12-sp5
+  version: 12 SP5
+DC-releasenotes_sles_15-SP2:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp2
+  version: 15 SP2
+DC-releasenotes_sles_15-SP3:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp3
+  version: 15 SP3
+DC-releasenotes_sles_15-SP4:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp4
+  version: 15 SP4
+DC-releasenotes_sles_15-SP5:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp5
+  version: 15 SP5
+DC-releasenotes_sles_15-SP6:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp6
+  version: 15 SP6
+DC-releasenotes_sles_15-SP7:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-15-sp7
+  version: 15 SP7
+DC-releasenotes_sles_16.0:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-16.0
+  version: '16.0'
+DC-releasenotes_sles_16.1:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-16.1
+  version: '16.1'
+DC-releasenotes_sles_16.2:
+  doc-name: release-notes
+  short-name: SLES
+  slug: sles-16.2
+  version: '16.2'
