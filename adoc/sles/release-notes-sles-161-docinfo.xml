@@ -14,6 +14,9 @@
     <date>2026-07-24</date>
     <revdescription>
      <itemizedlist>
+     <listitem>
+       <para>Documented removal of fwts package (<link xlink:href="index.html#removed">jsc#PED-16696</link>)</para>
+      </listitem>
       <listitem>
        <para>Documented removal of perl-Test-Output package (<link xlink:href="index.html#removed">jsc#PED-16555</link>)</para>
       </listitem>
