@@ -43,6 +43,10 @@ src_files := $(wildcard adoc/*.adoc adoc/*.xml)
 
 daps_xslt_rn_dir := /usr/share/daps/daps-xslt/relnotes
 
+ifndef LIFECYCLE
+  LIFECYCLE := maintained
+endif
+
 profile_params := --adocattr lifecycle=$(LIFECYCLE)
 text_params    :=
 

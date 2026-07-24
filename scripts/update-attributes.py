@@ -57,6 +57,14 @@ COMPATIBILITY_BLOCK = """
 :nvidiaorinreg: {nvidiaorin}*
 :tegra: Tegra
 :tegrareg: {tegra}*
+
+// Default lifecycle fallback if empty or undefined
+ifndef::lifecycle[]
+:lifecycle: maintained
+endif::[]
+ifeval::["{lifecycle}" == ""]
+:lifecycle: maintained
+endif::[]
 """
 
 def main():
