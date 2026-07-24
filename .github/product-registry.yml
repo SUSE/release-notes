@@ -1,3 +1,11 @@
+# PRODUCT METADATA REGISTRY
+#
+# This file serves as the Single Source of Truth mapping DAPS DC-* files to their
+# taxonomic product attributes. This metadata is consumed by CI scripts to dynamically
+# orchestrate builds, prepare the directory hierarchies, and generate PR preview links.
+#
+# See ARCHITECTURE.md for details on why 'doc-name' and nesting is strictly required.
+
 DC-releasenotes_leap_16.0:
   doc-name: release-notes
   short-name: openSUSE Leap

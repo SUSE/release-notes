@@ -60,10 +60,10 @@ COMPATIBILITY_BLOCK = """
 
 // Default lifecycle fallback if empty or undefined
 ifndef::lifecycle[]
-:lifecycle: maintained
+:lifecycle: unmaintained
 endif::[]
 ifeval::["{lifecycle}" == ""]
-:lifecycle: maintained
+:lifecycle: unmaintained
 endif::[]
 """
 
