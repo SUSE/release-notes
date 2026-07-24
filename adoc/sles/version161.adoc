@@ -513,10 +513,14 @@ This section lists features and packages that were removed from {productname} or
 The following features and packages have been removed in this release.
 
 // jsc#PED-16696
-* The `fwts` package has been removed from {productname} 16.1 due to its unmaintained status.
-
 // jsc#PED-16555
-* The `perl-Test-Output` package has been removed from {productname} 16.1 due to its unmaintained status.
+// jsc#PED-16552
+// jsc#PED-16549
+* Due to being no longer maintained, these packages have been removed from {productname} 16.1:
+** `fwts`
+** `perl-Test-Output`
+** `perl-Test-Needs`
+** `perl-Test-Differences`
 
 // jsc#PED-16698
 * The `stress-ng` package has been relocated from {productname} back to {ph}.

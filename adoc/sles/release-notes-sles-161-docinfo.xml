@@ -18,7 +18,7 @@
        <para>Documented removal of fwts package (<link xlink:href="index.html#removed">jsc#PED-16696</link>)</para>
       </listitem>
       <listitem>
-       <para>Documented removal of perl-Test-Output package (<link xlink:href="index.html#removed">jsc#PED-16555</link>)</para>
+       <para>Documented removal of perl-Test-Difference, perl-Test-Needs and perl-Test-Output package (<link xlink:href="index.html#removed">jsc#PED-16555</link>)</para>
       </listitem>
       <listitem>
        <para>Documented relocation of stress-ng back to SUSE Package Hub (<link xlink:href="index.html#removed">jsc#PED-16698</link>)</para>
