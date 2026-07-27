@@ -842,6 +842,14 @@ The configured NTP settings are written to the target system to persist after in
 
 Information in this section applies to the {x64} architecture.
 
+[#bsc-1271635]
+=== Redefined UEFI KVM virtual machines fail to start
+
+UEFI KVM virtual machines created with `--cpu host-model` fail to start after a redefine operation.
+This is caused by a missing `pdcm` CPU feature check during startup.
+To work around this issue, remove `<feature policy='disable' name='pdcm'/>` from the domain XML of the virtual machine.
+Alternatively, avoid using `--cpu host-model` for virtual machines that require migration or redefine operations.
+
 [#jsc-PED-11640]
 === AMD EPYC Turin automonous frequency scaling
 
