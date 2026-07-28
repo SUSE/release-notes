@@ -23,10 +23,19 @@ include::../shared.adoc[tags=jscped-12860,leveloffset=+3]
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+3]
 
+[#jsc-PED-8790]
+==== Robust PXE Boot installations
+
+Network deployment of raw disk images via the {kiwi} PXE boot self-installer has been improved.
+Invalid or inaccessible remote image URLs now trigger detailed, readable error messages.
+Error logs are preserved for troubleshooting instead of being discarded.
+The image download mechanism now automatically reconnects on slow networks to prevent timeouts.
+
 ==== Installation media
 
 // jsc#PED-8578
-On top of the images described above with {productname} {this-version} we are adding PXE boot images (network boot .tar) for all architectures except ppc64le.
+On top of the images described above with {productname} {this-version} we are adding PXE boot images (network boot .tar) for all architectures except {ppc64le}.
+For information about improvements to PXE boot installation reliability, see <<jsc-PED-8790>>.
 
 ==== Supported Architectures
 
