@@ -426,9 +426,17 @@ Virtual tape servers, such as the emulated IBM TS7700 Virtual Tape Server, conti
 
 include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
-// == POWER-specific changes (ppc64le)
+[#power]
+== POWER-specific changes (ppc64le)
 
-// Information in this section applies to {power-productname}.
+Information in this section applies to {power-productname}.
+
+[#jsc-PED-15378]
+=== Automated provisioning with cloud-init in virtual machine guest images
+
+The raw and qcow2 virtual machine guest images for the {power} architecture ({ppc64le}) are now built with cloud-init integration.
+Previously, provisioning virtual machines on KVM using these images required manual configuration steps.
+Automated initial guest provisioning is now fully supported.
 
 // == {arm}-specific changes ({aarch64})
 
