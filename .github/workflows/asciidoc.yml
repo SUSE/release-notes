@@ -96,9 +96,8 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.detect.outputs.has_changes == 'true'
     needs: [detect, build]
-    if: needs.detect.outputs.has_changes == 'true'
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
@@ -123,12 +122,11 @@ jobs:
 
   preview:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && needs.detect.outputs.has_changes == 'true'
     permissions:
       pull-requests: write
       issues: write
     needs: [detect, build]
-    if: needs.detect.outputs.has_changes == 'true'
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
