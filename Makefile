@@ -52,8 +52,8 @@ text_params    :=
 
 # files to be created:
 profile_result       := build/.profiled/noprofile/release-notes-$(PRODUCT_VERSION).xml
-text_result          := build/release-notes-$(PRODUCT_VERSION)/release-notes-$(PRODUCT_VERSION).txt
-yast_html_result_dir := build/release-notes-$(PRODUCT_VERSION)/yast-html
+text_result          := build/releasenotes_$(PRODUCT_VERSION)/releasenotes_$(PRODUCT_VERSION).txt
+yast_html_result_dir := build/releasenotes_$(PRODUCT_VERSION)/yast-html
 yast_html_result     := $(yast_html_result_dir)/release-notes.html
 
 
