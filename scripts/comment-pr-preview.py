@@ -65,7 +65,14 @@ def main():
         sys.exit(0)
 
     links_block = "\n".join(links)
-    body = f"🚀 **Release Notes Preview is ready!**\n\nYou can preview the built release notes here:\n{links_block}\n\nDirectory Index: https://susedoc.github.io/release-notes/pr-{pr_number}/"
+    body = f"""
+        🚀 **Preview is ready!**
+        The following release notes were built because they include files you edited:
+        
+        {links_block}
+        
+        Index of all built release notes: https://susedoc.github.io/release-notes/pr-{pr_number}/
+    """
 
     # 3. Query existing comments on the PR to avoid duplicate comment spam
     comment_stdout, _ = run_command([
@@ -77,7 +84,7 @@ def main():
         try:
             comments_data = json.loads(comment_stdout)
             for comment in comments_data.get("comments", []):
-                if "Release Notes Preview is ready!" in comment.get("body", ""):
+                if "Preview is ready!" in comment.get("body", ""):
                     # ROBUST FIX: Extract the database ID securely using regular expressions
                     # matching the trailing digits at the end of the comment URL.
                     url = comment.get("url", "")
