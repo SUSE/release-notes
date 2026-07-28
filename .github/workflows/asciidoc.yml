@@ -84,28 +84,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-daps-${{ github.ref_name }}-
             ${{ runner.os }}-daps-
-      - name: Prune Unaffected Cache Directories
-        run: |
-          if [ -d "build" ]; then
-            echo "Pruning unaffected cached build directories..."
-            AFFECTED_DCS="${{ needs.detect.outputs.affected_dcs }}"
-            for dc in DC-*; do
-              if [ -f "$dc" ]; then
-                # Convert e.g., 'DC-releasenotes_sles_16.1' to 'releasenotes_sles_16.1'
-                prod_dir=$(echo "$dc" | sed 's/^DC-//')
-                if [[ ! " $AFFECTED_DCS " =~ " $dc " ]]; then
-                  if [ -d "build/$prod_dir" ]; then
-                    echo "Deleting unaffected cached directory: build/$prod_dir"
-                    rm -rf "build/$prod_dir"
-                  fi
-                fi
-              fi
-            done
-          fi
       - uses: openSUSE/doc-ci@gha-build
         id: build-dc
         with:
           dc-files: ${{ needs.detect.outputs.affected_dcs }}
+      - name: Filter Collected Artifacts (Preserve DAPS Cache)
+        run: uv run scripts/filter-artifacts.py ${{ needs.detect.outputs.affected_dcs }}
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-dc.outputs.artifact-name }}
