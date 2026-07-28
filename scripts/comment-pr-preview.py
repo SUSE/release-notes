@@ -22,6 +22,19 @@ def main():
     pr_number = sys.argv[1]
     repo = sys.argv[2]
 
+    # Check if PR is still open before commenting
+    state_stdout, state_code = run_command([
+        "gh", "pr", "view", pr_number, "--repo", repo, "--json", "state"
+    ])
+    if state_code == 0 and state_stdout:
+        try:
+            state_data = json.loads(state_stdout)
+            if state_data.get("state") != "OPEN":
+                print(f"PR {pr_number} is {state_data.get('state')}. Skipping preview comment.")
+                sys.exit(0)
+        except Exception as e:
+            print(f"Warning: Failed to parse PR state JSON: {e}", file=sys.stderr)
+
     # 1. Read product-registry.yml
     registry_path = ".github/product-registry.yml"
     if not os.path.exists(registry_path):
