@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-07-28</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented removed support for IBM 3480 and 3590 tape drives on IBM Z (<link xlink:href="index.html#bsc-1266763">bsc#1266763</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-17</date>
     <revdescription>
      <itemizedlist>
