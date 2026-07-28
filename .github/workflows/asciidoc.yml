@@ -38,7 +38,7 @@ jobs:
           else
             BASE_SHA="${{ github.event.before }}"
             HEAD_SHA="${{ github.event.after }}"
-            if [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ] || [ -z "$BASE_SHA" ] || ! git rev-parse --quiet --verify "$BASE_SHA" >/dev/null 2>&1; then
+            if [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ] || [ -z "$BASE_SHA" ] || ! git cat-file -e "$BASE_SHA" >/dev/null 2>&1; then
               BASE_SHA="HEAD^"
             fi
           fi
