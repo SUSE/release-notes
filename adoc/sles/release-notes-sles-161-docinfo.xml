@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented availability of Repository Mirroring Tool (RMT) server (<link xlink:href="index.html#jsc-PED-14922">jsc#PED-14922</link>)</para>
+      </listitem>
+      <listitem>
        <para>Documented Secure Boot support for ECKD DASD disks on IBM Z (<link xlink:href="index.html#jsc-PED-15030">jsc#PED-15030</link>)</para>
       </listitem>
       <listitem>
