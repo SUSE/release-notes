@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented Secure Boot support for ECKD DASD disks on IBM Z (<link xlink:href="index.html#jsc-PED-15030">jsc#PED-15030</link>)</para>
+      </listitem>
+      <listitem>
        <para>Documented removed support for IBM 3480 and 3590 tape drives on IBM Z (<link xlink:href="index.html#bsc-1266763">bsc#1266763</link>)</para>
       </listitem>
       <listitem>
