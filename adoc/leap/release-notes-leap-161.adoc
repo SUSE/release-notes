@@ -20,7 +20,7 @@ include::../common/about-documentation.adoc[]
 
 This section describes community-driven enhancements, features, and updates that extend the SUSE Linux Enterprise core. These changes reflect the openSUSE project’s unique contributions, including desktop improvements, additional packages, and new workflows.
 
-include::version160.adoc[]
+include::version161.adoc[]
 
 include::sles-core.adoc[]
 
