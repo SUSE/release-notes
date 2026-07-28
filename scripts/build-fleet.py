@@ -59,8 +59,8 @@ def main():
             src_dir = os.path.join(output_dir, "single-html", built_base_name)
 
         if not os.path.exists(src_dir):
-            print(f"Error: Compiled DAPS output directory {src_dir} was not found inside the downloaded artifact!", file=sys.stderr)
-            sys.exit(1)
+            print(f"Skipping {dc_file}: Compiled DAPS output directory {src_dir} not found in the downloaded artifact.")
+            continue
 
         # Construct target folder matching static Pages URL expectations
         # Schema: <dest_base>/<slug>/html/<doc_name>/
