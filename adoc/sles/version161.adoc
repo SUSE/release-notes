@@ -414,6 +414,16 @@ include::../kernel-161-aarch64.adoc[leveloffset=+2]
 Information in this section applies to {z-productname}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
+// jsc#PED-13734
+// bsc#1249961
+[#jsc-PED-15030]
+=== Secure Boot support for ECKD DASD disks on {ibmz}
+
+{productname} now supports and automatically proposes Secure Boot during installation for ECKD DASD disks.
+This support is available on IBM z16, LinuxONE 4, or newer systems.
+The bootloader installer (`zipl`) automatically writes both secure boot (list-directed IPL) and non-secure boot (CCW) boot records.
+This ensures that the installed system remains bootable on older systems that do not support Secure Boot.
+
 // jsc#PED-14585
 // jsc#DOCTEAM-2356
 [#bsc-1266763]
