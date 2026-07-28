@@ -90,6 +90,8 @@ jobs:
           dc-files: ${{ needs.detect.outputs.affected_dcs }}
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
+      - name: Align Artifact Ownership
+        run: sudo chown -R $USER docs-artifact-collect
       - name: Filter Collected Artifacts (Preserve DAPS Cache)
         run: uv run scripts/filter-artifacts.py ${{ needs.detect.outputs.affected_dcs }}
       - uses: actions/upload-artifact@v4
