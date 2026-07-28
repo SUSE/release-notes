@@ -180,6 +180,18 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-15411]
+=== GNOME Software is now available and supports online updates
+
+GNOME Software (`gnome-software`) is now shipped as part of the software stack in {productname} {this-version}.
+It has been modified to support online updates, allowing the majority of packages to be updated without requiring a reboot.
+Reboots are still required for critical updates such as kernel, firmware, or driver updates.
+
+On transactional (immutable) systems, the PackageKit plugin of GNOME Software automatically detects the environment and disables itself.
+This prevents failed update operations on the read-only root file system.
+On transactional systems, GNOME Software can still manage Flatpak applications, while system packages must be managed using the `transactional-update` tool.
+
+
 [#jsc-PED-15471]
 === Node.js 24 is now the default version
 
