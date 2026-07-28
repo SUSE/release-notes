@@ -414,6 +414,10 @@ include::../kernel-161-aarch64.adoc[leveloffset=+2]
 Information in this section applies to {z-productname}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
+=== Removed support for tape drives === 
+Removed support for IBM 3480 and 3590 tape drives incl. tape390_display and tape390_crypt tools. 
+This is consistent with the changes introduced in s390-tools, where support for 3480 and 3590 FICON tape devices as well as the related tape390 utilities was removed, while other tape technologies remain outside the scope of this statement. There are virtual tape servers (emulated tape like IBM TS7700 Virtual Tape Server) which continue to be served by tape.ko & tape_34xx.ko (& tape_3590.ko).
+
 include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 // == POWER-specific changes (ppc64le)
