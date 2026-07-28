@@ -17,6 +17,9 @@
       <listitem>
        <para>Documented removed support for IBM 3480 and 3590 tape drives on IBM Z (<link xlink:href="index.html#bsc-1266763">bsc#1266763</link>)</para>
       </listitem>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-15378">Automated provisioning with cloud-init in virtual machine guest images</link> (jsc#PED-15378)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
