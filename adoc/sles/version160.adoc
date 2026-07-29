@@ -1307,6 +1307,7 @@ It was added by accident to {productname} 16.0 and is unsupported.
 // bsc#1254327
 * The filesystem based HA solution for ENSA1/2 central services is not supported. See https://www.suse.com/releasenotes/x86_64/SLE-SAP/15-SP7/index.html#jsc-PED-11566 for more information.
 // jsc#SLE-24335
+// jsc#PED-3865
 // bsc#1253376
 * NIS has been removed.
 This includes packages implementing NIS like `ypserv`, NIS code in {suse} tools, and all NIS client code.

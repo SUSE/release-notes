@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-07-29</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Updated tracking reference for NIS removal note (<link xlink:href="index.html#removed">jsc#PED-3865</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-28</date>
      <revdescription>
       <itemizedlist>
@@ -208,6 +218,16 @@
     <itemizedlist>
      <listitem>
       <para>Add GFS2 to <link xlink:href="index.html#file-system-comparison">file system comparison table</link> (<link xlink:href="https://bugzilla.suse.com/show_bug.cgi?id=1257500">bsc#1257500</link>)</para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
+   <date>2025-11-13</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Added note about NIS removal (<link xlink:href="index.html#removed">bsc#1253376</link>, <link xlink:href="index.html#removed">jsc#PED-3865</link>)</para>
      </listitem>
     </itemizedlist>
    </revdescription>
