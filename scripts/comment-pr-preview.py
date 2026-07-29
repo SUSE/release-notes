@@ -66,12 +66,12 @@ def main():
 
     links_block = "\n".join(links)
     body = f"""
-        🚀 **Preview is ready!**
-        The following release notes were built because they include files you edited:
-        
-        {links_block}
-        
-        Index of all built release notes: https://susedoc.github.io/release-notes/pr-{pr_number}/
+    🚀 **Preview is ready!**
+    The following release notes were built because they include files you edited:
+    
+    {links_block}
+    
+    Index of all built release notes: https://susedoc.github.io/release-notes/pr-{pr_number}/
     """
 
     # 3. Query existing comments on the PR to avoid duplicate comment spam
