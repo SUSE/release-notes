@@ -60,7 +60,6 @@ The following features and packages are deprecated and will be removed in a futu
 // jsc#PED-2431
 // bsc#1186594
 * `libgrss` has been deprecated and will be removed in {productnameshort} 15 SP6.
-
 // jsc#PED-4018
 * `docker-runc` has been deprecated and will be removed in {productnameshort} 15 SP6. Use `runc` instead.
 // jsc#PED-8166
