@@ -33,9 +33,6 @@ Use Replacement Feature instead.
 For more information, see <<jsc-SLE-0000>>.
 ////
 
-// jsc#PED-2431
-// bsc#1186594
-* `libgrss` has been removed.
 // jsc#PED-4018
 * `docker-runc` has been remove. Use `runc` instead.
 // jsc#PED-8162

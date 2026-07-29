@@ -8,13 +8,6 @@ include::attributes-product.adoc[]
 [#changelog]
 == Changelog for {this-version}
 
-[#release-2026-07-29]
-=== 2026-07-29
-
-==== New
-
-* Added note about removal of `libgrss` to <<removed-deprecated>> ({jira-url}PED-2431[Jira])
-
 [#release-2025-10-31]
 === 2025-10-31
 
