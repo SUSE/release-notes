@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-08-04</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Shortened Agama profiles note and added reference link to the official guide (<link xlink:href="index.html#jsc-PED-15454">jsc#PED-15454</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-07-29</date>
      <revdescription>
       <itemizedlist>
