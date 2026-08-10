@@ -40,7 +40,8 @@ Text
 [#jsc-PED-11566]
 ==== `SAPHanaSR`, `SAPHanaSR-ScaleOut` and filesystem resource agent deprecations
 
-We are announcing some important changes to HA cluster resource agents and packages in {producta} 16.0. Please be aware of the following deprecations and plan your deployments accordingly:
+We are announcing some important changes to HA cluster resource agents and packages in {producta} 16.0.
+Please be aware of the following deprecations and plan your deployments accordingly:
 
 [cols="1,1,1,1,1",options="header"]
 |===
@@ -50,22 +51,23 @@ We are announcing some important changes to HA cluster resource agents and packa
 |Supported in {producta} {this-version}
 |Supported in {producta} 16.0
 
-|{hana} System Replication
+|HA for {hana} database
 |`SAPHanaSR`, `SAPHanaSR-ScaleOut`
 |`SAPHanaSR-angi`
 |Yes (but migration recommended)
 |Yes
 
 |HA for SAP S/4HANA & NetWeaver Central Services
-|Filesystem resource agent
+|Filesystem resource agent, NetWeaver
 |simple-mount solution with `SAPStartSrv` resource agent
 |Yes (but migration recommended)
 |No
 |===
 
-1. {hana} System Replication (HANA SR)
+1. HA for {hana} database
 * The `SAPHanaSR` and `SAPHanaSR-ScaleOut` packages are deprecated and will be replaced by `SAPHanaSR-angi` in {producta} 16.0.
-* We recommend using `SAPHanaSR-angi` for new deployments, even on {producta} {this-version}. This new package offers improved performance and scalability.
+* We recommend using `SAPHanaSR-angi` for new deployments, even on {producta} {this-version}.
+This new package offers improved performance and scalability.
 * Existing clusters using `SAPHanaSR` or `SAPHanaSR-ScaleOut` on {producta} {this-version} will remain supported.
 For more information on `SAPHanaSR-angi` see
 **  https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-angi-perfopt-15/index.html[SAP HANA System Replication Scale-Up - Performance Optimized Scenario]
@@ -73,8 +75,13 @@ For more information on `SAPHanaSR-angi` see
 2. HA for SAP S/4HANA and SAP NetWeaver Central Services
 
 * The HA solution based on the Filesystem resource agent is deprecated and will not be supported in {producta} 16.0.
-* Instead, use the simple-mount solution based on the `SAPStartSrv` resource agent. This is the recommended approach for new deployments on {producta} {this-version} and later.
+* Instead, use the simple-mount solution based on the `SAPStartSrv` resource agent.
+This is the recommended approach for new deployments on {producta} {this-version} and later.
 * Existing clusters using the Filesystem resource agent on {producta} {this-version} will remain supported.
+* The HA solution for the SAP NetWeaver central services agent is deprecated and will not be supported in {producta} 16.0.
+* Instead, use the S/4HANA central services.
+This is the recommended approach for new deployments on {producta} {this-version} and later.
+* Existing clusters using SAP NetWeaver on {producta} {this-version} will remain supported.
 
 For detailed information on setting up the simple-mount solution, see https://documentation.suse.com/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html[SAP S/4 HANA - Enqueue Replication 2 High Availability Cluster With Simple Mount]
 

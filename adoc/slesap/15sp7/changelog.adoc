@@ -8,6 +8,13 @@ include::attributes-product.adoc[]
 [#changelog]
 == Changelog for {this-version}
 
+[#pre-release]
+=== Pre-release
+
+==== Updated
+
+* Updated the wording of <<jsc-PED-11566>> ({bugzilla-url}1274567[Bugzilla])
+
 [#release-2025-06-16]
 === 2025-06-16
 
