@@ -17,6 +17,9 @@
       <listitem>
        <para>Added section <link xlink:href="index.html#bsc-1249569">Login times out on HMC virtual terminal</link> (bsc#1249569)</para>
       </listitem>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#bsc-1272626">Kdump capture fails on NVMe-oF targets</link> (bsc#1272626)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
