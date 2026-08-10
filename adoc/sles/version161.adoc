@@ -486,6 +486,13 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 Information in this section applies to {power-productname}.
 
+[#bsc-1272626]
+=== Kdump capture fails on NVMe-oF targets
+
+During kdump execution, attempting to capture a dump file to an NVMe over Fibre Channel (NVMe-FC) target on a Horton adapter fails.
+This issue occurs because the NVMe-FC driver maps numerous buffers for DMA, but not enough Translation Control Entries (TCEs) are freed from the Dynamic DMA Window (DDW) at kdump time.
+As a workaround, use Firmware-Assisted Dump (FADUMP), which is unaffected by this limitation.
+
 [#bsc-1249569]
 === Login times out on HMC virtual terminal
 
