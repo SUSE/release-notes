@@ -486,6 +486,13 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 Information in this section applies to {power-productname}.
 
+[#bsc-1249569]
+=== Login times out on HMC virtual terminal
+
+If you install {power-productname} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
+
+To work around this issue, disable the Plymouth graphical boot screen by appending the boot parameter `plymouth.enable=0` to the kernel command line.
+
 [#jsc-PED-15378]
 === Automated provisioning with cloud-init in virtual machine guest images
 
