@@ -56,6 +56,12 @@ The following features and packages have been removed in this release.
 
 * `SAPHanaSR` and `SAPHanaSR-scaleout` have been removed. Use `SAPHanaSR-angi` instead.
 
+// jsc#PED-11566
+// bsc#1274569
+[#bsc-1274569]
+* The HA solution for NetWeaver central services is not supported.
+See https://documentation.suse.com/releasenotes/sles-sap/15-SP7/index.html#jsc-PED-11566 for more information. (bsc#1274569)
+
 // [#deprecated]
 // === Deprecated features and packages
 

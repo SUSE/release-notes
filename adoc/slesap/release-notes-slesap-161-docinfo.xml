@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-08-10</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added note about unsupported HA solution for NetWeaver central services (<link xlink:href="index.html#bsc-1274569">bsc#1274569</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-07-28</date>
     <revdescription>
      <itemizedlist>
