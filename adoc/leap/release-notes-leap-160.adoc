@@ -22,7 +22,7 @@ This section describes community-driven enhancements, features, and updates that
 
 include::version160.adoc[]
 
-include::sles-core.adoc[]
+include::sles-core-160.adoc[]
 
 include::../common/source-code.adoc[]
 

@@ -1,0 +1,14 @@
+== SUSE Linux Enterprise Core
+
+// SUSE Linux Enterprise Core
+This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
+
+:omit-sles-specific: true
+ifeval::["{this-version}" == "16.0"]
+include::../sles/attributes-version160.adoc[]
+include::../sles/version160.adoc[leveloffset=+1]
+endif::[]
+ifeval::["{this-version}" == "16.1"]
+include::../sles/attributes-version161.adoc[]
+include::../sles/version161.adoc[leveloffset=+1]
+endif::[]
