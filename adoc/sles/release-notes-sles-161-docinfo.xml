@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16363">SMB over QUIC support in Samba</link> as a technology preview (jsc#PED-16363)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#bsc-1249569">Login times out on HMC virtual terminal</link> (bsc#1249569)</para>
       </listitem>
       <listitem>

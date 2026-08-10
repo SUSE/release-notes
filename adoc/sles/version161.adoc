@@ -103,6 +103,12 @@ Technology previews come with the following limitations:
 * Technology previews may only be available for specific hardware architectures. Details and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
 * Technology previews can be removed from a product at any time. This may be the case, for example, if SUSE discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
 
+[#jsc-PED-16363]
+=== SMB over QUIC support in Samba (technology preview)
+
+The version of Samba shipped with {productname} {this-version} includes support for the SMB over QUIC protocol as a technology preview.
+This protocol enables secure and efficient access to file shares over public networks.
+
 [#jsc-PED-10703]
 === Boot Loader Specification (BLS) support with systemd-boot (technology preview)
 
