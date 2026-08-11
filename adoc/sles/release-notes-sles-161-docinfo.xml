@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-08-11</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented removal of ceph and thrift packages from SUSE Package Hub (<link xlink:href="index.html#removed">jsc#PED-16797</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-08-10</date>
     <revdescription>
      <itemizedlist>
