@@ -612,6 +612,9 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16797
+* Due to being no longer maintained, the `ceph` and `thrift` packages have been removed from {ph}.
+
 // jsc#PED-14453
 * The legacy `SDL2` package has been removed in favor of `sdl2-compat` and the newer `SDL3` package.
   Applications relying on SDL 2.0 now utilize the `sdl2-compat` compatibility layer.
