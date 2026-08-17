@@ -174,6 +174,19 @@ See <<jsc-PED-16106>>.
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
+[#jsc-PED-15419]
+=== Pressure Stall Information (PSI) enabled by default
+
+The Pressure Stall Information (PSI) metric collection is now enabled by default.
+In {productnameshort} 16.0, PSI was compiled into the kernel but disabled by default (`CONFIG_PSI_DEFAULT_DISABLED=y`).
+In {productnameshort} {this-version}, this default has been changed to enabled (`CONFIG_PSI_DEFAULT_DISABLED=n`).
+
+Enabling PSI allows system monitoring tools (such as `sysstat` version 12.7.5 included in {productnameshort} {this-version}) to consume global PSI values out of the box.
+Benchmarking shows that the performance impact of PSI is negligible for almost all workloads, including database and compute-heavy tasks.
+A minor performance overhead (mostly between 2% and 8%) is restricted to scheduling- and wakeup-intensive microbenchmarks.
+
+If you encounter performance regressions on scheduling-intensive workloads, you can disable PSI at boot time by passing `psi=0` to the kernel command line.
+
 [#jsc-PED-15892]
 === Coexistence of zlib and zlib-ng libraries
 
