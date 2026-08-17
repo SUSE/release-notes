@@ -334,3 +334,13 @@ By default, system-wide cryptographic policies now enable post-quantum cryptogra
 This prevents connection warnings (such as `WARNING: connection is not using a post-quantum key exchange algorithm`) from modern external SSH clients that require post-quantum security by default.
 This support is provided by re-enabling the X25519 key exchange group in the default system-wide cryptographic policy, which allows secure post-quantum key exchange combinations such as `mlkem768x25519-sha256` and `sntrup761x25519-sha512` to be negotiated.
 end::jscped-15713[]
+
+tag::jscped-16382[]
+[#jsc-PED-16382]
+= {nvidia} drivers not available for real-time kernel
+
+With the introduction of the real-time kernel in {productname} {this-version}, some third-party kernel modules are not compatible.
+The {nvidia} drivers are only built for the default kernel.
+Consequently, {nvidia} drivers are not available when running the real-time kernel.
+end::jscped-16382[]
+

@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-08-17</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented that NVIDIA KMPs are not available for the real-time kernel (<link xlink:href="index.html#jsc-PED-16382">jsc#PED-16382</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-08-11</date>
     <revdescription>
      <itemizedlist>
