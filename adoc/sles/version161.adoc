@@ -152,21 +152,15 @@ Before upgrading to {productname} {this-version}, review the following checklist
 
 === Before upgrading
 
-* *Immutable Mode:* Immutable mode is unsupported for SAP workloads.
-+
-See <<jsc-PED-14664>>.
+* <<jsc-PED-14664>>
 
 === During upgrade
 
-* *Installer Configuration:* Combustion tool is now included in the live installer image.
-+
-See <<jsc-PED-16271>>.
+* <<jsc-PED-16271>>
 
 === After upgrading
 
-* *Database Migration:* The `update-alternatives` mechanism is no longer used for PostgreSQL.
-+
-See <<jsc-PED-16106>>.
+* <<jsc-PED-16106>>.
 
 
 == Changes affecting all architectures
