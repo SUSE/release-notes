@@ -18,7 +18,7 @@
        <para>Documented that NVIDIA KMPs are not available for the real-time kernel (<link xlink:href="index.html#jsc-PED-16382">jsc#PED-16382</link>)</para>
       </listitem>
       <listitem>
-       <para>Documented the deprecation of stonith and orphan terminology in Pacemaker (<link xlink:href="index.html#removed-deprecated">jsc#PED-15950</link>)</para>
+       <para>Documented the deprecation of stonith and orphan terminology in Pacemaker (<link xlink:href="index.html#jsc-PED-15950">jsc#PED-15950</link>)</para>
       </listitem>
      </itemizedlist>
     </revdescription>

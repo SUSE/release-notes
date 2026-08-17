@@ -73,16 +73,6 @@ See https://documentation.suse.com/releasenotes/sles-sap/15-SP7/index.html#jsc-P
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
-// jsc#PED-15950
-* The terms `stonith` and `orphan` have been deprecated in Pacemaker in favor of `fencing` and `removed`.
-  The old configuration properties are still supported but are marked as deprecated, and their corresponding new names should be used instead:
-** `stonith-enabled` is now `fencing-enabled`
-** `stonith-action` is now `fencing-action`
-** `stonith-max-attempts` is now `fencing-max-attempts`
-** `stonith-timeout` is now `fencing-timeout`
-** `stonith-watchdog-timeout` is now `fencing-watchdog-timeout`
-** `fence-reaction` is now `fencing-reaction`
-** `stop-orphan-resources` is now `stop-removed-resources`
-** `stop-orphan-actions` is now `cancel-removed-actions` (jsc#PED-15950)
+include::../shared.adoc[tags=jscped-15950,leveloffset=+3]
 
 
