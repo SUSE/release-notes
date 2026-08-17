@@ -83,12 +83,11 @@ make serve
 
 `adoc/shared.adoc` holds notes shared across versions using AsciiDoc tags.
 
-**CRITICAL RULE — INLINE VS SHARED:** Only place notes in `adoc/shared.adoc` if they are shared across *independent parallel tracks* within the 16.x line (such as **SLE HA 16.x** and **SLES for SAP 16.x**), or across different minor releases (such as **16.0** and **16.1**).
+**CRITICAL RULE — INLINE VS SHARED:** Only place notes in `adoc/shared.adoc` if they are shared across *independent codebases or different major version streams* (for example, a note that applies to SLES 15 SP6 AND SLES 16.0).
 
-* **Codestream 15 Active Ban:** Although `15spX` directories exist in this repository, they are frozen. **NEVER** edit 15.x files or attempt to share notes with them in this repository. All active 15.x updates must be done independently in their legacy `release-notes-*` repositories.
-* **SLES Core vs. Derived Products:** Standard SLES Core notes that only apply to SLES and its derived products (like openSUSE Leap 16.1 or SLES for SAP 16.1) should **NEVER** use `shared.adoc`.
-* **Why?** Derived products natively inherit the SLES core release notes (such as `adoc/sles/version161.adoc`) directly. Placing the note inline in the SLES core spec file automatically shares it with all derived products.
-* **Parallel Extension Tracks (The HA Exception):** Since **SLE HA** and **SLES Core** are independent tracks, SLES for SAP does *not* automatically inherit SLE HA release notes (even though SLES for SAP includes HA packages). For HA-specific notes that must appear in both SLE HA 16.x and SLES for SAP 16.x, using `shared.adoc` with tags is the preferred way to avoid source code duplication.
+* **NEVER use `shared.adoc` for notes specific to a single core baseline (e.g., SLES 16.1 only)**, even if the change applies to multiple derived products (like openSUSE Leap 16.1 or SLES for SAP 16.1).
+* **Why?** Derived products inherit the SLES core release notes (such as `adoc/sles/version161.adoc`) directly. Placing the note inline in the SLES spec file automatically shares it with all derived products without needing any `shared.adoc` tags.
+* If a note is specific to a single core/version, always write it as an inline note directly within that core's spec file.
 
 ```asciidoc
 tag::TAGNAME[]
