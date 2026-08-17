@@ -11,9 +11,11 @@
 // ifeval::["{lifecycle}" == "maintained"]
 :url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
 :url-gnome-remote-desktop: https://documentation.suse.com/sles/16.0/html/SLES-gnome-remote-desktop/index.html
+:url-sles-upgrade: https://documentation.suse.com/sles/16.1/html/SLES-upgrading/
 // endif::[]
 
 ifeval::["{lifecycle}" == "beta"]
 :url-sle-comparison: https://susedoc.github.io/doc-modular/main/html/SLE-comparison/index.html
 :url-gnome-remote-desktop: https://susedoc.github.io/doc-modular/main/html/SLES-gnome-remote-desktop/
+:url-sles-upgrade: https://susedoc.github.io/doc-modular/main/html/SLES-upgrading/
 endif::[]

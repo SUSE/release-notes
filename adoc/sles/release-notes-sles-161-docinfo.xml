@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14891">Supported upgrade and migration paths</link> (jsc#PED-14891)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15419">Pressure Stall Information (PSI) enabled by default</link> (jsc#PED-15419)</para>
       </listitem>
       <listitem>

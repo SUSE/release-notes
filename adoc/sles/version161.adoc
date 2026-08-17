@@ -145,6 +145,20 @@ You can check packages included in products on https://scc.suse.com.
 
 Installation media, VM images and public cloud images are usually refreshed every 3 months (Quarterly Updates).
 
+[#jsc-PED-14891]
+== Supported upgrade and migration paths
+
+{productname} {this-version} supports upgrading from {productname} 16.0, as well as migrating from preceding {suse} product releases.
+
+* **Online (in-place) upgrade** is supported from {productname} 16.0 (including {slessapa} and {sleha}).
+* **Offline migration** (using offline installation media) is supported from:
+  ** {productname} 15 SP4, SP5, SP6, and SP7 (including {slessapa} and {sleha})
+  ** SUSE Linux Micro 6.2
+  ** SUSE Linux Enterprise Real Time 15 SP7
+  ** openSUSE Leap 16.1
+
+For detailed instructions, pre-upgrade checklists, and step-by-step migration procedures, see the link:{url-sles-upgrade}[Upgrade Guide].
+
 [#upgrade-checklist]
 == Upgrade and migration checklist
 
@@ -153,6 +167,7 @@ Before upgrading to {productname} {this-version}, review the following checklist
 === Before upgrading
 
 * <<jsc-PED-14664>>
+* <<jsc-PED-14891>>
 
 === During upgrade
 
