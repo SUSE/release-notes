@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16083">Unified systemd service presets between standard and immutable modes</link> (jsc#PED-16083)</para>
+      </listitem>
+      <listitem>
        <para>Documented that NVIDIA KMPs are not available for the real-time kernel (<link xlink:href="index.html#jsc-PED-16382">jsc#PED-16382</link>)</para>
       </listitem>
       <listitem>
