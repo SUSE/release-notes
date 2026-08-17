@@ -146,7 +146,7 @@ You can check packages included in products on https://scc.suse.com.
 Installation media, VM images and public cloud images are usually refreshed every 3 months (Quarterly Updates).
 
 [#upgrade-checklist]
-== Upgrade & Migration Quick Checklist
+== Upgrade and migration checklist
 
 Before upgrading to {productname} {this-version}, review the following checklist of potential migration issues and preparation steps.
 
