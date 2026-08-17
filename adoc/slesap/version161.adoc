@@ -62,15 +62,27 @@ The following features and packages have been removed in this release.
 * The HA solution for NetWeaver central services is not supported.
 See https://documentation.suse.com/releasenotes/sles-sap/15-SP7/index.html#jsc-PED-11566 for more information. (bsc#1274569)
 
-// [#deprecated]
-// === Deprecated features and packages
+[#deprecated-slesap]
+=== Deprecated features and packages
 
 ////
 1. Deprecations that will be removed in an upcoming service pack of current SLE major version:
 2. Deprecations that will be removed in the next SLE major version:
-3. Deprecations that will be removed later or where removal timing is unclear:
+3. Deprecations—that will be removed later or where removal timing is unclear:
 ////
 
-// The following features and packages are deprecated and will be removed in a future version of {productname}.
+The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// jsc#PED-15950
+* The terms `stonith` and `orphan` have been deprecated in Pacemaker in favor of `fencing` and `removed`.
+  The old configuration properties are still supported but are marked as deprecated, and their corresponding new names should be used instead:
+** `stonith-enabled` is now `fencing-enabled`
+** `stonith-action` is now `fencing-action`
+** `stonith-max-attempts` is now `fencing-max-attempts`
+** `stonith-timeout` is now `fencing-timeout`
+** `stonith-watchdog-timeout` is now `fencing-watchdog-timeout`
+** `fence-reaction` is now `fencing-reaction`
+** `stop-orphan-resources` is now `stop-removed-resources`
+** `stop-orphan-actions` is now `cancel-removed-actions` (jsc#PED-15950)
 
 

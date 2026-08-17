@@ -41,4 +41,16 @@ Customers who use csync2 can now run `crm cluster init csync2 -y` to set it up s
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.
 
+// jsc#PED-15950
+* The terms `stonith` and `orphan` have been deprecated in Pacemaker in favor of `fencing` and `removed`.
+  The old configuration properties are still supported but are marked as deprecated, and their corresponding new names should be used instead:
+** `stonith-enabled` is now `fencing-enabled`
+** `stonith-action` is now `fencing-action`
+** `stonith-max-attempts` is now `fencing-max-attempts`
+** `stonith-timeout` is now `fencing-timeout`
+** `stonith-watchdog-timeout` is now `fencing-watchdog-timeout`
+** `fence-reaction` is now `fencing-reaction`
+** `stop-orphan-resources` is now `stop-removed-resources`
+** `stop-orphan-actions` is now `cancel-removed-actions` (jsc#PED-15950)
+
 *  `sctp` support has been deprecated in `kronosnet` and to be removed upstream in 2.x
