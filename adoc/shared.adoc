@@ -361,3 +361,44 @@ The old configuration properties are still supported but are marked as deprecate
 * `stop-orphan-actions` is now `cancel-removed-actions`
 end::jscped-15950[]
 
+tag::bsc1275537[]
+[#bsc-1275537]
+= Deprecation of legacy XFS v4 filesystem format
+
+{sle} maintains backward compatibility for legacy XFS v4 filesystems via the kernel configuration `CONFIG_XFS_SUPPORT_V4=y`.
+This support ensures uninterrupted access for existing environments.
+However, XFS v4 is deprecated, and creating new v4 filesystems is strongly discouraged.
+
+September 2030 is the EOL target for upstream Linux kernel support for XFS v4.
+Any release post-September 2030 based on updated upstream kernels will omit XFS v4 support entirely.
+Legacy v4 filesystems will no longer be mountable on those versions.
+
+Upgrading underlying filesystems from v4 to v5 is transparent to applications and requires no changes to userspace software.
+
+To check the format version of an existing XFS filesystem, run:
+[source]
+----
+xfs_info /path/to/mountpoint
+----
+An output including `crc=1` indicates the modern v5 format, while `crc=0` indicates the legacy v4 format.
+
+There is no in-place or online upgrade path from XFS v4 to v5.
+Migration requires backing up data, reformatting the block device to XFS v5, and restoring the content.
+Migrating the root filesystem and any other critical data partitions requires planned downtime.
+
+The operating system generates warnings when v4 format interaction occurs:
+
+* `mkfs.xfs` displays a warning if forced to format as v4 (`crc=0`):
++
+[screen]
+----
+V4 filesystems are deprecated and will not be supported by future versions
+----
+* The kernel logs a notification upon mounting a v4 filesystem (printed once per boot cycle, upon first mount of a v4 filesystem):
++
+[screen]
+----
+Deprecated V4 format (crc=0) will not be supported after September 2030.
+----
+end::bsc1275537[]
+

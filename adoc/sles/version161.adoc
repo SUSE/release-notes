@@ -261,6 +261,9 @@ include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 // bsc#1271333
 include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 
+// bsc#1275537
+include::../shared.adoc[tags=bsc1275537,leveloffset=+2]
+
 [#jsc-PED-14453]
 === SDL 3 and sdl2-compat update
 
@@ -719,6 +722,10 @@ The following features and packages have been removed in this release.
 ////
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// bsc#1275537
+* Legacy XFS v4 filesystems are deprecated.
+  For details, see <<bsc-1275537>>.
 
 // jsc#PED-16257
 * The following SSSD features and options are deprecated in {productname} 16.1 and are planned for removal in {productname} 16.2:
