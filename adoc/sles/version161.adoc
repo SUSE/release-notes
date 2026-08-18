@@ -183,6 +183,17 @@ Before upgrading to {productname} {this-version}, review the following checklist
 // jsc#PED-12658
 * `rasdaemon` has been updated to version 0.8.4. This version supports machine checks related to CXL memory. Since Intel® Optane™ Memory products have reached End of Life (EOL), {productname} {this-version} does not support them either.
 
+[#jsc-PED-14654]
+=== Linux kernel BPF subsystem updated to match upstream v6.13 to v6.18
+
+The Berkeley Packet Filter (BPF) subsystem in the Linux kernel has been updated to align with the upstream kernel versions v6.13 through v6.18.
+
+Key changes and system requirements:
+
+* To maintain compatibility and prevent breakage of third-party out-of-tree kernel modules, kABI padding has been applied to twelve key BPF structures (including `bpf_insn_aux_data`, `bpf_link`, `bpf_mem_alloc`, `bpf_mprog_bundle`, `bpf_reg_state`, `bpf_verifier_log`, and `hid_bpf`).
+* Bypassing global per-protocol socket memory accounting is now supported by configuring a network namespace sysctl.
+* See the upstream kernel changelogs from https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.13 through https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.18.
+
 [#jsc-PED-15419]
 === Pressure Stall Information (PSI) enabled by default
 
