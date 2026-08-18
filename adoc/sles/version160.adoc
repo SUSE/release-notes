@@ -231,6 +231,9 @@ include::../shared.adoc[tags=jscped-15282,leveloffset=+2]
 // bsc#1271333
 include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 
+// bsc#1275537
+include::../shared.adoc[tags=bsc1275537,leveloffset=+2]
+
 // jsc#PED-13286
 // bsc#1245474
 [#jsc-PED-13286]
@@ -1343,6 +1346,10 @@ include::../shared.adoc[tags=jscped12374]
 ////
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// bsc#1275537
+* Legacy XFS v4 filesystems are deprecated.
+  For details, see <<bsc-1275537>>.
 
 // jsc#PED-16117
 * The DCCP protocol is deprecated in {productname} 16.0 and will be disabled in {productname} 16.1.
