@@ -595,10 +595,18 @@ For removed or deprecated features, see https://qemu-project.gitlab.io/qemu/abou
 
 
 [#jsc-PED-14623]
-=== libvirt
+=== {libvirt}
 
-`libvirt` has been updated to version 12.3.0, introducing modular daemons.
+`{libvirt}` has been updated to version 12.3.0, introducing modular daemons.
 For details, see https://libvirt.org/news.html#v12-3-0-2026-05-02.
+
+// bsc#1251789
+[#jsc-PED-14593]
+==== Virtual machine confinement enabled by default in {libvirt}
+
+`{libvirt}` now enables confinement of virtual machines (VMs) by default using the system's default security framework ({selinux} in {productname} 16).
+This improves out-of-the-box VM isolation and security.
+Administrators can override this setting in `/etc/libvirt/qemu.conf`.
 
 
 [#virtualization-vmware]

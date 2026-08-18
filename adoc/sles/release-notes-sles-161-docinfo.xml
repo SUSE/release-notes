@@ -17,6 +17,9 @@
       <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-14654">Linux kernel BPF subsystem updated to match upstream v6.13 to v6.18</link> (jsc#PED-14654)</para>
       </listitem>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14593">Virtual machine confinement enabled by default in {libvirt}</link> (jsc#PED-14593)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
