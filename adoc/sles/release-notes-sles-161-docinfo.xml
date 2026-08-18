@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-08-18</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14654">Linux kernel BPF subsystem updated to match upstream v6.13 to v6.18</link> (jsc#PED-14654)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-08-17</date>
     <revdescription>
      <itemizedlist>
