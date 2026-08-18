@@ -402,3 +402,18 @@ Deprecated V4 format (crc=0) will not be supported after September 2030.
 ----
 end::bsc1275537[]
 
+tag::jscped-14582[]
+[#jsc-PED-14582]
+= `{productname}` containerdisk images now available
+
+Official `{productname}` containerdisk images are now available on the {suseregistry} (`registry.suse.com`).
+These bootable images package a minimal `{productname}` installation into an OCI container format designed for virtualization.
+They are optimized for rapid deployment of virtual machines in cloud-native virtualized environments such as `{suse} Virtualization`, Harvester, or KubeVirt.
+The images can be pulled using the following paths:
+
+* `registry.suse.com/suse/sles-16.0-kubevirt-minimal:latest`
+* `registry.suse.com/suse/sles-16.1-kubevirt-minimal:latest`
+
+end::jscped-14582[]
+
+

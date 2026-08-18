@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-14582">Official containerdisk images available for virtualization</link> (jsc#PED-14582)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#bsc-1275537">Deprecation of legacy XFS v4 filesystem format</link> (bsc#1275537)</para>
        </listitem>
       </itemizedlist>
