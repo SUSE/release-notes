@@ -86,6 +86,9 @@ Information in this section applies to all architectures supported by {productna
 // SHA1 disabled
 include::../shared.adoc[tags=jscped-12210,leveloffset=+2]
 
+// jsc#PED-10546
+include::../shared.adoc[tags=jscped-10546,leveloffset=+2]
+
 
 === Full-disk encryption
 
