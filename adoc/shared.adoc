@@ -422,3 +422,16 @@ A new Base Container Image (BCI) is now available to build and run kernel module
 The container includes the necessary kernel headers for both default and RT kernels on `x86_64` and `aarch64` architectures, providing a simple way to prototype and test drivers without giving access to SLE kernel binaries.
 end::jscped-5576[]
 
+tag::jscped-14582[]
+[#jsc-PED-14582]
+= {productname} containerdisk image now available
+
+A {productname} containerdisk image is now available in the {suseregistry} (`registry.suse.com`).
+The image contains a minimal, bootable {productname} system in the OCI container format.
+Use the image to create virtual machines in cloud-native environments, for example {svirtualization}, Harvester, or {kubevirt}.
+
+To get the image, use the path `registry.suse.com/suse/sles-{this-version}-kubevirt-minimal:latest`.
+
+end::jscped-14582[]
+
+

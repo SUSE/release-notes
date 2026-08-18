@@ -186,6 +186,9 @@ Before upgrading to {productname} {this-version}, review the following checklist
 // jsc#PED-5576
 include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 
+// jsc#PED-14582
+include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
+
 [#jsc-PED-14654]
 === Linux kernel BPF subsystem updated to match upstream v6.13 to v6.18
 
