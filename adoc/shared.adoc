@@ -402,3 +402,15 @@ Deprecated V4 format (crc=0) will not be supported after September 2030.
 ----
 end::bsc1275537[]
 
+tag::jscped-10546[]
+// jsc#PED-10546
+// jsc#PED-3184
+[#jsc-PED-10546]
+= 32-bit execution support disabled by default on {x64} and {aarch64}
+
+On the {x64} and {arm} 64-bit ({aarch64}) architectures, support for running 32-bit (AArch32 and ia32) applications has been disabled by default to reduce the system's security attack surface.
+To re-enable 32-bit execution on the {x64} architecture, boot the system with the `ia32_emulation=1` kernel parameter.
+To re-enable 32-bit execution on the {aarch64} architecture (provided the hardware physically supports AArch32), ensure that the `arm64.no32bit_el0` kernel parameter is not set.
+Other architectures are not affected by this change.
+end::jscped-10546[]
+

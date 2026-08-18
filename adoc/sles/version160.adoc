@@ -180,6 +180,9 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// jsc#PED-10546
+include::../shared.adoc[tags=jscped-10546,leveloffset=+2]
+
 [#jsc-PED-15411]
 === GNOME Software is now available and supports online updates
 
