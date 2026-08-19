@@ -414,3 +414,11 @@ To re-enable 32-bit execution on the {aarch64} architecture (provided the hardwa
 Other architectures are not affected by this change.
 end::jscped-10546[]
 
+tag::jscped-5576[]
+[#jsc-PED-5576]
+= SLE BCI for kernel modules (Driver Toolkit)
+
+A new Base Container Image (BCI) is now available to build and run kernel modules on {productname}, comparable to the upstream `driver-toolkit`.
+The container includes the necessary kernel headers for both default and RT kernels on `x86_64` and `aarch64` architectures, providing a simple way to prototype and test drivers without giving access to SLE kernel binaries.
+end::jscped-5576[]
+
