@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-08-19</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Changed SAP Netweaver to SAP S/4HANA in <link xlink:href="index.html#jsc-PED-15191">OpenLDAP 2.4 compatibility package</link> (bsc#1275645)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-08-18</date>
      <revdescription>
       <itemizedlist>

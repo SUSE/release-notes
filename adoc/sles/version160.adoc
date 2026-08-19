@@ -280,7 +280,7 @@ include::../shared.adoc[tags=jscped-11986,leveloffset=+2]
 [#jsc-PED-15191]
 === OpenLDAP 2.4 compatibility package
 
-{sap} systems using central user management with Microsoft Active Directory (as can be case for {nw} or for {hana}) require specific legacy library versions to function.
+{sap} systems using central user management with Microsoft Active Directory (as can be case for {s4hana} or for {hana}) require specific legacy library versions to function.
 These systems depend on the `libldap` and `liblber` interfaces from OpenLDAP 2.4, which are not natively present in the current release.
 
 {productnameshort} {this-version} includes shim libraries that provide `soname` and `soversion` that identifiy as OpenLDAP 2.4 while linking to OpenLDAP 2.6 libraries.
