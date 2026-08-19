@@ -122,7 +122,7 @@ Btrfs filesystems can be multi-device (for example, RAID1) but `lklfuse` current
 
 
 [#upgrade-checklist]
-== Upgrade & Migration Quick Checklist
+== Upgrade and migration checklist
 
 Before upgrading to {productname} {this-version}, review the following checklist of potential migration issues and preparation steps.
 
