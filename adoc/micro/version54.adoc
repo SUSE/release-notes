@@ -1,0 +1,285 @@
+:this-version: 5.4
+:idprefix: v54-
+:doc-url: https://documentation.suse.com/sle-micro/{this-version}
+:previous-version: 5.3
+:this-version: 5.4
+:next-version: 5.5
+
+= {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+== Support and life cycle
+
+{productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
+
+{productname} {this-version} has a 4-year life cycle.
+For more information, see https://www.suse.com/lifecycle and the Support Policy page at https://www.suse.com/support/policy.html.
+
+=== Product Certifications
+
+{productname} is built upon the {sles} 15 SP4 code base.
+As such, it inherits the hardware certification from {sles} 15 SP4.
+
+== Installation
+
+{productname} {this-version} can be installed in the following ways:
+
+* <<#v54-install-yast>>
+* <<#v54-install-autoyast>>
+* <<#v54-install-yomi>>
+* <<#v54-deploy-image>>
+
+[#v54-install-yast]
+=== Manually installing with YaST
+
+The installation workflow for manual installation is described in {doc-url}/html/SLE-Micro-all/part-manual-installation.html.
+
+[#v54-install-autoyast]
+=== Unattended installation with {autoyast}
+
+Installing {productname} with {autoyast} is described in {doc-url}/html/SLE-Micro-all/book-autoyast.html.
+
+[#v54-install-yomi]
+=== Unattended installation with Yomi (technology preview)
+
+To learn how to install a system with Yomi, see the link:https://documentation.suse.com/external-tree/en-us/suma/4.1/suse-manager/salt/yomi.html[{suma} documentation, section Install using Yomi].
+Installation with Yomi is a technology preview.
+
+[#v54-deploy-image]
+=== Deploying pre-built images
+
+{productname} is provided as raw images which can be deployed directly to a storage device, for example, a memory card, a USB stick, or a hard drive.
+{productname} is also provided as images for specific hardware device with a customized software selection.
+
+For a procedure of deploying an image refer to {doc-url}/html/SLE-Micro-all/part-raw-image.html 
+
+[#v54-upgrade]
+=== Upgrade from previous version
+
+Upgrade from {productnameshort} {previous-version} is only possible via the `transactional-update` tool.
+For the upgrade procedure, refer to {doc-url}/html/SLE-Micro-all/book-upgrade-slemicro.html.
+
+== Changes affecting all architectures
+
+Information in this section applies to all architectures supported by {productname} {this-version}.
+
+[#v54-install-media]
+=== Installation media
+
+There are two types of installation media of {productname}.
+The installer ISO allows to install via {yast} or {autoyast}, with the possibility to fully customize the installation.
+The pre-built images contain a system image already pre-configured.
+Neither of the media is intended to be used for upgrades from the previous version of {productname}. 
+To upgrade from the previous version, use the `transactional-update` command.
+
+There are the following differences between these two types:
+
+* the software selection for the default installation from the ISO contains fewer packages than the pre-built image
+* `firewalld` is only installed from the ISO if the firewall is enabled during installation
+
+In both types of the installation media `firewalld` is disabled by default.
+
+[#v54-general-network-manager]
+=== NetworkManager
+
+The default network management stack is now NetworkManager.
+The raw images are configured to use NetworkManager.
+The {yast} installer defaults to NetworkManager but allows users to choose the network management stack.
+After upgrading from previous versions, the network management stack remains the same.
+Wicked is still fully supported but will be deprecated and removed in a future version.
+
+[#v54-general-podman-4-3]
+=== Podman upgrade from 3.4.x to 4.3.1
+
+Podman 4.x is a major release with 60 new features and more than 50 bug fixes compared to Podman 3.
+It also includes a complete rewrite of the network stack.
+
+Podman 4.x brings a new container network stack based on https://github.com/containers/netavark[Netavark], the new container network stack and https://github.com/containers/aardvark-dns[Aardvark DNS server] in addition to the existing container network interface (CNI) stack used by Podman 3.x . The new stack brings 3 important improvement:
+
+ * Better support for containers in multiple networks
+ * Better IPv6 support
+ * Better performance
+
+To ensure that nothing breaks with this major change, the old CNI stack will remain the default on existing installations.
+Bear in mind that Netavark will be released as part of a maintenance update.
+
+[WARNING]
+Before testing Podman 4 and the new network stack, you will have to destroy all your current containers, images, and networks.
+You must export/save any import containers or images on a private registry, or make sure that your Dockerfiles are  available for rebuilding and scripts/playbooks/states to reapply any settings, regenerate secrets, etc.
+
+If you have run Podman 3.x before upgrading to Podman 4, Podman will continue to use CNI plugins as it had before.
+To begin using Podman 4 with Netavark, you need to run the command `podman system reset`.
+The command will destroy all images, networks and all containers.
+
+For a complete overview of the changes, please check out the upstream https://github.com/containers/podman/releases/tag/v4.0.0[4.0.0] but also https://github.com/containers/podman/releases/tag/v4.1.1[4.1.1], https://github.com/containers/podman/releases/tag/v4.2.0[4.2.0] and https://github.com/containers/podman/releases/tag/v4.3.0[4.3.0] to be informed about all the new features and changes.
+
+[#v54-general-cockpit]
+=== Cockpit web-based node management system
+
+For web-based management of a single node, Cockpit is included. 
+For details, refer to {doc-url}/html/SLE-Micro-all/article-administration-slemicro.html#sec-admin-cockpit.
+
+There have been new Cockpit modules added to the product.
+Due to the amount of dependencies, not all of the Cockpit modules are part of the raw images and some have to be installed additionally.
+
+When enabling firewall via the Cockpit user interface, be aware that your connection to the host may be interrupted unless the Cockpit port is configured to be open in advance.
+
+The new {selinux} module for Cockpit provides basic functionality for users to troubleshoot their configuration.
+Functionality will be extended with the introduction of the `setroubleshoot-server` package in a future {productname} release.
+
+[#v54-general-suma]
+=== Managing {productname} with {suma}
+
+{suma} can be used to manage {productname} hosts.
+There are certain limitations:
+
+* {productname} host cannot be monitored with {suma}
+* {suma} does not provide integrated container management yet. As a workaround, you can use Salt via `cmd.run podman`.
+* {suma} can manage the {productname} hosts ony with the Salt stack; the traditional stack is not supported
+* Ansible control node cannot be instaled on {productname}
+
+We intend to resolve these issues in the future maintenance updates of {productname} on {suma}.
+
+[#v54-general-selinux]
+=== {selinux} in Enforcing Mode
+
+{productname} includes {selinux} with base system policies.
+The default setting of {selinux} for new installations has been changed from permissive to enforcing mode.
+This is now the recommended default.
+
+Systems updated from previous versions will not change the {selinux} mode during update.
+
+[NOTE]
+If you see broken functionality and denials because of {selinux}, you can switch it to permissive mode, or disable {selinux} completely.
+Consider reporting these issues so that they can be fixed.
+
+[#v54-general-product-rename]
+=== Change of the internal identifier of the product
+
+The internal identifier of the product has changed from `SUSE-MicroOS` to `SLE-Micro` in order to have the internal identifier name consistent with the user-visible name of the product.
+Your {autoyast} profile may need updating.
+
+[#v54-general-toolbox]
+=== `toolbox` container
+
+{productname} provides the `toolbox` container.
+However, it is not part of the media and needs to be downloaded from https://registry.suse.com.
+To download from the registry, the system needs network access. 
+For details refer to {doc-url}/html/SLE-Micro-all/article-administration-slemicro.html#sec-admin-toolbox.
+
+The `toolbox` container does not include or inherit a software repository setup from the underlying system.
+If the underlying system is registered properly, `zypper` will enable a basic set of repositories (`Basesystem` and `Server Applications` modules of {sles} 15{nbsp}SP3) when you execute `zypper` inside the toolbox container.
+Then you can install additional software into the container.
+
+[#v54-general-livepatch]
+=== Kernel Live Patching
+
+{productname} supports Kernel Live Patching, for details refer to {doc-url}/html/SLE-Micro-all/cha-images-procedure.html#sec-slemicro-live-patching.
+
+Note that kernel live patching is only available for the x86-64 and s390x architectures. It is also not available for the real-time kernel.
+
+[#v54-userspace-livepatch]
+=== User Space Live Patching
+
+The User Space Live Patching is available for {productname} as a technology preview.
+
+When applying user space live patches on the system, running process will get live patched.
+Due to the immutable nature of {productname}, the underlying filesystem cannot be changed during runtime.
+Processes started after the live patch is applied to the system will still be vulnerable.
+Full application of the patches to {productname} requires a reboot of the system.
+
+[#v54-general-sdo]
+=== {sdo} (SDO)
+
+{productname} includes needed packages for {sdo}.
+{sdo} helps onboard any device to any device management system.
+With this release, the SDO client has been replaced with FDO client, which is a portable implementation of the FIDO Device Onboard Spec.
+The packages are only provided as a technology preview and do not offer full support.
+Using {sdo} needs proper integration into your target environment and only works on supported hardware.
+
+[#v54-general-sysv-support]
+=== System V init scripts
+
+{productname} does not support init script of system services, which are usually located in `/etc/init.d` directory.
+Even if this directory still exists, it is empty on purpose.
+systemd unit files should be used instead of initscripts.
+To start system services or to configure their status on boot, use the `systemctl` command instead.
+
+[#v54-pattern-rename]
+=== Rename of the `microos-sssd_ldap` pattern
+
+Compared to version 5.1, the `microos_sssd_ldap` pattern has been renamed to `microos-sssd_ldap` (the first underscore has been replaced with a dash).
+This new name is consistent with other pattern names.
+Note that your {autoyast} profile may need updating.
+
+[#v54-jsc-CSD-100]
+=== Change of SUSEConnect handling of licenses
+
+Some third party repositories available as SLE extension modules come with their own EULAs.
+Previously, SUSEConnect silently accepted these licenses when registering such modules.
+
+Now SUSEConnect will display the license text and explicitly ask user for acceptance in interactive mode.
+
+[NOTE]
+This can break some existing scripts which relied on automatic acceptance of licenses.
+Users who want to use SUSEConnect with third party licenses in an automatic way can use the `--auto-agree-with-licenses` CLI option.
+
+== {arm} 64-bit-specific features and fixes ({aarch64})
+
+[#jsc-PED-2918]
+=== Hyper-V packages are available for {aarch64} architecture
+
+We have added the `hyper-v` package to the {aarch64} software channels.
+Previously, this package was only available in public cloud images on Microsoft Azure.
+You can now install and use the standard Hyper-V integration tools on all supported {aarch64} virtual machines.
+
+== Known issues
+
+[#v54-issue-selinux-boot]
+=== Error on console while booting with SELinux enabled
+
+When booting the system with SELinux enabled, the console reports:
+
+....
+Failed to transition into init label 'system_u:system_r:init_t:s0'
+....
+
+This message is harmless.
+
+[#v54-issue-firewalld-podman]
+=== Podman and `firewalld`
+
+When reloading `firewalld` via `firewall-cmd --reload`, all Podman-related rules go missing.
+For this reason, `firewalld` is not enabled by default during installation.
+For more information, see https://github.com/containers/podman/issues/5431.
+
+[#v54-issue-duplicate-ip-address]
+=== Pre-built images report two IP addresses on first boot
+
+When booting the pre-built images the first time, two IP addresses may be reported by the `ip a` command or other tools.
+This issue only happens on the first boot of the image, on the following boots only a single IP address is assigned to the network interface.
+
+[#v54-issue-install-vnc]
+=== VNC package cannot be installed during installation
+
+The {yast} installer offers installation via VNC.
+The installer also tries to make it possible to use the final system the same way that the system was initially installed.
+Therefore, the installer will attempt to install appropriate software and open appropriate firewall ports for later access to the system.
+However, the VNC server package is only available during the installation, but not for the installed system.
+
+As the VNC server package cannot be installed, the installer will issue a warning.
+You can safely ignore this warning.
+
+[#v54-issue-update-apparmor]
+=== AppArmor error messages in log after upgrade
+
+SLE Micro supports SELinux as the security framework, however, some AppArmor packages are still included because of package dependencies.
+Since they have been reduced since SLE Micro 5.1, it may happen that there are error messages showing in the system journal after upgrade.
+If this happens, make sure that the `apparmor.service` service is not enabled in your system.
+
+[#v54-dasd-not-resizing]
+=== Raw image deployed to DASD device does not resize to full disk size
+
+When deploying the raw disk image to a DASD device on {ibmz}, the image does not get properly resized to the full size of the device on the first boot.
+It is necessary to resize it manually after the system has booted.

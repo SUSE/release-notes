@@ -1,8 +1,10 @@
 include::../common/attributes-generic.adoc[]
 include::attributes.adoc[]
 
+:this-version: 5.3
+
 = SL Micro Release Notes
-:revdate: 2025-02-03
+:revdate: 2026-08-25
 :page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
@@ -13,15 +15,9 @@ include::../common/about-rn.adoc[]
 
 include::../common/about-documentation.adoc[]
 
-// INCLUDE ALL SL MICRO VERSION
-
 :leveloffset: +1
-include::version60.adoc[]
-:leveloffset: -1
-include::version61.adoc[]
-include::version62.adoc[]
 include::version53.adoc[]
-include::version54.adoc[]
+:leveloffset: -1
 
 include::../common/source-code.adoc[]
 
