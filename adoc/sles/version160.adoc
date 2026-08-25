@@ -1203,6 +1203,13 @@ AMD SEV-SNP (Secure Encrypted Virtualization-Secure Nested Paging) is a hardware
 This release fully integrates AMD SEV-SNP for KVM-based virtual machines. This means integrated support in our kernel, along with updated QEMU, Libvirt, and OVMF Firmware.
 To use AMD SEV-SNP, you'll need, AMD EPYC™ 3rd Gen Processors (Milan) or newer and SEV-SNP enabled in your system's BIOS/UEFI.
 
+[#jsc-SLE-23244]
+===== KubeVirt support for AMD SEV and SEV-ES
+
+We now provide AMD Secure Encrypted Virtualization (SEV) and Secure Encrypted Virtualization-Encrypted State (SEV-ES) support for {kubevirt}.
+This support allows you to secure guest virtual machines with memory encryption.
+You can now run encrypted container-native virtualization workloads.
+
 [#virtualization-other]
 //jsc-PED-8910
 ==== Others

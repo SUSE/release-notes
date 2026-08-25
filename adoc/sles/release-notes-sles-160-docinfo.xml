@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>KubeVirt: added note about support for AMD SEV and SEV-ES memory encryption (<link xlink:href="index.html#jsc-SLE-23244">jsc#SLE-23244</link>)</para>
+       </listitem>
+       <listitem>
         <para>Added link to the Public Cloud Information Tracker (PINT) to <link xlink:href="index.html#intro-documentation">Documentation and other information</link> (docteam#351)</para>
        </listitem>
       </itemizedlist>
