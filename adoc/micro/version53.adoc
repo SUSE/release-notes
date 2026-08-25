@@ -200,6 +200,15 @@ Now SUSEConnect will display the license text and explicitly ask user for accept
 This can break some existing scripts which relied on automatic acceptance of licenses.
 Users who want to use SUSEConnect with third party licenses in an automatic way can use the `--auto-agree-with-licenses` CLI option.
 
+== {arm} 64-bit-specific features and fixes ({aarch64})
+
+[#jsc-PED-2918]
+=== Hyper-V packages are available for {aarch64} architecture
+
+We have added the `hyper-v` package to the {aarch64} software channels.
+Previously, this package was only available in public cloud images on Microsoft Azure.
+You can now install and use the standard Hyper-V integration tools on all supported {aarch64} virtual machines.
+
 == Known issues
 
 [#v53-issue-selinux-boot]
