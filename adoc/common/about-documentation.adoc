@@ -17,3 +17,6 @@ endif::[]
 ifeval::["{lifecycle}" == "unmaintained"]
 *  {doc-url}.
 endif::[]
+
+// docteam#351
+* Find change logs for public cloud images at the Public Cloud Information Tracker (PINT) at https://pint.suse.com/.
