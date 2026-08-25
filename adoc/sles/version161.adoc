@@ -693,11 +693,13 @@ The following features and packages have been removed in this release.
   Applications relying on SDL 2.0 now utilize the `sdl2-compat` compatibility layer.
 
 // jsc#PED-16696
+// jsc#PED-16582
 // jsc#PED-16555
 // jsc#PED-16552
 // jsc#PED-16549
 * Due to being no longer maintained, these packages have been removed from {productname} 16.1:
 ** `fwts`
+** `python-pytest-forked`
 ** `perl-Test-Output`
 ** `perl-Test-Needs`
 ** `perl-Test-Differences`
