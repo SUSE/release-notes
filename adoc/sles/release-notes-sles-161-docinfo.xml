@@ -17,6 +17,9 @@
       <listitem>
        <para>Added link to the Public Cloud Information Tracker (PINT) to <link xlink:href="index.html#intro-documentation">Documentation and other information</link> (docteam#351)</para>
       </listitem>
+      <listitem>
+       <para>Documented removal of unmaintained python-pytest-forked package (<link xlink:href="index.html#removed">jsc#PED-16582</link>)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
