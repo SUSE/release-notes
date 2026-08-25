@@ -76,6 +76,16 @@ DC-releasenotes_sle-hpc_15-SP7:
   short-name: SLE HPC
   slug: slehpc-15-sp7
   version: 15 SP7
+DC-releasenotes_sle-micro_5.3:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sle-micro_5.3
+  version: '5.3'
+DC-releasenotes_sle-micro_5.4:
+  doc-name: release-notes
+  short-name: SLE Micro
+  slug: sle-micro_5.4
+  version: '5.4'
 DC-releasenotes_sle-micro_6.0:
   doc-name: release-notes
   short-name: SLE Micro
