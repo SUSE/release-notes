@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-08-25</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added link to the Public Cloud Information Tracker (PINT) to <link xlink:href="index.html#intro-documentation">Documentation and other information</link> (docteam#351)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-08-19</date>
      <revdescription>
       <itemizedlist>
