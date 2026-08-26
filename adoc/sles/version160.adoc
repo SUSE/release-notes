@@ -128,6 +128,8 @@ Before upgrading to {productname} {this-version}, review the following checklist
 
 === Before upgrading
 
+* <<jsc-PED-14578>>
+
 * *Network Teaming:* Network teaming (`teamd`) has been removed.
 +
 Migrate configurations to NetworkManager bonding.
@@ -179,6 +181,17 @@ See <<jsc-PED-6311>>.
 * `NetworkManager` is now the only network configuration stack in {productname} {this-version}.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
+
+// jsc#PED-14578
+// bsc#1261164
+[#jsc-PED-14578]
+=== Direct migration from SLES 15 SP6 is supported
+
+SUSE now officially supports direct migration from {sles} 15 SP6 to {productname} {this-version}.
+This direct path enables migration without an interim upgrade to {sles} 15 SP7.
+It preserves FIPS-compliant configurations across the migration path.
+To perform the migration, install the updated `suse-migration-services` package on the {sles} 15 SP6 system.
+For more information, see the __Upgrade Guide__.
 
 // bsc#1217826
 [#jsc-PED-8349]
