@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-14578">Direct migration from SLES 15 SP6 is supported</link> (jsc#PED-14578)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-8349">Performance Co-Pilot (PCP) upgraded to version 6.2.0</link> (jsc#PED-8349)</para>
        </listitem>
       </itemizedlist>
