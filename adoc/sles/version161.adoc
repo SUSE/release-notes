@@ -291,6 +291,15 @@ A login hint is now displayed upon a failed root login attempt to clarify that r
 The hint also provides instructions on logging in with a regular account, elevating privileges, or enabling root access via `/etc/cockpit/disallowed-users`.
 
 
+[#jsc-PED-16616]
+=== Cockpit bootloader package added
+
+{productname} {this-version} includes the new `cockpit-bootloader` package.
+This package provides a {cockpit} interface module to configure bootloader settings.
+This module replaces the previous YaST bootloader configuration functionality.
+{productname} {this-version} also includes the required dependency package `bootkitd`.
+
+
 [#jsc-PED-15693]
 === Curated set of Ansible development and testing tools
 
