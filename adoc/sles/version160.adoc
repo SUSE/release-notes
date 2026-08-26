@@ -180,6 +180,15 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// bsc#1217826
+[#jsc-PED-8349]
+=== Performance Co-Pilot (PCP) upgraded to version 6.2.0
+
+Performance Co-Pilot (PCP) has been upgraded to version 6.2.0.
+This version upgrade resolves multiple security vulnerabilities, including CVE-2023-6917.
+The upgrade also includes several new features and performance enhancements.
+For a complete list of changes, see the upstream release notes at link:https://pcp.io/[] and the package changelog.
+
 // jsc#PED-5576
 include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 
