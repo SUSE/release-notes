@@ -11,6 +11,19 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-08-26</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14885">Installer support for pervasive encryption on {ibmz}</link> (jsc#PED-14885)</para>
+      </listitem>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14602">IBM z17 hardware support in libraries and development tools</link> (jsc#PED-14602, jsc#PED-14604, jsc#PED-14610, jsc#PED-14684, jsc#PED-14872)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-08-25</date>
     <revdescription>
      <itemizedlist>

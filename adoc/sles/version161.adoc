@@ -550,6 +550,26 @@ In `s390-tools`, support for 3480 and 3590 FICON tape devices as well as the rel
 Other tape technologies are not affected by this removal.
 Virtual tape servers, such as the emulated IBM TS7700 Virtual Tape Server, continue to be supported via the `tape.ko`, `tape_34xx.ko`, and `tape_3590.ko` kernel modules.
 
+// https://github.com/agama-project/agama/pull/3384
+[#jsc-PED-14885]
+=== Installer support for pervasive encryption on {ibmz}
+
+The Agama installer now supports pervasive encryption (PAES) for storage volumes on {ibmz}.
+The unattended storage JSON profile supports pervasive encryption properties, such as Crypto Express APQNs and key types.
+The storage schema includes the new `apqns` and `keyType` properties under the `pervasiveLuks2` encryption configuration.
+During installation, the encryption planner assigns the specified APQN objects and key types to the planned encrypted devices.
+
+// jsc#PED-14604
+// jsc#PED-14610
+// jsc#PED-14684
+// jsc#PED-14872
+[#jsc-PED-14602]
+=== IBM z17 hardware support in libraries and development tools
+
+Several IBM libraries and development tools now support the IBM z17 hardware platform.
+The system libraries `libzdnn`, `libzpc`, and `libica` include updates for the new hardware capabilities.
+Development and debugging tools, such as the GNU C Library (glibc) and Valgrind, also support the new processor instructions.
+
 include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 [#power]
