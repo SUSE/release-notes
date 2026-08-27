@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16616">Cockpit bootloader package added</link> (jsc#PED-16616)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-14885">Installer support for pervasive encryption on {ibmz}</link> (jsc#PED-14885)</para>
       </listitem>
       <listitem>
