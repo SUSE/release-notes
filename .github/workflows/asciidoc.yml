@@ -117,7 +117,7 @@ jobs:
       - name: Create folder hierarchy for susedoc.github.io
         run: uv run --with pyyaml scripts/build-fleet.py
       - name: Publishing builds on susedoc.github.io
-        uses: openSUSE/doc-ci@lukas-gha-publish-dir
+        uses: openSUSE/doc-ci@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:
@@ -146,7 +146,7 @@ jobs:
       - name: Create folder hierarchy for preview
         run: uv run --with pyyaml scripts/build-fleet.py "preview" "https://susedoc.github.io/release-notes/pr-${{ github.event.pull_request.number }}/sles-16.0/html/release-notes/"
       - name: Publishing preview on susedoc.github.io
-        uses: openSUSE/doc-ci@lukas-gha-publish-dir
+        uses: openSUSE/doc-ci@gha-publish
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         with:

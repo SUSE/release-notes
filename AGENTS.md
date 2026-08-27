@@ -66,7 +66,7 @@ make serve
 `.github/workflows/asciidoc.yml` runs on push/PR when `DC-*` or `adoc/**` changes:
 1. `openSUSE/doc-ci@gha-validate` — validates IDs, images, tables
 2. `openSUSE/doc-ci@gha-build` — builds all DC-* targets
-3. `SUSE/release-notes@gha-publish` — publishes to susedoc.github.io (main branch only)
+3. `openSUSE/doc-ci@gha-publish` — publishes to susedoc.github.io (main branch only)
 
 ## XSLT post-processing
 
