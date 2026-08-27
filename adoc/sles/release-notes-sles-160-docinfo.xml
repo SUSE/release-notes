@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-08-27</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Documented deprecation of unmaintained python-bleach package (<link xlink:href="index.html#deprecated">jsc#PED-16771</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-08-26</date>
      <revdescription>
       <itemizedlist>
