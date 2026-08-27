@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented removal of unmaintained python-bleach package (<link xlink:href="index.html#removed">jsc#PED-16771</link>)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-16861">Support for Intel "Wildcat Lake-U" CPU platform</link> (jsc#PED-16861)</para>
       </listitem>
      </itemizedlist>

@@ -722,6 +722,12 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16771
+// bsc#1271307
+* The `python-bleach` package is removed from {productname} 16.1.
+Upstream does not maintain this package.
+To clean HTML, use the `python313-nh3` package.
+
 // jsc#PED-16797
 * Due to being no longer maintained, the `ceph` and `thrift` packages have been removed from {ph}.
 

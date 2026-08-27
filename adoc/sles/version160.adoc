@@ -1382,6 +1382,13 @@ include::../shared.adoc[tags=jscped12374]
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc#PED-16771
+// bsc#1271307
+* The `python-bleach` package is deprecated in {productname} 16.0.
+Upstream does not maintain this package.
+{productname} 16.1 does not include this package.
+To clean HTML, use the `python313-nh3` package.
+
 // bsc#1275537
 * Legacy XFS v4 filesystems are deprecated.
   For details, see <<bsc-1275537>>.
