@@ -32,19 +32,26 @@ jobs:
       - name: Detect affected DC files
         id: set-output
         run: |
+          # For pull requests, DIFF_RANGE uses "..." so that the comparison is
+          # against the merge base. A two-dot diff against base.sha also reports
+          # everything the base branch gained since the PR branched off, which
+          # can wrongly trigger the build-everything fallback in
+          # detect-affected-dcs.py.
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
             HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+            DIFF_RANGE="$BASE_SHA...$HEAD_SHA"
           else
             BASE_SHA="${{ github.event.before }}"
             HEAD_SHA="${{ github.event.after }}"
             if [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ] || [ -z "$BASE_SHA" ] || ! git cat-file -e "$BASE_SHA" >/dev/null 2>&1; then
               BASE_SHA="HEAD^"
             fi
+            DIFF_RANGE="$BASE_SHA $HEAD_SHA"
           fi
-          
-          echo "Comparing $BASE_SHA to $HEAD_SHA"
-          CHANGED_FILES=$(git diff --name-only $BASE_SHA $HEAD_SHA)
+
+          echo "Comparing $DIFF_RANGE"
+          CHANGED_FILES=$(git diff --name-only $DIFF_RANGE)
           
           AFFECTED=$(echo "$CHANGED_FILES" | uv run scripts/detect-affected-dcs.py)
           echo "Affected DC files: $AFFECTED"
