@@ -274,6 +274,12 @@ include::../shared.adoc[tags=bsc1275537,leveloffset=+2]
 Compatibility for SDL 2.0 applications is now provided through the `sdl2-compat` library layer.
 The legacy `SDL2` package has been removed.
 
+[#jsc-PED-16540]
+=== `curl` updated to version 8.21.0
+
+{productname} {this-version} includes `curl` version 8.21.0.
+For a complete list of changes, see the link:https://curl.se/ch/8.21.0.html[curl 8.21.0 changelog].
+
 [#jsc-PED-16669-upcoming]
 === Upcoming update of GNU `patch` to version 2.8 in {productname} 16.2
 
