@@ -485,9 +485,17 @@ The following table lists Java implementations available in {sles} {this-version
 |===
 
 
-// == {x64}-specific changes
+== {x64}-specific changes
 
-// Information in this section applies to the {x64} architecture.
+Information in this section applies to the {x64} architecture.
+
+[#jsc-PED-16861]
+=== Support for Intel "Wildcat Lake-U" CPU platform
+
+{productname} {this-version} now supports Intel's "Wildcat Lake-U" CPU platform.
+This hardware enablement includes updated graphics drivers for Intel Xe3 integrated graphics via the DRM kernel driver and Mesa 26.0.1.
+It adds device ID support for SMBus and I3C input/output interfaces.
+Additionally, this release enables Intel Platform Monitoring Technology (PMT) features, including Crash Log and Telemetry Aggregator, by adding the required VSEC device IDs.
 
 [#aarch64]
 == {arm}-specific changes ({aarch64})
