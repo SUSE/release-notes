@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16540">curl updated to version 8.21.0</link> (jsc#PED-16540)</para>
+      </listitem>
+      <listitem>
        <para>Documented removal of unmaintained python-bleach package (<link xlink:href="index.html#removed">jsc#PED-16771</link>)</para>
       </listitem>
       <listitem>
