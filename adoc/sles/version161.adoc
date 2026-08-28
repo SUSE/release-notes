@@ -556,6 +556,11 @@ which have undergone compatibility testing.
 Information in this section applies to {z-productname}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
+// jsc#PED-15051
+// jsc#PED-16483
+// jsc#PED-16488
+include::../shared.adoc[tags=jscped-15050,leveloffset=+2]
+
 // jsc#PED-13734
 // bsc#1249961
 [#jsc-PED-15030]

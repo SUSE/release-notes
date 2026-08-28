@@ -434,4 +434,20 @@ To get the image, use the path `registry.suse.com/suse/sles-{this-version}-kubev
 
 end::jscped-14582[]
 
+tag::jscped-15050[]
+[#jsc-PED-15050]
+= New `zpckey` tool and changed interface in `libzpc` 2
 
+{productname} includes `libzpc` version 2 for {ibmz}.
+
+The new `libzpc-tools` package provides the `zpckey` tool.
+Use `zpckey` to create and manage protected key origins, such as Secure Execution retrievable secrets.
+`zpckey` writes each key origin to a file.
+The OpenSSL provider module in the `libzpc-provider` package then reads the file.
+For more information, see the `zpckey(1)` man page.
+
+Version 2 does not provide the `libzpc` C API as a shared library.
+Applications must use the OpenSSL provider module instead.
+The `libzpc-legacy` package provides the version 1 packages `libzpc1` and `libzpc-devel`.
+This package is deprecated and will be removed in a future release.
+end::jscped-15050[]
