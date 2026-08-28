@@ -332,6 +332,14 @@
 :huaweireg:                  {huawei}{thrdmrk}
 :kunpeng:                    Kunpeng
 :kunpengreg:                 {kunpeng}{thrdmrk}
+// Added downstream ahead of the doc-kit rollout, see openSUSE/doc-kit#135:
+// https://www.intel.com/content/www/us/en/legal/trademarks.html
+:intel:                      Intel
+:intelreg:                   {intel}{thrdmrk}
+:optane:                     {intel}{nbsp}Optane
+:optanereg:                  {intelreg}{nbsp}Optane{thrdmrk}
+:optanemem:                  {optane} Memory
+:optanememreg:               {optanereg} Memory
 // Khronos
 :openmax:                    OpenMAX
 :openmaxreg:                 {openmax}{thrdmrk}
