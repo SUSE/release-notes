@@ -944,6 +944,11 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 
 === Security
 
+// jsc#PED-15051
+// jsc#PED-16483
+// jsc#PED-16488
+include::../shared.adoc[tags=jscped-15050,leveloffset=+3]
+
 [#jsc-PED-15721]
 ==== Support for MS SQL Server 2025 legacy hashing algorithms in OpenSSL 3
 
