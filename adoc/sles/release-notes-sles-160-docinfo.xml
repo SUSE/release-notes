@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-08-28</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-14582">{productname} containerdisk image now available</link> (jsc#PED-14582)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-08-27</date>
      <revdescription>
       <itemizedlist>
