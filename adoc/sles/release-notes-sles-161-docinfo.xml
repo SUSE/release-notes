@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16345">Virtual persistent memory (vPMEM) in virtual machine guests</link> (jsc#PED-16345)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15050">New <literal>zpckey</literal> tool and changed interface in <literal>libzpc</literal> 2</link> (jsc#PED-15050)</para>
       </listitem>
       <listitem>

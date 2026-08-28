@@ -643,6 +643,14 @@ Automated initial guest provisioning is now fully supported.
 * iSCSI boot support is disabled in OVMF images.
 
 
+[#jsc-PED-16345]
+=== Virtual persistent memory (vPMEM) in virtual machine guests
+
+{productname} {this-version} supports virtual persistent memory (vPMEM) in virtual machine guests on {x64} and {ppc64le}.
+The guest kernel detects the vPMEM regions and loads the applicable driver without manual configuration.
+{productname} does not support physical {optanememreg}.
+
+
 [#jsc-PED-14599]
 === QEMU
 
