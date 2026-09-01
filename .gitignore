@@ -11,3 +11,4 @@ build/
 bugreports/
 *.code-workspace
 .worktrees/
+.superpowers/
