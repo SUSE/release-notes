@@ -270,6 +270,13 @@ include::../shared.adoc[tags=bsc1271333,leveloffset=+2]
 // bsc#1275537
 include::../shared.adoc[tags=bsc1275537,leveloffset=+2]
 
+[#jsc-PED-16260]
+=== Characters in the private use area disabled in the alternate German keymap
+
+The alternate German keymap `qwertz/de_alt_UTF-8` no longer supports characters in the Private Use Area (characters equal to or greater than `U+F000`).
+This change aligns the keymap with the upstream configuration and drops the custom legacy patch.
+Configurations that rely on custom characters mapped to this range require manual adjustment.
+
 [#jsc-PED-14453]
 === SDL 3 and sdl2-compat update
 
