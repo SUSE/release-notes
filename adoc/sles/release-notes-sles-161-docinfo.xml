@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16203">poppler updated to version 26.x</link> (jsc#PED-16203)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-16216">Performance Co-Pilot (PCP) upgraded to version 6.3.8</link> (jsc#PED-16216)</para>
       </listitem>
       <listitem>
