@@ -566,6 +566,14 @@ Additionally, this release enables Intel Platform Monitoring Technology (PMT) fe
 [#aarch64]
 == {arm}-specific changes ({aarch64})
 
+[#jsc-PED-16033]
+=== Non-blocking console support for ARM64 (aarch64)
+
+Non-blocking console (`nbcon`) support is enabled on the {aarch64} architecture.
+The common AMBA PL011 serial console driver (`amba-pl011`) is converted to the new `nbcon` API.
+This allows the kernel to log messages atomically and reliably to the console even from non-maskable interrupt (NMI) contexts (such as during an `nmi_panic`).
+This ensures critical post-crash details are captured immediately without relying on legacy printing locks or threads.
+
 [#arm64-soc]
 === System-on-Chip driver enablement
 
