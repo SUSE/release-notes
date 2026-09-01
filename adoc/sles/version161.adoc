@@ -311,6 +311,15 @@ For more information, see the link:https://www.php.net/releases/8_5_0.php[PHP 8.
 
 {productname} {this-version} includes the `poppler` PDF rendering library version 26.x.
 
+This version update introduces several important changes for system administrators:
+
+* **Removal of piped output filenames:** For security reasons, passing a piped command as a filename parameter (for example, `| command`) is no longer supported in `pdftops`.
+Use standard shell pipelines instead.
+* **`pdfsig` exit codes:** The `pdfsig` utility now returns a non-zero exit code on signature validation failure.
+This may affect automated verification scripts.
+* **`pdftotext` line endings:** The `pdftotext` tool now defaults to `\n` line endings.
+* **New signature features:** The `pdfsig` utility includes a new `--assert-signer` option to verify the identity of the signer.
+
 [#jsc-PED-16669-upcoming]
 === Upcoming update of GNU `patch` to version 2.8 in {productname} 16.2
 
