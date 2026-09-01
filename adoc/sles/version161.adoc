@@ -735,6 +735,22 @@ Important considerations:
 * The script must be run locally (not over a remote connection) immediately after installation and before applying any custom network configurations.
 
 
+[#jsc-PED-16244]
+==== `strace` updated to version 7.1
+
+`strace` has been updated to version 7.1.
+
+This update includes the following changes:
+
+* The summary report (`-c` or `--summary-only`) now supports wall-clock-aware columns (`wall-total`, `wall-min`, `wall-max`, and `wall-avg`).
+This allows comparison of wall-clock and system CPU times in a single run.
+* The summary report now includes out-of-range system calls.
+* This update improves decoding of the `sched_getattr` system call.
+* The utility now decodes the `FS_IOC_SHUTDOWN`, `PIDFD_GET_INFO`, and `PIDFD_GET_*_NAMESPACE` ioctl commands.
+* The utility now decodes the `IFLA_BR_FDB_N_LEARNED`, `IFLA_BR_FDB_MAX_LEARNED`, and `IFLA_BR_STP_MODE` netlink attributes.
+* This version updates the system call constant lists for `CLONE_*`, `FSMOUNT_*`, `KT_*`, `KVM_*`, `LANDLOCK_*`, `NETDEV_*`, `NL80211_*`, and `PIDFD_*`.
+* This version adds support for Linux kernel 7.1 ioctl commands.
+
 
 [#removed-deprecated]
 == Removed and deprecated features and packages

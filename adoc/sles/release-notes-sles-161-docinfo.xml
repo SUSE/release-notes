@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16244">strace updated to version 7.1</link> (jsc#PED-16244)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-16260">Characters in the private use area disabled in the alternate German keymap</link> (jsc#PED-16260)</para>
       </listitem>
      </itemizedlist>
