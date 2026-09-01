@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-16033">Non-blocking console support for ARM64 (aarch64)</link> (jsc#PED-16033)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-16203">poppler updated to version 26.x</link> (jsc#PED-16203)</para>
       </listitem>
       <listitem>
