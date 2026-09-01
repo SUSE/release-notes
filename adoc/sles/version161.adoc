@@ -284,6 +284,16 @@ Configurations that rely on custom characters mapped to this range require manua
 Compatibility for SDL 2.0 applications is now provided through the `sdl2-compat` library layer.
 The legacy `SDL2` package has been removed.
 
+// jsc#PED-16216
+[#jsc-PED-16216]
+=== Performance Co-Pilot (PCP) upgraded to version 6.3.8
+
+Performance Co-Pilot (PCP) has been upgraded from version 6.2.0 to 6.3.8.
+This version upgrade introduces AMD GPU metric monitoring support in `pcp-htop`.
+It adds Valkey support alongside Redis in `libpcp_web`.
+This version upgrade also resolves multiple security vulnerabilities, including CVE-2024-45769 (bsc#1230551).
+For a complete list of changes, see the upstream release notes at link:https://pcp.io/[] and the package changelog.
+
 [#jsc-PED-16540]
 === `curl` updated to version 8.21.0
 
