@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented default installation of <literal>p11-kit-nss-trust</literal> over <literal>mozilla-nss-certs</literal> in <literal>mozilla-nss</literal> (<link xlink:href="index.html#jsc-PED-15634">jsc#PED-15634</link>)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-16033">Non-blocking console support for ARM64 (aarch64)</link> (jsc#PED-16033)</para>
       </listitem>
       <listitem>
