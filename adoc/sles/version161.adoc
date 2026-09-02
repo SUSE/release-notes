@@ -446,6 +446,15 @@ Note that this applies to traditional software.
 To better support immutable systems and transactional updates, the `update-alternatives` mechanism is no longer used to set the default PostgreSQL version.
 For more details on how to set the default PostgreSQL version, refer to the `README.SUSE` file provided in the `postgresql` main package.
 
+[#jsc-PED-14649]
+=== Agama installer supports both standard and immutable installation modes
+
+The Agama installer supports both standard and immutable installation modes.
+Standard mode installs the system with a traditional read-write root directory.
+Immutable mode installs the system with a read-only root directory and enables transactional updates.
+The Agama configuration profile supports specifying the installation mode.
+The installation mode cannot be changed after the installation is complete.
+
 // bsc#1268779
 [#jsc-PED-16271]
 === Agama live image includes Combustion
