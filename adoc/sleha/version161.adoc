@@ -24,6 +24,9 @@ Installation media, VM images and public cloud images are usually refreshed ever
 
 === Changes affecting all architectures
 
+// jsc#PED-15496
+include::../shared.adoc[tags=jscped-15496,leveloffset=+3]
+
 [#jsc-PED-14996]
 ==== SBD parameter validation with `crm cluster health sbd`
 
