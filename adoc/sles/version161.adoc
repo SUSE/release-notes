@@ -189,6 +189,9 @@ include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 // jsc#PED-14582
 include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
 
+// jsc#PED-15447
+include::../shared.adoc[tags=jscped-15447,leveloffset=+2]
+
 // bsc#1270050
 [#jsc-PED-16187]
 === Network UPS Tools (NUT) updated to version 2.8.5
