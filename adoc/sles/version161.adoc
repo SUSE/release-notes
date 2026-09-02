@@ -554,6 +554,23 @@ The following table lists Java implementations available in {sles} {this-version
 |===
 
 
+[#jsc-PED-14671]
+=== Python in SLES 16.1
+
+{productname} {this-version} continues to use Python 3.13 as the primary Python interpreter and stack.
+SUSE supports the primary Python interpreter for the entire product lifecycle.
+This interpreter provides the default `/usr/bin/python3` executable and a full stack of `python3-` packages (approximately 700 packages).
+
+Additionally, {productname} {this-version} introduces Python 3.14 as a short-term interpreter.
+SUSE supports the short-term interpreter for a limited two-year lifecycle (until November 2028).
+This interpreter only includes the runtime and essential package management tools (`setuptools`, `venv`, `pip`, and `pipx`).
+It does not include the full library stack.
+SUSE does not provide additional `python314-` packages.
+
+The Python support strategy for {productname} 16 introduces a new short-term interpreter with each minor version (every year).
+The primary Python interpreter changes every odd minor version (for example, version 3.13 in 16.0 and 16.1, and version 3.15 in 16.3 and 16.4).
+
+
 == {x64}-specific changes
 
 Information in this section applies to the {x64} architecture.
