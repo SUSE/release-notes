@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14646">BPF tooling updated to the latest upstream versions</link> (jsc#PED-14646)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15396">Support for {ranchelemental} 2.x removed</link> (jsc#PED-15396)</para>
       </listitem>
      </itemizedlist>
