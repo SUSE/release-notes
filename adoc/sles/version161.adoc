@@ -908,15 +908,6 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
-// jsc#PED-12886
-* The `iptables` and `ipset` packages have been removed from {productname} 16.1.
-  Use `nftables` to manage network packet filtering.
-  To support migration to `nftables`, {productname} 16.1 continues to ship the following translation tools:
-** `iptables-translate`
-** `ip6tables-translate`
-** `ebtables-translate`
-** `arptables-translate`
-
 // jsc#PED-16771
 // bsc#1271307
 * The `python-bleach` package is removed from {productname} 16.1.

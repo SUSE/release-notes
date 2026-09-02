@@ -152,6 +152,15 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-12886
+* The `iptables` and `ipset` packages have been removed from {productname} 16.2.
+  Use `nftables` to manage network packet filtering.
+  To support migration to `nftables`, {productname} 16.2 continues to ship the following translation tools:
+** `iptables-translate`
+** `ip6tables-translate`
+** `ebtables-translate`
+** `arptables-translate`
+
 // jsc#PED-16257
 * The following SSSD features and options have been removed in {productname} 16.2:
 ** The enumeration feature for the AD or IPA provider
