@@ -505,6 +505,9 @@ All system roles now support the real-time kernel.
 This change provides deterministic latency and predictable execution times for standard server installations.
 
 
+include::../shared.adoc[tags=jscped-12998,leveloffset=+2]
+
+
 [#bsc-1261338]
 === RAID configuration not supported in installer Web UI
 

@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-12998">Stable kABI for real-time kernel</link> (jsc#PED-12998)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-14649">Agama installer supports both standard and immutable installation modes</link> (jsc#PED-14649)</para>
       </listitem>
       <listitem>
