@@ -481,3 +481,14 @@ To manage operating system deployments, use {ranchelemental} 3.x.
 The coexistence of versions 2.x and 3.x in the previous release supported the migration path.
 Only {ranchelemental} 3.x remains supported from this release onward.
 end::jscped-15396[]
+
+tag::jscped-12998[]
+[#jsc-PED-12998]
+= Stable kABI for real-time kernel
+
+The real-time kernel (`kernel-rt`) now maintains a stable kernel Application Binary Interface (kABI) during maintenance updates.
+This stability ensures that compatible third-party kernel modules do not require recompilation for every kernel update.
+Note that the real-time kernel and the default kernel do not share a common kABI.
+Therefore, drivers built for the default kernel cannot be used with the real-time kernel and must be built separately.
+While SUSE aims to keep the real-time kABI stable, rare technical requirements might still require changes in future updates.
+end::jscped-12998[]

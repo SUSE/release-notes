@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-12998">Stable kABI for real-time kernel</link> (jsc#PED-12998)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15447">Reduced set of pre-built immutable system images</link> (jsc#PED-15447)</para>
       </listitem>
      </itemizedlist>
