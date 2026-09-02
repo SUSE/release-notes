@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-15573">FreeRDP has been updated to version 3.26.0</link> (jsc#PED-15573)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15432">Real-time kernel is available on standard {productname} installations</link> (jsc#PED-15432)</para>
       </listitem>
       <listitem>
