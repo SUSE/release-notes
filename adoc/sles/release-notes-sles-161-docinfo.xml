@@ -15,9 +15,6 @@
     <revdescription>
      <itemizedlist>
       <listitem>
-       <para>Added section <link xlink:href="index.html#removed">Drop iptables completely in SLFO</link> (jsc#PED-12886)</para>
-      </listitem>
-      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-12998">Stable kABI for real-time kernel</link> (jsc#PED-12998)</para>
       </listitem>
       <listitem>
