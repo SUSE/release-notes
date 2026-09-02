@@ -462,3 +462,13 @@ Only the Base image variant remains available.
 Additionally, on the {power} architecture ({ppc64le}), this release removes the pre-built images for 512-byte sector sizes.
 Only images for 4096-byte (4 kB) sector sizes are now provided for {ppc64le}.
 end::jscped-15447[]
+
+tag::jscped-15496[]
+[#jsc-PED-15496]
+= `{haproxy}` and `{keepalived}` moved to `{sles}`
+
+Previously, only the `{sleha}` extension included `{haproxy}` and `{keepalived}`.
+The base `{sles}` distribution now includes both `{haproxy}` and `{keepalived}`.
+This change makes these packages available on standard installations without a separate High Availability subscription.
+end::jscped-15496[]
+
