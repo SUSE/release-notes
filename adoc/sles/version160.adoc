@@ -182,6 +182,14 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-13733]
+=== New pre-configured SLES for Tomcat cloud image is available
+
+A new pre-configured {productname} cloud image for Apache Tomcat is now available in cloud marketplaces.
+This image provides a ready-to-use environment with Apache Tomcat and the OpenJDK runtime pre-installed and pre-configured.
+It simplifies the deployment of Java-based web applications in public cloud environments.
+For more information about deploying and configuring the image, see the _Apache Tomcat on SLES Cloud Guide_ at link:https://documentation.suse.com/sles/16.0/html/SLES-apache-tomcat-cloud/[].
+
 // jsc#PED-14578
 // bsc#1261164
 [#jsc-PED-14578]
