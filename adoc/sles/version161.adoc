@@ -307,6 +307,12 @@ Configurations that rely on custom characters mapped to this range require manua
 Compatibility for SDL 2.0 applications is now provided through the `sdl2-compat` library layer.
 The legacy `SDL2` package has been removed.
 
+[#jsc-PED-15573]
+=== FreeRDP has been updated to version 3.26.0
+
+FreeRDP has been updated to version 3.26.0.
+This update introduces support for FIDO2 redirection ([MS-RDPEWA]), experimental AV1 codec extension, and performance improvements for SDL3 client drawing.
+
 // jsc#PED-16216
 [#jsc-PED-16216]
 === Performance Co-Pilot (PCP) upgraded to version 6.3.8
