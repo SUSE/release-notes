@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-15432">Real-time kernel is available on standard {productname} installations</link> (jsc#PED-15432)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-14671">Python in SLES 16.1</link> (jsc#PED-14671)</para>
       </listitem>
       <listitem>

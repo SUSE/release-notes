@@ -446,6 +446,15 @@ The `PREEMPT_LAZY` model provides a less conservative approach to preemption, wh
 If you experience performance issues with the new preemption model, you can optionally switch back to `PREEMPT_VOLUNTARY` by setting `preempt=voluntary` on the kernel command line.
 
 
+[#jsc-PED-15432]
+=== Real-time kernel is available on standard {productname} installations
+
+Standard {productname} installations now include the real-time kernel (`kernel-rt`).
+Previously, the real-time kernel was only available on systems with the Transactional Server role.
+All system roles now support the real-time kernel.
+This change provides deterministic latency and predictable execution times for standard server installations.
+
+
 [#bsc-1261338]
 === RAID configuration not supported in installer Web UI
 
