@@ -901,6 +901,8 @@ To clean HTML, use the `python313-nh3` package.
 * The UDP-Lite protocol (RFC 3828) has been disabled in the {productname} 16.1 kernel.
   This protocol has been dropped from the upstream Linux kernel.
 
+include::../shared.adoc[tags=jscped-15396,leveloffset=+3]
+
 
 [#deprecated]
 === Deprecated features and packages

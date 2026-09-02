@@ -9,9 +9,16 @@
 <productname>{productname}</productname>
 <productnumber>{this-version}</productnumber>
 <date>{revdate}</date>
-<revhistory>
+<revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
-    <date>{revdate}</date>
+    <date>2026-09-02</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-15396">Support for {ranchelemental} 2.x removed</link> (jsc#PED-15396)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
   </revision>
 </revhistory>
 <meta name="series">Release Notes</meta>

@@ -472,3 +472,12 @@ The base `{sles}` distribution now includes both `{haproxy}` and `{keepalived}`.
 This change makes these packages available on standard installations without a separate High Availability subscription.
 end::jscped-15496[]
 
+tag::jscped-15396[]
+[#jsc-PED-15396]
+= Support for {ranchelemental} 2.x removed
+
+This release removes {ranchelemental} 2.x components and container images.
+To manage operating system deployments, use {ranchelemental} 3.x.
+The coexistence of versions 2.x and 3.x in the previous release supported the migration path.
+Only {ranchelemental} 3.x remains supported from this release onward.
+end::jscped-15396[]
