@@ -18,6 +18,9 @@
        <para>Added section <link xlink:href="index.html#jsc-PED-14649">Agama installer supports both standard and immutable installation modes</link> (jsc#PED-14649)</para>
       </listitem>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-14646">BPF tooling updated to the latest upstream versions</link> (jsc#PED-14646)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-14959">Reduced kernel lock delays during CPU restriction</link> (jsc#PED-14959)</para>
       </listitem>
       <listitem>

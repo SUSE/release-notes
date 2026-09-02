@@ -28,6 +28,18 @@ tag::60[]
 tag::61[]
 tag::62[]
 tag::63[]
+[#jsc-PED-14646]
+= BPF tooling updated to the latest upstream versions
+
+This release updates BPF (Berkeley Packet Filter) tooling to the latest upstream versions.
+The following packages are updated:
+
+* `libbpf` to version 1.6.2
+* `bpftool` to version 7.6.0
+* `bpftrace` to version 0.24.1
+
+These updates provide new features and bug fixes.
+
 [#jsc-PED-7936]
 = Extras channel
 
