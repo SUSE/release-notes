@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-13377">OpenMPI support for Gridware Cluster Scheduler (Grid Engine)</link> (jsc#PED-13377)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-13733">New pre-configured SLES for Tomcat cloud image is available</link> (jsc#PED-13733)</para>
        </listitem>
       </itemizedlist>

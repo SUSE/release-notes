@@ -182,6 +182,13 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-13377]
+=== OpenMPI support for Gridware Cluster Scheduler (Grid Engine)
+
+OpenMPI now supports the Gridware Cluster Scheduler (Grid Engine) out-of-the-box.
+This update configures OpenMPI packages with the `--with-sge` parameter.
+Previously, OpenMPI only supported the Slurm workload manager out-of-the-box.
+
 [#jsc-PED-13733]
 === New pre-configured SLES for Tomcat cloud image is available
 
