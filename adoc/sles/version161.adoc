@@ -192,6 +192,14 @@ include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 // jsc#PED-14582
 include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
 
+[#jsc-PED-15000]
+=== Increased timeout for installer boot menu
+
+The boot menu of the live installation medium now has a timeout of 60 seconds.
+Previously, the timeout was ten seconds.
+This change provides more time to select options from the boot menu.
+This change does not affect the boot timeout of the installed system.
+
 [#jsc-PED-15634]
 === `mozilla-nss` favors `p11-kit-nss-trust` over `mozilla-nss-certs` by default
 
