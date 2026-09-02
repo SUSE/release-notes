@@ -449,5 +449,16 @@ For more information, see the `zpckey(1)` man page.
 Version 2 does not provide the `libzpc` C API as a shared library.
 Applications must use the OpenSSL provider module instead.
 The `libzpc-legacy` package provides the version 1 packages `libzpc1` and `libzpc-devel`.
-This package is deprecated and will be removed in a future release.
+The package is deprecated and will be removed in a future release.
 end::jscped-15050[]
+
+tag::jscped-15447[]
+[#jsc-PED-15447]
+= Reduced set of pre-built immutable system images
+
+To simplify selection and validation, the number of pre-built immutable system images is now smaller.
+This release removes the Default image variant.
+Only the Base image variant remains available.
+Additionally, on the {power} architecture ({ppc64le}), this release removes the pre-built images for 512-byte sector sizes.
+Only images for 4096-byte (4 kB) sector sizes are now provided for {ppc64le}.
+end::jscped-15447[]

@@ -26,6 +26,9 @@ include::../shared.adoc[tags=jscped-15713,leveloffset=+3]
 // jsc#PED-12879
 include::../shared.adoc[tags=jscped-12879,leveloffset=+3]
 
+// jsc#PED-15447
+include::../shared.adoc[tags=jscped-15447,leveloffset=+3]
+
 
 [#bsc-1252729]
 ==== Cockpit disabled by default
