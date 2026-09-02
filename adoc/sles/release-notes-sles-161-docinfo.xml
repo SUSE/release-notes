@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-15000">Increased timeout for installer boot menu</link> (jsc#PED-15000)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#jsc-PED-15396">Support for {ranchelemental} 2.x removed</link> (jsc#PED-15396)</para>
       </listitem>
       <listitem>
