@@ -247,6 +247,17 @@ A minor performance overhead (mostly between 2% and 8%) is restricted to schedul
 
 If you encounter performance regressions on scheduling-intensive workloads, you can disable PSI at boot time by passing `psi=0` to the kernel command line.
 
+[#jsc-PED-14959]
+=== Reduced kernel lock delays during CPU restriction
+
+High CPU load can make a container wait when it shares kernel locks.
+Previously, a container with CPU limits could keep a shared kernel lock when the system restricted its CPU usage.
+Because the container kept the lock, other containers had to wait.
+This waiting occurred even if the other containers had no CPU limits.
+The new task-based model changes this behavior.
+The kernel does not restrict a task when the task holds a critical lock.
+This change prevents delays and improves the separation of container workloads.
+
 [#jsc-PED-15892]
 === Coexistence of zlib and zlib-ng libraries
 
