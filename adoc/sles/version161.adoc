@@ -192,6 +192,26 @@ include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 // jsc#PED-14582
 include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
 
+[#jsc-PED-16741]
+=== Security update and changes in mount behavior for `util-linux`
+
+An update of the `util-linux` package to version 2.42.2 fixes five critical security issues (CVE-2026-13595, CVE-2026-27456, CVE-2026-53612, CVE-2026-53613, CVE-2026-53614).
+These fixes change the behavior of mount operations for non-root processes.
+These changes stop privilege escalation and time-of-check-to-time-of-use (TOCTOU) race conditions.
+
+The following changes apply:
+
+* Non-root mount operations must always use path canonicalization.
+The system ignores the `X-mount.nocanonicalize` option for non-root mounts.
+* Legacy mount paths reject multi-step mount sequences (such as bind+remount and propagation) for non-root mounts.
+* Non-root mounts do not support the detached subdirectory feature (`X-mount.subdir`).
+* Non-root mount target paths must not go through directories that unprivileged processes can write to.
+
+If the system needs these restricted mount features, update to {productname} 16.2.
+The `mountfd` API in {productname} 16.2 uses file descriptors instead of paths, which makes operations safe against TOCTOU attacks.
+
+For more information, see the upstream release notes at link:https://www.kernel.org/pub/linux/utils/util-linux/v2.42/v2.42.2-ReleaseNotes[].
+
 [#jsc-PED-15000]
 === Increased timeout for installer boot menu
 
