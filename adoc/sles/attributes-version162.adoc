@@ -5,7 +5,7 @@
 :idprefix: v162_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
-:power-productname: {productname} {this-version} for POWER
+:power-productname: {productname} on POWER
 :z-productname: {productname} {this-version} for {ibmz}
 
 // ifeval::["{lifecycle}" == "maintained"]
