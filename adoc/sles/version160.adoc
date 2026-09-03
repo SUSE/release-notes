@@ -919,7 +919,7 @@ With the AMD P-State driver, it enables the use of the Energy Performance Prefer
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
 
-Information in this section applies to {z-productname}.
+Information in this section applies to {z-productname} {this-version}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 === Hardware
