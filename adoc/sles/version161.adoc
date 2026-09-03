@@ -692,7 +692,7 @@ which have undergone compatibility testing.
 
 
 [#jsc-PED-16033]
-=== Non-blocking console support for ARM64 (aarch64)
+=== Non-blocking console support
 
 Non-blocking console (`nbcon`) support is enabled on the {aarch64} architecture.
 The common AMBA PL011 serial console driver (`amba-pl011`) is converted to the new `nbcon` API.
