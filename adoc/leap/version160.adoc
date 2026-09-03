@@ -4,7 +4,7 @@ include::attributes.adoc[]
 :previous-version: 15.6
 :major-version: 16
 
-:power-productname: {productname} {this-version} for POWER
+:power-productname: {productname} on POWER
 :z-productname: {productname} {this-version} for {ibmz}
 
 == openSUSE Leap Community Additions

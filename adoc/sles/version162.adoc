@@ -150,7 +150,7 @@ include::../shared.adoc[tags=jscped-16391,leveloffset=+2]
 
 // == POWER-specific changes (ppc64le)
 
-// Information in this section applies to {power-productname}.
+// Information in this section applies to {power-productname} {this-version}.
 
 // == {arm}-specific changes ({aarch64})
 
