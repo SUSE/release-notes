@@ -919,7 +919,7 @@ With the AMD P-State driver, it enables the use of the Energy Performance Prefer
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
 
-Information in this section applies to {z-productname}.
+Information in this section applies to {z-productname} {this-version}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 === Hardware
@@ -1153,7 +1153,7 @@ live.password=linux rd.zdev=dasd,0.0.0160
 [#power]
 == POWER-specific changes (ppc64le)
 
-Information in this section applies to {power-productname}.
+Information in this section applies to {power-productname} {this-version}.
 
 [#jsc-PED-12179]
 === KVM guests in LPAR
@@ -1169,7 +1169,7 @@ A KVM Linux LPAR uses dedicated cores which enables Linux to have full control o
 [#bsc-1249569]
 === Login times out on HMC virtual terminal
 
-If you install {power-productname} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
+If you install {productname} {this-version} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
 
 To work around this issue, disable the Plymouth graphical boot screen by appending the boot parameter `plymouth.enable=0` to the kernel command line.
 

@@ -125,12 +125,12 @@ Ensure patch-generating tools do not inject `NUL` bytes or raw control character
 // [#ibm-z]
 // == {ibmz}-specific changes (s390x)
 
-// Information in this section applies to {z-productname}.
+// Information in this section applies to {z-productname} {this-version}.
 // For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 // == POWER-specific changes (ppc64le)
 
-// Information in this section applies to {power-productname}.
+// Information in this section applies to {power-productname} {this-version}.
 
 // == {arm}-specific changes ({aarch64})
 

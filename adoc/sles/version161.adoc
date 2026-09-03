@@ -648,6 +648,7 @@ Additionally, this release enables Intel Platform Monitoring Technology (PMT) fe
 [#aarch64]
 == {arm}-specific changes ({aarch64})
 
+Information in this section applies to {arm-product} {this-version}.
 
 [#arm64-soc]
 === System-on-Chip driver enablement
@@ -703,7 +704,7 @@ This ensures critical post-crash details are captured immediately without relyin
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
 
-Information in this section applies to {z-productname}.
+Information in this section applies to {z-productname} {this-version}.
 For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=distributions-suse-linux-enterprise-server
 
 // jsc#PED-15051
@@ -756,7 +757,7 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 [#power]
 == POWER-specific changes (ppc64le)
 
-Information in this section applies to {power-productname}.
+Information in this section applies to {power-productname} {this-version}.
 
 [#bsc-1272626]
 === Kdump capture fails on NVMe-oF targets
@@ -768,7 +769,7 @@ As a workaround, use Firmware-Assisted Dump (FADUMP), which is unaffected by thi
 [#bsc-1249569]
 === Login times out on HMC virtual terminal
 
-If you install {power-productname} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
+If you install {productname} {this-version} with the GNOME desktop on LPAR and try to login via the HMC virtual terminal, the login may time out while entering your credentials.
 
 To work around this issue, disable the Plymouth graphical boot screen by appending the boot parameter `plymouth.enable=0` to the kernel command line.
 
