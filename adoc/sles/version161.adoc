@@ -668,7 +668,7 @@ System-on-Chip (SoC) chipsets:
 * {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
 // * {qcomreg} {centriqreg} 2400
 // jsc#PED-16288 (RK3588)
-* Rockchip RK3399, RK3588
+* Rockchip RK3399, *RK3588*
 * {socionextreg} {synquacerreg} SC2A11
 * {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
 
@@ -698,6 +698,15 @@ Non-blocking console (`nbcon`) support is enabled on the {aarch64} architecture.
 The common AMBA PL011 serial console driver (`amba-pl011`) is converted to the new `nbcon` API.
 This allows the kernel to log messages atomically and reliably to the console even from non-maskable interrupt (NMI) contexts (such as during an `nmi_panic`).
 This ensures critical post-crash details are captured immediately without relying on legacy printing locks or threads.
+
+
+[#jsc-PED-16289]
+=== Rockchip RK3588 driver enablement
+
+{productname} {this-version} contains drivers for booting on Rockchip RK3588 System-on-Chip based platforms.
+
+Not included in this release are display drivers or Neural Processing Unit (NPU) drivers.
+If you need missing drivers for RK3588 or for a different chip from the RK35 family, contact your {suse} representative.
 
 
 [#ibm-z]
