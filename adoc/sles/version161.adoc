@@ -648,6 +648,7 @@ Additionally, this release enables Intel Platform Monitoring Technology (PMT) fe
 [#aarch64]
 == {arm}-specific changes ({aarch64})
 
+Information in this section applies to {arm-product} {this-version}.
 
 [#arm64-soc]
 === System-on-Chip driver enablement
