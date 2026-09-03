@@ -154,6 +154,8 @@ include::../shared.adoc[tags=jscped-16391,leveloffset=+2]
 
 // == {arm}-specific changes ({aarch64})
 
+// Information in this section applies to {arm-productname} {this-version}.
+
 // include::../kernel-160-aarch64.adoc[leveloffset=+2]
 
 [#removed-deprecated]

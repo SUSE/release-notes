@@ -1178,6 +1178,8 @@ To work around this issue, disable the Plymouth graphical boot screen by appendi
 [#aarch64]
 == {arm}-specific changes ({aarch64})
 
+Information in this section applies to {arm-productname} {this-version}.
+
 include::../kernel-160-aarch64.adoc[leveloffset=+2]
 
 [#virtualization]
