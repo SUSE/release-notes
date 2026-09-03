@@ -668,7 +668,7 @@ System-on-Chip (SoC) chipsets:
 * {nxpreg} {imx} 8M, 8M{nbsp}Mini; {layerscapereg} LS1012A, LS1027A/LS1017A, LS1028A/LS1018A, LS1043A, LS1046A, LS1088A, LS2080A/LS2040A, LS2088A, LX2160A
 // * {qcomreg} {centriqreg} 2400
 // jsc#PED-16288 (RK3588)
-* Rockchip RK3399, RK3588
+* Rockchip RK3399, *RK3588*
 * {socionextreg} {synquacerreg} SC2A11
 * {xilinxreg} {zynqreg} {ultrascalereg}{nbzwsp}+ MPSoC
 
