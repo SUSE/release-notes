@@ -5,7 +5,7 @@ include::attributes.adoc[]
 :major-version: 16
 
 :power-productname: {productname} on POWER
-:z-productname: {productname} {this-version} for {ibmz}
+:z-productname: {productname} for {ibmz} and LinuxONE
 
 == openSUSE Leap Community Additions
 
