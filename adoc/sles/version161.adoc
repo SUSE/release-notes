@@ -700,6 +700,15 @@ This allows the kernel to log messages atomically and reliably to the console ev
 This ensures critical post-crash details are captured immediately without relying on legacy printing locks or threads.
 
 
+[#jsc-PED-16289]
+=== Rockchip RK3588 driver enablement
+
+{productname} {this-version} contains drivers for booting on Rockchip RK3588 System-on-Chip based platforms.
+
+Not included in this release are display drivers or Neural Processing Unit (NPU) drivers.
+If you need missing drivers for RK3588 or for a different chip from the RK35 family, contact your {suse} representative.
+
+
 [#ibm-z]
 == {ibmz}-specific changes (s390x)
 
