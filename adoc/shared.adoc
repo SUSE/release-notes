@@ -492,3 +492,19 @@ Note that the real-time kernel and the default kernel do not share a common kABI
 Therefore, drivers built for the default kernel cannot be used with the real-time kernel and must be built separately.
 While SUSE aims to keep the real-time kABI stable, rare technical requirements might still require changes in future updates.
 end::jscped-12998[]
+
+tag::jscped-12809[]
+[#jsc-PED-12809]
+= {huawei} {kunpeng} 920 kernel module enablement
+
+This release enables previously missing kernel modules for the {huaweireg} {kunpengreg} 920 platform.
+These modules include drivers for:
+
+* I2C and GPIO
+* DMA engine and SPI
+* VFIO accelerator driver (`hisi_acc_vfio_pci`)
+* Cryptographic accelerators (`hisi_sec`, `hisi_sec2`, `hisi_zip`, `hisi_qm`, `hisi_hpre`, `hisi-trng-v2`)
+* Performance Monitoring Units (PMU) (`hisi_pcie_pmu`, `hns3_pmu`)
+
+This enablement ensures full hardware support and improves system performance on {huawei} {kunpeng} 920 systems.
+end::jscped-12809[]
