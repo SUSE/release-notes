@@ -948,7 +948,7 @@ To clean HTML, use the `python313-nh3` package.
 // jsc#PED-16555
 // jsc#PED-16552
 // jsc#PED-16549
-* Due to being no longer maintained, these packages have been removed from {productname} 16.1:
+* These packages have been moved to {ph}:
 ** `fwts`
 ** `python-pytest-forked`
 ** `perl-Test-Output`
