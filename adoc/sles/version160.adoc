@@ -1178,7 +1178,7 @@ To work around this issue, disable the Plymouth graphical boot screen by appendi
 
 include::../kernel-160-aarch64.adoc[leveloffset=+2]
 
-// jsc#PED-12809
+// jsc#PED-12809 / Huawei Kunpeng 920 kernel module enablement
 include::../shared.adoc[tags=jscped-12809,leveloffset=+2]
 
 [#virtualization]
