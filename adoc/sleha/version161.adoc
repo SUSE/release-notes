@@ -54,3 +54,5 @@ This section lists features and packages that were removed from {productname} or
 *  `sctp` support has been deprecated in `kronosnet` and to be removed upstream in 2.x
 
 include::../shared.adoc[tags=jscped-15950,leveloffset=+3]
+
+include::../shared.adoc[tags=jscped-16430,leveloffset=+3]

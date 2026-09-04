@@ -361,6 +361,21 @@ The old configuration properties are still supported but are marked as deprecate
 * `stop-orphan-actions` is now `cancel-removed-actions`
 end::jscped-15950[]
 
+tag::jscped-16430[]
+[#jsc-PED-16430]
+= Upcoming Corosync encryption enforcement and removal of UDP/UDPU transport
+
+In High Availability 16.2, {corosync} will enforce encryption by default to prevent unauthenticated remote attacks.
+This change will affect the configuration as follows:
+
+* The totem security authentication option (`secauth`) must be `on`.
+Corosync will report an error if `secauth` is not `on`, or if the configuration uses `none` for `crypto_hash` or `crypto_cipher`.
+* {corosync} will use Kronosnet (`knet`) for all transport.
+Corosync will not support `udp` and `udpu` transport options.
+The cluster migration tool will automatically convert existing `udp` or `udpu` configurations to `knet`.
+* The `crm` utility and `crmsh bootstrap` will no longer use the parameters `corosync.totem.crypto_hash` and `corosync.totem.crypto_cipher` in `/etc/crm/profiles.yml`.
+end::jscped-16430[]
+
 tag::bsc1275537[]
 [#bsc-1275537]
 = Deprecation of legacy XFS v4 filesystem format
