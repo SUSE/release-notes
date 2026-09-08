@@ -103,6 +103,11 @@ Information in this section applies to {productname} {this-version} on IBM Power
 // [#removed]
 ==== Removed features and packages
 
+// jsc#PED-13793
+* `salt-minion` has been removed from raw images and the product repository.
+{suma} includes its own client tools, which contain the Salt minion.
+Therefore, the operating system does not need to provide `salt-minion`.
+
 * `criu`
 * `yomi` is not supported anymore
 * `nerdctl`
