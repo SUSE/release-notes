@@ -107,6 +107,24 @@ There are no technology previews at this time.
 
 == Changes affecting all architectures
 
+[#jsc-PED-16898]
+=== Legacy XFS v4 format filesystem mounts disabled by default
+
+{productname} 16.2 disables legacy XFS v4 format filesystem mounts by default.
+The `xfs` kernel module includes a new parameter that disables these mounts.
+Mounting legacy XFS v4 filesystems fails by default unless this behavior is overridden.
+
+This change can cause boot or upgrade failures if legacy filesystems are present and not migrated before the upgrade.
+To mount legacy XFS v4 filesystems, pass the override parameter to the kernel during boot, or configure the parameter under `/etc/modprobe.d/`.
+
+Migrate existing legacy filesystems to the modern XFS v5 format to ensure future compatibility.
+XFS v5 remains fully supported.
+For details on deprecation and migration steps, see <<bsc-1275537>>.
+
+// bsc#1275537
+include::../shared.adoc[tags=bsc1275537,leveloffset=+2]
+
+
 [#jsc-PED-16669]
 === GNU `patch` updated to version 2.8
 
@@ -193,5 +211,9 @@ Use `mdadm` instead to manage and monitor software RAID devices.
 ////
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
+
+// bsc#1275537
+* Legacy XFS v4 filesystems are deprecated.
+  For details, see <<bsc-1275537>>.
 
 // ===================================================================
