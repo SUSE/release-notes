@@ -85,8 +85,31 @@ include::shared.adoc[tags=62,leveloffset=+3]
 [#aarch64]
 === {arm} 64-bit-specific features and fixes ({aarch64})
 
-// jsc#PED-13148
-* full-disk encryption is now supported
+[#jsc-PED-13142]
+==== Enlarged partition offset on {aarch64} bare-metal images
+
+On {aarch64} platforms, custom bootloader firmware binaries can exceed the available disk space before the first partition.
+Previously, {productname} bare-metal images used a partition offset of 2{nbsp}MiB (4096 sectors), which was not sufficient for larger bootloader binaries.
+
+In {productname} {this-version}, the offset for the first partition on {aarch64} bare-metal images increased from 2{nbsp}MiB to 4{nbsp}MiB (8192 sectors).
+This change provides additional disk space for bootloader firmware binaries, such as custom U-Boot binaries on {nxpreg} {imx}{nbsp}93 platforms.
+This change affects only bare-metal installation media, such as SD cards and eMMC.
+It does not affect {rpi} or virtual machine (VM) images.
+
+To write a custom bootloader binary to the media without overwriting the first partition, use the `dd` command with the appropriate platform offset.
+For example, to write a bootloader binary on {nxpreg} {imx}{nbsp}93:
+
+[source,bash]
+----
+sudo dd if=flash.bin of=/dev/sdX bs=1k seek=32 conv=notrunc,fsync
+----
+
+NOTE: Replace `/dev/sdX` with your target storage device.
+
+[#jsc-PED-13148]
+==== Full-disk encryption support
+
+{productname} {this-version} now supports full-disk encryption (FDE) on {aarch64}.
 
 include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
