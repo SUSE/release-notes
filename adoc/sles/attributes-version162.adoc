@@ -5,8 +5,9 @@
 :idprefix: v162_
 :doc-url: https://documentation.suse.com/sles/16-GA
 
-:power-productname: {productname} {this-version} for POWER
-:z-productname: {productname} {this-version} for {ibmz}
+:power-productname: {productname} on POWER
+:z-productname: {productname} for {ibmz} and LinuxONE
+:arm-productname: {productname} on {arm}
 
 // ifeval::["{lifecycle}" == "maintained"]
 :url-sle-comparison: https://documentation.suse.com/sles-sap/16.0/html/SLE-comparison/index.html
