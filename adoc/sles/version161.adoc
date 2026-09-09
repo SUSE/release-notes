@@ -678,7 +678,8 @@ System-on-Chip (SoC) chipsets:
 // * {amdreg} {opteronreg} A1100
 * {amperereg} {xgenereg}, {emagreg}, {altrareg}, _{altramax}_, {ampereonereg}
 * {awsreg} Graviton, Graviton2, Graviton3
-* {brcmreg} BCM2837/BCM2710, BCM2711
+// jsc#PED-16713 (RPi5)
+* {brcmreg} BCM2837/BCM2710, BCM2711, *BCM2712*
 * {fujitsureg} A64FX
 * {huaweireg} {kunpengreg} 916, {kunpeng} 920
 * {marvellreg} {thunderxreg}, {thunderx2reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
@@ -718,6 +719,13 @@ Non-blocking console (`nbcon`) support is enabled on the {aarch64} architecture.
 The common AMBA PL011 serial console driver (`amba-pl011`) is converted to the new `nbcon` API.
 This allows the kernel to log messages atomically and reliably to the console even from non-maskable interrupt (NMI) contexts (such as during an `nmi_panic`).
 This ensures critical post-crash details are captured immediately without relying on legacy printing locks or threads.
+
+
+// jsc#PED-16713
+[#rpi5]
+=== {rpi} 5 enablement
+
+{productnameshort} {this-version} includes bootloader and drivers to boot on {rpireg} 5, based on {brcmreg} BCM2712 System-on-Chip and RP1 I/O chip.
 
 
 [#ibm-z]
