@@ -200,6 +200,11 @@ The following features and packages have been removed in this release.
 * The `dmraid` package (Device-Mapper Software RAID Support Tool) has been removed.
 Use `mdadm` instead to manage and monitor software RAID devices.
 
+// jsc#PED-16946
+* {productname} 16.2 removes the `yast2-ldap` package.
+  The package depends on legacy OpenLDAP libraries that are no longer available.
+  Use SSSD to configure LDAP authentication.
+
 
 [#deprecated]
 === Deprecated features and packages
