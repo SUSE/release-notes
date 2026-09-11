@@ -933,7 +933,7 @@ The following features and packages have been removed in this release.
 // jsc#PED-16850
 * The `libmsgpack-c2` package has been removed from {productname} 16.1.
   This package was previously required to support AMD ROCm, which is no longer planned for {productname}.
-  The package has been relocated to {ph}. (jsc#PED-16850)
+  The package has been relocated to {ph}.
 
 // jsc#PED-16771
 // bsc#1271307
