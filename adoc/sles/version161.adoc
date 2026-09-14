@@ -657,6 +657,8 @@ The primary Python interpreter changes every odd minor version (for example, ver
 
 Information in this section applies to the {x64} architecture.
 
+include::../shared.adoc[tags=jscped-16391,leveloffset=+2]
+
 [#jsc-PED-16861]
 === Support for Intel "Wildcat Lake-U" CPU platform
 
