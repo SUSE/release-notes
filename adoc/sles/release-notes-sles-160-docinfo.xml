@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-14582">{productname} containerdisk image now available</link> (jsc#PED-14582)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-16391">Clocksource watchdog disabled on HPE UV5 platforms</link> (jsc#PED-16391)</para>
        </listitem>
       </itemizedlist>
