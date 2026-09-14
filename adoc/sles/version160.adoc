@@ -900,6 +900,8 @@ The configured NTP settings are written to the target system to persist after in
 
 Information in this section applies to the {x64} architecture.
 
+include::../shared.adoc[tags=jscped-16391,leveloffset=+2]
+
 [#bsc-1271635]
 === Redefined UEFI KVM virtual machines fail to start
 

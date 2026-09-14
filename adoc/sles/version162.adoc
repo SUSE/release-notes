@@ -135,9 +135,11 @@ GNU `patch` version 2.8 enforces stricter header parsing.
 Ensure patch-generating tools do not inject `NUL` bytes or raw control characters into header lines or diff directives, as they are no longer accepted.
 
 
-// == {x64}-specific changes
+== {x64}-specific changes
 
-// Information in this section applies to the {x64} architecture.
+Information in this section applies to the {x64} architecture.
+
+include::../shared.adoc[tags=jscped-16391,leveloffset=+2]
 
 
 // [#ibm-z]
