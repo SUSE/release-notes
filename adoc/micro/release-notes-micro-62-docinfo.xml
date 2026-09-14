@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-09-09</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added note about enlarged partition offset on aarch64 bare-metal images (jsc#PED-13142)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-09-08</date>
     <revdescription>
      <itemizedlist>
