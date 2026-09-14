@@ -445,7 +445,7 @@ A {productname} containerdisk image is now available in the {suseregistry} (`reg
 The image contains a minimal, bootable {productname} system in the OCI container format.
 Use the image to create virtual machines in cloud-native environments, for example {svirtualization}, Harvester, or {kubevirt}.
 
-To get the image, use the path `registry.suse.com/suse/sles-{this-version}-kubevirt-minimal:latest`.
+To get the image, use the path `registry.suse.com/suse/sles/{this-version}/containerdisk-minimal:latest`.
 
 end::jscped-14582[]
 
