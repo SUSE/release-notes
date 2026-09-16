@@ -15,6 +15,9 @@
    <revdescription>
     <itemizedlist>
      <listitem>
+      <para>Updated Confidential Computing <link xlink:href="index.html#jsc-PED-15646-tech-preview">remote and local attestation technology preview</link> and AMD SEV-SNP support (jsc#PED-15646)</para>
+     </listitem>
+     <listitem>
       <para>Documented removal of unmaintained <literal>python-python-jose</literal> and <literal>python-python-jose-cryptography</literal> packages (<link xlink:href="index.html#removed">jsc#PED-16945</link>)</para>
      </listitem>
     </itemizedlist>
