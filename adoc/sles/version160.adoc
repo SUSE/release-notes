@@ -1404,6 +1404,13 @@ include::../shared.adoc[tags=jscped12374]
 
 The following features and packages are deprecated and will be removed in a future version of {productname}.
 
+// jsc#PED-16945
+* The `python-python-jose` and `python-python-jose-cryptography` packages are unsupported and deprecated in {productname} 16.0.
+Upstream does not maintain these packages.
+{productname} 16.1 does not include these packages.
+You can install them from {ph}.
+As an alternative, use the `python-PyJWT` package.
+
 // jsc#PED-16771
 // bsc#1271307
 * The `python-bleach` package is deprecated in {productname} 16.0.
