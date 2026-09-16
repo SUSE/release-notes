@@ -932,6 +932,12 @@ This section lists features and packages that were removed from {productname} or
 
 The following features and packages have been removed in this release.
 
+// jsc#PED-16945
+* {productname} 16.1 removes the `python-python-jose` and `python-python-jose-cryptography` packages.
+Upstream does not maintain these packages.
+You can install them from {ph}.
+As an alternative, use the `python-PyJWT` package.
+
 // jsc#PED-16850
 * The `libmsgpack-c2` package has been removed from {productname} 16.1.
   This package was previously required to support AMD ROCm, which is no longer planned for {productname}.
