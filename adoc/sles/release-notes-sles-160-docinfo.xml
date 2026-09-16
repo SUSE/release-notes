@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-09-16</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Documented unsupported status and deprecation of unmaintained <literal>python-python-jose</literal> and <literal>python-python-jose-cryptography</literal> packages (<link xlink:href="index.html#deprecated">jsc#PED-16945</link>)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-09-14</date>
      <revdescription>
       <itemizedlist>
