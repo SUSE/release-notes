@@ -124,15 +124,20 @@ The following limitations apply to this technology preview:
 Full support is planned for a future release.
 
 [#jsc-PED-15646-tech-preview]
-=== Intel TDX Remote Attestation (technology preview)
+=== Confidential Computing Remote and local Attestation (technology preview)
 
-As a technology preview, remote attestation is available via the following packages in {productname} {this-version}:
+As a technology preview, remote and local attestation for AMD and Intel are available via the following packages in {productname} {this-version}:
 
 * `confidential-computing.sgx`
 * `confidential-computing.tee.dcap.pccs`
 * `guest-components`
 * `suse-libsgx-prebuilt-signed`
 * `trustee`
+* `grpcurl`
+* `snphost`
+* `snpguest`
+
+This will be moved forward to support statement after full validation.
 
 // jsc#PED-13609
 // jsc#PED-15556
@@ -858,20 +863,22 @@ For details, see https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/Rele
 [#virtualization-confidential-computing]
 === Confidential Computing
 
-==== AMD SEV packages update
+==== AMD SEV SNP packages update
 
-The following AMD Secure Encrypted Virtualization (SEV) tools have been updated:
+AMD SEV SNP is supported in {productname} {this-version}.
+The following AMD Secure Encrypted Virtualization SNP tools have been updated:
 
 * `sevctl` has been updated to version 0.6.2.
 * `snpguest` has been updated to version 0.10.0. For changes, see https://github.com/virtee/snpguest/compare/v0.9.1...v0.10.0.
 * `snphost` has been updated to version 0.7.0.
 
+For details on AMD remote and local attestation, see <<jsc-PED-15646-tech-preview>>.
 
 [#jsc-PED-15646]
 ==== Intel TDX Confidential Computing
 
 Intel TDX is supported in {productname} {this-version}.
-For details on Intel TDX remote attestation, see <<jsc-PED-15646-tech-preview>>.
+For details on Intel TDX remote and local attestation, see <<jsc-PED-15646-tech-preview>>.
 
 
 [#jsc-PED-14624]
