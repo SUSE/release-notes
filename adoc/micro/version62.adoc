@@ -85,10 +85,19 @@ include::shared.adoc[tags=62,leveloffset=+3]
 [#aarch64]
 === {arm} 64-bit-specific features and fixes ({aarch64})
 
+include::../kernel-160-aarch64.adoc[leveloffset=+3]
+
+[#aarch64-general]
+==== General changes
+
+// jsc#PED-13142
+* On {aarch64} bare-metal images, the partition offset for the first partition increased from 2 MiB to 4 MiB (8192 sectors).
+This change provides additional disk space for bootloader firmware binaries, such as custom U-Boot binaries with EDK2 UEFI support on {nxpreg} {imx}{nbsp}93 platforms.
+The change only affects bare-metal installation media, such as SD cards and eMMC.
+It does not affect {rpi} or virtual machine (VM) images.
+
 // jsc#PED-13148
 * full-disk encryption is now supported
-
-include::../kernel-160-aarch64.adoc[leveloffset=+3]
 
 [#power]
 === Power-specific changes (ppc64le)
