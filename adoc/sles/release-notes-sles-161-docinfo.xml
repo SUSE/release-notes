@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-09-18</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Added section <link xlink:href="index.html#bsc-1281250">Boot fails when PReP partition and root filesystem use different storage devices</link> (bsc#1281250)</para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-09-16</date>
    <revdescription>
     <itemizedlist>

@@ -785,6 +785,14 @@ include::../shared.adoc[tag=jscped-15968,leveloffset=+2]
 
 Information in this section applies to {power-productname}.
 
+[#bsc-1281250]
+=== Boot fails when PReP partition and root filesystem use different storage devices
+
+On PowerVM, configuring the PReP boot partition and the root file system on different storage subsystems causes boot failures.
+During POST, the system firmware initializes only the boot storage subsystem, which prevents GRUB from accessing secondary devices such as SAN multipath storage.
+
+To avoid this issue, configure the PReP boot partition and the root file system on the same storage subsystem.
+
 [#bsc-1272626]
 === Kdump capture fails on NVMe-oF targets
 
