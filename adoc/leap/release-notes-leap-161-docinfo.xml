@@ -16,6 +16,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Documented update to LXQt 2.4 (<link xlink:href="index.html#leap-features-290">leap/features#290</link>)</para>
+      </listitem>
+      <listitem>
        <para>Documented removal of the GDM xdm integration (<link xlink:href="index.html#leap-features-306">leap/features#306</link>)</para>
       </listitem>
      </itemizedlist>

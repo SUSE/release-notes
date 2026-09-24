@@ -33,6 +33,13 @@ For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:S
 
 * {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.
 
+[#leap-features-290]
+==== LXQt 2.4
+
+The LXQt desktop environment has been updated to version 2.4.
+The LXQt Wayland session (`lxqt-wayland-session`) has been updated to version 0.4.
+It is still not offered as an installer option and can be installed post-installation.
+
 [#leap-features-306]
 ==== GDM no longer uses the xdm integration
 
