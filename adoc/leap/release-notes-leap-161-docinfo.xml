@@ -12,6 +12,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-09-24</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented removal of the GDM xdm integration (<link xlink:href="index.html#leap-features-306">leap/features#306</link>)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-08-11</date>
     <revdescription>
      <itemizedlist>

@@ -33,6 +33,21 @@ For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:S
 
 * {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.
 
+[#leap-features-306]
+==== GDM no longer uses the xdm integration
+
+The `gdm-xdm-integration` package has been removed, because `update-alternatives` is no longer shipped.
+GDM is now started directly by its own systemd service, provided by the `gdm-systemd` package, instead of via the `xdm` wrapper script.
+Setting `DISPLAYMANAGER` in `/etc/sysconfig/displaymanager` no longer selects GDM as the display manager.
+
+To make GDM the default display manager, run:
+
+[source,bash]
+----
+sudo zypper install gdm-systemd
+sudo systemctl enable --force gdm.service
+----
+
 ==== NVIDIA and Graphics Issues with the Installation Image
 
 Some users with NVIDIA GPUs may experience graphics-related issues during installation, such as https://bugzilla.suse.com/show_bug.cgi?id=1247670[boo#1247670] where X server fails to start.
