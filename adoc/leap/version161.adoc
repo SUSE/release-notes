@@ -118,6 +118,18 @@ Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpa
 {productname} includes `wine` 10.10, available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor.
 Users requiring 32-bit binary execution should consider using the Flatpak version or a similar solution.
 
+[#leap-features-279]
+=== Cockpit desktop launcher
+
+The new `cockpit-client-launcher` package provides a desktop launcher for the Cockpit GTK client without requiring Flatpak.
+It connects to the locally installed `cockpit-ws` service and automatically detects the port configured in `cockpit.socket`.
+If Cockpit is not running, the launcher offers to start `cockpit.socket` and to open the port in the firewall.
+
+[source,bash]
+----
+sudo zypper install cockpit-client-launcher
+----
+
 === Networking
 
 ==== Broken libvirt networking when using Docker

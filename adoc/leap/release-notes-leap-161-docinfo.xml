@@ -16,6 +16,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added note about the Cockpit desktop launcher (<link xlink:href="index.html#leap-features-279">leap/features#279</link>)</para>
+      </listitem>
+      <listitem>
        <para>Documented update to LXQt 2.4 (<link xlink:href="index.html#leap-features-290">leap/features#290</link>)</para>
       </listitem>
       <listitem>
