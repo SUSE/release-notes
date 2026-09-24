@@ -22,6 +22,24 @@ For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.
 See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
 
+[#leap-immutable-replaces-leap-micro]
+=== {productname} Immutable replaces Leap Micro
+
+[IMPORTANT]
+{productname} {this-version} installed in immutable mode is the direct successor of Leap Micro 6.2.
+There will be no Leap Micro 6.3.
+
+{productname} Immutable is a transactionally updated variant of {productname} with a read-only root file system.
+It can be configured on first boot with either Ignition or Combustion.
+
+Leap Micro 6.2 users have two options:
+
+* Upgrade using the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool], which offers {productname} {this-version} as a migration target on Leap Micro 6.2.
+For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+* Perform a clean installation using the immutable images from https://get.opensuse.org/leap/{this-version}/[get.opensuse.org].
+For convenience, the Immutable Self-install Image is available directly in the main download section.
+Other images, such as preconfigured, fully encrypted, VMware, and RealTime images, are available in the Immutable section of the alternative downloads.
+
 [#leap-upgrade-from-160]
 === Upgrade from Leap {previous-version}
 

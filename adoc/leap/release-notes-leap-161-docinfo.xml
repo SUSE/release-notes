@@ -16,6 +16,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added note about Leap Immutable replacing Leap Micro (<link xlink:href="index.html#leap-immutable-replaces-leap-micro">Leap Immutable replaces Leap Micro</link>)</para>
+      </listitem>
+      <listitem>
        <para>Added note about upgrading from Leap 16.0 and future use of DMS (<link xlink:href="index.html#leap-upgrade-from-160">Upgrade from Leap 16.0</link>)</para>
       </listitem>
       <listitem>
