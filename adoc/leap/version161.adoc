@@ -22,6 +22,26 @@ For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.
 See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
 
+[#leap-upgrade-from-160]
+=== Upgrade from Leap {previous-version}
+
+For general upgrade instructions, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+
+To upgrade from {productname} {previous-version}, use the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool]:
+
+[source,bash]
+----
+sudo zypper install opensuse-migration-tool
+opensuse-migration-tool --dry-run
+sudo opensuse-migration-tool
+reboot
+----
+
+Always preview the planned changes with `--dry-run` first.
+
+In the future, we expect to use the Distribution Migration System (DMS, `suse-migration-services`) for upgrades of {productname}.
+This will provide the same upgrade tool for both {productname} and {sles}.
+
 === Migration from Leap 15.6
 
 The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.
