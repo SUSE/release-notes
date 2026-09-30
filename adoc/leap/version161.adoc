@@ -22,6 +22,44 @@ For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.
 See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
 
+[#leap-immutable-replaces-leap-micro]
+=== {productname} Immutable replaces Leap Micro
+
+[IMPORTANT]
+{productname} {this-version} installed in immutable mode is the direct successor of Leap Micro 6.2.
+There will be no Leap Micro 6.3.
+
+{productname} Immutable is a transactionally updated variant of {productname} with a read-only root file system.
+It can be configured on first boot with either Ignition or Combustion.
+
+Leap Micro 6.2 users have two options:
+
+* Upgrade using the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool], which offers {productname} {this-version} as a migration target on Leap Micro 6.2.
+For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+* Perform a clean installation using the immutable images from https://get.opensuse.org/leap/{this-version}/[get.opensuse.org].
+For convenience, the Immutable Self-install Image is available directly in the main download section.
+Other images, such as preconfigured, fully encrypted, VMware, and RealTime images, are available in the Immutable section of the alternative downloads.
+
+[#leap-upgrade-from-160]
+=== Upgrade from Leap {previous-version}
+
+For general upgrade instructions, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+
+To upgrade from {productname} {previous-version}, use the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool]:
+
+[source,bash]
+----
+sudo zypper install opensuse-migration-tool
+opensuse-migration-tool --dry-run
+sudo opensuse-migration-tool
+reboot
+----
+
+Always preview the planned changes with `--dry-run` first.
+
+In the future, we expect to use the Distribution Migration System (DMS, `suse-migration-services`) for upgrades of {productname}.
+This will provide the same upgrade tool for both {productname} and {sles}.
+
 === Migration from Leap 15.6
 
 The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.
@@ -32,6 +70,28 @@ For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:S
 === Installer and Desktop Environments
 
 * {productname} {major-version} installer provides only Wayland variants of desktop environments. Xorg-based environments can be installed manually post-installation.
+
+[#leap-features-290]
+==== LXQt 2.4
+
+The LXQt desktop environment has been updated to version 2.4.
+The LXQt Wayland session (`lxqt-wayland-session`) has been updated to version 0.4.
+It is still not offered as an installer option and can be installed post-installation.
+
+[#leap-features-306]
+==== GDM no longer uses the xdm integration
+
+The `gdm-xdm-integration` package has been removed, because `update-alternatives` is no longer shipped.
+GDM is now started directly by its own systemd service, provided by the `gdm-systemd` package, instead of via the `xdm` wrapper script.
+Setting `DISPLAYMANAGER` in `/etc/sysconfig/displaymanager` no longer selects GDM as the display manager.
+
+To make GDM the default display manager, run:
+
+[source,bash]
+----
+sudo zypper install gdm-systemd
+sudo systemctl enable --force gdm.service
+----
 
 ==== NVIDIA and Graphics Issues with the Installation Image
 
@@ -95,6 +155,18 @@ Users are advised to install it via https://en.opensuse.org/Steam#Flatpak[Flatpa
 
 {productname} includes `wine` 10.10, available only in the https://gitlab.winehq.org/wine/wine/-/wikis/Building-Wine#shared-wow64[wow64] flavor.
 Users requiring 32-bit binary execution should consider using the Flatpak version or a similar solution.
+
+[#leap-features-279]
+=== Cockpit desktop launcher
+
+The new `cockpit-client-launcher` package provides a desktop launcher for the Cockpit GTK client without requiring Flatpak.
+It connects to the locally installed `cockpit-ws` service and automatically detects the port configured in `cockpit.socket`.
+If Cockpit is not running, the launcher offers to start `cockpit.socket` and to open the port in the firewall.
+
+[source,bash]
+----
+sudo zypper install cockpit-client-launcher
+----
 
 === Networking
 
