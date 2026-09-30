@@ -15,9 +15,9 @@
 
 // PRODUCT-SPECIFIC ENTITIES
 // Removed downstream (not used/present in release-notes-github):
-// include::../common/product-attributes.adoc[]
+// include::./product-attributes.adoc[]
 // Removed downstream (not used/present in release-notes-github):
-// include::../common/network-attributes.adoc[]
+// include::./network-attributes.adoc[]
 
 // special characters
 :ndash:                      &#x02013;
@@ -57,7 +57,7 @@
 :sstorage:                   {suse} Storage
 :svirtualization:            {suse} Virtualization
 :sappco:                     {suse} Application Collection
-:ranchera:                   Rancher
+:ranchera:                   Rancher Prime
 :rancherprime:               {suse} Rancher Prime
 :rancher:                    {rancherprime}
 :ranchelemental:             {rancherprime}: OS Manager
@@ -79,7 +79,7 @@
 :ranchermanager:             {rancherprime}
 :rancherappco:               {rancherprime} Application Collection
 :fleeta:                     Fleet
-:rancherfleet:               {ranchera} {fleeta}
+:rancherfleet:               Rancher {fleeta}
 :selemental:                 {suse} Elemental
 
 // SLE
@@ -192,8 +192,8 @@
 :x86-64:                     {amd64}/{intel64}
 :arm:                        Arm
 :armreg:                     Arm{thrdmrk}
-:armv7:                      Armv7
-:armv8:                      Armv8
+:armv7:                      {arm}{nbzwsp}v7
+:armv8:                      {arm}{nbzwsp}v8
 :aarch64:                    AArch64
 :arm64:                      {arm}{nbsp}{aarch64}
 :cortex:                     {arm}{nbsp}Cortex
@@ -264,6 +264,7 @@
 :trivy:                      Trivy
 :valkey:                     Valkey
 :certmanager:                cert-manager
+:externaldns:                external-dns
 :otelemetry:                 OpenTelemetry
 :openlit:                    OpenLIT
 :mlflow:                     MLflow
@@ -279,6 +280,10 @@
 :istio:                      Istio
 :seaweedfs:                  SeaweedFS
 :mysql:                      MySQL
+:runaia:                     Run:ai
+:runai:                      {nvidia} {runaia}
+:cloudflare:                 Cloudflare
+
 // https://aws.amazon.com/trademark-guidelines/
 :amazon-ec2:                 Amazon{nbsp}EC2
 :amazon-ec2reg:              {amazon-ec2}{thrdmrk}
@@ -298,24 +303,25 @@
 :altrareg:                   {altra}{thrdmrk}
 :altramax:                   Altra{nbsp}Max
 :altramaxreg:                {altramax}{thrdmrk}
+:ampereone:                  AmpereOne
+:ampereonereg:               {ampereone}{thrdmrk}
 // https://www.amd.com/en/corporate/trademarks
 :amd:                        AMD
 :amdreg:                     {amd}{thrdmrk}
 :opteron:                    Opteron
 :opteronreg:                 {opteron}{thrdmrk}
 // https://www.arm.com/company/policies/trademarks
-:armv8:                      {arm}{nbzwsp}v8
 :mali:                       Mali
 :malireg:                    {mali}{thrdmrk}
 :neoverse:                   Neoverse
 :neoversereg:                {neoverse}{thrdmrk}
+:agicpu:                     AGI CPU
 :brcm:                       Broadcom
 :brcmreg:                    {brcm}{thrdmrk}
 :videocore:                  VideoCore
 :videocorereg:               {videocore}{thrdmrk}
 // XXX: ⅠⅤ - displaying as ## in cross-references
 :vc4:                        {videocore}{nbsp}IV
-:vc4reg:                     {videocorereg}{nbsp}IV
 // XXX: ⅤⅠ
 :vc6:                        {videocore}{nbsp}VI
 :vc6reg:                     {videocorereg}{nbsp}VI
@@ -327,12 +333,13 @@
 // https://www.fujitsu.com/us/about/local/corporate/subsidiaries/fai/legal/trademarks/index.html
 :fujitsu:                    Fujitsu
 :fujitsureg:                 {fujitsu}{thrdmrk}
+:fujitsumonaka:              FUJITSU-MONAKA
+:fujitsumonakareg:           {fujitsumonaka}{thrdmrk}
 // https://consumer.huawei.com/en/legal/intellectual-property/huawei-trademark-policy/
 :huawei:                     Huawei
 :huaweireg:                  {huawei}{thrdmrk}
 :kunpeng:                    Kunpeng
 :kunpengreg:                 {kunpeng}{thrdmrk}
-// Added downstream ahead of the doc-kit rollout, see openSUSE/doc-kit#135:
 // https://www.intel.com/content/www/us/en/legal/trademarks.html
 :intel:                      Intel
 :intelreg:                   {intel}{thrdmrk}
@@ -377,11 +384,33 @@
 :mipicsi2:                   {mipi}{nbsp}CSI{nbh}2
 :mipicsi2reg:                {mipireg}{nbsp}CSI{nbh}2{thrdmrk}
 // https://www.nvidia.com/en-us/about-nvidia/legal-info/
+:cuda:                       CUDA
+:cudareg:                    {cuda}{thrdmrk}
+:grace:                      Grace
+:gracehopper:                {grace} Hopper
+:nvidiagrace:                NVIDIA {grace}
+:nvidiagracereg:             {nvidiagrace}{thrdmrk}
+:nvidiagracehopper:          NVIDIA {gracehopper}
+:nvidiagracehopperreg:       {nvidiagracehopper}{thrdmrk}
+:jetson:                     Jetson
+:jetsonreg:                  {jetson}{thrdmrk}
+:jetpack:                    JetPack
+:jetpackreg:                 {jetpack}{thrdmrk}
+:tegra:                      Tegra
+:tegrareg:                   {tegra}{thrdmrk}
+:xavier:                     Xavier
+:xavierreg:                  {xavier}{thrdmrk}
+:jetsonagxxavier:            Jetson AGX{nbsp}Xavier
+:jetsonagxxavierreg:         {jetsonagxxavier}{thrdmrk}
+:orin:                       Orin
+:orinreg:                    {orin}{thrdmrk}
+:nvidiaorin:                 NVIDIA {orin}
+:nvidiaorinreg:              {nvidiaorin}{thrdmrk}
+:thor:                       Thor
+:thorreg:                    {thor}{thrdmrk}
 :drive:                      DRIVE
 :nvidiadrive:                NVIDIA {drive}
 :nvidiadrivereg:             {nvidiadrive}{thrdmrk}
-:jetsonagxxavier:            Jetson AGX{nbsp}Xavier
-:jetsonagxxavierreg:         {jetsonagxxavier}{thrdmrk}
 :pegasus:                    Pegasus
 :pegasusreg:                 {pegasus}{thrdmrk}
 // https://www.nxp.com/company/our-company/about-nxp/terms-of-use:TERMSOFUSE
@@ -412,20 +441,6 @@
 :ultrascalereg:              {ultrascale}{thrdmrk}
 :zynq:                       Zynq
 :zynqreg:                    {zynq}{thrdmrk}
-
-// NVIDIA products
-:cuda:                       CUDA
-:cudareg:                    {cuda}{thrdmrk}
-:jetson:                     Jetson
-:jetsonreg:                  {jetson}{thrdmrk}
-:jetpack:                    JetPack
-:jetpackreg:                 {jetpack}{thrdmrk}
-:xavier:                     Xavier
-:xavierreg:                  {xavier}{thrdmrk}
-:orin:                       Orin
-:orinreg:                    {orin}{thrdmrk}
-:thor:                       Thor
-:thorreg:                    {thor}{thrdmrk}
 
 // SYSTEM COMPONENTS
 :ds389:                      389 Directory Server
@@ -508,7 +523,7 @@
 :hasi:                       {ha}
 :haproxy:                    HAProxy
 :hasetup:                    HA setup
-:haweb:                      HA Web Konsole
+:haweb:                      High Availability Web Konsole
 :hawk:                       Hawk
 :hawk2:                      Hawk2
 :hb:                         Heartbeat
@@ -532,6 +547,7 @@
 // SLES FOR SAP
 :sapconf:                    sapconf
 :saptune:                    saptune
+:trento:                     Trento
 
 // CONTAINERS
 :deng:                       {docker} Open Source Engine
@@ -764,3 +780,4 @@ endif::[]
 ifeval::["{lifecycle}" == ""]
 :lifecycle: unmaintained
 endif::[]
+

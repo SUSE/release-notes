@@ -86,11 +86,19 @@ def main():
             processed_lines.append("// Removed downstream for article/book compatibility:")
             processed_lines.append(f"// {line}")
         # Comment out missing product-attributes include
-        elif stripped.startswith("include::../common/product-attributes.adoc[]"):
+        elif stripped.startswith((
+            "include::../common/product-attributes.adoc[]",
+            "include::./product-attributes.adoc[]",
+            "include::product-attributes.adoc[]",
+        )):
             processed_lines.append("// Removed downstream (not used/present in release-notes-github):")
             processed_lines.append(f"// {line}")
         # Comment out missing network-attributes include
-        elif stripped.startswith("include::../common/network-attributes.adoc[]"):
+        elif stripped.startswith((
+            "include::../common/network-attributes.adoc[]",
+            "include::./network-attributes.adoc[]",
+            "include::network-attributes.adoc[]",
+        )):
             processed_lines.append("// Removed downstream (not used/present in release-notes-github):")
             processed_lines.append(f"// {line}")
         else:
