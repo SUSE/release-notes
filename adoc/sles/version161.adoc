@@ -197,26 +197,9 @@ include::../shared.adoc[tags=jscped-5576,leveloffset=+2]
 // jsc#PED-14582
 include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
 
-[#jsc-DOCTEAM-2378]
-=== `debugfs` is not mounted by default
-
-To reduce the attack surface and comply with Common Criteria requirements, {productname} {this-version} does not automatically mount `debugfs` at `/sys/kernel/debug` during boot.
-The `debugfs` file system can expose Address Space Layout Randomization (ASLR) information.
-
-Tools that require `debugfs` do not operate until the file system is mounted.
-For example, on {ibmz}, the `hyptop` utility fails with the following message:
-
-[screen]
-----
-hyptop: Debugfs is not mounted, try "mount none -t debugfs /sys/kernel/debug"
-----
-
-To use tools that require `debugfs`, mount the file system manually:
-
-[source,bash]
-----
-mount none -t debugfs /sys/kernel/debug
-----
+// jsc#PED-16583
+// jsc#DOCTEAM-2378
+include::../shared.adoc[tags=jscped-16583,leveloffset=+2]
 
 [#jsc-PED-16741]
 === Security update and changes in mount behavior for `util-linux`
