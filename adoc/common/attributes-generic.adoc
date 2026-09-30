@@ -392,6 +392,14 @@
 :nvidiagracereg:             {nvidiagrace}{thrdmrk}
 :nvidiagracehopper:          NVIDIA {gracehopper}
 :nvidiagracehopperreg:       {nvidiagracehopper}{thrdmrk}
+:graceblackwell:             {grace} Blackwell
+:dgxspark:                   DGX Spark
+:dgxsparkreg:                {dgxspark}{thrdmrk}
+:dgxstation:                 DGX Station
+:dgxstationreg:              {dgxstation}{thrdmrk}
+:vera:                       Vera
+:verarubin:                  {vera} Rubin
+:olympus:                    Olympus
 :jetson:                     Jetson
 :jetsonreg:                  {jetson}{thrdmrk}
 :jetpack:                    JetPack
@@ -406,6 +414,8 @@
 :orinreg:                    {orin}{thrdmrk}
 :nvidiaorin:                 NVIDIA {orin}
 :nvidiaorinreg:              {nvidiaorin}{thrdmrk}
+:jetsonorinnano:             {jetson} {orin} Nano
+:jetsonorinnanoreg:          {jetsonorinnano}{thrdmrk}
 :thor:                       Thor
 :thorreg:                    {thor}{thrdmrk}
 :drive:                      DRIVE
