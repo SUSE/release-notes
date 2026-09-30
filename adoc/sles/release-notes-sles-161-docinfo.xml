@@ -15,7 +15,7 @@
    <revdescription>
     <itemizedlist>
      <listitem>
-      <para>Added section <link xlink:href="index.html#jsc-DOCTEAM-2378"><literal>debugfs</literal> is not mounted by default</link> (jsc#DOCTEAM-2378)</para>
+      <para>Added section <link xlink:href="index.html#jsc-PED-16583"><literal>debugfs</literal> is not mounted by default</link> (jsc#DOCTEAM-2378, jsc#PED-16583)</para>
      </listitem>
     </itemizedlist>
    </revdescription>

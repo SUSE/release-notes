@@ -182,6 +182,9 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// jsc#PED-16583
+include::../shared.adoc[tags=jscped-16583,leveloffset=+2]
+
 [#jsc-PED-13377]
 === OpenMPI support for Gridware Cluster Scheduler (Grid Engine)
 
