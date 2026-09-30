@@ -16,19 +16,19 @@
     <revdescription>
      <itemizedlist>
       <listitem>
-       <para>Added note about Leap Immutable replacing Leap Micro (<link xlink:href="index.html#leap-immutable-replaces-leap-micro">Leap Immutable replaces Leap Micro</link>)</para>
+       <para>Added section <link xlink:href="index.html#leap-immutable-replaces-leap-micro">{productname} Immutable replaces {leapmicro}</link></para>
       </listitem>
       <listitem>
-       <para>Added note about upgrading from Leap 16.0 and future use of DMS (<link xlink:href="index.html#leap-upgrade-from-160">Upgrade from Leap 16.0</link>)</para>
+       <para>Added section <link xlink:href="index.html#leap-upgrade-from-160">Upgrade from {productnameshort} 16.0</link></para>
       </listitem>
       <listitem>
-       <para>Added note about the Cockpit desktop launcher (<link xlink:href="index.html#leap-features-279">leap/features#279</link>)</para>
+       <para>Added section <link xlink:href="index.html#leap-features-279">Cockpit desktop launcher</link> (leap/features#279)</para>
       </listitem>
       <listitem>
-       <para>Documented update to LXQt 2.4 (<link xlink:href="index.html#leap-features-290">leap/features#290</link>)</para>
+       <para>Documented update to <link xlink:href="index.html#leap-features-290">LXQt 2.4</link> (leap/features#290)</para>
       </listitem>
       <listitem>
-       <para>Documented removal of the GDM xdm integration (<link xlink:href="index.html#leap-features-306">leap/features#306</link>)</para>
+       <para>Documented removal of <link xlink:href="index.html#leap-features-306">GDM xdm integration</link> (leap/features#306)</para>
       </listitem>
      </itemizedlist>
     </revdescription>

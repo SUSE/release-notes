@@ -1,5 +1,8 @@
 :productname: openSUSE Leap
 :productnameshort: Leap
+:leapmicro: {productnameshort} Micro
+:leap-micro: {leapmicro}
+:sle: {suse} Linux Enterprise
 :rel-date: TBD
 
 :doc-url: https://doc.opensuse.org

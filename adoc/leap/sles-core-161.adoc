@@ -1,7 +1,7 @@
-== SUSE Linux Enterprise Core
+== {sle} Core
 
-// SUSE Linux Enterprise Core
-This section describes the enterprise-grade foundation of {productname}, based on SUSE Linux Enterprise. Content here is adapted from the SUSE Linux Enterprise release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
+// {sle} Core
+This section describes the enterprise-grade foundation of {productname}, based on {sle}. Content here is adapted from the {sle} release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
 
 :omit-sles-specific: true
 ifeval::["{this-version}" == "16.0"]
