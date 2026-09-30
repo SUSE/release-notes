@@ -8,7 +8,7 @@ include::attributes.adoc[]
 :z-productname: {productname} for {ibmz} and LinuxONE
 :arm-productname: {productname} on {arm}
 
-== openSUSE Leap Community Additions
+== {productname} Community Additions
 
 === Lifecycle
 
@@ -19,53 +19,53 @@ Unless there is a change in release strategy, the final {productname} version (1
 
 For more information, see: https://en.opensuse.org/Roadmap[Roadmap].
 
-For more than 24 months of support for a point release, the openSUSE migration tool makes it simple to move to SUSE Linux Enterprise, which provides decades of support.
+For more than 24 months of support for a point release, the {opensuse} migration tool makes it simple to move to {sle}, which provides decades of support.
 See https://www.suse.com/support/policy.html[Support Policy] and https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support].
 
 [#leap-immutable-replaces-leap-micro]
-=== {productname} Immutable replaces Leap Micro
+=== {productname} Immutable replaces {leapmicro}
 
 [IMPORTANT]
-{productname} {this-version} installed in immutable mode is the direct successor of Leap Micro 6.2.
-There will be no Leap Micro 6.3.
+{productname} {this-version} installed in immutable mode is the direct successor of {leapmicro} 6.2.
+There will be no {leapmicro} 6.3.
 
 {productname} Immutable is a transactionally updated variant of {productname} with a read-only root file system.
-It can be configured on first boot with either Ignition or Combustion.
+You can configure it on first boot using either Ignition or Combustion.
 
-Leap Micro 6.2 users have two options:
+Users of {leapmicro} 6.2 have two options to migrate:
 
-* Upgrade using the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool], which offers {productname} {this-version} as a migration target on Leap Micro 6.2.
-For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+* Upgrade using the https://github.com/openSUSE/opensuse-migration-tool[{opensuse} migration tool], which offers {productname} {this-version} as a migration target on {leapmicro} 6.2.
+For more information, refer to https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
 * Perform a clean installation using the immutable images from https://get.opensuse.org/leap/{this-version}/[get.opensuse.org].
 For convenience, the Immutable Self-install Image is available directly in the main download section.
-Other images, such as preconfigured, fully encrypted, VMware, and RealTime images, are available in the Immutable section of the alternative downloads.
+Other images, such as preconfigured, fully encrypted, VMware, and real-time images, are available in the Immutable section of the alternative downloads.
 
 [#leap-upgrade-from-160]
-=== Upgrade from Leap {previous-version}
+=== Upgrade from {productnameshort} {previous-version}
 
-For general upgrade instructions, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+For general upgrade instructions, refer to https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
 
-To upgrade from {productname} {previous-version}, use the https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool]:
+To upgrade from {productname} {previous-version}, use the https://github.com/openSUSE/opensuse-migration-tool[{opensuse} migration tool]:
 
 [source,bash]
 ----
 sudo zypper install opensuse-migration-tool
-opensuse-migration-tool --dry-run
+sudo opensuse-migration-tool --dry-run
 sudo opensuse-migration-tool
-reboot
+sudo reboot
 ----
 
 Always preview the planned changes with `--dry-run` first.
 
-In the future, we expect to use the Distribution Migration System (DMS, `suse-migration-services`) for upgrades of {productname}.
-This will provide the same upgrade tool for both {productname} and {sles}.
+Future releases will use the Distribution Migration System (DMS, `suse-migration-services`) for upgrades of {productname}.
+This provides the same upgrade tool for both {productname} and {sles}.
 
-=== Migration from Leap 15.6
+=== Migration from {productnameshort} 15.6
 
-The https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.
+The https://github.com/openSUSE/opensuse-migration-tool[{opensuse} migration tool] (`zypper in opensuse-migration-tool`) is included as part of {productname} 15.6.
 Users migrating from older releases can run the tool from https://github.com/openSUSE/opensuse-migration-tool[Git repository].
 
-For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
+For more information, refer to https://en.opensuse.org/SDB:System_upgrade[SDB:System_upgrade].
 
 === Installer and Desktop Environments
 
@@ -74,15 +74,16 @@ For more information, refer to: https://en.opensuse.org/SDB:System_upgrade[SDB:S
 [#leap-features-290]
 ==== LXQt 2.4
 
-The LXQt desktop environment has been updated to version 2.4.
-The LXQt Wayland session (`lxqt-wayland-session`) has been updated to version 0.4.
-It is still not offered as an installer option and can be installed post-installation.
+The LXQt desktop environment is updated to version 2.4.
+The LXQt Wayland session (`lxqt-wayland-session`) is updated to version 0.4.
+The installer does not offer LXQt as an installation option; you can install it post-installation.
+LXQt will become an installer option in later releases after LXQt Miriway integration is completed (see https://code.opensuse.org/leap/features/issue/192).
 
 [#leap-features-306]
 ==== GDM no longer uses the xdm integration
 
-The `gdm-xdm-integration` package has been removed, because `update-alternatives` is no longer shipped.
-GDM is now started directly by its own systemd service, provided by the `gdm-systemd` package, instead of via the `xdm` wrapper script.
+The `gdm-xdm-integration` package is removed because {productname} no longer ships `update-alternatives`.
+A dedicated systemd service provided by the `gdm-systemd` package now starts GDM directly, instead of using the `xdm` wrapper script.
 Setting `DISPLAYMANAGER` in `/etc/sysconfig/displaymanager` no longer selects GDM as the display manager.
 
 To make GDM the default display manager, run:
@@ -106,18 +107,16 @@ This is due to the fact that {productname} install image contains `kernel-defaul
 
 ==== Experimental Xfce Wayland session
 
-Experimental Xfce Wayland session is available as an installation option.  {productname} is one of the first distributions to provide Wayland support for https://en.opensuse.org/Portal:Xfce[Xfce]. We use `gtkgreet` with `greetd` as a Wayland-ready replacement for LightDM (used in the X11 variant).
+Experimental Xfce Wayland session is available as an installation option.
+{productname} is one of the first distributions to provide Wayland support for https://en.opensuse.org/Portal:Xfce[Xfce].
+We use `gtkgreet` with `greetd` as a Wayland-ready replacement for LightDM (used in the X11 variant).
 
-==== LXQt Wayland session available post install
-
-LXQt Wayland session is included, but will become a full installer option in later releases once LXQt Miriway efforts are further developed: https://code.opensuse.org/leap/features/issue/192.
-
-=== Changes to the openSUSE Welcome
+=== Changes to the {opensuse} Welcome
 
 {productname} {major-version} now uses the `opensuse-welcome-launcher` to start the appropriate greeter application.
 This launcher, in combination with `gnome-tour` and `plasma-welcome`, replaces the legacy Qt5-based `opensuse-welcome`, which was previously the default greeter.
 
-The launcher also allows the openSUSE release team to update or refresh the displayed greeter via a package update, for example after a major GNOME update.
+The launcher also allows the {opensuse} release team to update or refresh the displayed greeter via a package update, for example after a major GNOME update.
 To create a custom appliance without a welcome application, or to deploy a system where the greeter should never appear,  remove `opensuse-welcome-launcher`.
 
 === Automated NVIDIA Driver and Repository Setup
@@ -137,10 +136,12 @@ AppArmor has been updated from version 3.1 to 4.1.
 ==== AppArmor not available by default on new installations
 
 [WARNING]
-AppArmor is no longer available in SUSE Linux Enterprise 16.0. Leap users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.
+AppArmor is no longer available in {sle} 16.0.
+{productnameshort} users cannot select AppArmor as the Linux Security Module (LSM) during a new installation.
 AppArmor can still be enabled post-installation. For instructions, refer to https://en.opensuse.org/SDB:AppArmor#Switching_from_SELinux_to_AppArmor_for_Leap_16.0_and_Tumbleweed[AppArmor wiki page].
 
-Users migrating manually from 15.6 will retain AppArmor by default. Users migrating with https://github.com/openSUSE/opensuse-migration-tool[openSUSE migration tool] will be prompted to either switch to SELinux or preserve AppArmor during post-migration.
+Users migrating manually from 15.6 will retain AppArmor by default.
+Users migrating with https://github.com/openSUSE/opensuse-migration-tool[{opensuse} migration tool] will be prompted to either switch to SELinux or preserve AppArmor during post-migration.
 
 === Steam
 
