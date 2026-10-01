@@ -201,6 +201,17 @@ include::../shared.adoc[tags=jscped-14582,leveloffset=+2]
 // jsc#DOCTEAM-2378
 include::../shared.adoc[tags=jscped-16583,leveloffset=+2]
 
+[#jsc-PED-14050]
+=== Support for AMD GPU Operator
+
+The {amd} GPU Operator automates the management and configuration of {amd} GPUs in Kubernetes clusters.
+{productname} {this-version} supports deploying the upstream {amd} GPU Operator.
+The operator uses prebuilt `amdgpu` driver container images from the {suseregistry} (`registry.suse.com`).
+Kernel Module Management (KMM) loads the driver modules onto the host without recompiling the drivers across kernel updates within the same {productnameshort} codestream.
+
+To deploy the operator on RKE2, see the link:https://documentation.suse.com/cloudnative/rke2/latest/en/add-ons/gpu_operators.html#_deploy_amd_operator[RKE2 documentation].
+For installation instructions and configuration options, see the link:https://instinct.docs.amd.com/projects/gpu-operator/en/latest/[AMD GPU Operator documentation].
+
 [#jsc-PED-16741]
 === Security update and changes in mount behavior for `util-linux`
 
