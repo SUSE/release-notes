@@ -31,9 +31,43 @@ All POWER 9 and Power10 systems with any Emulex FC adapter are affected.
 When you perform DLPAR remove operations on Emulex FC adapters, there is a possibility that the adapter is not properly removed from the system.
 This operation can cause future DLPAR operations to fail.
 A future DLPAR add operation on the same FC adapter might cause symptoms including an EEH error followed by a kernel oops and system crash.
-The following messages might be seen on a failing system:
+A failing system can show the following error messages:
 
-image::LTC-Bug-205755-LinuxAlert-screenshot.png[title=Screenshot of an error on a failing system, scaledwidth=100%]
+[source]
+----
+EEH: Recovering PHB#204-PE#800000
+EEH: PE location: N/A, PHB location: N/A
+EEH: Frozen PHB#204-PE#800000 detected
+EEH: Call Trace:
+EEH: [c00000000005674c] __eeh_send_failure_event+0x6c/0x120
+EEH: [c00000000004f8a0] eeh_dev_check_failure+0x270/0x6b0
+EEH: [c00000000004fd78] eeh_check_failure+0x98/0x110
+EEH: [c008000023ba6e00] lpfc_sli4_wait_bmbx_ready+0x118/0x1c0 [lpfc]
+EEH: [c008000023ba702c] lpfc_sli4_post_sync_mbox+0x184/0x5a0 [lpfc]
+EEH: [c008000023ba99ac] lpfc_sli_issue_mbox_s4+0x7a4/0xce0 [lpfc]
+EEH: [c008000023bb4574] lpfc_sli_issue_mbox+0x2c/0x50 [lpfc]
+EEH: [c008000023c0220c] __lpfc_reg_congestion_buf+0xd4/0x1d0 [lpfc]
+EEH: [c008000023c0ef58] lpfc_pci_remove_one+0xc0/0xe50 [lpfc]
+EEH: [c000000000983dc4] pci_device_remove+0x64/0x110
+EEH: [c000000000b0a7e4] device_remove+0x74/0xd0
+EEH: [c000000000b0c350] device_release_driver_internal+0x120/0x210
+EEH: [c000000000974b98] pci_stop_bus_device+0x98/0xf0
+EEH: [c000000000974db8] pci_stop_and_remove_bus_device+0x28/0x40
+EEH: [c000000000077df0] pci_hp_remove_devices+0x90/0x130
+EEH: [c008000026510568] disable_slot+0x40/0x90 [rpaphp]
+EEH: [c0000000009abaf8] power_write_file+0xa8/0x170
+EEH: [c0000000009a1504] pci_slot_attr_store+0x44/0x60
+EEH: [c0000000006a2ed4] sysfs_kf_write+0x64/0x90
+EEH: [c0000000006a19e4] kernfs_fop_write_iter+0x204/0x2b0
+EEH: [c0000000005a378c] vfs_write+0x36c/0x440
+EEH: [c0000000005a3a8c] ksys_write+0xdc/0x130
+EEH: [c000000000034b18] system_call_exception+0x158/0x320
+EEH: [c00000000000d05c] system_call_vectored_common+0x15c/0x2ec
+Kernel attempted to read user page (18) - exploit attempt? (uid: 0)
+BUG: Kernel NULL pointer dereference on read at 0x00000018
+Faulting instruction address: 0xc008000023baf314
+Oops: Kernel access of bad area, sig: 11 [#1]
+----
 
 There is currently no workaround nor fix available for this issue.
 Instead of using the DLPAR operation, you can shutdown the logical partition before you remove or add Emulex FC adapters to the configuration.

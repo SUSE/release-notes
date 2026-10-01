@@ -82,5 +82,4 @@ include::source-code.adoc[]
 
 include::legal.adoc[]
 
-[appendix]
 include::kernel-parameter-changes.adoc[]

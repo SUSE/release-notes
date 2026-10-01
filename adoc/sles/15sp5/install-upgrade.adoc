@@ -178,7 +178,7 @@ Note that unlike SMT, RMT does not support installations of {slea} 11 and earlie
 
 For more feature comparison between RMT and SMT, see https://github.com/SUSE/rmt/blob/master/docs/smt_and_rmt.md.
 
-For more information about RMT, also see the new RMT Guide at https://documentation.suse.com/sles/html/SLES-all/book-rmt.html.
+For more information about RMT, see the RMT Guide at {doc-url}/html/SLES-all/book-rmt.html.
 
 
 // Minimal-VM and Minimal-Image-specific content is in a separate file

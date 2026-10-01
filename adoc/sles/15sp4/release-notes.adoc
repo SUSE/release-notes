@@ -80,8 +80,6 @@ include::source-code.adoc[]
 
 include::legal.adoc[]
 
-[appendix]
 include::changelog.adoc[]
 
-[appendix]
 include::kernel-parameter-changes.adoc[]

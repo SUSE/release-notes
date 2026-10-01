@@ -46,5 +46,4 @@ include::source-code.adoc[]
 
 include::legal.adoc[]
 
-[appendix]
 include::changelog.adoc[]
