@@ -3,7 +3,7 @@ include::attributes-product.adoc[]
 
 [#rnotes]
 = {rnotes}
-:revdate: 2025-11-12
+:revdate: 2026-10-01
 :page-revdate: {revdate}
 
 include::abstract.adoc[]
@@ -80,8 +80,6 @@ include::source-code.adoc[]
 
 include::legal.adoc[]
 
-[appendix]
 include::changelog.adoc[]
 
-[appendix]
 include::kernel-parameter-changes.adoc[]

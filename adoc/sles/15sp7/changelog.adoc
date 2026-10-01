@@ -11,6 +11,12 @@ include::attributes-product.adoc[]
 [#pre-release]
 === Pre-release
 
+==== Updated
+
+* Converted appendices to regular sections to improve navigation in single-page HTML.
+* Replaced screenshot with console error text in <<bsc-1222895>> ({bugzilla-url}1222895[Bugzilla]).
+* Fixed link to RMT Guide in <<install-upgrade>>.
+
 ==== New
 
 * Added note about PostgreSQL 14 to <<database>> ({jira-url}PED-13777[Jira])

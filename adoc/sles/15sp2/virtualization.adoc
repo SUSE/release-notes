@@ -114,7 +114,7 @@ The following host operating system combinations are fully supported (L3 in acco
 {suse} strives to support live migration of virtual machines from a host running a service pack supported under LTSS to a host running a newer service pack of the same major version of {product}. {suse} only performs minimal testing of such LTSS migration scenarios and recommends thorough on-site testing before migrating critical virtual machines.
 
 Live migration of Xen-based virtual machines from SLE 11 to SLE 12 is not supported because of the different toolstacks.
-For details, see the https://documentation.suse.com/releasenotes/sles/12/#fate-317306[{slsa} 12 release notes].
+For details, see the https://documentation.suse.com/releasenotes/sles/12/index.html#fate-317306[{slsa} 12 release notes].
 
 
 [#jsc-SLE-4591]
