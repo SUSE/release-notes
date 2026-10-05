@@ -53,6 +53,16 @@ For details, see the `SAPHanaSR_with_DR_HA(7)` manual page.
 `SAPHanaSR-angi` does not support connecting two standard HA clusters.
 
 
+=== Technology previews
+
+[#bsc-1284023]
+==== `SAPStartSrv-alert-timeout` (technology preview)
+
+The `sapstartsrv-resource-agents` package provides `SAPStartSrv-alert-timeout`.
+This alert agent collects status information when resource agents encounter a timeout.
+For details, see the `SAPStartSrv-alert-timeout(8)` manual page.
+
+
 === Removed and deprecated features and packages
 
 This section lists features and packages that were removed from {productname} or will be removed in upcoming versions.

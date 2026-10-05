@@ -15,6 +15,9 @@
     <revdescription>
      <itemizedlist>
       <listitem>
+       <para>Added section <link xlink:href="index.html#bsc-1284023"><literal>SAPStartSrv-alert-timeout</literal> (technology preview)</link> (bsc#1284023)</para>
+      </listitem>
+      <listitem>
        <para>Added section <link xlink:href="index.html#bsc-1284026"><literal>SAPHanaSR-angi</literal> supported scenario: DR with HA</link> (bsc#1284026)</para>
       </listitem>
      </itemizedlist>
