@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-10-05</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#bsc-1284026"><literal>SAPHanaSR-angi</literal> supported scenario: DR with HA</link> (bsc#1284026)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-10-01</date>
     <revdescription>
      <itemizedlist>

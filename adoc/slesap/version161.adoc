@@ -45,6 +45,13 @@ This unpredictable behavior might cause issues in cases that rely on a specific 
 To ensure consistent behavior, scripts should be reviewed to explicitly request the desired hostname format.
 Use `hostname -s` for the short hostname and `hostname -f` for the fully qualified domain name.
 
+[#bsc-1284026]
+==== `SAPHanaSR-angi` supported scenario: DR with HA
+
+`SAPHanaSR-angi` supports the {hana} scenario with a specific HA cluster in the disaster recovery (DR) region, such as `[B <= 'A] -> {C => D}`.
+For details, see the `SAPHanaSR_with_DR_HA(7)` manual page.
+`SAPHanaSR-angi` does not support connecting two standard HA clusters.
+
 
 === Removed and deprecated features and packages
 
