@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-17032">Support for regular user accounts in container UID ranges</link> (jsc#PED-17032)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-11386"><literal>chrony</literal> installed and enabled by default</link> (jsc#PED-11386)</para>
        </listitem>
        <listitem>
