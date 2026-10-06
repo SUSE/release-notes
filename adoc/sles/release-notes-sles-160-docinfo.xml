@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-11620">SELinux enabled on Minimal VM images</link> (jsc#PED-11620)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-16399">Stub <literal>libnsl.so.1</literal> library available on {ibmz}</link> (jsc#PED-16399)</para>
        </listitem>
        <listitem>
