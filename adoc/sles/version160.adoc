@@ -182,6 +182,18 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// bsc#1229095
+// bsc#1242938
+[#jsc-PED-17032]
+=== Support for regular user accounts in container UID ranges
+
+Previously, systemd supported regular user accounts only within the UID range of 1000 to 60000.
+When user accounts used UIDs in the container range (524288 to 1879048191), systemd-journald routed their log messages to the system journal.
+Therefore, users could not view their own log messages with `journalctl` without administrator privileges.
+In {productname} {this-version}, systemd treats UIDs in the container range as regular user accounts.
+systemd creates user-specific journals for these accounts.
+Users with UIDs in this range can now view their log messages with `journalctl` without special group memberships.
+
 [#jsc-PED-11386]
 === `chrony` installed and enabled by default
 
