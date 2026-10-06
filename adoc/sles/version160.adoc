@@ -182,6 +182,16 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-11620]
+=== SELinux enabled on Minimal VM images
+
+{productname} {this-version} enables SELinux by default on Minimal VM images.
+On {productname} Minimal VM images, SELinux operates in enforcing mode.
+On {slessap} Minimal VM images, SELinux operates in permissive mode to maintain compatibility with SAP workloads.
+Minimal VM images include the core SELinux packages and system policies.
+During the image build, the build process labels all files with their SELinux security contexts.
+For more information, see the link:https://documentation.suse.com/sles/16.0/html/SLES-Minimal-VM/[_SLES Minimal VM Guide_].
+
 // bsc#1258364
 [#jsc-PED-16585]
 === Dedicated `python3` wrapper packages replace virtual provides
