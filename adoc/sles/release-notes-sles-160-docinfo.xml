@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-10-06</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-16585">Dedicated <literal>python3</literal> wrapper packages replace virtual provides</link> (jsc#PED-16585)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-09-30</date>
      <revdescription>
       <itemizedlist>
