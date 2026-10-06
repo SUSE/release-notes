@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-11386"><literal>chrony</literal> installed and enabled by default</link> (jsc#PED-11386)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-11620">SELinux enabled on Minimal VM images</link> (jsc#PED-11620)</para>
        </listitem>
        <listitem>

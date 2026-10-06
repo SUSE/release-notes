@@ -182,6 +182,14 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#jsc-PED-11386]
+=== `chrony` installed and enabled by default
+
+{productname} {this-version} installs and enables `chrony` by default.
+The base pattern includes the `chrony` package, and systemd presets enable `chronyd.service` automatically on new installations.
+To configure NTP servers and client behavior, edit `/etc/chrony.conf` or add configuration files to `/etc/chrony.d/`.
+You can check synchronization status with the `chronyc` command-line utility.
+
 [#jsc-PED-11620]
 === SELinux enabled on Minimal VM images
 
