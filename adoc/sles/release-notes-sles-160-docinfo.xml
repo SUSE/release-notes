@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-16399">Stub <literal>libnsl.so.1</literal> library available on {ibmz}</link> (jsc#PED-16399)</para>
+       </listitem>
+       <listitem>
         <para>Added section <link xlink:href="index.html#jsc-PED-16585">Dedicated <literal>python3</literal> wrapper packages replace virtual provides</link> (jsc#PED-16585)</para>
        </listitem>
       </itemizedlist>

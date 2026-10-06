@@ -1113,6 +1113,16 @@ This release brings these features and improvements:
 // jsc-PED-7849
 * Allow `httpd` customers to protect their web server identity using HSMs (via CryptoExpress adapters).
 
+[#jsc-PED-16399]
+==== Stub `libnsl.so.1` library available on {ibmz}
+
+The `libnsl-stub1` package is now available for {ibmz} ({s390x}) in {productname} {this-version}.
+The legacy `libnsl.so.1` library was removed in {productname} 16.
+Certain third-party applications require `libnsl.so.1` to satisfy installer or link dependencies.
+The `libnsl-stub1` package provides an ABI-compatible stub library that exports the required symbols.
+The stub functions do not implement network service functionality and return error codes.
+This compatibility package will be removed in a future {productname} 16 release.
+
 ==== Enhancements in `s390-tools`
 Latest s390-tool update brings these noticable changes:
 // jsc-PED-10136
