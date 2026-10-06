@@ -182,6 +182,17 @@ See <<jsc-PED-6311>>.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+// bsc#1258364
+[#jsc-PED-16585]
+=== Dedicated `python3` wrapper packages replace virtual provides
+
+In {productname} {this-version}, dedicated `python3` wrapper packages provide unversioned Python binaries and symbols.
+These binaries include `/usr/bin/python3`, `/usr/bin/pydoc3`, and `/usr/bin/python3-config`.
+Previously, version-specific Python packages (such as `python313-base`) provided these files directly through virtual RPM capabilities.
+That configuration caused file conflicts when systems installed multiple Python versions or when you upgraded between Python versions.
+The new `python3` wrapper packages require and point to the primary Python 3.13 interpreter packages.
+This separation prevents package conflicts and simplifies upgrades to future Python versions.
+
 // jsc#PED-16583
 include::../shared.adoc[tags=jscped-16583,leveloffset=+2]
 
