@@ -26,13 +26,24 @@ def git(*args, cwd=None):
 
 
 def extract_header(lines, tag):
-    """Extract words following the first occurrence of tag (case-insensitive)."""
+    """Extract header value from patch text lines, supporting RFC 822 continuation lines."""
+    result = []
+    capturing = False
     for line in lines:
         sline = line.lstrip()
         if sline.lower().startswith(tag.lower()):
             parts = sline.split(None, 1)
-            return parts[1].strip() if len(parts) > 1 else ""
-    return ""
+            if len(parts) > 1:
+                result.append(parts[1].strip())
+            capturing = True
+        elif capturing:
+            if re.match(r"^[A-Za-z0-9_-]+:\s*", sline):
+                break
+            if line.startswith((" ", "\t")):
+                result.append(sline.strip())
+            else:
+                break
+    return " ".join(result)
 
 
 def clean_subject(subj):
@@ -73,8 +84,8 @@ def format_asciidoc(patches):
     ]
     for p in patches:
         short_commit = f"`{p['commit'][:12]}`" if p["commit"] else "-"
-        upstream = p["upstream"] if p["upstream"] else "-"
-        refs = p["references"] if p["references"] else "-"
+        upstream = p["upstream"].replace("|", "\\|") if p["upstream"] else "-"
+        refs = p["references"].replace("|", "\\|") if p["references"] else "-"
         subj = p["subject"].replace("|", "\\|") if p["subject"] else "-"
         lines.append(f"| {short_commit} | {upstream} | {refs} | {subj}")
     lines.append("|===")

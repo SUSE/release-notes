@@ -1,5 +1,5 @@
 # tests/test_fetch_nvidia_kernel_patches.py
-import pytest
+import unittest
 from unittest.mock import patch, mock_open, MagicMock
 import sys
 import os
@@ -21,69 +21,87 @@ References: jsc#NVIDIA-55 bsc#1272627
 This patch registers nvmem lookups at probe.
 """
 
-def test_extract_patch_metadata():
-    with patch("builtins.open", mock_open(read_data=SAMPLE_PATCH_CONTENT)):
-        meta = fnp.extract_patch_metadata("patches.suse/sample.patch")
-        assert meta["patch"] == "patches.suse/sample.patch"
-        assert meta["commit"] == "0bbff9ed81654d5f06bfca484681756ee407f924"
-        assert meta["upstream"] == "v6.13-rc1"
-        assert meta["references"] == "jsc#NVIDIA-55 bsc#1272627"
-        assert meta["subject"] == "soc/tegra: fuse: Register nvmem lookups at probe"
 
-def test_extract_header_whitespace():
-    lines = [
-        "  Git-commit: 0bbff9ed81654d5f06bfca484681756ee407f924",
-        "\tSubject: [PATCH] test subject"
-    ]
-    assert fnp.extract_header(lines, "Git-commit:") == "0bbff9ed81654d5f06bfca484681756ee407f924"
-    assert fnp.extract_header(lines, "Subject:") == "[PATCH] test subject"
+class TestFetchNvidiaKernelPatches(unittest.TestCase):
+    def test_extract_patch_metadata(self):
+        with patch("builtins.open", mock_open(read_data=SAMPLE_PATCH_CONTENT)):
+            meta = fnp.extract_patch_metadata("patches.suse/sample.patch")
+            self.assertEqual(meta["patch"], "patches.suse/sample.patch")
+            self.assertEqual(meta["commit"], "0bbff9ed81654d5f06bfca484681756ee407f924")
+            self.assertEqual(meta["upstream"], "v6.13-rc1")
+            self.assertEqual(meta["references"], "jsc#NVIDIA-55 bsc#1272627")
+            self.assertEqual(meta["subject"], "soc/tegra: fuse: Register nvmem lookups at probe")
 
-def test_clean_subject():
-    assert fnp.clean_subject("[PATCH v2 1/3]  soc/tegra:   fix foo ") == "soc/tegra: fix foo"
+    def test_extract_header_whitespace(self):
+        lines = [
+            "  Git-commit: 0bbff9ed81654d5f06bfca484681756ee407f924",
+            "\tSubject: [PATCH] test subject"
+        ]
+        self.assertEqual(fnp.extract_header(lines, "Git-commit:"), "0bbff9ed81654d5f06bfca484681756ee407f924")
+        self.assertEqual(fnp.extract_header(lines, "Subject:"), "[PATCH] test subject")
 
-def test_format_asciidoc_table():
-    patches = [
-        {
-            "patch": "patches.suse/sample.patch",
-            "commit": "0bbff9ed81654d5f06bfca484681756ee407f924",
-            "upstream": "v6.13-rc1",
-            "references": "jsc#NVIDIA-55",
-            "subject": "soc/tegra: fuse: Register nvmem lookups at probe",
-        }
-    ]
-    adoc = fnp.format_asciidoc(patches)
-    assert "[cols=\"2,2,3,5\", options=\"header\"]" in adoc
-    assert "| Commit | Upstream | Reference | Subject" in adoc
-    assert "`0bbff9ed8165`" in adoc
-    assert "jsc#NVIDIA-55" in adoc
-    assert "soc/tegra: fuse: Register nvmem lookups at probe" in adoc
+    def test_extract_header_multiline_folding(self):
+        lines = [
+            "Subject: [PATCH] iommu: Fix NULL group->domain dereference in",
+            " something_important_call() when probe fails",
+            "Git-commit: 12345"
+        ]
+        self.assertEqual(
+            fnp.extract_header(lines, "Subject:"),
+            "[PATCH] iommu: Fix NULL group->domain dereference in something_important_call() when probe fails"
+        )
+        self.assertEqual(fnp.extract_header(lines, "Git-commit:"), "12345")
 
-def test_format_text():
-    patches = [
-        {
-            "patch": "patches.suse/sample.patch",
-            "commit": "0bbff9ed81654d5f06bfca484681756ee407f924",
-            "upstream": "v6.13-rc1",
-            "references": "jsc#NVIDIA-55",
-            "subject": "soc/tegra: fuse: Register nvmem lookups at probe",
-        }
-    ]
-    txt = fnp.format_text(patches)
-    assert "0bbff9ed8165" in txt
-    assert "v6.13-rc1" in txt
-    assert "jsc#NVIDIA-55" in txt
-    assert "soc/tegra: fuse: Register nvmem lookups at probe" in txt
+    def test_clean_subject(self):
+        self.assertEqual(fnp.clean_subject("[PATCH v2 1/3]  soc/tegra:   fix foo "), "soc/tegra: fix foo")
 
-def test_get_series_patches_inline_comments():
-    diff_output = """--- a/series.conf
+    def test_format_asciidoc_table(self):
+        patches = [
+            {
+                "patch": "patches.suse/sample.patch",
+                "commit": "0bbff9ed81654d5f06bfca484681756ee407f924",
+                "upstream": "v6.13-rc1",
+                "references": "jsc#NVIDIA-55",
+                "subject": "soc/tegra: fuse: Register nvmem lookups at probe",
+            }
+        ]
+        adoc = fnp.format_asciidoc(patches)
+        self.assertIn('[cols="2,2,3,5", options="header"]', adoc)
+        self.assertIn("| Commit | Upstream | Reference | Subject", adoc)
+        self.assertIn("`0bbff9ed8165`", adoc)
+        self.assertIn("jsc#NVIDIA-55", adoc)
+        self.assertIn("soc/tegra: fuse: Register nvmem lookups at probe", adoc)
+
+    def test_format_text(self):
+        patches = [
+            {
+                "patch": "patches.suse/sample.patch",
+                "commit": "0bbff9ed81654d5f06bfca484681756ee407f924",
+                "upstream": "v6.13-rc1",
+                "references": "jsc#NVIDIA-55",
+                "subject": "soc/tegra: fuse: Register nvmem lookups at probe",
+            }
+        ]
+        txt = fnp.format_text(patches)
+        self.assertIn("0bbff9ed8165", txt)
+        self.assertIn("v6.13-rc1", txt)
+        self.assertIn("jsc#NVIDIA-55", txt)
+        self.assertIn("soc/tegra: fuse: Register nvmem lookups at probe", txt)
+
+    def test_get_series_patches_inline_comments(self):
+        diff_output = """--- a/series.conf
 +++ b/series.conf
 + # Full line comment in series.conf
 +patches.suse/normal.patch
 +patches.suse/inline.patch # bsc#1234567 inline comment
 + # Another comment
 """
-    mock_res = MagicMock()
-    mock_res.stdout = diff_output
-    with patch("fetch_nvidia_kernel_patches.git", return_value=mock_res):
-        patches = fnp.get_series_patches(".", "base", "target")
-        assert patches == ["patches.suse/normal.patch", "patches.suse/inline.patch"]
+        mock_res = MagicMock()
+        mock_res.stdout = diff_output
+        with patch("fetch_nvidia_kernel_patches.git", return_value=mock_res):
+            patches = fnp.get_series_patches(".", "base", "target")
+            self.assertEqual(patches, ["patches.suse/normal.patch", "patches.suse/inline.patch"])
+
+
+if __name__ == "__main__":
+    unittest.main()
