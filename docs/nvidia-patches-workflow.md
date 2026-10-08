@@ -127,8 +127,8 @@ flowchart TD
 
 ### Phase 2: Documentation Integration
 1. Add `adoc/sles/16.1/nvidia-patches.adoc` with proper document headers and metadata.
-2. In `adoc/sles/version161.adoc`, add a note and hyperlink pointing to the patch reference page.
-3. Configure `docserv-config/config.d/releasenotes.xml` (or verify inclusion in the main deliverable).
+2. In `adoc/sles/version161.adoc`, add a note and cross-reference (`<<sec-nvidia-kernel-patches>>`) pointing to the NVIDIA kernel patches section included in `adoc/sles/release-notes-sles-161.adoc`.
+3. Verify inclusion in the main deliverable with `make validate PRODUCT_VERSION=sles_16.1`.
 
 ### Phase 3: Automation Setup
 1. Create a lightweight pipeline repository on `gitlab.suse.de` with scheduled execution (every 14 days).
@@ -147,7 +147,9 @@ This section describes the procedure to configure and operate the automated work
 2. Select **New Project** -> **Create blank project**.
 3. Set the project name to `nvidia-patches-sync`.
 4. Set the visibility level to **Internal**.
-5. Push the repository containing `.gitlab-ci.yml` and `scripts/sync-nvidia-patches.sh` to this project.
+5. Push the repository containing `scripts/sync-nvidia-patches.sh` and the CI configuration:
+   * Either copy `.gitlab-ci.nvidia-sync.yml` to `.gitlab-ci.yml`, or
+   * Set **CI/CD configuration file** under **Settings** -> **CI/CD** -> **General pipelines** to `.gitlab-ci.nvidia-sync.yml`.
 
 ### 5.2 Secret Variable Configuration
 
