@@ -2,15 +2,22 @@
 """
 fetch-nvidia-kernel-patches.py
 
-Extracts NVIDIA kernel patches from series.conf and patches.suse/ headers.
-Supports output in AsciiDoc, plain text, and JSON formats.
+Extracts NVIDIA kernel patches from series.conf and patch headers.
+Supports fetching directly over HTTPS via kerncvs Gitweb (fast, no git clone),
+or reading from a local kernel-source checkout.
+Outputs in AsciiDoc, plain text, and JSON formats.
 """
 
 import argparse
+import concurrent.futures
+import difflib
 import json
 import re
+import ssl
 import subprocess
 import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 
@@ -53,7 +60,7 @@ def clean_subject(subj):
 
 
 def extract_patch_metadata(patch_path):
-    """Parse patch file and extract commit, upstream version, references, and subject."""
+    """Parse local patch file and extract commit, upstream version, references, and subject."""
     try:
         with open(patch_path, "r", encoding="utf-8", errors="replace") as f:
             lines = [f.readline() for _ in range(120)]
@@ -67,6 +74,72 @@ def extract_patch_metadata(patch_path):
 
     return {
         "patch": str(patch_path),
+        "commit": commit,
+        "upstream": upstream,
+        "references": references,
+        "subject": subject,
+    }
+
+
+def fetch_http_url(url, range_bytes=None, timeout=15):
+    """Fetch URL contents with SSL fallback and optional HTTP range header."""
+    req = urllib.request.Request(url)
+    req.add_header("User-Agent", "Mozilla/5.0 (compatible; SUSE-Release-Notes/1.0)")
+    if range_bytes:
+        req.add_header("Range", f"bytes={range_bytes}")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception:
+        try:
+            unverified_ctx = ssl._create_unverified_context()
+            with urllib.request.urlopen(req, timeout=timeout, context=unverified_ctx) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except Exception:
+            return ""
+
+
+def get_series_patches_http(gitweb_url, base_ref, target_ref):
+    """Fetch series.conf for base and target over HTTPS and compute added patches."""
+    base = base_ref.replace("origin/", "").strip()
+    target = target_ref.replace("origin/", "").strip()
+    base_url = f"{gitweb_url};a=blob_plain;f=series.conf;hb=refs/heads/{base}"
+    target_url = f"{gitweb_url};a=blob_plain;f=series.conf;hb=refs/heads/{target}"
+
+    base_content = fetch_http_url(base_url)
+    target_content = fetch_http_url(target_url)
+
+    if not base_content or not target_content:
+        raise RuntimeError(f"Failed to fetch series.conf for {base} or {target} from {gitweb_url}")
+
+    base_lines = base_content.splitlines(keepends=True)
+    target_lines = target_content.splitlines(keepends=True)
+
+    diff = list(difflib.unified_diff(base_lines, target_lines))
+    patches = []
+    for line in diff:
+        if line.startswith("+") and not line.startswith("+++"):
+            clean = line[1:].split("#")[0].strip()
+            if clean and len(clean) > 5:
+                patches.append(clean)
+    return patches
+
+
+def fetch_patch_metadata_http(gitweb_url, target_ref, patch_name):
+    """Fetch patch header over HTTPS and extract metadata."""
+    target = target_ref.replace("origin/", "").strip()
+    quoted_name = urllib.parse.quote(patch_name)
+    url = f"{gitweb_url};a=blob_plain;f={quoted_name};hb=refs/heads/{target}"
+    content = fetch_http_url(url, range_bytes="0-4096", timeout=10)
+    lines = content.splitlines()[:120]
+
+    commit = extract_header(lines, "Git-commit:")
+    upstream = extract_header(lines, "Patch-mainline:")
+    references = extract_header(lines, "References:")
+    subject = clean_subject(extract_header(lines, "Subject:"))
+
+    return {
+        "patch": patch_name,
         "commit": commit,
         "upstream": upstream,
         "references": references,
@@ -104,7 +177,7 @@ def format_text(patches):
 
 
 def get_series_patches(repo_path, base_rev, target_rev=None):
-    """Get list of patch files added to series.conf between base_rev and target_rev."""
+    """Get list of patch files added to series.conf between base_rev and target_rev from local repo."""
     rev_arg = f"{base_rev}..{target_rev}" if target_rev else base_rev
     diff = git("diff", rev_arg, "--", "series.conf", cwd=repo_path).stdout
     patches = []
@@ -118,20 +191,34 @@ def get_series_patches(repo_path, base_rev, target_rev=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Extract NVIDIA kernel patches from kernel-source.")
-    parser.add_argument("base_rev", nargs="?", default="origin/SL-16.1", help="Base Git revision (default: origin/SL-16.1)")
-    parser.add_argument("target_rev", nargs="?", default=None, help="Target Git revision (optional)")
-    parser.add_argument("--repo-dir", default=".", help="Path to kernel-source repository checkout")
+    parser.add_argument("base_rev", nargs="?", default="SL-16.1", help="Base revision or branch (default: SL-16.1)")
+    parser.add_argument("target_rev", nargs="?", default=None, help="Target revision or branch (optional)")
+    parser.add_argument("--base", dest="base_flag", help="Base revision/branch (alternative to positional argument)")
+    parser.add_argument("--target", dest="target_flag", default="SL-16.1-NV", help="Target revision/branch (default: SL-16.1-NV)")
+    parser.add_argument("--repo-dir", default=None, help="Path to local kernel-source checkout (if omitted, uses HTTPS)")
+    parser.add_argument("--http", action="store_true", help="Force HTTPS fetch via kerncvs Gitweb")
+    parser.add_argument("--remote-url", default="https://kerncvs.suse.de/git/?p=kernel-source.git", help="Base Gitweb URL")
     parser.add_argument("--format", choices=["asciidoc", "text", "json"], default="text", help="Output format")
     parser.add_argument("-o", "--output", help="Output file path (default: stdout)")
     args = parser.parse_args()
 
-    repo = Path(args.repo_dir)
-    patch_names = get_series_patches(repo, args.base_rev, args.target_rev)
+    base = args.base_flag if args.base_flag else args.base_rev
+    target = args.target_flag if args.target_flag else (args.target_rev or "SL-16.1-NV")
 
-    records = []
-    for name in patch_names:
-        patch_file = repo / name
-        records.append(extract_patch_metadata(patch_file))
+    # Determine whether to use local git checkout or HTTPS
+    repo = Path(args.repo_dir) if args.repo_dir else None
+    use_http = args.http or repo is None or not (repo / "series.conf").exists()
+
+    if use_http:
+        patch_names = get_series_patches_http(args.remote_url, base, target)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:
+            records = list(executor.map(lambda name: fetch_patch_metadata_http(args.remote_url, target, name), patch_names))
+    else:
+        patch_names = get_series_patches(repo, base, args.target_rev)
+        records = []
+        for name in patch_names:
+            patch_file = repo / name
+            records.append(extract_patch_metadata(patch_file))
 
     if args.format == "asciidoc":
         output = format_asciidoc(records)
