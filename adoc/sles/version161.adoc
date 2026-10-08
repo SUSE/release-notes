@@ -1068,3 +1068,6 @@ Use `mdadm` instead to manage and monitor software RAID devices.
 // jsc#PED-15527
 * The `qib` driver has been deprecated in {productname} 16.1 and will be removed in {productname} 16.2.
 // ===================================================================
+
+include::16.1/nvidia-patches.adoc[]
+
