@@ -692,6 +692,12 @@ Additionally, this release enables Intel Platform Monitoring Technology (PMT) fe
 
 Information in this section applies to {arm-productname} {this-version}.
 
+[#jsc-PED-16790]
+=== NVIDIA platform kernel enablement patches
+
+{productname} {this-version} incorporates platform enablement and performance patches for {nvidia} Grace and Tegra hardware.
+For the complete list of included patches, upstream commits, and issue references, refer to the link:nvidia-patches.html[NVIDIA Kernel Patches List].
+
 [#arm64-soc]
 === System-on-Chip driver enablement
 
