@@ -168,13 +168,13 @@ The automated script requires a GitHub token to create pull requests on `SUSE/re
 
 ### 5.3 Pipeline Schedule Setup
 
-Set up a recurring pipeline schedule to run every 14 days.
+Set up a recurring pipeline schedule to run weekly every Monday.
 
 1. Navigate to **Build** -> **Pipeline schedules** in the GitLab project.
 2. Select **New schedule**.
-3. Enter `Bi-weekly NVIDIA Kernel Patch Sync` in **Description**.
-4. Set **Interval Pattern** to **Custom** and enter a 14-day cron schedule:
-   `0 2 */14 * *` (or select bi-weekly execution).
+3. Enter `Weekly NVIDIA Kernel Patch Sync` in **Description**.
+4. Set **Interval Pattern** to **Custom** and enter the weekly Monday cron schedule:
+   `0 2 * * 1` (Runs every Monday at 02:00 UTC).
 5. Set **Target branch** to `main`.
 6. Select the **Activated** checkbox.
 7. Select **Save pipeline schedule**.
