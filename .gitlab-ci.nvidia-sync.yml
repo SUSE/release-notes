@@ -17,4 +17,4 @@ sync-nvidia-patches:
   cache:
     key: kernel-source-cache
     paths:
-      - /tmp/kernel-source
+      - .cache/kernel-source
