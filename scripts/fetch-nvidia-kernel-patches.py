@@ -16,7 +16,7 @@ patches.suse/ mentioning it are printed in series.conf order.
 Any other arguments are printed as patch paths.
 
 -f also prints, recursively, the patches whose "Fixes:" tag references
-each printed patch's Git-commit.
+each printed patch's Git-commit, indented and labeled "Fixed-by:".
 
 Example (NVIDIA kernel patch set, on branch SL-16.1-NV):
     fetch-nvidia-kernel-patches.py origin/SL-16.1
@@ -48,19 +48,20 @@ def header_value(patch, tag):
     return " ".join("".join(lines).split()[1:])
 
 
-def print_patch(patch, fixes, all_patches, seen):
+def print_patch(patch, fixes, all_patches, seen, level=0):
     commit = header_value(patch, "Git-commit: ")
     subj = header_value(patch, "Subject: ")
     subj = re.sub(r"\[PATCH[^\]]*\] *", "", subj, count=1)
     if commit and commit in seen:
         return
-    print(f'{patch} ("{subj}")')
+    prefix = "   " * level + "Fixed-by: " if level else ""
+    print(f'{prefix}{patch} ("{subj}")')
     if commit and fixes:
         seen.add(commit)
         fixed_by = set(git("grep", "-l", f"Fixes: {commit[:12]}").stdout.splitlines())
         for fix in all_patches:
             if fix in fixed_by:
-                print_patch(fix, fixes, all_patches, seen)
+                print_patch(fix, fixes, all_patches, seen, level + 1)
 
 
 def main():
