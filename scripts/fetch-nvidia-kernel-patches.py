@@ -28,8 +28,9 @@ def git(*args, cwd=None):
 def extract_header(lines, tag):
     """Extract words following the first occurrence of tag (case-insensitive)."""
     for line in lines:
-        if line.lower().startswith(tag.lower()):
-            parts = line.split(None, 1)
+        sline = line.lstrip()
+        if sline.lower().startswith(tag.lower()):
+            parts = sline.split(None, 1)
             return parts[1].strip() if len(parts) > 1 else ""
     return ""
 
@@ -95,11 +96,12 @@ def get_series_patches(repo_path, base_rev, target_rev=None):
     """Get list of patch files added to series.conf between base_rev and target_rev."""
     rev_arg = f"{base_rev}..{target_rev}" if target_rev else base_rev
     diff = git("diff", rev_arg, "--", "series.conf", cwd=repo_path).stdout
-    patches = [
-        line[1:].strip()
-        for line in diff.splitlines()
-        if line.startswith("+") and not line.startswith("+++") and "#" not in line and len(line.strip()) > 5
-    ]
+    patches = []
+    for line in diff.splitlines():
+        if line.startswith("+") and not line.startswith("+++"):
+            clean_line = line[1:].split("#")[0].strip()
+            if clean_line and len(clean_line) > 5:
+                patches.append(clean_line)
     return patches
 
 
