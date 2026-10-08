@@ -127,7 +127,13 @@ CURL_LOG="${TMP_DIR}/curl_calls.log"
 cat << EOF > "${MOCK_BIN}/curl"
 #!/usr/bin/env bash
 echo "\$@" >> "${CURL_LOG}"
-echo '{"number": 1, "html_url": "https://github.com/SUSE/release-notes/pull/1"}'
+if [[ "\$*" == *"state=open"* ]]; then
+    # Return empty list for PR check so new PR creation proceeds
+    echo '[]'
+else
+    # Return mock created PR
+    echo '{"number": 1, "html_url": "https://github.com/SUSE/release-notes/pull/1"}'
+fi
 EOF
 chmod +x "${MOCK_BIN}/curl"
 
@@ -137,7 +143,8 @@ git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
 git -C "${MOCK_RN}" commit -m "Reset table to stale state"
 
 # Configure git inside mock RN to redirect push to local bare repo
-git -C "${MOCK_RN}" config url."file://${MOCK_REMOTE}".insteadOf "https://x-access-token:dummy-token@github.com/mock-org/mock-repo.git"
+git -C "${MOCK_RN}" config url."file://${MOCK_REMOTE}".insteadOf "https://github.com/mock-org/mock-repo.git"
+
 
 (
     cd "${MOCK_RN}"
@@ -165,5 +172,43 @@ grep -q "https://api.github.com/repos/mock-org/mock-repo/pulls" "${CURL_LOG}" ||
 }
 
 echo "PASSED: Test 3 (Token provided, git push & curl mocked)"
+
+echo "==> Test 4: Idempotency (open PR already exists)..."
+LOG4="${TMP_DIR}/test4.log"
+# Re-create mock curl that simulates an open PR
+cat << EOF > "${MOCK_BIN}/curl"
+#!/usr/bin/env bash
+if [[ "\$*" == *"state=open"* ]]; then
+    echo '[{"number": 42, "html_url": "https://github.com/mock-org/mock-repo/pull/42"}]'
+else
+    echo "ERROR: Should not call POST when PR already exists" >&2
+    exit 1
+fi
+EOF
+
+# Reset table to stale so changes are detected
+echo "// Stale table 2" > "${MOCK_RN}/adoc/sles/16.1/nvidia-patches-table.adoc"
+git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
+git -C "${MOCK_RN}" commit -m "Reset table to stale state 2"
+
+(
+    cd "${MOCK_RN}"
+    PATH="${MOCK_BIN}:${PATH}" \
+    KERNEL_REPO_URL="file://${MOCK_KERNEL_GIT}" \
+    KERNEL_DIR="${TMP_DIR}/kernel-cache" \
+    BASE_BRANCH="origin/SL-16.1" \
+    TARGET_BRANCH="SL-16.1-NV" \
+    OUTPUT_ADOC="adoc/sles/16.1/nvidia-patches-table.adoc" \
+    GITHUB_REPO="mock-org/mock-repo" \
+    GITHUB_TOKEN="dummy-token" \
+    ./scripts/sync-nvidia-patches.sh > "${LOG4}" 2>&1
+)
+
+grep -q "==> Pull Request #42 already exists for sync/nvidia-kernel-patches-16.1. Branch updated." "${LOG4}" || {
+    echo "FAILED: Test 4 expected existing PR update log not found."
+    cat "${LOG4}"
+    exit 1
+}
+echo "PASSED: Test 4 (Idempotency - existing PR updated without error)"
 
 echo "==> ALL TESTS PASSED SUCCESSFULLY!"
