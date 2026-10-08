@@ -19,6 +19,13 @@ MOCK_BIN="${TMP_DIR}/bin"
 
 mkdir -p "${MOCK_BIN}"
 
+# Default mock gh that exits 1 to simulate absent/unauthenticated gh
+cat << 'EOF' > "${MOCK_BIN}/gh"
+#!/usr/bin/env bash
+exit 1
+EOF
+chmod +x "${MOCK_BIN}/gh"
+
 # 1. Setup mock kernel-source repository
 mkdir -p "${MOCK_KERNEL}"
 git -C "${MOCK_KERNEL}" init
@@ -71,44 +78,43 @@ git -C "${MOCK_RN}" commit -m "Initial release-notes commit"
 git -C "${MOCK_RN}" branch -m main
 git -C "${MOCK_RN}" push -u origin main
 
-echo "==> Test 1: Dry-run mode (no GITHUB_TOKEN, changes detected)..."
+echo "==> Test 1: Dry-run flag --dry-run (changes detected, no branch or PR)..."
 LOG1="${TMP_DIR}/test1.log"
 (
     cd "${MOCK_RN}"
+    PATH="${MOCK_BIN}:${PATH}" \
     KERNEL_REPO_URL="file://${MOCK_KERNEL_GIT}" \
     KERNEL_DIR="${TMP_DIR}/kernel-cache" \
     BASE_BRANCH="origin/SL-16.1" \
     TARGET_BRANCH="SL-16.1-NV" \
     OUTPUT_ADOC="adoc/sles/16.1/nvidia-patches-table.adoc" \
-    GITHUB_TOKEN="" \
-    ./scripts/sync-nvidia-patches.sh > "${LOG1}" 2>&1
+    ./scripts/sync-nvidia-patches.sh --dry-run > "${LOG1}" 2>&1
 )
 
-grep -q "Notice: GITHUB_TOKEN is not set. Updated adoc/sles/16.1/nvidia-patches-table.adoc locally without opening PR." "${LOG1}" || {
-    echo "FAILED: Test 1 expected notice log not found."
+grep -q "Dry-run mode enabled: changes detected but no commit or pull request will be created." "${LOG1}" || {
+    echo "FAILED: Test 1 expected dry-run log not found."
     cat "${LOG1}"
     exit 1
 }
-grep -q "1234567890ab" "${MOCK_RN}/adoc/sles/16.1/nvidia-patches-table.adoc" || {
-    echo "FAILED: Test 1 output file did not contain patch commit."
+if git -C "${MOCK_RN}" branch --list "sync/nvidia-kernel-patches-16.1" | grep -q "sync/nvidia-kernel-patches-16.1"; then
+    echo "FAILED: Test 1 branch was unexpectedly created in dry-run mode."
     exit 1
-}
-echo "PASSED: Test 1 (Dry-run mode with changes detected)"
+fi
+echo "PASSED: Test 1 (--dry-run flag handled properly without creating branch)"
 
 echo "==> Test 2: No changes exist in patch table..."
 LOG2="${TMP_DIR}/test2.log"
-# Commit the updated file in mock RN so working tree is clean
 git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
 git -C "${MOCK_RN}" commit -m "Commit patch table"
 
 (
     cd "${MOCK_RN}"
+    PATH="${MOCK_BIN}:${PATH}" \
     KERNEL_REPO_URL="file://${MOCK_KERNEL_GIT}" \
     KERNEL_DIR="${TMP_DIR}/kernel-cache" \
     BASE_BRANCH="origin/SL-16.1" \
     TARGET_BRANCH="SL-16.1-NV" \
     OUTPUT_ADOC="adoc/sles/16.1/nvidia-patches-table.adoc" \
-    GITHUB_TOKEN="" \
     ./scripts/sync-nvidia-patches.sh > "${LOG2}" 2>&1
 )
 
@@ -123,28 +129,22 @@ echo "==> Test 3: Token provided, mock curl & push to local remote..."
 LOG3="${TMP_DIR}/test3.log"
 CURL_LOG="${TMP_DIR}/curl_calls.log"
 
-# Create mock curl executable
 cat << EOF > "${MOCK_BIN}/curl"
 #!/usr/bin/env bash
 echo "\$@" >> "${CURL_LOG}"
 if [[ "\$*" == *"state=open"* ]]; then
-    # Return empty list for PR check so new PR creation proceeds
     echo '[]'
 else
-    # Return mock created PR
     echo '{"number": 1, "html_url": "https://github.com/SUSE/release-notes/pull/1"}'
 fi
 EOF
 chmod +x "${MOCK_BIN}/curl"
 
-# Reset adoc file in mock RN so changes are detected
 echo "// Stale table" > "${MOCK_RN}/adoc/sles/16.1/nvidia-patches-table.adoc"
 git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
 git -C "${MOCK_RN}" commit -m "Reset table to stale state"
 
-# Configure git inside mock RN to redirect push to local bare repo
 git -C "${MOCK_RN}" config url."file://${MOCK_REMOTE}".insteadOf "https://github.com/mock-org/mock-repo.git"
-
 
 (
     cd "${MOCK_RN}"
@@ -173,12 +173,11 @@ grep -q "https://api.github.com/repos/mock-org/mock-repo/pulls" "${CURL_LOG}" ||
 
 echo "PASSED: Test 3 (Token provided, git push & curl mocked)"
 
-echo "==> Test 4: Idempotency (open PR already exists)..."
+echo "==> Test 4: Idempotency (open PR already exists via API)..."
 LOG4="${TMP_DIR}/test4.log"
-# Re-create mock curl that simulates an open PR
-cat << EOF > "${MOCK_BIN}/curl"
+cat << 'EOF' > "${MOCK_BIN}/curl"
 #!/usr/bin/env bash
-if [[ "\$*" == *"state=open"* ]]; then
+if [[ "$*" == *"state=open"* ]]; then
     echo '[{"number": 42, "html_url": "https://github.com/mock-org/mock-repo/pull/42"}]'
 else
     echo "ERROR: Should not call POST when PR already exists" >&2
@@ -186,7 +185,6 @@ else
 fi
 EOF
 
-# Reset table to stale so changes are detected
 echo "// Stale table 2" > "${MOCK_RN}/adoc/sles/16.1/nvidia-patches-table.adoc"
 git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
 git -C "${MOCK_RN}" commit -m "Reset table to stale state 2"
@@ -211,15 +209,67 @@ grep -q "==> Pull Request #42 already exists for sync/nvidia-kernel-patches-16.1
 }
 echo "PASSED: Test 4 (Idempotency - existing PR updated without error)"
 
-echo "==> Test 5: Standalone runner mode (clones release-notes into .cache/release-notes)..."
+echo "==> Test 5: gh CLI native mode..."
 LOG5="${TMP_DIR}/test5.log"
+GH_LOG="${TMP_DIR}/gh_calls.log"
+
+cat << EOF > "${MOCK_BIN}/gh"
+#!/usr/bin/env bash
+echo "\$@" >> "${GH_LOG}"
+if [ "\$1" = "auth" ] && [ "\$2" = "status" ]; then
+    exit 0
+elif [ "\$1" = "pr" ] && [ "\$2" = "list" ]; then
+    exit 0
+elif [ "\$1" = "pr" ] && [ "\$2" = "create" ]; then
+    echo "https://github.com/mock-org/mock-repo/pull/101"
+    exit 0
+fi
+EOF
+chmod +x "${MOCK_BIN}/gh"
+
+echo "// Stale table gh" > "${MOCK_RN}/adoc/sles/16.1/nvidia-patches-table.adoc"
+git -C "${MOCK_RN}" add adoc/sles/16.1/nvidia-patches-table.adoc
+git -C "${MOCK_RN}" commit -m "Reset table for gh test"
+
+(
+    cd "${MOCK_RN}"
+    PATH="${MOCK_BIN}:${PATH}" \
+    KERNEL_REPO_URL="file://${MOCK_KERNEL_GIT}" \
+    KERNEL_DIR="${TMP_DIR}/kernel-cache" \
+    BASE_BRANCH="origin/SL-16.1" \
+    TARGET_BRANCH="SL-16.1-NV" \
+    OUTPUT_ADOC="adoc/sles/16.1/nvidia-patches-table.adoc" \
+    GITHUB_REPO="mock-org/mock-repo" \
+    GITHUB_TOKEN="" \
+    ./scripts/sync-nvidia-patches.sh > "${LOG5}" 2>&1
+)
+
+grep -q "==> Opening GitHub Pull Request via gh..." "${LOG5}" || {
+    echo "FAILED: Test 5 expected gh pr create log not found."
+    cat "${LOG5}"
+    exit 1
+}
+grep -q "pr create" "${GH_LOG}" || {
+    echo "FAILED: Test 5 gh pr create was not called."
+    cat "${GH_LOG}"
+    exit 1
+}
+echo "PASSED: Test 5 (gh CLI native mode)"
+
+# Reset mock gh to exit 1 for remaining tests
+cat << 'EOF' > "${MOCK_BIN}/gh"
+#!/usr/bin/env bash
+exit 1
+EOF
+
+echo "==> Test 6: Standalone runner mode (clones release-notes into .cache/release-notes)..."
+LOG6="${TMP_DIR}/test6.log"
 STANDALONE_DIR="${TMP_DIR}/standalone-runner"
 mkdir -p "${STANDALONE_DIR}/scripts"
 cp "${SYNC_SCRIPT}" "${STANDALONE_DIR}/scripts/sync-nvidia-patches.sh"
 cp "${FETCH_SCRIPT}" "${STANDALONE_DIR}/scripts/fetch-nvidia-kernel-patches.py"
 chmod +x "${STANDALONE_DIR}/scripts/"*
 
-# Configure mock git redirect in global or via git clone
 (
     cd "${STANDALONE_DIR}"
     PATH="${MOCK_BIN}:${PATH}" \
@@ -230,18 +280,18 @@ chmod +x "${STANDALONE_DIR}/scripts/"*
     RN_REPO_URL="file://${MOCK_REMOTE}" \
     GITHUB_REPO="mock-org/mock-repo" \
     GITHUB_TOKEN="" \
-    ./scripts/sync-nvidia-patches.sh > "${LOG5}" 2>&1
+    ./scripts/sync-nvidia-patches.sh --dry-run > "${LOG6}" 2>&1
 )
 
-grep -q "==> Shallow cloning mock-org/mock-repo into .cache/release-notes..." "${LOG5}" || {
-    echo "FAILED: Test 5 expected shallow clone log not found."
-    cat "${LOG5}"
+grep -q "==> Shallow cloning mock-org/mock-repo into .cache/release-notes..." "${LOG6}" || {
+    echo "FAILED: Test 6 expected shallow clone log not found."
+    cat "${LOG6}"
     exit 1
 }
 test -f "${STANDALONE_DIR}/.cache/release-notes/adoc/sles/16.1/nvidia-patches-table.adoc" || {
-    echo "FAILED: Test 5 expected generated table in .cache/release-notes not found."
+    echo "FAILED: Test 6 expected generated table in .cache/release-notes not found."
     exit 1
 }
-echo "PASSED: Test 5 (Standalone runner mode correctly clones and generates)"
+echo "PASSED: Test 6 (Standalone runner mode correctly clones and generates)"
 
 echo "==> ALL TESTS PASSED SUCCESSFULLY!"

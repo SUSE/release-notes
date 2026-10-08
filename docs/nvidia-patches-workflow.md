@@ -193,3 +193,20 @@ Verify that docserv successfully compiles and publishes the generated patch tabl
    * Confirm `adoc/sles/16.1/nvidia-patches-table.adoc` renders correctly inside `adoc/sles/16.1/nvidia-patches.adoc`.
    * Check that all patch commit links, mainline versions, and tracker references display cleanly.
 
+### 5.5 Local Execution and Dry-Run Mode
+
+Maintainers can run `scripts/sync-nvidia-patches.sh` directly on a local workstation connected to the SUSE internal network or VPN:
+
+1. Run in dry-run mode to check for patch changes without creating commits or pull requests:
+   ```bash
+   ./scripts/sync-nvidia-patches.sh --dry-run
+   ```
+2. Run in synchronization mode to update documentation and open a pull request:
+   ```bash
+   ./scripts/sync-nvidia-patches.sh
+   ```
+   The script detects authentication automatically:
+   * Uses authenticated `gh` CLI if available (`gh auth status`).
+   * Uses `GITHUB_TOKEN` environment variable in headless or CI environments.
+
+

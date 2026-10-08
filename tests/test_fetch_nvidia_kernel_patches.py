@@ -102,6 +102,31 @@ class TestFetchNvidiaKernelPatches(unittest.TestCase):
             patches = fnp.get_series_patches(".", "base", "target")
             self.assertEqual(patches, ["patches.suse/normal.patch", "patches.suse/inline.patch"])
 
+    def test_get_series_patches_http(self):
+        base_series = "patches.suse/base1.patch\npatches.suse/base2.patch\n"
+        target_series = "patches.suse/base1.patch\npatches.suse/base2.patch\npatches.suse/nvidia-new.patch # [NVIDIA]\n"
+
+        def mock_fetch(url, **kwargs):
+            if "hb=refs/heads/SL-16.1" in url and "SL-16.1-NV" not in url:
+                return base_series
+            if "hb=refs/heads/SL-16.1-NV" in url:
+                return target_series
+            return ""
+
+        with patch("fetch_nvidia_kernel_patches.fetch_http_url", side_effect=mock_fetch):
+            patches = fnp.get_series_patches_http("https://example.com/git", "SL-16.1", "SL-16.1-NV")
+            self.assertEqual(patches, ["patches.suse/nvidia-new.patch"])
+
+    def test_fetch_patch_metadata_http(self):
+        with patch("fetch_nvidia_kernel_patches.fetch_http_url", return_value=SAMPLE_PATCH_CONTENT):
+            meta = fnp.fetch_patch_metadata_http("https://example.com/git", "SL-16.1-NV", "patches.suse/sample.patch")
+            self.assertEqual(meta["patch"], "patches.suse/sample.patch")
+            self.assertEqual(meta["commit"], "0bbff9ed81654d5f06bfca484681756ee407f924")
+            self.assertEqual(meta["upstream"], "v6.13-rc1")
+            self.assertEqual(meta["references"], "jsc#NVIDIA-55 bsc#1272627")
+            self.assertEqual(meta["subject"], "soc/tegra: fuse: Register nvmem lookups at probe")
+
 
 if __name__ == "__main__":
     unittest.main()
+

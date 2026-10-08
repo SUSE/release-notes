@@ -5,6 +5,8 @@ stages:
 sync-nvidia-patches:
   stage: sync
   image: registry.opensuse.org/opensuse/tumbleweed:latest
+  tags:
+    - docker
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_PIPELINE_SOURCE == "web"
@@ -17,6 +19,4 @@ sync-nvidia-patches:
   cache:
     key: sync-cache
     paths:
-      - .cache/kernel-source
       - .cache/release-notes
-
