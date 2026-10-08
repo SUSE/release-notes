@@ -1,0 +1,22 @@
+# GitLab CI schedule pipeline configuration for gitlab.suse.de
+stages:
+  - sync
+
+sync-nvidia-patches:
+  stage: sync
+  image: registry.opensuse.org/opensuse/tumbleweed:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+  before_script:
+    - zypper -n install git curl python3
+    - git config --global user.name "SUSE Release Notes Bot"
+    - git config --global user.email "doc-team@suse.com"
+  script:
+    - ./scripts/sync-nvidia-patches.sh
+  cache:
+    key: sync-cache
+    paths:
+      - .cache/kernel-source
+      - .cache/release-notes
+
