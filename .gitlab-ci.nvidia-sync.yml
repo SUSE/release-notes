@@ -15,6 +15,8 @@ sync-nvidia-patches:
   script:
     - ./scripts/sync-nvidia-patches.sh
   cache:
-    key: kernel-source-cache
+    key: sync-cache
     paths:
       - .cache/kernel-source
+      - .cache/release-notes
+

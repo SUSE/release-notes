@@ -211,4 +211,37 @@ grep -q "==> Pull Request #42 already exists for sync/nvidia-kernel-patches-16.1
 }
 echo "PASSED: Test 4 (Idempotency - existing PR updated without error)"
 
+echo "==> Test 5: Standalone runner mode (clones release-notes into .cache/release-notes)..."
+LOG5="${TMP_DIR}/test5.log"
+STANDALONE_DIR="${TMP_DIR}/standalone-runner"
+mkdir -p "${STANDALONE_DIR}/scripts"
+cp "${SYNC_SCRIPT}" "${STANDALONE_DIR}/scripts/sync-nvidia-patches.sh"
+cp "${FETCH_SCRIPT}" "${STANDALONE_DIR}/scripts/fetch-nvidia-kernel-patches.py"
+chmod +x "${STANDALONE_DIR}/scripts/"*
+
+# Configure mock git redirect in global or via git clone
+(
+    cd "${STANDALONE_DIR}"
+    PATH="${MOCK_BIN}:${PATH}" \
+    KERNEL_REPO_URL="file://${MOCK_KERNEL_GIT}" \
+    KERNEL_DIR="${TMP_DIR}/kernel-cache" \
+    BASE_BRANCH="origin/SL-16.1" \
+    TARGET_BRANCH="SL-16.1-NV" \
+    RN_REPO_URL="file://${MOCK_REMOTE}" \
+    GITHUB_REPO="mock-org/mock-repo" \
+    GITHUB_TOKEN="" \
+    ./scripts/sync-nvidia-patches.sh > "${LOG5}" 2>&1
+)
+
+grep -q "==> Shallow cloning mock-org/mock-repo into .cache/release-notes..." "${LOG5}" || {
+    echo "FAILED: Test 5 expected shallow clone log not found."
+    cat "${LOG5}"
+    exit 1
+}
+test -f "${STANDALONE_DIR}/.cache/release-notes/adoc/sles/16.1/nvidia-patches-table.adoc" || {
+    echo "FAILED: Test 5 expected generated table in .cache/release-notes not found."
+    exit 1
+}
+echo "PASSED: Test 5 (Standalone runner mode correctly clones and generates)"
+
 echo "==> ALL TESTS PASSED SUCCESSFULLY!"
