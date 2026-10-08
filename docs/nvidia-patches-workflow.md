@@ -76,7 +76,7 @@ The list of patches changes approximately every two weeks during initial develop
 ### Approach 3: Semi-Automated Local CLI Script + PR
 
 * **Extraction Runner**:
-  * A local shell script executed on the maintainer workstation when connected to SUSE VPN.
+  * A local shell script executed on the local workstation when connected to SUSE VPN.
   * Run bi-weekly on-demand or triggered by a local cron/calendar reminder.
   * Uses the existing local clone at `~/work/git/kernel-source`.
   * Executes the extraction script, updates `adoc/sles/16.1/nvidia-patches.adoc` (or `.txt`), creates a Git branch, and opens a GitHub PR with `gh pr create`.
@@ -86,8 +86,8 @@ The list of patches changes approximately every two weeks during initial develop
   * Zero infrastructure setup required (no GitLab runner, no CI secret tokens).
   * Immediately operational.
 * **Disadvantages**:
-  * Requires manual developer action every two weeks.
-  * Fails to update if the maintainer is unavailable.
+  * Requires manual intervention every two weeks.
+  * Fails to update if the maintainer environment is unavailable.
 
 ---
 
@@ -174,7 +174,7 @@ Set up a recurring pipeline schedule to run every 14 days.
 4. Set **Interval Pattern** to **Custom** and enter a 14-day cron schedule:
    `0 2 */14 * *` (or select bi-weekly execution).
 5. Set **Target branch** to `main`.
-6. Ensure **Activated** is checked.
+6. Select the **Activated** checkbox.
 7. Select **Save pipeline schedule**.
 
 ### 5.4 Docserv Build Verification
