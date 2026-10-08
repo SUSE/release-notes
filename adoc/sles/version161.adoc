@@ -696,7 +696,8 @@ Information in this section applies to {arm-productname} {this-version}.
 === NVIDIA platform kernel enablement patches
 
 {productname} {this-version} incorporates platform enablement and performance patches for {nvidia} Grace and Tegra hardware.
-For the complete list of included patches, upstream commits, and issue references, refer to the link:nvidia-patches.html[NVIDIA Kernel Patches List].
+For the complete list of included patches, upstream commits, and issue references, refer to <<sec-nvidia-kernel-patches>>.
+
 
 [#arm64-soc]
 === System-on-Chip driver enablement

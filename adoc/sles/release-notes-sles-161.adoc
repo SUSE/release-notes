@@ -16,6 +16,9 @@ include::../common/about-documentation.adoc[]
 
 include::version161.adoc[]
 
+include::16.1/nvidia-patches.adoc[]
+
 include::../common/source-code.adoc[]
 
 include::../common/legal.adoc[]
+

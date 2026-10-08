@@ -1,7 +1,8 @@
 [#sec-nvidia-kernel-patches]
-= NVIDIA Kernel Patches in {productname} {this-version}
+== NVIDIA kernel patches in {productname} {this-version}
 
-This document lists kernel patches included in {productname} {this-version} specifically for NVIDIA platforms and hardware enablement.
-These patches originate from the `{nvidia}` kernel enablement branch and supplement the baseline enterprise kernel.
+This section lists kernel patches included in {productname} {this-version} specifically for NVIDIA platforms and hardware enablement.
+These patches originate from the {nvidia} kernel enablement branch and supplement the baseline enterprise kernel.
 
 include::nvidia-patches-table.adoc[]
+
