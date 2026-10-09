@@ -6,12 +6,13 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-KERNEL_REPO_URL="${KERNEL_REPO_URL:-git://kerncvs.suse.de/kernel-source.git}"
+KERNEL_REPO_URL="${KERNEL_REPO_URL:-https://github.com/SUSE/kernel-source.git}"
+KERNEL_HTTP_URL="${KERNEL_HTTP_URL:-https://github.com/SUSE/kernel-source}"
 KERNEL_DIR="${KERNEL_DIR:-}"
 BASE_BRANCH="${BASE_BRANCH:-origin/SL-16.1}"
 TARGET_BRANCH="${TARGET_BRANCH:-SL-16.1-NV}"
 GITHUB_REPO="${GITHUB_REPO:-SUSE/release-notes}"
-GITHUB_TOKEN="${GITHUB_TOKEN:-${GIT_TOKEN:-}}"
+GITHUB_TOKEN="${GITHUB_TOKEN:-${GH_TOKEN:-${GIT_TOKEN:-}}}"
 DATE_TAG="$(date +%Y%m%d)"
 SYNC_BRANCH="${SYNC_BRANCH:-sync/nvidia-kernel-patches-16.1}"
 DRY_RUN=false
@@ -21,7 +22,7 @@ usage() {
 Usage: $(basename "$0") [OPTIONS]
 
 Synchronizes NVIDIA kernel patches for SLES 16.1 into SUSE Release Notes.
-Extracts patch metadata via HTTPS from kerncvs (or a local kernel-source checkout),
+Extracts patch metadata via HTTPS from the public kernel-source mirror (or a local checkout),
 detects documentation changes, and creates or updates a GitHub pull request.
 
 Options:
@@ -32,9 +33,9 @@ Options:
   -h, --help             Show this help message and exit
 
 Environment Variables:
-  GITHUB_TOKEN           GitHub personal access token (used in headless CI environments)
-  KERNEL_DIR             Path to local kernel-source checkout
-  DRY_RUN                Set to 1 or true to enable dry-run mode
+  GITHUB_TOKEN / GH_TOKEN  GitHub personal access token (used in CI environments)
+  KERNEL_DIR               Path to local kernel-source checkout
+  DRY_RUN                  Set to 1 or true to enable dry-run mode
 
 Authentication:
   Prefers 'gh' CLI if installed and authenticated ('gh auth status').
@@ -125,11 +126,12 @@ if [ -n "${KERNEL_DIR}" ] && [ -d "${KERNEL_DIR}/.git" ]; then
         --format asciidoc \
         -o "${OUTPUT_ADOC}"
 else
-    echo "==> Fetching patches directly from kerncvs over HTTPS..."
+    echo "==> Fetching patches directly from kernel-source over HTTPS..."
     python3 "${SCRIPT_DIR}/fetch-nvidia-kernel-patches.py" \
         --http \
         --base "${BASE_REF}" \
         --target "${TARGET_REF}" \
+        --remote-url "${KERNEL_HTTP_URL}" \
         --format asciidoc \
         -o "${OUTPUT_ADOC}"
 fi
