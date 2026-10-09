@@ -99,18 +99,40 @@ def fetch_http_url(url, range_bytes=None, timeout=15):
             return ""
 
 
-def get_series_patches_http(gitweb_url, base_ref, target_ref):
+def build_file_http_url(remote_url, branch, file_path):
+    """Build an HTTP URL for a file in either GitHub or Gitweb."""
+    base_branch = branch.replace("origin/", "").strip()
+    clean_url = remote_url.rstrip("/")
+
+    # Check if remote_url is GitHub
+    if "github.com" in clean_url or "raw.githubusercontent.com" in clean_url:
+        m = re.search(r"github\.com[/:]([^/]+)/([^/.]+)(?:\.git)?", clean_url)
+        if m:
+            owner, repo = m.group(1), m.group(2)
+            return f"https://raw.githubusercontent.com/{owner}/{repo}/{base_branch}/{file_path}"
+        if "raw.githubusercontent.com" in clean_url:
+            parts = clean_url.split("raw.githubusercontent.com/")[1].strip("/").split("/")
+            if len(parts) >= 2:
+                owner, repo = parts[0], parts[1]
+                return f"https://raw.githubusercontent.com/{owner}/{repo}/{base_branch}/{file_path}"
+
+    # Fallback to Gitweb URL scheme (e.g. kerncvs.suse.de)
+    quoted_name = urllib.parse.quote(file_path)
+    return f"{clean_url};a=blob_plain;f={quoted_name};hb=refs/heads/{base_branch}"
+
+
+def get_series_patches_http(remote_url, base_ref, target_ref):
     """Fetch series.conf for base and target over HTTPS and compute added patches."""
     base = base_ref.replace("origin/", "").strip()
     target = target_ref.replace("origin/", "").strip()
-    base_url = f"{gitweb_url};a=blob_plain;f=series.conf;hb=refs/heads/{base}"
-    target_url = f"{gitweb_url};a=blob_plain;f=series.conf;hb=refs/heads/{target}"
+    base_url = build_file_http_url(remote_url, base, "series.conf")
+    target_url = build_file_http_url(remote_url, target, "series.conf")
 
     base_content = fetch_http_url(base_url)
     target_content = fetch_http_url(target_url)
 
     if not base_content or not target_content:
-        raise RuntimeError(f"Failed to fetch series.conf for {base} or {target} from {gitweb_url}")
+        raise RuntimeError(f"Failed to fetch series.conf for {base} or {target} from {remote_url}")
 
     base_lines = base_content.splitlines(keepends=True)
     target_lines = target_content.splitlines(keepends=True)
@@ -125,12 +147,11 @@ def get_series_patches_http(gitweb_url, base_ref, target_ref):
     return patches
 
 
-def fetch_patch_metadata_http(gitweb_url, target_ref, patch_name):
+def fetch_patch_metadata_http(remote_url, target_ref, patch_name):
     """Fetch patch header over HTTPS and extract metadata."""
     target = target_ref.replace("origin/", "").strip()
-    quoted_name = urllib.parse.quote(patch_name)
-    url = f"{gitweb_url};a=blob_plain;f={quoted_name};hb=refs/heads/{target}"
-    content = fetch_http_url(url, range_bytes="0-4096", timeout=10)
+    url = build_file_http_url(remote_url, target, patch_name)
+    content = fetch_http_url(url, range_bytes="0-8192", timeout=10)
     lines = content.splitlines()[:120]
 
     commit = extract_header(lines, "Git-commit:")
@@ -196,8 +217,8 @@ def main():
     parser.add_argument("--base", dest="base_flag", help="Base revision/branch (alternative to positional argument)")
     parser.add_argument("--target", dest="target_flag", default="SL-16.1-NV", help="Target revision/branch (default: SL-16.1-NV)")
     parser.add_argument("--repo-dir", default=None, help="Path to local kernel-source checkout (if omitted, uses HTTPS)")
-    parser.add_argument("--http", action="store_true", help="Force HTTPS fetch via kerncvs Gitweb")
-    parser.add_argument("--remote-url", default="https://kerncvs.suse.de/git/?p=kernel-source.git", help="Base Gitweb URL")
+    parser.add_argument("--http", action="store_true", help="Force HTTPS fetch via GitHub raw or Gitweb")
+    parser.add_argument("--remote-url", default="https://github.com/SUSE/kernel-source", help="Remote URL (GitHub or Gitweb)")
     parser.add_argument("--format", choices=["asciidoc", "text", "json"], default="text", help="Output format")
     parser.add_argument("-o", "--output", help="Output file path (default: stdout)")
     args = parser.parse_args()

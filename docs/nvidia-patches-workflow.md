@@ -11,9 +11,9 @@ The list of patches changes approximately every two weeks during initial develop
 ## 1. Problem Statement and Constraints
 
 1. **Source Repository Size & Access**:
-   * **Source**: `git://kerncvs.suse.de/kernel-source.git` (branch `SL-16.1-NV` compared against `origin/SL-16.1`).
-   * **Size**: ~4.5 GB.
-   * **Network Boundary**: Hosted inside the SUSE internal engineering network behind the SUSE VPN. Public GitHub Actions runners cannot access it directly.
+   * **Source**: `https://github.com/SUSE/kernel-source` (public GitHub mirror) or `git://kerncvs.suse.de/kernel-source.git` (branch `SL-16.1-NV` compared against `origin/SL-16.1`).
+   * **Size**: ~4.5 GB full repository, ~70 MB for depth-1 shallow fetch, or instant via HTTPS raw blob API.
+   * **Network Boundary**: The public GitHub mirror (`https://github.com/SUSE/kernel-source`) is accessible globally without VPN. Both GitHub Actions and GitLab CI runners access it directly.
 2. **Data Extraction**:
    * The patches to document are added to `series.conf` on the NVIDIA branch (`SL-16.1-NV`) relative to the base release (`origin/SL-16.1`).
    * Each patch file in `patches.suse/` contains metadata headers:
@@ -139,9 +139,30 @@ flowchart TD
 
 ## 5. Operational Instructions
 
-This section describes the procedure to configure and operate the automated workflow on `gitlab.suse.de`.
+This section describes the procedure to configure and operate the automated workflow.
 
-### 5.1 Project Setup on GitLab
+### 5.1 GitHub Actions Nightly Workflow (Recommended)
+
+The automated synchronization workflow runs directly inside `SUSE/release-notes` via `.github/workflows/nvidia-sync.yml`.
+The workflow runs nightly at 02:00 UTC via GitHub Actions scheduled cron.
+It uses the public mirror `https://github.com/SUSE/kernel-source` and requires no external tokens.
+
+1. Ensure GitHub Actions can open Pull Requests:
+   * Open the repository **Settings** in `SUSE/release-notes`.
+   * Navigate to **Actions** -> **General** -> **Workflow permissions**.
+   * Select **Allow GitHub Actions to create and approve pull requests**.
+   * Select **Save**.
+2. Run manually at any time:
+   * Navigate to **Actions** -> **Sync NVIDIA Kernel Patches**.
+   * Select **Run workflow**.
+   * Or run via `gh` CLI:
+     ```bash
+     gh workflow run nvidia-sync.yml
+     ```
+
+### 5.2 Project Setup on GitLab (Alternative)
+
+You can also run the synchronization pipeline on `gitlab.suse.de`.
 
 1. Log in to `gitlab.suse.de`.
 2. Select **New Project** -> **Create blank project**.
@@ -151,11 +172,11 @@ This section describes the procedure to configure and operate the automated work
    * Either copy `.gitlab-ci.nvidia-sync.yml` to `.gitlab-ci.yml`, or
    * Set **CI/CD configuration file** under **Settings** -> **CI/CD** -> **General pipelines** to `.gitlab-ci.nvidia-sync.yml`.
 
-### 5.2 Secret Variable Configuration
+### 5.3 Secret Variable Configuration on GitLab
 
-The automated script requires a GitHub token to create pull requests on `SUSE/release-notes`.
+The GitLab runner requires a GitHub token to create pull requests on `SUSE/release-notes`.
 
-1. Generate a GitHub Personal Access Token (PAT) with `repo` scope permissions (repository write access).
+1. Generate a GitHub Personal Access Token (PAT) with `repo` scope permissions.
 2. Open the project on `gitlab.suse.de`.
 3. Navigate to **Settings** -> **CI/CD** -> **Variables**.
 4. Select **Add variable**.
@@ -166,20 +187,20 @@ The automated script requires a GitHub token to create pull requests on `SUSE/re
    * **Flags**: Check **Mask variable** and **Protect variable**.
 6. Select **Add variable**.
 
-### 5.3 Pipeline Schedule Setup
+### 5.4 Pipeline Schedule Setup on GitLab
 
-Set up a recurring pipeline schedule to run weekly every Monday.
+Set up a recurring pipeline schedule on GitLab.
 
 1. Navigate to **Build** -> **Pipeline schedules** in the GitLab project.
 2. Select **New schedule**.
-3. Enter `Weekly NVIDIA Kernel Patch Sync` in **Description**.
-4. Set **Interval Pattern** to **Custom** and enter the weekly Monday cron schedule:
-   `0 2 * * 1` (Runs every Monday at 02:00 UTC).
+3. Enter `Nightly NVIDIA Kernel Patch Sync` in **Description**.
+4. Set **Interval Pattern** to **Custom** and enter the nightly cron schedule:
+   `0 2 * * *` (Runs every day at 02:00 UTC).
 5. Set **Target branch** to `main`.
 6. Select the **Activated** checkbox.
 7. Select **Save pipeline schedule**.
 
-### 5.4 Docserv Build Verification
+### 5.5 Docserv Build Verification
 
 Verify that docserv successfully compiles and publishes the generated patch table.
 
@@ -193,9 +214,9 @@ Verify that docserv successfully compiles and publishes the generated patch tabl
    * Confirm `adoc/sles/16.1/nvidia-patches-table.adoc` renders correctly inside `adoc/sles/16.1/nvidia-patches.adoc`.
    * Check that all patch commit links, mainline versions, and tracker references display cleanly.
 
-### 5.5 Local Execution and Dry-Run Mode
+### 5.6 Local Execution and Dry-Run Mode
 
-Maintainers can run `scripts/sync-nvidia-patches.sh` directly on a local workstation connected to the SUSE internal network or VPN:
+Maintainers can run `scripts/sync-nvidia-patches.sh` directly on a local workstation without VPN:
 
 1. Run in dry-run mode to check for patch changes without creating commits or pull requests:
    ```bash
