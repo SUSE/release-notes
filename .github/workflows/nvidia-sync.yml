@@ -18,6 +18,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Configure Git Author
         run: |
           git config --global user.name "github-actions[bot]"
