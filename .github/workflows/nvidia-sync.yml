@@ -28,7 +28,6 @@ jobs:
 
       - name: Run patch sync
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./scripts/sync-nvidia-patches.sh
