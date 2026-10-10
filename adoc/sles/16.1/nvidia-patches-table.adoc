@@ -71,7 +71,6 @@
 | `bee8a520eb84` | v6.18-rc1 | jsc#NVIDIA-73 | rhashtable: Use rcu_dereference_all and rcu_dereference_all_check
 | `c3d78c34ad00` | v6.19-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Don't use PMCCNTR_EL0 on SMT cores
 | `7ab06ea41af5` | v6.19-rc1 | jsc#NVIDIA-55 | arch_topology: Provide a stub topology_core_has_smt() for !CONFIG_GENERIC_ARCH_TOPOLOGY
-| `61e9b50ffa23` | v6.19-rc1 | stable-fixes | hwmon: (emc1403) Rely on subsystem locking
 | `52f77fb176ec` | v6.19-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
 | `fd714986e4e4` | v6.19-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Pass in old domain to attach_dev callback functions
 | `f9cadb3d5691` | v7.0-rc1 | jsc#NVIDIA-64 | ACPI: CPPC: Factor out and export per-cpu cppc_perf_ctrs_in_pcc_cpu()
@@ -153,10 +152,8 @@
 | `52fce648607e` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72080 bsc#1277172 | fs/resctrl: Fix use-after-free during unmount
 | `b9f089723aee` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72015 bsc#1276791 | fs/resctrl: Fix double-add of pseudo-locked region's RMID to free list
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
-| `13ff543e0b2c` | v7.2-rc4 | stable-fixes | wifi: libertas: reject short monitor TX frames
 | `49f2413f9b55` | v7.3-rc1 | jsc#NVIDIA-55 | perf/arm_pmu: Skip PMCCNTR_EL0 on NVIDIA Olympus
 | `293f9611ae73` | v7.3-rc1 | jsc#NVIDIA-73 | sched/fair: Prefer fully idle cores for NOHZ balancing
-| `75f2c0b36907` | v7.3-rc1 | git-fixes | hwmon: (emc1403) Drop hysteresis for low limit temperature
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: smccc: Add an Arm SMCCC bus
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: hwrng: arm_smccc_trng: Register as an SMCCC device
