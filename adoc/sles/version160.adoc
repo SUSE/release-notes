@@ -12,7 +12,7 @@ To read more about the differences and high-level changes between {productname} 
 
 {productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
 
-The current version ({this-version}) will be fully maintained and supported until 31 Jul 2034.
+Each {productname} 16 release has the following lifecycle:
 
 If you need additional time to design, validate and test your upgrade plans, Long Term Service Pack Support can extend the support duration.
 You can buy an additional 12 to 36 months in twelve month increments.
