@@ -154,6 +154,7 @@
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
 | `49f2413f9b55` | v7.3-rc1 | jsc#NVIDIA-55 | perf/arm_pmu: Skip PMCCNTR_EL0 on NVIDIA Olympus
 | `293f9611ae73` | v7.3-rc1 | jsc#NVIDIA-73 | sched/fair: Prefer fully idle cores for NOHZ balancing
+| - | Submitted https://lore.kernel.org/all/20260929071600.2963954-1-mkchauras@gmail.com/ | jsc#PED-15113 git-fixes | powerpc: fix NMI exit ordering: restore soft masks after irqentry_nmi_exit()
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: smccc: Add an Arm SMCCC bus
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: hwrng: arm_smccc_trng: Register as an SMCCC device
