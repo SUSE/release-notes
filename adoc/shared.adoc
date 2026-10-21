@@ -124,7 +124,7 @@ For complicated setups, we recommend using `systemd.link`.
 
 For more information, see:
 
-* https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/
+* https://www.freedesktop.org/software/systemd/man/latest/systemd.net-naming-scheme.html
 * https://www.freedesktop.org/software/systemd/man/latest/systemd.link.html
 
 [NOTE]
@@ -542,5 +542,3 @@ To use tools that require `debugfs`, mount the file system manually:
 mount none -t debugfs /sys/kernel/debug
 ----
 end::jscped-16583[]
-
-
