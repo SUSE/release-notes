@@ -16,6 +16,8 @@
 // PRODUCT-SPECIFIC ENTITIES
 // Removed downstream (not used/present in release-notes-github):
 // include::./product-attributes.adoc[]
+// Moved to the end of this file, after the attributes it references:
+// include::./l10n-generic-attributes.adoc[]
 // Removed downstream (not used/present in release-notes-github):
 // include::./network-attributes.adoc[]
 
@@ -480,7 +482,6 @@
 :kg:                         kGraft
 :klp:                        Kernel Live Patching
 :klpa:                       KLP
-:ulp:                        user space live patching
 :ulpa:                       ULP
 :keylime:                    Keylime
 :kiwi:                       KIWI{nbsp}NG
@@ -552,7 +553,6 @@
 
 // HPC
 :hpc:                        High Performance Computing
-:hpcm:                       HPC module
 
 // SLES FOR SAP
 :sapconf:                    sapconf
@@ -615,7 +615,6 @@
 :cpufreq:                    CPUfreq
 :gpg:                        GPG
 :mariadb:                    MariaDB
-:nautilus:                   {gnome} Files
 :oprof:                      OProfile
 :postgresql:                 PostgreSQL
 :powertop:                   powerTOP
@@ -731,6 +730,8 @@
 :mgrgetstart:            Getting Started Guide
 :mgrrefguide:            Reference Guide
 :mgruserguide:           User Guide
+
+include::./l10n-generic-attributes.adoc[]
 
 // =============================================================================
 // BACKWARD-COMPATIBILITY ALIASES & RE-DEFINITIONS FOR RELEASE-NOTES-GITHUB

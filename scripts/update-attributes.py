@@ -3,8 +3,11 @@ import urllib.request
 import re
 import sys
 
-URL = "https://raw.githubusercontent.com/openSUSE/doc-kit/refs/heads/main/entities/generic-attributes.adoc"
-OUTPUT_FILE = "adoc/common/attributes-generic.adoc"
+BASE_URL = "https://raw.githubusercontent.com/openSUSE/doc-kit/refs/heads/main/entities/"
+OUTPUT_DIR = "adoc/common/"
+OUTPUT_FILE = OUTPUT_DIR + "attributes-generic.adoc"
+# Included verbatim by generic-attributes.adoc; copied unmodified.
+L10N_FILE = "l10n-generic-attributes.adoc"
 
 COMPATIBILITY_BLOCK = """
 // =============================================================================
@@ -67,14 +70,28 @@ ifeval::["{lifecycle}" == ""]
 endif::[]
 """
 
-def main():
-    print(f"Fetching {URL}...")
+def fetch(name):
+    url = BASE_URL + name
+    print(f"Fetching {url}...")
     try:
-        with urllib.request.urlopen(URL) as response:
-            content = response.read().decode('utf-8')
+        with urllib.request.urlopen(url) as response:
+            return response.read().decode('utf-8')
     except Exception as e:
         print(f"Error fetching URL: {e}", file=sys.stderr)
         sys.exit(1)
+
+def write(path, content):
+    print(f"Writing to {path}...")
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+    except Exception as e:
+        print(f"Error writing file: {e}", file=sys.stderr)
+        sys.exit(1)
+
+def main():
+    content = fetch("generic-attributes.adoc")
+    l10n_content = fetch(L10N_FILE)
 
     processed_lines = []
     lines = content.splitlines()
@@ -101,19 +118,23 @@ def main():
         )):
             processed_lines.append("// Removed downstream (not used/present in release-notes-github):")
             processed_lines.append(f"// {line}")
+        # Move the l10n include to the end: its attributes (for example
+        # :nautilus: {gnome} Files) reference attributes defined later in the file,
+        # and AsciiDoc resolves references when the attribute is defined.
+        elif stripped == f"include::./{L10N_FILE}[]":
+            processed_lines.append("// Moved to the end of this file, after the attributes it references:")
+            processed_lines.append(f"// {line}")
         else:
             processed_lines.append(line)
 
+    processed_lines.append("")
+    processed_lines.append(f"include::./{L10N_FILE}[]")
+
     processed_content = "\n".join(processed_lines) + "\n" + COMPATIBILITY_BLOCK + "\n"
 
-    print(f"Writing to {OUTPUT_FILE}...")
-    try:
-        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            f.write(processed_content)
-        print("Done successfully!")
-    except Exception as e:
-        print(f"Error writing file: {e}", file=sys.stderr)
-        sys.exit(1)
+    write(OUTPUT_FILE, processed_content)
+    write(OUTPUT_DIR + L10N_FILE, l10n_content if l10n_content.endswith("\n") else l10n_content + "\n")
+    print("Done successfully!")
 
 if __name__ == "__main__":
     main()
