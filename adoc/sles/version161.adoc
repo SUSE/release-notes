@@ -103,10 +103,10 @@ Technology previews come with the following limitations:
 * Technology previews may only be available for specific hardware architectures. Details and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may be impossible and require a fresh installation.
 * Technology previews can be removed from a product at any time. This may be the case, for example, if SUSE discovers that a preview does not meet the customer or market needs, or does not comply with enterprise standards.
 
-[#slert-scheduling-techpreview]
+[#real-time-kernel-scheduling-techpreview]
 === Technology Previews for scheduling
 
-{slert} {this-version} enables the `SCHED_DEADLINE` scheduling class as a Technology Preview (best-effort support).
+{sles} with the real-time kernel enables the `SCHED_DEADLINE` scheduling class as a Technology Preview (best-effort support).
 This scheduler predicts task scheduling based on application deadlines, which is particularly useful for realtime workload.
 
 
@@ -1081,5 +1081,3 @@ Use `mdadm` instead to manage and monitor software RAID devices.
 ifndef::omit-sles-specific[]
 include::16.1/nvidia-patches.adoc[]
 endif::[]
-
-
