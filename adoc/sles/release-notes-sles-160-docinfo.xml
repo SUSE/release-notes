@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-10-16</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Updated lifecycle dates and support information in <link xlink:href="index.html#v160-support-and-lifecycle">Support and lifecycle</link> (bsc#1285783)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-10-06</date>
      <revdescription>
       <itemizedlist>
