@@ -17,9 +17,12 @@
 #   override LIFECYCLE := maintained
 # endif
 
-# valid values are:
-# micro
-PRODUCT_VERSION ?= micro
+# PRODUCT_VERSION is the suffix of a DC-releasenotes_* file, for example
+# "sles_16.1" or "sle-micro_6.2". If it is not set, "make single-html" builds
+# all DC files.
+PRODUCT_VERSION ?=
+
+all_versions := $(patsubst DC-releasenotes_%,%,$(wildcard DC-releasenotes_*))
 
 dc_file := DC-releasenotes_$(PRODUCT_VERSION)
 mainfile  := adoc/release-notes-$(PRODUCT_VERSION).adoc
@@ -57,7 +60,7 @@ yast_html_result_dir := build/releasenotes_$(PRODUCT_VERSION)/yast-html
 yast_html_result     := $(yast_html_result_dir)/release-notes.html
 
 
-.PHONY: all clean html pdf single-html text update-attributes validate yast-html 
+.PHONY: all clean html pdf single-html text update-attributes validate yast-html $(addprefix single-html@,$(all_versions))
 
 all: validate single-html yast-html pdf text html
 
@@ -78,8 +81,16 @@ pdf: $(dc_file) $(src_files)
 
 #----------------
 
+ifeq ($(PRODUCT_VERSION),)
+# No PRODUCT_VERSION: build every DC file. Works with -j and -k.
+single-html: $(addprefix single-html@,$(all_versions))
+
+$(addprefix single-html@,$(all_versions)): single-html@%:
+	$(MAKE) PRODUCT_VERSION=$* single-html
+else
 single-html: $(dc_file) $(src_files)
 	$(daps_command) -d $< -vv $(profile_params) html --single --param="toc.section.depth=2"
+endif
 
 #----------------
 
