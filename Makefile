@@ -18,8 +18,8 @@
 # endif
 
 # PRODUCT_VERSION is the suffix of a DC-releasenotes_* file, for example
-# "sles_16.1" or "sle-micro_6.2". If it is not set, "make single-html" builds
-# all DC files.
+# "sles_16.1" or "sle-micro_6.2". If it is not set, "make single-html" and
+# "make validate" run for all DC files.
 PRODUCT_VERSION ?=
 
 all_versions := $(patsubst DC-releasenotes_%,%,$(wildcard DC-releasenotes_*))
@@ -60,7 +60,16 @@ yast_html_result_dir := build/releasenotes_$(PRODUCT_VERSION)/yast-html
 yast_html_result     := $(yast_html_result_dir)/release-notes.html
 
 
-.PHONY: all clean html pdf single-html text update-attributes validate yast-html $(addprefix single-html@,$(all_versions))
+# Without PRODUCT_VERSION, run target $(1) for every DC file through the
+# per-version targets $(1)@<version>. Works with -j and -k.
+define per_version_rules
+.PHONY: $(addprefix $(1)@,$(all_versions))
+$(1): $(addprefix $(1)@,$(all_versions))
+$(addprefix $(1)@,$(all_versions)): $(1)@%:
+	$$(MAKE) PRODUCT_VERSION=$$* $(1)
+endef
+
+.PHONY: all clean html pdf single-html text update-attributes validate yast-html
 
 all: validate single-html yast-html pdf text html
 
@@ -82,11 +91,7 @@ pdf: $(dc_file) $(src_files)
 #----------------
 
 ifeq ($(PRODUCT_VERSION),)
-# No PRODUCT_VERSION: build every DC file. Works with -j and -k.
-single-html: $(addprefix single-html@,$(all_versions))
-
-$(addprefix single-html@,$(all_versions)): single-html@%:
-	$(MAKE) PRODUCT_VERSION=$* single-html
+$(eval $(call per_version_rules,single-html))
 else
 single-html: $(dc_file) $(src_files)
 	$(daps_command) -d $< -vv $(profile_params) html --single --param="toc.section.depth=2"
@@ -104,8 +109,12 @@ $(text_result): $(dc_file) $(src_files)
 
 #----------------
 
+ifeq ($(PRODUCT_VERSION),)
+$(eval $(call per_version_rules,validate))
+else
 validate: $(dc_file) $(src_files)
 	$(daps_command) -d $< -vv $(profile_params) --adocattr attribute-missing=warn validate
+endif
 
 #----------------
 
