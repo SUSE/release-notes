@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-10-22</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Re-added note about <link xlink:href="index.html#real-time-kernel-scheduling-techpreview">Technology Previews for scheduling</link></para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-10-08</date>
    <revdescription>
     <itemizedlist>
