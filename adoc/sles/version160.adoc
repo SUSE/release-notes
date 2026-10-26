@@ -762,11 +762,12 @@ In {productnameshort} {this-version}, `sapconf` is replaced with `saptune`.
 Base tuning only will be enabled if `saptune` was not configured before (no SAP Notes or Solutions selected).
 
 
+// jsc#PED-16884
 [#jsc-PED-12925]
 === Azure Entra ID authentication via `himmelblau`
 
-The `himmelblau` package has been added.
-It provides interoperability with for Microsoft Azure Entra ID and Intune.
+The `himmelblau` package has been added at version 3.x.
+It provides interoperability with Microsoft Azure Entra ID and Intune.
 It supports Linux authentication to Microsoft Azure Entra ID via PAM and NSS modules.
 
 For more information see https://github.com/himmelblau-idm/himmelblau.
