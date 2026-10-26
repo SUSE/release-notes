@@ -4,10 +4,53 @@
 | Commit | Upstream | Reference | Subject
 | `0bbff9ed8165` | v6.13-rc1 | jsc#NVIDIA-55 | perf/arm_pmuv3: Add PMUv3.9 per counter EL0 access control
 | `bdc9a64c8b20` | v6.13-rc1 | jsc#NVIDIA-55 | ARM: pmuv3: Add missing write_pmuacr()
+| `d1b3dad9de79` | v6.13-rc1 | jsc#PED-16989 | iommufd: Move struct iommufd_object to public iommufd header
+| `7d4f46c2372d` | v6.13-rc1 | jsc#PED-16989 | iommufd: Move _iommufd_object_alloc helper to a sharable file
+| `6b22d562fcd6` | v6.13-rc1 | jsc#PED-16989 | iommufd: Introduce IOMMUFD_OBJ_VIOMMU and its related struct
+| `d56d1e8405a9` | v6.13-rc1 | jsc#PED-16989 | iommufd: Verify object in iommufd_object_finalize/abort()
+| `4db97c21ed07` | v6.13-rc1 | jsc#PED-16989 | iommufd/viommu: Add IOMMU_VIOMMU_ALLOC ioctl
+| `69d2689e57f5` | v6.13-rc1 | jsc#PED-16989 | iommufd: Add alloc_domain_nested op to iommufd_viommu_ops
+| `13a750180fc8` | v6.13-rc1 | jsc#PED-16989 | iommufd: Allow pt_id to carry viommu_id for IOMMU_HWPT_ALLOC
+| `fd6b853f50c8` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add container_of helpers
+| `18f819901d53` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Prepare for mock_viommu_alloc_domain_nested()
+| `86070569450e` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add refcount to mock_iommu_device
+| `db70827a8827` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_VIOMMU_TYPE_SELFTEST
+| `7156cd9ef245` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_VIOMMU_ALLOC test coverage
+| `0ce5c2477af2` | v6.13-rc1 | jsc#PED-16989 | iommufd/viommu: Add IOMMUFD_OBJ_VDEVICE and IOMMU_VDEVICE_ALLOC ioctl
+| `5778c75703c6` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_VDEVICE_ALLOC test coverage
+| `67db79dc1a41` | v6.13-rc1 | jsc#PED-16989 | iommu/viommu: Add cache_invalidate to iommufd_viommu_ops
+| `54ce69e36c71` | v6.13-rc1 | jsc#PED-16989 | iommufd: Allow hwpt_id to carry viommu_id for IOMMU_HWPT_INVALIDATE
+| `4f2e59ccb698` | v6.13-rc1 | jsc#PED-16989 | iommu: Add iommu_copy_struct_from_full_user_array helper
+| `c747e67978ff` | v6.13-rc1 | jsc#PED-16989 | iommufd/viommu: Add iommufd_viommu_find_dev helper
+| `d6563aa2a830` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add mock_viommu_cache_invalidate
+| `576ad6eb45d6` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_TEST_OP_DEV_CHECK_CACHE test command
+| `49ad12771924` | v6.13-rc1 | jsc#PED-16989 | iommufd/selftest: Add vIOMMU coverage for IOMMU_HWPT_INVALIDATE ioctl
+| `35890f85573c` | v6.13-rc1 | jsc#PED-16989 | vfio: Remove VFIO_TYPE1_NESTING_IOMMU
+| `e89573cf4a13` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Report IOMMU_CAP_ENFORCE_CACHE_COHERENCY for CANWBS
+| `6912ec91828b` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Support IOMMU_GET_HW_INFO via struct arm_smmu_hw_info
+| `874b87c7539f` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Implement IOMMU_HWPT_ALLOC_NEST_PARENT
+| `f6681abd4139` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Expose the arm_smmu_attach interface
+| `69d9b312f38a` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Support IOMMU_VIOMMU_ALLOC
+| `1e8be08d1c91` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Support IOMMU_DOMAIN_NESTED
+| `67e4fe398513` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Use S2FWB for NESTED domains
+| `f27298a82ba0` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Allow ATS for IOMMU_DOMAIN_NESTED
+| `d68beb276ba2` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Support IOMMU_HWPT_INVALIDATE using a VIOMMU object
+| `6d026e6d48cd` | v6.13-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Import IOMMUFD module namespace
 | `ea1829d4d413` | v6.13-rc1 | grace-baremetal.txt | cppc_cpufreq: Remove HiSilicon CPPC workaround
 | `b45a3777ceab` | v6.13-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Pass old domain to set_dev_pasid op
+| `12cd88a9116a` | v6.13-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add a new GH200 SKU to the devid table
+| `7937a1bf32e3` | v6.13-rc2 | jsc#PED-16989 git-fixes | iommufd: Fix typos in kernel-doc comments
+| `09dfc8a5f2ce` | v6.13-rc7 | jsc#PED-16989 git-fixes | vfio/pci: Fallback huge faults for unaligned pfn
+| `43ca55f5555b` | v6.14-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Introduce struct arm_smmu_event
+| `d814b70b9b90` | v6.14-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Log better event records
 | `fb3de9f9b085` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Prevent pasid attach if no ops->remove_dev_pasid
 | `1fbf73425f51` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Consolidate the ops->remove_dev_pasid usage into a helper
+| `442003f3a842` | v6.14-rc1 | jsc#PED-16989 | iommufd: Keep OBJ/IOCTL lists in an alphabetical order
+| `3d49020a327c` | v6.14-rc1 | jsc#PED-16989 git-fixes | iommufd/fault: Use a separate spinlock to protect fault->deliver list
+| `bd53764a60ad` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Read dvsec register to determine need for uncached resmem
+| `6a9eb2d125ba` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Expose the blackwell device PF BAR1 to the VM
+| `d85f69d520e6` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Check the HBM training and C2C link status
+| `2bb447540e71` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add GB200 SKU to the devid table
 | `1608f0230510` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: Fix re-boost issue after hotplugging a CPU
 | `dd016f379ebc` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce a more generic way to set default per-policy boost flag
 | `03d8b4e76266` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Fix wrong max_freq in policy initialization
@@ -40,6 +83,11 @@
 | `45f589b7167f` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: Init cpufreq only for present CPUs
 | `f48dcda8f6a4` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu/rockchip: Allocate per-device data sensibly
 | `f90aa59eb299` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu/rockchip: Register in a sensible order
+| `9349887e9300` | v6.15-rc1 | jsc#PED-16989 | genirq/msi: Refactor iommu_dma_compose_msi_msg()
+| `288683c92b1a` | v6.15-rc1 | jsc#PED-16989 | iommu: Make iommu_dma_prepare_msi() into a generic operation
+| `96093fe54f48` | v6.15-rc1 | jsc#PED-16989 | irqchip: Have CONFIG_IRQ_MSI_IOMMU be selected by irqchips that need it
+| `748706d7ca06` | v6.15-rc1 | jsc#PED-16989 | iommu: Turn fault_data to iommufd private pointer
+| `40f5175d0eb7` | v6.15-rc1 | jsc#PED-16989 | iommufd: Implement sw_msi support natively
 | `237603a46abf` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Make @handle mandatory in iommu_{attach\|replace}_group_handle()
 | `e1ea9d30d84c` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Store either domain or handle in group->pasid_array
 | `5e9f822c9c68` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Swap the order of setting group->pasid_array and calling attach op of iommu drivers
@@ -48,10 +96,31 @@
 | `bcb81ac6ae3c` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Get DT/ACPI parsing into the proper probe path
 | `73d2f10957f5` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Don't warn prematurely about dodgy probes
 | `27321c788b3a` | v6.15-rc1 | jsc#NVIDIA-67 | firmware: tegra: bpmp: Fix typo in bpmp-abi.h
+| `897008d0f767` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Set domain->iommufd_hwpt in all hwpt->domain allocators
+| `dbf00d7d8912` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Move two fault functions out of the header
+| `927dabc9aa4d` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Add an iommufd_fault_init() helper
+| `5426a78bebef` | v6.15-rc1 | jsc#PED-16989 | iommufd: Abstract an iommufd_eventq from iommufd_fault
+| `0507f337fc0c` | v6.15-rc1 | jsc#PED-16989 | iommufd: Rename fault.c to eventq.c
+| `e36ba5ab808e` | v6.15-rc1 | jsc#PED-16989 | iommufd: Add IOMMUFD_OBJ_VEVENTQ and IOMMUFD_CMD_VEVENTQ_ALLOC
+| `ea94b211c548` | v6.15-rc1 | jsc#PED-16989 | iommufd/viommu: Add iommufd_viommu_get_vdev_id helper
+| `e8e1ef9b77a7` | v6.15-rc1 | jsc#PED-16989 | iommufd/viommu: Add iommufd_viommu_report_event helper
+| `941d0719aa66` | v6.15-rc1 | jsc#PED-16989 | iommufd/selftest: Require vdev_id when attaching to a nested domain
+| `b3cc0b7599cc` | v6.15-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_TEST_OP_TRIGGER_VEVENT for vEVENTQ coverage
+| `97717a1f283f` | v6.15-rc1 | jsc#PED-16989 | iommufd/selftest: Add IOMMU_VEVENTQ_ALLOC test coverage
+| `f0ea207ed781` | v6.15-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Introduce struct arm_smmu_vmaster
+| `e7d3fa3d29d5` | v6.15-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Report events that belong to devices attached to vIOMMU
+| `da0c56520e88` | v6.15-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Set MEV bit in nested STE for DoS mitigations
 | `8a9e1e773f60` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Introduce a replace API for device pasid
+| `803f97298e7d` | v6.15-rc1 | jsc#PED-16989 | iommufd: Extend IOMMU_GET_HW_INFO to report PASID capability
+| `6d9500bb1ff8` | v6.15-rc1 | jsc#PED-16989 | iommufd/selftest: Add coverage for reporting max_pasid_log2 via IOMMU_HW_INFO
+| `41464a4628f3` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Initialize the flags of vevent in iommufd_viommu_report_event()
+| `6fc85bbbeaea` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Balance veventq->num_events inc/dec
+| `858c9c10c123` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Fix iommu_vevent_header tables markup
 | `d9d3cede4167` | v6.15-rc2 | bsc#1272627 jsc#NVIDIA-77 | iommu/ipmmu-vmsa: Register in a sensible order
 | `c8ba3f8aff67` | v6.15-rc2 | bsc#1272627 jsc#NVIDIA-77 | PCI: Run quirk_huawei_pcie_sva() before arm_smmu_probe_device()
+| `45e00e367189` | v6.15-rc5 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Add missing S2FWB feature detection
 | `3d59224947b0` | v6.15-rc5 | jsc#NVIDIA-64 | cpufreq: ACPI: Re-sync CPU boost state on system resume
+| `c1d9dac0db16` | v6.15-rc6 | jsc#PED-16989 git-fixes | vfio/pci: Align huge faults to order
 | `95deee37a123` | v6.15-rc6 | bsc#1272627 jsc#NVIDIA-77 | platform: Fix race condition during DMA configure at IOMMU probe time
 | `c347f31ae27f` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Don't unnecessarily call set_boost()
 | `27241c8b63bd` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce policy_set_boost()
@@ -60,29 +129,94 @@
 | `152f33ee30ee` | v6.16-rc1 | bsc#1272627 jsc#NVIDIA-77 | bus: fsl_mc: Fix driver_managed_dma check
 | `3d5978ea6cbc` | v6.17-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Do not return a value from populate_efficiency_class()
 | `c83a92df2fc6` | v6.17-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Remove forward declaration of cppc_cpufreq_register_em()
+| `6e235a772199` | v6.17-rc1 | jsc#PED-16989 | iommufd: Drop unused ictx in struct iommufd_vdevice
+| `fc9c40e3a4fa` | v6.17-rc1 | jsc#PED-16989 | iommufd: Use enum iommu_viommu_type for type in struct iommufd_viommu
+| `62b62a55bd30` | v6.17-rc1 | jsc#PED-16989 | iommufd: Use enum iommu_veventq_type for type in struct iommufd_veventq
+| `0c6e0ae7a7e4` | v6.17-rc1 | jsc#PED-16989 | iommufd: Return EOPNOTSUPP for failures due to driver bugs
+| `187f146d5de6` | v6.17-rc1 | jsc#PED-16989 | iommu: Introduce get_viommu_size and viommu_init ops
+| `63141fa741da` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Support get_viommu_size and viommu_init ops
+| `5983d1e7d758` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Drop parent domain from mock_iommu_domain_nested
+| `683cff7c3bf4` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Replace mock_viommu_alloc with mock_viommu_init
+| `3961f2f5dacc` | v6.17-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Replace arm_vsmmu_alloc with arm_vsmmu_init
+| `f842ea208e43` | v6.17-rc1 | jsc#PED-16989 | iommu: Deprecate viommu_alloc op
+| `17a93473a552` | v6.17-rc1 | jsc#PED-16989 | iommufd: Move _iommufd_object_alloc out of driver.c
+| `c0d498a1b99d` | v6.17-rc1 | jsc#PED-16989 | iommufd: Introduce iommufd_object_alloc_ucmd helper
+| `3e2a9811f6a9` | v6.17-rc1 | jsc#PED-16989 | iommufd: Apply the new iommufd_object_alloc_ucmd helper
+| `b23e09f99977` | v6.17-rc1 | jsc#PED-16989 | iommufd: Report unmapped bytes in the error path of iopt_unmap_iova_range
+| `fca02263f27e` | v6.17-rc1 | jsc#PED-16989 | iommufd: Correct virt_id kdoc at struct iommu_vdevice_alloc
+| `c50a5de2c465` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Explicitly define vdev->virt_id
+| `4b57c057f9e6` | v6.17-rc1 | jsc#PED-16989 | iommu: Use enum iommu_hw_info_type for type in hw_info op
+| `3fcf56a2393b` | v6.17-rc1 | jsc#PED-16989 | iommu: Add iommu_copy_struct_to_user helper
+| `c3436d42f812` | v6.17-rc1 | jsc#PED-16989 | iommu: Pass in a driver-level user data structure to viommu_init op
+| `1976cdf61ce9` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Allow driver-specific user data for a vIOMMU object
+| `afeaf592c1d4` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Support user_data in mock_viommu_alloc
+| `0e3e0b0c08e3` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Add coverage for viommu data
+| `1c26c3bbdee1` | v6.17-rc1 | jsc#PED-16989 | iommufd/access: Add internal APIs for HW queue to use
+| `27b77ea5feaa` | v6.17-rc1 | jsc#PED-16989 | iommufd/access: Bypass access->ops->unmap for internal use
+| `ed42eee797ff` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Add driver-defined vDEVICE support
+| `e2e936002258` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Introduce IOMMUFD_OBJ_HW_QUEUE and its related struct
+| `2238ddc2b056` | v6.17-rc1 | jsc#PED-16989 | iommufd/viommu: Add IOMMUFD_CMD_HW_QUEUE_ALLOC ioctl
+| `0b37d892d042` | v6.17-rc1 | jsc#PED-16989 | iommufd/driver: Add iommufd_hw_queue_depend/undepend() helpers
+| `20896914da8a` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Add coverage for IOMMUFD_CMD_HW_QUEUE_ALLOC
+| `56e9a0d8e53f` | v6.17-rc1 | jsc#PED-16989 | iommufd: Add mmap interface
+| `80478a2b450e` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Add coverage for the new mmap interface
+| `62622a8753fa` | v6.17-rc1 | jsc#PED-16989 | iommu: Allow an input type in hw_info op
+| `a9f10bab2e50` | v6.17-rc1 | jsc#PED-16989 | iommufd: Allow an input data_type via iommu_hw_info
+| `3a35f7d4a467` | v6.17-rc1 | jsc#PED-16989 | iommufd/selftest: Update hw_info coverage for an input data_type
+| `61dd912ee02e` | v6.17-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3-iommufd: Add vsmmu_size/type and vsmmu_init impl ops
+| `9eb6a666df7f` | v6.17-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3-iommufd: Add hw_info to impl_ops
+| `1eb468744cca` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Use request_threaded_irq
+| `589899ee299e` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Simplify deinit flow in tegra241_cmdqv_remove_vintf()
+| `81f81db6328b` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Do not statically map LVCMDQs
+| `4dc0d12474f9` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Add user-space use support
+| `32b2d3a57e26` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Add IOMMU_VEVENTQ_TYPE_TEGRA241_CMDQV support
+| `b42497e3c0e7` | v6.17-rc1 | jsc#PED-16989 git-fixes | iommufd: Prevent ALIGN() overflow
 | `78447d4545b2` | v6.17-rc1 | bsc#1272627 jsc#NVIDIA-77 | PCI: Fix driver_managed_dma check
 | `72b6f7cd89ce` | v6.17-rc3 | bsc#1272627 jsc#NVIDIA-77 | iommu/virtio: Make instance lookup robust
+| `8fe8a092043f` | v6.17-rc3 | jsc#PED-16989 git-fixes | iommufd: viommu: free memory allocated by kvcalloc() using kvfree()
+| `7a425ec75d2b` | v6.17 | jsc#PED-16989 git-fixes | iommufd: Fix refcounting race during mmap
 | `fa84e534c3ec` | v6.18-rc1 | vera-baremetal.txt | arm64: realm: ioremap: Allow mapping memory as encrypted
 | `9e8a3df3e7f7` | v6.18-rc1 | vera-baremetal.txt | arm64: Enable EFI secret area Securityfs support
 | `f8f89e8cf3d6` | v6.18-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Factor out PMCCNTR_EL0 use conditions
 | `16d39e2bf960` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: Remove unused parameter in cppc_perf_from_fbctrs()
 | `c8dc2368b23e` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Use scope-based cleanup helper
 | `97248d05b70e` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: Drop redundant freq_table parameter
+| `1d235d849425` | v6.18-rc1 | jsc#PED-16989 git-fixes | iommu/selftest: prevent use of uninitialized variable
+| `407aa63018d1` | v6.18-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add GB300 SKU to the devid table
 | `bee8a520eb84` | v6.18-rc1 | jsc#NVIDIA-73 | rhashtable: Use rcu_dereference_all and rcu_dereference_all_check
+| `b09ed52db1e6` | v6.18-rc5 | jsc#PED-16989 git-fixes | iommufd/selftest: Fix ioctl return value in _test_cmd_trigger_vevents()
+| `ac84ff453305` | v6.18 | jsc#PED-16989 git-fixes | iommufd/driver: Fix counter initialization for counted_by annotation
+| `b07bf253ef8e` | v6.18 | jsc#PED-16989 git-fixes | iommufd/iommufd_private.h: Avoid -Wflex-array-member-not-at-end warning
 | `c3d78c34ad00` | v6.19-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Don't use PMCCNTR_EL0 on SMT cores
 | `7ab06ea41af5` | v6.19-rc1 | jsc#NVIDIA-55 | arch_topology: Provide a stub topology_core_has_smt() for !CONFIG_GENERIC_ARCH_TOPOLOGY
 | `52f77fb176ec` | v6.19-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
+| `680a6a60fc08` | v6.19-rc1 | git-fixes | iommu/exynos-iommu: Set release_domain to exynos_identity_domain
 | `fd714986e4e4` | v6.19-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Pass in old domain to attach_dev callback functions
+| `9b92bc7554b5` | v6.19-rc1 | jsc#PED-16989 | vfio: refactor vfio_pci_mmap_huge_fault function
+| `9db65489b872` | v6.19-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add support for huge pfnmap
+| `7f5764e179c6` | v6.19-rc1 | jsc#PED-16989 | vfio: use vfio_pci_core_setup_barmap to map bar in mmap
+| `7d055071d73b` | v6.19-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: split the code to wait for GPU ready
+| `dfe765499abf` | v6.19-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Inform devmem unmapped after reset
+| `a23b10608d42` | v6.19-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: wait for the GPU mem to be ready
+| `30d0a1291046` | v6.19-rc1 | jsc#PED-16989 | mm: change ghes code to allow poison of non-struct pfn
+| `2ec41967189c` | v6.19-rc1 | jsc#PED-16989 | mm: handle poisoning of pfn without struct pages
+| `e6dbcb7c0e7b` | v6.19-rc4 | jsc#PED-16989 git-fixes | mm: fixup pfnmap memory failure handling to use pgoff
 | `f9cadb3d5691` | v7.0-rc1 | jsc#NVIDIA-64 | ACPI: CPPC: Factor out and export per-cpu cppc_perf_ctrs_in_pcc_cpu()
 | `206b66125563` | v7.0-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Factor out cppc_fie_kworker_init()
 | `997c021abc6e` | v7.0-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Update FIE arch_freq_scale in ticks for non-PCC regs
 | `71fedc41c23b` | v7.0-rc1 | jsc#NVIDIA-73 | sched/fair: Switch to rcu_dereference_all()
 | `5ac66ed8417f` | v7.0-rc1 | linux-nvidia-6.18 | iommu/arm-smmu-v3: Remove IAS
+| `2781f2a930ab` | v7.0-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Add update_safe bits to fix STE update sequence
+| `f3c1d372dbb8` | v7.0-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Mark STE MEV safe when computing the update sequence
+| `7cad80048595` | v7.0-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Mark EATS_TRANS safe when computing the update sequence
+| `a45dd3466302` | v7.0-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Do not set disable_ats unless vSTE is Translate
 | `5d5388b0e190` | v7.0-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Lock group->mutex in iommu_deferred_attach()
 | `4a73abb965b7` | v7.0-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Tidy domain for iommu_setup_dma_ops()
 | `a75b2be249d6` | v7.0-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Add iommu_driver_get_domain_for_dev() helper
 | `c279e83953d9` | v7.0-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Introduce pci_dev_reset_iommu_prepare/done()
 | `f5b16b802174` | v7.0-rc1 | bsc#1272627 jsc#NVIDIA-77 | PCI: Suspend iommu function prior to resetting a device
+| `205e6d17cdf5` | v7.0-rc1 | jsc#PED-16989 | mm: add stubs for PFNMAP memory failure registration functions
+| `e5f19b619fa0` | v7.0-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: register device memory for poison handling
 | `0f7afd80d81b` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Move CXL DVSEC definitions into uapi/linux/pci_regs.h
 | `6612bd9ff0b1` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Update CXL DVSEC definitions
 | `7c29ba02210c` | v7.0-rc1 | vera-baremetal-addendum.txt | PCI: Introduce pcie_is_cxl()
@@ -113,8 +247,11 @@
 | `429b7638b2df` | v7.1-rc1 | jsc#NVIDIA-55 | perf: add NVIDIA Tegra410 CPU Memory Latency PMU
 | `2f89b7f78c50` | v7.1-rc1 | jsc#NVIDIA-55 | perf: add NVIDIA Tegra410 C2C PMU
 | `702c1d56c717` | v7.1-rc1 | vera-baremetal.txt | PCI/CXL: Hide SBR from reset_methods if masked by CXL
+| `6fabce53f6b9` | v7.1-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Add a missing dma_wmb() for hitless STE update
+| `9dcef98dbee3` | v7.1-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Update uAPI to clarify HYP_OWN requirement
 | `d921f8d3b955` | v7.1-rc1 | jsc#NVIDIA-67 | firmware: tegra: bpmp: Rename Tegra239 to Tegra238
 | `83c18a324570` | v7.1-rc1 | jsc#NVIDIA-67 | soc/tegra: Update BPMP ABI header
+| `09c091fddb0b` | v7.1-rc1 | jsc#PED-16989 git-fixes | iommufd/selftest: Fix page leaks in mock_viommu_{init,destroy}
 | `d769711fcddd` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 CVE-2026-53280 bsc#1269524 | iommu: Fix NULL group->domain dereference in pci_dev_reset_iommu_done()
 | `834ab85aa966` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 | iommu: Fix kdocs of pci_dev_reset_iommu_done()
 | `b296ca1fb43a` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 | iommu: Replace per-group resetting_domain with per-gdev blocked flag
@@ -144,16 +281,38 @@
 | `1cfa74c683ea` | v7.2-rc1 | linux-nvidia-6.18 | fs/resctrl: Document tasks file behaviour for task id 0 and idle tasks
 | `8a3571618c2e` | v7.2-rc1 | linux-nvidia-6.18 | soc/tegra: fuse: Register nvmem lookups at probe
 | `8b8ee2e56f95` | v7.2-rc1 | jsc#NVIDIA-66 | soc/tegra: Use ARM SMCCC to get chip ID, revision, and platform info
+| `682ecb14e838` | v7.2-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add Blackwell-Next GPU readiness check via CXL DVSEC
 | `91561e1dc94b` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-72 | PCI: Add pci_ats_required() for CXL.cache capable devices
 | `073e63812525` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-7 | PCI: Allow ATS to be always on for pre-CXL devices
 | `5ff98a0da6b4` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-72 | iommu/arm-smmu-v3: Allow ATS to be always on
+| `be93d186ae88` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Use sizeof(*hdr) instead of sizeof(hdr) in veventq read
+| `85345becfead` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Fix data_len byte-count vs element-count mismatch
+| `47443565d10c` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Move vevent memory allocation outside spinlock
+| `6ebf2eb46fbd` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Set veventq_depth upper bound
+| `01e41ad76c12` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Rewind header length in done if iommufd_veventq_fops_read() fails
+| `00203ca8323f` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Reject invalid read count in iommufd_veventq_fops_read()
+| `489e63dd120b` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Propagate allocation failure in iommufd_veventq_deliver_fetch()
+| `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
 | `52fce648607e` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72080 bsc#1277172 | fs/resctrl: Fix use-after-free during unmount
 | `b9f089723aee` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72015 bsc#1276791 | fs/resctrl: Fix double-add of pseudo-locked region's RMID to free list
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
+| `9be311cfbe61` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommufd/viommu: Publish a vDEVICE only after vdevice_init() succeeds
+| `c3b8ee84a965` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Require exactly one Stream ID for a vDEVICE
 | `49f2413f9b55` | v7.3-rc1 | jsc#NVIDIA-55 | perf/arm_pmu: Skip PMCCNTR_EL0 on NVIDIA Olympus
 | `293f9611ae73` | v7.3-rc1 | jsc#NVIDIA-73 | sched/fair: Prefer fully idle cores for NOHZ balancing
+| `445528627447` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Declare eats_s1chk and eats_trans as host-endian u64
+| `9ff145a25c5c` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Fix CMD_SYNC use-after-free on teardown
+| `a491be376abd` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Synchronize the error ISR against VINTF (de)init
+| `4379610c79bd` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Reject a vSID wider than the SID_MATCH field
+| `fb292bfc9be9` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Require exactly one Stream ID for a vSID
+| `773f2b9e3670` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Support IDR5.DS and widen the TLBI SCALE field
+| `0dbcdf4473a6` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommufd: Avoid locking internal accesses during unmap
+| `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/dma: Restore locking around msi_page_list
+| `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
+| `ae1d2082d93b` | v7.4-rc1 | bsc#1282615 | x86/bugs: Adapt SRSO mitigation to Zen6
+| `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: smccc: Add an Arm SMCCC bus
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: hwrng: arm_smccc_trng: Register as an SMCCC device
