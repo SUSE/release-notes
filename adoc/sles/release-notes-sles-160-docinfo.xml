@@ -15,6 +15,9 @@
      <revdescription>
       <itemizedlist>
        <listitem>
+        <para>Updated section <link xlink:href="index.html#jsc-PED-12925">Azure Entra ID authentication via <literal>himmelblau</literal></link> to version 3.x (jsc#PED-16884)</para>
+       </listitem>
+       <listitem>
         <para>Updated support and lifecycle information in <link xlink:href="index.html#v160-support-and-lifecycle">Support and lifecycle</link> (bsc#1285783)</para>
        </listitem>
       </itemizedlist>
