@@ -197,7 +197,7 @@ if [ "${USE_GH}" = true ]; then
         --base main \
         --head "${SYNC_BRANCH}" \
         --title "SLES 16.1: Update NVIDIA kernel patches list (${DATE_TAG}) (jsc#PED-16790)" \
-        --body "Automated bi-weekly update of NVIDIA kernel patches from ${TARGET_BRANCH}."
+        --body "Automated nightly update of NVIDIA kernel patches from ${TARGET_BRANCH}."
     echo "==> Pull Request created successfully."
 else
     echo "==> Pushing branch ${SYNC_BRANCH} via token..."
@@ -222,7 +222,7 @@ else
             \"title\": \"SLES 16.1: Update NVIDIA kernel patches list (${DATE_TAG}) (jsc#PED-16790)\",
             \"head\": \"${SYNC_BRANCH}\",
             \"base\": \"main\",
-            \"body\": \"Automated bi-weekly update of NVIDIA kernel patches from ${TARGET_BRANCH}.\"
+            \"body\": \"Automated nightly update of NVIDIA kernel patches from ${TARGET_BRANCH}.\"
         }"
     echo "==> Pull Request created successfully."
 fi

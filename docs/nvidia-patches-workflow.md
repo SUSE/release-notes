@@ -77,7 +77,7 @@ The list of patches changes approximately every two weeks during initial develop
 
 * **Extraction Runner**:
   * A local shell script executed on the local workstation when connected to SUSE VPN.
-  * Run bi-weekly on-demand or triggered by a local cron/calendar reminder.
+  * Run nightly on-demand or triggered by a local cron/calendar reminder.
   * Uses the existing local clone at `~/work/git/kernel-source`.
   * Executes the extraction script, updates `adoc/sles/16.1/nvidia-patches.adoc` (or `.txt`), creates a Git branch, and opens a GitHub PR with `gh pr create`.
 * **Publishing**:
