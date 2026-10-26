@@ -8,18 +8,27 @@ To read more about the differences and high-level changes between {productname} 
 * https://documentation.suse.com/sles/16.0/html/SLE-comparison/
 
 
+// bsc#1285783
 == Support and lifecycle
 
 {productname} is backed by award-winning support from {suse}, an established technology leader with a proven history of delivering enterprise-quality support services.
 
-Each {productname} 16 release has the following lifecycle:
+Each {sles} 16 release has the following lifecycle:
 
-If you need additional time to design, validate and test your upgrade plans, Long Term Service Pack Support can extend the support duration.
-You can buy an additional 12 to 36 months in twelve month increments.
-This means that you can receive support up to Dec 2037.
+* {sles} 16.0 through 16.5 receive 2 years of general support.
+* {sles} 16.6 receives 4 years of general support.
 
-For more information, see the pages link:https://www.suse.com/support/policy.html[Support Policy], link:https://www.suse.com/support/programs/long-term-service-pack-support.html[Long Term Service Pack Support], and link:https://documentation.suse.com/sles/16.0/html/SLE-packages-lifecycle/index.html[Lifecycles of SUSE Linux Enterprise Components
-].
+If you need additional time to design, validate, and test your upgrade plans, Long Term Support (LTS) can extend the support duration.
+You can purchase LTS in 12-month increments for up to 3 years (36 months).
+
+Each {slessap} 16 release has 5 years of support:
+
+* {slessap} 16.0 through 16.5 receive 2 years of general support, followed by 3 years of Long Term Support (LTS) included in the subscription ("included LTS").
+* {slessap} 16.6 receives 4 years of general support, followed by 1 year of LTS included in the subscription.
+Customers can purchase up to 2 additional years of LTS for 16.6.
+
+For exact lifecycle dates, see link:https://www.suse.com/lifecycle/#suse-linux-enterprise-server-16[{sles} Lifecycle] and link:https://www.suse.com/lifecycle/#suse-linux-enterprise-server-for-sap-applications-16[{slessap} Lifecycle].
+For more information, see link:https://www.suse.com/support/policy.html[Support Policy], link:https://www.suse.com/products/long-term-service-pack-support/[Long Term Support], and link:https://documentation.suse.com/sles/16.0/html/SLE-packages-lifecycle/index.html[Lifecycles of SUSE Linux Enterprise Components].
 
 
 === Support statement for {productname}
