@@ -170,7 +170,7 @@
 | `81f81db6328b` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Do not statically map LVCMDQs
 | `4dc0d12474f9` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Add user-space use support
 | `32b2d3a57e26` | v6.17-rc1 | jsc#PED-16989 | iommu/tegra241-cmdqv: Add IOMMU_VEVENTQ_TYPE_TEGRA241_CMDQV support
-| `b42497e3c0e7` | v6.17-rc1 | jsc#PED-16989 git-fixes | iommufd: Prevent ALIGN() overflow
+| `b42497e3c0e7` | v6.17-rc1 | jsc#PED-16989 git-fixes CVE-2025-38688 bsc#1249174 | iommufd: Prevent ALIGN() overflow
 | `78447d4545b2` | v6.17-rc1 | bsc#1272627 jsc#NVIDIA-77 | PCI: Fix driver_managed_dma check
 | `72b6f7cd89ce` | v6.17-rc3 | bsc#1272627 jsc#NVIDIA-77 | iommu/virtio: Make instance lookup robust
 | `8fe8a092043f` | v6.17-rc3 | jsc#PED-16989 git-fixes | iommufd: viommu: free memory allocated by kvcalloc() using kvfree()
@@ -285,10 +285,10 @@
 | `91561e1dc94b` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-72 | PCI: Add pci_ats_required() for CXL.cache capable devices
 | `073e63812525` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-7 | PCI: Allow ATS to be always on for pre-CXL devices
 | `5ff98a0da6b4` | v7.2-rc1 | bsc#1269026 jsc#NVIDIA-72 | iommu/arm-smmu-v3: Allow ATS to be always on
-| `be93d186ae88` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Use sizeof(*hdr) instead of sizeof(hdr) in veventq read
+| `be93d186ae88` | v7.2-rc1 | jsc#PED-16989 git-fixes CVE-2026-64293 bsc#1274016 | iommufd: Use sizeof(*hdr) instead of sizeof(hdr) in veventq read
 | `85345becfead` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Fix data_len byte-count vs element-count mismatch
-| `47443565d10c` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Move vevent memory allocation outside spinlock
-| `6ebf2eb46fbd` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Set veventq_depth upper bound
+| `47443565d10c` | v7.2-rc1 | jsc#PED-16989 git-fixes CVE-2026-64292 bsc#1274064 | iommufd: Move vevent memory allocation outside spinlock
+| `6ebf2eb46fbd` | v7.2-rc1 | jsc#PED-16989 git-fixes CVE-2026-64291 bsc#1274025 | iommufd: Set veventq_depth upper bound
 | `01e41ad76c12` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Rewind header length in done if iommufd_veventq_fops_read() fails
 | `00203ca8323f` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Reject invalid read count in iommufd_veventq_fops_read()
 | `489e63dd120b` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Propagate allocation failure in iommufd_veventq_deliver_fetch()
@@ -299,20 +299,45 @@
 | `b9f089723aee` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72015 bsc#1276791 | fs/resctrl: Fix double-add of pseudo-locked region's RMID to free list
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
 | `9be311cfbe61` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommufd/viommu: Publish a vDEVICE only after vdevice_init() succeeds
-| `c3b8ee84a965` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Require exactly one Stream ID for a vDEVICE
+| `c3b8ee84a965` | v7.2-rc6 | jsc#PED-16989 git-fixes CVE-2026-74573 bsc#1275563 | iommu/arm-smmu-v3-iommufd: Require exactly one Stream ID for a vDEVICE
 | `49f2413f9b55` | v7.3-rc1 | jsc#NVIDIA-55 | perf/arm_pmu: Skip PMCCNTR_EL0 on NVIDIA Olympus
 | `293f9611ae73` | v7.3-rc1 | jsc#NVIDIA-73 | sched/fair: Prefer fully idle cores for NOHZ balancing
 | `445528627447` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Declare eats_s1chk and eats_trans as host-endian u64
-| `9ff145a25c5c` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Fix CMD_SYNC use-after-free on teardown
-| `a491be376abd` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Synchronize the error ISR against VINTF (de)init
-| `4379610c79bd` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Reject a vSID wider than the SID_MATCH field
-| `fb292bfc9be9` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Require exactly one Stream ID for a vSID
+| `9ff145a25c5c` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-80818 bsc#1279695 | iommu/tegra241-cmdqv: Fix CMD_SYNC use-after-free on teardown
+| `a491be376abd` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90429 bsc#1281990 | iommu/tegra241-cmdqv: Synchronize the error ISR against VINTF (de)init
+| `4379610c79bd` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-89450 bsc#1280381 | iommu/tegra241-cmdqv: Reject a vSID wider than the SID_MATCH field
+| `fb292bfc9be9` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90425 bsc#1282014 | iommu/tegra241-cmdqv: Require exactly one Stream ID for a vSID
 | `773f2b9e3670` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Support IDR5.DS and widen the TLBI SCALE field
-| `0dbcdf4473a6` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommufd: Avoid locking internal accesses during unmap
-| `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/dma: Restore locking around msi_page_list
-| `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
+| `0dbcdf4473a6` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-89447 bsc#1280322 | iommufd: Avoid locking internal accesses during unmap
+| `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90244 bsc#1281834 | iommu/dma: Restore locking around msi_page_list
+| `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes CVE-2026-98546 bsc#1286765 | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
 | `ae1d2082d93b` | v7.4-rc1 | bsc#1282615 | x86/bugs: Adapt SRSO mitigation to Zen6
+| `a7ea67879af0` | v7.4-rc1 | jsc#PED-11016 git-fixes | KVM: PPC: Fix callback check in kvmppc_gsm_refresh_info
+| `af5f0870883a` | v7.4-rc1 | bsc#1278165 ltc#222874 | powerpc/ftrace: Don't restore r13 during ftrace_regs_caller
+| `d52a1659cb17` | v7.4-rc1 | bsc#1215199 | pseries/plpks: fix error handling in plpks_read_var()
+| `0d0eafedcaf4` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: fix error code for wrapping key reads
+| `b59ff2d50b81` | v7.4-rc1 | bsc#1215199 | pseries/plpks: validate input to plpks_signed_update_var()
+| `fe18716ff314` | v7.4-rc1 | bsc#1215199 | pseries/plpks: clear sensitive PLPKS buffers
+| `203695c109e3` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: clear sensitive buffers in wrapping operations
+| `63de55024e7c` | v7.4-rc1 | bsc#1215199 | pseries/plpks: clear signed update authentication buffer
+| `217ba01e5b90` | v7.4-rc1 | bsc#1215199 | pseries/plpks: clear SED key data after use
+| `abcccecf4aa4` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: fix self-reference in plpks_var initializer
+| `46b8411b2ee9` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: hide wrapping_features when unsupported
+| `e0645be900a8` | v7.4-rc1 | bsc#1215199 | pseries/plpks: make narrowing conversions explicit
+| `a2df535d9dd9` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: rename the default wrapping key macro
+| `0499ab96527a` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: update PKS documentation and MAINTAINERS entry
+| `61a39797bb13` | v7.4-rc1 | bsc#1215199 | KVM: PPC: Book3S HV: Add SRCU protection for virtual-mode HPT hcalls
+| `abbbe5ff83e7` | v7.4-rc1 | bsc#1215199 | KVM: PPC: Book3S HV: Add preempt_disable() around virtual-mode HPTE bit-lock users
+| `31895b0ff967` | v7.4-rc1 | bsc#1215199 | KVM: PPC: Fix get_d_signext() 12-bit displacement for paired-single D-form
+| `644ffb027466` | v7.4-rc1 | bsc#1215199 | powerpc/interrupt: Use early_radix_enabled() in NMI real-mode guard
+| `bda162618487` | v7.4-rc1 | bsc#1215199 | KVM: PPC: Book3S HV: Add missing mappings for tracing exits
+| `daf5a5a82ca3` | v7.4-rc1 | bsc#1215199 | KVM: PPC: Book3S HV: Free the queue pages in error path
+| `8fa763bc3ee9` | v7.4-rc1 | jsc#PED-15113 git-fixes | powerpc: fix NMI exit ordering: restore soft masks after irqentry_nmi_exit()
+| `66236558dfac` | v7.4-rc1 | bsc#1283148 ltc#223600 | powerpc/syscall: Avoid atomic test_and_clear_thread_flag on fast path
+| `b3d75e2bc299` | v7.4-rc1 | bsc#1268315 ltc#217645 | powerpc/fadump: collect dump when CPU_STATE_DATA is less than reserved
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
+| `653c5b4605f6` | v7.4-rc1 | git-fixes | RDMA/hns: Fix the use of uninitialized variable
+| `2a770e6a64d6` | v7.4-rc1 | git-fixes | RDMA/irdma: check vport device allocation
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: smccc: Add an Arm SMCCC bus
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: hwrng: arm_smccc_trng: Register as an SMCCC device
