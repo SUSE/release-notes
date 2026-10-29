@@ -330,18 +330,7 @@
 | `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90244 bsc#1281834 | iommu/dma: Restore locking around msi_page_list
 | `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes CVE-2026-98546 bsc#1286765 | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
 | `b52ef450139f` | v7.3-rc7 | jsc#NVIDIA-55 git-fixes | arm64/boot: Don't set PMUv3p9 FGT2 bits without PMUv3
-| `af5f0870883a` | v7.4-rc1 | bsc#1278165 ltc#222874 | powerpc/ftrace: Don't restore r13 during ftrace_regs_caller
-| `0d0eafedcaf4` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: fix error code for wrapping key reads
-| `203695c109e3` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: clear sensitive buffers in wrapping operations
-| `abcccecf4aa4` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: fix self-reference in plpks_var initializer
-| `46b8411b2ee9` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: hide wrapping_features when unsupported
-| `a2df535d9dd9` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: rename the default wrapping key macro
-| `0499ab96527a` | v7.4-rc1 | jsc#PED-14548 git-fixes | pseries/plpks: update PKS documentation and MAINTAINERS entry
-| `8fa763bc3ee9` | v7.4-rc1 | jsc#PED-15113 git-fixes | powerpc: fix NMI exit ordering: restore soft masks after irqentry_nmi_exit()
-| `66236558dfac` | v7.4-rc1 | bsc#1283148 ltc#223600 | powerpc/syscall: Avoid atomic test_and_clear_thread_flag on fast path
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
-| `653c5b4605f6` | v7.4-rc1 | git-fixes | RDMA/hns: Fix the use of uninitialized variable
-| `2a770e6a64d6` | v7.4-rc1 | git-fixes | RDMA/irdma: check vport device allocation
 | `9c48b994b66d` | v7.4-rc1 | jsc#PED-16989 git-fixes | vfio/nvgrace-gpu: Use a core-only open_device in fallback mode
 | `ab0dbf411ace` | v7.4-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Disable the impl before disabling the SMMU on shutdown
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
