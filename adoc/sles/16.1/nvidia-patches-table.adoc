@@ -36,30 +36,17 @@
 | `f27298a82ba0` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Allow ATS for IOMMU_DOMAIN_NESTED
 | `d68beb276ba2` | v6.13-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Support IOMMU_HWPT_INVALIDATE using a VIOMMU object
 | `6d026e6d48cd` | v6.13-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Import IOMMUFD module namespace
-| `138d2bda4eaf` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/i915/display: pass display to intel_crtc_for_pipe()
-| `4b6e05c43b75` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/i915/vga: Convert VGA code to intel_display
-| `1b1d5fe66ca5` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/vmwgfx: Stop using dev_private to store driver data.
-| `7e89e4365fd3` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/vc4: Use video aperture helpers
-| `0ee239911634` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdgpu: Remove unused amdgpu_i2c functions
-| `0f4869b1636c` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/i915/display: convert I915_STATE_WARN() to struct intel_display
-| `fdc387383ebd` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/i915/gmbus: convert to struct intel_display
-| `40eb34c3f491` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/i915/crt: convert to struct intel_display
-| `60c58d72afb8` | v6.13-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdgpu: Update SRIOV Exchange Headers for RAS Telemetry Support
 | `ea1829d4d413` | v6.13-rc1 | grace-baremetal.txt | cppc_cpufreq: Remove HiSilicon CPPC workaround
 | `b45a3777ceab` | v6.13-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Pass old domain to set_dev_pasid op
 | `12cd88a9116a` | v6.13-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add a new GH200 SKU to the devid table
 | `7937a1bf32e3` | v6.13-rc2 | jsc#PED-16989 git-fixes | iommufd: Fix typos in kernel-doc comments
 | `09dfc8a5f2ce` | v6.13-rc7 | jsc#PED-16989 git-fixes | vfio/pci: Fallback huge faults for unaligned pfn
-| `30f86b8f86ad` | v6.14-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/virtio: Use drm_gem_plane_helper_prepare_fb()
-| `25c3fd1183c0` | v6.14-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/virtio: Add a helper to map and note the dma addrs and lengths
-| `635c659fceed` | v6.14-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdgpu: Use dbg level for VBIOS check messages
 | `43ca55f5555b` | v6.14-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Introduce struct arm_smmu_event
 | `d814b70b9b90` | v6.14-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Log better event records
 | `fb3de9f9b085` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Prevent pasid attach if no ops->remove_dev_pasid
 | `1fbf73425f51` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Consolidate the ops->remove_dev_pasid usage into a helper
 | `442003f3a842` | v6.14-rc1 | jsc#PED-16989 | iommufd: Keep OBJ/IOCTL lists in an alphabetical order
 | `3d49020a327c` | v6.14-rc1 | jsc#PED-16989 git-fixes | iommufd/fault: Use a separate spinlock to protect fault->deliver list
-| `b5f022fe8ec5` | v6.14-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdkfd: Fix partial migrate issue
 | `bd53764a60ad` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Read dvsec register to determine need for uncached resmem
 | `6a9eb2d125ba` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Expose the blackwell device PF BAR1 to the VM
 | `d85f69d520e6` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Check the HBM training and C2C link status
@@ -109,8 +96,6 @@
 | `bcb81ac6ae3c` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Get DT/ACPI parsing into the proper probe path
 | `73d2f10957f5` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Don't warn prematurely about dodgy probes
 | `27321c788b3a` | v6.15-rc1 | jsc#NVIDIA-67 | firmware: tegra: bpmp: Fix typo in bpmp-abi.h
-| `ba7f8eb7e447` | v6.15-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdgpu/atombios: drop empty function
-| `1c0b144bf762` | v6.15-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 | drm/amdgpu: rework i2c init and fini
 | `897008d0f767` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Set domain->iommufd_hwpt in all hwpt->domain allocators
 | `dbf00d7d8912` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Move two fault functions out of the header
 | `927dabc9aa4d` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Add an iommufd_fault_init() helper
@@ -237,8 +222,6 @@
 | `7c29ba02210c` | v7.0-rc1 | vera-baremetal-addendum.txt | PCI: Introduce pcie_is_cxl()
 | `df6e4ab654dc` | v7.0-rc2 | linux-nvidia-6.18 git-fixes | arm64: topology: Fix false warning in counters_read_on_cpu() for same-CPU reads
 | `82f73ef9c41e` | v7.0-rc4 | bsc#1272627 jsc#NVIDIA-77 | powerpc/iommu: fix lockdep warning during PCI enumeration
-| `217d5bc9f962` | v7.0-rc7 | stable-fixes | ALSA: hda/realtek: Add quirk for Lenovo Yoga Pro 7 14IMH9
-| `f0541edb2e73` | v7.0 | stable-fixes | ALSA: hda/realtek: Add quirk for Lenovo Yoga Pro 7 14IAH10
 | `37beb4256016` | v7.1-rc1 | bsc#1272533 | randomize_kstack: Maintain kstack_offset per task
 | `a96ef5848cb0` | v7.1-rc1 | bsc#1272533 | randomize_kstack: Unify random source across arches
 | `8505bfb4e4ec` | v7.1-rc1 | jsc#NVIDIA-64 | ACPI: CPPC: Move reference performance to capabilities
@@ -310,11 +293,9 @@
 | `00203ca8323f` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Reject invalid read count in iommufd_veventq_fops_read()
 | `489e63dd120b` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Propagate allocation failure in iommufd_veventq_deliver_fetch()
 | `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
-| `47ea05f246be` | v7.2-rc3 | bsc#1275866 CVE-2026-68258 | drm/amdkfd: Check bounds on CRIU restore queue type and mqd size
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
 | `52fce648607e` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72080 bsc#1277172 | fs/resctrl: Fix use-after-free during unmount
-| `b9f089723aee` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72015 bsc#1276791 | fs/resctrl: Fix double-add of pseudo-locked region's RMID to free list
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
 | `9be311cfbe61` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommufd/viommu: Publish a vDEVICE only after vdevice_init() succeeds
 | `c3b8ee84a965` | v7.2-rc6 | jsc#PED-16989 git-fixes CVE-2026-74573 bsc#1275563 | iommu/arm-smmu-v3-iommufd: Require exactly one Stream ID for a vDEVICE
