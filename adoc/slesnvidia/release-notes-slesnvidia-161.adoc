@@ -1,0 +1,22 @@
+include::../common/attributes-generic.adoc[]
+include::attributes.adoc[]
+include::attributes-version161.adoc[]
+
+= {productname} Release Notes
+:revdate: 2026-11-03
+:page-revdate: {revdate}
+
+:abstract: This document provides an overview of important product updates for {productname}.
+
+{productname} is {sles} with a kernel that includes additional enablement for {nvidia} platforms.
+This document highlights important product updates.
+
+include::../common/about-rn.adoc[]
+
+include::../common/about-documentation.adoc[]
+
+include::version161.adoc[]
+
+include::../common/source-code.adoc[]
+
+include::../common/legal.adoc[]

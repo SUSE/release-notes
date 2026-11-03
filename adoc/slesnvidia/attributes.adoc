@@ -1,0 +1,22 @@
+:productname: {sles} for {nvidia}
+:productnameshort: {slsa} for {nvidia}
+:rel-date: TBD
+
+:maintainer: lukas.kucharczyk@suse.com
+
+:doc-url: https://documentation.suse.com
+:doc-url-beta: https://susedoc.github.io/doc-sle/main
+:doc-url-source: https://www.suse.com/download/sles/
+
+:support-url: https://www.suse.com/support/policy.html
+:rn-url: https://www.suse.com/releasenotes
+
+// conditionals-begin
+// lifecycle: beta|maintained|unmaintained
+// :lifecycle: beta
+// conditionals-end
+
+:copyright-begin: 2024
+:copyright-end: {docyear}
+:company: SUSE LLC
+:additional-rightsholders:

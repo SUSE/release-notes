@@ -1,0 +1,5 @@
+== {productname} Version {this-version}
+
+These release notes apply to {productname} {this-version}.
+
+include::../sles/16.1/nvidia-patches.adoc[]
