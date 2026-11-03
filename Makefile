@@ -53,6 +53,16 @@ endif
 profile_params := --adocattr lifecycle=$(LIFECYCLE)
 text_params    :=
 
+# openSUSE Leap uses the stock SUSE stylesheets. daps copies only the static
+# files of the styleroot it uses, so the Leap logo is shipped separately: daps
+# copies leap-extra/ into the HTML output, and the DC files point the
+# daps.header.logo parameter at leap-extra/logo.svg. The directory must be a
+# direct subdirectory of the repository.
+html_params :=
+ifneq ($(filter leap_%,$(PRODUCT_VERSION)),)
+  html_params := --extra-dir leap-extra
+endif
+
 # files to be created:
 profile_result       := build/.profiled/noprofile/release-notes-$(PRODUCT_VERSION).xml
 text_result          := build/releasenotes_$(PRODUCT_VERSION)/releasenotes_$(PRODUCT_VERSION).txt
@@ -81,7 +91,7 @@ clean:
 #----------------
 
 html: $(dc_file) $(src_files)
-	$(daps_command) -d $< -vv $(profile_params) html --param="toc.section.depth=2"
+	$(daps_command) -d $< -vv $(profile_params) html $(html_params) --param="toc.section.depth=2"
 
 #----------------
 
@@ -94,7 +104,7 @@ ifeq ($(PRODUCT_VERSION),)
 $(eval $(call per_version_rules,single-html))
 else
 single-html: $(dc_file) $(src_files)
-	$(daps_command) -d $< -vv $(profile_params) html --single --param="toc.section.depth=2"
+	$(daps_command) -d $< -vv $(profile_params) html --single $(html_params) --param="toc.section.depth=2"
 endif
 
 #----------------
