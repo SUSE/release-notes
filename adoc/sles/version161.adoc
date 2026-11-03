@@ -172,7 +172,7 @@ Installation media, VM images and public cloud images are usually refreshed ever
 
 * **Online (in-place) upgrade** is supported from {productname} 16.0 (including {slessapa} and {sleha}).
 * **Offline migration** (using offline installation media) is supported from:
-  ** {productname} 15 SP4, SP5, SP6, and SP7 (including {slessapa} and {sleha})
+  ** {productname} 15 SP5, SP6, and SP7 (including {slessapa} and {sleha})
   ** {slem} 6.2
   ** {slert} 15 SP7
   ** {leap} 16.1

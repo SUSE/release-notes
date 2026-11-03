@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-11-03</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Removed 15 SP4 from supported migration paths in <link xlink:href="index.html#jsc-PED-14891">Supported upgrade and migration paths</link></para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-10-22</date>
    <revdescription>
     <itemizedlist>
