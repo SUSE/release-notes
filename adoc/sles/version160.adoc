@@ -1018,6 +1018,23 @@ For more information, see https://www.ibm.com/docs/en/linux-on-systems?topic=dis
 
 === Security
 
+// bsc#1268867
+[#jsc-PED-16507]
+==== Upgrade of `acl` and `attr` packages to resolve security vulnerabilities
+
+Previous versions of the `acl` and `attr` packages followed symbolic links during file operations, directory tree traversals, and restore operations.
+This behavior allowed attackers to replace path components with symbolic links and escalate privileges.
+This update upgrades the `acl` package to version 2.4.0 and the `attr` package to version 2.6.0 to address these issues.
+This upgrade resolves CVE-2026-54369, CVE-2026-54370, and CVE-2026-54371.
+
+The updated packages introduce several security enhancements:
+
+* The `libacl` library now provides the functions `acl_get_file_at()`, `acl_set_file_at()`, `acl_extended_file_at()`, and `acl_delete_def_file_at()`.
+These functions use directory file descriptors and support the `AT_SYMLINK_NOFOLLOW` flag to control symbolic link resolution.
+* The `getfacl`, `setfacl`, `chacl`, `getfattr`, and `setfattr` utilities now operate relative to directory file descriptors and use symlink-safe functions.
+* You can combine the `--restore` option of `setfacl` and `setfattr` with the `-P` (`--physical`) option to resolve paths safely.
+When you run `--restore` without the `-P` option on supported systems, the utilities warn that the operation can be unsafe.
+
 // jsc#PED-15051
 // jsc#PED-16483
 // jsc#PED-16488

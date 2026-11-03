@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
     <revision>
+     <date>2026-10-30</date>
+     <revdescription>
+      <itemizedlist>
+       <listitem>
+        <para>Added section <link xlink:href="index.html#jsc-PED-16507">Upgrade of <literal>acl</literal> and <literal>attr</literal> packages to resolve security vulnerabilities</link> (jsc#PED-16507)</para>
+       </listitem>
+      </itemizedlist>
+     </revdescription>
+    </revision>
+    <revision>
      <date>2026-10-27</date>
      <revdescription>
       <itemizedlist>
