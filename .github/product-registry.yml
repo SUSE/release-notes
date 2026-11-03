@@ -171,6 +171,11 @@ DC-releasenotes_sles-sap_16.1:
   short-name: SLES for SAP
   slug: slesap-16.1
   version: '16.1'
+DC-releasenotes_sles-nvidia_16.1:
+  doc-name: release-notes
+  short-name: SLES for NVIDIA
+  slug: slesnvidia-16.1
+  version: '16.1'
 DC-releasenotes_sles_12-SP5:
   doc-name: release-notes
   short-name: SLES
