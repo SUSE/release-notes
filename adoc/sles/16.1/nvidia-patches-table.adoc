@@ -122,6 +122,7 @@
 | `3d59224947b0` | v6.15-rc5 | jsc#NVIDIA-64 | cpufreq: ACPI: Re-sync CPU boost state on system resume
 | `c1d9dac0db16` | v6.15-rc6 | jsc#PED-16989 git-fixes | vfio/pci: Align huge faults to order
 | `95deee37a123` | v6.15-rc6 | bsc#1272627 jsc#NVIDIA-77 | platform: Fix race condition during DMA configure at IOMMU probe time
+| `3a3ce10e7adc` | v6.16-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Simplify PCC shared memory region handling
 | `c347f31ae27f` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Don't unnecessarily call set_boost()
 | `27241c8b63bd` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce policy_set_boost()
 | `a0982afa0992` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: drop redundant cpus_read_lock() from store_local_boost()
@@ -220,6 +221,9 @@
 | `0f7afd80d81b` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Move CXL DVSEC definitions into uapi/linux/pci_regs.h
 | `6612bd9ff0b1` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Update CXL DVSEC definitions
 | `7c29ba02210c` | v7.0-rc1 | vera-baremetal-addendum.txt | PCI: Introduce pcie_is_cxl()
+| `69050f8d6d07` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | treewide: Replace kmalloc with kmalloc_obj for non-scalar types
+| `bf4afc53b77a` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert 'alloc_obj' family to use the new default GFP_KERNEL argument
+| `32a92f8c8932` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert more 'alloc_obj' cases to default GFP_KERNEL arguments
 | `df6e4ab654dc` | v7.0-rc2 | linux-nvidia-6.18 git-fixes | arm64: topology: Fix false warning in counters_read_on_cpu() for same-CPU reads
 | `82f73ef9c41e` | v7.0-rc4 | bsc#1272627 jsc#NVIDIA-77 | powerpc/iommu: fix lockdep warning during PCI enumeration
 | `37beb4256016` | v7.1-rc1 | bsc#1272533 | randomize_kstack: Maintain kstack_offset per task
@@ -295,10 +299,17 @@
 | `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
-| `52fce648607e` | v7.2-rc3 | linux-nvidia-6.18 CVE-2026-72080 bsc#1277172 | fs/resctrl: Fix use-after-free during unmount
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
+| `11055a46f398` | v7.2-rc6 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Check all controls for fast switching
+| `47d4e945dff8` | v7.2-rc6 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Skip writes to unsupported performance controls
 | `9be311cfbe61` | v7.2-rc6 | jsc#PED-16989 git-fixes | iommufd/viommu: Publish a vDEVICE only after vdevice_init() succeeds
 | `c3b8ee84a965` | v7.2-rc6 | jsc#PED-16989 git-fixes CVE-2026-74573 bsc#1275563 | iommu/arm-smmu-v3-iommufd: Require exactly one Stream ID for a vDEVICE
+| `df5a1d4a8cdf` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject desired_perf reads on _CPC revision 4+
+| `d3576424e8fa` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Skip desired_perf read in cppc_get_perf()
+| `334dd0ed87e4` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Stop reading desired_perf in cppc_get_perf()
+| `9d9157ee90e3` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Avoid unnecessary reads for full-width writes
+| `9c5ab33a6d2c` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Avoid locking standalone full-width registers
+| `b0f51f98fbc9` | v7.3-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Evaluate performance-control PCC use once
 | `49f2413f9b55` | v7.3-rc1 | jsc#NVIDIA-55 | perf/arm_pmu: Skip PMCCNTR_EL0 on NVIDIA Olympus
 | `293f9611ae73` | v7.3-rc1 | jsc#NVIDIA-73 | sched/fair: Prefer fully idle cores for NOHZ balancing
 | `445528627447` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Declare eats_s1chk and eats_trans as host-endian u64
@@ -311,6 +322,16 @@
 | `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90244 bsc#1281834 | iommu/dma: Restore locking around msi_page_list
 | `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes CVE-2026-98546 bsc#1286765 | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
 | `b52ef450139f` | v7.3-rc7 | jsc#NVIDIA-55 git-fixes | arm64/boot: Don't set PMUv3p9 FGT2 bits without PMUv3
+| `32299b29a887` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Validate _CPC entry and control semantics
+| `3685d9829c71` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Propagate performance-control write errors
+| `50affbde6410` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Serialize PCC single-register payload updates
+| `76e6914a843e` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Serialize PCC EPP payload updates
+| `27954e29d7de` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Release CPC descriptors through kobject
+| `968e29db97bb` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Release PCC data after probe failures
+| `2221dc547b38` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject unsafe cross-CPU SystemMemory RMW
+| `09d911c99663` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject direct reads of write-only controls
+| `21e018235d99` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Select the frequency-invariance callback per CPU
+| `995e7d468070` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Create the FIE worker before enabling PCC callbacks
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
 | `9c48b994b66d` | v7.4-rc1 | jsc#PED-16989 git-fixes | vfio/nvgrace-gpu: Use a core-only open_device in fallback mode
 | `ab0dbf411ace` | v7.4-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Disable the impl before disabling the SMMU on shutdown
