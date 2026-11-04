@@ -3,12 +3,14 @@ on:
     paths:
       - "DC-*"
       - "adoc/**"
+      - "leap-extra/**"
       - ".github/workflows/*"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     paths:
       - "DC-*"
       - "adoc/**"
+      - "leap-extra/**"
       - ".github/workflows/*"
   workflow_dispatch:
 
