@@ -17,6 +17,18 @@ def get_dc_main(dc_file):
         pass
     return None
 
+def get_dc_extra_dir(dc_file):
+    """Extract the HTML_EXTRA_DIR directory from a DC file, if set."""
+    try:
+        with open(dc_file, "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                if line.strip().startswith("HTML_EXTRA_DIR="):
+                    path = line.split("=", 1)[1].strip()
+                    return re.sub(r"['\"]", "", path)
+    except Exception:
+        pass
+    return None
+
 def find_includes(file_path):
     """Find all recursively included files inside an AsciiDoc file."""
     includes = []
@@ -57,6 +69,13 @@ def build_dependencies_for_dc(dc_file):
     if os.path.exists(docinfo):
         dependencies.add(docinfo)
 
+    # Files copied into the output with HTML_EXTRA_DIR, for example the Leap logo
+    extra_dir = get_dc_extra_dir(dc_file)
+    if extra_dir and os.path.isdir(extra_dir):
+        for root, _, files in os.walk(extra_dir):
+            for name in files:
+                dependencies.add(os.path.join(root, name))
+
     # Recursively traverse includes
     to_visit = [main_file]
     visited = set()
@@ -90,8 +109,12 @@ def main():
         return
 
     # 4. Check for "global" file changes that require building everything
+    extra_dirs = {get_dc_extra_dir(dc) for dc in dc_files} - {None}
     global_triggers = False
     for f in changed_files:
+        # Files in an HTML_EXTRA_DIR only affect the DC files that use it
+        if any(f.startswith(d.rstrip("/") + "/") for d in extra_dirs):
+            continue
         # If the file is not in adoc/ or a DC file itself, or is Makefile/scripts/workflow
         if not f.startswith("adoc/") and not f.startswith("DC-"):
             global_triggers = True
