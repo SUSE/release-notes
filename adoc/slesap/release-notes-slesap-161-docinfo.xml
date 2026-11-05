@@ -17,6 +17,9 @@
       <listitem>
        <para>Added section <link xlink:href="index.html#bsc-1289498">{aarch64} is not supported</link> (bsc#1289498)</para>
       </listitem>
+      <listitem>
+       <para>Added a note about missing {aarch64} support to the unified image description (bsc#1289498)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
