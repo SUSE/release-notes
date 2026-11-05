@@ -1,11 +1,22 @@
 == What's new?
 
+ifndef::omit-sles-specific[]
 === Comparison with {productname} 15 SP7
 
 To read more about the differences and high-level changes between {productname} {this-version} and {productname} 15 SP7, see these documents:
 
 * https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/
 * https://documentation.suse.com/sles/16.0/html/SLE-comparison/
+endif::[]
+
+ifdef::sles-core-embedded[]
+=== Changes from SLES 15 Core
+
+To read more about the differences and high-level changes between {suselinux} {this-version} and {sle} 15, see these documents:
+
+* https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/
+* https://documentation.suse.com/sles/16.0/html/SLE-comparison/
+endif::[]
 
 
 // bsc#1285783
