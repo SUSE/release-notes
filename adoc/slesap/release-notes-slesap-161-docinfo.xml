@@ -11,6 +11,16 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-11-05</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#bsc-1289498">{aarch64} is not supported</link> (bsc#1289498)</para>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-10-05</date>
     <revdescription>
      <itemizedlist>

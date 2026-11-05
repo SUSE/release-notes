@@ -19,6 +19,14 @@ These release notes apply to {productname} {this-version}.
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
 
+[#bsc-1289498]
+==== {aarch64} is not supported
+
+{productname} {this-version} does not support the {aarch64} architecture.
+The installer can offer {productname} on {aarch64} systems.
+Do not install {productname} on {aarch64} systems.
+On {aarch64} systems, install {sles} instead.
+
 // simplified sbd management
 include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 
