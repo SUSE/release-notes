@@ -4,6 +4,7 @@
 This section describes the enterprise-grade foundation of {productname}, based on {sle}. Content here is adapted from the {sle} release notes to reflect core functionality, security updates, and enterprise features that {productname} inherits.
 
 :omit-sles-specific: true
+:sles-core-embedded:
 ifeval::["{this-version}" == "16.0"]
 include::../sles/attributes-version160.adoc[]
 include::../sles/version160.adoc[leveloffset=+1]
