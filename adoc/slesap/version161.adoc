@@ -29,6 +29,20 @@ The installer can offer {productname} on {aarch64} systems.
 Do not install {productname} on {aarch64} systems.
 On {aarch64} systems, install {sles} instead.
 
+[#jsc-PED-12860]
+==== Minimum hardware requirements
+
+{productname} {this-version} requires hardware to meet requirements on these architectures:
+
+* For AMD64 and Intel* 64 systems: Microarchitecture level x86-64-v2 or higher.
+* For IBM* Power LE systems: POWER10 or higher (see note below).
+* For IBM* Z systems: z14 or higher.
+
+{productname} {this-version} does not support Arm64* systems.
+
+[NOTE]
+While {productnameshort} {this-version} can run on POWER9, this configuration is not supported.
+
 // simplified sbd management
 include::../shared.adoc[tags=jscped-8258,leveloffset=+3]
 

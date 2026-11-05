@@ -20,6 +20,9 @@
       <listitem>
        <para>Added a note about missing {aarch64} support to the unified image description (bsc#1289498)</para>
       </listitem>
+      <listitem>
+       <para>Added section <link xlink:href="index.html#jsc-PED-12860">Minimum hardware requirements</link>, without {arm} 64-bit systems (bsc#1289498)</para>
+      </listitem>
      </itemizedlist>
     </revdescription>
   </revision>
