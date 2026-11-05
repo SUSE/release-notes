@@ -718,6 +718,13 @@ Additionally, this release enables Intel Platform Monitoring Technology (PMT) fe
 
 Information in this section applies to {arm-productname} {this-version}.
 
+ifdef::sles-for-sap-embedded[]
+[NOTE]
+This section does not apply to {slessapa}.
+{slessapa} {this-version} does not support {aarch64}.
+For details, see <<bsc-1289498>>.
+endif::[]
+
 ifndef::omit-sles-specific[]
 [#jsc-PED-16790]
 === NVIDIA platform kernel enablement patches
