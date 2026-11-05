@@ -18,6 +18,30 @@ These release notes apply to {productname} {this-version}.
 * `pacemaker` has been updated to version 3.0. For more information see https://github.com/ClusterLabs/pacemaker/releases/tag/Pacemaker-3.0.0[the full changelog].
 // jsc#PED-11656
 * We now provide a unified image that can be used to install either {slesa} or {slessapa}
+The installer can offer {slessapa} on {aarch64} systems, but {productname} {this-version} does not support {aarch64}.
+For details, see <<bsc-1289498>>.
+
+[#bsc-1289498]
+==== {aarch64} is not supported
+
+{productname} {this-version} does not support the {aarch64} architecture.
+The installer can offer {productname} on {aarch64} systems.
+Do not install {productname} on {aarch64} systems.
+On {aarch64} systems, install {sles} instead.
+
+[#jsc-PED-12860]
+==== Minimum hardware requirements
+
+{productname} {this-version} requires hardware to meet requirements on these architectures:
+
+* For {amd64} and {intel64} systems: Microarchitecture level {x64}-v2 or higher.
+* For {ibm} {power} LE systems: {power}10 or higher (see note below).
+* For {ibmz} systems: z14 or higher.
+
+{productname} {this-version} does not support {arm64} systems.
+
+[NOTE]
+While {productnameshort} {this-version} can run on {power}9, this configuration is not supported.
 
 // simplified sbd management
 include::../shared.adoc[tags=jscped-8258,leveloffset=+3]

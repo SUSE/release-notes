@@ -11,6 +11,30 @@
 <date>{revdate}</date>
 <revhistory xml:id="revhistory" xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+    <date>2026-11-05</date>
+    <revdescription>
+     <itemizedlist>
+      <listitem>
+       <para>Documented that {productname} does not support {aarch64} (bsc#1289498):</para>
+       <itemizedlist>
+        <listitem>
+         <para>Added section <link xlink:href="index.html#bsc-1289498">{aarch64} is not supported</link></para>
+        </listitem>
+        <listitem>
+         <para>Added a note about missing {aarch64} support to the unified image description</para>
+        </listitem>
+        <listitem>
+         <para>Added section <link xlink:href="index.html#jsc-PED-12860">Minimum hardware requirements</link>, without {arm} 64-bit systems</para>
+        </listitem>
+        <listitem>
+         <para>Added a note to the SLES section <link xlink:href="index.html#aarch64">{arm}-specific changes ({aarch64})</link> that it does not apply to this product</para>
+        </listitem>
+       </itemizedlist>
+      </listitem>
+     </itemizedlist>
+    </revdescription>
+  </revision>
+  <revision>
     <date>2026-10-05</date>
     <revdescription>
      <itemizedlist>
