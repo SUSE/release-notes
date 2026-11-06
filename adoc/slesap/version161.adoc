@@ -36,7 +36,6 @@ On {aarch64} systems, install {sles} instead.
 
 * For {amd64} and {intel64} systems: Microarchitecture level {x64}-v2 or higher.
 * For {ibm} {power} LE systems: {power}10 or higher (see note below).
-* For {ibmz} systems: z14 or higher.
 
 {productname} {this-version} does not support {arm64} systems.
 
@@ -117,5 +116,3 @@ The following features and packages are deprecated and will be removed in a futu
 include::../shared.adoc[tags=jscped-15950,leveloffset=+3]
 
 include::../shared.adoc[tags=jscped-16430,leveloffset=+3]
-
-
