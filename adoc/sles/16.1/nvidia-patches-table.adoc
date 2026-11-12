@@ -45,6 +45,7 @@
 | `d814b70b9b90` | v6.14-rc1 | jsc#PED-16989 | iommu/arm-smmu-v3: Log better event records
 | `fb3de9f9b085` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Prevent pasid attach if no ops->remove_dev_pasid
 | `1fbf73425f51` | v6.14-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Consolidate the ops->remove_dev_pasid usage into a helper
+| `d9df72c6acd6` | v6.14-rc1 | git-fixes | iommu: iommufd: fix WARNING in iommufd_device_unbind
 | `442003f3a842` | v6.14-rc1 | jsc#PED-16989 | iommufd: Keep OBJ/IOCTL lists in an alphabetical order
 | `3d49020a327c` | v6.14-rc1 | jsc#PED-16989 git-fixes | iommufd/fault: Use a separate spinlock to protect fault->deliver list
 | `bd53764a60ad` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Read dvsec register to determine need for uncached resmem
@@ -96,7 +97,9 @@
 | `bcb81ac6ae3c` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Get DT/ACPI parsing into the proper probe path
 | `73d2f10957f5` | v6.15-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Don't warn prematurely about dodgy probes
 | `27321c788b3a` | v6.15-rc1 | jsc#NVIDIA-67 | firmware: tegra: bpmp: Fix typo in bpmp-abi.h
+| `a05df03a88bc` | v6.15-rc1 | git-fixes | iommufd: Fix uninitialized rc in iommufd_access_rw()
 | `897008d0f767` | v6.15-rc1 | jsc#PED-16989 git-fixes | iommufd: Set domain->iommufd_hwpt in all hwpt->domain allocators
+| `55c85fa7579d` | v6.15-rc1 | git-fixes | iommufd: Fail replace if device has not been attached
 | `dbf00d7d8912` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Move two fault functions out of the header
 | `927dabc9aa4d` | v6.15-rc1 | jsc#PED-16989 | iommufd/fault: Add an iommufd_fault_init() helper
 | `5426a78bebef` | v6.15-rc1 | jsc#PED-16989 | iommufd: Abstract an iommufd_eventq from iommufd_fault
@@ -176,6 +179,7 @@
 | `72b6f7cd89ce` | v6.17-rc3 | bsc#1272627 jsc#NVIDIA-77 | iommu/virtio: Make instance lookup robust
 | `8fe8a092043f` | v6.17-rc3 | jsc#PED-16989 git-fixes | iommufd: viommu: free memory allocated by kvcalloc() using kvfree()
 | `7a425ec75d2b` | v6.17 | jsc#PED-16989 git-fixes | iommufd: Fix refcounting race during mmap
+| `4e034bf045b1` | v6.17 | git-fixes | iommufd: Fix race during abort for file descriptors
 | `fa84e534c3ec` | v6.18-rc1 | vera-baremetal.txt | arm64: realm: ioremap: Allow mapping memory as encrypted
 | `9e8a3df3e7f7` | v6.18-rc1 | vera-baremetal.txt | arm64: Enable EFI secret area Securityfs support
 | `f8f89e8cf3d6` | v6.18-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Factor out PMCCNTR_EL0 use conditions
@@ -186,6 +190,7 @@
 | `407aa63018d1` | v6.18-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add GB300 SKU to the devid table
 | `bee8a520eb84` | v6.18-rc1 | jsc#NVIDIA-73 | rhashtable: Use rcu_dereference_all and rcu_dereference_all_check
 | `b09ed52db1e6` | v6.18-rc5 | jsc#PED-16989 git-fixes | iommufd/selftest: Fix ioctl return value in _test_cmd_trigger_vevents()
+| `afb47765f923` | v6.18-rc5 | git-fixes | iommufd: Make vfio_compat's unmap succeed if the range is already empty
 | `ac84ff453305` | v6.18 | jsc#PED-16989 git-fixes | iommufd/driver: Fix counter initialization for counted_by annotation
 | `b07bf253ef8e` | v6.18 | jsc#PED-16989 git-fixes | iommufd/iommufd_private.h: Avoid -Wflex-array-member-not-at-end warning
 | `c3d78c34ad00` | v6.19-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Don't use PMCCNTR_EL0 on SMT cores
@@ -255,7 +260,10 @@
 | `9dcef98dbee3` | v7.1-rc1 | jsc#PED-16989 git-fixes | iommu/tegra241-cmdqv: Update uAPI to clarify HYP_OWN requirement
 | `d921f8d3b955` | v7.1-rc1 | jsc#NVIDIA-67 | firmware: tegra: bpmp: Rename Tegra239 to Tegra238
 | `83c18a324570` | v7.1-rc1 | jsc#NVIDIA-67 | soc/tegra: Update BPMP ABI header
+| `7147ec874ea0` | v7.1-rc1 | git-fixes | iommufd: vfio compatibility extension check for noiommu mode
 | `09c091fddb0b` | v7.1-rc1 | jsc#PED-16989 git-fixes | iommufd/selftest: Fix page leaks in mock_viommu_{init,destroy}
+| `aaca2aa92785` | v7.1-rc1 | git-fixes | iommufd: Fix return value of iommufd_fault_fops_write()
+| `8602018b1f17` | v7.1-rc1 | git-fixes | iommufd: Fix a race with concurrent allocation and unmap
 | `d769711fcddd` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 CVE-2026-53280 bsc#1269524 | iommu: Fix NULL group->domain dereference in pci_dev_reset_iommu_done()
 | `834ab85aa966` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 | iommu: Fix kdocs of pci_dev_reset_iommu_done()
 | `b296ca1fb43a` | v7.1-rc4 | bsc#1272627 jsc#NVIDIA-77 | iommu: Replace per-group resetting_domain with per-gdev blocked flag
@@ -296,6 +304,10 @@
 | `01e41ad76c12` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Rewind header length in done if iommufd_veventq_fops_read() fails
 | `00203ca8323f` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Reject invalid read count in iommufd_veventq_fops_read()
 | `489e63dd120b` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Propagate allocation failure in iommufd_veventq_deliver_fetch()
+| `47916a54eeb2` | v7.2-rc1 | git-fixes | iommufd: Reject invalid read count in iommufd_fault_fops_read()
+| `172fc8b19825` | v7.2-rc1 | git-fixes | iommufd: Break the loop on failure in iommufd_fault_fops_read()
+| `091ab6d70dc4` | v7.2-rc1 | git-fixes | iommufd: Avoid partial fault group delivery in iommufd_fault_fops_read()
+| `4d70986002f2` | v7.2-rc1 | git-fixes | iommufd: Set upper bounds on cache invalidation entry_num and entry_len
 | `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
@@ -333,6 +345,8 @@
 | `21e018235d99` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Select the frequency-invariance callback per CPU
 | `995e7d468070` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Create the FIE worker before enabling PCC callbacks
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
+| `440ca8a4b69f` | v7.4-rc1 | git-fixes | iommufd: Fix event queue release use-after-free
+| `f6b3fd8f573e` | v7.4-rc1 | git-fixes | iommufd: Reject a zero-length dirty bitmap request
 | `9c48b994b66d` | v7.4-rc1 | jsc#PED-16989 git-fixes | vfio/nvgrace-gpu: Use a core-only open_device in fallback mode
 | `ab0dbf411ace` | v7.4-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Disable the impl before disabling the SMMU on shutdown
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
