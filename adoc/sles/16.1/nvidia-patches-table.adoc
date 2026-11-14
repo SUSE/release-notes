@@ -179,7 +179,7 @@
 | `72b6f7cd89ce` | v6.17-rc3 | bsc#1272627 jsc#NVIDIA-77 | iommu/virtio: Make instance lookup robust
 | `8fe8a092043f` | v6.17-rc3 | jsc#PED-16989 git-fixes | iommufd: viommu: free memory allocated by kvcalloc() using kvfree()
 | `7a425ec75d2b` | v6.17 | jsc#PED-16989 git-fixes | iommufd: Fix refcounting race during mmap
-| `4e034bf045b1` | v6.17 | git-fixes | iommufd: Fix race during abort for file descriptors
+| `4e034bf045b1` | v6.17 | git-fixes CVE-2025-39966 bsc#1252043 | iommufd: Fix race during abort for file descriptors
 | `fa84e534c3ec` | v6.18-rc1 | vera-baremetal.txt | arm64: realm: ioremap: Allow mapping memory as encrypted
 | `9e8a3df3e7f7` | v6.18-rc1 | vera-baremetal.txt | arm64: Enable EFI secret area Securityfs support
 | `f8f89e8cf3d6` | v6.18-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Factor out PMCCNTR_EL0 use conditions
@@ -305,9 +305,9 @@
 | `00203ca8323f` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Reject invalid read count in iommufd_veventq_fops_read()
 | `489e63dd120b` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommufd: Propagate allocation failure in iommufd_veventq_deliver_fetch()
 | `47916a54eeb2` | v7.2-rc1 | git-fixes | iommufd: Reject invalid read count in iommufd_fault_fops_read()
-| `172fc8b19825` | v7.2-rc1 | git-fixes | iommufd: Break the loop on failure in iommufd_fault_fops_read()
+| `172fc8b19825` | v7.2-rc1 | git-fixes CVE-2026-64290 bsc#1273964 | iommufd: Break the loop on failure in iommufd_fault_fops_read()
 | `091ab6d70dc4` | v7.2-rc1 | git-fixes | iommufd: Avoid partial fault group delivery in iommufd_fault_fops_read()
-| `4d70986002f2` | v7.2-rc1 | git-fixes | iommufd: Set upper bounds on cache invalidation entry_num and entry_len
+| `4d70986002f2` | v7.2-rc1 | git-fixes CVE-2026-64289 bsc#1274013 | iommufd: Set upper bounds on cache invalidation entry_num and entry_len
 | `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
