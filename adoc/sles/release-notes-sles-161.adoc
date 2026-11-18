@@ -3,7 +3,7 @@ include::attributes.adoc[]
 include::attributes-version161.adoc[]
 
 = SUSE Linux Enterprise Server Release Notes
-:revdate: 2026-11-16
+:revdate: 2026-11-18
 :page-revdate: {revdate}
 
 :abstract: This document provides an overview of high-level general features, capabilities, and limitations of {productname} and important product updates.
@@ -14,7 +14,6 @@ include::../common/about-rn.adoc[]
 
 include::../common/about-documentation.adoc[]
 
-:omit-sles-specific: false
 include::version161.adoc[]
 
 include::../common/source-code.adoc[]
