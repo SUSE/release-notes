@@ -725,15 +725,6 @@ This section does not apply to {slessapa}.
 For details, see <<bsc-1289498>>.
 endif::[]
 
-ifndef::omit-sles-specific[]
-[#jsc-PED-16790]
-=== NVIDIA platform kernel enablement patches
-
-{productname} {this-version} incorporates platform enablement and performance patches for {nvidia} Grace and Tegra hardware.
-For the complete list of included patches, upstream commits, and issue references, refer to <<sec-nvidia-kernel-patches>>.
-endif::[]
-
-
 [#arm64-soc]
 === System-on-Chip driver enablement
 
@@ -1103,7 +1094,3 @@ Use `mdadm` instead to manage and monitor software RAID devices.
 // jsc#PED-15527
 * The `qib` driver has been deprecated in {productname} 16.1 and will be removed in {productname} 16.2.
 // ===================================================================
-
-ifndef::omit-sles-specific[]
-include::16.1/nvidia-patches.adoc[]
-endif::[]
