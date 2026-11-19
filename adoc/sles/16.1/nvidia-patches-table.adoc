@@ -52,11 +52,6 @@
 | `6a9eb2d125ba` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Expose the blackwell device PF BAR1 to the VM
 | `d85f69d520e6` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Check the HBM training and C2C link status
 | `2bb447540e71` | v6.14-rc1 | jsc#PED-16989 | vfio/nvgrace-gpu: Add GB200 SKU to the devid table
-| `1608f0230510` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: Fix re-boost issue after hotplugging a CPU
-| `dd016f379ebc` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce a more generic way to set default per-policy boost flag
-| `03d8b4e76266` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Fix wrong max_freq in policy initialization
-| `2b16c631832d` | v6.14-rc1 | jsc#NVIDIA-64 | cpufreq: ACPI: Remove set_boost in acpi_cpufreq_cpu_init()
-| `0813fd2e14ca` | v6.14-rc2 | jsc#NVIDIA-64 | cpufreq: prevent NULL dereference in cpufreq_online()
 | `5deb9c789ae4` | v6.15-rc1 | jsc#NVIDIA-79 | arch_topology: Support SMT control for OF based system
 | `eed4583bcf9a` | v6.15-rc1 | jsc#NVIDIA-79 | arm64: Kconfig: Enable HOTPLUG_SMT
 | `858c7bfcb35e` | v6.15-rc1 | jsc#NVIDIA-55 | arm64/boot: Enable EL2 requirements for FEAT_PMUv3p9
@@ -73,8 +68,6 @@
 | `38bcdb635ac6` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: Stop checking for duplicate available/boost freq attributes
 | `1f04815057a4` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: staticize cpufreq_boost_trigger_state()
 | `9a23eb8b2b5d` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: Export cpufreq_boost_set_sw()
-| `1f7d1bab50e6` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce policy->boost_supported flag
-| `be6b8681a0e4` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: acpi: Set policy->boost_supported
 | `a3f48fb2e5b7` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: cppc: Set policy->boost_supported
 | `691b32127812` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: Restrict enabling boost on policies with no boost frequencies
 | `11847a5c1265` | v6.15-rc1 | jsc#NVIDIA-64 | cpufreq: scmi: Set .set_boost directly
@@ -122,7 +115,6 @@
 | `d9d3cede4167` | v6.15-rc2 | bsc#1272627 jsc#NVIDIA-77 | iommu/ipmmu-vmsa: Register in a sensible order
 | `c8ba3f8aff67` | v6.15-rc2 | bsc#1272627 jsc#NVIDIA-77 | PCI: Run quirk_huawei_pcie_sva() before arm_smmu_probe_device()
 | `45e00e367189` | v6.15-rc5 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Add missing S2FWB feature detection
-| `3d59224947b0` | v6.15-rc5 | jsc#NVIDIA-64 | cpufreq: ACPI: Re-sync CPU boost state on system resume
 | `c1d9dac0db16` | v6.15-rc6 | jsc#PED-16989 git-fixes | vfio/pci: Align huge faults to order
 | `95deee37a123` | v6.15-rc6 | bsc#1272627 jsc#NVIDIA-77 | platform: Fix race condition during DMA configure at IOMMU probe time
 | `3a3ce10e7adc` | v6.16-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Simplify PCC shared memory region handling
@@ -131,8 +123,6 @@
 | `a0982afa0992` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: drop redundant cpus_read_lock() from store_local_boost()
 | `da33e87bd2bf` | v6.16-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Handle yet another race around registration
 | `152f33ee30ee` | v6.16-rc1 | bsc#1272627 jsc#NVIDIA-77 | bus: fsl_mc: Fix driver_managed_dma check
-| `3d5978ea6cbc` | v6.17-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Do not return a value from populate_efficiency_class()
-| `c83a92df2fc6` | v6.17-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Remove forward declaration of cppc_cpufreq_register_em()
 | `6e235a772199` | v6.17-rc1 | jsc#PED-16989 | iommufd: Drop unused ictx in struct iommufd_vdevice
 | `fc9c40e3a4fa` | v6.17-rc1 | jsc#PED-16989 | iommufd: Use enum iommu_viommu_type for type in struct iommufd_viommu
 | `62b62a55bd30` | v6.17-rc1 | jsc#PED-16989 | iommufd: Use enum iommu_veventq_type for type in struct iommufd_veventq
@@ -207,9 +197,6 @@
 | `30d0a1291046` | v6.19-rc1 | jsc#PED-16989 | mm: change ghes code to allow poison of non-struct pfn
 | `2ec41967189c` | v6.19-rc1 | jsc#PED-16989 | mm: handle poisoning of pfn without struct pages
 | `e6dbcb7c0e7b` | v6.19-rc4 | jsc#PED-16989 git-fixes | mm: fixup pfnmap memory failure handling to use pgoff
-| `f9cadb3d5691` | v7.0-rc1 | jsc#NVIDIA-64 | ACPI: CPPC: Factor out and export per-cpu cppc_perf_ctrs_in_pcc_cpu()
-| `206b66125563` | v7.0-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Factor out cppc_fie_kworker_init()
-| `997c021abc6e` | v7.0-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Update FIE arch_freq_scale in ticks for non-PCC regs
 | `71fedc41c23b` | v7.0-rc1 | jsc#NVIDIA-73 | sched/fair: Switch to rcu_dereference_all()
 | `5ac66ed8417f` | v7.0-rc1 | linux-nvidia-6.18 | iommu/arm-smmu-v3: Remove IAS
 | `2781f2a930ab` | v7.0-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Add update_safe bits to fix STE update sequence
@@ -229,7 +216,6 @@
 | `69050f8d6d07` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | treewide: Replace kmalloc with kmalloc_obj for non-scalar types
 | `bf4afc53b77a` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert 'alloc_obj' family to use the new default GFP_KERNEL argument
 | `32a92f8c8932` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert more 'alloc_obj' cases to default GFP_KERNEL arguments
-| `df6e4ab654dc` | v7.0-rc2 | linux-nvidia-6.18 git-fixes | arm64: topology: Fix false warning in counters_read_on_cpu() for same-CPU reads
 | `82f73ef9c41e` | v7.0-rc4 | bsc#1272627 jsc#NVIDIA-77 | powerpc/iommu: fix lockdep warning during PCI enumeration
 | `37beb4256016` | v7.1-rc1 | bsc#1272533 | randomize_kstack: Maintain kstack_offset per task
 | `a96ef5848cb0` | v7.1-rc1 | bsc#1272533 | randomize_kstack: Unify random source across arches
@@ -338,12 +324,9 @@
 | `3685d9829c71` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Propagate performance-control write errors
 | `50affbde6410` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Serialize PCC single-register payload updates
 | `76e6914a843e` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Serialize PCC EPP payload updates
-| `27954e29d7de` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Release CPC descriptors through kobject
 | `968e29db97bb` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Release PCC data after probe failures
 | `2221dc547b38` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject unsafe cross-CPU SystemMemory RMW
 | `09d911c99663` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject direct reads of write-only controls
-| `21e018235d99` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Select the frequency-invariance callback per CPU
-| `995e7d468070` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | cpufreq: CPPC: Create the FIE worker before enabling PCC callbacks
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
 | `440ca8a4b69f` | v7.4-rc1 | git-fixes | iommufd: Fix event queue release use-after-free
 | `f6b3fd8f573e` | v7.4-rc1 | git-fixes | iommufd: Reject a zero-length dirty bitmap request
