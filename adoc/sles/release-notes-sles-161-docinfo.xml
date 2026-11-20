@@ -11,6 +11,19 @@
 <date>{revdate}</date>
 <revhistory xmlns:xlink="http://www.w3.org/1999/xlink">
   <revision>
+   <date>2026-11-20</date>
+   <revdescription>
+    <itemizedlist>
+     <listitem>
+      <para>Added section <link xlink:href="index.html#jsc-PED-16725">Arm AGI CPU driver enablement</link> (jsc#PED-16725)</para>
+     </listitem>
+     <listitem>
+      <para>Added Arm AGI CPU to the list of enabled SoCs (jsc#PED-16725)</para>
+     </listitem>
+    </itemizedlist>
+   </revdescription>
+  </revision>
+  <revision>
    <date>2026-11-03</date>
    <revdescription>
     <itemizedlist>
