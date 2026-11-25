@@ -213,7 +213,6 @@
 | `0f7afd80d81b` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Move CXL DVSEC definitions into uapi/linux/pci_regs.h
 | `6612bd9ff0b1` | v7.0-rc1 | linux-nvidia-6.18 | PCI: Update CXL DVSEC definitions
 | `7c29ba02210c` | v7.0-rc1 | vera-baremetal-addendum.txt | PCI: Introduce pcie_is_cxl()
-| `e6e43e82c79c` | v7.0-rc1 | jsc#PED-16814 bsc#1272558 CVE-2026-46272 bsc#1267672 | coresight: tmc-etr: Fix race condition between sysfs and perf mode
 | `69050f8d6d07` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | treewide: Replace kmalloc with kmalloc_obj for non-scalar types
 | `bf4afc53b77a` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert 'alloc_obj' family to use the new default GFP_KERNEL argument
 | `32a92f8c8932` | v7.0-rc1 | jsc#NVIDIA-64 git-fixes | Convert more 'alloc_obj' cases to default GFP_KERNEL arguments
@@ -297,7 +296,6 @@
 | `4d70986002f2` | v7.2-rc1 | git-fixes CVE-2026-64289 bsc#1274013 | iommufd: Set upper bounds on cache invalidation entry_num and entry_len
 | `e28bee5b4451` | v7.2-rc1 | jsc#PED-16989 git-fixes | iommu: Avoid copying the user array twice in the full-array copy helper
 | `f9a82544c717` | v7.2-rc3 | jsc#NVIDIA-79 CVE-2026-72016 bsc#1276529 | cpu/hotplug: Fix NULL kobject warning in cpuhp_smt_enable()
-| `ff4c5a0de1f2` | v7.2-rc3 | bsc#1271479 | arm64/mm: Optimize TLB flush in unmap_hotplug_[pmd\|pud]_range()
 | `ca0676ae2e1a` | v7.2-rc3 | linux-nvidia-6.18 | fs/resctrl: Free mon_data structures on rdt_get_tree() failure
 | `265d5d4032c5` | v7.2-rc4 | linux-nvidia-6.18 | soc/tegra: fuse: Fix spurious straps warning on SMCCC platforms
 | `11055a46f398` | v7.2-rc6 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Check all controls for fast switching
@@ -320,8 +318,6 @@
 | `773f2b9e3670` | v7.3-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Support IDR5.DS and widen the TLBI SCALE field
 | `0dbcdf4473a6` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-89447 bsc#1280322 | iommufd: Avoid locking internal accesses during unmap
 | `5a9e89ea34e0` | v7.3-rc1 | jsc#PED-16989 git-fixes CVE-2026-90244 bsc#1281834 | iommu/dma: Restore locking around msi_page_list
-| `387b1baefbb7` | v7.3-rc2 | CVE-2026-53090 bsc#1269532 CVE-2026-98085 bsc#1283958 | bpf: backtrack_insn(): Handle ld_{abs,ind} subprog exit edge
-| `ce6b9e5dd873` | v7.3-rc2 | CVE-2026-53090 bsc#1269532 | selftests/bpf: Precision tracking across BPF_ABS subprog exit
 | `2bc6b218717b` | v7.3-rc5 | jsc#NVIDIA-55 git-fixes CVE-2026-98546 bsc#1286765 | arm64/boot: Disable trapping of PMZR_EL0 writes to EL2
 | `b52ef450139f` | v7.3-rc7 | jsc#NVIDIA-55 git-fixes | arm64/boot: Don't set PMUv3p9 FGT2 bits without PMUv3
 | `32299b29a887` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Validate _CPC entry and control semantics
