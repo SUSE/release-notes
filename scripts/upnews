@@ -11,7 +11,9 @@
 #   (3) upnews pre noninteractive  # Update NEWS, do not set a tracker bug,
 #                                    do not open the document in $EDITOR
 #                                    afterwards, commit, push
-#   (3) upnews help                # Help screen
+#   (4) upnews default commitonly  # Update NEWS, do not open $EDITOR,
+#                                    commit, do not push (uprn pushes)
+#   (5) upnews help                # Help screen
 
 brexit() { # obviously for "break and exit", duh!
   # $1 - error message to show
@@ -68,6 +70,12 @@ if [[ "$1" == 'noninteractive' ]]; then
   noninteractivebuild=1
 fi
 
+# commitonly: like noninteractive, but leave the push to the caller.
+commitonly=0
+if [[ "$1" == 'commitonly' ]]; then
+  commitonly=1
+fi
+
 # changesonly: print the generated changelog section to stdout and exit,
 # without touching NEWS, the editor, or git. Optional 2nd arg overrides the
 # version string (e.g. to match an existing package/tarball version).
@@ -78,7 +86,7 @@ if [[ "$1" == 'changesonly' ]]; then
 fi
 
 if [[ "$noninteractivebuild" -eq 0 ]] && [[ "$changesonly" -eq 0 ]]; then
-  [[ "$EDITOR" = '' ]] && { EDITOR='vi'; warn '$EDITOR is not defined, using vi out of pure spite.'; }
+  [[ "$EDITOR" = '' ]] && [[ $commitonly -eq 0 ]] && { EDITOR='vi'; warn '$EDITOR is not defined, using vi out of pure spite.'; }
 
   if [[ $(git diff --shortstat 2> /dev/null | wc -l) -gt 0 ]] || \
      [[ $(git diff --cached --shortstat 2> /dev/null | wc -l) -gt 0 ]]; then
@@ -197,7 +205,9 @@ if [[ -f adoc/changelog.adoc ]]; then
   FILES_TO_COMMIT+=("adoc/changelog.adoc")
 fi
 
-if [[ $noninteractivebuild -eq 0 ]]; then
+if [[ $commitonly -eq 1 ]]; then
+  git commit -m'Update NEWS for '"$versionprefix.$date"' release' "${FILES_TO_COMMIT[@]}"
+elif [[ $noninteractivebuild -eq 0 ]]; then
   $EDITOR NEWS
   git commit -m'Update NEWS for '"$versionprefix.$date"' release' "${FILES_TO_COMMIT[@]}"
   inform "We made a commit, check the diff with 'git show' before pushing!"

@@ -18,9 +18,14 @@
 #                                       at the end
 #   (3) uprn (pre) noninteractive     # Update the repo, generate command for maintenance/service request,
 #                                       commit, send request
-#   (4) uprn log [DATE|FILE]          # Print a submission summary (build.suse.de
+#   (4) uprn co PRJ PKG (pre) (noninteractive)
+#                                     # Branch and check out PKG first (or reuse
+#                                       an existing checkout), update NEWS.
+#                                       With noninteractive, never prompt or
+#                                       open $EDITOR; exit 1 on anything odd.
+#   (5) uprn log [DATE|FILE]          # Print a submission summary (build.suse.de
 #                                       request links) from the request log
-#   (5) uprn --help                   # Help screen
+#   (6) uprn --help                   # Help screen
 
 me="$(test -L $(realpath $0) && readlink $(realpath $0) || echo $(realpath $0))"
 mydir="$(dirname $me)"
@@ -84,15 +89,39 @@ if [[ $1 == 'co' ]]; then
     echo "(meh) You are inside an osc checkout. cd to your checkout base (e.g. ~/work/bs) first."
     exit 1
   fi
-  echo "Branching and checking out $copackage from $coproject ..."
-  bco_out="$($osc_command bco "$coproject" "$copackage" 2>&1)"
-  echo "$bco_out"
-  # Fresh checkout prints "A <dir>"; an already-checked-out one only prints the
-  # branch project name -- derive the path from either.
-  copath="$(echo "$bco_out" | grep -oP '^A\s+\K\S+/'"$copackage"'$' | head -1)"
-  if [[ -z "$copath" ]]; then
-    branchprj="$(echo "$bco_out" | grep -oP 'branch project:\s*\K\S+' | head -1)"
-    [[ -n "$branchprj" ]] && copath="$branchprj/$copackage"
+  [[ " $* " == *' noninteractive '* ]] && co_batch=1
+  # Reuse an existing checkout: bco refuses to check out over it.
+  obsuser="$($osc_command whois 2>/dev/null | cut -d: -f1)"
+  copath="home:$obsuser:branches:$coproject/$copackage"
+  if [[ -n "$obsuser" && -d "$copath/.osc" ]]; then
+    echo "Reusing the existing checkout $copath ..."
+    ( cd "$copath" && $osc_command up ) || { echo "(meh) osc up failed in $copath."; exit 1; }
+    # Leftovers of an earlier run (old .changes entry, etc.) would end up in
+    # this commit. Tarballs are regenerated below, so ignore them.
+    leftovers="$(cd "$copath" && $osc_command st | grep -vP '\.(tar(\.[a-z0-9]+)?|obscpio)$|^\?')"
+    if [[ -n "$leftovers" ]]; then
+      echo "$leftovers"
+      if [[ "${co_batch:-0}" -eq 1 ]]; then
+        echo "(meh) $copath has local changes. Run 'osc revert .' there, then rerun uprn."
+        exit 1
+      fi
+      echo -n "Local changes in $copath. Revert them? (y/[n]) "
+      read DECISION
+      if [[ $DECISION == 'y' || $DECISION == 'yes' ]]; then
+        ( cd "$copath" && $osc_command revert . ) || exit 1
+      fi
+    fi
+  else
+    echo "Branching and checking out $copackage from $coproject ..."
+    bco_out="$($osc_command bco "$coproject" "$copackage" 2>&1)"
+    echo "$bco_out"
+    # Fresh checkout prints "A <dir>"; an already-checked-out one only prints the
+    # branch project name -- derive the path from either.
+    copath="$(echo "$bco_out" | grep -oP '^A\s+\K\S+/'"$copackage"'$' | head -1)"
+    if [[ -z "$copath" ]]; then
+      branchprj="$(echo "$bco_out" | grep -oP 'branch project:\s*\K\S+' | head -1)"
+      [[ -n "$branchprj" ]] && copath="$branchprj/$copackage"
+    fi
   fi
   if [[ -z "$copath" || ! -d "$copath" ]]; then
     echo "(meh) Could not determine the checkout directory for $copackage."
@@ -168,7 +197,7 @@ fi
 
 if [[ $quitearly == 1 ]]; then
   echo "(meh) Shall not pass. Fix the issues above, then rerun uprn."
-  exit
+  exit 1
 fi
 
 echo -e "  [PASS]\n\n"
@@ -199,18 +228,22 @@ $osc_command service ra
 srcrepo="$PWD/$(grep 'url' _service | sed -r -e 's/^[^>]+>([^<]+)<.+$/\1/i' -e 's/^.*\///' -e 's/\.git$//')"
 if [[ "${do_news:-0}" -eq 1 && -d "$srcrepo/.git" ]]; then
   echo "Updating NEWS in the checkout $srcrepo (branch $corev) ..."
-  if ( cd "$srcrepo" && "$mydir/upnews" "${news_bug:-default}" ); then
+  newsmode=''
+  [[ $noninteractivebuild -eq 1 ]] && newsmode='commitonly'
+  if ( cd "$srcrepo" && "$mydir/upnews" "${news_bug:-default}" $newsmode ); then
     co_changelog="$(mktemp)"
     awk 'NR==1{print "- " $0; next} /^[[:space:]]*$/{exit} {print}' "$srcrepo/NEWS" > "$co_changelog"
     push_url="$(git -C "$srcrepo" remote get-url origin | sed -r 's#^https?://([^/]+)/#'"${news_ssh_user:-gitlab}"'@\1:#')"
-    echo
-    echo -n "Push NEWS to $push_url ($corev)? Required so the build includes it. [Enter / Ctrl-C] "
-    read _
+    if [[ $noninteractivebuild -eq 0 ]]; then
+      echo
+      echo -n "Push NEWS to $push_url ($corev)? Required so the build includes it. [Enter / Ctrl-C] "
+      read _
+    fi
     if [[ -n "$news_ssh_key" ]]; then
       GIT_SSH_COMMAND="ssh -i $news_ssh_key -o IdentitiesOnly=yes" git -C "$srcrepo" push "$push_url" "HEAD:$corev"
     else
       git -C "$srcrepo" push "$push_url" "HEAD:$corev"
-    fi
+    fi || { echo "(meh) Could not push NEWS to $push_url."; exit 1; }
     # Rebuild the tarball now that NEWS is upstream.
     rm *.tar* 2> /dev/null
     $osc_command service ra
@@ -228,18 +261,22 @@ if [[ $(ls *.tar.{bz2,gz,xz,lzma} 2>/dev/null) ]]; then
   today="$(date +%Y-%m-%d)"
   if [[ ! "$tardate" == "$today" ]]; then
     diff=$(( ($(date -d "$today" +%s) - $(date -d "$tardate" +%s)) / 86400 ))
+    if [[ $noninteractivebuild -eq 1 ]]; then
+      echo "(meh) Tarball is from $tardate ($diff days ago), not today. Check the source git."
+      exit 1
+    fi
     echo -n "Tarball reeks, it is from $tardate ($diff days ago). Continue anyway? (y/[n]) "
     read DECISION
     if [[ ! $DECISION == 'y' ]] && [[ ! $DECISION == 'yes' ]]; then
       echo "(meh) Exiting. Make sure to push to your changes to the source git."
-      exit
+      exit 1
     else
       echo -e "Moving right along...\n"
     fi
   fi
 else
-  echo "There is no tarball. Does the remote repository exist?"
-  exit
+  echo "(meh) There is no tarball. Does the remote repository exist?"
+  exit 1
 fi
 
 # Pre-fill the changelog entry, then open the editor to review/tweak it.
@@ -255,7 +292,10 @@ elif [[ -d "$srcrepo/.git" ]]; then
 fi
 if [[ -s "$vc_prefill" ]]; then
   $osc_command vc -F "$vc_prefill"
-  $osc_command vc -e
+  [[ $noninteractivebuild -eq 0 ]] && $osc_command vc -e
+elif [[ $noninteractivebuild -eq 1 ]]; then
+  echo "(meh) No changelog entry to add. Run 'osc vc' by hand."
+  exit 1
 else
   $osc_command vc
 fi
@@ -272,14 +312,14 @@ if [[ $noninteractivebuild -eq 0 ]]; then
     $osc_command build --clean
     if [[ $? -ne 0 ]]; then
       echo "(meh) This does not build."
-      exit
+      exit 1
     fi
   fi
   echo -n "Commit now (Return/^C)? "
   read DECISION
 fi
 
-$osc_command commit -m "Update package to $(cat *.changes | head -4 | tail -1 | sed -r 's_^[- ]+__')"
+$osc_command commit -m "Update package to $(cat *.changes | head -4 | tail -1 | sed -r 's_^[- ]+__')" || { echo "(meh) osc commit failed."; exit 1; }
 pkgdir=$(pwd)
 pkg=$(echo "$pkgdir" | grep -oP '[^/]+$')
 mybranch=$(echo "$pkgdir" | grep -oP '[^/]+/[^/]+$' | grep -oP '^[^/]+')
@@ -320,6 +360,7 @@ if [[ -n "$reqid" ]] && [[ -n "$package_updates_dir" ]]; then
   echo -e "\n(hey) Recorded request $reqid as '$label' in $updatefile"
 elif [[ -z "$reqid" ]]; then
   echo -e "\n(aem) Could not capture a request id from 'osc sr' — record it manually." >&2
+  exit 1
 fi
 
 # - According to the man page, `osc priorize -m 'Explanatory message'` is supported but I can't use it, so don't suggest it.
