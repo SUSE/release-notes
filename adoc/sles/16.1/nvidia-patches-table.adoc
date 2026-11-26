@@ -121,6 +121,7 @@
 | `c347f31ae27f` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Don't unnecessarily call set_boost()
 | `27241c8b63bd` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: Introduce policy_set_boost()
 | `a0982afa0992` | v6.16-rc1 | jsc#NVIDIA-64 | cpufreq: drop redundant cpus_read_lock() from store_local_boost()
+| `965544150d1c` | v6.16-rc1 | jsc#PED-13979 jsc#PED-14039 jsc#PED-14046 jsc#PED-14211 jsc#PED-14333 jsc#PED-14487 jsc#PED-14488 jsc#PED-14497 jsc#PED-14499 jsc#PED-15868 | drm/vmwgfx: Refactor cursor handling
 | `da33e87bd2bf` | v6.16-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu: Handle yet another race around registration
 | `152f33ee30ee` | v6.16-rc1 | bsc#1272627 jsc#NVIDIA-77 | bus: fsl_mc: Fix driver_managed_dma check
 | `6e235a772199` | v6.17-rc1 | jsc#PED-16989 | iommufd: Drop unused ictx in struct iommufd_vdevice
@@ -172,7 +173,6 @@
 | `4e034bf045b1` | v6.17 | git-fixes CVE-2025-39966 bsc#1252043 | iommufd: Fix race during abort for file descriptors
 | `fa84e534c3ec` | v6.18-rc1 | vera-baremetal.txt | arm64: realm: ioremap: Allow mapping memory as encrypted
 | `9e8a3df3e7f7` | v6.18-rc1 | vera-baremetal.txt | arm64: Enable EFI secret area Securityfs support
-| `f8f89e8cf3d6` | v6.18-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Factor out PMCCNTR_EL0 use conditions
 | `16d39e2bf960` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: Remove unused parameter in cppc_perf_from_fbctrs()
 | `c8dc2368b23e` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: CPPC: Use scope-based cleanup helper
 | `97248d05b70e` | v6.18-rc1 | jsc#NVIDIA-64 | cpufreq: Drop redundant freq_table parameter
@@ -183,7 +183,6 @@
 | `afb47765f923` | v6.18-rc5 | git-fixes | iommufd: Make vfio_compat's unmap succeed if the range is already empty
 | `ac84ff453305` | v6.18 | jsc#PED-16989 git-fixes | iommufd/driver: Fix counter initialization for counted_by annotation
 | `b07bf253ef8e` | v6.18 | jsc#PED-16989 git-fixes | iommufd/iommufd_private.h: Avoid -Wflex-array-member-not-at-end warning
-| `c3d78c34ad00` | v6.19-rc1 | jsc#NVIDIA-55 | perf: arm_pmuv3: Don't use PMCCNTR_EL0 on SMT cores
 | `7ab06ea41af5` | v6.19-rc1 | jsc#NVIDIA-55 | arch_topology: Provide a stub topology_core_has_smt() for !CONFIG_GENERIC_ARCH_TOPOLOGY
 | `52f77fb176ec` | v6.19-rc1 | bsc#1272627 jsc#NVIDIA-77 | iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
 | `680a6a60fc08` | v6.19-rc1 | git-fixes | iommu/exynos-iommu: Set release_domain to exynos_identity_domain
