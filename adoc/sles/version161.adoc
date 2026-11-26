@@ -736,7 +736,8 @@ System-on-Chip (SoC) chipsets:
 // jsc#PED-16725 (AGI)
 * {armreg} *{agicpu}*
 * {awsreg} Graviton, Graviton2, Graviton3
-* {brcmreg} BCM2837/BCM2710, BCM2711
+// jsc#PED-16713 (RPi5)
+* {brcmreg} BCM2837/BCM2710, BCM2711, *BCM2712*
 * {fujitsureg} A64FX
 * {huaweireg} {kunpengreg} 916, {kunpeng} 920
 * {marvellreg} {thunderxreg}, {thunderx2reg}; {octeon-txreg}; {armadareg} 7040, {armada} 8040
@@ -783,6 +784,38 @@ This ensures critical post-crash details are captured immediately without relyin
 
 {productname} {this-version} adds driver enablement for the {armreg} {agicpu} platform (A1 silicon and later).
 It is based on the {arm} {neoversereg}{nbsp}V3 CPU ({arm}{nbzwsp}v9.2).
+
+
+// jsc#PED-16713
+[#rpi5]
+=== {rpi} 5 driver enablement
+
+{productnameshort} {this-version} includes bootloader and drivers to boot on {rpireg} 5 devices,
+based on {brcmreg} BCM2712 System-on-Chip (SoC) and RP1 I/O chip.
+
+The kernel includes drivers for
+PCIe host controller (internal and external connector),
+Ethernet,
+Univeral Serial Bus (USB),
+{videocorereg}{nbsp}VII Graphics Processor Unit (GPU) including 3D acceleration,
+{hdmi} video output,
+General Purpose Input/Output (GPIO) and pin configuration for BCM2712 and RP1,
+Inter-Integrated Circuit (I²C) bus,
+Serial Peripheral Interface (SPI) and
+the integrated Wi-Fi and {btreg} wireless module.
+
+Not supported in this release are the
+Image Signal Processor (ISP),
+Inter-IC Sound (I²S),
+Pulse-Width Modulation (PWM),
+Analog-to-Digital Converter (ADC),
+Direct Memory Access (DMA),
+IOMMU,
+{hdmi} audio output and
+HEVC (H.265) video decoding acceleration.
+
+The included bootloader _Das U-Boot_ does not support USB input or storage devices (behind RP1 chip)
+but does support {nvme} storage devices.
 
 
 [#ibm-z]
