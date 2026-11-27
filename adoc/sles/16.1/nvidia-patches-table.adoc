@@ -327,9 +327,9 @@
 | `2221dc547b38` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject unsafe cross-CPU SystemMemory RMW
 | `09d911c99663` | v7.4-rc1 | jsc#NVIDIA-64 git-fixes | ACPI: CPPC: Reject direct reads of write-only controls
 | `26564d25cd81` | Queued in subsystem maintainer repository | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3-iommufd: Reject unsupported bits in invalidation commands
-| `440ca8a4b69f` | v7.4-rc1 | git-fixes | iommufd: Fix event queue release use-after-free
+| `440ca8a4b69f` | v7.4-rc1 | git-fixes CVE-2026-99515 bsc#1291708 | iommufd: Fix event queue release use-after-free
 | `f6b3fd8f573e` | v7.4-rc1 | git-fixes | iommufd: Reject a zero-length dirty bitmap request
-| `9c48b994b66d` | v7.4-rc1 | jsc#PED-16989 git-fixes | vfio/nvgrace-gpu: Use a core-only open_device in fallback mode
+| `9c48b994b66d` | v7.4-rc1 | jsc#PED-16989 git-fixes CVE-2026-99450 bsc#1291512 | vfio/nvgrace-gpu: Use a core-only open_device in fallback mode
 | `ab0dbf411ace` | v7.4-rc1 | jsc#PED-16989 git-fixes | iommu/arm-smmu-v3: Disable the impl before disabling the SMMU on shutdown
 | - | not yet, testing | Nvidia config | qcom: Kconfig: Allow disabling QCOM_SCM
 | - | submitted https://lore.kernel.org/linux-arm-kernel/20260611130429.295516-1-aneesh.kumar@kernel.org | jsc#NVIDIA-56 jsc#PED-15478 | firmware: smccc: Add an Arm SMCCC bus
